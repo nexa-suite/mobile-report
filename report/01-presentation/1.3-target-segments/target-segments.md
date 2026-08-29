@@ -60,6 +60,11 @@ crearán personas validadas a partir de supuestos.
 
 ## Sustento histórico del dominio
 
+| Fuente histórica | Dato relevante | Uso responsable en este informe |
+| --- | --- | --- |
+| Lucky-Xplora (2022) | Alrededor del 83% de las bodegas del canal tradicional se ubicaba en un nivel principiante de madurez digital y cerca del 28% utilizaba alguna aplicación para gestionar tareas del negocio. | Justifica investigar experiencias de bajo esfuerzo para compradores B2B; no representa una medición actual de adopción de Buyer Mobile. |
+| Bravo De la Cruz et al. (2025) | El estudio citado reporta 64 rupturas de cadena de frío en el periodo analizado: 14 por congelación y 50 por sobrecalentamiento. | Justifica investigar registro, trazabilidad y disposición de evidencia térmica; no prueba que todos los tenants tengan el mismo riesgo. |
+
 El informe Web anterior ofrece evidencia útil para justificar por qué estos
 segmentos merecen investigación, pero no prueba por sí solo las necesidades
 móviles. Lucky-Xplora (2022) reporta una madurez digital principalmente

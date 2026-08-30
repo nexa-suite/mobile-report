@@ -1,6 +1,8 @@
 # Chapter II: Requirements Development and Software Solution Design
 
-Estructura del capítulo conforme al enunciado del trabajo final.
+Este capítulo adapta el análisis de Nexa al alcance de Aplicaciones Móviles. Las aplicaciones móviles se documentan como proyecciones de las capacidades y Bounded Contexts compartidos por Nexa.
+
+Las secciones que dependen de entrevistas, validación de usuarios, métricas, priorización o evidencia técnica se mantienen identificadas como pendientes hasta contar con la información correspondiente.
 
 - [2.1 Competitors](./2.1-competitors/)
 - [2.2 Interviews](./2.2-interviews/)

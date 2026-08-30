@@ -1,3 +1,3 @@
 # 2.2 Interviews
 
-Documentar el diseño, registro y análisis de entrevistas de investigación.
+La investigación con usuarios móviles todavía está pendiente. Esta sección conserva la estructura necesaria para diseñar, registrar y analizar entrevistas sin presentar información que aún no ha sido recolectada.

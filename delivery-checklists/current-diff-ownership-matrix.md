@@ -9,7 +9,7 @@ Working matrix for the verified handoff. It maps every current modified or untra
 | Snapshot | 2026-09-02; branch `reconcile/report-integration-20260902` |
 | Base | `3edeb196800a72a30299987a661e791c8f8fb50d` |
 | Recovery copy | `/tmp/nexa-mobile-report-resume.PJofE0/` |
-| Staging | Reconciliation merge staged; final commit pending gate completion |
+| Staging | Clean after reconciliation merge; branch published; PR pending |
 | Commit rule | One coherent unit; no `Co-authored-by`; current attribution limited to Joaquín/Diego |
 
 ## Unit A — Report governance / front matter

@@ -4,13 +4,13 @@
 
 | Campo | Valor |
 | :--- | :--- |
-| Estado | `CURRENT REVIEWED INTEGRATION PUSHED — PR SEQUENCE OPEN` |
-| Rama | `feature/report-front-matter-and-governance` |
-| Base revisada | `3edeb196800a72a30299987a661e791c8f8fb50d` |
-| Upstream | `origin/feature/report-front-matter-and-governance` |
-| Push | `SUCCESS — 2026-09-02; remote branch created` |
-| Staging | Vacío después de cada commit; staging controlado por unidad |
-| Commits nuevos | `13` commits locales revisados; secuencia registrada abajo |
+| Estado | `RECONCILIATION MERGE PUSHED — PR SEQUENCE OPEN` |
+| Rama | `reconcile/report-integration-20260902` |
+| Base revisada | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` (`origin/develop` after main-only fast-forward) |
+| Upstream | `origin/reconcile/report-integration-20260902` |
+| Push | `SUCCESS — 2026-09-02; reconciliation branch created` |
+| Staging | Vacío después del merge; follow-up documentation remains unit-controlled |
+| Commits nuevos | `22` commits ahead of `develop`, including the preserved feature history and merge commit |
 | Report integration review | `28/28` approved by `DiegoS284` + `JoaquinBV511` on `2026-09-02` |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
@@ -20,6 +20,17 @@ integrar el diff revisado por Diego y Joaquín, sujeto a staging exacto,
 validación y separación por unidad. No convierte una fuente, una proyección o
 una prueba local en implementación, aceptación de producto o preparación para
 producción.
+
+## Reconciliation commit evidence
+
+| Commit | Parents | Author / project email | Conventional Commit |
+| :--- | :--- | :--- | :--- |
+| `86351b3c75f471cb79c3d677718cf07dd035ae55` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` + `a19642c38ecf21905874fc5fbabceff0410320b6` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): reconcile integration conflicts` |
+
+The merge preserved both parent histories without squash or force-push. All
+`76/76` conflict paths were resolved with the approved feature-as-baseline and
+Blueprint-authority decision. The reconciliation ledger records the path-level
+decisions and the unique valid content retained from develop and main.
 
 ## Commit evidence — current integration
 
@@ -67,12 +78,12 @@ crea sólo para aumentar el historial.
 | Owner legal | Joaquín / Diego, según unidad |
 | GitHub username | `JoaquinBV511` / `DiegoS284`, según unidad |
 | Email asociado confirmado por owner | `joaquinverdebueno@gmail.com` / `diego64g284@gmail.com` |
-| Rama | `feature/report-front-matter-and-governance` |
-| Archivos | Exactos por unidad, registrados en [current-diff-ownership-matrix.md](./current-diff-ownership-matrix.md) |
+| Rama | `reconcile/report-integration-20260902` |
+| Archivos | Exactos por unidad y path de reconciliación, registrados en [current-diff-ownership-matrix.md](./current-diff-ownership-matrix.md) y [conflict-reconciliation-ledger.md](./conflict-reconciliation-ledger.md) |
 | Resumen | Revisado conjuntamente; separación natural por alcance |
 | Fuente / requisito | Prompt canónico, rúbrica, Blueprint y repositorios de evidencia fijados |
 | Explicación del owner | Requerida antes de cada commit; no se atribuye trabajo actual a Gino, Gerard o Sebastián |
-| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `147` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148 and latest no-Docker rerun 482/0/152; expanded local integration gate partial: 482 run, 3 failures, 0 errors, 0 skipped; canonical Sprint 1–3 and rubric-gap audit recorded |
+| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `158` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `233/81/105/28`, stories `28`, scenarios `112`, strategic contexts `11`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148; focused gate 7/0/0/0; expanded integration gate with external services 482/3/0/0, documented PARTIAL; canonical Sprint 1–3 and rubric-gap audit recorded |
 | Mensaje Conventional Commit | Se define por unidad y se inspecciona en staging |
 | Autorización explícita para `git add` y `git commit` | `YES — current reviewed Diego/Joaquín units` |
 

@@ -429,3 +429,29 @@ Structurizr exit `0`, persistencia read-only exit `0` y contrato focalizado
 `7/0/0/0`. Las gates de runtime Mobile, dispositivo, distribución, aceptación,
 videos, entrevistas actuales y Q1/Q2 oficial siguen abiertas según las
 matrices AV1/TB1/AV2/TB2.
+
+## Reconciliación aprobada publicada — 2026-09-02
+
+El owner humano Joaquín Francisco Verde Bueno ejecutó la reconciliación
+autorizada sobre `reconcile/report-integration-20260902`. El baseline de
+`develop` fue `928cb1c4ca0a0848c4b0c0de32108c87ee97dada`; la rama de feature
+`feature/report-front-matter-and-governance` quedó preservada en
+`a19642c38ecf21905874fc5fbabceff0410320b6`; y el merge no squash es
+`86351b3c75f471cb79c3d677718cf07dd035ae55`. Se resolvieron `76/76` conflictos
+por path y semántica, con la autoridad Blueprint y la baseline de feature
+aplicadas según el handoff humano.
+
+La rama fue publicada en
+`origin/reconcile/report-integration-20260902`. `origin/develop` y
+`origin/main` permanecen en `928cb1c4ca0a0848c4b0c0de32108c87ee97dada`; no se
+hizo force-push, release ni cambio en `main`. La PR hacia `develop` sigue
+pendiente de apertura.
+
+Los gates documentales y de arquitectura pasan: estructura, semantic scan
+(`28` historias, `112` escenarios, `11` contextos), API register,
+bibliografía, links, Structurizr, PlantUML, modelo de datos y persistencia
+observada. La gate ampliada de API fue repetida con ClamAV, MinIO y Stripe
+mock disponibles y conserva su estado `PARTIAL`: `482` tests, `3` fallas
+conocidas de `TenantAdministrationIT`, `0` errores y `0` skipped. Las gates
+de runtime Mobile, dispositivo, distribución, aceptación, videos,
+entrevistas actuales y Q1/Q2 oficial permanecen abiertas.

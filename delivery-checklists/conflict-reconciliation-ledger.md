@@ -70,7 +70,7 @@ meaning, not rejected globally.
 |---|---:|---|
 | Valid current | 233 | Current online-first, authority, surface and scope statements |
 | Valid boundary | 81 | Explicit exclusions, negative rules and non-authoritative local states |
-| Future/research | 105 | Spikes, hypotheses, open questions, deferred scope and research conditions |
+| Future/research | 106 | Spikes, hypotheses, open questions, deferred scope and research conditions |
 | Historical/context | 28 | Historical baselines, secondary/competitor context and source discussion |
 | Stale | 0 | No unresolved approved-conflict semantic claim |
 

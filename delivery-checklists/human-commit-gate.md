@@ -56,7 +56,7 @@ or attribution to Gino, Gerard or Sebastián was used.
 
 ## Post-reconciliation audit/fix commits — 2026-09-02
 
-These four commits were created after the external architecture audit on the
+These seven commits were created after the external architecture audit on the
 published reconciliation branch. They use the configured owner-confirmed
 identity of Joaquín and contain only new audit/fix work; no teammate history
 was amended or rewritten.
@@ -67,11 +67,13 @@ was amended or rewritten.
 | `93cd2b63a0e68cef057f049379b24e923bb4d06e` | Historical report provenance ledger | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(research): classify historical report evidence` |
 | `d841f4600b4ebe7b24b00ccf2a361ddbe388f875` | Cross-repository implementation evidence register | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(implementation): record cross-repository audit` |
 | `a2be849b28087da2acee79b3c4139d85a2bef5a8` | Mobile architecture stale-text validator | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `test(architecture): detect stale mobile target claims` |
+| `87bee85f5bf1e0a8f9628ed2883e2becc679fde8` | Post-reconciliation commit evidence and implementation register | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): record post-reconciliation commit evidence` |
+| `f0012b362c04bea6a36990e36aa71390ecf81f5e` | Commit lineage evidence correction | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): keep commit lineage evidence current` |
+| `a4300002c165cc250493258aa748989976a26799` | TB2 backend validation baseline and sprint evidence | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(sprint): record tb2 validation baseline` |
 
-At the time this table was prepared, the remote branch resolved to
-`a2be849b28087da2acee79b3c4139d85a2bef5a8`; the subsequent table commit is
-part of the same traceable report unit and is pushed without rewriting these
-commits.
+The current remote branch resolves to `a4300002c165cc250493258aa748989976a26799`.
+The seven commits are preserved in order and were pushed without rewriting,
+force-pushing or attributing work to absent teammates.
 
 ## Condiciones obligatorias antes de cada commit
 
@@ -102,7 +104,7 @@ crea sólo para aumentar el historial.
 | Resumen | Revisado conjuntamente; separación natural por alcance |
 | Fuente / requisito | Prompt canónico, rúbrica, Blueprint y repositorios de evidencia fijados |
 | Explicación del owner | Requerida antes de cada commit; no se atribuye trabajo actual a Gino, Gerard o Sebastián |
-| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `158` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `233/81/105/28`, stories `28`, scenarios `112`, strategic contexts `11`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148; focused gate 7/0/0/0; expanded integration gate with external services 482/3/0/0, documented PARTIAL; canonical Sprint 1–3 and rubric-gap audit recorded |
+| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `158` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `233/81/106/28`, stories `28`, scenarios `112`, strategic contexts `11`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148; focused gate 7/0/0/0; expanded integration gate with external services 482/3/0/0, documented PARTIAL; canonical Sprint 1–3 and rubric-gap audit recorded |
 | Mensaje Conventional Commit | Se define por unidad y se inspecciona en staging |
 | Autorización explícita para `git add` y `git commit` | `YES — current reviewed Diego/Joaquín units` |
 

@@ -455,3 +455,39 @@ mock disponibles y conserva su estado `PARTIAL`: `482` tests, `3` fallas
 conocidas de `TenantAdministrationIT`, `0` errores y `0` skipped. Las gates
 de runtime Mobile, dispositivo, distribución, aceptación, videos,
 entrevistas actuales y Q1/Q2 oficial permanecen abiertas.
+
+## Checkpoint vigente post-reconciliación — 2026-09-02
+
+Este corte supersede únicamente el estado operativo de los checkpoints
+anteriores; conserva sus registros históricos y no convierte sus observaciones
+en evidencia de implementación o aceptación.
+
+| Campo | Valor |
+| :--- | :--- |
+| Rama | `reconcile/report-integration-20260902` |
+| HEAD local y remoto | `a4300002c165cc250493258aa748989976a26799` |
+| Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
+| Relación con `origin/develop` | `0` behind / `30` ahead |
+| Worktree y staging | Limpio; staging vacío |
+| Conflictos reconciliados | `76/76` por path y semántica, según ledger aprobado |
+| Integración de historias | `28/28` aprobada por DiegoS284 y JoaquinBV511; defensa individual sigue follow-up humano |
+
+La secuencia posterior a la auditoría contiene siete commits nuevos, todos con
+la identidad confirmada de Joaquín y mensajes Conventional Commit. El último
+`docs(sprint): record tb2 validation baseline` registra la baseline Docker-backed
+del API: `./mvnw test` terminó `BUILD SUCCESS`, `482` pruebas, `0` fallos y
+`148` omitidas, con Java 25.0.4.1, Docker 29.7.2 y PostgreSQL 18.4-alpine.
+
+Los gates actuales del informe permanecen reproducibles: estructura `28/28/112`,
+transcripción `28/28/112`, registro API `60` operaciones y `60` bloques de
+respuesta, revisión-register alineado, citas obligatorias `4/4`, DOI `4/4`,
+referencias técnicas `6/6`, ownership `158` paths/`9` unidades, enlaces y
+syntax checks OK, y semantic scan `233/81/106/28` sin claims actuales de
+Mobile V1 pendientes. El gate de integración ampliada del API sigue
+`PARTIAL` por las tres fallas de `TenantAdministrationIT` ya documentadas.
+
+No existe PR abierto detectado para esta rama contra `develop`; la creación
+requiere autenticación GitHub manual. No se ha hecho merge, release ni cambio
+en `main`. Permanecen abiertos los gates de defensa individual, revisión
+visual humana, runtime/dispositivo Mobile, distribución, videos, entrevistas
+actuales, Product Acceptance, Q1/Q2 oficial y entregables finales.

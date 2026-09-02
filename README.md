@@ -3,7 +3,7 @@
 Repositorio Docs-as-Code del trabajo final del curso **1ACC0238 Aplicaciones para Dispositivos Móviles**.
 
 | Campo | Valor |
-|---|---|
+| :--- | :--- |
 | Periodo | 202620 |
 | NRC | 4949 |
 | Startup | nexa-team |
@@ -32,6 +32,8 @@ Los controles de entrega, el baseline de repositorios y la reconciliación con
 las fuentes de autoridad se mantienen en [live-baseline.md](./delivery-checklists/live-baseline.md).
 La procedencia de C4, Structurizr, PlantUML y los diagramas de datos se resume
 en el [architecture and diagram evidence register](./delivery-checklists/architecture-render-evidence-register.md).
+La nomenclatura oficial de entregables y videos se mantiene en
+[file-naming.md](./delivery-checklists/file-naming.md).
 Esos documentos distinguen evidencia comprobada, estructura preparada y datos
 que todavía requieren revisión o entrega humana.
 
@@ -44,13 +46,13 @@ Cada subpunto numerado de nivel 2 es una carpeta. Sus subpuntos de nivel 3 se en
 ```text
 main
 └── develop
-    ├── chapter-01
-    ├── chapter-02
-    ├── chapter-03
-    └── chapter-04
+    └── reconcile/report-integration-20260902
 ```
 
-Las ramas `chapter-0X` contienen un commit documental por capítulo y se integran progresivamente en `develop`. La rama `main` representa el informe integrado y publicable.
+`main` es la línea estable y `develop` la línea de integración. Las ramas
+`chapter-0X` del historial inicial se conservan como provenance; el estado
+actual autorizado usa `reconcile/report-integration-20260902` y todavía no se
+ha integrado en `develop` ni publicado como release.
 
 ## Estado documental
 

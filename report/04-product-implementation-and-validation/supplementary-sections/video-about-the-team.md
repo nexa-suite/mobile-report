@@ -1,5 +1,13 @@
 # Video About-The-Team
 
-Documentar secuencias, timing, participantes, actividades, competencias y enlaces Stream/YouTube.
+The final record must identify each participant, sequence, timing, activity,
+competency demonstrated, URL and permission. Team membership and commit
+ownership must be consistent with the manually verified registry. No team video
+is verified in this report cut.
 
-> Sección sin numeración explícita en el índice oficial; se conserva como sección complementaria del Capítulo IV.
+| Field | State |
+| :--- | :--- |
+| Participants and identities | Pending human confirmation |
+| Sequence, timing and activities | Pending |
+| Evidence URL and duration | Pending |
+| Reviewer and permission | Pending |

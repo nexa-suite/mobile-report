@@ -1,5 +1,12 @@
 # Video About-the-Product
 
-Documentar objetivo, testimonio, screenshot, enlaces OneDrive/YouTube y duración.
+The final record must include objective, script or sequence, participant
+testimony with permission, screenshots, duration, URL and source/build
+revision. No product video is verified in this report cut.
 
-> Sección sin numeración explícita en el índice oficial; se conserva como sección complementaria del Capítulo IV.
+| Field | State |
+| :--- | :--- |
+| Objective and scope | Pending |
+| Demonstrated surface and stories | Pending |
+| Recording, duration and URL | Pending |
+| Consent and reviewer | Pending |

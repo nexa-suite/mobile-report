@@ -73,9 +73,11 @@ was amended or rewritten.
 | `b02b02b3bb90442590ce478b72f45b87e0423767` | Current post-reconciliation checkpoint and commit lineage | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): refresh reconciliation checkpoint` |
 | `afe62423d5759a76b3126d86dd614edcc833a478` | Semantic inventory count synchronization | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): sync semantic inventory evidence` |
 
-The current remote branch resolves to `afe62423d5759a76b3126d86dd614edcc833a478`.
-The nine commits are preserved in order and were pushed without rewriting,
-force-pushing or attributing work to absent teammates.
+The nine commits above are the post-audit audit/fix/traceability sequence through
+the last validated source checkpoint `afe62423d5759a76b3126d86dd614edcc833a478`.
+Later documentation-only sync commits are tracked separately; the live branch
+ref and ahead count must be resolved from Git at each checkpoint. No history was
+rewritten, force-pushed or attributed to absent teammates.
 
 ## Condiciones obligatorias antes de cada commit
 

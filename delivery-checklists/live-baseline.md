@@ -465,20 +465,24 @@ en evidencia de implementación o aceptación.
 | Campo | Valor |
 | :--- | :--- |
 | Rama | `reconcile/report-integration-20260902` |
-| HEAD local y remoto | `afe62423d5759a76b3126d86dd614edcc833a478` |
+| Último source checkpoint validado | `afe62423d5759a76b3126d86dd614edcc833a478` |
 | Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
-| Relación con `origin/develop` | `0` behind / `32` ahead |
+| Relación en el source checkpoint | `0` behind / `32` ahead |
 | Worktree y staging | Limpio; staging vacío |
 | Conflictos reconciliados | `76/76` por path y semántica, según ledger aprobado |
 | Integración de historias | `28/28` aprobada por DiegoS284 y JoaquinBV511; defensa individual sigue follow-up humano |
 
-La secuencia posterior a la auditoría contiene nueve commits nuevos, todos con
+La secuencia posterior a la auditoría contiene nueve commits nuevos hasta el
+source checkpoint, todos con
 la identidad confirmada de Joaquín y mensajes Conventional Commit. El commit
 `a4300002c165cc250493258aa748989976a26799` registra la baseline Docker-backed
 del API: `./mvnw test` terminó `BUILD SUCCESS`, `482` pruebas, `0` fallos y
 `148` omitidas, con Java 25.0.4.1, Docker 29.7.2 y PostgreSQL 18.4-alpine.
 El HEAD `afe62423d5759a76b3126d86dd614edcc833a478` sincroniza el conteo
 semántico con el escaneo reproducible.
+Los commits posteriores de este registro son sincronizaciones documentales;
+el HEAD vivo y su relación con `develop` deben resolverse con `git` en cada
+checkpoint, sin autorreferencia embebida.
 
 Los gates actuales del informe permanecen reproducibles: estructura `28/28/112`,
 transcripción `28/28/112`, registro API `60` operaciones y `60` bloques de

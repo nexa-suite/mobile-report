@@ -406,3 +406,24 @@ El siguiente paso operativo es inspeccionar y commitear unidades lógicas con
 identidad one-shot de Joaquín o Diego, verificar cada commit, publicar rama,
 abrir PR y evaluar merge a `develop`. AV1, TB1, AV2 y TB2 permanecen abiertos;
 el Goal activo continúa hacia TB2.
+
+## Secuencia local integrada — 2026-09-02
+
+La integración revisada quedó en `12` commits locales desde la base
+`3edeb196800a72a30299987a661e791c8f8fb50d`, todos bajo la atribución autorizada
+de Joaquín o Diego y con staging vacío. Los mensajes, autores, correos de
+proyecto y hashes completos están en [human-commit-gate.md](./human-commit-gate.md).
+
+El `HEAD` local es `8436336f749b1f366aa02d950a5e245025753784`. El push de
+`feature/report-front-matter-and-governance` está autorizado, pero todavía no
+se ha configurado upstream en este corte. No se ha hecho force-push, merge a
+`main` ni release.
+
+Validación documental posterior a la secuencia: fuentes canónicas OK,
+estructura `28/28/112`, revisión-register alineado, API register
+`60/60/24/60/28`, bibliografía `4/4` DOI y `6/6` referencias técnicas,
+ownership `147` paths/`9` units, enlaces Markdown OK, `git diff --check` OK,
+Structurizr exit `0`, persistencia read-only exit `0` y contrato focalizado
+`7/0/0/0`. Las gates de runtime Mobile, dispositivo, distribución, aceptación,
+videos, entrevistas actuales y Q1/Q2 oficial siguen abiertas según las
+matrices AV1/TB1/AV2/TB2.

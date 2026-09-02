@@ -4,12 +4,12 @@
 
 | Campo | Valor |
 | :--- | :--- |
-| Estado | `CURRENT REVIEWED INTEGRATION AUTHORIZED — COMMIT SEQUENCE OPEN` |
+| Estado | `CURRENT REVIEWED INTEGRATION COMMITTED — PUSH SEQUENCE OPEN` |
 | Rama | `feature/report-front-matter-and-governance` |
 | Base revisada | `3edeb196800a72a30299987a661e791c8f8fb50d` |
-| Upstream | No configurado |
-| Staging | Vacío antes del primer commit; staging controlado por unidad |
-| Commits nuevos | Ninguno |
+| Upstream | No configurado; push autorizado y pendiente |
+| Staging | Vacío después de cada commit; staging controlado por unidad |
+| Commits nuevos | `12` commits locales revisados; secuencia registrada abajo |
 | Report integration review | `28/28` approved by `DiegoS284` + `JoaquinBV511` on `2026-09-02` |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
@@ -19,6 +19,27 @@ integrar el diff revisado por Diego y Joaquín, sujeto a staging exacto,
 validación y separación por unidad. No convierte una fuente, una proyección o
 una prueba local en implementación, aceptación de producto o preparación para
 producción.
+
+## Commit evidence — current integration
+
+| Commit | Author / project email | Conventional Commit |
+| :--- | :--- | :--- |
+| `27c8f4d91fe4b1efd7f48046934f4ca08db20f94` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(rubric): reconcile academic report baseline` |
+| `2ce6c5aaf531c626c302022c2b5bbe6025003cb8` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(research): reconcile mobile needfinding evidence` |
+| `117185903d6e7bde96dd849358d8b00716a13d3b` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(requirements): align mobile v1 academic backlog` |
+| `4f315e5dbafa9640b7cecb8d837aac9b1fbe7b93` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(ddd): reconcile strategic domain model` |
+| `a14c35973604b11738c2e2b78f7bcfc2d91b39a4` | Diego Y. Sandoval / `diego64g284@gmail.com` | `docs(architecture): synchronize canonical c4 evidence` |
+| `d74e05cf22049dc911f12fa52b00b0a7e218cc59` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(ddd): reconcile tactical domain and data models` |
+| `24eb87695fdf27294a3271e29a89f4bfc7ba13f1` | Diego Y. Sandoval / `diego64g284@gmail.com` | `docs(implementation): document verified persistence evidence` |
+| `707a89b4abffdb1d518d1496547f89513e5ff290` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(ux): prepare mobile experience evidence` |
+| `a988b83aa988585021cf83eb698d0e7b02d0cb20` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(sprint): add reproducible sprint evidence gates` |
+| `c23aa8f8d9008cdc7a074fd9ae7ff21fbaf7ea9e` | Diego Y. Sandoval / `diego64g284@gmail.com` | `docs(implementation): document verified mobile api evidence` |
+| `27fa7bcb4a29e413e67f2a49662746ef7f5c5693` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `chore(report): add reproducible report validation gates` |
+| `8436336f749b1f366aa02d950a5e245025753784` | Diego Y. Sandoval / `diego64g284@gmail.com` | `chore(architecture): add technical evidence validation gates` |
+
+Each record was inspected with `git show -1 --format=fuller --stat`; staging
+was empty after the sequence. No history rewrite, force push, co-author trailer
+or attribution to Gino, Gerard or Sebastián was used.
 
 ## Condiciones obligatorias antes de cada commit
 

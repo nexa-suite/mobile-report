@@ -14,17 +14,26 @@ Repositorio Docs-as-Code del trabajo final del curso **1ACC0238 Aplicaciones par
 
 ## Navegación del informe
 
-El contenido principal se encuentra en [`report/`](./report/), organizado según la estructura oficial del enunciado:
+El contenido principal se encuentra en [Contents](./report/00-front-matter/03-contents.md), organizado según la estructura oficial del enunciado:
 
-1. [Front matter](./report/00-front-matter/)
-2. [Capítulo I: Presentación](./report/01-presentation/)
-3. [Capítulo II: Requirements Development and Software Solution Design](./report/02-requirements-and-software-solution-design/)
-4. [Capítulo III: Solution UI/UX Design](./report/03-chapter-iii-solution-ui-ux-design/)
-5. [Capítulo IV: Product Implementation and Validation](./report/04-chapter-iv-product-implementation-and-validation/)
-6. [Conclusiones](./report/90-conclusions/)
-7. [Glosario](./report/91-glossary/)
-8. [Bibliografía](./report/92-bibliography/)
-9. [Anexos](./report/93-annexes/)
+1. [Front matter](./report/00-front-matter/03-contents.md)
+2. [Capítulo I: Presentación](./report/01-presentation/chapter-overview.md)
+3. [Capítulo II: Requirements Development and Software Solution Design](./report/02-requirements-and-software-solution-design/chapter-overview.md)
+4. [Capítulo III: Solution UI/UX Design](./report/03-solution-ui-ux-design/chapter-overview.md)
+5. [Capítulo IV: Product Implementation and Validation](./report/04-product-implementation-and-validation/chapter-overview.md)
+6. [Conclusiones](./report/90-conclusions/conclusions-and-recommendations.md)
+7. [Glosario](./report/91-glossary/glossary.md)
+8. [Bibliografía](./report/92-bibliography/bibliography.md)
+9. [Anexos](./report/93-annexes/annexes-overview.md)
+
+## Control de avance
+
+Los controles de entrega, el baseline de repositorios y la reconciliación con
+las fuentes de autoridad se mantienen en [live-baseline.md](./delivery-checklists/live-baseline.md).
+La procedencia de C4, Structurizr, PlantUML y los diagramas de datos se resume
+en el [architecture and diagram evidence register](./delivery-checklists/architecture-render-evidence-register.md).
+Esos documentos distinguen evidencia comprobada, estructura preparada y datos
+que todavía requieren revisión o entrega humana.
 
 ## Convención de organización
 

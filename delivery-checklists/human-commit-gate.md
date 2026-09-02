@@ -56,7 +56,7 @@ or attribution to Gino, Gerard or Sebastián was used.
 
 ## Post-reconciliation audit/fix commits — 2026-09-02
 
-These seven commits were created after the external architecture audit on the
+These nine commits were created after the external architecture audit on the
 published reconciliation branch. They use the configured owner-confirmed
 identity of Joaquín and contain only new audit/fix work; no teammate history
 was amended or rewritten.
@@ -70,9 +70,11 @@ was amended or rewritten.
 | `87bee85f5bf1e0a8f9628ed2883e2becc679fde8` | Post-reconciliation commit evidence and implementation register | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): record post-reconciliation commit evidence` |
 | `f0012b362c04bea6a36990e36aa71390ecf81f5e` | Commit lineage evidence correction | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): keep commit lineage evidence current` |
 | `a4300002c165cc250493258aa748989976a26799` | TB2 backend validation baseline and sprint evidence | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(sprint): record tb2 validation baseline` |
+| `b02b02b3bb90442590ce478b72f45b87e0423767` | Current post-reconciliation checkpoint and commit lineage | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): refresh reconciliation checkpoint` |
+| `afe62423d5759a76b3126d86dd614edcc833a478` | Semantic inventory count synchronization | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): sync semantic inventory evidence` |
 
-The current remote branch resolves to `a4300002c165cc250493258aa748989976a26799`.
-The seven commits are preserved in order and were pushed without rewriting,
+The current remote branch resolves to `afe62423d5759a76b3126d86dd614edcc833a478`.
+The nine commits are preserved in order and were pushed without rewriting,
 force-pushing or attributing work to absent teammates.
 
 ## Condiciones obligatorias antes de cada commit

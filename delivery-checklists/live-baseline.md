@@ -465,18 +465,20 @@ en evidencia de implementación o aceptación.
 | Campo | Valor |
 | :--- | :--- |
 | Rama | `reconcile/report-integration-20260902` |
-| HEAD local y remoto | `a4300002c165cc250493258aa748989976a26799` |
+| HEAD local y remoto | `afe62423d5759a76b3126d86dd614edcc833a478` |
 | Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
-| Relación con `origin/develop` | `0` behind / `30` ahead |
+| Relación con `origin/develop` | `0` behind / `32` ahead |
 | Worktree y staging | Limpio; staging vacío |
 | Conflictos reconciliados | `76/76` por path y semántica, según ledger aprobado |
 | Integración de historias | `28/28` aprobada por DiegoS284 y JoaquinBV511; defensa individual sigue follow-up humano |
 
-La secuencia posterior a la auditoría contiene siete commits nuevos, todos con
-la identidad confirmada de Joaquín y mensajes Conventional Commit. El último
-`docs(sprint): record tb2 validation baseline` registra la baseline Docker-backed
+La secuencia posterior a la auditoría contiene nueve commits nuevos, todos con
+la identidad confirmada de Joaquín y mensajes Conventional Commit. El commit
+`a4300002c165cc250493258aa748989976a26799` registra la baseline Docker-backed
 del API: `./mvnw test` terminó `BUILD SUCCESS`, `482` pruebas, `0` fallos y
 `148` omitidas, con Java 25.0.4.1, Docker 29.7.2 y PostgreSQL 18.4-alpine.
+El HEAD `afe62423d5759a76b3126d86dd614edcc833a478` sincroniza el conteo
+semántico con el escaneo reproducible.
 
 Los gates actuales del informe permanecen reproducibles: estructura `28/28/112`,
 transcripción `28/28/112`, registro API `60` operaciones y `60` bloques de

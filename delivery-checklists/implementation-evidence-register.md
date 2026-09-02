@@ -40,7 +40,7 @@ not redefine the Blueprint Bounded Contexts or C4 containers.
 | Native Android delivery | Build output, checksum, install and observed result | Not produced | Pending |
 | Physical device | Device model/version, date and video/screenshots | Not produced | Pending |
 | Sprint execution | Board export/capture, dates, owner, tasks, review and validation | Templates only | Pending |
-| Automated tests | Exact command, exit status and relevant output | Docker-backed baseline: `./mvnw test` → 482 run, 0 failures, 148 skipped; latest no-Docker rerun: 482 run, 0 failures, 152 skipped; expanded local integration gate remains partial; no report-local test suite | Pending |
+| Automated tests | Exact command, exit status and relevant output | Latest Docker-backed baseline: `./mvnw test` → 482 run, 0 failures, 148 skipped; no-Docker rerun: 482 run, 0 failures, 152 skipped; expanded local integration gate remains partial; no report-local test suite | Pending |
 | Canonical story transcription | Report summary and detailed records match current Blueprint projection | `python3 scripts/verify-mobile-v1-transcription.py` → 28 rows, 28 titles, 112 scenarios; report integration 28/28 approved, individual defense and Product Acceptance remain open | Partial |
 | OpenAPI/Swagger | Versioned document and inspected endpoint evidence | [Mobile V1 API contract register](./mobile-v1-api-contract-register.md); explicit path/operationId checker matches the API snapshot; request/response examples and Mobile consumption remain pending | Partial |
 | Database persistence | Source migrations, read-only PostgreSQL schema inspection and reviewed diagram source | [API persistence evidence register](./api-persistence-evidence-register.md) plus [architecture and diagram evidence register](./architecture-render-evidence-register.md); logical ownership and academic review remain open | Pending human |
@@ -81,6 +81,18 @@ not redefine the Blueprint Bounded Contexts or C4 containers.
 | Environment observed | Java `25.0.4.1`; Docker/Testcontainers unavailable because `/var/run/docker.sock` was not present in the session |
 | Observed result | `BUILD SUCCESS`; 482 tests run, 0 failures, 152 skipped |
 | Interpretation | Refreshes the non-integration baseline only. The four additional skips are an environment difference, not evidence that integration behavior passed; Mobile consumption and acceptance remain open. |
+
+### Latest Docker-backed API baseline rerun — 2026-09-02
+
+| Field | Value |
+| :--- | :--- |
+| Repository / source SHA | `api` / `380e2427bc3883f23fbd7e9a82d452888f2074a8` |
+| Branch | `main` |
+| Exact command | `./mvnw test` |
+| Observed completion | `2026-09-02 18:31:56 -0500` |
+| Environment observed | Java `25.0.4.1`; Spring Boot `4.1.0`; Testcontainers `2.0.5`; Docker Server `29.7.2`; Testcontainers-managed PostgreSQL `18.4-alpine` |
+| Observed result | `BUILD SUCCESS`; 482 tests run, 0 failures, 148 skipped; Maven total time `24.199 s` |
+| Interpretation | Strengthens the current backend baseline with Docker-backed integration infrastructure. It does not prove Sprint 3 execution, Mobile client consumption, physical-device behavior, Product Acceptance or production readiness. |
 
 ### Latest focused API contract rerun — 2026-09-02
 

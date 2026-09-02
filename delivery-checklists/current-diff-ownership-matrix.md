@@ -1,15 +1,19 @@
-# Current diff ownership matrix
+# Handoff diff ownership matrix
 
 ## Purpose
 
-Working matrix for the verified handoff. It maps every current modified or untracked path to one natural review unit. It is not staging, authorship approval or commit authorization.
+This matrix captures the 158-path diff observed during the verified handoff
+before reconciliation. It is retained as path-level ownership provenance and
+is not a list of current uncommitted paths, authorship approval or commit
+authorization.
 
 | Field | Value |
 | :--- | :--- |
-| Snapshot | 2026-09-02; branch `reconcile/report-integration-20260902` |
-| Base | `3edeb196800a72a30299987a661e791c8f8fb50d` |
+| Snapshot | Handoff snapshot 2026-09-02; branch `reconcile/report-integration-20260902` |
+| Base | `3edeb196800a72a30299987a661e791c8f8fb50d` (historical handoff comparison base) |
 | Recovery copy | `/tmp/nexa-mobile-report-resume.PJofE0/` |
 | Staging | Clean after reconciliation merge; branch published; PR pending |
+| Current worktree | Clean; no current uncommitted or untracked paths; this matrix preserves the pre-reconciliation inventory |
 | Commit rule | One coherent unit; no `Co-authored-by`; current attribution limited to Joaquín/Diego |
 
 ## Unit A — Report governance / front matter

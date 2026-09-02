@@ -6,6 +6,29 @@ This register prevents a repository reference, a template or a target design
 from being presented as a completed Mobile implementation. Each claim needs a
 source revision, exact action, observed result and human reviewer.
 
+## Current cross-repository audit — 2026-09-02
+
+The following refs were fetched and inspected locally on 2026-09-02. A ref
+establishes provenance for the repository surface named in the row; it does not
+transfer implementation, runtime, acceptance or production evidence to the
+Mobile report.
+
+| Repository / role | Ref / SHA / commit date | What the ref proves for this report | What it does not prove |
+| :--- | :--- | :--- | :--- |
+| `blueprint` — canonical decisions and target design | `main` / `fce3ba6f8ca1622084a2114424086364e1f7d93f` / 2026-08-30 | Current C4, strategic DDD, Mobile story projection, UML/data sources and published architecture decisions | Mobile client implementation, runtime, device distribution or Product Acceptance |
+| `api` — backend and contract evidence | `main` / `380e2427bc3883f23fbd7e9a82d452888f2074a8` / 2026-08-31 | API source, OpenAPI snapshot, persistence and executed backend tests at the recorded scope | Mobile consumption, complete integration gate, user acceptance or production readiness |
+| `platform` — operations web surface | `main` / `f8285f1bf0de83ed6fa95aa86d1dcc6efd4897f7` / 2026-09-01 | Versioned operations surface and its observable web evidence | Operations Mobile client, physical-device behavior or Mobile acceptance |
+| `portal` — buyer web surface | `main` / `672836b8369ea16cb1374d348d73ccacbebbc954` / 2026-09-01 | Versioned buyer portal surface and its observable web evidence | Buyer Mobile client, physical-device behavior or Mobile acceptance |
+| `website` — public website surface | `main` / `96ab63a95f923114627048283c323a501238ff53` / 2026-08-31 | Versioned public discovery/contact surface | Mobile implementation, API authority or product acceptance |
+| `mobile` — Mobile repository | `main` / `88c99a1079d17ce4514791087451452bdbf17c51` / 2026-08-31 | Current repository role; its validation identifies a documentation-only repository with no native build or runtime claim | Native/cross-platform client, device evidence, distribution, API consumption or acceptance |
+| `design-lab` — design source | `main` / `c16c1f4b64af688754a7c3bc989db9308f825c66` / 2026-08-31 | Versioned design decisions and visual artifacts when individually cited | Mobile runtime, implementation, device behavior or Product Acceptance |
+| `mobile-report` — current academic report | `reconcile/report-integration-20260902` / `b0382f94301d913a328a1ecdf4c48920dd19a962` / 2026-09-02 | Reconciled report state, traceable documentation and local validation evidence | A merged PR, human visual/story defense, Mobile runtime, user research closure or production readiness |
+
+The implementation repositories were clean on inspection and remained on their
+local `main` refs; the report remains on the published reconciliation branch.
+Repository names and package boundaries are evidence coordinates only and do
+not redefine the Blueprint Bounded Contexts or C4 containers.
+
 ## Current register
 
 | Requirement | Expected evidence | Current state | Owner / reviewer |

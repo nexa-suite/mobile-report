@@ -10,8 +10,8 @@ de backend en evidencia de producto Mobile.
 | :--- | :--- |
 | Prompt canónico | `/Users/joaquinfranciscoverdebueno/Downloads/NEXA MOBILE ACADEMIC REPORT .md` — SHA-256 `af86ca49fb0e7b2add5313116bc7fd4651add5e8562bf215a8f9a78296a20370` |
 | Enunciado y rúbrica | `/Users/joaquinfranciscoverdebueno/Developer/nexa-suite/blueprint/90-academic/mobile/enunciado-trabajo-final.md` — SHA-256 `ac734ff3fe33f38185cd57b05d2ed48cd42a46239c87a78ff98418a4bb5b8e6f` |
-| Informe | `feature/report-front-matter-and-governance`, base `3edeb196800a72a30299987a661e791c8f8fb50d` |
-| Regla del corte | Integración actual aprobada por DiegoS284 + JoaquinBV511; staging, commit, push y merge siguen sujetos a validación exacta |
+| Informe | `reconcile/report-integration-20260902`, source checkpoint validado `8912aa03689c27c7c55c05bdd0b996008fd87514`; el ref vivo se resuelve desde Git |
+| Regla del corte | Integración `28/28` aprobada por DiegoS284 + JoaquinBV511; staging, commits y push completados; PR y merge siguen sujetos a revisión humana |
 
 `Structure ready` significa que existe una estructura contextualizada que puede
 revisarse. `Partial` significa que sólo una parte de la evidencia fue
@@ -78,10 +78,12 @@ fila puede pasar a `Complete` sólo por tener contenido Markdown.
 
 ## Orden de cierre recomendado
 
-1. Staging exacto y commits por unidad bajo [Human Commit Gate](./human-commit-gate.md).
-2. Push de la rama, PR a `develop` y merge sólo tras validación y sin conflicto semántico.
+1. Autenticar GitHub y abrir el PR de la rama hacia `develop`; no hacer merge
+   automático.
+2. Completar defensa individual, revisión visual y aceptación humana de la
+   integración bajo [Human Commit Gate](./human-commit-gate.md).
 3. Recolección y verificación de entrevistas, artefactos UX, DDD y bibliografía.
 4. Implementación/validación Mobile, contratos consumidos, dispositivo y
    distribución.
-5. Completar evidencia de Sprints 1–3, exportar/revisar PDF y sólo entonces
-   autorizar commits trazables por unidad lógica.
+5. Completar evidencia de Sprints 1–3, exportar/revisar PDF y cerrar la
+   aceptación final antes de declarar release.

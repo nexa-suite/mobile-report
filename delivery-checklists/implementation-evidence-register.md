@@ -6,7 +6,7 @@ This register prevents a repository reference, a template or a target design
 from being presented as a completed Mobile implementation. Each claim needs a
 source revision, exact action, observed result and human reviewer.
 
-## Current cross-repository audit — 2026-09-02
+## Cross-repository audit snapshot — 2026-09-02
 
 The following refs were fetched and inspected locally on 2026-09-02. A ref
 establishes provenance for the repository surface named in the row; it does not
@@ -22,7 +22,7 @@ Mobile report.
 | `website` — public website surface | `main` / `96ab63a95f923114627048283c323a501238ff53` / 2026-08-31 | Versioned public discovery/contact surface | Mobile implementation, API authority or product acceptance |
 | `mobile` — Mobile repository | `main` / `88c99a1079d17ce4514791087451452bdbf17c51` / 2026-08-31 | Current repository role; its validation identifies a documentation-only repository with no native build or runtime claim | Native/cross-platform client, device evidence, distribution, API consumption or acceptance |
 | `design-lab` — design source | `main` / `c16c1f4b64af688754a7c3bc989db9308f825c66` / 2026-08-31 | Versioned design decisions and visual artifacts when individually cited | Mobile runtime, implementation, device behavior or Product Acceptance |
-| `mobile-report` — current academic report | `reconcile/report-integration-20260902` / `b0382f94301d913a328a1ecdf4c48920dd19a962` / 2026-09-02 | Reconciled report state, traceable documentation and local validation evidence | A merged PR, human visual/story defense, Mobile runtime, user research closure or production readiness |
+| `mobile-report` — report at audit snapshot | `reconcile/report-integration-20260902` / `b0382f94301d913a328a1ecdf4c48920dd19a962` / 2026-09-02 | Reconciled report baseline used for the audit; four post-audit commits are recorded in [human-commit-gate.md](./human-commit-gate.md) | A merged PR, human visual/story defense, Mobile runtime, user research closure or production readiness |
 
 The implementation repositories were clean on inspection and remained on their
 local `main` refs; the report remains on the published reconciliation branch.

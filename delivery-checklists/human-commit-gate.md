@@ -8,9 +8,9 @@
 | Rama | `reconcile/report-integration-20260902` |
 | Base revisada | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` (`origin/develop` after main-only fast-forward) |
 | Upstream | `origin/reconcile/report-integration-20260902` |
-| Push | `SUCCESS — 2026-09-02; reconciliation branch created` |
-| Staging | Vacío después del merge; follow-up documentation remains unit-controlled |
-| Commits nuevos | `22` commits ahead of `develop`, including the preserved feature history and merge commit |
+| Push | `SUCCESS — 2026-09-02; reconciliation and post-audit commits pushed` |
+| Staging | Vacío después del post-audit commit sequence; branch clean |
+| Commits nuevos | `27` commits ahead of `develop`, including the preserved feature history, merge commit and four post-reconciliation audit/fix commits |
 | Report integration review | `28/28` approved by `DiegoS284` + `JoaquinBV511` on `2026-09-02` |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
@@ -53,6 +53,25 @@ decisions and the unique valid content retained from develop and main.
 Each record was inspected with `git show -1 --format=fuller --stat`; staging
 was empty after the sequence. No history rewrite, force push, co-author trailer
 or attribution to Gino, Gerard or Sebastián was used.
+
+## Post-reconciliation audit/fix commits — 2026-09-02
+
+These four commits were created after the external architecture audit on the
+published reconciliation branch. They use the configured owner-confirmed
+identity of Joaquín and contain only new audit/fix work; no teammate history
+was amended or rewritten.
+
+| Commit | Unit / paths | Author / project email | Conventional Commit |
+| :--- | :--- | :--- | :--- |
+| `f3c272181ba9fc3dad25deaa3596bbc2c5e49370` | Architecture report wording and C4 evidence register | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `fix(architecture): align report with canonical v1 target` |
+| `93cd2b63a0e68cef057f049379b24e923bb4d06e` | Historical report provenance ledger | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(research): classify historical report evidence` |
+| `d841f4600b4ebe7b24b00ccf2a361ddbe388f875` | Cross-repository implementation evidence register | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(implementation): record cross-repository audit` |
+| `a2be849b28087da2acee79b3c4139d85a2bef5a8` | Mobile architecture stale-text validator | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `test(architecture): detect stale mobile target claims` |
+
+At the time this table was prepared, the remote branch resolved to
+`a2be849b28087da2acee79b3c4139d85a2bef5a8`; the subsequent table commit is
+part of the same traceable report unit and is pushed without rewriting these
+commits.
 
 ## Condiciones obligatorias antes de cada commit
 

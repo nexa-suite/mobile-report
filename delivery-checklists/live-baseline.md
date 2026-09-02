@@ -409,15 +409,17 @@ el Goal activo continúa hacia TB2.
 
 ## Secuencia local integrada — 2026-09-02
 
-La integración revisada quedó en `12` commits locales desde la base
+La integración revisada quedó en `13` commits locales desde la base
 `3edeb196800a72a30299987a661e791c8f8fb50d`, todos bajo la atribución autorizada
 de Joaquín o Diego y con staging vacío. Los mensajes, autores, correos de
 proyecto y hashes completos están en [human-commit-gate.md](./human-commit-gate.md).
 
-El `HEAD` local es `8436336f749b1f366aa02d950a5e245025753784`. El push de
-`feature/report-front-matter-and-governance` está autorizado, pero todavía no
-se ha configurado upstream en este corte. No se ha hecho force-push, merge a
-`main` ni release.
+El `HEAD` de la secuencia integrada es
+`8fdf42018e9c3b3bfd343a1f319ae5ca831df5e6`. La rama
+`feature/report-front-matter-and-governance` fue publicada correctamente y su
+upstream quedó configurado en
+`origin/feature/report-front-matter-and-governance`. No se ha hecho force-push,
+merge a `main` ni release; el PR hacia `develop` sigue pendiente.
 
 Validación documental posterior a la secuencia: fuentes canónicas OK,
 estructura `28/28/112`, revisión-register alineado, API register

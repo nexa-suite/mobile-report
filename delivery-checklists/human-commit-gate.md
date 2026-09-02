@@ -4,12 +4,13 @@
 
 | Campo | Valor |
 | :--- | :--- |
-| Estado | `CURRENT REVIEWED INTEGRATION COMMITTED — PUSH SEQUENCE OPEN` |
+| Estado | `CURRENT REVIEWED INTEGRATION PUSHED — PR SEQUENCE OPEN` |
 | Rama | `feature/report-front-matter-and-governance` |
 | Base revisada | `3edeb196800a72a30299987a661e791c8f8fb50d` |
-| Upstream | No configurado; push autorizado y pendiente |
+| Upstream | `origin/feature/report-front-matter-and-governance` |
+| Push | `SUCCESS — 2026-09-02; remote branch created` |
 | Staging | Vacío después de cada commit; staging controlado por unidad |
-| Commits nuevos | `12` commits locales revisados; secuencia registrada abajo |
+| Commits nuevos | `13` commits locales revisados; secuencia registrada abajo |
 | Report integration review | `28/28` approved by `DiegoS284` + `JoaquinBV511` on `2026-09-02` |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
@@ -36,6 +37,7 @@ producción.
 | `c23aa8f8d9008cdc7a074fd9ae7ff21fbaf7ea9e` | Diego Y. Sandoval / `diego64g284@gmail.com` | `docs(implementation): document verified mobile api evidence` |
 | `27fa7bcb4a29e413e67f2a49662746ef7f5c5693` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `chore(report): add reproducible report validation gates` |
 | `8436336f749b1f366aa02d950a5e245025753784` | Diego Y. Sandoval / `diego64g284@gmail.com` | `chore(architecture): add technical evidence validation gates` |
+| `8fdf42018e9c3b3bfd343a1f319ae5ca831df5e6` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(rubric): record approved integration commits` |
 
 Each record was inspected with `git show -1 --format=fuller --stat`; staging
 was empty after the sequence. No history rewrite, force push, co-author trailer

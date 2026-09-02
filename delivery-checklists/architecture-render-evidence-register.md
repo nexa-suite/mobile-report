@@ -17,6 +17,21 @@ client is implemented, or that the product was accepted.
 | Structurizr source review | `docker run ... validate ... workspace.dsl` — exit code `0` on 2026-09-01 |
 | Academic state | `SOURCE/EXPORT OBSERVED; HUMAN VISUAL REVIEW AND REPORT SELECTION PENDING` |
 
+## Post-reconciliation semantic audit — 2026-09-02
+
+`python3 scripts/verify-mobile-v1-semantics.py` scanned 170 Markdown and
+repository-validation script files across the report, delivery checklists and
+report scripts. It classified 17 matching references as historical/context,
+future/research or explicit valid boundaries, and found zero unresolved current
+architecture claims. The same run verified `stories=28`, `scenarios=112` and
+`strategic_contexts=11`; source/export provenance and human visual review remain
+separate gates.
+
+The report architecture sections now distinguish `LOCAL AS-IS`, `V1 TARGET`
+(`TARGET V1 / PLANNED / PROPOSED`) and `Future / Runway`. Operations Mobile and
+Buyer Mobile are target design projections; no current text presents them as
+implemented runtime or as a separate Bounded Context.
+
 ## C4 source and export inventory
 
 The semantic source is the Structurizr DSL. SVG/PNG files are versioned visual
@@ -24,7 +39,7 @@ exports and are not an alternative semantic source.
 
 | View | Versioned source | Observed exports | Interpretation |
 | :--- | :--- | :--- | :--- |
-| System context | `01-shared/architecture/c4/structurizr/l1/l1.dsl` plus included `model/*.dsl` | `exports/l1/Nexa-SystemContext-ASIS.*`, `Nexa-SystemContext-V1-TARGET.*`, `Nexa-SystemContext-Future-Runway.*` | AS-IS, V1 TARGET and future runway are distinct; Mobile remains target/runway evidence |
+| System context | `01-shared/architecture/c4/structurizr/l1/l1.dsl` plus included `model/*.dsl` | `exports/l1/Nexa-SystemContext-ASIS.*`, `Nexa-SystemContext-V1-TARGET.*`, `Nexa-SystemContext-Future-Runway.*` | AS-IS, V1 TARGET and future runway are distinct; Mobile in V1 TARGET is `TARGET V1 / PLANNED / PROPOSED`, while future-only items remain Future / Runway |
 | Containers | `01-shared/architecture/c4/structurizr/l2/l2.dsl` plus included `model/*.dsl` | `exports/l2/Nexa-Containers-ASIS.*`, `Nexa-Containers-V1-TARGET.*` | AS-IS and V1 TARGET are distinct; TARGET does not prove deployment |
 | Mobile/API/Frontend components | `01-shared/architecture/c4/structurizr/l3/operations-mobile.dsl`, `buyer-mobile.dsl`, `api.dsl`, `platform.dsl`, `portal.dsl`, `website.dsl` | Corresponding `exports/l3/*.svg` and `*.png`, including `Nexa-Operations-Mobile-TARGET.*` and `Nexa-Buyer-Mobile-TARGET.*` | Mobile views are target projections; implementation and runtime remain open |
 | Deployment | `01-shared/architecture/c4/structurizr/deployment/deployment.dsl` plus included deployment model | `exports/deployment/Nexa-Deployment-Local-ASIS.*`, `Nexa-Deployment-V1-TARGET.*` | Topology source/export observed; executed runtime and cloud operation need separate evidence |
@@ -33,6 +48,23 @@ The workspace entry point is
 `01-shared/architecture/c4/structurizr/workspace.dsl`; generated JSON is
 derived output and must not be edited by hand. Blueprint documents the pinned
 renderer and the expected view names in its Structurizr README.
+
+### Export correspondence observation
+
+The 2026-09-02 spot-check found that some versioned visual exports need a
+Blueprint-owner refresh before report selection: the current L2/L3 DSL describes
+Warehouse/Dispatch/Driver work and `Connectivity and Evidence Recovery`, while
+the observed Operations Mobile exports still show older Sales/BOM wording and
+`Selective Offline and Sync`. The DSL remains the semantic authority. This is
+an open source/export correspondence and human visual-review gate; no stale
+export is presented as final report evidence and no Blueprint file is changed
+from the report branch.
+
+The current relationship source also retains a target-level planned relation
+from Sales Representative to Operations Mobile. The product projection and
+report keep field-sales work deferred to V2+; that relation must be reconciled
+by the Blueprint owner before a V1 render is selected, and is not treated as V1
+implementation or Product Acceptance.
 
 ## Tactical and database diagram inventory
 

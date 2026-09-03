@@ -501,9 +501,9 @@ actuales, Product Acceptance, Q1/Q2 oficial y entregables finales.
 ## Checkpoint vigente después de Markdown lint — 2026-09-02
 
 Este corte supersede el estado operativo anterior y conserva sus datos como
-provenance. La tabla fija el source checkpoint inmediatamente anterior al
-registro; el HEAD vivo y su relación se resuelven desde Git para evitar una
-autorreferencia dentro del propio documento.
+provenance. La tabla fija un source checkpoint estable de contenido anterior a
+la secuencia de registros documentales; el HEAD vivo y su relación se
+resuelven desde Git para evitar una autorreferencia dentro del propio documento.
 
 | Campo | Valor |
 | :--- | :--- |
@@ -518,8 +518,10 @@ autorreferencia dentro del propio documento.
 | Conflictos | `76/76` resueltos por path y semántica |
 
 Los commits `82cd2b4b9e1b50f9718b10733b91e3e8d1510c9d`,
-`0db654027248a4789e877dc26aedcf9146f2f45c` y
-`2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` registran, respectivamente, la
-normalización de Markdown, su checkpoint de lint y la separación de provenance
-semántica/estilo. El PR contra `develop` no está creado: requiere autenticación
-GitHub manual. No se hizo merge, release ni cambio en `develop` o `main`.
+`0db654027248a4789e877dc26aedcf9146f2f45c`,
+`2fb7092e6e45cbd02fff6ec3cdea86551c4956f0`,
+`cd379900bcfa5cdfc4211e6949f9e92ab86de05a` y
+`6263c0ad721eb1c6500f8b5597bada5bd3b0d0ed` registran la normalización de Markdown, sus checkpoints
+de lint/provenance y la sincronización del baseline vivo. El PR contra
+`develop` no está creado: requiere autenticación GitHub manual. No se hizo
+merge, release ni cambio en `develop` o `main`.

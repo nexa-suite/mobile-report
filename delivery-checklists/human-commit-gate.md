@@ -81,6 +81,18 @@ Later documentation-only sync commits are tracked separately; the live branch
 ref and ahead count must be resolved from Git at each checkpoint. No history was
 rewritten, force-pushed or attributed to absent teammates.
 
+## Register-only sync commits after the style checkpoint
+
+These commits only synchronize checkpoint wording and live-ref evidence; they
+do not change Product, Mobile V1, architecture or human-review decisions.
+
+| Commit | Purpose | Author / project email | Conventional Commit |
+| :--- | :--- | :--- | :--- |
+| `0db654027248a4789e877dc26aedcf9146f2f45c` | Record the report-wide Markdown lint checkpoint | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): record markdown lint checkpoint` |
+| `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` | Separate semantic and style checkpoint provenance | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(scm): separate semantic and style checkpoints` |
+| `cd379900bcfa5cdfc4211e6949f9e92ab86de05a` | Synchronize live branch, ownership and lint refs in the baseline | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): sync live checkpoint refs` |
+| `6263c0ad721eb1c6500f8b5597bada5bd3b0d0ed` | Clarify the stable source-checkpoint scope | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): clarify live checkpoint scope` |
+
 ## Condiciones obligatorias antes de cada commit
 
 La persona responsable debe confirmar explícitamente, para ese commit:

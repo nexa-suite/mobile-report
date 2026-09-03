@@ -456,11 +456,11 @@ conocidas de `TenantAdministrationIT`, `0` errores y `0` skipped. Las gates
 de runtime Mobile, dispositivo, distribución, aceptación, videos,
 entrevistas actuales y Q1/Q2 oficial permanecen abiertas.
 
-## Checkpoint vigente post-reconciliación — 2026-09-02
+## Historical source checkpoint pre-Markdown lint — 2026-09-02
 
-Este corte supersede únicamente el estado operativo de los checkpoints
-anteriores; conserva sus registros históricos y no convierte sus observaciones
-en evidencia de implementación o aceptación.
+Este registro conserva el source checkpoint anterior al cierre de Markdown; sus
+datos son históricos y no convierten sus observaciones en evidencia de
+implementación o aceptación. El checkpoint posterior se registra abajo.
 
 | Campo | Valor |
 | :--- | :--- |
@@ -468,9 +468,9 @@ en evidencia de implementación o aceptación.
 | Último source checkpoint validado | `afe62423d5759a76b3126d86dd614edcc833a478` |
 | Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
 | Relación en el source checkpoint | `0` behind / `32` ahead |
-| Worktree y staging | Limpio; staging vacío |
-| Conflictos reconciliados | `76/76` por path y semántica, según ledger aprobado |
-| Integración de historias | `28/28` aprobada por DiegoS284 y JoaquinBV511; defensa individual sigue follow-up humano |
+| Worktree y staging en el source checkpoint | Limpio; staging vacío |
+| Conflictos reconciliados en el source checkpoint | `76/76` por path y semántica, según ledger aprobado |
+| Integración de historias en el source checkpoint | `28/28` aprobada por DiegoS284 y JoaquinBV511; defensa individual sigue follow-up humano |
 
 La secuencia posterior a la auditoría contiene nueve commits nuevos hasta el
 source checkpoint, todos con
@@ -510,18 +510,19 @@ resuelven desde Git para evitar una autorreferencia dentro del propio documento.
 | Rama / source checkpoint | `reconcile/report-integration-20260902` / `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
 | Upstream en el source checkpoint | `origin/reconcile/report-integration-20260902` en `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
 | Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
-| Relación viva | `0` behind / `42` ahead |
-| Worktree / staging | Limpio / vacío |
-| Ownership actual contra base histórica | `162` paths / `9` units |
-| Markdown lint | `162` archivos, `0` issues |
-| Integración Mobile V1 | `28/28` aprobada; defensa individual follow-up humano |
-| Conflictos | `76/76` resueltos por path y semántica |
+| Relación en el source checkpoint | `0` behind / `42` ahead |
+| Worktree / staging en el source checkpoint | Limpio / vacío |
+| Ownership en el source checkpoint contra base histórica | `162` paths / `9` units |
+| Markdown lint en el source checkpoint | `162` archivos, `0` issues |
+| Integración Mobile V1 en el source checkpoint | `28/28` aprobada; defensa individual follow-up humano |
+| Conflictos en el source checkpoint | `76/76` resueltos por path y semántica |
 
 Los commits `82cd2b4b9e1b50f9718b10733b91e3e8d1510c9d`,
 `0db654027248a4789e877dc26aedcf9146f2f45c`,
 `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0`,
 `cd379900bcfa5cdfc4211e6949f9e92ab86de05a` y
-`6263c0ad721eb1c6500f8b5597bada5bd3b0d0ed` registran la normalización de Markdown, sus checkpoints
+`6263c0ad721eb1c6500f8b5597bada5bd3b0d0ed` y
+`33e3969859a2f9dc4c4087959f2532d8f61cc6ec` registran la normalización de Markdown, sus checkpoints
 de lint/provenance y la sincronización del baseline vivo. El PR contra
 `develop` no está creado: requiere autenticación GitHub manual. No se hizo
 merge, release ni cambio en `develop` o `main`.

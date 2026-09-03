@@ -92,6 +92,7 @@ do not change Product, Mobile V1, architecture or human-review decisions.
 | `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` | Separate semantic and style checkpoint provenance | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(scm): separate semantic and style checkpoints` |
 | `cd379900bcfa5cdfc4211e6949f9e92ab86de05a` | Synchronize live branch, ownership and lint refs in the baseline | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): sync live checkpoint refs` |
 | `6263c0ad721eb1c6500f8b5597bada5bd3b0d0ed` | Clarify the stable source-checkpoint scope | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): clarify live checkpoint scope` |
+| `33e3969859a2f9dc4c4087959f2532d8f61cc6ec` | Record register-only synchronization history | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(scm): record register-only syncs` |
 
 ## Condiciones obligatorias antes de cada commit
 

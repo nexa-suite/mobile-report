@@ -2,7 +2,7 @@
 
 | Fecha | Versión documental | Corte | Cambios | Responsable y verificación |
 | :--- | :--- | :--- | :--- | :--- |
-| 2026-09-01 | `0.1.0-draft` | Baseline de integración | Se reconstruye la estructura oficial, se registra el baseline de repositorios y se separan decisiones, implementación y evidencia pendiente. | Propiedad y autoría por confirmar antes del commit |
+| 2026-09-02 | `0.1.0-draft` | Reconciliación documental publicada | Se conserva la estructura oficial, se reconcilian 76 conflictos, se registran fuentes canónicas y se separan decisiones, implementación y evidencia pendiente. | Joaquín; integración conjunta revisada por `DiegoS284` + `JoaquinBV511`; defensa individual y aceptación final pendientes |
 
 ## Regla de versionado
 

@@ -74,8 +74,9 @@ was amended or rewritten.
 | `afe62423d5759a76b3126d86dd614edcc833a478` | Semantic inventory count synchronization | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): sync semantic inventory evidence` |
 | `82cd2b4b9e1b50f9718b10733b91e3e8d1510c9d` | Report-wide Markdown lint normalization and supplemental style-path ownership | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `style(report): normalize markdown formatting` |
 
-The ten commits above are the post-audit audit/fix/traceability sequence through
-the last validated source checkpoint `afe62423d5759a76b3126d86dd614edcc833a478`.
+The ten commits above include the nine semantic audit/fix commits through the
+last validated source checkpoint `afe62423d5759a76b3126d86dd614edcc833a478`,
+followed by the style-only Markdown checkpoint `82cd2b4b9e1b50f9718b10733b91e3e8d1510c9d`.
 Later documentation-only sync commits are tracked separately; the live branch
 ref and ahead count must be resolved from Git at each checkpoint. No history was
 rewritten, force-pushed or attributed to absent teammates.

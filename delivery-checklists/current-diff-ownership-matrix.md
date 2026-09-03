@@ -315,7 +315,8 @@ Exact files:
 
 ## Unassigned paths
 
-None. Every current modified or untracked path is assigned to one unit.
+None. Every path in the pre-reconciliation handoff inventory is assigned to one
+review unit.
 
 ## Review rule
 

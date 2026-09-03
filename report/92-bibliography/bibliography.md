@@ -21,7 +21,7 @@ capture required by the rubric and does not change the state below.
 **[D1]** Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food
 cold chain logistics and management: A review of current development and
 emerging trends. *Journal of Agriculture and Food Research, 18*, 101343.
-https://doi.org/10.1016/j.jafr.2024.101343
+<https://doi.org/10.1016/j.jafr.2024.101343>
 
 Use in the report: identifies current cold-chain research clusters and gaps in
 practical application and human factors. It informs the S2 research plan; it
@@ -30,7 +30,7 @@ does not establish a Nexa requirement or acceptance result.
 **[D2]** Zhou, X., Tang, J., Jacobs, T. L., & Saguy, I. S. (2025). Transforming
 food supply chains through digital tracking and monitoring technologies.
 *Trends in Food Science & Technology, 163*, 105142.
-https://doi.org/10.1016/j.tifs.2025.105142
+<https://doi.org/10.1016/j.tifs.2025.105142>
 
 Use in the report: informs the distinction between product tracking,
 time-temperature/freshness monitoring and operational traceability. It does
@@ -44,7 +44,7 @@ establish Nexa requirements and do not close the Q1/Q2 verification gate.
 
 **[SR1]** GS1. (n.d.). *GS1 global traceability standard*. Retrieved September
 2, 2026, from
-https://www.gs1.org/standards/gs1-global-traceability-standard/current-standard
+<https://www.gs1.org/standards/gs1-global-traceability-standard/current-standard>
 
 Use in the report: provides context for Critical Tracking Events, Key Data
 Elements and the Who/What/Where/When/Why dimensions when asking about custody
@@ -52,7 +52,7 @@ and delivery handoffs. It does not define Nexa's Proof of Delivery contract.
 
 **[SR2]** World Health Organization. (2022, April 11). *How to temperature map
 cold chain equipment and storage areas (second edition)*.
-https://www.who.int/publications/i/item/9789240042773
+<https://www.who.int/publications/i/item/9789240042773>
 
 Use in the report: provides a documented temperature-mapping procedure as
 methodological context. It does not transfer vaccine-specific thresholds,
@@ -61,7 +61,7 @@ tools or acceptance rules to Nexa products.
 **[SR3]** De Lombaert, T., Braekers, K., De Koster, R., & Ramaekers, K. (2024).
 What makes order picking so physically demanding? — Ergonomic evidence from a
 large-scale lab experiment using subjective metrics. *IFAC-PapersOnLine, 58*(19),
-181–186. https://doi.org/10.1016/j.ifacol.2024.09.139
+181–186. <https://doi.org/10.1016/j.ifacol.2024.09.139>
 
 Use in the report: informs questions about physical load, shelf height, product
 weight, product quantity and device interaction in warehouse tasks. It is
@@ -72,7 +72,7 @@ contextual evidence, not evidence about Nexa users or product acceptance.
 **[M1]** Ilhan, A. E. (2025). Design approaches to improve user experience: An
 example of a mobile app prototyping process. *International Journal of
 Human-Computer Studies, 203*, 103569.
-https://doi.org/10.1016/j.ijhcs.2025.103569
+<https://doi.org/10.1016/j.ijhcs.2025.103569>
 
 Use in the report: supports documenting design decisions, prototypes and
 usability considerations as an explicit process rather than treating a static
@@ -81,7 +81,7 @@ screen as validation.
 **[M2]** Maqbool, B., & Herold, S. (2024). Potential effectiveness and efficiency
 issues in usability evaluation within digital health: A systematic literature
 review. *Journal of Systems and Software, 208*, 111881.
-https://doi.org/10.1016/j.jss.2023.111881
+<https://doi.org/10.1016/j.jss.2023.111881>
 
 Use in the report: supports a mixed validation plan combining inquiry,
 task/scenario testing and inspection, with accessibility and operability kept
@@ -95,23 +95,23 @@ the four academic papers required by the rubric.
 
 **[T1]** Oracle. (n.d.). *Java Platform, Standard Edition & JDK 25
 documentation*. Retrieved September 2, 2026, from
-https://docs.oracle.com/en/java/javase/25/docs/
+<https://docs.oracle.com/en/java/javase/25/docs/>
 
 **[T2]** Spring. (n.d.). *Spring Boot reference documentation*. Retrieved
-September 2, 2026, from https://docs.spring.io/spring-boot/reference/
+September 2, 2026, from <https://docs.spring.io/spring-boot/reference/>
 
 **[T3]** PostgreSQL Global Development Group. (n.d.). *PostgreSQL 18
 documentation*. Retrieved September 2, 2026, from
-https://www.postgresql.org/docs/18/
+<https://www.postgresql.org/docs/18/>
 
 **[T4]** OpenAPI Initiative. (2021). *OpenAPI specification* (Version 3.1.0).
-https://spec.openapis.org/oas/v3.1.0.html
+<https://spec.openapis.org/oas/v3.1.0.html>
 
 **[T5]** PlantUML. (n.d.). *PlantUML language reference guide*. Retrieved
-September 2, 2026, from https://plantuml.com/guide
+September 2, 2026, from <https://plantuml.com/guide>
 
 **[T6]** Structurizr. (n.d.). *Structurizr documentation*. Retrieved September
-2, 2026, from https://docs.structurizr.com/
+2, 2026, from <https://docs.structurizr.com/>
 
 ## Quartile verification register
 

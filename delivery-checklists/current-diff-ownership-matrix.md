@@ -13,7 +13,7 @@ authorization.
 | Base | `3edeb196800a72a30299987a661e791c8f8fb50d` (historical handoff comparison base) |
 | Recovery copy | `/tmp/nexa-mobile-report-resume.PJofE0/` |
 | Staging | Clean after reconciliation merge; branch published; PR pending |
-| Current worktree | Clean; no current uncommitted or untracked paths; this matrix preserves the pre-reconciliation inventory |
+| Current worktree | Markdown lint cleanup is assigned below; no untracked paths; this matrix preserves the pre-reconciliation inventory and records the supplemental style-only paths |
 | Commit rule | One coherent unit; no `Co-authored-by`; current attribution limited to Joaquín/Diego |
 
 ## Unit A — Report governance / front matter
@@ -49,6 +49,7 @@ Exact files:
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.1-problem-statements.md`
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.2-assumptions.md`
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.3-hypothesis-statements.md`
+- `report/01-presentation/1.1-startup-profile/1.1.2-team-member-profiles.md`
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.4-lean-ux-canvas.md`
 - `report/00-front-matter/00-cover.md`
 - `report/00-front-matter/01-version-history.md`
@@ -98,6 +99,8 @@ Exact files:
 - `delivery-checklists/legacy-reuse-ledger.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.5-secondary-research-physical-operations-and-delivery.md`
+- `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md`
+- `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md`
 - `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md`
 - `report/92-bibliography/bibliography.md`
 
@@ -186,6 +189,7 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/code-level-overview.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/2.6.x.6.1-domain-layer-class-diagrams.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/2.6.x.6.2-database-design-diagrams.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/context-overview.md`
 
 ## Unit G — Mobile UX / i18n / accessibility
 

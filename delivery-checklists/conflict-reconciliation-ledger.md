@@ -11,7 +11,7 @@
 ## Reconciliation inputs
 
 | Ref | Meaning |
-|---|---|
+| --- | --- |
 | `origin/develop` / ours | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` after the approved fast-forward of the main-only Chapter II commit |
 | `feature/report-front-matter-and-governance` / theirs | `a19642c38ecf21905874fc5fbabceff0410320b6` |
 | `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada`; must remain unchanged |
@@ -27,7 +27,7 @@ used. Historical, future, pending and verified statements retain their
 status rather than being converted into claims of completed evidence.
 
 | Conflict path or group | Category | Feature meaning | Develop/main meaning | Canonical source | Decision | Result |
-|---|---|---|---|---|---|---|
+| --- | --- | --- | --- | --- | --- | --- |
 | `README.md` | A/C | Current report navigation, delivery references and control links | Basic report navigation and status template | Current report package and Blueprint | Keep current feature navigation; retain equivalent valid navigation | Resolved and included in `86351b3` |
 | `delivery-checklists/av1.md`, `av2.md`, `tb1.md`, `tb2.md` | A | Reproducible gates with honest open/PARTIAL states | Short placeholders | Approved report gate model | Keep feature gates; placeholders are not evidence | Resolved and included in `86351b3` |
 | `report/01-presentation/1.3-target-segments/target-segments.md` | A/D | V1 Operations/Buyer scope, deferred Sales scope, navigation handoff and no live tracking | Broad candidate scope including stale delivery and Sales wording | Blueprint V1 semantics | Keep feature mapping and explicit V1 boundaries | Resolved and included in `86351b3` |
@@ -67,7 +67,7 @@ conflict paths were resolved. Terms were classified by their surrounding
 meaning, not rejected globally.
 
 | Category | Count | Interpretation |
-|---|---:|---|
+| --- | ---: | --- |
 | Valid current | 233 | Current online-first, authority, surface and scope statements |
 | Valid boundary | 81 | Explicit exclusions, negative rules and non-authoritative local states |
 | Future/research | 106 | Spikes, hypotheses, open questions, deferred scope and research conditions |

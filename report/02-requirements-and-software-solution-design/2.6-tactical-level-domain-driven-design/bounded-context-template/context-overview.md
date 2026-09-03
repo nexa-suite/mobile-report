@@ -1,4 +1,4 @@
-# 2.6.x Bounded Context: <Bounded Context Name>
+# 2.6.x Bounded Context: `<Bounded Context Name>`
 
 Esta plantilla se utilizará para documentar uno de los 11 Bounded Contexts aceptados en `blueprint`. El nombre y el código deberán reemplazarse únicamente después de seleccionar el contexto que tenga evidencia suficiente para el nivel táctico.
 

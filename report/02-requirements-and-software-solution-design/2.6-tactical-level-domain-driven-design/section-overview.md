@@ -3,7 +3,7 @@
 Esta sección se organizará por los Bounded Contexts aceptados en `blueprint`. La aplicación móvil no tendrá una carpeta propia de DDD táctico porque Operations Mobile y Buyer Mobile son proyecciones de los contextos compartidos.
 
 | Código | Bounded Context |
-|---|---|
+| --- | --- |
 | BC-01 | Tenant & Access Governance |
 | BC-02 | Customer & Buyer Relationships |
 | BC-03 | Catalog & Commercial Policy |

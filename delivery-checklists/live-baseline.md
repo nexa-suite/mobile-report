@@ -497,3 +497,28 @@ requiere autenticación GitHub manual. No se ha hecho merge, release ni cambio
 en `main`. Permanecen abiertos los gates de defensa individual, revisión
 visual humana, runtime/dispositivo Mobile, distribución, videos, entrevistas
 actuales, Product Acceptance, Q1/Q2 oficial y entregables finales.
+
+## Checkpoint vigente después de Markdown lint — 2026-09-02
+
+Este corte supersede el estado operativo anterior y conserva sus datos como
+provenance. La rama publicada y el estado de Git se resolvieron nuevamente
+desde los refs vivos después del cierre de formato.
+
+| Campo | Valor |
+| :--- | :--- |
+| Rama / HEAD | `reconcile/report-integration-20260902` / `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
+| Upstream | `origin/reconcile/report-integration-20260902` en `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
+| Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
+| Relación viva | `0` behind / `42` ahead |
+| Worktree / staging | Limpio / vacío |
+| Ownership actual contra base histórica | `162` paths / `9` units |
+| Markdown lint | `162` archivos, `0` issues |
+| Integración Mobile V1 | `28/28` aprobada; defensa individual follow-up humano |
+| Conflictos | `76/76` resueltos por path y semántica |
+
+Los commits `82cd2b4b9e1b50f9718b10733b91e3e8d1510c9d`,
+`0db654027248a4789e877dc26aedcf9146f2f45c` y
+`2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` registran, respectivamente, la
+normalización de Markdown, su checkpoint de lint y la separación de provenance
+semántica/estilo. El PR contra `develop` no está creado: requiere autenticación
+GitHub manual. No se hizo merge, release ni cambio en `develop` o `main`.

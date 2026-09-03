@@ -13,7 +13,7 @@ authorization.
 | Base | `3edeb196800a72a30299987a661e791c8f8fb50d` (historical handoff comparison base) |
 | Recovery copy | `/tmp/nexa-mobile-report-resume.PJofE0/` |
 | Staging | Clean after reconciliation merge; branch published; PR pending |
-| Current worktree | Markdown lint cleanup is assigned below; no untracked paths; this matrix preserves the pre-reconciliation inventory and records the supplemental style-only paths |
+| Current worktree | Clean after the Markdown lint checkpoint; no current uncommitted or untracked paths; this matrix preserves the pre-reconciliation inventory and records the supplemental style-only paths |
 | Commit rule | One coherent unit; no `Co-authored-by`; current attribution limited to Joaquín/Diego |
 
 ## Unit A — Report governance / front matter

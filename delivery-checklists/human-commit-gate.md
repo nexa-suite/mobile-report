@@ -56,7 +56,7 @@ or attribution to Gino, Gerard or Sebastián was used.
 
 ## Post-reconciliation audit/fix commits — 2026-09-02
 
-These nine commits were created after the external architecture audit on the
+These ten commits were created after the external architecture audit on the
 published reconciliation branch. They use the configured owner-confirmed
 identity of Joaquín and contain only new audit/fix work; no teammate history
 was amended or rewritten.
@@ -72,8 +72,9 @@ was amended or rewritten.
 | `a4300002c165cc250493258aa748989976a26799` | TB2 backend validation baseline and sprint evidence | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(sprint): record tb2 validation baseline` |
 | `b02b02b3bb90442590ce478b72f45b87e0423767` | Current post-reconciliation checkpoint and commit lineage | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): refresh reconciliation checkpoint` |
 | `afe62423d5759a76b3126d86dd614edcc833a478` | Semantic inventory count synchronization | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(report): sync semantic inventory evidence` |
+| `82cd2b4b9e1b50f9718b10733b91e3e8d1510c9d` | Report-wide Markdown lint normalization and supplemental style-path ownership | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `style(report): normalize markdown formatting` |
 
-The nine commits above are the post-audit audit/fix/traceability sequence through
+The ten commits above are the post-audit audit/fix/traceability sequence through
 the last validated source checkpoint `afe62423d5759a76b3126d86dd614edcc833a478`.
 Later documentation-only sync commits are tracked separately; the live branch
 ref and ahead count must be resolved from Git at each checkpoint. No history was
@@ -108,7 +109,8 @@ crea sólo para aumentar el historial.
 | Resumen | Revisado conjuntamente; separación natural por alcance |
 | Fuente / requisito | Prompt canónico, rúbrica, Blueprint y repositorios de evidencia fijados |
 | Explicación del owner | Requerida antes de cada commit; no se atribuye trabajo actual a Gino, Gerard o Sebastián |
-| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `158` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `233/81/106/28`, stories `28`, scenarios `112`, strategic contexts `11`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148; focused gate 7/0/0/0; expanded integration gate with external services 482/3/0/0, documented PARTIAL; canonical Sprint 1–3 and rubric-gap audit recorded |
+| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `162` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `233/81/106/28`, stories `28`, scenarios `112`, strategic contexts `11`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148; focused gate 7/0/0/0; expanded integration gate with external services 482/3/0/0, documented PARTIAL; canonical Sprint 1–3 and rubric-gap audit recorded |
+| Markdown lint | `markdownlint-cli2@0.23.2 --config /tmp/nexa-report.markdownlint-cli2.jsonc '**/*.md'` → `162` files, `0` issues |
 | Mensaje Conventional Commit | Se define por unidad y se inspecciona en staging |
 | Autorización explícita para `git add` y `git commit` | `YES — current reviewed Diego/Joaquín units` |
 

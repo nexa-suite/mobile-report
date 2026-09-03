@@ -501,13 +501,14 @@ actuales, Product Acceptance, Q1/Q2 oficial y entregables finales.
 ## Checkpoint vigente después de Markdown lint — 2026-09-02
 
 Este corte supersede el estado operativo anterior y conserva sus datos como
-provenance. La rama publicada y el estado de Git se resolvieron nuevamente
-desde los refs vivos después del cierre de formato.
+provenance. La tabla fija el source checkpoint inmediatamente anterior al
+registro; el HEAD vivo y su relación se resuelven desde Git para evitar una
+autorreferencia dentro del propio documento.
 
 | Campo | Valor |
 | :--- | :--- |
-| Rama / HEAD | `reconcile/report-integration-20260902` / `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
-| Upstream | `origin/reconcile/report-integration-20260902` en `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
+| Rama / source checkpoint | `reconcile/report-integration-20260902` / `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
+| Upstream en el source checkpoint | `origin/reconcile/report-integration-20260902` en `2fb7092e6e45cbd02fff6ec3cdea86551c4956f0` |
 | Base `origin/develop` / `origin/main` | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` |
 | Relación viva | `0` behind / `42` ahead |
 | Worktree / staging | Limpio / vacío |

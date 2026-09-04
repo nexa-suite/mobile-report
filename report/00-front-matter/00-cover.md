@@ -1,34 +1,53 @@
-# Informe de Trabajo Final
+<br>
 
-## Nexa Suite
+<p align="center">
+  <img src="../assets/front-matter/upc-logo.png" alt="UPC Logo" width="220"/>
+</p>
 
-| Campo | Valor |
-| :--- | :--- |
-| Universidad | Universidad Peruana de Ciencias Aplicadas |
-| Carrera | Ingeniería de Software |
-| Curso | 1ACC0238 — Aplicaciones para Dispositivos Móviles |
-| NRC | 4949 |
-| Periodo académico | 202620 / 2026-02 |
-| Startup | nexa-team |
-| Producto | Nexa Suite |
-| Entrega | AV1 / TB1 / AV2 / TB2, según el corte publicado |
-| Docente | Pendiente de confirmación humana |
+<p align="center">Universidad Peruana de Ciencias Aplicadas</p>
+<p align="center">Carrera de Ingeniería de Software</p>
 
-## Integrantes
+<br>
 
-La lista conserva únicamente los datos identificados en las fuentes de trabajo
-actuales. Los códigos académicos, el nombre completo de Sebastián, las carreras
-individuales y la autorización final de cada identidad deben ser confirmados
-por los propietarios antes de publicar una entrega.
+<p align="center"><strong>1ACC0238</strong></p>
+<p align="center"><strong>Aplicaciones Web</strong></p>
 
-| Apellidos y nombres | Código académico | GitHub | Rol de trabajo |
-| :--- | :--- | :--- | :--- |
-| Rojas Mancilla, Gerard | Pendiente de confirmación | `GerardRojasMancilla` | Mobile helper; UX, implementación y runtime |
-| Torrejón de los Santos, Gino | Pendiente de confirmación | `R0obxdnt` | Mobile/report helper; requisitos, DDD táctico, UML y base de datos |
-| Verde Bueno, Joaquín | Pendiente de confirmación | `JoaquinBV511` | Report lead; mobile helper e integración |
-| Yucra Sandoval, Diego | Pendiente de confirmación | `DiegoS284` | Team lead; mobile lead, reporte técnico, C4 y arquitectura |
-| Sebastián [apellido pendiente] | Pendiente de confirmación | `spinedo214` | Mobile helper; investigación, needfinding y DDD estratégico |
+<p align="center">NRC</p>
+<p align="center"><strong>4949</strong></p>
 
-> **Revisión humana requerida:** completar identidad académica, orden
-> alfabético definitivo, códigos, docente, fotografías y asociación verificada
-> entre cada persona, correo y usuario de GitHub.
+<p align="center"><strong>Informe de Trabajo Final</strong></p>
+
+<p align="center">Docente</p>
+<p align="center"><strong>Quevedo Velasco, David Gerardo</strong></p>
+
+<p align="center">Equipo</p>
+<p align="center"><strong>King</strong></p>
+
+<p align="center">Proyecto</p>
+<p align="center"><strong>Nexa</strong></p>
+
+<br>
+
+<p align="center"><strong>Integrantes</strong></p>
+
+<div align="center">
+
+| **Código** | **Apellidos y Nombres**              |
+| ---------- | ------------------------------------ |
+| U202411937 | Pinedo Sanchez, Sebastian Martin     |
+| U202413142 | Rojas Mancilla, Gerard Gianpier      |
+| U202416289 | Torrejón De Los Santos, Gino Rodrigo |
+| U20241A054 | Verde Bueno, Joaquín Francisco       |
+| U202323040 | Yucra Sandoval, Diego Sebastian      |
+
+</div>
+
+<br>
+
+<p align="center"><strong>Período 202620</strong></p>
+
+<br>
+
+<p align="center"><strong>Julio 2026</strong></p>
+
+<br>

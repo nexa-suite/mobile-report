@@ -197,14 +197,14 @@ def architecture_audit(files: list[Path], failures: list[str]) -> Counter[str]:
 
     required_anchors = {
         ARCHITECTURE_REPORT_FILES[0]: (
-            "vista `V1 TARGET`", "TARGET V1 / PLANNED / PROPOSED", "no capacidades implementadas"
+            "vista V1 TARGET", "TARGET V1 / PLANNED / PROPOSED", "no capacidades implementadas"
         ),
         ARCHITECTURE_REPORT_FILES[1]: (
-            "containers `V1 TARGET / PLANNED / PROPOSED`", "clientes planificados para V1"
+            "containers V1 TARGET / PLANNED / PROPOSED", "clientes planificados para V1"
         ),
-        ARCHITECTURE_REPORT_FILES[2]: ("proyecciones `V1 TARGET / PLANNED / PROPOSED`",),
+        ARCHITECTURE_REPORT_FILES[2]: ("proyecciones V1 TARGET / PLANNED / PROPOSED",),
         ARCHITECTURE_REPORT_FILES[3]: (
-            "`TARGET V1 / PLANNED / PROPOSED`", "no se ha demostrado runtime desplegado"
+            "TARGET V1 / PLANNED / PROPOSED", "no se ha demostrado runtime desplegado"
         ),
         ARCHITECTURE_REPORT_FILES[4]: (
             "Mobile in V1 TARGET", "TARGET V1 / PLANNED / PROPOSED"
@@ -280,11 +280,11 @@ def main() -> int:
 
     story_text = STORY_FILE.read_text(encoding="utf-8")
     story_count = len(re.findall(r"^### MOB-US-\d{3} ", story_text, re.MULTILINE))
-    scenario_count = len(re.findall(r"^- \*\*Scenario:", story_text, re.MULTILINE))
-    if story_count != 28:
-        failures.append(f"V1 story headings: expected 28, got {story_count}")
-    if scenario_count != 112:
-        failures.append(f"V1 Gherkin scenarios: expected 112, got {scenario_count}")
+    scenario_count = len(re.findall(r"<strong>Scenario:", story_text))
+    if story_count != 73:
+        failures.append(f"Mobile story headings: expected 73, got {story_count}")
+    if scenario_count != 259:
+        failures.append(f"Mobile Gherkin scenarios: expected 259 rendered (256 source + 3 reconciled), got {scenario_count}")
 
     ddd_text = DDD_TRACEABILITY.read_text(encoding="utf-8")
     context_count = len(re.findall(r"^\| BC-\d{2} —", ddd_text, re.MULTILINE))
@@ -299,7 +299,7 @@ def main() -> int:
             "valid current", "valid boundary", "future/research", "historical/context"
         ))
     )
-    print(f"mobile V1 semantic counts: stories={story_count} scenarios={scenario_count} strategic_contexts={context_count}")
+    print(f"mobile V1 semantic counts: stories={story_count} scenarios={scenario_count} (256 source + 3 reconciled) strategic_contexts={context_count}")
     print(
         "architecture stale scan: "
         f"files={len(scanned_files)} (Markdown + scripts; validator source excluded), "

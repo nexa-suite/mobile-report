@@ -1,22 +1,22 @@
 # 3.1.4 Mobile Applications UX/UI Design
 
-The Mobile target has two surfaces and one domain authority:
+El objetivo Mobile tiene dos superficies y una autoridad de dominio:
 
 | Surface | Primary roles | V1 scope |
 | :--- | :--- | :--- |
 | Operations Mobile | Mobile User, Warehouse Operator, Dispatch Coordinator, Driver/Delivery Operator | MOB-US-001..003, 011..034 |
 | Buyer Mobile | Mobile User, Customer Buyer | MOB-US-001..003, 044, 047..049 |
 
-The following documents define the required states and traceability, but no
-rendered Mobile screen, prototype URL, build or physical-device evidence is
-claimed in this cut.
+Los documentos siguientes definen los estados y la trazabilidad requeridos,
+pero este corte no afirma una pantalla Mobile renderizada, URL de prototipo,
+build ni evidencia de dispositivo físico.
 
-## Design Lab-to-Mobile crosswalk — TARGET
+## Correspondencia Design Lab–Mobile — TARGET
 
-The Design Lab supplies reusable visual and interaction evidence. The
-crosswalk below records how that evidence informs the Mobile target while
-keeping business authority in the API and Blueprint. A source pattern is not a
-Mobile implementation and does not close a user story.
+Design Lab suministra evidencia visual y de interacción reutilizable. La
+correspondencia registra cómo esa evidencia informa el objetivo Mobile, mientras
+la autoridad de negocio permanece en el API y los contextos propietarios. Un
+patrón de diseño no es una implementación Mobile ni cierra una historia.
 
 | Mobile target concern | Design Lab evidence observed | Target carry-forward | Boundary that remains open |
 | :--- | :--- | :--- | :--- |
@@ -27,7 +27,7 @@ Mobile implementation and does not close a user story.
 | Buyer receipt and discrepancy — `MOB-US-044, 047..049` | `src/app/documentation/patterns/async-operations/async-operations-page.ts`; processing, error, retry, warning and cancellation sequence | Keep unknown results visible and make retry/cancel decisions explicit | Buyer relationship, handoff code, received quantities and immutable discrepancy facts require domain/API evidence |
 | Responsive and inclusive behavior — all target flows | `src/app/documentation/patterns/responsive-composition/responsive-composition-page.ts` and Design Lab quality routes | Preserve hierarchy at 1440, 1024, 768, 390 and 320px; retain labels, focus equivalents and local data overflow | Design Lab browser evidence is not a physical Mobile device, assistive-technology or final UX review |
 
-### Adoption decisions
+### Decisiones de adopción
 
 1. Future Mobile screens use semantic and component aliases from the recorded
    token layers; raw values are not copied per screen.
@@ -41,8 +41,8 @@ Mobile implementation and does not close a user story.
 5. The final wireframes, mock-ups, wireflows, user flows and prototype must
    record their own source file, revision, viewport, state and reviewer.
 
-Current status: `SOURCE OBSERVED / TARGET RECONCILED / MOBILE RENDER AND
-HUMAN REVIEW PENDING`.
+Estado actual: SOURCE OBSERVED / TARGET RECONCILED / MOBILE RENDER AND HUMAN
+REVIEW PENDING.
 
 - [Wireframes](./3.1.4.1-mobile-application-wireframes.md)
 - [Wireflows](./3.1.4.2-mobile-application-wireflows.md)

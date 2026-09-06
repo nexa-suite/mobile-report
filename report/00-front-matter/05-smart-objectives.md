@@ -8,11 +8,11 @@ objetivo atribuido sin consentimiento o sin una métrica verificable.
 
 | Participante | Objetivo SMART 1 | Objetivo SMART 2 | Evidencia de revisión |
 | :--- | :--- | :--- | :--- |
+| Pinedo, Sebastián | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
 | Rojas Mancilla, Gerard | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
-| Torrejón de los Santos, Gino | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
+| Torrejón De Los Santos, Gino | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
 | Verde Bueno, Joaquín | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
 | Yucra Sandoval, Diego | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
-| Sebastián [apellido pendiente] | Pendiente de definición individual | Pendiente de definición individual | Pendiente |
 
 ## Formato de captura
 

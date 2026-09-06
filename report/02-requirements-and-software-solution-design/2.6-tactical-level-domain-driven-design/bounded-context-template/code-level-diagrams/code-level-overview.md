@@ -18,7 +18,7 @@ Bounded Context.
 ## Estado de revisión
 
 El contexto BC-06 es un candidato de trabajo, no una selección humana cerrada.
-Las fuentes PlantUML [T5], exportaciones y SQL están versionadas en Blueprint; la
-importación académica, la revisión de legibilidad, el ownership final y la
-aceptación del modelo siguen pendientes. Ningún diagrama de esta sección prueba
+Las fuentes PlantUML, exportaciones y SQL están disponibles para revisión; la
+importación académica, la legibilidad, el ownership final y la aceptación del
+modelo siguen pendientes. Ningún diagrama de esta sección prueba
 implementación Mobile o Product Acceptance.

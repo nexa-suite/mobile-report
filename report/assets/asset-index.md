@@ -4,14 +4,19 @@ Recursos gráficos, capturas, diagramas y evidencias organizados por capítulo y
 sección. Los recursos deben conservar nombres descriptivos y referencias desde
 los documentos Markdown.
 
-## Current inventory boundary
+## Límite del inventario actual
 
-The report cut contains the local asset folders and a source-backed inventory
-for architecture diagrams. Blueprint C4/PlantUML exports are not silently
-copied into this report: their repository, commit, source paths, fingerprints
-and pending human review are recorded in the [architecture and diagram
-evidence register](../../delivery-checklists/architecture-render-evidence-register.md).
+El corte del informe contiene las carpetas locales de recursos y un inventario
+de diagramas de arquitectura respaldado por evidencia. Los exports C4/PlantUML
+no se copian silenciosamente en este informe: su commit, rutas, huellas y
+revisión humana pendiente se registran en el [registro de evidencia de
+arquitectura y diagramas](../../delivery-checklists/architecture-render-evidence-register.md).
 
-An asset becomes academic evidence only after the team records the source,
-revision, export date, tool, purpose, reviewer and the distinction between
-AS-IS, TARGET and implemented/runtime behavior.
+Un recurso se convierte en evidencia académica sólo después de registrar la
+fuente, revisión, fecha de exportación, herramienta, propósito, reviewer y la
+distinción entre AS-IS, TARGET y comportamiento implementado/de runtime.
+
+## Recursos de portada
+
+- [Logotipo UPC](./front-matter/upc-logo.png): recurso institucional usado por
+  la portada del informe.

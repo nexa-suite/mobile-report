@@ -8,11 +8,11 @@ atribuye desempeño sin revisión del Team Leader y de la persona evaluada.
 
 | Participante | AV1 | TB1 | AV2 | TB2 | Evidencia y revisión |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| Pinedo, Sebastián | Pending human | Pending human | Pending human | Pending human | Identidad, actividad, fuente, artefacto, commit y defensa pendientes |
 | Rojas Mancilla, Gerard | Pending human | Pending human | Pending human | Pending human | Actividad, fuente, artefacto, commit y defensa pendientes |
-| Torrejón de los Santos, Gino | Pending human | Pending human | Pending human | Pending human | Actividad, fuente, artefacto, commit y defensa pendientes |
+| Torrejón De Los Santos, Gino | Pending human | Pending human | Pending human | Pending human | Actividad, fuente, artefacto, commit y defensa pendientes |
 | Verde Bueno, Joaquín | Pending human | Pending human | Pending human | Pending human | Actividad, fuente, artefacto, commit y defensa pendientes |
 | Yucra Sandoval, Diego | Pending human | Pending human | Pending human | Pending human | Actividad, fuente, artefacto, commit y defensa pendientes |
-| Sebastián [apellido pendiente] | Pending human | Pending human | Pending human | Pending human | Identidad, actividad, fuente, artefacto, commit y defensa pendientes |
 
 ## Criterio de captura
 

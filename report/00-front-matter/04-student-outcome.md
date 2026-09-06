@@ -23,11 +23,11 @@ sea necesario, utilizando estrategias de aprendizaje apropiadas.*
 
 | Participante | AV1 | TB1 | AV2 | TB2 | Estado |
 | :--- | :--- | :--- | :--- | :--- | :--- |
+| Pinedo, Sebastián | Pendiente | Pendiente | Pendiente | Pendiente | Requiere revisión individual |
 | Rojas Mancilla, Gerard | Pendiente | Pendiente | Pendiente | Pendiente | Requiere revisión individual |
-| Torrejón de los Santos, Gino | Pendiente | Pendiente | Pendiente | Pendiente | Requiere revisión individual |
+| Torrejón De Los Santos, Gino | Pendiente | Pendiente | Pendiente | Pendiente | Requiere revisión individual |
 | Verde Bueno, Joaquín | Pendiente | Pendiente | Pendiente | Pendiente | Requiere revisión individual |
 | Yucra Sandoval, Diego | Pendiente | Pendiente | Pendiente | Pendiente | Requiere revisión individual |
-| Sebastián [apellido pendiente] | Pendiente | Pendiente | Pendiente | Pendiente | Requiere identidad y revisión individual |
 
 No se atribuyen actividades, aprendizaje o conclusiones a una persona hasta
 que esa persona revise el texto y pueda defender la evidencia correspondiente.

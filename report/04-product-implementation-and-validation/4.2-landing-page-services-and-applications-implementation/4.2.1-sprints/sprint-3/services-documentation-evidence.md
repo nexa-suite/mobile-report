@@ -2,11 +2,12 @@
 
 Documentar endpoints OpenAPI/Swagger, acciones, parámetros, ejemplos y commits.
 
-## Current contract cross-reference
+## Referencia cruzada de contratos actuales
 
-See the [Mobile V1 API contract register](../../../../../delivery-checklists/mobile-v1-api-contract-register.md)
-for the source revision, headers, response contract and remaining evidence.
-These rows are candidate cross-references, not proof of Sprint 3 execution.
+Consulta el [registro de contratos API Mobile V1](../../../../../delivery-checklists/mobile-v1-api-contract-register.md)
+para la revisión de origen, headers, contrato de respuesta y evidencia
+restante. Estas filas son referencias cruzadas candidatas, no prueba de
+ejecución de Sprint 3.
 
 | Candidate stories | Contract operations | Current state |
 | :--- | :--- | :--- |

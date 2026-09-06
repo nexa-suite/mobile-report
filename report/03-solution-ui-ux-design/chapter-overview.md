@@ -1,20 +1,17 @@
 # Chapter III: Solution UI/UX Design
 
-## Scope and evidence boundary
+## Alcance y límite de evidencia
 
-This chapter separates three kinds of material:
+Este capítulo separa tres tipos de material:
 
-- `AS-IS`: executable evidence observed in the Website or Design Lab
-  repositories.
-- `TARGET`: the proposed UX/UI for Operations Mobile and Buyer Mobile, derived
-  from the 28 V1 stories and their exception states.
-- `PENDING`: a required artifact, screenshot, prototype link or human review
-  that has not been produced in this report cut.
+- AS-IS: evidencia ejecutable observada en los repositorios Website o Design Lab.
+- TARGET: UX/UI propuesta para Operations Mobile y Buyer Mobile, derivada de las 28 historias V1 y sus estados de excepción.
+- PENDING: artefacto requerido, captura, enlace de prototipo o revisión humana que no se ha producido en este corte.
 
-The Design Lab at version `v1.0.2` is an Angular-only visual evidence
-laboratory. Its tokens, states and accessibility modes guide the target design;
-they do not prove that a Mobile application exists. The Website is a separate
-HTML5/CSS3/vanilla JavaScript surface with 15 HTML pages and its own static
-navigation. It is recorded as Web evidence, not as Mobile runtime evidence.
+Design Lab versión v1.0.2 es un laboratorio de evidencia visual sólo Angular.
+Sus tokens, estados y modos de accesibilidad guían el diseño objetivo, pero no
+prueban que exista una aplicación Mobile. Website es una superficie separada
+HTML5/CSS3/vanilla JavaScript con 15 páginas HTML y navegación estática propia;
+se registra como evidencia Web, no como evidencia de runtime Mobile.
 
 - [3.1 Product Design](./3.1-product-design/)

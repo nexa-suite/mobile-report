@@ -2,12 +2,12 @@
 
 Documentar endpoints OpenAPI/Swagger, acciones, parámetros, ejemplos y commits.
 
-## Current contract cross-reference
+## Referencia cruzada de contratos actuales
 
-The complete operation-to-story mapping is in the
+El mapeo completo de operaciones a historias está en el
 [Mobile V1 API contract register](../../../../../delivery-checklists/mobile-v1-api-contract-register.md).
-These are candidate Sprint 2 operations only; no execution or Mobile client
-completion is asserted.
+Son únicamente operaciones candidatas de Sprint 2; no se afirma ejecución ni
+completitud del cliente Mobile.
 
 | Candidate stories | Contract operations | Current state |
 | :--- | :--- | :--- |

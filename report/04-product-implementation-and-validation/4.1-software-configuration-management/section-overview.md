@@ -1,7 +1,7 @@
 # 4.1 Software Configuration Management
 
-This section records the reproducible baseline for the academic report and the
-rules used to keep evidence traceable.
+Esta sección registra la línea base reproducible del informe académico y las
+reglas usadas para mantener la evidencia trazable.
 
 - [Development environment](./4.1.1-development-environment-configuration.md)
 - [Source code management](./4.1.2-source-code-management.md)

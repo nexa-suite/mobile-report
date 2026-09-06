@@ -32,6 +32,6 @@ acceptance results or production-readiness claims.
 | Recruit and manually verify 3–5 participants per segment | Team lead / research owner | Consent, recording, capture, metadata and analysis | Open |
 | Select the Mobile client strategy | Team / technical owner | SPIKE-002 alternatives, constraints, device proof | Open |
 | Close local storage and retry policy | Architecture/product owner | SPIKE-004 design and failure tests | Open |
-| Render and review target wireflows | UX owner | Source file, screenshots, viewport and reviewer | Open |
+| Render and review target wireflows | UX owner | Archivo de origen, capturas, viewport y reviewer | Open |
 | Demonstrate a build on physical Android hardware | Mobile owner | Build/checksum, installation, video and story evidence | Open |
 | Write final conclusions and roadmap | Report lead | Closed validation matrix and accepted decisions | Blocked by evidence, not abandoned |

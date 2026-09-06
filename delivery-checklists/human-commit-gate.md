@@ -4,14 +4,14 @@
 
 | Campo | Valor |
 | :--- | :--- |
-| Estado | `RECONCILIATION MERGE PUSHED — PR SEQUENCE OPEN` |
+| Estado | `RECONCILIATION BRANCH — AUTHORIZED MOBILE REPORT REWORK IN PROGRESS` |
 | Rama | `reconcile/report-integration-20260902` |
 | Base revisada | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` (`origin/develop` after main-only fast-forward) |
 | Upstream | `origin/reconcile/report-integration-20260902` |
 | Push | `SUCCESS — 2026-09-02; reconciliation and post-audit commits pushed` |
-| Staging | Vacío después del post-audit commit sequence; branch clean |
+| Staging | Preparado: 94 paths exactos; diff en caché y checks limpios; commit pendiente de firma Verified |
 | Commits nuevos | Preserved feature history, merge commit and post-reconciliation audit/fix/traceability commits; current remote HEAD and ahead count are verified in the latest delivery record |
-| Report integration review | `28/28` approved by `DiegoS284` + `JoaquinBV511` on `2026-09-02` |
+| Report integration review | Handoff humano más reciente autoriza el rework de 73 historias y correcciones sustantivas de Capítulos I–II; no autoriza atribución de trabajo ajeno |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
 
@@ -20,6 +20,15 @@ integrar el diff revisado por Diego y Joaquín, sujeto a staging exacto,
 validación y separación por unidad. No convierte una fuente, una proyección o
 una prueba local en implementación, aceptación de producto o preparación para
 producción.
+
+## Latest human authorization
+
+El handoff humano más reciente cierra el gate de contenido pendiente y autoriza
+la reconciliación de las 73 historias, las correcciones sustantivas de
+Capítulos I–II y las correcciones lingüísticas de Capítulos III–IV. Sebastián
+Pinedo y su foto se preservan. El rework queda sujeto a validación reproducible,
+staging exacto y firma Verified; si esa firma no puede asegurarse, no se crea
+commit ni se hace push.
 
 ## Reconciliation commit evidence
 
@@ -121,10 +130,10 @@ crea sólo para aumentar el historial.
 | Rama | `reconcile/report-integration-20260902` |
 | Archivos | Exactos por unidad y path de reconciliación, registrados en [current-diff-ownership-matrix.md](./current-diff-ownership-matrix.md) y [conflict-reconciliation-ledger.md](./conflict-reconciliation-ledger.md) |
 | Resumen | Revisado conjuntamente; separación natural por alcance |
-| Fuente / requisito | Prompt canónico, rúbrica, Blueprint y repositorios de evidencia fijados |
+| Fuente / requisito | Prompt canónico, rúbrica, modelo de dominio adoptado y repositorios de evidencia fijados |
 | Explicación del owner | Requerida antes de cada commit; no se atribuye trabajo actual a Gino, Gerard o Sebastián |
-| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `162` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/verify-mobile-v1-transcription.py` → `28` rows, `28` titles, `112` scenarios; `python3 scripts/verify-mobile-v1-review-register.py` → `28` rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `233/81/106/28`, stories `28`, scenarios `112`, strategic contexts `11`; Structurizr `2026.06.28 validate` exit `0`; API baseline Docker-backed `./mvnw test` 482/0/148; focused gate 7/0/0/0; expanded integration gate with external services 482/3/0/0, documented PARTIAL; canonical Sprint 1–3 and rubric-gap audit recorded |
-| Markdown lint | `markdownlint-cli2@0.23.2 --config /tmp/nexa-report.markdownlint-cli2.jsonc '**/*.md'` → `162` files, `0` issues |
+| Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `172` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/generate-mobile-backlog-report.py` y `python3 scripts/verify-mobile-backlog.py` → `12` Epics, `73` stories, `256` source scenarios plus `3` reconciled Gherkin scenarios, releases `28/35/9/1`; `python3 scripts/verify-mobile-v1-transcription.py` → full catalog `73` stories, `256` source scenarios plus `3` reconciled, V1 `28`; `python3 scripts/verify-mobile-v1-review-register.py` → `28` V1 rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → V1 `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → `259/102/122/32`, stories `73`, rendered scenarios `259` (`256` source + `3` reconciled), strategic contexts `11`; export Docker → `213` pages; PDF smoke and critical-page visual inspection passed; canonical Sprint 1–3 and rubric-gap audit recorded |
+| Markdown lint | `npx --yes markdownlint-cli2@0.23.2 --config .markdownlint-cli2.jsonc '**/*.md'` → `163` files, `0` issues |
 | Mensaje Conventional Commit | Se define por unidad y se inspecciona en staging |
 | Autorización explícita para `git add` y `git commit` | `YES — current reviewed Diego/Joaquín units` |
 
@@ -138,13 +147,13 @@ La separación evita mezclar requisitos, arquitectura, UX y gates técnicos.
 | :--- | :--- | :--- | :--- | :--- |
 | A | README, front matter, rúbrica, baseline, colaboración y milestones | Joaquín / `JoaquinBV511` | Team review | `docs(rubric): reconcile academic report baseline` |
 | B | Entrevistas, Needfinding, provenance y research gates | Joaquín / `JoaquinBV511` | Diego; team review | `docs(research): reconcile mobile needfinding evidence` |
-| C | 28 User Stories, AC, Impact Mapping, Product Backlog y requirements registers | Joaquín / `JoaquinBV511` | Diego; team review | `docs(requirements): align mobile v1 academic backlog` |
+| C | 73 User Stories, AC, Impact Mapping, Product Backlog y requirements registers | Joaquín / `JoaquinBV511` | Diego; team review | `docs(requirements): align mobile v1 academic backlog` |
 | D | Strategic DDD, 11 BCs, Context Map, UL y discovery provenance | Joaquín / `JoaquinBV511` | Sebastián; Diego | `docs(ddd): reconcile strategic domain model` |
 | E | C4, Structurizr, system boundaries, AS-IS/TARGET y architecture evidence | Diego / `DiegoS284` | Gino | `docs(architecture): synchronize canonical c4 evidence` |
 | F | Tactical DDD, UML, PlantUML, database models y persistence evidence | Joaquín / `JoaquinBV511` + Diego / `DiegoS284`, split by path | Team review | `docs(ddd): reconcile tactical domain and data models` / `docs(implementation): document verified persistence evidence` |
 | G | Mobile UX, i18n, accessibility, interaction states y Design Lab mapping | Joaquín / `JoaquinBV511` | Diego; team review | `docs(ux): prepare mobile experience evidence` |
 | H | SCM, sprints, API/implementation evidence y validation structure | Split by actual scope | Team review | `docs(sprint): add reproducible sprint evidence gates` / `docs(implementation): document verified mobile api evidence` |
-| I | Reproducible report and technical validation scripts | Joaquín + Diego, split by script scope | Team review | `chore(report): add reproducible report validation gates` / `chore(architecture): add technical evidence validation gates` |
+| I | Reproducible report and technical validation scripts, including the pending export pipeline | Joaquín + Diego, split by script scope | Team review | `chore(report): add reproducible report validation gates` / `chore(report): add reproducible report export pipeline` / `chore(architecture): add technical evidence validation gates` |
 
 Cada fila requiere inspección de archivos exactos antes de staging. La
 aprobación conjunta del 2026-09-02 cubre la integración actual; no crea

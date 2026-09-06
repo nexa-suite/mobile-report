@@ -1,9 +1,8 @@
 # 2.5.1 EventStorming
 
 El EventStorming permite ordenar los eventos relevantes del dominio antes de
-decidir sus límites. El material del proyecto anterior se utilizará como
-referencia de exploración histórica, pero la propuesta actual se alinea con
-los 11 Bounded Contexts aceptados en `blueprint`.
+decidir sus límites. La sesión debe producir evidencia separable de las
+hipótesis del equipo y alinearse con los 11 Bounded Contexts adoptados.
 
 ## Protocolo de sesión que debe evidenciarse
 
@@ -21,6 +20,6 @@ organización del trabajo, no evidencia de que las sesiones ya ocurrieron.
 ## Límite de evidencia
 
 Las capturas, fechas y participantes todavía no están documentados en este
-corte. Los archivos de esta sección describen el modelo canónico y el material
+corte. Los archivos de esta sección describen el modelo adoptado y el material
 que debe producir el equipo; no convierten una lista de contextos en evidencia
 de workshop, consenso o aceptación.

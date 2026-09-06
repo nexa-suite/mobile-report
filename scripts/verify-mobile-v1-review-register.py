@@ -43,7 +43,7 @@ def parse_review_rows(text: str) -> list[list[str]]:
 
 
 def main() -> int:
-    story_rows = table_rows(STORIES.read_text(encoding="utf-8"), "## Backlog summary", "## Detailed story records")
+    story_rows = table_rows(STORIES.read_text(encoding="utf-8"), "## Backlog summary", "## Story records")
     review_rows = parse_review_rows(REGISTER.read_text(encoding="utf-8"))
     failures: list[str] = []
 

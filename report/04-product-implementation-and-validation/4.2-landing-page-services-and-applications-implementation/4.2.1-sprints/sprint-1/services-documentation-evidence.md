@@ -2,12 +2,12 @@
 
 Documentar endpoints OpenAPI/Swagger, acciones, parámetros, ejemplos y commits.
 
-## Current contract cross-reference
+## Referencia cruzada de contratos actuales
 
-The current API snapshot is described in the
+La instantánea actual del API se describe en el
 [Mobile V1 API contract register](../../../../../delivery-checklists/mobile-v1-api-contract-register.md).
-The following rows are contract candidates for Sprint 1; they are not Sprint
-execution evidence and do not prove Mobile consumption.
+Las filas siguientes son candidatos de contrato para Sprint 1; no son evidencia
+de ejecución del Sprint ni prueban consumo desde Mobile.
 
 | Candidate stories | Contract operations | Current state |
 | :--- | :--- | :--- |

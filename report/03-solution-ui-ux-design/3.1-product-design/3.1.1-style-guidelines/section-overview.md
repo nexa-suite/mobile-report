@@ -1,9 +1,9 @@
 # 3.1.1 Style Guidelines
 
-The Design Lab provides the visual reference for the proposed surfaces. The
-report uses its three token layers—primitive, semantic and component—and keeps
-the source JSON as the authority for any future implementation. The Website's
-current CSS is evidence of a separate surface and should not be silently
-described as token adoption by Mobile.
+Design Lab proporciona la referencia visual de las superficies propuestas. El
+informe usa sus tres capas de tokens —primitive, semantic y component— y
+mantiene el JSON de origen como autoridad para cualquier implementación futura.
+El CSS actual de Website es evidencia de una superficie separada y no debe
+describirse silenciosamente como adopción de tokens por Mobile.
 
 - [General style guidelines](./3.1.1.1-general-style-guidelines.md)

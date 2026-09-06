@@ -2,15 +2,15 @@
 
 ## Scope and evidence boundary
 
-This chapter distinguishes source code that was actually inspected from
-planned Mobile implementation and validation. The current report cut contains
-Web, API, Blueprint and Design Lab references, but no verified Mobile runtime,
+Este capítulo distingue el código que fue inspeccionado de la implementación y
+validación Mobile planificadas. El corte actual contiene referencias de Web,
+API y Design Lab, pero no runtime Mobile verificado,
 physical-device installation, Firebase App Distribution release or completed
 user-validation campaign.
 
-Each claim must identify repository, branch/SHA, command or capture, date and
-reviewer. A sprint folder or a source repository reference is not, by itself,
-proof that a story is implemented.
+Cada afirmación debe identificar repositorio, branch/SHA, comando o captura,
+fecha y reviewer. Una carpeta de sprint o una referencia de repositorio no es,
+por sí sola, prueba de implementación de una historia.
 
 - [4.1 Software Configuration Management](./4.1-software-configuration-management/)
 - [4.2 Landing Page, Services and Applications Implementation](./4.2-landing-page-services-and-applications-implementation/)

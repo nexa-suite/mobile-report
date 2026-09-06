@@ -1,8 +1,8 @@
 # Video About-the-Product
 
-The final record must include objective, script or sequence, participant
-testimony with permission, screenshots, duration, URL and source/build
-revision. No product video is verified in this report cut.
+El registro final debe incluir objetivo, guion o secuencia, testimonio del
+participante con permiso, capturas, duración, URL y revisión del origen/build.
+Ningún video de producto está verificado en este corte.
 
 | Field | State |
 | :--- | :--- |

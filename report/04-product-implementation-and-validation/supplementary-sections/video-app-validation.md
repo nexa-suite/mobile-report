@@ -1,8 +1,8 @@
 # Video App Validation
 
-This record is applicable only after a Mobile build is distributed through
-Firebase App Distribution or an accepted equivalent and exercised on a
-physical Android device.
+Este registro sólo aplica después de distribuir un build Mobile mediante
+Firebase App Distribution o un equivalente aceptado y ejercitarlo en un
+dispositivo Android físico.
 
 | Field | State |
 | :--- | :--- |
@@ -12,5 +12,5 @@ physical Android device.
 | Stories and paths exercised | Not produced |
 | Video, screenshots, date and reviewer | Not produced |
 
-An emulator run, a source branch or a prototype link cannot be substituted for
-this evidence.
+Una ejecución en emulador, una rama de origen o un enlace de prototipo no puede
+sustituir esta evidencia.

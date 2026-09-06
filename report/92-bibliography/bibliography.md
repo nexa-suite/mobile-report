@@ -90,7 +90,7 @@ visible. The review is methodological evidence, not evidence about Nexa users.
 ## Technical documentation
 
 These references document technologies and diagram/contract tools actually
-observed in the API, Blueprint or report evidence. They are not substitutes for
+observed in the API, architecture evidence or report evidence. They are not substitutes for
 the four academic papers required by the rubric.
 
 **[T1]** Oracle. (n.d.). *Java Platform, Standard Edition & JDK 25

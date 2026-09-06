@@ -4,8 +4,8 @@
 
 Luego de explorar el dominio, los actores y los flujos candidatos en la sección
 1.2, Nexa organiza su alcance móvil en tres segmentos objetivo propuestos. Esta
-clasificación sirve para orientar la investigación y el diseño; el
-`blueprint` todavía marca la validación de investigación como pendiente.
+clasificación sirve para orientar la investigación y el diseño. La validación
+mediante investigación primaria permanece pendiente.
 
 | ID | Segmento | Actores principales | Aplicación | Necesidad móvil a explorar |
 | --- | --- | --- | --- | --- |
@@ -15,8 +15,8 @@ clasificación sirve para orientar la investigación y el diseño; el
 
 Company Owner y Tenant Administrator continúan siendo actores principalmente
 Web-first para las decisiones de gobierno de la empresa y de acceso técnico.
-Mobile proyecta capacidades del dominio compartido y no crea un nuevo Bounded
-Context.
+La propuesta móvil proyecta capacidades del dominio compartido y no crea un
+nuevo Bounded Context.
 
 ## Relación entre los segmentos
 
@@ -25,8 +25,8 @@ operativo:
 
 ```mermaid
 flowchart LR
-    BUYER["MOB-SEG-03 — B2B Buyers<br/>Catálogo, pedido y seguimiento"]
-    FIELD["MOB-SEG-01 — Field & Warehouse Operations<br/>Ventas, almacén y despacho"]
+    BUYER["MOB-SEG-03 — B2B Buyers<br/>Recepción y discrepancias V1"]
+    FIELD["MOB-SEG-01 — Field & Warehouse Operations<br/>Recepción, preparación y despacho V1"]
     DRIVER["MOB-SEG-02 — Delivery Workforce<br/>Entrega y evidencia acotada"]
     API["Nexa API y dominio compartido<br/>Estado autorizado y trazabilidad"]
 
@@ -50,7 +50,7 @@ disputada por el comprador.
 
 | Segmento | Características demográficas y ocupacionales | Entorno de trabajo |
 | --- | --- | --- |
-| MOB-SEG-01 | Warehouse Operators y Dispatch Coordinators para V1; Sales Representatives se investigan como alcance diferido. Su nivel de decisión varía entre tareas operativas, coordinación y excepciones autorizadas. | Almacén, cámara de frío, staging, punto de despacho y, sólo para el alcance diferido, campo comercial. |
+| MOB-SEG-01 | Warehouse Operators y Dispatch Coordinators para V1; Sales Representatives se investigan como alcance diferido. Su nivel de decisión varía entre tareas operativas, coordinación y excepciones autorizadas. | Almacén, cámara de frío, zona de preparación, punto de despacho y, sólo para el alcance diferido, campo comercial. |
 | MOB-SEG-02 | Conductores y operadores de entrega responsables de trasladar pedidos, coordinar intentos, registrar incidencias y obtener evidencia de recepción. | Vehículos de reparto, rutas urbanas y establecimientos compradores; la conectividad y seguridad se deben observar en contexto. |
 | MOB-SEG-03 | Dueños de negocio, encargados de compras, administradores de local, responsables de reposición y compradores B2B autorizados. | Local comercial, almacén del comprador, oficina o celular utilizado para recepción y coordinación. |
 
@@ -58,26 +58,18 @@ La edad, ubicación, frecuencia de uso, accesibilidad, conectividad y experienci
 digital de cada segmento deberán completarse con investigación primaria. No se
 crearán personas validadas a partir de supuestos.
 
-## Sustento histórico del dominio
+## Sustento documental para la investigación
 
-| Fuente histórica | Dato relevante | Uso responsable en este informe |
+| Fuente | Aporte relevante | Uso responsable en este informe |
 | --- | --- | --- |
-| Lucky-Xplora (2022) | Alrededor del 83% de las bodegas del canal tradicional se ubicaba en un nivel principiante de madurez digital y cerca del 28% utilizaba alguna aplicación para gestionar tareas del negocio. | Justifica investigar experiencias de bajo esfuerzo para compradores B2B; no representa una medición actual de adopción de Buyer Mobile. |
-| Bravo De la Cruz et al. (2025) | El estudio citado reporta 64 rupturas de cadena de frío en el periodo analizado: 14 por congelación y 50 por sobrecalentamiento. | Justifica investigar registro, trazabilidad y disposición de evidencia térmica; no prueba que todos los tenants tengan el mismo riesgo. |
+| GS1 (n.d.) | Relaciona Critical Tracking Events y Key Data Elements para estudiar quién, qué, dónde, cuándo y por qué en la trazabilidad. | Orienta preguntas sobre custodia y traspasos; no prueba necesidades ni aceptación de Nexa. |
+| World Health Organization (2022) | Documenta un procedimiento para mapear la temperatura de equipos y áreas de almacenamiento de cadena de frío. | Orienta la investigación sobre evidencia térmica; no transfiere umbrales ni reglas de aceptación al producto. |
+| De Lombaert et al. (2024) | Estudia la exigencia física del order picking mediante un experimento de laboratorio a gran escala. | Orienta preguntas sobre carga, altura, peso, cantidad e interacción con el dispositivo; no representa medición de usuarios Nexa. |
 
-El informe Web anterior ofrece evidencia útil para justificar por qué estos
-segmentos merecen investigación, pero no prueba por sí solo las necesidades
-móviles. Lucky-Xplora (2022) reporta una madurez digital principalmente
-incipiente en el canal tradicional y un uso limitado de aplicaciones para
-gestionar tareas del negocio. Esta evidencia respalda explorar experiencias de
-bajo esfuerzo para compradores B2B, sin afirmar una tasa universal de adopción.
-
-La evidencia sobre cadena de frío también justifica investigar al personal de
-almacén, despacho y entrega. Bravo De la Cruz et al. (2025) documentan
-incidentes recurrentes de desviación térmica en el contexto estudiado. Para
-Nexa, esto se traduce en una hipótesis sobre registro manual, trazabilidad y
-disposición de productos; no autoriza a afirmar que todos los segmentos sufren
-el mismo nivel de riesgo ni que exista telemetría IoT implementada.
+Estas fuentes justifican investigar trazabilidad, conservación y condiciones de
+trabajo en los tres segmentos. La segmentación, sus necesidades y sus
+indicadores siguen siendo propuestas hasta contar con entrevistas, pruebas y
+otra evidencia primaria del proyecto.
 
 ## Necesidades y valor esperado por segmento
 

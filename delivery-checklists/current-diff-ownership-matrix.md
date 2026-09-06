@@ -12,8 +12,8 @@ authorization.
 | Snapshot | Handoff snapshot 2026-09-02; branch `reconcile/report-integration-20260902` |
 | Base | `3edeb196800a72a30299987a661e791c8f8fb50d` (historical handoff comparison base) |
 | Recovery copy | `/tmp/nexa-mobile-report-resume.PJofE0/` |
-| Staging | Clean after reconciliation merge; branch published; PR pending |
-| Current worktree | Clean after the Markdown lint checkpoint; no current uncommitted or untracked paths; this matrix preserves the pre-reconciliation inventory and records the supplemental style-only paths |
+| Staging | 94 exact paths prepared; branch published; commit and PR pending the Verified signature gate |
+| Current worktree | Authorized report rework and export/validation tooling are listed under Unit I; cached diff/checks are clean, with no commit until the Verified signature preflight is assured |
 | Commit rule | One coherent unit; no `Co-authored-by`; current attribution limited to Joaquín/Diego |
 
 ## Unit A — Report governance / front matter
@@ -50,6 +50,7 @@ Exact files:
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.2-assumptions.md`
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.3-hypothesis-statements.md`
 - `report/01-presentation/1.1-startup-profile/1.1.2-team-member-profiles.md`
+- `report/assets/chapter-1/startup-profile/sebastian-pinedo-sanchez.png`
 - `report/01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.4-lean-ux-canvas.md`
 - `report/00-front-matter/00-cover.md`
 - `report/00-front-matter/01-version-history.md`
@@ -73,6 +74,7 @@ Exact files:
 - `report/assets/annexes/.gitkeep`
 - `report/assets/asset-index.md`
 - `report/assets/front-matter/.gitkeep`
+- `report/assets/front-matter/upc-logo.png`
 
 ## Unit B — Research / Needfinding
 
@@ -95,6 +97,7 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.2-interview-records.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.3-interview-analysis.md`
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.5-big-picture-eventstorming.md`
+- `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.1-user-personas.md`
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md`
 - `delivery-checklists/legacy-reuse-ledger.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md`
@@ -111,14 +114,15 @@ Exact files:
 | Joaquín / `JoaquinBV511` | Diego; team review | `docs(requirements): align mobile v1 academic backlog` |
 
 - Canonical / academic sources: Blueprint Mobile V1 projection; prompt canónico; rúbrica §2.4.
-- Rubric requirement: 28 User Stories, 112 scenarios, Acceptance Criteria, Impact Mapping y Product Backlog.
+- Rubric requirement: 73 User Stories, 256 source scenarios plus 3 faithfully reconciled Gherkin scenarios for MOB-US-073, Acceptance Criteria, Impact Mapping y Product Backlog; V1 remains 28 stories.
 - Story IDs affected: MOB-US-001, 002, 003, 011–017, 019–034, 044, 047–049.
-- Owner must explain: Cada historia completa, sus cuatro escenarios, prioridad, Epic, BC, Sprint, dependencias y límite de evidencia.
+- Owner must explain: Cada historia completa, sus criterios Gherkin (cuatro escenarios en las historias fuente y tres escenarios reconciliados en MOB-US-073), prioridad, Epic, BC, Sprint, dependencias y límite de evidencia.
 - Status: `CURRENT INTEGRATION APPROVED — JOAQUÍN AUTHORIZED`; Gino remains
   candidate for a future Tactical DDD/UML/DB workstream after personal review.
 
 Exact files:
 
+- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/section-overview.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.0-to-be-scenario-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md`
@@ -296,13 +300,13 @@ Exact files:
 
 | Owner | Reviewers | Candidate |
 | :--- | :--- | :--- |
-| Joaquín for report validators; Diego for technical validators | Team review | `chore(report): add reproducible report validation gates` / `chore(architecture): add technical evidence validation gates` |
+| Joaquín for report validators and export pipeline; Diego for technical validators | Team review | `docs(report): complete academic reconciliation and rubric alignment` |
 
 - Canonical / academic sources: Report structure and canonical source fingerprints; prompt canónico; rubric validation gates.
 - Rubric requirement: Reproducible Markdown, link, structure, transcription and contract checks.
 - Story IDs affected: No direct story ownership; validators cover V1 projection.
 - Owner must explain: Cobertura, límites y resultados exactos de cada script; ausencia de atribución interna en contenido académico.
-- Status: `CURRENT INTEGRATION APPROVED — SPLIT JOAQUÍN/DIEGO BY SCRIPT SCOPE`.
+- Status: `TECHNICAL VALIDATION PASSED — VERIFIED COMMIT GATE PENDING`.
 
 Exact files:
 
@@ -312,10 +316,16 @@ Exact files:
 - `scripts/verify-mobile-v1-api-register.py`
 - `scripts/verify-mobile-v1-review-register.py`
 - `scripts/verify-mobile-v1-transcription.py`
+- `scripts/generate-mobile-backlog-report.py`
+- `scripts/verify-mobile-backlog.py`
 - `scripts/verify-diff-ownership-matrix.py`
 - `scripts/verify-bibliography-citations.py`
 - `scripts/verify-report-structure.sh`
 - `scripts/verify-mobile-v1-semantics.py`
+- `scripts/export-report-pdf.sh`
+- `scripts/report-pdf-filter.lua`
+- `delivery-checklists/report-export.md`
+- `.markdownlint-cli2.jsonc`
 
 ## Unassigned paths
 

@@ -1,47 +1,34 @@
 <!-- markdownlint-disable MD041 MD036 -->
 
-\begingroup
-\thispagestyle{empty}
-\centering
-\vspace*{0.08in}
+<div align="center">
 
-![Logotipo UPC](../assets/front-matter/upc-logo.png){width=0.82in}\hspace{0pt}
+<img src="../assets/front-matter/upc-logo.png" alt="Logotipo UPC" width="118">
 
-\vspace{0.08in}
+# Universidad Peruana de Ciencias Aplicadas
 
-**Universidad Peruana de Ciencias Aplicadas**
-
-**Carrera de Ingeniería de Software**
-
-\vspace{0.10in}
+## Carrera de Ingeniería de Software
 
 **1ACC0238**
 
 **Aplicaciones para Dispositivos Móviles**
 
-NRC
+NRC **4949**
 
-**4949**
+## Informe del Trabajo Final
 
-\vspace{0.08in}
+**Docente**
 
-**Informe del Trabajo Final**
+Pendiente de confirmación
 
-Docente
+**Equipo**
 
-**Pendiente de confirmación**
+nexa-team
 
-Equipo
+**Proyecto**
 
-**nexa-team**
+Nexa Suite
 
-Proyecto
-
-**Nexa Suite**
-
-\vspace{0.04in}
-
-**Integrantes**
+### Integrantes
 
 | Código | Apellidos y Nombres |
 | :---: | :--- |
@@ -51,10 +38,8 @@ Proyecto
 | U20241A054 | Verde Bueno, Joaquín |
 | U202323040 | Yucra Sandoval, Diego |
 
-\vspace{0.04in}
-
 **Período académico 202620 / 2026-02**
 
 **Septiembre 2026**
 
-\endgroup
+</div>

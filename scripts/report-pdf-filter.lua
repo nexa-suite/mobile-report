@@ -57,6 +57,42 @@ local function break_long_code(text)
   )
 end
 
+local function html_image_source(text)
+  return text:match('src="([^"]+)"') or text:match("src='([^']+)'")
+end
+
+-- Keep the Markdown source portable while preserving the institutional cover
+-- image in the LaTeX PDF writer.
+function RawInline(element)
+  if element.format ~= "html" then
+    return element
+  end
+  local source = html_image_source(element.text)
+  if source and source:match("upc%-logo%.png$") then
+    local path = source:gsub("^%.%./", "")
+    path = path:gsub("^assets/", "report/assets/")
+    return pandoc.RawInline(
+      "tex",
+      "\\includegraphics[width=0.82in]{" .. path .. "}"
+    )
+  end
+  return element
+end
+
+-- Pandoc's LaTeX writer ignores raw HTML layout attributes. Translate only
+-- the portable cover wrapper into a PDF-only center environment.
+function Div(element)
+  if element.attributes.align == "center" then
+    local centered = { pandoc.RawBlock("tex", "\\begin{center}") }
+    for _, block in ipairs(element.content) do
+      centered[#centered + 1] = block
+    end
+    centered[#centered + 1] = pandoc.RawBlock("tex", "\\end{center}")
+    return centered
+  end
+  return element
+end
+
 function Str(element)
   element.text = replace_export_symbols(element.text)
   local broken_text = break_long_code(element.text)

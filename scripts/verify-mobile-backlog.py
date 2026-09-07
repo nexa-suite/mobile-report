@@ -25,6 +25,33 @@ EXPECTED_SPRINTS = {"S1", "S2", "S3", "S4", "Future"}
 EXPECTED_TECHNICAL = {f"TS-MOB-{number:03d}" for number in range(1, 13)}
 EXPECTED_SPIKES = {f"SPIKE-{number:03d}" for number in range(1, 7)}
 EXPECTED_LANDING = {f"LAND-US-{number:03d}" for number in range(1, 7)}
+EXPECTED_BACKLOG_ORDER = [
+    "MOB-US-001", "MOB-US-002", "MOB-US-003",
+    "LAND-US-001", "LAND-US-002", "LAND-US-003", "LAND-US-004",
+    "LAND-US-005", "LAND-US-006", "TS-MOB-001", "SPIKE-002", "TS-MOB-010",
+    "MOB-US-011", "MOB-US-012", "MOB-US-013", "MOB-US-014",
+    "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019",
+    "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-020",
+    "MOB-US-021", "MOB-US-025", "MOB-US-026", "MOB-US-027",
+    "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033",
+    "MOB-US-034", "MOB-US-044", "MOB-US-047", "MOB-US-048",
+    "MOB-US-049", "TS-MOB-005", "TS-MOB-006", "TS-MOB-007",
+    "TS-MOB-008", "MOB-US-004", "MOB-US-005", "MOB-US-006",
+    "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010",
+    "MOB-US-018", "MOB-US-030", "MOB-US-035", "MOB-US-050",
+    "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-057",
+    "MOB-US-058", "MOB-US-061", "MOB-US-062", "MOB-US-063",
+    "MOB-US-064", "MOB-US-065", "MOB-US-036", "MOB-US-037",
+    "MOB-US-038", "MOB-US-040", "MOB-US-042", "MOB-US-043",
+    "MOB-US-046", "MOB-US-039", "MOB-US-041", "TS-MOB-002",
+    "TS-MOB-003", "TS-MOB-004", "TS-MOB-009", "TS-MOB-011",
+    "TS-MOB-012", "SPIKE-001", "SPIKE-003", "SPIKE-004",
+    "SPIKE-005", "SPIKE-006", "MOB-US-045", "MOB-US-067",
+    "MOB-US-068", "MOB-US-069", "MOB-US-070", "MOB-US-071",
+    "MOB-US-072", "MOB-US-054", "MOB-US-055", "MOB-US-056",
+    "MOB-US-059", "MOB-US-060", "MOB-US-066", "MOB-US-029",
+    "MOB-US-073",
+]
 RESTRICTED_ACADEMIC_TOKENS = (
     "PROPOSED",
     "PARTIAL",
@@ -145,6 +172,9 @@ def validate() -> list[str]:
     actual_backlog_ids = {row[1] for row in rows}
     if actual_backlog_ids != expected_backlog_ids:
         failures.append("Product Backlog ID union differs from 73 Mobile + 6 Landing + 12 Technical + 6 Spike")
+    actual_backlog_order = [row[1] for row in rows]
+    if actual_backlog_order != EXPECTED_BACKLOG_ORDER:
+        failures.append("Product Backlog order is not the approved global business-value sequence")
     for row in rows:
         if row[3] not in {"1", "2", "3", "5", "8"}:
             failures.append(f"{row[1]} has invalid story points: {row[3]}")

@@ -12,6 +12,7 @@ ownership_matrix_validator="$repo_root/scripts/verify-diff-ownership-matrix.py"
 bibliography_citations_validator="$repo_root/scripts/verify-bibliography-citations.py"
 semantic_validator="$repo_root/scripts/verify-mobile-v1-semantics.py"
 mobile_backlog_validator="$repo_root/scripts/verify-mobile-backlog.py"
+rubric_template_validator="$repo_root/scripts/verify-mobile-v1-rubric-template.py"
 
 [[ -f "$stories" ]] || { echo "missing User Stories file: $stories" >&2; exit 1; }
 [[ -f "$transcription_validator" ]] || { echo "missing Mobile V1 transcription validator: $transcription_validator" >&2; exit 1; }
@@ -21,6 +22,7 @@ mobile_backlog_validator="$repo_root/scripts/verify-mobile-backlog.py"
 [[ -f "$bibliography_citations_validator" ]] || { echo "missing bibliography-citations validator: $bibliography_citations_validator" >&2; exit 1; }
 [[ -f "$semantic_validator" ]] || { echo "missing Mobile V1 semantic validator: $semantic_validator" >&2; exit 1; }
 [[ -f "$mobile_backlog_validator" ]] || { echo "missing complete Mobile backlog validator: $mobile_backlog_validator" >&2; exit 1; }
+[[ -f "$rubric_template_validator" ]] || { echo "missing Mobile V1 rubric-template validator: $rubric_template_validator" >&2; exit 1; }
 
 bash "$canonical_sources_validator"
 python3 "$ownership_matrix_validator"
@@ -29,6 +31,7 @@ python3 "$review_register_validator"
 python3 "$bibliography_citations_validator"
 python3 "$semantic_validator"
 python3 "$mobile_backlog_validator"
+python3 "$rubric_template_validator"
 
 headings=$(rg -c '^### MOB-US-' "$stories")
 summary_rows=$(awk -F'|' '/^\| [0-9]+ \| MOB-US-/{c++} END{print c+0}' "$stories")

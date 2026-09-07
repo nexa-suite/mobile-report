@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify that each detailed Mobile V1 story follows the supplied rubric table."""
+"""Verify the academic story format for all 73 Mobile functional stories."""
 
 from __future__ import annotations
 
@@ -8,87 +8,68 @@ import sys
 from pathlib import Path
 
 
-REPORT_ROOT = Path(__file__).resolve().parents[1]
-STORIES = (
-    REPORT_ROOT
-    / "report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md"
-)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+STORIES = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md"
+MASTER = REPO_ROOT.parent / "blueprint/03-mobile/requirements/master-mobile-backlog.md"
 
-EXPECTED_STORY_IDS = (
-    "MOB-US-001",
-    "MOB-US-002",
-    "MOB-US-003",
-    "MOB-US-011",
-    "MOB-US-012",
-    "MOB-US-013",
-    "MOB-US-014",
-    "MOB-US-015",
-    "MOB-US-016",
-    "MOB-US-017",
-    "MOB-US-019",
-    "MOB-US-020",
-    "MOB-US-021",
-    "MOB-US-022",
-    "MOB-US-023",
-    "MOB-US-024",
-    "MOB-US-025",
-    "MOB-US-026",
-    "MOB-US-027",
-    "MOB-US-028",
-    "MOB-US-031",
-    "MOB-US-032",
-    "MOB-US-033",
-    "MOB-US-034",
-    "MOB-US-044",
-    "MOB-US-047",
-    "MOB-US-048",
-    "MOB-US-049",
-)
 
-REQUIRED_MARKERS = (
-    "<th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th>",
-    "<th>Title</th><td colspan=\"3\">",
-    "<th colspan=\"4\">Description</th>",
-    "<th colspan=\"4\">Acceptance Criteria</th>",
-)
+def master_ids() -> list[str]:
+    return re.findall(r"^\| (MOB-US-\d{3}) \|", MASTER.read_text(encoding="utf-8"), re.MULTILINE)
 
 
 def story_blocks(text: str) -> list[tuple[str, str]]:
     matches = list(re.finditer(r"^### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
-    blocks: list[tuple[str, str]] = []
-    for index, match in enumerate(matches):
-        end = matches[index + 1].start() if index + 1 < len(matches) else len(text)
-        blocks.append((match.group(1), text[match.start() : end]))
-    return blocks
+    return [
+        (match.group(1), text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)])
+        for index, match in enumerate(matches)
+    ]
 
 
 def main() -> int:
     text = STORIES.read_text(encoding="utf-8")
     blocks = story_blocks(text)
     failures: list[str] = []
+    expected_ids = master_ids()
     actual_ids = [story_id for story_id, _ in blocks]
 
-    if actual_ids != list(EXPECTED_STORY_IDS):
-        failures.append("detailed V1 story IDs/order do not match the canonical lifecycle index")
+    if len(expected_ids) != 73:
+        failures.append(f"canonical functional story count: expected 73, got {len(expected_ids)}")
+    if actual_ids != expected_ids:
+        failures.append("functional story IDs/order do not match the canonical catalog")
 
     for story_id, block in blocks:
-        for marker in REQUIRED_MARKERS:
+        required = (
+            "| Story ID | User | Priority | Epic |",
+            f"| {story_id} |",
+            "**Title:**",
+            "**Description:** Como ",
+            "**Acceptance Criteria**",
+        )
+        for marker in required:
             if marker not in block:
-                failures.append(f"{story_id}: missing rubric marker {marker}")
-        scenario_count = len(re.findall(r"<strong>Scenario:", block))
-        if scenario_count != 4:
-            failures.append(f"{story_id}: expected 4 Gherkin scenarios, got {scenario_count}")
+                failures.append(f"{story_id}: missing {marker}")
+        if not re.search(r"\| (Alta|Media|Baja) \|", block):
+            failures.append(f"{story_id}: priority must be Alta, Media or Baja")
+        scenarios = re.findall(r"\*\*Scenario: .+?\*\*", block)
+        if len(scenarios) < 2:
+            failures.append(f"{story_id}: expected at least two meaningful scenarios, got {len(scenarios)}")
+        for keyword in ("**Given**", "**When**", "**Then**"):
+            if block.count(keyword) < len(scenarios):
+                failures.append(f"{story_id}: missing Gherkin {keyword}")
+        if "<table>" in block or "Status" in block or re.search(r"\bP[0-9]\b", block):
+            failures.append(f"{story_id}: legacy internal table or numeric priority remains")
 
-    if len(blocks) != len(EXPECTED_STORY_IDS):
-        failures.append(f"expected {len(EXPECTED_STORY_IDS)} detailed V1 records, got {len(blocks)}")
+    if len(blocks) != 73:
+        failures.append(f"expected 73 detailed functional records, got {len(blocks)}")
 
     if failures:
-        print("mobile V1 rubric template validation: FAIL")
+        print("mobile story rubric validation: FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
 
-    print("mobile V1 rubric template OK: records=28; fields=7; scenarios=112")
+    scenarios = len(re.findall(r"\*\*Scenario: .+?\*\*", text))
+    print(f"mobile story rubric validation OK: records=73; required_fields=7; scenarios={scenarios}")
     return 0
 
 

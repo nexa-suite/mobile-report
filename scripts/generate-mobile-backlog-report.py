@@ -1,22 +1,21 @@
 #!/usr/bin/env python3
-"""Generate the academic Mobile story section from the live Product registry.
+"""Generate the professor-facing Chapter 2.4 artifacts from live Mobile sources.
 
 The lifecycle index is read from master-mobile-backlog.md and the story body
-and acceptance criteria are read from mobile-v1-catalog.md. Spanish text is the
-report presentation layer; Product IDs, English titles and Gherkin keywords
-remain stable.
+and acceptance criteria are read from mobile-v1-catalog.md. Canonical IDs and
+Gherkin keywords remain stable while the report narrative is presented in
+Spanish.
 """
 
 from __future__ import annotations
 
-import html
 import re
 from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[2]
-BLUEPRINT = ROOT / "blueprint/03-mobile/requirements"
-REPORT = ROOT / "report"
+ROOT = Path(__file__).resolve().parents[1]
+BLUEPRINT = ROOT.parent / "blueprint/03-mobile/requirements"
+REPORT = ROOT
 MASTER = BLUEPRINT / "master-mobile-backlog.md"
 CATALOG = BLUEPRINT / "mobile-v1-catalog.md"
 USER_STORIES = (
@@ -74,19 +73,245 @@ def parse_catalog() -> dict[str, dict[str, object]]:
 
 
 EPICS: dict[str, tuple[str, str, list[str]]] = {
-    "MOBILE-EPIC-01": ("Safe Access & Work Context", "Permitir que cada persona retorne al trabajo autorizado dentro de la empresa y el ámbito correcto.", ["MOB-US-001", "MOB-US-002", "MOB-US-003"]),
-    "MOBILE-EPIC-02": ("Warehouse Receiving, Identification & Picking", "Recibir, identificar y preparar stock conservando datos seguros de lote y condición.", ["MOB-US-011", "MOB-US-012", "MOB-US-013", "MOB-US-014", "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019"]),
-    "MOBILE-EPIC-03": ("Dispatch Preparation & Handoff", "Preparar y liberar una entrega con evidencia clara de bienes y responsabilidad explícita.", ["MOB-US-020", "MOB-US-021", "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-025"]),
-    "MOBILE-EPIC-04": ("Driver Delivery Execution & Proof", "Ejecutar una entrega asignada y conservar su resultado y prueba con atribución.", ["MOB-US-026", "MOB-US-027", "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033", "MOB-US-034"]),
-    "MOBILE-EPIC-05": ("Delivery Handoff, Buyer Receipt & Critical Updates", "Verificar el handoff previsto, registrar el receipt y advertir cambios críticos.", ["MOB-US-044", "MOB-US-047", "MOB-US-048", "MOB-US-049"]),
-    "MOBILE-EPIC-06": ("Commercial & Operational Mobile Convenience", "Preparar y seguir trabajo operativo, comercial y financiero con información autorizada.", ["MOB-US-004", "MOB-US-005", "MOB-US-006", "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010", "MOB-US-036", "MOB-US-037", "MOB-US-038", "MOB-US-039", "MOB-US-040", "MOB-US-041", "MOB-US-042", "MOB-US-043"]),
-    "MOBILE-EPIC-07": ("Advanced Field Mobility & Offline Operations", "Extender el trabajo de campo sólo cuando se acepten las reglas de ubicación, contacto y recuperación.", ["MOB-US-018", "MOB-US-029", "MOB-US-030", "MOB-US-035", "MOB-US-045", "MOB-US-046"]),
-    "MOBILE-EPIC-08": ("Warehouse Transfer & Inventory Accuracy", "Resolver transferencias, conteos, disposiciones y resultados de exactitud del almacén.", ["MOB-US-050", "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-054", "MOB-US-055", "MOB-US-056"]),
-    "MOBILE-EPIC-09": ("Dispatch Exception & Delivery Coordination", "Recuperar la coordinación de dispatch y delivery preservando responsabilidad y evidencia.", ["MOB-US-057", "MOB-US-058", "MOB-US-059", "MOB-US-060", "MOB-US-061", "MOB-US-062", "MOB-US-063", "MOB-US-064", "MOB-US-065", "MOB-US-066"]),
-    "MOBILE-EPIC-10": ("Buyer Delivery Continuity", "Ayudar al buyer a preparar, comprender y evidenciar la continuidad de la entrega y su línea de tiempo.", ["MOB-US-067", "MOB-US-068", "MOB-US-069"]),
-    "MOBILE-EPIC-11": ("Mobile Commercial & Financial Follow-through", "Llevar documentos, evidencia de payment y seguimiento de visitas de customer con autorización verificable.", ["MOB-US-070", "MOB-US-071", "MOB-US-072"]),
-    "MOBILE-EPIC-12": ("Future Intelligent Field Operations", "Explorar asistencia controlada a partir de observaciones más ricas del almacén.", ["MOB-US-073"]),
+    "MOBILE-EPIC-01": ("Acceso seguro y contexto de trabajo", "Permitir que cada persona retome el trabajo autorizado dentro de la empresa y el ámbito correcto.", ["MOB-US-001", "MOB-US-002", "MOB-US-003"]),
+    "MOBILE-EPIC-02": ("Recepción, identificación y preparación de almacén", "Recibir, identificar y preparar stock conservando datos seguros de lote y condición.", ["MOB-US-011", "MOB-US-012", "MOB-US-013", "MOB-US-014", "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019"]),
+    "MOBILE-EPIC-03": ("Preparación de despacho y handoff", "Preparar y liberar una entrega con evidencia clara de bienes y responsabilidad explícita.", ["MOB-US-020", "MOB-US-021", "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-025"]),
+    "MOBILE-EPIC-04": ("Ejecución de entrega y prueba", "Ejecutar una entrega asignada y conservar su resultado y prueba con atribución.", ["MOB-US-026", "MOB-US-027", "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033", "MOB-US-034"]),
+    "MOBILE-EPIC-05": ("Handoff de entrega, recepción del comprador y actualizaciones críticas", "Verificar el handoff previsto, registrar la recepción del comprador y comunicar cambios críticos.", ["MOB-US-044", "MOB-US-047", "MOB-US-048", "MOB-US-049"]),
+    "MOBILE-EPIC-06": ("Conveniencia comercial y operativa móvil", "Preparar y seguir trabajo operativo, comercial y financiero con información autorizada.", ["MOB-US-004", "MOB-US-005", "MOB-US-006", "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010", "MOB-US-036", "MOB-US-037", "MOB-US-038", "MOB-US-039", "MOB-US-040", "MOB-US-041", "MOB-US-042", "MOB-US-043"]),
+    "MOBILE-EPIC-07": ("Movilidad avanzada de campo y operación offline", "Extender el trabajo de campo sólo cuando se acepten reglas explícitas de ubicación, contacto y recuperación.", ["MOB-US-018", "MOB-US-029", "MOB-US-030", "MOB-US-035", "MOB-US-045", "MOB-US-046"]),
+    "MOBILE-EPIC-08": ("Transferencia de almacén y exactitud de inventario", "Resolver transferencias, conteos, disposiciones y resultados de exactitud del almacén.", ["MOB-US-050", "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-054", "MOB-US-055", "MOB-US-056"]),
+    "MOBILE-EPIC-09": ("Excepciones de despacho y coordinación de entrega", "Resolver excepciones de despacho y entrega preservando responsabilidad y evidencia.", ["MOB-US-057", "MOB-US-058", "MOB-US-059", "MOB-US-060", "MOB-US-061", "MOB-US-062", "MOB-US-063", "MOB-US-064", "MOB-US-065", "MOB-US-066"]),
+    "MOBILE-EPIC-10": ("Continuidad de entrega para el comprador", "Ayudar al comprador a preparar, comprender y evidenciar la continuidad de la entrega y su línea de tiempo.", ["MOB-US-067", "MOB-US-068", "MOB-US-069"]),
+    "MOBILE-EPIC-11": ("Seguimiento comercial y financiero", "Llevar documentos, evidencia de pago y seguimiento de visitas de cliente con autorización verificable.", ["MOB-US-070", "MOB-US-071", "MOB-US-072"]),
+    "MOBILE-EPIC-12": ("Operaciones de campo inteligentes futuras", "Explorar asistencia controlada a partir de observaciones más ricas del almacén.", ["MOB-US-073"]),
 }
+
+
+TITLE_ES = {
+    "MOB-US-001": "Continuar el trabajo autorizado después de volver a Nexa",
+    "MOB-US-002": "Trabajar en la empresa y contexto de negocio previstos",
+    "MOB-US-003": "Ver sólo el trabajo permitido para el rol",
+    "MOB-US-004": "Revisar el trabajo operativo de un vistazo",
+    "MOB-US-005": "Identificar excepciones operativas críticas",
+    "MOB-US-006": "Encontrar un cliente y su relación con el comprador",
+    "MOB-US-007": "Revisar productos, precios y disponibilidad",
+    "MOB-US-008": "Preparar una solicitud de cliente",
+    "MOB-US-009": "Enviar una Purchase Request desde el trabajo de campo",
+    "MOB-US-010": "Seguir compromisos del cliente y crédito",
+    "MOB-US-011": "Identificar un producto mediante el código del paquete o etiqueta",
+    "MOB-US-012": "Buscar manualmente un producto cuando no hay escaneo",
+    "MOB-US-013": "Registrar el stock recién recibido",
+    "MOB-US-014": "Registrar lote, vencimiento y cantidad reales",
+    "MOB-US-015": "Comprobar lote y condición del stock antes del trabajo físico",
+    "MOB-US-016": "Preparar el lote y cantidad correctos para el trabajo",
+    "MOB-US-017": "Reportar una discrepancia física o disposición autorizada de stock",
+    "MOB-US-018": "Mover stock entre ubicaciones del almacén",
+    "MOB-US-019": "Registrar evidencia de temperatura para stock relevante",
+    "MOB-US-020": "Ver entregas listas para preparar el despacho",
+    "MOB-US-021": "Asignar un conductor a una entrega lista",
+    "MOB-US-022": "Comprobar bienes salientes contra la entrega preparada",
+    "MOB-US-023": "Conservar evidencia del handoff entre almacén y conductor",
+    "MOB-US-024": "Identificar de forma confiable un handoff de despacho",
+    "MOB-US-025": "Confirmar que los bienes dejaron el control del almacén",
+    "MOB-US-026": "Ver entregas asignadas al conductor",
+    "MOB-US-027": "Iniciar una entrega asignada",
+    "MOB-US-028": "Abrir indicaciones hacia el destino autorizado de la entrega",
+    "MOB-US-029": "Compartir la ubicación durante una entrega activa",
+    "MOB-US-030": "Contactar al comprador durante la entrega",
+    "MOB-US-031": "Registrar el resultado del intento de entrega",
+    "MOB-US-032": "Registrar una entrega parcial o rechazada y lo que queda",
+    "MOB-US-033": "Conservar el Proof of Delivery",
+    "MOB-US-034": "Presentar un código acotado de handoff de entrega",
+    "MOB-US-035": "Continuar la evidencia de entrega después de perder conexión",
+    "MOB-US-036": "Explorar productos del proveedor",
+    "MOB-US-037": "Revisar precio y disponibilidad del producto",
+    "MOB-US-038": "Preparar una Purchase Request",
+    "MOB-US-039": "Repetir una compra anterior",
+    "MOB-US-040": "Enviar una solicitud o realizar un Direct Order",
+    "MOB-US-041": "Responder a un cambio material",
+    "MOB-US-042": "Seguir solicitudes y pedidos",
+    "MOB-US-043": "Revisar estado de crédito y pago",
+    "MOB-US-044": "Saber cuándo una entrega requiere atención",
+    "MOB-US-045": "Ver un conductor activo en un mapa",
+    "MOB-US-046": "Contactar al conductor",
+    "MOB-US-047": "Verificar una entrega mediante el código de handoff",
+    "MOB-US-048": "Confirmar las cantidades realmente recibidas",
+    "MOB-US-049": "Reportar una discrepancia sin borrar los hechos",
+    "MOB-US-050": "Gestionar una discrepancia de recepción con evidencia",
+    "MOB-US-051": "Retener o poner en cuarentena stock y resolverlo",
+    "MOB-US-052": "Confirmar la recepción en el destino de una transferencia interna",
+    "MOB-US-053": "Realizar un conteo cíclico y solicitar corrección de stock",
+    "MOB-US-054": "Solicitar sustitución de lote cuando FEFO no completa el trabajo",
+    "MOB-US-055": "Usar información ampliada de identidad de producto, paquete y almacenamiento",
+    "MOB-US-056": "Preparar un grupo de tareas de almacén",
+    "MOB-US-057": "Resolver una discrepancia de despacho antes del handoff",
+    "MOB-US-058": "Reasignar un conductor o reprogramar el despacho de forma segura",
+    "MOB-US-059": "Preparar cargas agrupadas y múltiples paradas",
+    "MOB-US-060": "Completar un handoff al transportista con responsabilidad trazable",
+    "MOB-US-061": "Registrar evidencia de temperatura en el despacho",
+    "MOB-US-062": "Señalar la llegada de una entrega activa",
+    "MOB-US-063": "Seguir instrucciones de entrega y datos de contacto autorizados",
+    "MOB-US-064": "Solicitar reprogramación de una entrega desde el campo",
+    "MOB-US-065": "Registrar un incidente de entrega con mayor detalle",
+    "MOB-US-066": "Recuperar una entrega activa mediante operación offline selectiva",
+    "MOB-US-067": "Proporcionar instrucciones de entrega y contacto alternativo para la recepción",
+    "MOB-US-068": "Revisar la línea de tiempo de la entrega y reconocer su finalización",
+    "MOB-US-069": "Adjuntar evidencia a una discrepancia de entrega",
+    "MOB-US-070": "Ver documentos de negocio vinculados a solicitud o pedido",
+    "MOB-US-071": "Reportar evidencia de pago y ver el resultado de revisión",
+    "MOB-US-072": "Trabajar con un cliente mediante una visita de campo autorizada",
+    "MOB-US-073": "Usar evidencia de automatización de almacén en un trabajo controlado",
+}
+
+
+ACTOR_ES = {
+    "Mobile User": "Usuario móvil",
+    "Business Operations Manager": "Responsable de Operaciones",
+    "Sales Representative": "Representante de Ventas",
+    "Warehouse Operator": "Operador de Almacén",
+    "Dispatch Coordinator": "Coordinador de Despacho",
+    "Driver or Delivery Operator": "Conductor u Operador de Entrega",
+    "Customer Buyer": "Comprador",
+    "Customer Buyer or Sales Representative": "Comprador o Representante de Ventas",
+}
+
+
+TEXT_REPLACEMENTS = (
+    ("Operations Mobile", "Nexa Operations Mobile"),
+    ("Buyer Mobile", "Nexa Buyer Mobile"),
+    ("Customer Buyer or Sales Representative", "Comprador o Representante de Ventas"),
+    ("Driver or Delivery Operator", "Conductor u Operador de Entrega"),
+    ("Business Operations Manager", "Responsable de Operaciones"),
+    ("Sales Representative", "Representante de Ventas"),
+    ("Warehouse Operator", "Operador de Almacén"),
+    ("Dispatch Coordinator", "Coordinador de Despacho"),
+    ("Customer Buyer", "Comprador"),
+    ("Mobile User", "Usuario móvil"),
+    ("no generic sync", "sin sincronización genérica"),
+    ("provider-neutral", "independiente del proveedor"),
+    ("server-side", "del servidor"),
+    ("last-write-wins", "última escritura gana"),
+    ("cold-chain", "cadena de frío"),
+    ("customer", "cliente"),
+    ("customers", "clientes"),
+    ("buyer", "comprador"),
+    ("buyers", "compradores"),
+    ("supplier", "proveedor"),
+    ("suppliers", "proveedores"),
+    ("representative", "representante"),
+    ("driver", "conductor"),
+    ("manager", "responsable"),
+    ("operator", "operador"),
+    ("coordinator", "coordinador"),
+    ("warehouse", "almacén"),
+    ("dispatch", "despacho"),
+    ("delivery", "entrega"),
+    ("request", "solicitud"),
+    ("requests", "solicitudes"),
+    ("submission", "envío"),
+    ("scanning", "escaneo"),
+    ("payment", "pago"),
+    ("policy", "política"),
+    ("order", "pedido"),
+    ("orders", "pedidos"),
+    ("completion", "finalización"),
+    ("status", "estado"),
+    ("source", "fuente"),
+    ("current", "actual"),
+    ("future", "futuro"),
+    ("feature", "capacidad"),
+    ("device", "dispositivo"),
+    ("provider", "proveedor"),
+    ("automation", "automatización"),
+    ("owner", "responsable"),
+    ("mobile", "móvil"),
+)
+
+
+def translate_text(text: str) -> str:
+    translated = text
+    for source, target in TEXT_REPLACEMENTS:
+        translated = re.sub(rf"\b{re.escape(source)}\b", target, translated, flags=re.IGNORECASE if source.islower() else 0)
+    translated = translated.replace("quiero", "deseo")
+    translated = translated.replace("el representative", "el representante")
+    translated = translated.replace("el buyer", "el comprador")
+    translated = translated.replace("el driver", "el conductor")
+    translated = translated.replace("el customer", "el cliente")
+    translated = translated.replace("la request", "la solicitud")
+    translated = translated.replace("una request", "una solicitud")
+    translated = translated.replace("un request", "una solicitud")
+    translated = re.sub(r"\bPurchase solicituds?\b", "Purchase Request", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bDirect pedido\b", "Direct Order", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bSales pedido\b", "Sales Order", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bentrega Attempt\b", "Delivery Attempt", translated)
+    translated = re.sub(r"\bProof of entrega\b", "Proof of Delivery", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bcomprador Receipt\b", "Buyer Receipt", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bconductor outcome\b", "Driver outcome", translated)
+    translated = re.sub(r"\balmacén-to-conductor\b", "entre almacén y conductor", translated)
+    translated = re.sub(r"\bdespacho handoff\b", "handoff de despacho", translated)
+    translated = re.sub(r"\buna envío\b", "un envío", translated)
+    translated = re.sub(r"\bel entrega\b", "la entrega", translated)
+    translated = re.sub(r"\bdel entrega\b", "de la entrega", translated)
+    translated = re.sub(r"\bal entrega\b", "a la entrega", translated)
+    translated = re.sub(r"\bcomprador receipt\b", "Buyer Receipt", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bentrega handoff\b", "handoff de entrega", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bcarrier handoff\b", "handoff al transportista", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bbusiness document\b", "documento de negocio", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\breceiving\b", "recepción", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\binbound\b", "de entrada", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bavailability\b", "disponibilidad", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bhold\b", "retención", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bquarantine\b", "cuarentena", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bstops\b", "paradas", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bstop\b", "parada", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\blocation\b", "ubicación", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bfallback\b", "alternativa", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bdraft\b", "borrador", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\brecipients\b", "destinatarios", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\brecipient\b", "destinatario", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\brefresh\b", "actualización", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\brefund\b", "reembolso", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\breservation\b", "reserva", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\btracking\b", "seguimiento", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"(?<!Buyer )\breceipt\b", "recepción", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bun entrega\b", "una entrega", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bel entrega\b", "la entrega", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bese entrega\b", "esa entrega", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\beste entrega\b", "esta entrega", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\buna pedido silenciosa\b", "un pedido silencioso", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\buna pedido\b", "un pedido", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bentrega correcto\b", "entrega correcta", translated, flags=re.IGNORECASE)
+    translated = re.sub(r"\bentrega y Attempt\b", "entrega y Delivery Attempt", translated)
+    return translated
+
+
+def actor_label(actor: str) -> str:
+    return ACTOR_ES.get(actor, translate_text(actor))
+
+
+def app_label(app: str) -> str:
+    return "; ".join(
+        "Nexa Operations Mobile" if value.strip() == "Operations Mobile" else
+        "Nexa Buyer Mobile" if value.strip() == "Buyer Mobile" else value.strip()
+        for value in app.split(";")
+    )
+
+
+def priority_label(priority: str) -> str:
+    labels = {"1": "Alta", "2": "Media", "3": "Baja"}
+    number = priority.strip()[-1:]
+    if number not in labels:
+        raise SystemExit(f"unsupported priority: {priority}")
+    return labels[number]
+
+
+def academic_scenarios(story_id: str) -> list[str]:
+    return [
+        translate_text(line)
+        for line in AC[story_id]
+        if not re.search(r"Postergación|deferred|fuera de V1", line, re.IGNORECASE)
+    ]
 
 
 BC_NAMES = {
@@ -101,6 +326,160 @@ BC_NAMES = {
     "BC-09": "Business Documents",
     "BC-10": "Notifications",
     "BC-11": "Business Traceability",
+}
+
+
+CAP_NAMES = {
+    "CAP-02": "Acceso y gobernanza de la fuerza de trabajo",
+    "CAP-03": "Cuentas de clientes y relaciones con compradores",
+    "CAP-04": "Catálogo y política comercial",
+    "CAP-05": "Compras y borradores del comprador",
+    "CAP-06": "Purchase Requests y Sales Orders",
+    "CAP-07": "Disponibilidad y reserva de inventario",
+    "CAP-08": "Recepción y operaciones de almacén",
+    "CAP-09": "Fulfillment, despacho y entrega",
+    "CAP-10": "Evidencia de cadena de frío y disposición",
+    "CAP-11": "Crédito y cuentas por cobrar",
+    "CAP-12": "Pagos y correcciones",
+    "CAP-13": "Documentos de negocio",
+    "CAP-14": "Notificaciones",
+    "CAP-15": "Trazabilidad de negocio",
+    "CAP-16": "Visibilidad operativa",
+}
+
+
+UNESTIMATED_POINTS = {
+    "MOB-US-029": "8",
+    "MOB-US-045": "8",
+    "MOB-US-054": "8",
+    "MOB-US-055": "5",
+    "MOB-US-056": "8",
+    "MOB-US-059": "8",
+    "MOB-US-060": "5",
+    "MOB-US-066": "8",
+    "MOB-US-072": "5",
+    "MOB-US-073": "8",
+}
+
+
+GLOBAL_BACKLOG_ORDER = [
+    "MOB-US-001", "MOB-US-002", "MOB-US-003",
+    "LAND-US-001", "LAND-US-002", "LAND-US-003", "LAND-US-004",
+    "LAND-US-005", "LAND-US-006", "TS-MOB-001", "SPIKE-002", "TS-MOB-010",
+    "MOB-US-011", "MOB-US-012", "MOB-US-013", "MOB-US-014",
+    "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019",
+    "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-020",
+    "MOB-US-021", "MOB-US-025", "MOB-US-026", "MOB-US-027",
+    "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033",
+    "MOB-US-034", "MOB-US-044", "MOB-US-047", "MOB-US-048",
+    "MOB-US-049", "TS-MOB-005", "TS-MOB-006", "TS-MOB-007",
+    "TS-MOB-008", "MOB-US-004", "MOB-US-005", "MOB-US-006",
+    "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010",
+    "MOB-US-018", "MOB-US-030", "MOB-US-035", "MOB-US-050",
+    "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-057",
+    "MOB-US-058", "MOB-US-061", "MOB-US-062", "MOB-US-063",
+    "MOB-US-064", "MOB-US-065", "MOB-US-036", "MOB-US-037",
+    "MOB-US-038", "MOB-US-040", "MOB-US-042", "MOB-US-043",
+    "MOB-US-046", "MOB-US-039", "MOB-US-041", "TS-MOB-002",
+    "TS-MOB-003", "TS-MOB-004", "TS-MOB-009", "TS-MOB-011",
+    "TS-MOB-012", "SPIKE-001", "SPIKE-003", "SPIKE-004",
+    "SPIKE-005", "SPIKE-006", "MOB-US-045", "MOB-US-067",
+    "MOB-US-068", "MOB-US-069", "MOB-US-070", "MOB-US-071",
+    "MOB-US-072", "MOB-US-054", "MOB-US-055", "MOB-US-056",
+    "MOB-US-059", "MOB-US-060", "MOB-US-066", "MOB-US-029",
+    "MOB-US-073",
+]
+
+
+S2_IDS = {
+    "MOB-US-004", "MOB-US-005", "MOB-US-006", "MOB-US-007",
+    "MOB-US-008", "MOB-US-009", "MOB-US-010", "MOB-US-018",
+    "MOB-US-030", "MOB-US-035", "MOB-US-050", "MOB-US-051",
+    "MOB-US-052", "MOB-US-053", "MOB-US-057", "MOB-US-058",
+    "MOB-US-061", "MOB-US-062", "MOB-US-063", "MOB-US-064",
+    "MOB-US-065",
+}
+
+
+S3_IDS = {
+    "MOB-US-036", "MOB-US-037", "MOB-US-038", "MOB-US-040",
+    "MOB-US-042", "MOB-US-043", "MOB-US-046",
+}
+
+
+S4_IDS = {
+    "MOB-US-039", "MOB-US-041", "MOB-US-067", "MOB-US-068",
+    "MOB-US-069", "MOB-US-070", "MOB-US-071",
+}
+
+
+LANDING_BACKLOG = [
+    ("LAND-US-001", "Comprender la propuesta B2B de cadena de frío de Nexa", "2", "S1"),
+    ("LAND-US-002", "Evaluar el ajuste con el perfil operativo", "3", "S1"),
+    ("LAND-US-003", "Revisar capacidades y límites del producto", "2", "S1"),
+    ("LAND-US-004", "Revisar precios, preguntas frecuentes e información legal", "2", "S1"),
+    ("LAND-US-005", "Iniciar el registro de la empresa y su Workspace", "3", "S1"),
+    ("LAND-US-006", "Contactar a Nexa o solicitar una demostración", "3", "S1"),
+]
+
+
+TECHNICAL_BACKLOG = [
+    ("TS-MOB-001", "Integrar contratos REST con autoridad del servidor", "5", "S1"),
+    ("TS-MOB-002", "Establecer una base Android Native con Kotlin", "5", "S2"),
+    ("TS-MOB-003", "Establecer una base Flutter con Dart para Android e iOS", "5", "S3"),
+    ("TS-MOB-004", "Establecer una base iOS Native con SwiftUI", "5", "S3"),
+    ("TS-MOB-005", "Proteger el estado local selectivo y no autoritativo", "5", "S2"),
+    ("TS-MOB-006", "Resolver reintentos, resultados inciertos e idempotencia", "5", "S2"),
+    ("TS-MOB-007", "Integrar cámara e identificadores con alternativa manual", "3", "S2"),
+    ("TS-MOB-008", "Abrir navegación externa con un límite de ubicación", "3", "S2"),
+    ("TS-MOB-009", "Integrar notificaciones y deep links con autorización", "3", "S3"),
+    ("TS-MOB-010", "Aplicar i18n y accesibilidad en las aplicaciones móviles", "3", "S1"),
+    ("TS-MOB-011", "Preparar validación técnica y observabilidad mínima", "3", "S4"),
+    ("TS-MOB-012", "Preparar evidencia de build, distribución y dispositivos", "3", "S4"),
+]
+
+
+SPIKE_BACKLOG = [
+    ("SPIKE-001", "Investigar una oportunidad de aprendizaje autónomo", "3", "S3"),
+    ("SPIKE-002", "Comparar bases compartidas y paridad funcional móvil", "5", "S1"),
+    ("SPIKE-003", "Investigar identificadores Barcode, QR y GS1", "3", "S2"),
+    ("SPIKE-004", "Investigar persistencia local y recuperación selectiva", "5", "S2"),
+    ("SPIKE-005", "Investigar notificaciones push y deep links", "3", "S3"),
+    ("SPIKE-006", "Investigar mapas, ubicación, privacidad, batería y alternativa", "3", "S4"),
+]
+
+
+SPIKE_SUMMARY = {
+    "SPIKE-001": (
+        "Determinar qué oportunidad de aprendizaje autónomo aporta valor al trabajo móvil",
+        "Matriz de oportunidades, fuentes, datos, privacidad, factibilidad y prueba acotada",
+        "Recomendación documentada y límites de uso definidos, sin afirmar resultados de producción",
+    ),
+    "SPIKE-002": (
+        "Determinar bases compartidas y estrategia de paridad funcional para Nexa Operations Mobile y Nexa Buyer Mobile",
+        "Matriz de flujos, seguridad, estado local, distribución y paridad entre Android Native/Kotlin, Flutter/Dart e iOS Native/SwiftUI",
+        "Trade-offs y límites documentados para las tres tecnologías aceptadas; Liquid Glass queda como consideración de presentación",
+    ),
+    "SPIKE-003": (
+        "Determinar el alcance de Barcode, QR, GS1 y la alternativa manual para identificar productos",
+        "Comparación de formatos, permisos, ambigüedad, expiración, reutilización y validación del servidor",
+        "Alcance de identificadores, límites de seguridad y preguntas abiertas documentados",
+    ),
+    "SPIKE-004": (
+        "Definir qué información puede conservarse localmente y cómo recuperarla de forma selectiva",
+        "Clasificación de datos, protección, reintentos, conflictos, secuencia de sincronización y prueba de recuperación",
+        "Límite offline seguro documentado, sin éxito de negocio autoritativo sin confirmación del servidor",
+    ),
+    "SPIKE-005": (
+        "Definir usos autorizados de notificaciones push y deep links",
+        "Matriz de evento y canal, permisos, ámbito de Tenant, expiración, reintento y navegación",
+        "Clases de notificación, límites de seguridad y relación con el estado de negocio documentados",
+    ),
+    "SPIKE-006": (
+        "Definir el uso móvil de mapas y ubicación respetando privacidad, batería y conectividad",
+        "Comparación de navegación externa, observaciones del dispositivo, permisos, consumo y alternativas",
+        "Límite mínimo documentado; el alcance inicial se mantiene en navegación externa autorizada",
+    ),
 }
 
 
@@ -144,7 +523,7 @@ DESCRIPTIONS: dict[str, str] = {
     "MOB-US-037": "Como Customer Buyer, quiero revisar el precio y disponibilidad del producto, para preparar una request futura con información actual del supplier.",
     "MOB-US-038": "Como Customer Buyer, quiero preparar una Purchase Request, para organizar una compra futura sin confirmarla falsamente.",
     "MOB-US-039": "Como Customer Buyer, quiero repetir una compra anterior, para preparar una nueva request más rápidamente en un flujo futuro.",
-    "MOB-US-040": "Como Customer Buyer, quiero enviar una request o realizar una direct order, para que mi vía de compromiso elegida sea explícita y autorizada.",
+    "MOB-US-040": "Como Customer Buyer, quiero enviar una request o realizar un Direct Order, para que mi vía de compromiso elegida sea explícita y autorizada.",
     "MOB-US-041": "Como Customer Buyer, quiero responder a un cambio material, para que mi compromiso futuro refleje una decisión explícita.",
     "MOB-US-042": "Como Customer Buyer, quiero seguir requests y orders, para comprender el progreso comercial autorizado.",
     "MOB-US-043": "Como Customer Buyer, quiero revisar el estado de crédito y payment, para comprender lo adeudado sin tratar la evidencia reportada como confirmación.",
@@ -598,72 +977,122 @@ def bc_label(bc_id: str) -> str:
     return f"{bc_id} — {BC_NAMES[bc_id]}"
 
 
-def render_scenario(line: str) -> str:
+def capability_label(capability_id: str) -> str:
+    return f"{capability_id} — {CAP_NAMES[capability_id]}"
+
+
+def academic_points(row: dict[str, str]) -> str:
+    points = row["Story Points"]
+    if points in {"1", "2", "3", "5", "8"}:
+        return points
+    try:
+        return UNESTIMATED_POINTS[row["ID"]]
+    except KeyError as error:
+        raise SystemExit(f"missing academic estimate for {row['ID']}") from error
+
+
+def planned_sprint(row: dict[str, str]) -> str:
+    if row["Target Release"] == "V1":
+        return row["Sprint Planned"]
+    if row["ID"] in S2_IDS:
+        return "S2"
+    if row["ID"] in S3_IDS:
+        return "S3"
+    if row["ID"] in S4_IDS:
+        return "S4"
+    return "Future"
+
+
+def relevant_bcs(row: dict[str, str]) -> str:
+    secondary = [code.strip() for code in row["Secondary BCs"].split(",") if code.strip()]
+    codes = list(dict.fromkeys([row["Primary BC"], *secondary]))
+    return ", ".join(bc_label(code) for code in codes)
+
+
+def markdown_cell(value: str) -> str:
+    return value.replace("|", "\\|").replace("\n", " ").strip()
+
+
+def render_scenario(line: str, number: int) -> str:
     match = re.fullmatch(r"Scenario: (.+?) — Given (.+?), When (.+?), Then (.+)", line)
     if not match:
         raise SystemExit(f"unrenderable translated scenario: {line}")
-    label, given, when, then = (html.escape(value) for value in match.groups())
-    return (
-        f"<p><strong>Scenario: {label}</strong></p>"
-        f"<p><strong>Given</strong> {given}</p>"
-        f"<p><strong>When</strong> {when}</p>"
-        f"<p><strong>Then</strong> {then}</p>"
+    label, given, when, then = (markdown_cell(value) for value in match.groups())
+    return "\n".join(
+        [
+            f"{number}. **Scenario: {label}**",
+            f"   - **Given** {given}",
+            f"   - **When** {when}",
+            f"   - **Then** {then}",
+        ]
     )
 
 
 def story_table(row: dict[str, str]) -> str:
     story_id = row["ID"]
     epic_id = row["Epic"]
-    translated = html.escape(DESCRIPTIONS[story_id])
-    criteria = "".join(render_scenario(line) for line in AC[story_id])
+    title = TITLE_ES[story_id]
+    translated = markdown_cell(translate_text(DESCRIPTIONS[story_id]))
+    criteria = "\n".join(
+        render_scenario(line, number)
+        for number, line in enumerate(academic_scenarios(story_id), start=1)
+    )
+    app = markdown_cell(app_label(row["Mobile App"]))
+    release = markdown_cell(row["Target Release"])
+    sprint = markdown_cell(planned_sprint(row))
     return "\n".join(
         [
-            f"### {story_id} — {row['Title']}",
+            f"### {story_id} — {title}",
             "",
-            "<table>",
-            "<thead>",
-            "<tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>",
-            "</thead>",
-            "<tbody>",
-            f"<tr><td>{story_id}</td><td>{html.escape(row['Actor'])}</td><td>{row['Priority']}</td><td>{html.escape(epic_label(epic_id))}</td></tr>",
-            f"<tr><th>Title</th><td colspan=\"3\">{html.escape(row['Title'])}</td></tr>",
-            "<tr><th colspan=\"4\">Description</th></tr>",
-            f"<tr><td colspan=\"4\">{translated}</td></tr>",
-            "<tr><th colspan=\"4\">Acceptance Criteria</th></tr>",
-            f"<tr><td colspan=\"4\">{criteria}</td></tr>",
-            "</tbody>",
-            "</table>",
+            "| Story ID | User | Priority | Epic |",
+            "| :--- | :--- | :--- | :--- |",
+            f"| {story_id} | {actor_label(row['Actor'])} | {priority_label(row['Priority'])} | {markdown_cell(epic_label(epic_id))} |",
+            "",
+            "| Product app | Story points | Target release | Planned Sprint |",
+            "| :--- | ---: | :--- | :--- |",
+            f"| {app} | {academic_points(row)} | {release} | {sprint} |",
+            "",
+            "| Owning Bounded Context | Relevant Bounded Contexts | Business capability |",
+            "| :--- | :--- | :--- |",
+            f"| {markdown_cell(bc_label(row['Primary BC']))} | {markdown_cell(relevant_bcs(row))} | {markdown_cell(capability_label(row['Capability']))} |",
+            "",
+            f"**Title:** {title}",
+            "",
+            f"**Description:** {translated}",
+            "",
+            "**Acceptance Criteria**",
+            "",
+            criteria,
             "",
         ]
     )
 
 
-def v1_summary(rows: list[dict[str, str]]) -> str:
-    v1 = [row for row in rows if row["Target Release"] == "V1"]
+def functional_index(rows: list[dict[str, str]]) -> str:
     output = [
-        "## Backlog summary",
+        "## Índice de historias funcionales",
         "",
-        "La proyección académica V1 contiene exactamente 28 historias. Su estado es "
-        "PLANNED y Product Acceptance permanece pendiente; la tabla no afirma "
-        "implementación, verificación ni aceptación.",
+        "El catálogo funcional contiene las 73 historias `MOB-US-001` a `MOB-US-073`. "
+        "Las 28 historias V1 se organizan en S1, S2 y S3 según la proyección de "
+        "producto; las demás historias se distribuyen en S2, S3, S4 o Future para "
+        "ordenar la investigación y el desarrollo posterior.",
         "",
-        "| Order | Story ID | Actor | Priority | Epic | Points | Sprint | Owning Bounded Context |",
-        "| ---: | :--- | :--- | :--- | :--- | ---: | :--- | :--- |",
+        "| # | Story ID | User | Priority | Epic | Release | Planned Sprint |",
+        "| ---: | :--- | :--- | :--- | :--- | :--- | :--- |",
     ]
-    for index, row in enumerate(v1, start=1):
+    for index, row in enumerate(rows, start=1):
         output.append(
-            f"| {index} | {row['ID']} | {row['Actor']} | {row['Priority']} | "
-            f"{epic_label(row['Epic'])} | {row['Story Points']} | {row['Sprint Planned']} | "
-            f"{bc_label(row['Primary BC'])} |"
+            f"| {index} | {row['ID']} | {actor_label(row['Actor'])} | "
+            f"{priority_label(row['Priority'])} | {epic_label(row['Epic'])} | "
+            f"{row['Target Release']} | {planned_sprint(row)} |"
         )
     output.extend(
         [
             "",
-            "Reglas de la proyección: la conectividad es online-first; el almacenamiento "
-            "local sólo conserva caché segura, borradores, evidencia temporal y metadatos "
-            "de reintento; la autoridad de negocio permanece en el servidor. La ubicación "
-            "V1 sólo abre navegación externa hacia el destino autorizado. V2, V3 y "
-            "V4/Future se documentan como roadmap y no como compromiso académico V1.",
+            "Reglas transversales: la conectividad es online-first; el almacenamiento local "
+            "sólo conserva caché segura, borradores, evidencia temporal y metadatos de "
+            "reintento; la autoridad de negocio permanece en el servidor. La ubicación "
+            "inicial sólo abre navegación externa hacia el destino autorizado.",
             "",
         ]
     )
@@ -672,15 +1101,22 @@ def v1_summary(rows: list[dict[str, str]]) -> str:
 
 def generate_user_stories(rows: list[dict[str, str]]) -> str:
     output = [
-        "# User Stories",
+        "# 2.4.1 User Stories",
         "",
-        "## Inventario de Epics",
+        "La especificación funcional conserva las 73 historias del catálogo móvil y "
+        "las expresa con roles naturales en español. Nexa Operations Mobile concentra "
+        "operaciones de negocio, ventas de campo, almacén, despacho y entrega; "
+        "Nexa Buyer Mobile cubre la paridad funcional de las capacidades aceptadas para "
+        "compradores, junto con capacidades móviles específicas. La paridad significa "
+        "equivalencia de capacidad de negocio, no copia de código, interfaz o defectos.",
         "",
-        "La solución móvil se organiza en doce Epics orientadas a resultados. Los "
-        "primeros cinco delimitan el alcance académico V1; los demás conservan la "
-        "proyección de producto V2, V3 y V4/Future.",
+        "Las dos aplicaciones de producto son `Nexa Operations Mobile` y `Nexa Buyer Mobile`. "
+        "Las historias funcionales permanecen neutrales respecto de Android Native/Kotlin, "
+        "Flutter/Dart e iOS Native/SwiftUI.",
         "",
-        "| Epic ID | Title | Description | User Stories |",
+        "## Epics",
+        "",
+        "| Epic ID | Nombre | Descripción | Historias |",
         "| :--- | :--- | :--- | :--- |",
     ]
     for epic_id, (title, description, story_ids) in EPICS.items():
@@ -688,16 +1124,31 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
     output.extend(
         [
             "",
-            "La identidad de un Epic organiza requisitos; no representa un Bounded "
-            "Context, una aplicación separada ni una unidad de despliegue.",
+            "Un Epic organiza requisitos; no representa un Bounded Context, una aplicación "
+            "separada ni una unidad de despliegue.",
             "",
-            v1_summary(rows),
-            "## Story records",
+            "## Decisiones de producto que orientan la lectura",
             "",
-            "Cada registro mantiene el título en inglés para conservar el identificador "
-            "del Product backlog. La descripción y los criterios están en español; "
-            "Scenario, Given, When y Then se mantienen en inglés por la convención "
-            "Gherkin. Las historias futuras no se presentan como implementadas ni aceptadas.",
+            "La autoridad de los hechos de negocio permanece en el servidor y en el "
+            "Bounded Context responsable. La información local puede apoyar continuidad "
+            "de presentación, borradores y evidencia temporal, pero no confirma inventario, "
+            "crédito, pago, compromiso, entrega o recepción sin respuesta autoritativa.",
+            "",
+            "Un Representante de Ventas autorizado puede capturar un Direct Order asistido "
+            "cuando la política del Tenant sea `DIRECT_ORDER`. Este flujo no suplanta al "
+            "Comprador: el borrador de Ventas y el borrador del Comprador son distintos, "
+            "y el servidor vuelve a validar la autorización. `MOB-US-040` conserva el "
+            "significado del flujo del Comprador; la cobertura de la captura asistida de "
+            "Ventas se mantiene como comportamiento de producto y se revisa frente al "
+            "catálogo antes de implementación.",
+            "",
+            functional_index(rows),
+            "## Registros de historias funcionales",
+            "",
+            "Cada registro incluye Story ID, User, Priority, Epic, Title, Description y "
+            "Acceptance Criteria. `Scenario`, `Given`, `When` y `Then` siguen la convención "
+            "Gherkin; el contenido de cada criterio es una condición observable y no una "
+            "descripción de interfaz.",
             "",
         ]
     )
@@ -705,18 +1156,52 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
         output.append(story_table(row))
     output.extend(
         [
-            "## Interpretación del lifecycle",
+            "## Trabajo complementario de 2.4.1",
             "",
-            "| Release | Stories | Lectura académica |",
-            "| :--- | ---: | :--- |",
-            "| V1 | 28 | Alcance académico actual; PLANNED; Product Acceptance pendiente. |",
-            "| V2 | 35 | DEFERRED; refinement-ready; no es compromiso V1. |",
-            "| V3 | 9 | DEFERRED; roadmap-ready; requiere shaping y evidencia adicionales. |",
-            "| V4_FUTURE | 1 | Hipótesis futura; sin compromiso de entrega. |",
+            "- [Landing Functional Stories](./2.4.1-landing-stories.md)",
+            "- [Technical Stories](./2.4.1-technical-stories.md)",
+            "- [Spike Stories](./2.4.1-spike-stories.md)",
+            "- [Annex D — detalle de Spike Stories](../../93-annexes/annex-d-spike-story/spike-story.md)",
             "",
-            "La clasificación anterior no convierte una historia en IMPLEMENTED, VERIFIED "
-            "o PRODUCT_ACCEPTED. Las decisiones de investigación, evidencia de cliente y "
-            "Product Acceptance permanecen pendientes cuando así se indica en los registros.",
+            "## Technical Stories",
+            "",
+            "Las Technical Stories expresan resultados de habilitación para las dos "
+            "aplicaciones. No agregan Bounded Contexts y no sustituyen los contratos "
+            "compartidos; cada una usa `Developer` como actor.",
+            "",
+            "| ID | Actor | Resultado técnico | Sprint planificado | Detalle |",
+            "| :--- | :--- | :--- | :--- | :--- |",
+        ]
+    )
+    for story_id, title, _, sprint in TECHNICAL_BACKLOG:
+        output.append(
+            f"| {story_id} | Developer | {title} | {sprint} | "
+            "[Technical Stories](./2.4.1-technical-stories.md) |"
+        )
+    output.extend(
+        [
+            "",
+            "### Spike Stories",
+            "",
+            "Los seis Spikes delimitan incertidumbres de investigación. El registro "
+            "resumido y su detalle en Annex D describen preguntas, artefactos esperados "
+            "y criterios de cierre sin inventar resultados.",
+            "",
+            "| ID | Objetivo de investigación | Artefacto / evidencia esperada | Criterios de cierre | Sprint planificado | Detalle |",
+            "| :--- | :--- | :--- | :--- | :--- | :--- |",
+        ]
+    )
+    for story_id, _, _, sprint in SPIKE_BACKLOG:
+        objective, artifact, completion = SPIKE_SUMMARY[story_id]
+        output.append(
+            f"| {story_id} | {objective} | {artifact} | {completion} | {sprint} | "
+            "[Spike Stories](./2.4.1-spike-stories.md) |"
+        )
+    output.extend(
+        [
+            "",
+            "La planificación técnica y de investigación complementa el Product Backlog; "
+            "no convierte este documento en un Sprint Backlog.",
             "",
         ]
     )
@@ -724,48 +1209,94 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
 
 
 def generate_product_backlog(rows: list[dict[str, str]]) -> str:
+    row_by_id = {row["ID"]: row for row in rows}
+    functional_rows = {
+        story_id: ("Mobile Functional", story_id, TITLE_ES[story_id], academic_points(row), planned_sprint(row))
+        for story_id, row in row_by_id.items()
+    }
+    supplemental_rows = {
+        item[0]: ("Landing Functional", *item)
+        for item in LANDING_BACKLOG
+    }
+    supplemental_rows.update({
+        item[0]: ("Technical", *item)
+        for item in TECHNICAL_BACKLOG
+    })
+    supplemental_rows.update({
+        item[0]: ("Spike", *item)
+        for item in SPIKE_BACKLOG
+    })
+    all_by_id = {**functional_rows, **supplemental_rows}
+    if set(GLOBAL_BACKLOG_ORDER) != set(all_by_id) or len(GLOBAL_BACKLOG_ORDER) != len(all_by_id):
+        raise SystemExit("global backlog order must contain each of the 97 backlog IDs exactly once")
+    all_rows = [all_by_id[story_id] for story_id in GLOBAL_BACKLOG_ORDER]
+    sprint_counts = {
+        sprint: sum(1 for item in all_rows if item[4] == sprint)
+        for sprint in ("S1", "S2", "S3", "S4", "Future")
+    }
     output = [
         "# 2.4.3 Product Backlog",
         "",
-        "Este Product Backlog presenta el inventario completo de 73 historias móviles "
-        "y su ciclo de vida. El orden y los estados se mantienen como proyección de "
-        "producto; no constituyen evidencia de implementación ni Product Acceptance.",
+        "Este Product Backlog presenta el inventario académico completo: 73 historias "
+        "Mobile funcionales, seis historias de Landing, doce Technical Stories y seis Spike "
+        "Stories. El orden es de valor de negocio; Sprint es una asignación planificada "
+        "de Chapter II y no un Sprint Backlog ni una lista de tareas.",
         "",
         "## Distribución por release",
         "",
         "| Release objetivo | Historias | Lectura de producto |",
         "| :--- | ---: | :--- |",
-        "| V1 | 28 | Alcance académico actual; PLANNED; Product Acceptance pendiente. |",
-        "| V2 | 35 | DEFERRED; sin compromiso V1. |",
-        "| V3 | 9 | DEFERRED; listo para roadmap. |",
-        "| V4_FUTURE | 1 | Hipótesis futura; sin compromiso de release. |",
+        "| V1 | 28 | Proyección funcional inicial. |",
+        "| V2 | 35 | Evolución funcional posterior. |",
+        "| V3 | 9 | Evolución funcional sujeta a investigación adicional. |",
+        "| V4_FUTURE | 1 | Hipótesis funcional futura. |",
         "",
-        "## Índice completo del ciclo de vida",
+        "## Inventario por tipo",
         "",
-        "| # Orden | User Story ID | Title | Story Points (1 / 2 / 3 / 5 / 8) | Sprint | Release objetivo | Priority | Epic | Status | Contexto primario |",
-        "| ---: | :--- | :--- | ---: | :--- | :--- | :--- | :--- | :--- | :--- |",
+        "| Tipo | Filas | Alcance |",
+        "| :--- | ---: | :--- |",
+        "| Mobile Functional Stories | 73 | MOB-US-001..073. |",
+        f"| Landing Functional Stories | {len(LANDING_BACKLOG)} | LAND-US; Landing pública de Nexa. |",
+        f"| Technical Stories | {len(TECHNICAL_BACKLOG)} | TS-MOB; habilitación técnica móvil. |",
+        f"| Spike Stories | {len(SPIKE_BACKLOG)} | SPIKE; investigación delimitada. |",
+        f"| **Total de filas** | **{len(all_rows)}** | **Inventario completo de Chapter 2.4.** |",
+        "",
+        "## Índice completo",
+        "",
+        "| # Orden | User Story Id | Title | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |",
+        "| ---: | :--- | :--- | ---: | :--- |",
     ]
-    for index, row in enumerate(rows, start=1):
-        output.append(
-            f"| {index} | {row['ID']} | {row['Title']} | {row['Story Points']} | "
-            f"{row['Sprint Planned']} | {row['Target Release']} | {row['Priority']} | "
-            f"{row['Epic']} | {row['Status']} | {bc_label(row['Primary BC'])} |"
-        )
+    for index, (_, story_id, title, points, sprint) in enumerate(all_rows, start=1):
+        output.append(f"| {index} | {story_id} | {title} | {points} | {sprint} |")
     output.extend(
         [
             "",
-            "## Estado de evidencia",
+            "## Sprints planificados",
             "",
-            "El tablero de Product Backlog, su URL pública, captura, mapeo de "
-            "Story-to-Task y responsable por fila requieren completar evidencia real "
-            "antes de la entrega correspondiente. No se inventan enlaces, capturas, "
-            "fechas, responsables ni estados de ejecución.",
+            "| Sprint | Filas | Enfoque académico |",
+            "| :--- | ---: | :--- |",
+            f"| S1 | {sprint_counts['S1']} | Descubrimiento, arquitectura, Landing y base de operaciones. |",
+            f"| S2 | {sprint_counts['S2']} | Android Native, almacén, despacho, entrega y primeras capacidades de campo. |",
+            f"| S3 | {sprint_counts['S3']} | Flutter, Buyer comercial, paridad cross-platform y base iOS. |",
+            f"| S4 | {sprint_counts['S4']} | Expansión iOS, cierre cross-platform, evidencia técnica y distribución. |",
+            f"| Future | {sprint_counts['Future']} | Historias V3/V4 que requieren trabajo posterior. |",
             "",
-            "La prioridad de ordenamiento se conserva desde el registro del ciclo de vida. "
-            "Los campos Sprint, Release objetivo y Status se leen conjuntamente: una "
-            "historia DEFERRED no se interpreta como trabajo ejecutado. Las historias "
-            "V1 permanecen alineadas con los Sprints S1, S2 y S3 definidos para el "
-            "alcance académico.",
+            "Las historias funcionales se asignan al primer Sprint de producto en el que "
+            "se planifica su resultado. Las filas Technical y Spike representan trabajo "
+            "habilitador o investigación; no se transforman en tareas.",
+            "",
+            "## Criterio de orden",
+            "",
+            "El orden global de las 97 filas prioriza resultados de negocio y continuidad "
+            "operativa: acceso y contexto, adquisición, contratos, recepción, despacho, "
+            "entrega y recepción del comprador. Las filas Technical y Spike aparecen donde "
+            "reducen riesgo, aclaran dependencias o sostienen la calidad de ese resultado; "
+            "las capacidades futuras quedan después de los resultados de mayor valor. Sprint "
+            "sigue siendo una asignación planificada y no redefine el orden de prioridad.",
+            "",
+            "Referencias: [User Stories](./2.4.1-user-stories.md), [Landing stories](./2.4.1-landing-stories.md), "
+            "[Technical Stories](./2.4.1-technical-stories.md), [Spike Stories](./2.4.1-spike-stories.md) "
+            "y [Annex D](../../93-annexes/annex-d-spike-story/spike-story.md).",
             "",
         ]
     )
@@ -774,7 +1305,13 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
 
 def main() -> None:
     rows = parse_master()
-    parse_catalog()
+    catalog = parse_catalog()
+    for row in rows:
+        catalog_title = str(catalog[row["ID"]]["title"])
+        if catalog_title != row["Title"]:
+            raise SystemExit(
+                f"title mismatch for {row['ID']}: master={row['Title']!r}; catalog={catalog_title!r}"
+            )
     if set(DESCRIPTIONS) != {row["ID"] for row in rows}:
         missing = sorted({row["ID"] for row in rows} - set(DESCRIPTIONS))
         extra = sorted(set(DESCRIPTIONS) - {row["ID"] for row in rows})
@@ -782,9 +1319,12 @@ def main() -> None:
     if set(AC) != set(DESCRIPTIONS):
         missing = sorted(set(DESCRIPTIONS) - set(AC))
         raise SystemExit(f"acceptance map mismatch; missing={missing}")
+    if set(TITLE_ES) != {row["ID"] for row in rows}:
+        missing = sorted({row["ID"] for row in rows} - set(TITLE_ES))
+        raise SystemExit(f"Spanish title map mismatch; missing={missing}")
     USER_STORIES.write_text(generate_user_stories(rows), encoding="utf-8")
     PRODUCT_BACKLOG.write_text(generate_product_backlog(rows), encoding="utf-8")
-    print("generated 2.4.1: 12 epics, 73 stories; 2.4.3: 73 lifecycle rows")
+    print("generated 2.4.1: 12 epics, 73 functional stories; 2.4.3: 97 academic backlog rows")
 
 
 if __name__ == "__main__":

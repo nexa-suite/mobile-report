@@ -9,8 +9,8 @@
 | Base revisada | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` (`origin/develop` after main-only fast-forward) |
 | Upstream | `origin/reconcile/report-integration-20260902` |
 | Push | `SUCCESS — 2026-09-06; Wave 3 corrective unit published without force-push` |
-| Staging | Limpio después de `5ee688a8e5953662bf6a94c07948c4d24968a586`; cada unidad posterior requiere staging exacto nuevo |
-| Commits nuevos | Historia preservada; el ref vivo debe resolverse desde Git y la firma del nuevo commit debe verificarse en GitHub |
+| Staging | Limpio después de `e9b7f107e20c0916ee5206c128e722fdb5e1c0fa`; cada unidad posterior requiere staging exacto nuevo |
+| Commits nuevos | Historia preservada hasta el checkpoint Wave 3/Wave 4; el ref vivo debe resolverse desde Git y la firma del nuevo commit debe verificarse en GitHub |
 | Report integration review | Handoff humano más reciente autoriza el rework de 73 historias y correcciones sustantivas de Capítulos I–II; no autoriza atribución de trabajo ajeno |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
@@ -60,8 +60,20 @@ decisions and the unique valid content retained from develop and main.
 | `8436336f749b1f366aa02d950a5e245025753784` | Diego Y. Sandoval / `diego64g284@gmail.com` | `chore(architecture): add technical evidence validation gates` |
 | `8fdf42018e9c3b3bfd343a1f319ae5ca831df5e6` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(rubric): record approved integration commits` |
 | `5ee688a8e5953662bf6a94c07948c4d24968a586` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `docs(report): align av1 front matter and source portability` |
+| `f3d87176d51c2f875ec36cf51a36574162d18784` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `docs(report): correct battle signing evidence` |
+| `877b4b0a1c774aea2efbb6ada28cdd3e384399a2` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `docs(evidence): remove local path dependencies` |
+| `10007393a26746aa550afc1ba06b6d6dea81c0be` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `fix(report): export av1 in a4 format` |
+| `2e6bc9951da37e2a680a56bffc7084b2d59ea490` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `merge: integrate historical evidence reconciliation` |
+| `b713ae36fddacc51a5867eee5664a6cf76e01b17` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `merge: integrate av1 requirements reconciliation` |
+| `c2e29147b9b6ce3858839c2d8a526bb09fc289d2` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `merge: integrate strategic and tactical ddd evidence` |
+| `d5ada12b8d79fa9ff987e6076bb191e9e6a7d7fa` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `test(report): align av1 scope validation gates` |
+| `e9b7f107e20c0916ee5206c128e722fdb5e1c0fa` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `fix(report): bound evidence figures in pdf export` |
+| `e20f6e6a9705820a53cecb307a87c6b6055a7c6e` | spinedo214 / `sebastianpinedo214@gmail.com` | `docs(report): reconcile legacy research evidence` |
+| `8660f4f834db85c2725fd1a815aefe04901de04a` | R0obxdnt / `grtdls525gino1@gmail.com` | `docs(requirements): reconcile mobile v1 academic backlog` |
+| `ddce0e4596fe4c7a3e53d03c6b209c0f19873692` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `docs(ddd): reconcile strategic and tactical evidence` |
+| `b31da9fb87ee00baa9288df0a5be2dad930bbc11` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `fix(ddd): correct statement provenance hash` |
 
-El último registro fue creado con el socket Battle dedicado de `JoaquinBV511`.
+Los registros Wave 3/Wave 4 fueron creados con el socket Battle dedicado de `JoaquinBV511`.
 La firma local fue válida para `SHA256:jqXaBuK4+qIS6gWktz89ABj5L/QojGehslJ0iJKF+yc`
 y GitHub respondió `verified=true`, `reason=valid`. No hubo reescritura,
 force-push, merge, tag ni release.

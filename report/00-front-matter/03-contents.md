@@ -10,8 +10,8 @@
 
 ## Chapter I — Presentation
 
-- [Startup profile](../01-presentation/1.1-startup-profile/section-overview.md)
-  - [Startup description](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md)
+- [Startup profile](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md)
+  - [Startup description](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md#111-startup-description)
   - [Team member profiles](../01-presentation/1.1-startup-profile/1.1.2-team-member-profiles.md)
 - [Solution profile](../01-presentation/1.2-solution-profile/section-overview.md)
   - [Background and problem](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md)

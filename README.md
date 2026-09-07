@@ -57,3 +57,18 @@ ha integrado en `develop` ni publicado como release.
 ## Estado documental
 
 Los documentos inicialmente creados como estructura son plantillas de trabajo. Cada marcador debe ser reemplazado con evidencia contextualizada del proyecto antes de una entrega académica.
+
+## Fuentes locales requeridas
+
+La validación de fuentes externas no depende de rutas personales. Antes de ejecutar
+el validador estructural, declare la ubicación local del Statement oficial:
+
+```bash
+export NEXA_MOBILE_STATEMENT_PDF='/ruta/local/final-project-statement-202620.pdf'
+export NEXA_BLUEPRINT_ROOT='/ruta/local/nexa-suite/blueprint'
+bash scripts/verify-report-structure.sh
+```
+
+Si una fuente externa no está disponible, el resultado esperado es
+`BLOCKED BY MISSING LOCAL EXTERNAL SOURCE`. El inventario de autoridad, hashes y
+cortes consultados está en [`delivery-checklists/source-manifest.md`](./delivery-checklists/source-manifest.md).

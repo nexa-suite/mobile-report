@@ -4,13 +4,14 @@
 from __future__ import annotations
 
 import html
+import os
 import re
 import sys
 from pathlib import Path
 
 
 REPORT_ROOT = Path(__file__).resolve().parents[1]
-BLUEPRINT_ROOT = REPORT_ROOT.parent / "blueprint"
+BLUEPRINT_ROOT = Path(os.environ.get("NEXA_BLUEPRINT_ROOT", REPORT_ROOT.parent / "blueprint"))
 MASTER = BLUEPRINT_ROOT / "03-mobile/requirements/master-mobile-backlog.md"
 CATALOG = BLUEPRINT_ROOT / "03-mobile/requirements/mobile-v1-catalog.md"
 STORIES = REPORT_ROOT / (
@@ -272,6 +273,13 @@ def validate() -> list[str]:
 
 
 def main() -> int:
+    if not MASTER.is_file() or not CATALOG.is_file():
+        print(
+            "BLOCKED BY MISSING LOCAL EXTERNAL SOURCE: set NEXA_BLUEPRINT_ROOT "
+            "to a Blueprint checkout containing 03-mobile/requirements",
+            file=sys.stderr,
+        )
+        return 2
     failures = validate()
     if failures:
         print("mobile backlog validation: FAIL")

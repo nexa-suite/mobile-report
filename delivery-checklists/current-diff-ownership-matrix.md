@@ -39,6 +39,7 @@ Exact files:
 - `delivery-checklists/human-commit-gate.md`
 - `delivery-checklists/current-diff-ownership-matrix.md`
 - `delivery-checklists/live-baseline.md`
+- `delivery-checklists/source-manifest.md`
 - `delivery-checklists/rubric-gap-matrix.md`
 - `delivery-checklists/rubric-status.md`
 - `delivery-checklists/team-identity-register.md`
@@ -326,6 +327,7 @@ Exact files:
 - `scripts/report-pdf-filter.lua`
 - `delivery-checklists/report-export.md`
 - `.markdownlint-cli2.jsonc`
+- `.gitignore`
 
 ## Unassigned paths
 

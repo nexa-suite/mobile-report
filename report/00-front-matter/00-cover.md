@@ -18,7 +18,7 @@ NRC **4949**
 
 **Docente**
 
-Pendiente de confirmación
+Quevedo Velasco, David Gerardo
 
 **Equipo**
 
@@ -38,7 +38,7 @@ Nexa Suite
 | U20241A054 | Verde Bueno, Joaquín |
 | U202323040 | Yucra Sandoval, Diego |
 
-**Período académico 202620 / 2026-02**
+**Período 202620**
 
 **Septiembre 2026**
 

@@ -1,6 +1,8 @@
 .DS_Store
 tmp/
 output/
+.nexa-mobile-report.local.env
+local-evidence/
 *.aux
 *.log
 *.toc

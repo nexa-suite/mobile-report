@@ -26,10 +26,10 @@ def main() -> int:
             print(f"- {failure}")
         return 1
     text = module.STORIES.read_text(encoding="utf-8")
-    scenarios = len(re.findall(r"<strong>Scenario:", text))
+    scenarios = len(re.findall(r"\*\*Scenario: .+?\*\*", text))
     print(
-        "mobile V1 transcription OK: lifecycle_stories=73; detailed_v1=28; "
-        f"source_scenarios=256; rendered_v1_gherkin_scenarios={scenarios}"
+        "mobile transcription OK: functional_stories=73; "
+        f"rendered_gherkin_scenarios={scenarios}; backlog_rows=97"
     )
     return 0
 

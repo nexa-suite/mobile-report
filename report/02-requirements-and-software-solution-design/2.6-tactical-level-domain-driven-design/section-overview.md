@@ -18,10 +18,12 @@ Buyer Mobile son proyecciones de los contextos compartidos.
 | BC-10 | Notifications |
 | BC-11 | Business Traceability |
 
-La plantilla incluida sirve para documentar cada contexto cuando existan
-clases, componentes y persistencia respaldados por la implementación o por un
-diseño objetivo aprobado. No se trasladan automáticamente contextos de otra
-superficie.
+Los once paquetes tácticos fuente-respaldados están en
+[bounded-contexts](./bounded-contexts/). Cada paquete conserva la estructura
+Domain, Interface, Application, Infrastructure, Component Level, Code Level,
+Domain Class Diagram y Database Design Diagram. El contenido `TARGET` procede
+del Blueprint; cada crosswalk `AS-IS` indica explícitamente evidencia parcial o
+ausente. No se trasladan automáticamente contextos de otra superficie.
 
 ## Paquete táctico requerido por cada contexto
 
@@ -30,20 +32,26 @@ revisor pueda separar diseño objetivo, evidencia AS-IS y comportamiento Mobile:
 
 | Subsección | Contenido mínimo | Estado del corte |
 | :--- | :--- | :--- |
-| Domain Layer | Entities, Value Objects, Aggregates, Factories/Domain Services y Repository interfaces; invariantes | TARGET / REVIEW_PENDING |
-| Application Layer | Capabilities, Command Handlers, Event Handlers, transacciones e idempotencia | TARGET / REVIEW_PENDING |
-| Interface Layer | Controllers, Consumers, DTO/contract boundary, autorización y errores | TARGET / REVIEW_PENDING |
-| Infrastructure Layer | Repositories, persistencia, mensajería y adapters externos | TARGET / REVIEW_PENDING |
-| Component Diagram | Componentes dentro de los containers participantes y sus interacciones | TARGET / RENDER_REVIEW_PENDING |
-| Domain Class Diagram | Clases, interfaces, enums, atributos, métodos, visibilidad, relaciones y multiplicidad | TARGET / RENDER_REVIEW_PENDING |
-| Database Diagram | Tablas, columnas, PK/FK/UNIQUE/CHECK, ownership lógico e inmutabilidad | TARGET / RENDER_REVIEW_PENDING |
+| Domain Layer | Entities, Value Objects, Aggregates, Factories/Domain Services y Repository interfaces; invariantes | TARGET / SOURCE-BACKED |
+| Application Layer | Capabilities, Command Handlers, Event Handlers, transacciones e idempotencia | TARGET / SOURCE-BACKED |
+| Interface Layer | Controllers, Consumers, DTO/contract boundary, autorización y errores | TARGET / CROSSWALK-QUALIFIED |
+| Infrastructure Layer | Repositories, persistencia, mensajería y adapters externos | TARGET / SOURCE-BACKED |
+| Component Diagram | Componentes dentro de los containers participantes y sus interacciones | TARGET / EXPORT-RENDERED |
+| Domain Class Diagram | Clases, interfaces, enums, atributos, métodos, visibilidad, relaciones y multiplicidad | TARGET / RENDERED |
+| Database Diagram | Tablas, columnas, PK/FK/UNIQUE/CHECK, ownership lógico e inmutabilidad | TARGET / RENDERED |
 
 La matriz de [cobertura táctica](./2.6.1-bounded-context-coverage.md) enlaza
-cada contexto con los artefactos de revisión. El paquete de [diagramas de
-clases](./bounded-context-template/code-level-diagrams/2.6.x.6.1-domain-layer-class-diagrams.md)
-y el paquete de [diagramas de
-base de datos](./bounded-context-template/code-level-diagrams/2.6.x.6.2-database-design-diagrams.md)
-preparan una revisión detallada de BC-06 y un inventario de BC-01..BC-11.
-La existencia de una fuente, export o plantilla no demuestra que el equipo
+cada contexto con sus artefactos. Las fuentes PlantUML, renders y hashes están
+en el [Chapter 2 provenance register](../../assets/chapter-2/provenance.md).
+Los diagramas son modelos objetivo; su existencia no demuestra que el equipo
 haya realizado la sesión, importado el diagrama en la herramienta académica o
 implementado el modelo.
+
+## Estado global
+
+`DOMAIN MODEL: TARGET / ACCEPTED` para los once contextos, según el Blueprint.
+`IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL / NOT EVIDENCED` por
+contexto, según los archivos API citados en cada paquete. PostgreSQL es una
+base física compartida con ownership lógico; no se afirma una base ni un
+deployment por BC. Operations Mobile y Buyer Mobile son proyecciones C4
+`TARGET / PLANNED / PROPOSED`, nunca BC tácticos.

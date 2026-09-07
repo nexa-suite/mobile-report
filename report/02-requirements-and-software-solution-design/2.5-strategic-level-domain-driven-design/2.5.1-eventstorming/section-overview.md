@@ -19,7 +19,13 @@ organización del trabajo, no evidencia de que las sesiones ya ocurrieron.
 
 ## Límite de evidencia
 
-Las capturas, fechas y participantes todavía no están documentados en este
-corte. Los archivos de esta sección describen el modelo adoptado y el material
-que debe producir el equipo; no convierten una lista de contextos en evidencia
-de workshop, consenso o aceptación.
+El registro visual de `nexa-ddd` está disponible en
+[2.5.1.0 DDD Process Evidence and Visual Mapping](./2.5.1.0-ddd-process-evidence.md).
+Incluye nueve SVG inspeccionados, PNG de lectura en el informe y hashes de las
+fuentes. El conjunto no contiene `step8`.
+
+Estas imágenes son material externo de diseño; no documentan por sí solas
+participantes, facilitador, fecha/herramienta, consenso o aceptación. La sesión
+colaborativa, sus capturas fuente y la crítica formal permanecen
+`WORKSHOP_PENDING`. La procedencia completa está en el
+[registro de Chapter 2](../../../assets/chapter-2/provenance.md).

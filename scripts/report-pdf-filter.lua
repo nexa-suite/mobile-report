@@ -93,6 +93,15 @@ function Div(element)
   return element
 end
 
+-- Keep exported evidence figures inside the A4 text area. The source Markdown
+-- remains unmodified; explicit image widths, when present, retain precedence.
+function Image(element)
+  if not element.attributes.width then
+    element.attributes.width = "90%"
+  end
+  return element
+end
+
 function Str(element)
   element.text = replace_export_symbols(element.text)
   local broken_text = break_long_code(element.text)

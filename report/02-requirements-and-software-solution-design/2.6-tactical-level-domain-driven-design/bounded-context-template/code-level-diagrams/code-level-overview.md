@@ -10,15 +10,13 @@ Bounded Context.
 ## Paquetes preparados
 
 - [Domain-layer class diagrams](./2.6.x.6.1-domain-layer-class-diagrams.md):
-  inventario de BC-01..BC-11 y lectura detallada de BC-06.
+  formato reusable; los once renders instanciados están enlazados por contexto.
 - [Database design diagrams](./2.6.x.6.2-database-design-diagrams.md):
-  inventario de fuentes de datos de BC-01..BC-11 y lectura relacional detallada
-  de BC-06.
+  formato reusable; los once renders instanciados están enlazados por contexto.
 
 ## Estado de revisión
 
-El contexto BC-06 es un candidato de trabajo, no una selección humana cerrada.
-Las fuentes PlantUML, exportaciones y SQL están disponibles para revisión; la
-importación académica, la legibilidad, el ownership final y la aceptación del
-modelo siguen pendientes. Ningún diagrama de esta sección prueba
-implementación Mobile o Product Acceptance.
+Las fuentes PlantUML y renders de los once contextos se incorporan al paquete
+AV1. La importación académica, la legibilidad, el ownership final y la
+aceptación humana siguen pendientes de revisión. Ningún diagrama de esta
+sección prueba implementación Mobile o Product Acceptance.

@@ -29,3 +29,24 @@ automáticamente en Bounded Contexts ni en containers C4. Cada imagen incluida
 requiere fuente, revisión, fecha de exportación y revisión visual humana. La
 procedencia observada se conserva en el
 [registro de evidencia de arquitectura y diagramas](../../../../delivery-checklists/architecture-render-evidence-register.md).
+
+## Corte AV1: fuente semántica y exports seleccionados
+
+La fuente semántica observada es
+`blueprint/01-shared/architecture/c4/structurizr/workspace.dsl`, con su JSON
+generado y espejo manual byte-identical. El corte canónico es Blueprint
+`origin/main` `fce3ba6f8ca1622084a2114424086364e1f7d93f`; hashes, export family,
+fecha observada y copias locales están en el
+[Chapter 2 provenance register](../../../assets/chapter-2/provenance.md).
+
+El informe incorpora cinco vistas de navegación exportadas: System Context V1
+TARGET, Containers V1 TARGET, Operations Mobile V1 TARGET, Buyer Mobile V1
+TARGET y Deployment V1 TARGET. También conserva cuatro familias L3 del API
+para enlazar los once paquetes tácticos. Las dos superficies Mobile permanecen
+`TARGET / PLANNED / PROPOSED`; no se afirma framework, build, runtime o
+Product Acceptance. Los exports no convierten C4 Containers en Bounded
+Contexts ni PostgreSQL en once bases físicas.
+
+La revisión visual fue realizada al incorporar las copias PNG; la revisión
+humana formal del equipo, ejecución local y deployment cloud permanecen
+`OPEN`. No se usan thumbnails `.structurizr` obsoletos.

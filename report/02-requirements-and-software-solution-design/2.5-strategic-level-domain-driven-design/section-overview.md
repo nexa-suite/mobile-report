@@ -21,3 +21,17 @@ La propuesta mantiene separados el dominio aceptado, la evidencia de implementac
 
 La procedencia, el impacto en el informe y las preguntas de revisión están en
 [2.5.4 Strategic DDD Traceability](./2.5.4-strategic-ddd-traceability.md).
+
+## Corte AV1 fuente-respaldado
+
+El catálogo y sus límites se contrastaron con el Blueprint `origin/main`
+`fce3ba6f8ca1622084a2114424086364e1f7d93f`. La evidencia visual externa de
+DDD, su inspección, hashes y la ausencia explícita de `step8` están en
+[2.5.1.0 DDD Process Evidence and Visual Mapping](./2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md).
+Las fuentes C4 Structurizr, exports seleccionados y artefactos tácticos
+copiados/renderizados tienen trazabilidad en el
+[Chapter 2 provenance register](../../assets/chapter-2/provenance.md).
+
+La evidencia de workshop, participantes, fecha/herramienta, aprobación humana,
+runtime y Product Acceptance permanece `OPEN`; los artefactos no se presentan
+como una sesión ejecutada ni como implementación terminada.

@@ -10,8 +10,8 @@ exists, or that a story has been accepted.
 | Field | Observed value |
 | :--- | :--- |
 | Status | `PARTIAL — BACKEND CONTRACT ONLY` |
-| API repository | `/Users/joaquinfranciscoverdebueno/Developer/nexa-suite/api` |
-| API source SHA | `380e2427bc3883f23fbd7e9a82d452888f2074a8` on `main` |
+| API repository | `NEXA_API_ROOT` (resuelto por el [source manifest](./source-manifest.md)) |
+| API source SHA | `380e2427bc3883f23fbd7e9a82d452888f2074a8` on `origin/main` |
 | Runtime contract | `GET http://127.0.0.1:8080/v3/api-docs` |
 | Snapshot | `api/docs/openapi/openapi.json` |
 | OpenAPI document | `3.1.0`, title `Nexa API`, version `0.17.0` |

@@ -9,7 +9,7 @@ not prove Mobile client consumption or Product Acceptance.
 
 | Field | Observed value |
 | :--- | :--- |
-| API repository / source SHA | `/Users/joaquinfranciscoverdebueno/Developer/nexa-suite/api` / `380e2427bc3883f23fbd7e9a82d452888f2074a8` on `main` |
+| API repository / source SHA | `NEXA_API_ROOT` / `380e2427bc3883f23fbd7e9a82d452888f2074a8` on `origin/main` |
 | Compose container | `nexa-modern-postgres` |
 | Database inspection | `PostgreSQL 18.4` on `aarch64-unknown-linux-musl`; database `nexa`; inspection role `nexa` |
 | Source migrations inspected | `V77`, `V79`, `V91`, `V93`, `V94`, `V95`, `V96`, `V97`, `V98`, `V99` |

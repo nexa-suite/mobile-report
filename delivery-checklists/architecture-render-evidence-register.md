@@ -10,8 +10,8 @@ client is implemented, or that the product was accepted.
 
 | Field | Observed value |
 | :--- | :--- |
-| Blueprint repository | `/Users/joaquinfranciscoverdebueno/Developer/nexa-suite/blueprint` |
-| Branch / commit | `main` / `fce3ba6f8ca1622084a2114424086364e1f7d93f` |
+| Blueprint repository | `NEXA_BLUEPRINT_ROOT` (resuelto por el [source manifest](./source-manifest.md)) |
+| Branch / commit | `origin/main` / `fce3ba6f8ca1622084a2114424086364e1f7d93f` |
 | Working tree | Clean at inspection |
 | Structurizr image | `structurizr/structurizr:2026.06.28` |
 | Structurizr source review | `docker run ... validate ... workspace.dsl` — exit code `0` on 2026-09-01 |

@@ -14,7 +14,7 @@ canónica de Product, Domain y Architecture.
 | Plantilla de portada | DOCX externo local | `NEXA_MOBILE_COVER_TEMPLATE` | SHA-256 `cc4226b18ac3dcd5935198ca9593de2c3b0b6706f36e1516269d3fab8235dbb1` | Referencia visual oficial | Composición de portada; no reutiliza datos de otro equipo |
 | Mobile Report | repositorio Git | `https://github.com/nexa-suite/mobile-report` | `reconcile/report-integration-20260902` @ `604d48a88e1fd45958b8bf2f28d7c2addc2a1a1c` | Informe en integración | Contenido, colaboración y exportación |
 | Blueprint | repositorio Git | `NEXA_BLUEPRINT_ROOT` | `origin/main` @ `fce3ba6f8ca1622084a2114424086364e1f7d93f` | Canónica | Product, Domain, Architecture y backlog Mobile |
-| API | repositorio Git | `../api` | `origin/main` @ `380e2427bc3883f23fbd7e9a82d452888f2074a8` | AS-IS | Contratos y persistencia verificables |
+| API | repositorio Git | `NEXA_API_ROOT` | `origin/main` @ `380e2427bc3883f23fbd7e9a82d452888f2074a8` | AS-IS | Contratos y persistencia verificables |
 | Platform | repositorio Git | `../platform` | `origin/main` @ `f8285f1bf0de83ed6fa95aa86d1dcc6efd4897f7` | AS-IS | Evidencia de superficie web de operaciones |
 | Portal | repositorio Git | `../portal` | `origin/main` @ `672836b8369ea16cb1374d348d73ccacbebbc954` | AS-IS | Evidencia de superficie Buyer |
 | Website | repositorio Git | `../website` | `origin/main` @ `96ab63a95f923114627048283c323a501238ff53` | AS-IS | Evidencia Landing Page |

@@ -101,7 +101,9 @@ Run from the report worktree:
 git status --short
 shasum -a 256 report/assets/chapter-2/ddd-process/*.svg
 shasum -a 256 report/assets/chapter-2/c4/*.svg
-plantuml --check-syntax report/assets/chapter-2/tactical/BC-*/domain-model.puml report/assets/chapter-2/tactical/BC-*/database-diagram.puml
+plantuml --check-syntax \
+  report/assets/chapter-2/tactical/BC-*/domain-model.puml \
+  report/assets/chapter-2/tactical/BC-*/database-diagram.puml
 ```
 
 The canonical semantic source, generated JSON, SQL and tactical models remain

@@ -10,7 +10,7 @@ producida.
 | Capítulo I | Partial | Estadísticas de segmentos, perfiles completos, fuentes competitivas y revisión de consistencia |
 | Entrevistas de needfinding | Pending human evidence | 3–5 participantes por segmento, videos, capturas, metadatos y análisis real |
 | Needfinding | Partial | Personas, journeys, empathy maps y EventStorming deben provenir de evidencia y herramientas verificables |
-| User stories and lifecycle | Full catalog `73` synchronized; V1 projection remains `28/28`; individual defense pending | 73 historias, 259 escenarios Gherkin renderizados (256 del catálogo + 3 reconciliados desde Outcome Conditions) y registro V1 individual; falta defensa por lead, evidencia de implementación y aceptación de producto |
+| User stories and lifecycle | Full catalog `73` synchronized; V1 projection remains `28/28`; individual defense pending | 73 historias de ciclo de vida, 256 escenarios fuente canónicos y 112 escenarios Gherkin renderizados para las 28 historias V1; falta defensa por lead, evidencia de implementación y aceptación de producto |
 | Backlog e Impact Mapping | Structure ready; validation pending | URL/capturas reales, métricas SMART aprobadas, ownership, mapeo a tareas y evidencia de ejecución |
 | Strategic DDD | Structure and versioned source/exports observed; workshop pending | Evidencia de workshop, canvases, flows, Context Map, patrones, selección y revisión de diagramas renderizados |
 | Tactical DDD | Coverage and Blueprint artifacts observed; academic evidence pending | Instanciar contexto(s), capas, clases, componentes, SQL/constraints y límites AS-IS/TARGET con revisión humana |

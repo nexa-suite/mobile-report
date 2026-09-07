@@ -43,7 +43,7 @@ evidencia de una funcionalidad móvil sin una verificación específica.
 | Archivos rastreados en el corte del informe | 59 | El branch inicial contenía sólo la base de Capítulos I-II y assets existentes |
 | Markdown rastreado en el corte | 54 | No había pipeline documental local declarado |
 | `package.json`, `Makefile`, `Taskfile`, Dockerfile, Compose, scripts o workflows en el corte | No encontrados | La generación PDF, lint y diagramas requiere configurar o documentar tooling antes de declarar un gate automatizado |
-| Compose en `/Users/joaquinfranciscoverdebueno/Developer/nexa-suite` | No encontrado | No se declara un stack local levantado desde la raíz |
+| Compose en `NEXA_SUITE_ROOT` | No encontrado en el checkout observado | No se declara un stack local levantado desde una ruta privada; el valor debe resolverse en cada checkout |
 | Host | Apple M5, 10 cores, 16 GB RAM, macOS 26.6.2 | Capacidad disponible para validaciones locales |
 | Docker Desktop | Server 29.7.2, ARM64/aarch64, 10 CPUs, aproximadamente 8.3 GB asignados | Runtime disponible; el compose del producto aún debe localizarse y verificarse |
 

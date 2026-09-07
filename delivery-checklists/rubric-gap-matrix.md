@@ -6,11 +6,13 @@ Esta matriz es un control interno de cierre. Concilia el prompt canónico y el
 enunciado académico sin convertir una plantilla, una proyección o una prueba
 de backend en evidencia de producto Mobile.
 
+La auditoría correctiva de Wave 4 está en [Wave 4 professor-grade audit](./wave-4-professor-grade-audit.md) y las únicas ambigüedades de formato abiertas en el [professor clarification register](./professor-clarification-register.md).
+
 | Fuente | Corte |
 | :--- | :--- |
 | Fuentes de corte | [Source manifest](./source-manifest.md): enunciado oficial, plantilla de carátula, Blueprint y refs verificables; no depende de una ruta personal |
 | Enunciado oficial | PDF V4.0 SHA-256 `38be0c1baa77d0601c9605ef9ea72ad2fb510222a17a65944a06690621169f37`; la rúbrica interna se conserva como evidencia complementaria, no como sustituto |
-| Informe | `reconcile/report-integration-20260902`, commit publicado `5ee688a8e5953662bf6a94c07948c4d24968a586`; el ref vivo se resuelve desde Git |
+| Informe | `reconcile/report-integration-20260902`, Wave 3 closure `fbc096423a52312d1afa8099a2646b99e0c0b8fe`; el ref vivo se resuelve desde Git |
 | Regla del corte | Integración documental en curso; `28` historias V1 se mantienen como alcance planeado, sin aprobación ficticia. PR #1 permanece abierto; merge sujeto a revisión humana |
 
 `Structure ready` significa que existe una estructura contextualizada que puede

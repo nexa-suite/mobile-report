@@ -44,6 +44,8 @@ Exact files:
 - `delivery-checklists/rubric-status.md`
 - `delivery-checklists/team-identity-register.md`
 - `delivery-checklists/conflict-reconciliation-ledger.md`
+- `delivery-checklists/professor-clarification-register.md`
+- `delivery-checklists/wave-4-professor-grade-audit.md`
 - `report/assets/chapter-1/.gitkeep`
 - `report/01-presentation/1.1-startup-profile/1.1.1-startup-description.md`
 - `report/01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md`

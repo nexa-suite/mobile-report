@@ -25,10 +25,9 @@ manifest. Native execution is available with
 The prior 2026-09-05 Docker checkpoint generated a temporary 213-page PDF from
 141 Markdown sources, but its letter page geometry did not match the A4 cover
 reference and is superseded for delivery. On 2026-09-06, native `pandoc` plus
-`xelatex` produced a non-empty 213-page baseline; its final A4 export and visual
-review are still required after Wave 3 integration. The temporary output is not
-committed because the official submission filename and complete human PDF
-acceptance remain pending.
+`xelatex` produced the reconciled A4 export: 254 non-empty pages from 157
+Markdown sources. The temporary output is not committed because the official
+submission filename and complete human PDF acceptance remain pending.
 
 ## Closure conditions
 
@@ -36,8 +35,9 @@ acceptance remain pending.
 - [x] Profile image paths resolve in the temporary build.
 - [x] Wide Markdown tables wrap within the page in the inspected samples.
 - [x] Export-only Unicode substitutions remove missing-glyph warnings.
-- [x] Critical PDF pages were rendered and visually inspected after the final
-      export adjustment.
+- [x] All 254 PDF pages were rendered as low-resolution contact sheets and
+      visually inspected for blank pages, overflow, rotation and gross layout
+      defects after the final export adjustment.
 - [ ] Human reviews the complete PDF for page breaks, table readability,
   numbering, APA 7 layout and conversion defects.
 - [ ] Owner names the accepted PDF with the official AV1/TB1/AV2/TB2 filename

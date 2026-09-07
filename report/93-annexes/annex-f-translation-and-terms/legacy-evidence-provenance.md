@@ -29,8 +29,8 @@ Mobile remains a product projection and surface. It is not a Bounded Context.
 | :--- | :--- |
 | Historical repository | [`upc-pre-202610-1asi0730-12242-king/nexa-ecosystem-report`](https://github.com/upc-pre-202610-1asi0730-12242-king/nexa-ecosystem-report) |
 | Historical source revision | `e161fe522023bfe5929e76c4d7c66af211884b7e` |
-| Local curated snapshot | `/Users/diegosandoval284/Developer/nexa-legacy` |
-| Local report source | `/Users/diegosandoval284/Developer/nexa-legacy/01-product` |
+| Local curated snapshot | `NEXA_LEGACY_ROOT` |
+| Local report source | `$NEXA_LEGACY_ROOT/01-product` |
 | Inspection date | `2026-09-06` |
 | Original report paths | `report/10-chapter-1-introduction/1-2-solution-profile.md`; `report/10-chapter-1-introduction/1-3-target-segments.md`; `report/20-chapter-2-requirements-elicitation/2-1-competitors.md`; `report/20-chapter-2-requirements-elicitation/2-2-interviews.md`; `report/20-chapter-2-requirements-elicitation/2-3-needfinding.md` |
 | Curated local interview source | `01-product/requirements/elicitation/2-2-interviews.md` |
@@ -50,7 +50,7 @@ Source-file checksums from the curated snapshot:
 Commands and checks used:
 
 ```text
-rg --files /Users/diegosandoval284/Developer/nexa-legacy
+rg --files "$NEXA_LEGACY_ROOT"
 shasum -a 256 <source-file>
 file <interview-image>
 curl -L -s -o /dev/null -w '%{http_code} %{url_effective}\n' <source-link>

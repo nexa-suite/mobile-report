@@ -13,8 +13,8 @@ authorization.
 | Base | `3edeb196800a72a30299987a661e791c8f8fb50d` (historical handoff comparison base) |
 | Recovery copy | `/tmp/nexa-mobile-report-resume.PJofE0/` |
 | Staging | 94 exact paths prepared; branch published; commit and PR pending the Verified signature gate |
-| Current worktree | Authorized report rework and export/validation tooling are listed under Unit I; cached diff/checks are clean, with no commit until the Verified signature preflight is assured |
-| Commit rule | One coherent unit; no `Co-authored-by`; current attribution limited to Joaquín/Diego |
+| Current worktree | Follow-up research, requirements and architecture evidence are listed under the owning units; every new unit requires its own signed Battle commit |
+| Commit rule | One coherent unit; no `Co-authored-by`; published history remains immutable and new attribution follows the owner-confirmed identity register |
 
 ## Unit A — Report governance / front matter
 
@@ -85,12 +85,13 @@ Exact files:
 | :--- | :--- | :--- |
 | Joaquín / `JoaquinBV511` | Diego; team review | `docs(research): reconcile mobile needfinding evidence` |
 
-- Canonical / academic sources: Prompt canónico; legacy reuse ledger; fuentes de investigación registradas.
+- Canonical / academic sources: Prompt canónico; historical reuse ledger; fuentes de investigación registradas.
 - Rubric requirement: §2.1–§2.3, entrevistas, Needfinding, segmentación, bibliografía y Anexo A/B.
 - Story IDs affected: Research support for all V1; no story approval.
 - Owner must explain: Qué evidencia es histórica, reusable, adaptada o pendiente; por qué S2 requiere investigación nueva.
-- Status: `CURRENT INTEGRATION APPROVED — JOAQUÍN AUTHORIZED`; Sebastián remains
-  candidate for a future research workstream after personal review.
+- Status: `CURRENT INTEGRATION APPROVED — JOAQUÍN AUTHORIZED`; the new Annex A
+  register and terminology/provenance correction are owned by Sebastián's
+  signed follow-up unit.
 
 Exact files:
 
@@ -102,7 +103,8 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.5-big-picture-eventstorming.md`
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.1-user-personas.md`
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md`
-- `delivery-checklists/legacy-reuse-ledger.md`
+- `delivery-checklists/historical-interview-reuse-ledger.md`
+- `report/93-annexes/annex-a-student-outcome/historical-interview-evidence-register.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.5-secondary-research-physical-operations-and-delivery.md`
 - `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md`
@@ -110,10 +112,10 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md`
 - `report/92-bibliography/bibliography.md`
 - `report/02-requirements-and-software-solution-design/2.2-interviews/section-overview.md`
-- `report/93-annexes/annex-a-student-outcome/legacy-interviews/celia-perez.jpeg`
-- `report/93-annexes/annex-a-student-outcome/legacy-interviews/lorena-silva.jpeg`
-- `report/93-annexes/annex-a-student-outcome/legacy-interviews/pedro-puente.jpeg`
-- `report/93-annexes/annex-f-translation-and-terms/legacy-evidence-provenance.md`
+- `report/93-annexes/annex-a-student-outcome/historical-interviews/celia-perez.jpeg`
+- `report/93-annexes/annex-a-student-outcome/historical-interviews/lorena-silva.jpeg`
+- `report/93-annexes/annex-a-student-outcome/historical-interviews/pedro-puente.jpeg`
+- `report/93-annexes/annex-f-translation-and-terms/historical-evidence-provenance.md`
 
 ## Unit C — V1 requirements / backlog
 
@@ -125,8 +127,8 @@ Exact files:
 - Rubric requirement: 73 User Stories, 256 source scenarios plus 3 faithfully reconciled Gherkin scenarios for MOB-US-073, Acceptance Criteria, Impact Mapping y Product Backlog; V1 remains 28 stories.
 - Story IDs affected: MOB-US-001, 002, 003, 011–017, 019–034, 044, 047–049.
 - Owner must explain: Cada historia completa, sus criterios Gherkin (cuatro escenarios en las historias fuente y tres escenarios reconciliados en MOB-US-073), prioridad, Epic, BC, Sprint, dependencias y límite de evidencia.
-- Status: `CURRENT INTEGRATION APPROVED — JOAQUÍN AUTHORIZED`; Gino remains
-  candidate for a future Tactical DDD/UML/DB workstream after personal review.
+- Status: `CURRENT INTEGRATION APPROVED — JOAQUÍN AUTHORIZED`; the rubric
+  structure validator and register are owned by Gino's signed follow-up unit.
 
 Exact files:
 
@@ -136,6 +138,7 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md`
 - `delivery-checklists/mobile-v1-story-verification-register.md`
+- `delivery-checklists/mobile-v1-rubric-structure-register.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.4-technical-stories.md`
 
 ## Unit D — Strategic DDD
@@ -183,13 +186,14 @@ Exact files:
 
 | Owner | Reviewers | Candidate |
 | :--- | :--- | :--- |
-| Diego / `DiegoS284` | Gino | `docs(architecture): synchronize canonical c4 evidence` |
+| Diego / `DiegoS284` | Gino; Gerard | `docs(architecture): synchronize canonical c4 evidence` |
 
 - Canonical / academic sources: Blueprint C4/Structurizr source and observed exports; prompt canónico; rúbrica arquitectura.
 - Rubric requirement: Context, container, component y deployment diagrams; system boundary; AS-IS/TARGET.
 - Story IDs affected: All V1 where architecture evidence is cited.
 - Owner must explain: Diferencia entre System, containers y BC; procedencia, versión, validación y límites de cada diagrama.
-- Status: `CURRENT INTEGRATION APPROVED — DIEGO AUTHORIZED`.
+- Status: `CURRENT INTEGRATION APPROVED — DIEGO AUTHORIZED`; Gerard owns the
+  Mobile runtime-boundary register as a separate signed architecture unit.
 
 Exact files:
 
@@ -199,6 +203,8 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.4-deployment-diagrams.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/section-overview.md`
 - `delivery-checklists/architecture-render-evidence-register.md`
+- `delivery-checklists/architecture-authority-and-boundary-register.md`
+- `delivery-checklists/mobile-architecture-evidence-register.md`
 - `report/assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png`
 - `report/assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.svg`
 - `report/assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png`
@@ -451,6 +457,7 @@ Exact files:
 - `scripts/verify-diff-ownership-matrix.py`
 - `scripts/verify-bibliography-citations.py`
 - `scripts/verify-report-structure.sh`
+- `scripts/verify-mobile-v1-rubric-template.py`
 - `scripts/verify-mobile-v1-semantics.py`
 - `scripts/export-report-pdf.sh`
 - `scripts/report-pdf-filter.lua`
@@ -460,13 +467,12 @@ Exact files:
 
 ## Unassigned paths
 
-None. Every path in the pre-reconciliation handoff inventory is assigned to one
-review unit.
+None. Every path in the pre-reconciliation handoff inventory and each new
+follow-up artifact is assigned to one review unit.
 
 ## Review rule
 
 Review each unit's exact files and diff before staging. The joint 2026-09-02
-review authorizes current integration; it does not fabricate individual story
-reviews or assign current work to absent teammates. Split mixed ownership by
-path or stop. Gino, Gerard and Sebastián receive new workstreams only after
-their own review.
+review authorizes the original integration; the follow-up units are separately
+signed and validated by their owner. Split mixed ownership by path or stop. No
+historical commit is amended to make the new balance appear retroactive.

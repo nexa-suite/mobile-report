@@ -50,3 +50,6 @@ Contexts ni PostgreSQL en once bases físicas.
 La revisión visual fue realizada al incorporar las copias PNG; la revisión
 humana formal del equipo, ejecución local y deployment cloud permanecen
 `OPEN`. No se usan thumbnails `.structurizr` obsoletos.
+
+El lector puede contrastar cada afirmación con el [registro de autoridad y
+límites](../../../../delivery-checklists/architecture-authority-and-boundary-register.md).

@@ -8,6 +8,9 @@ export proves provenance and availability; it does not prove that the report
 team selected it, that a reviewer inspected its readability, that the Mobile
 client is implemented, or that the product was accepted.
 
+The complementary [architecture authority and boundary register](./architecture-authority-and-boundary-register.md)
+keeps C4, Bounded Context, implementation and runtime claims separate.
+
 | Field | Observed value |
 | :--- | :--- |
 | Blueprint repository | `NEXA_BLUEPRINT_ROOT` (resuelto por el [source manifest](./source-manifest.md)) |

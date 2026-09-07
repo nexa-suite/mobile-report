@@ -13,7 +13,7 @@
 | Commits nuevos | Historia preservada hasta el checkpoint Wave 3/Wave 4; el ref vivo debe resolverse desde Git y la firma del nuevo commit debe verificarse en GitHub |
 | Report integration review | Handoff humano más reciente autoriza el rework de 73 historias y correcciones sustantivas de Capítulos I–II; no autoriza atribución de trabajo ajeno |
 | Individual defense review | Follow-up; not required to block current report integration |
-| Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
+| Identidad de owners | Owner-confirmed handoff `5/5`; new follow-up units are attributed only through each owner's signed Battle commit |
 
 Este gate protege la trazabilidad del informe. La aprobación actual autoriza
 integrar el diff revisado por Diego y Joaquín, sujeto a staging exacto,
@@ -68,7 +68,7 @@ decisions and the unique valid content retained from develop and main.
 | `c2e29147b9b6ce3858839c2d8a526bb09fc289d2` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `merge: integrate strategic and tactical ddd evidence` |
 | `d5ada12b8d79fa9ff987e6076bb191e9e6a7d7fa` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `test(report): align av1 scope validation gates` |
 | `e9b7f107e20c0916ee5206c128e722fdb5e1c0fa` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `fix(report): bound evidence figures in pdf export` |
-| `e20f6e6a9705820a53cecb307a87c6b6055a7c6e` | spinedo214 / `sebastianpinedo214@gmail.com` | `docs(report): reconcile legacy research evidence` |
+| `e20f6e6a9705820a53cecb307a87c6b6055a7c6e` | spinedo214 / `sebastianpinedo214@gmail.com` | historical research evidence commit; original SCM title remains immutable |
 | `8660f4f834db85c2725fd1a815aefe04901de04a` | R0obxdnt / `grtdls525gino1@gmail.com` | `docs(requirements): reconcile mobile v1 academic backlog` |
 | `ddce0e4596fe4c7a3e53d03c6b209c0f19873692` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `docs(ddd): reconcile strategic and tactical evidence` |
 | `b31da9fb87ee00baa9288df0a5be2dad930bbc11` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `fix(ddd): correct statement provenance hash` |
@@ -79,8 +79,16 @@ y GitHub respondió `verified=true`, `reason=valid`. No hubo reescritura,
 force-push, merge, tag ni release.
 
 Each record was inspected with `git show -1 --format=fuller --stat`; staging
-was empty after the sequence. No history rewrite, force push, co-author trailer
-or attribution to Gino, Gerard or Sebastián was used.
+was empty after the sequence. No history rewrite, force push or co-author
+trailer was used. New attribution is recorded only for the signed follow-up
+units below.
+
+## Signed follow-up units — 2026-09-06
+
+| Commit | Unit / paths | Author / project email | Local signature |
+| :--- | :--- | :--- | :--- |
+| `8091e321c8bd1e50f8067ddd8ce2d00202e12b33` | Historical interview register, provenance paths and Annex A links | `spinedo214` / `sebastianpinedo214@gmail.com` | `VALID` — dedicated Battle key |
+| `c7bf5c526a49729349ff4aa0087d7a028fe18f59` | Mobile V1 rubric-template validator, register and structure gate | `R0obxdnt` / `grtdls525gino1@gmail.com` | `VALID` — dedicated Battle key |
 
 ## Post-reconciliation audit/fix commits — 2026-09-02
 
@@ -150,11 +158,11 @@ crea sólo para aumentar el historial.
 | Archivos | Exactos por unidad y path de reconciliación, registrados en [current-diff-ownership-matrix.md](./current-diff-ownership-matrix.md) y [conflict-reconciliation-ledger.md](./conflict-reconciliation-ledger.md) |
 | Resumen | Revisado conjuntamente; separación natural por alcance |
 | Fuente / requisito | Prompt canónico, rúbrica, modelo de dominio adoptado y repositorios de evidencia fijados |
-| Explicación del owner | Requerida antes de cada commit; no se atribuye trabajo actual a Gino, Gerard o Sebastián |
+| Explicación del owner | Requerida antes de cada commit; cada unidad nueva registra alcance, owner, identidad Battle y validación |
 | Validación ejecutada | `bash scripts/verify-report-structure.sh` (incluye huellas SHA-256 del prompt y rúbrica canónicos, ownership matrix y citas bibliográficas); `python3 scripts/verify-diff-ownership-matrix.py` → `303` paths, `9` units; `python3 scripts/verify-bibliography-citations.py` → mandatory `4/4`, DOI `4/4`, technical refs `6/6`, quartile `PRELIMINARY/PENDING`; `python3 scripts/generate-mobile-backlog-report.py` y `python3 scripts/verify-mobile-backlog.py` → `12` Epics, `73` stories, `256` source scenarios, releases `28/35/9/1`; `python3 scripts/verify-mobile-v1-transcription.py` → full catalog `73` stories, `256` source scenarios, V1 `28`; `python3 scripts/verify-mobile-v1-review-register.py` → `28` V1 rows aligned; `python3 scripts/verify-mobile-v1-api-register.py` → V1 `28` stories, `60` explicit operations, `60` response blocks, `24` request bodies, `60/60` path params, Sprint alignment `28/28`, `268` OpenAPI paths; `bash scripts/check-report-links.sh`; `bash scripts/inspect-api-persistence.sh`; `git diff --check`; semantic inventory → current/boundary/future/historical counts recorded by the current validator, stories `73`, rendered V1 scenarios `112`, strategic contexts `11`; native A4 export → `254` pages from `157` Markdown sources; PDF smoke and all-page contact-sheet review passed; canonical Sprint 1–3 and rubric-gap audit recorded |
 | Markdown lint | `npx --yes markdownlint-cli2@0.23.2 --config .markdownlint-cli2.jsonc '**/*.md'` → `163` files, `0` issues |
 | Mensaje Conventional Commit | Se define por unidad y se inspecciona en staging |
-| Autorización explícita para `git add` y `git commit` | `YES — current reviewed Diego/Joaquín units` |
+| Autorización explícita para `git add` y `git commit` | `YES — each owner-confirmed follow-up unit, exact paths only` |
 
 ## Unidades de commit propuestas
 
@@ -165,10 +173,10 @@ La separación evita mezclar requisitos, arquitectura, UX y gates técnicos.
 | Unidad | Alcance a revisar | Owner propuesto | Reviewers | Mensaje candidato |
 | :--- | :--- | :--- | :--- | :--- |
 | A | README, front matter, rúbrica, baseline, colaboración y milestones | Joaquín / `JoaquinBV511` | Team review | `docs(rubric): reconcile academic report baseline` |
-| B | Entrevistas, Needfinding, provenance y research gates | Joaquín / `JoaquinBV511` | Diego; team review | `docs(research): reconcile mobile needfinding evidence` |
-| C | 73 User Stories, AC, Impact Mapping, Product Backlog y requirements registers | Joaquín / `JoaquinBV511` | Diego; team review | `docs(requirements): align mobile v1 academic backlog` |
+| B | Entrevistas, Needfinding, provenance y research gates | Sebastián / `spinedo214` for the signed follow-up register; existing integration history remains Joaquin-owned | Diego; team review | `docs(research): register historical interview evidence` |
+| C | 73 User Stories, AC, Impact Mapping, Product Backlog y requirements registers | Gino / `R0obxdnt` for the signed rubric-structure unit; existing integration history remains Joaquin-owned | Diego; team review | `test(requirements): verify mobile v1 rubric structure` |
 | D | Strategic DDD, 11 BCs, Context Map, UL y discovery provenance | Joaquín / `JoaquinBV511` | Sebastián; Diego | `docs(ddd): reconcile strategic domain model` |
-| E | C4, Structurizr, system boundaries, AS-IS/TARGET y architecture evidence | Diego / `DiegoS284` | Gino | `docs(architecture): synchronize canonical c4 evidence` |
+| E | C4, Structurizr, system boundaries, AS-IS/TARGET y architecture evidence | Diego / `DiegoS284`; Gerard / `GerardRojasMancilla` for Mobile runtime-boundary evidence | Gino; team review | `docs(architecture): synchronize canonical c4 evidence` / `docs(architecture): register mobile runtime evidence` |
 | F | Tactical DDD, UML, PlantUML, database models y persistence evidence | Joaquín / `JoaquinBV511` + Diego / `DiegoS284`, split by path | Team review | `docs(ddd): reconcile tactical domain and data models` / `docs(implementation): document verified persistence evidence` |
 | G | Mobile UX, i18n, accessibility, interaction states y Design Lab mapping | Joaquín / `JoaquinBV511` | Diego; team review | `docs(ux): prepare mobile experience evidence` |
 | H | SCM, sprints, API/implementation evidence y validation structure | Split by actual scope | Team review | `docs(sprint): add reproducible sprint evidence gates` / `docs(implementation): document verified mobile api evidence` |
@@ -203,11 +211,13 @@ en [mobile-v1-api-contract-register.md](./mobile-v1-api-contract-register.md).
 La evidencia de persistencia observada está en
 [api-persistence-evidence-register.md](./api-persistence-evidence-register.md).
 La procedencia y validación de diagramas está en
-[architecture-render-evidence-register.md](./architecture-render-evidence-register.md).
+[architecture-render-evidence-register.md](./architecture-render-evidence-register.md),
+con límites complementarios en los registros de autoridad y Mobile.
 La matriz exacta de paths y unidades está en
 [current-diff-ownership-matrix.md](./current-diff-ownership-matrix.md).
 La identidad de los cinco owners está en
 [team-identity-register.md](./team-identity-register.md); sus identidades,
 correos de proyecto y autorización de integración actual están resueltos por
-el handoff aprobado. Future workstreams de Gino, Gerard y Sebastián requieren
-revisión propia antes de atribución.
+el handoff aprobado. Cada nuevo workstream de Gino, Gerard y Sebastián se
+atribuye sólo después de su firma Battle y de la validación específica de la
+unidad.

@@ -11,11 +11,11 @@ unit still needs an owner review and explicit commit authorization.
 
 | Canonical person | GitHub username | Supplied commit email | Canonical role | Public profile precheck | Legal identity | GitHub/email association | Change ownership |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Sebastián | `spinedo214` | `sebastianpinedo214@gmail.com` | Mobile helper; Principal Report helper | [Profile exists; public display Sebastián Pinedo](https://github.com/spinedo214) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | No current reviewed-unit attribution; future research workstream pending |
+| Sebastián | `spinedo214` | `sebastianpinedo214@gmail.com` | Mobile helper; Principal Report helper | [Profile exists; public display Sebastián Pinedo](https://github.com/spinedo214) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Signed research/provenance follow-up unit recorded; further changes require the same owner review |
 | Diego | `DiegoS284` | `diego64g284@gmail.com` | Nexa Team Lead; App/Mobile Lead; C4/architecture/implementation evidence | [Profile exists; public display Diego Y. Sandoval](https://github.com/DiegoS284) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Current reviewed technical units authorized |
 | Joaquín | `JoaquinBV511` | `joaquinverdebueno@gmail.com` | Report Lead; Mobile helper | [Profile exists; public display Joaquin Verde](https://github.com/JoaquinBV511) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Current reviewed academic units authorized |
-| Gino | `R0obxdnt` | `grtdls525gino1@gmail.com` | Mobile helper; Principal Report helper | [Profile exists; no public display name](https://github.com/R0obxdnt) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | No current reviewed-unit attribution; future Tactical DDD/UML/DB review pending |
-| Gerard | `GerardRojasMancilla` | `U202413142@upc.edu.pe` | Principal Mobile helper; Basic Report helper | [Profile exists; public display Gerard Gianpier Rojas Mancilla](https://github.com/GerardRojasMancilla) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | No current reviewed-unit attribution; future Mobile UX evidence review pending |
+| Gino | `R0obxdnt` | `grtdls525gino1@gmail.com` | Mobile helper; Principal Report helper | [Profile exists; no public display name](https://github.com/R0obxdnt) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Signed requirements/rubric follow-up unit recorded; Tactical DDD review remains a separate scope |
+| Gerard | `GerardRojasMancilla` | `U202413142@upc.edu.pe` | Principal Mobile helper; Basic Report helper | [Profile exists; public display Gerard Gianpier Rojas Mancilla](https://github.com/GerardRojasMancilla) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Mobile architecture/runtime-boundary unit is prepared for Gerard's signed review |
 
 The canonical prompt does not authorize guessing surnames, student codes or
 alternate emails. The academic cover may contain additional working labels,
@@ -31,7 +31,7 @@ authorize integration of the current 28-story V1 projection and current diff.
 | :--- | :--- |
 | Human review gate | `APPROVED` |
 | Report integration | `28/28 APPROVED` |
-| Current attribution | Joaquín for coherent academic/report units; Diego for coherent technical/C4/API/architecture units |
+| Current attribution | Historical integration units remain as recorded; signed follow-up units use their owner-confirmed identities and exact paths |
 | Individual defense review | `FOLLOW-UP — NOT REQUIRED TO BLOCK INTEGRATION` |
 | Historical alias | `ManoJVB10` resolved as Joaquín's previous username; history rewrite prohibited |
 
@@ -39,6 +39,19 @@ This approval does not fabricate individual Gino, Gerard or Sebastián reviews,
 does not assign current authorship to absent teammates and does not promote any
 report claim to Mobile implementation, Product Acceptance or production
 readiness.
+
+## Signed follow-up attribution — 2026-09-06
+
+These units were created after the original integration review. They do not
+rewrite or reassign any earlier commit:
+
+| Commit | Owner | Scope | Signature state |
+| :--- | :--- | :--- | :--- |
+| `8091e321c8bd1e50f8067ddd8ce2d00202e12b33` | Sebastián / `spinedo214` | Historical interview register, provenance paths and Annex A links | Local Battle signature valid |
+| `c7bf5c526a49729349ff4aa0087d7a028fe18f59` | Gino / `R0obxdnt` | Mobile V1 rubric-template validator, register and structure gate | Local Battle signature valid |
+
+The Diego and Gerard architecture units must be recorded here only after their
+own dedicated-agent signature and remote verification are complete.
 
 The public profile precheck was performed on 2026-09-01 and resolved all five
 URLs. The 2026-09-02 handoff explicitly resolved the current identities and
@@ -68,9 +81,8 @@ identities, but not ownership of a specific change.
 ## Workstream ownership supplied by the canonical prompt
 
 This matrix is a review aid, not a completed story assignment. A person may
-support a story without owning its commit. Current integration ownership is
-limited to the approved Joaquín/Diego units below; future workstream ownership
-requires that person's own review.
+support a story without owning its commit. Historical integration ownership is
+preserved; follow-up workstream ownership requires that person's own review.
 
 | Workstream | Primary owner from prompt | Main scope | Support / coordination |
 | :--- | :--- | :--- | :--- |
@@ -103,8 +115,7 @@ use another person's password, PAT, SSH private key or GPG key. Do not add
 ## Current decision
 
 All five identity rows are `OWNER CONFIRMED BY HANDOFF`. The 2026-09-02 joint
-review authorizes current reviewed integration units under the exact matrix in
-[human-commit-gate.md](./human-commit-gate.md). Use one-shot identity only for
-Joaquín or Diego according to unit. Gino, Gerard and Sebastián remain eligible
-for new meaningful workstreams after their own review; no current unreviewed
-diff is attributed to them.
+review authorizes the original integration units under the exact matrix in
+[human-commit-gate.md](./human-commit-gate.md). Every new unit must use its
+owner's dedicated Battle wrapper and a direct, meaningful scope; no historical
+commit is amended and no identity is guessed or reassigned.

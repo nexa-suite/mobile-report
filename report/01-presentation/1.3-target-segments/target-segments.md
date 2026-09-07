@@ -10,7 +10,7 @@ mediante investigación primaria permanece pendiente.
 | ID | Segmento | Actores principales | Aplicación | Necesidad móvil a explorar |
 | --- | --- | --- | --- | --- |
 | **MOB-SEG-01** | **Field & Warehouse Operations** | Warehouse Operator y Dispatch Coordinator para el alcance V1; Sales Representative es un actor diferido V2+. Business Operations Manager es un actor secundario transversal. | Nexa Operations Mobile | Investigar identificación, recepción, lotes, FEFO, picking, temperatura, preparación y despacho. Las tareas de ventas en campo se mantienen fuera del flujo V1 hasta nueva validación. |
-| **MOB-SEG-02** | **Delivery Workforce** | Driver / Delivery Operator. | Nexa Operations Mobile | Ejecutar entregas asignadas, registrar intentos, incidencias, prueba de entrega y handoff con conectividad variable. La ubicación se limita a la acción autorizada de navegación; no se afirma seguimiento continuo. |
+| **MOB-SEG-02** | **Physical Operations & Delivery** | Driver / Delivery Operator. | Nexa Operations Mobile | Ejecutar entregas asignadas, registrar intentos, incidencias, prueba de entrega y handoff con conectividad variable. La ubicación se limita a la acción autorizada de navegación; no se afirma seguimiento continuo. |
 | **MOB-SEG-03** | **B2B Buyers** | Customer Buyer autorizado por la relación con el proveedor. | Nexa Buyer Mobile | En V1, atender notificaciones relevantes, verificar el handoff, confirmar cantidades recibidas y registrar discrepancias. Catálogo, solicitudes, pagos y otros flujos permanecen sujetos a V2+ y validación. |
 
 Company Owner y Tenant Administrator continúan siendo actores principalmente
@@ -27,7 +27,7 @@ operativo:
 flowchart LR
     BUYER["MOB-SEG-03 — B2B Buyers<br/>Recepción y discrepancias V1"]
     FIELD["MOB-SEG-01 — Field & Warehouse Operations<br/>Recepción, preparación y despacho V1"]
-    DRIVER["MOB-SEG-02 — Delivery Workforce<br/>Entrega y evidencia acotada"]
+    DRIVER["MOB-SEG-02 — Physical Operations & Delivery<br/>Entrega y evidencia acotada"]
     API["Nexa API y dominio compartido<br/>Estado autorizado y trazabilidad"]
 
     BUYER -->|Solicitud, pedido y consulta| API
@@ -70,6 +70,21 @@ Estas fuentes justifican investigar trazabilidad, conservación y condiciones de
 trabajo en los tres segmentos. La segmentación, sus necesidades y sus
 indicadores siguen siendo propuestas hasta contar con entrevistas, pruebas y
 otra evidencia primaria del proyecto.
+
+## Relación con evidencia histórica
+
+La relación siguiente adapta únicamente hechos y preguntas que pueden
+reutilizarse con trazabilidad. El [ledger de procedencia](../../93-annexes/annex-f-translation-and-terms/legacy-evidence-provenance.md)
+contiene SHA, rutas, estados y bloqueos por registro.
+
+| Fuente histórica | Relación segura con segmento vigente | Límite de reutilización |
+| :--- | :--- | :--- |
+| S1 — Commercial Coordination (3 registros) | Informa preguntas sobre coordinación en campo, canales paralelos, disponibilidad, crédito, rendimiento y doble digitación para `MOB-SEG-01`. | El antiguo rol comercial no prueba trabajo de Warehouse Operator ni valida captura móvil V1. |
+| S2 — Operations / Account Owner (3 registros) | Permite formular preguntas sobre documentos, vencimiento, FEFO, temperatura y preparación dentro de `MOB-SEG-01` y del plan de investigación. | Es `HISTORICAL CONTEXT ONLY`; no representa al nuevo `MOB-SEG-02` ni prueba conducta de Driver / Delivery Operator. |
+| S3 — B2B Buyer Portal (2 registros) | Informa preguntas de atención de entrega, handoff, cantidades, discrepancias, recibo, evidencia y confianza para `MOB-SEG-03`. | No valida catálogo, pedidos, pagos, documentos ni tracking completo en Mobile V1. Requiere al menos un participante actual adicional si no aparece un sexto registro compatible. |
+
+La evidencia histórica orienta investigación; no convierte actores, necesidades,
+indicadores o historias en elementos validados.
 
 ## Necesidades y valor esperado por segmento
 

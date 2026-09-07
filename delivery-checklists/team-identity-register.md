@@ -49,8 +49,8 @@ rewrite or reassign any earlier commit:
 | :--- | :--- | :--- | :--- |
 | `8091e321c8bd1e50f8067ddd8ce2d00202e12b33` | Sebastián / `spinedo214` | Historical interview register, provenance paths and Annex A links | Local Battle signature valid |
 | `c7bf5c526a49729349ff4aa0087d7a028fe18f59` | Gino / `R0obxdnt` | Mobile V1 rubric-template validator, register and structure gate | Local Battle signature valid |
-| `893e8ecfca3be86f66c0fd2fcf1c7ebff78a3e3d` | Diego / `DiegoS284` | Architecture authority and boundary evidence | Local Battle signature valid; remote verification pending |
-| `PENDING` | Gerard / `GerardRojasMancilla` | Mobile architecture/runtime-boundary evidence | Local Battle signature valid; remote verification pending |
+| `893e8ecfca3be86f66c0fd2fcf1c7ebff78a3e3d` | Diego / `DiegoS284` | Architecture authority and boundary evidence | GitHub verified |
+| `55c10fdd5fec43f8d24bc82e928d91c010753c7f` | Gerard / `GerardRojasMancilla` | Mobile architecture/runtime-boundary evidence | GitHub verified |
 
 The public profile precheck was performed on 2026-09-01 and resolved all five
 URLs. The 2026-09-02 handoff explicitly resolved the current identities and

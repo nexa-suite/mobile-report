@@ -29,8 +29,8 @@ EXPECTED_IDS = [
 
 
 def backlog_rows(text: str) -> list[list[str]]:
-    start = text.index("## Backlog summary")
-    end = text.index("## Story records", start)
+    start = text.index("## Índice de historias funcionales")
+    end = text.index("## Registros de historias funcionales", start)
     rows: list[list[str]] = []
     for line in text[start:end].splitlines():
         if not line.startswith("| ") or "MOB-US-" not in line:

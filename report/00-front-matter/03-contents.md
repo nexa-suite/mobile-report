@@ -10,8 +10,8 @@
 
 ## Chapter I — Presentation
 
-- [Startup profile](../01-presentation/1.1-startup-profile/section-overview.md)
-  - [Startup description](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md)
+- [Startup profile](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md)
+  - [Startup description](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md#111-startup-description)
   - [Team member profiles](../01-presentation/1.1-startup-profile/1.1.2-team-member-profiles.md)
 - [Solution profile](../01-presentation/1.2-solution-profile/section-overview.md)
   - [Background and problem](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md)
@@ -20,7 +20,7 @@
 
 ## Chapter II — Requirements Development and Software Solution Design
 
-- [Competitors](../02-requirements-and-software-solution-design/2.1-competitors/section-overview.md)
+- [Competitors](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
   - [Competitive analysis](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
   - [Strategies and tactics](../02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md)
 - [Interviews](../02-requirements-and-software-solution-design/2.2-interviews/section-overview.md)
@@ -37,7 +37,7 @@
   - [Big Picture EventStorming](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.5-big-picture-eventstorming.md)
   - [Ubiquitous Language](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md)
 - [Requirements specification](../02-requirements-and-software-solution-design/2.4-requirements-specification/section-overview.md)
-  - [To-be scenarios](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.0-to-be-scenario-mapping.md)
+  - [To-be scenarios](../02-requirements-and-software-solution-design/2.4-requirements-specification/to-be-scenario-mapping.md)
   - [User stories](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md)
   - [Impact mapping](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md)
   - [Product backlog](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md)

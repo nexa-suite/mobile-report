@@ -73,6 +73,7 @@ PANDOC_ARGUMENTS=(
   --lua-filter="$REPO_ROOT/scripts/report-pdf-filter.lua"
   --resource-path="$REPO_ROOT:$REPO_ROOT/report:$REPO_ROOT/report/assets:$BUILD_DIR"
   --metadata=lang:es
+  --variable=papersize:a4
   --variable=geometry:margin=1in
   --variable=fontsize:11pt
 )
@@ -102,6 +103,7 @@ case "$EXPORT_MODE" in
       --lua-filter=/workspace/scripts/report-pdf-filter.lua \
       --resource-path=/workspace:/workspace/report:/workspace/report/assets:/build \
       --metadata=lang:es \
+      --variable=papersize:a4 \
       --variable=geometry:margin=1in \
       --variable=fontsize:11pt \
       /build/report.md \

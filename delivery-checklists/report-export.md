@@ -10,8 +10,9 @@ bash scripts/export-report-pdf.sh /tmp/nexa-mobile-report-final.pdf
 
 The script builds a deterministic source order from the report Markdown, places
 the generated table of contents after the cover, normalizes report-relative
-asset paths in the temporary build source and writes the PDF to the requested
-path. The default output is temporary and is not a submission artifact.
+asset paths in the temporary build source, preserves the A4 page geometry of
+the official cover reference and writes the PDF to the requested path. The
+default output is temporary and is not a submission artifact.
 
 Docker mode is the default. It uses
 `pandoc/latex@sha256:6e71008186280e8908e3816481165c0103d04c64162bc9c3f3fe7bc27c681fc5`
@@ -21,13 +22,11 @@ manifest. Native execution is available with
 
 ## Smoke-test result
 
-On 2026-09-05 the Docker path generated a temporary 213-page PDF from 141
-Markdown sources. `pdfinfo` reported a non-empty letter-size PDF. The container
-emitted non-fatal `Ticker: poll failed: Interrupted system call` messages while
-the command still exited successfully. The PDF smoke scan found no forbidden
-internal provenance terms. Rendered pages covering team profiles and the
-Sebastián Pinedo photo, story records, strategic DDD, bounded-context coverage,
-class diagrams and database design were inspected. The temporary output is not
+The prior 2026-09-05 Docker checkpoint generated a temporary 213-page PDF from
+141 Markdown sources, but its letter page geometry did not match the A4 cover
+reference and is superseded for delivery. On 2026-09-06, native `pandoc` plus
+`xelatex` produced a non-empty 213-page baseline; its final A4 export and visual
+review are still required after Wave 3 integration. The temporary output is not
 committed because the official submission filename and complete human PDF
 acceptance remain pending.
 

@@ -27,7 +27,10 @@ def main() -> int:
         return 1
     text = module.STORIES.read_text(encoding="utf-8")
     scenarios = len(re.findall(r"<strong>Scenario:", text))
-    print(f"mobile V1 transcription OK: full_stories=73; V1_stories=28; source_scenarios=256; rendered_gherkin_scenarios={scenarios}")
+    print(
+        "mobile V1 transcription OK: lifecycle_stories=73; detailed_v1=28; "
+        f"source_scenarios=256; rendered_v1_gherkin_scenarios={scenarios}"
+    )
     return 0
 
 

@@ -33,15 +33,15 @@ python3 "$mobile_backlog_validator"
 headings=$(rg -c '^### MOB-US-' "$stories")
 summary_rows=$(awk -F'|' '/^\| [0-9]+ \| MOB-US-/{c++} END{print c+0}' "$stories")
 scenarios=$(rg -o '<strong>Scenario:' "$stories" | wc -l | tr -d ' ')
-expected_story_ids='MOB-US-001 MOB-US-002 MOB-US-003 MOB-US-004 MOB-US-005 MOB-US-006 MOB-US-007 MOB-US-008 MOB-US-009 MOB-US-010 MOB-US-011 MOB-US-012 MOB-US-013 MOB-US-014 MOB-US-015 MOB-US-016 MOB-US-017 MOB-US-018 MOB-US-019 MOB-US-020 MOB-US-021 MOB-US-022 MOB-US-023 MOB-US-024 MOB-US-025 MOB-US-026 MOB-US-027 MOB-US-028 MOB-US-029 MOB-US-030 MOB-US-031 MOB-US-032 MOB-US-033 MOB-US-034 MOB-US-035 MOB-US-036 MOB-US-037 MOB-US-038 MOB-US-039 MOB-US-040 MOB-US-041 MOB-US-042 MOB-US-043 MOB-US-044 MOB-US-045 MOB-US-046 MOB-US-047 MOB-US-048 MOB-US-049 MOB-US-050 MOB-US-051 MOB-US-052 MOB-US-053 MOB-US-054 MOB-US-055 MOB-US-056 MOB-US-057 MOB-US-058 MOB-US-059 MOB-US-060 MOB-US-061 MOB-US-062 MOB-US-063 MOB-US-064 MOB-US-065 MOB-US-066 MOB-US-067 MOB-US-068 MOB-US-069 MOB-US-070 MOB-US-071 MOB-US-072 MOB-US-073'
+expected_story_ids='MOB-US-001 MOB-US-002 MOB-US-003 MOB-US-011 MOB-US-012 MOB-US-013 MOB-US-014 MOB-US-015 MOB-US-016 MOB-US-017 MOB-US-019 MOB-US-020 MOB-US-021 MOB-US-022 MOB-US-023 MOB-US-024 MOB-US-025 MOB-US-026 MOB-US-027 MOB-US-028 MOB-US-031 MOB-US-032 MOB-US-033 MOB-US-034 MOB-US-044 MOB-US-047 MOB-US-048 MOB-US-049'
 actual_story_ids=$(awk '/^### MOB-US-/{print $2}' "$stories" | paste -sd' ' -)
 context_rows=$(awk -F'|' '/^\| BC-[0-9][0-9] —/{c++} END{print c+0}' "$strategic_traceability")
 sprint_rows=$(awk -F'|' '/^\| Sprint [123] \|/{c++} END{print c+0}' "$sprint_index")
 
-[[ "$headings" -eq 73 ]] || { echo "expected 73 detailed stories, got $headings" >&2; exit 1; }
+[[ "$headings" -eq 28 ]] || { echo "expected 28 detailed V1 stories, got $headings" >&2; exit 1; }
 [[ "$summary_rows" -eq 28 ]] || { echo "expected 28 summary rows, got $summary_rows" >&2; exit 1; }
-[[ "$scenarios" -eq 259 ]] || { echo "expected 259 rendered Gherkin scenarios (256 source + 3 reconciled), got $scenarios" >&2; exit 1; }
-[[ "$actual_story_ids" == "$expected_story_ids" ]] || { echo "Mobile story IDs/order do not match the live 73-row lifecycle index" >&2; exit 1; }
+[[ "$scenarios" -eq 112 ]] || { echo "expected 112 rendered detailed V1 Gherkin scenarios, got $scenarios" >&2; exit 1; }
+[[ "$actual_story_ids" == "$expected_story_ids" ]] || { echo "Detailed V1 story IDs/order do not match the V1 lifecycle index" >&2; exit 1; }
 [[ "$context_rows" -eq 11 ]] || { echo "expected 11 strategic Bounded Context rows, got $context_rows" >&2; exit 1; }
 [[ "$sprint_rows" -eq 3 ]] || { echo "expected exactly three canonical Sprint rows, got $sprint_rows" >&2; exit 1; }
 ! rg -q '^\| Sprint 4 \|' "$sprint_index" || { echo "non-canonical Sprint 4 row found" >&2; exit 1; }
@@ -78,4 +78,4 @@ if rg -n '[[:blank:]]+$' "$repo_root/README.md" "$repo_root/report" "$repo_root/
   exit 1
 fi
 
-printf 'report structure OK: stories=%s summary_rows=%s scenarios=%s\n' "$headings" "$summary_rows" "$scenarios"
+printf 'report structure OK: detailed_v1_stories=%s summary_rows=%s detailed_v1_scenarios=%s lifecycle_stories=73\n' "$headings" "$summary_rows" "$scenarios"

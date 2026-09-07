@@ -281,10 +281,13 @@ def main() -> int:
     story_text = STORY_FILE.read_text(encoding="utf-8")
     story_count = len(re.findall(r"^### MOB-US-\d{3} ", story_text, re.MULTILINE))
     scenario_count = len(re.findall(r"<strong>Scenario:", story_text))
-    if story_count != 73:
-        failures.append(f"Mobile story headings: expected 73, got {story_count}")
-    if scenario_count != 259:
-        failures.append(f"Mobile Gherkin scenarios: expected 259 rendered (256 source + 3 reconciled), got {scenario_count}")
+    if story_count != 28:
+        failures.append(f"Detailed V1 story headings: expected 28, got {story_count}")
+    if scenario_count != 112:
+        failures.append(
+            "Detailed V1 Gherkin scenarios: expected 112 from the 28 V1 records, "
+            f"got {scenario_count}"
+        )
 
     ddd_text = DDD_TRACEABILITY.read_text(encoding="utf-8")
     context_count = len(re.findall(r"^\| BC-\d{2} —", ddd_text, re.MULTILINE))
@@ -299,7 +302,12 @@ def main() -> int:
             "valid current", "valid boundary", "future/research", "historical/context"
         ))
     )
-    print(f"mobile V1 semantic counts: stories={story_count} scenarios={scenario_count} (256 source + 3 reconciled) strategic_contexts={context_count}")
+    print(
+        "mobile V1 semantic counts: "
+        f"detailed_v1_stories={story_count} detailed_v1_scenarios={scenario_count} "
+        "lifecycle_source=73 stories/256 scenarios strategic_contexts="
+        f"{context_count}"
+    )
     print(
         "architecture stale scan: "
         f"files={len(scanned_files)} (Markdown + scripts; validator source excluded), "

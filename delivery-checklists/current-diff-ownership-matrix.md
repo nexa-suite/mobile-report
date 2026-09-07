@@ -107,6 +107,11 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md`
 - `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md`
 - `report/92-bibliography/bibliography.md`
+- `report/02-requirements-and-software-solution-design/2.2-interviews/section-overview.md`
+- `report/93-annexes/annex-a-student-outcome/legacy-interviews/celia-perez.jpeg`
+- `report/93-annexes/annex-a-student-outcome/legacy-interviews/lorena-silva.jpeg`
+- `report/93-annexes/annex-a-student-outcome/legacy-interviews/pedro-puente.jpeg`
+- `report/93-annexes/annex-f-translation-and-terms/legacy-evidence-provenance.md`
 
 ## Unit C — V1 requirements / backlog
 
@@ -129,6 +134,7 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md`
 - `delivery-checklists/mobile-v1-story-verification-register.md`
+- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.4-technical-stories.md`
 
 ## Unit D — Strategic DDD
 
@@ -151,6 +157,25 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.2-context-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/section-overview.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.4-strategic-ddd-traceability.md`
+- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md`
+- `report/assets/chapter-2/ddd-process/step1-ddd.png`
+- `report/assets/chapter-2/ddd-process/step1-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step10-ddd.png`
+- `report/assets/chapter-2/ddd-process/step10-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step2-ddd.png`
+- `report/assets/chapter-2/ddd-process/step2-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step3-ddd.png`
+- `report/assets/chapter-2/ddd-process/step3-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step4-ddd.png`
+- `report/assets/chapter-2/ddd-process/step4-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step5-ddd.png`
+- `report/assets/chapter-2/ddd-process/step5-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step6-ddd.png`
+- `report/assets/chapter-2/ddd-process/step6-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step7-ddd.png`
+- `report/assets/chapter-2/ddd-process/step7-ddd.svg`
+- `report/assets/chapter-2/ddd-process/step9-ddd.png`
+- `report/assets/chapter-2/ddd-process/step9-ddd.svg`
 
 ## Unit E — C4 / Structurizr / system architecture
 
@@ -172,6 +197,24 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.4-deployment-diagrams.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/section-overview.md`
 - `delivery-checklists/architecture-render-evidence-register.md`
+- `report/assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-Buyer-Mobile-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-Buyer-Mobile-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-Containers-V1-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-Containers-V1-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-Deployment-V1-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-Deployment-V1-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-Operations-Mobile-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-Operations-Mobile-TARGET.svg`
+- `report/assets/chapter-2/c4/Nexa-SystemContext-V1-TARGET.png`
+- `report/assets/chapter-2/c4/Nexa-SystemContext-V1-TARGET.svg`
 
 ## Unit F — Tactical DDD / UML / database
 
@@ -195,6 +238,90 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/2.6.x.6.1-domain-layer-class-diagrams.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/2.6.x.6.2-database-design-diagrams.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/context-overview.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/application-layer.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/component-level-diagrams.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/domain-layer.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/infrastructure-layer.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/interface-layer.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-01-tenant-access-governance.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-02-customer-buyer-relationships.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-03-catalog-commercial-policy.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-04-sales-commitment.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-05-inventory-availability.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-06-fulfillment-delivery.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-07-credit-receivables.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-08-payments.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-09-business-documents.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-10-notifications.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-11-business-traceability.md`
+- `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/README.md`
+- `report/assets/chapter-2/provenance.md`
+- `report/assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.png`
+- `report/assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.svg`
+- `report/assets/chapter-2/tactical/BC-01/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-01/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-01/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-01/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-02/BC02_CustomerBuyerRelationships.png`
+- `report/assets/chapter-2/tactical/BC-02/BC02_CustomerBuyerRelationships.svg`
+- `report/assets/chapter-2/tactical/BC-02/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-02/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-02/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-02/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-03/BC03_CatalogCommercialPolicy.png`
+- `report/assets/chapter-2/tactical/BC-03/BC03_CatalogCommercialPolicy.svg`
+- `report/assets/chapter-2/tactical/BC-03/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-03/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-03/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-03/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.png`
+- `report/assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.svg`
+- `report/assets/chapter-2/tactical/BC-04/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-04/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-04/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-04/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.png`
+- `report/assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.svg`
+- `report/assets/chapter-2/tactical/BC-05/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-05/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-05/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-05/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.png`
+- `report/assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.svg`
+- `report/assets/chapter-2/tactical/BC-06/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-06/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-06/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-06/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-07/BC07_CreditReceivables.png`
+- `report/assets/chapter-2/tactical/BC-07/BC07_CreditReceivables.svg`
+- `report/assets/chapter-2/tactical/BC-07/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-07/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-07/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-07/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-08/BC08_Payments.png`
+- `report/assets/chapter-2/tactical/BC-08/BC08_Payments.svg`
+- `report/assets/chapter-2/tactical/BC-08/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-08/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-08/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-08/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.png`
+- `report/assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.svg`
+- `report/assets/chapter-2/tactical/BC-09/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-09/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-09/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-09/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-10/BC10_Notifications.png`
+- `report/assets/chapter-2/tactical/BC-10/BC10_Notifications.svg`
+- `report/assets/chapter-2/tactical/BC-10/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-10/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-10/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-10/domain-model.puml`
+- `report/assets/chapter-2/tactical/BC-11/BC11_BusinessTraceability.png`
+- `report/assets/chapter-2/tactical/BC-11/BC11_BusinessTraceability.svg`
+- `report/assets/chapter-2/tactical/BC-11/database-diagram.png`
+- `report/assets/chapter-2/tactical/BC-11/database-diagram.puml`
+- `report/assets/chapter-2/tactical/BC-11/database-diagram.svg`
+- `report/assets/chapter-2/tactical/BC-11/domain-model.puml`
 
 ## Unit G — Mobile UX / i18n / accessibility
 

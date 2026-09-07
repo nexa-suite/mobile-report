@@ -186,12 +186,15 @@ def validate() -> list[str]:
                     f"{expected['ID']} {field}: report={actual_value!r}, expected={expected_value!r}"
                 )
 
-    if len(blocks) != 73:
-        failures.append(f"story records: expected 73 headings, got {len(blocks)}")
-    if list(blocks) != source_ids:
-        failures.append("story heading IDs/order differ from the live lifecycle index")
+    expected_v1_ids = [row["ID"] for row in expected_v1]
+    if len(blocks) != len(expected_v1):
+        failures.append(
+            f"detailed V1 story records: expected {len(expected_v1)} headings, got {len(blocks)}"
+        )
+    if list(blocks) != expected_v1_ids:
+        failures.append("detailed V1 story IDs/order differ from the V1 lifecycle index")
 
-    for row in master:
+    for row in expected_v1:
         story_id = row["ID"]
         title, block = blocks.get(story_id, ("", ""))
         if not block:
@@ -261,12 +264,16 @@ def validate() -> list[str]:
 
     total_scenarios = len(re.findall(r"<strong>Scenario:", report_text))
     source_scenarios = sum(len(value["scenarios"]) for value in catalog.values())
-    expected_total_scenarios = source_scenarios + sum(REPORT_SCENARIO_OVERRIDES.values())
+    expected_total_scenarios = sum(
+        len(catalog[row["ID"]]["scenarios"])
+        for row in expected_v1
+    )
     if source_scenarios != 256:
         failures.append(f"source catalog scenarios: expected 256, got {source_scenarios}")
     if total_scenarios != expected_total_scenarios:
         failures.append(
-            f"report Gherkin scenarios: expected {expected_total_scenarios}, got {total_scenarios}"
+            "detailed V1 Gherkin scenarios: "
+            f"expected {expected_total_scenarios}, got {total_scenarios}"
         )
 
     return failures
@@ -289,8 +296,9 @@ def main() -> int:
     report_text = STORIES.read_text(encoding="utf-8")
     total_scenarios = len(re.findall(r"<strong>Scenario:", report_text))
     print(
-        "mobile backlog validation OK: epics=12 stories=73 V1=28 releases=28/35/9/1 "
-        f"source_scenarios=256 rendered_gherkin_scenarios={total_scenarios}"
+        "mobile backlog validation OK: epics=12 lifecycle_stories=73 detailed_v1=28 "
+        "releases=28/35/9/1 source_scenarios=256 "
+        f"rendered_v1_gherkin_scenarios={total_scenarios}"
     )
     return 0
 

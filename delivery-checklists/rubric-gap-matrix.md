@@ -8,10 +8,10 @@ de backend en evidencia de producto Mobile.
 
 | Fuente | Corte |
 | :--- | :--- |
-| Prompt canónico | `/Users/joaquinfranciscoverdebueno/Downloads/NEXA MOBILE ACADEMIC REPORT .md` — SHA-256 `af86ca49fb0e7b2add5313116bc7fd4651add5e8562bf215a8f9a78296a20370` |
-| Enunciado y rúbrica | `/Users/joaquinfranciscoverdebueno/Developer/nexa-suite/blueprint/90-academic/mobile/enunciado-trabajo-final.md` — SHA-256 `ac734ff3fe33f38185cd57b05d2ed48cd42a46239c87a78ff98418a4bb5b8e6f` |
-| Informe | `reconcile/report-integration-20260902`, source checkpoint validado `8912aa03689c27c7c55c05bdd0b996008fd87514`; el ref vivo se resuelve desde Git |
-| Regla del corte | Integración `28/28` aprobada por DiegoS284 + JoaquinBV511; staging, commits y push completados; PR y merge siguen sujetos a revisión humana |
+| Fuentes de corte | [Source manifest](./source-manifest.md): enunciado oficial, plantilla de carátula, Blueprint y refs verificables; no depende de una ruta personal |
+| Enunciado oficial | PDF V4.0 SHA-256 `38be0c1baa77d0601c9605ef9ea72ad2fb510222a17a65944a06690621169f37`; la rúbrica interna se conserva como evidencia complementaria, no como sustituto |
+| Informe | `reconcile/report-integration-20260902`, commit publicado `5ee688a8e5953662bf6a94c07948c4d24968a586`; el ref vivo se resuelve desde Git |
+| Regla del corte | Integración documental en curso; `28` historias V1 se mantienen como alcance planeado, sin aprobación ficticia. PR #1 permanece abierto; merge sujeto a revisión humana |
 
 `Structure ready` significa que existe una estructura contextualizada que puede
 revisarse. `Partial` significa que sólo una parte de la evidencia fue

@@ -8,9 +8,9 @@
 | Rama | `reconcile/report-integration-20260902` |
 | Base revisada | `928cb1c4ca0a0848c4b0c0de32108c87ee97dada` (`origin/develop` after main-only fast-forward) |
 | Upstream | `origin/reconcile/report-integration-20260902` |
-| Push | `SUCCESS — 2026-09-02; reconciliation and post-audit commits pushed` |
-| Staging | Preparado: 94 paths exactos; diff en caché y checks limpios; commit pendiente de firma Verified |
-| Commits nuevos | Preserved feature history, merge commit and post-reconciliation audit/fix/traceability commits; current remote HEAD and ahead count are verified in the latest delivery record |
+| Push | `SUCCESS — 2026-09-06; Wave 3 corrective unit published without force-push` |
+| Staging | Limpio después de `5ee688a8e5953662bf6a94c07948c4d24968a586`; cada unidad posterior requiere staging exacto nuevo |
+| Commits nuevos | Historia preservada; el ref vivo debe resolverse desde Git y la firma del nuevo commit debe verificarse en GitHub |
 | Report integration review | Handoff humano más reciente autoriza el rework de 73 historias y correcciones sustantivas de Capítulos I–II; no autoriza atribución de trabajo ajeno |
 | Individual defense review | Follow-up; not required to block current report integration |
 | Identidad de owners | Owner-confirmed handoff `5/5`; current reviewed-unit attribution limited to Joaquín/Diego |
@@ -21,14 +21,15 @@ validación y separación por unidad. No convierte una fuente, una proyección o
 una prueba local en implementación, aceptación de producto o preparación para
 producción.
 
-## Latest human authorization
+## Reglas de ejecución autorizadas por el Owner
 
-El handoff humano más reciente cierra el gate de contenido pendiente y autoriza
-la reconciliación de las 73 historias, las correcciones sustantivas de
-Capítulos I–II y las correcciones lingüísticas de Capítulos III–IV. Sebastián
-Pinedo y su foto se preservan. El rework queda sujeto a validación reproducible,
-staging exacto y firma Verified; si esa firma no puede asegurarse, no se crea
-commit ni se hace push.
+El Owner autorizó el rework de las 73 historias, las correcciones sustantivas
+de Capítulos I–II y sus gates reproducibles. La autorización no atribuye
+trabajo no evidenciado ni cierra evidencia humana, de producto o de runtime.
+En Battle Mode, una operación que firma debe ejecutarse mediante
+`nexa-run-as <GitHubUsername> -- <command>` contra el socket dedicado del
+contribuyente; una prueba directa con otro `SSH_AUTH_SOCK` no es un diagnóstico
+válido de su agente. Sebastián Pinedo y su foto se preservan.
 
 ## Reconciliation commit evidence
 
@@ -58,6 +59,12 @@ decisions and the unique valid content retained from develop and main.
 | `27fa7bcb4a29e413e67f2a49662746ef7f5c5693` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `chore(report): add reproducible report validation gates` |
 | `8436336f749b1f366aa02d950a5e245025753784` | Diego Y. Sandoval / `diego64g284@gmail.com` | `chore(architecture): add technical evidence validation gates` |
 | `8fdf42018e9c3b3bfd343a1f319ae5ca831df5e6` | Joaquín Francisco Verde Bueno / `joaquinverdebueno@gmail.com` | `docs(rubric): record approved integration commits` |
+| `5ee688a8e5953662bf6a94c07948c4d24968a586` | JoaquinBV511 / `joaquinverdebueno@gmail.com` | `docs(report): align av1 front matter and source portability` |
+
+El último registro fue creado con el socket Battle dedicado de `JoaquinBV511`.
+La firma local fue válida para `SHA256:jqXaBuK4+qIS6gWktz89ABj5L/QojGehslJ0iJKF+yc`
+y GitHub respondió `verified=true`, `reason=valid`. No hubo reescritura,
+force-push, merge, tag ni release.
 
 Each record was inspected with `git show -1 --format=fuller --stat`; staging
 was empty after the sequence. No history rewrite, force push, co-author trailer

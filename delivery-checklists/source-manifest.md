@@ -22,7 +22,7 @@ canónica de Product, Domain y Architecture.
 | Design Lab | repositorio Git | `../design-lab` | `origin/main` @ `c16c1f4b64af688754a7c3bc989db9308f825c66` | Diseño ejecutable | UX/UI y Design System; no implementación Mobile final |
 | Nexa DDD | directorio local | `NEXA_DDD_SOURCE_DIR` | Directorio sin Git al corte | Evidencia a clasificar | Imágenes de proceso; cada uso requiere hash y registro visual |
 | Nexa Ecosystem Report | fuente histórica | Referencia Git registrada en el ledger de procedencia | SHA histórico esperado `e161fe522023bfe5929e76c4d7c66af211884b7e` | Histórica | Needfinding y antecedentes; nunca redefine canon actual |
-| Nexa legacy local snapshot | fuente histórica local | `NEXA_LEGACY_ROOT` | Curated snapshot; revision and file hashes in [legacy provenance](../report/93-annexes/annex-f-translation-and-terms/legacy-evidence-provenance.md) | Histórica | Sólo clasificación/revisión de material histórico; no autoridad actual |
+| Nexa historical local snapshot | fuente histórica local | `NEXA_HISTORICAL_ROOT` | Curated snapshot; revision and file hashes in [historical provenance](../report/93-annexes/annex-f-translation-and-terms/historical-evidence-provenance.md) | Histórica | Sólo clasificación/revisión de material histórico; no autoridad actual |
 
 ## Estados de worktrees al corte
 

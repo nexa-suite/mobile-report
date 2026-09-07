@@ -74,7 +74,7 @@ otra evidencia primaria del proyecto.
 ## Relación con evidencia histórica
 
 La relación siguiente adapta únicamente hechos y preguntas que pueden
-reutilizarse con trazabilidad. El [ledger de procedencia](../../93-annexes/annex-f-translation-and-terms/legacy-evidence-provenance.md)
+reutilizarse con trazabilidad. El [ledger de procedencia](../../93-annexes/annex-f-translation-and-terms/historical-evidence-provenance.md)
 contiene SHA, rutas, estados y bloqueos por registro.
 
 | Fuente histórica | Relación segura con segmento vigente | Límite de reutilización |

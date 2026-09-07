@@ -1,4 +1,4 @@
-# Legacy evidence reuse ledger
+# Historical evidence reuse ledger
 
 ## Alcance
 

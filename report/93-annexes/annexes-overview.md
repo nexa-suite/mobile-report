@@ -6,12 +6,12 @@ pending until its source, evidence and reviewer are attached.
 
 | Annex | Intended content | State |
 | :--- | :--- | :--- |
-| A | Interview consent, participant records, recordings and screenshots | Pending human evidence |
+| A | [Canonical historical interview register](annex-a-student-outcome/historical-interview-evidence-register.md), consent, participant records, recordings and screenshots | Source-controlled register present; consent and publication review pending |
 | B | Needfinding artifacts: personas, task matrix, journeys and empathy maps | Pending validated source |
 | C | EventStorming, Domain Storytelling, Context Map and DDD canvases | Target structure; workshop evidence pending |
 | D | User stories, Gherkin criteria, Impact Map and Product Backlog | Structure ready; owner and acceptance review pending |
 | E | Heuristic and inclusive-design evaluation forms | Pending evaluator and artifact |
-| F | Glossary, technical acronyms, source/revision ledger and final traceability | In progress; see [legacy evidence provenance ledger](annex-f-translation-and-terms/legacy-evidence-provenance.md); manual review pending |
+| F | Glossary, technical acronyms, source/revision ledger and final traceability | In progress; see [historical evidence provenance ledger](annex-f-translation-and-terms/historical-evidence-provenance.md); manual review pending |
 
 Do not publish private participant data, secrets or screenshots whose identity
 or permission status is unresolved in the evaluated annex. Every image must

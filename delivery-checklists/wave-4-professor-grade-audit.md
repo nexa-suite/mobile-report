@@ -15,7 +15,7 @@ externos y de aclaración del profesor.
 | 2 | Version History | Se añadió la fila 0.3.0 para Wave 4. | REFINE |
 | 3 | Collaboration consistency | Identidades y límites de autoría se mantienen separados de evidencia pendiente. | KEEP |
 | 4 | Student Outcome/SMART factuality | Se conservan como objetivos/proyección; aprobación individual sigue abierta. | WAIT FOR HUMAN EVIDENCE |
-| 5 | Legacy provenance | Ledger clasifica autoridad, hashes, permisos y fuente histórica. | KEEP |
+| 5 | Historical provenance | Ledger clasifica autoridad, hashes, permisos y fuente histórica. | KEEP |
 | 6 | Exact interview counts | Histórico 3/3/2; campaña actual 0/0/0. | KEEP |
 | 7 | S1/S3 semantic adaptation | Adaptación narrativa separada de validación actual; dos capturas rechazadas por mismatch. | KEEP |
 | 8 | S2 research status | S2 permanece `RESEARCH_PENDING`; no se cuentan entrevistas antiguas. | KEEP / WAIT FOR HUMAN EVIDENCE |

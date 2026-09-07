@@ -1,5 +1,13 @@
 # Video About-The-Team
 
-Documentar secuencias, timing, participantes, actividades, competencias y enlaces Stream/YouTube.
+El registro final debe identificar a cada participante, secuencia, tiempos,
+actividad, competencia demostrada, URL y permiso. La pertenencia al equipo y el
+ownership de commits deben ser consistentes con el registro verificado
+manualmente. Ningún video del equipo está verificado en este corte.
 
-> Sección sin numeración explícita en el índice oficial; se conserva como sección complementaria del Capítulo IV.
+| Field | State |
+| :--- | :--- |
+| Participants and identities | Pending human confirmation |
+| Sequence, timing and activities | Pending |
+| Evidence URL and duration | Pending |
+| Reviewer and permission | Pending |

@@ -9,7 +9,8 @@ team selected it, that a reviewer inspected its readability, that the Mobile
 client is implemented, or that the product was accepted.
 
 The complementary [architecture authority and boundary register](./architecture-authority-and-boundary-register.md)
-keeps C4, Bounded Context, implementation and runtime claims separate.
+and [Mobile architecture evidence register](./mobile-architecture-evidence-register.md)
+keep C4, Bounded Context, implementation and runtime claims separate.
 
 | Field | Observed value |
 | :--- | :--- |

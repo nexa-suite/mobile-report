@@ -89,6 +89,8 @@ units below.
 | :--- | :--- | :--- | :--- |
 | `8091e321c8bd1e50f8067ddd8ce2d00202e12b33` | Historical interview register, provenance paths and Annex A links | `spinedo214` / `sebastianpinedo214@gmail.com` | `VALID` — dedicated Battle key |
 | `c7bf5c526a49729349ff4aa0087d7a028fe18f59` | Mobile V1 rubric-template validator, register and structure gate | `R0obxdnt` / `grtdls525gino1@gmail.com` | `VALID` — dedicated Battle key |
+| `893e8ecfca3be86f66c0fd2fcf1c7ebff78a3e3d` | Architecture authority and boundary evidence | `DiegoS284` / `diego64g284@gmail.com` | `VALID` locally — remote verification pending |
+| `PENDING` | Mobile architecture/runtime-boundary evidence | `GerardRojasMancilla` / `U202413142@upc.edu.pe` | `VALID` locally — remote verification pending |
 
 ## Post-reconciliation audit/fix commits — 2026-09-02
 

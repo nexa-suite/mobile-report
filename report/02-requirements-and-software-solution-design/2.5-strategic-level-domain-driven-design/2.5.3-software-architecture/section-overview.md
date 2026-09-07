@@ -52,4 +52,5 @@ humana formal del equipo, ejecución local y deployment cloud permanecen
 `OPEN`. No se usan thumbnails `.structurizr` obsoletos.
 
 El lector puede contrastar cada afirmación con el [registro de autoridad y
-límites](../../../../delivery-checklists/architecture-authority-and-boundary-register.md).
+límites](../../../../delivery-checklists/architecture-authority-and-boundary-register.md)
+y con el [registro de evidencia Mobile](../../../../delivery-checklists/mobile-architecture-evidence-register.md).

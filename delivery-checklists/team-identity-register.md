@@ -15,7 +15,7 @@ unit still needs an owner review and explicit commit authorization.
 | Diego | `DiegoS284` | `diego64g284@gmail.com` | Nexa Team Lead; App/Mobile Lead; C4/architecture/implementation evidence | [Profile exists; public display Diego Y. Sandoval](https://github.com/DiegoS284) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Current reviewed technical units authorized |
 | Joaquín | `JoaquinBV511` | `joaquinverdebueno@gmail.com` | Report Lead; Mobile helper | [Profile exists; public display Joaquin Verde](https://github.com/JoaquinBV511) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Current reviewed academic units authorized |
 | Gino | `R0obxdnt` | `grtdls525gino1@gmail.com` | Mobile helper; Principal Report helper | [Profile exists; no public display name](https://github.com/R0obxdnt) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Signed requirements/rubric follow-up unit recorded; Tactical DDD review remains a separate scope |
-| Gerard | `GerardRojasMancilla` | `U202413142@upc.edu.pe` | Principal Mobile helper; Basic Report helper | [Profile exists; public display Gerard Gianpier Rojas Mancilla](https://github.com/GerardRojasMancilla) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Mobile architecture/runtime-boundary unit is prepared for Gerard's signed review |
+| Gerard | `GerardRojasMancilla` | `U202413142@upc.edu.pe` | Principal Mobile helper; Basic Report helper | [Profile exists; public display Gerard Gianpier Rojas Mancilla](https://github.com/GerardRojasMancilla) | OWNER CONFIRMED BY HANDOFF | OWNER-CONFIRMED PROJECT COMMIT EMAIL | Signed Mobile architecture/runtime-boundary unit recorded; further changes require the same owner review |
 
 The canonical prompt does not authorize guessing surnames, student codes or
 alternate emails. The academic cover may contain additional working labels,
@@ -49,9 +49,8 @@ rewrite or reassign any earlier commit:
 | :--- | :--- | :--- | :--- |
 | `8091e321c8bd1e50f8067ddd8ce2d00202e12b33` | Sebastián / `spinedo214` | Historical interview register, provenance paths and Annex A links | Local Battle signature valid |
 | `c7bf5c526a49729349ff4aa0087d7a028fe18f59` | Gino / `R0obxdnt` | Mobile V1 rubric-template validator, register and structure gate | Local Battle signature valid |
-
-The Diego and Gerard architecture units must be recorded here only after their
-own dedicated-agent signature and remote verification are complete.
+| `893e8ecfca3be86f66c0fd2fcf1c7ebff78a3e3d` | Diego / `DiegoS284` | Architecture authority and boundary evidence | Local Battle signature valid; remote verification pending |
+| `PENDING` | Gerard / `GerardRojasMancilla` | Mobile architecture/runtime-boundary evidence | Local Battle signature valid; remote verification pending |
 
 The public profile precheck was performed on 2026-09-01 and resolved all five
 URLs. The 2026-09-02 handoff explicitly resolved the current identities and

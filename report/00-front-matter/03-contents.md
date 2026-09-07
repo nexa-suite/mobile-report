@@ -20,7 +20,7 @@
 
 ## Chapter II — Requirements Development and Software Solution Design
 
-- [Competitors](../02-requirements-and-software-solution-design/2.1-competitors/section-overview.md)
+- [Competitors](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
   - [Competitive analysis](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
   - [Strategies and tactics](../02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md)
 - [Interviews](../02-requirements-and-software-solution-design/2.2-interviews/section-overview.md)

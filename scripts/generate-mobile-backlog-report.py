@@ -362,25 +362,31 @@ UNESTIMATED_POINTS = {
 }
 
 
-BUSINESS_ORDER = [
-    "MOB-US-048", "MOB-US-049", "MOB-US-031", "MOB-US-033",
-    "MOB-US-032", "MOB-US-025", "MOB-US-022", "MOB-US-023",
-    "MOB-US-013", "MOB-US-016", "MOB-US-015", "MOB-US-014",
-    "MOB-US-017", "MOB-US-019", "MOB-US-011", "MOB-US-012",
-    "MOB-US-020", "MOB-US-021", "MOB-US-024", "MOB-US-026",
-    "MOB-US-027", "MOB-US-028", "MOB-US-034", "MOB-US-047",
-    "MOB-US-044", "MOB-US-001", "MOB-US-002", "MOB-US-003",
-    "MOB-US-006", "MOB-US-007", "MOB-US-008", "MOB-US-009",
-    "MOB-US-010", "MOB-US-004", "MOB-US-005", "MOB-US-018",
-    "MOB-US-030", "MOB-US-035", "MOB-US-050", "MOB-US-051",
-    "MOB-US-052", "MOB-US-053", "MOB-US-057", "MOB-US-058",
-    "MOB-US-061", "MOB-US-062", "MOB-US-063", "MOB-US-064",
-    "MOB-US-065", "MOB-US-036", "MOB-US-037", "MOB-US-038",
-    "MOB-US-039", "MOB-US-040", "MOB-US-041", "MOB-US-042",
-    "MOB-US-043", "MOB-US-046", "MOB-US-067", "MOB-US-068",
-    "MOB-US-069", "MOB-US-070", "MOB-US-071", "MOB-US-029",
-    "MOB-US-045", "MOB-US-054", "MOB-US-055", "MOB-US-056",
-    "MOB-US-059", "MOB-US-060", "MOB-US-066", "MOB-US-072",
+GLOBAL_BACKLOG_ORDER = [
+    "MOB-US-001", "MOB-US-002", "MOB-US-003",
+    "LAND-US-001", "LAND-US-002", "LAND-US-003", "LAND-US-004",
+    "LAND-US-005", "LAND-US-006", "TS-MOB-001", "SPIKE-002", "TS-MOB-010",
+    "MOB-US-011", "MOB-US-012", "MOB-US-013", "MOB-US-014",
+    "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019",
+    "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-020",
+    "MOB-US-021", "MOB-US-025", "MOB-US-026", "MOB-US-027",
+    "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033",
+    "MOB-US-034", "MOB-US-044", "MOB-US-047", "MOB-US-048",
+    "MOB-US-049", "TS-MOB-005", "TS-MOB-006", "TS-MOB-007",
+    "TS-MOB-008", "MOB-US-004", "MOB-US-005", "MOB-US-006",
+    "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010",
+    "MOB-US-018", "MOB-US-030", "MOB-US-035", "MOB-US-050",
+    "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-057",
+    "MOB-US-058", "MOB-US-061", "MOB-US-062", "MOB-US-063",
+    "MOB-US-064", "MOB-US-065", "MOB-US-036", "MOB-US-037",
+    "MOB-US-038", "MOB-US-040", "MOB-US-042", "MOB-US-043",
+    "MOB-US-046", "MOB-US-039", "MOB-US-041", "TS-MOB-002",
+    "TS-MOB-003", "TS-MOB-004", "TS-MOB-009", "TS-MOB-011",
+    "TS-MOB-012", "SPIKE-001", "SPIKE-003", "SPIKE-004",
+    "SPIKE-005", "SPIKE-006", "MOB-US-045", "MOB-US-067",
+    "MOB-US-068", "MOB-US-069", "MOB-US-070", "MOB-US-071",
+    "MOB-US-072", "MOB-US-054", "MOB-US-055", "MOB-US-056",
+    "MOB-US-059", "MOB-US-060", "MOB-US-066", "MOB-US-029",
     "MOB-US-073",
 ]
 
@@ -412,7 +418,7 @@ LANDING_BACKLOG = [
     ("LAND-US-002", "Evaluar el ajuste con el perfil operativo", "3", "S1"),
     ("LAND-US-003", "Revisar capacidades y límites del producto", "2", "S1"),
     ("LAND-US-004", "Revisar precios, preguntas frecuentes e información legal", "2", "S1"),
-    ("LAND-US-005", "Iniciar el registro de un Workspace", "3", "S1"),
+    ("LAND-US-005", "Iniciar el registro de la empresa y su Workspace", "3", "S1"),
     ("LAND-US-006", "Contactar a Nexa o solicitar una demostración", "3", "S1"),
 ]
 
@@ -1132,7 +1138,9 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
             "cuando la política del Tenant sea `DIRECT_ORDER`. Este flujo no suplanta al "
             "Comprador: el borrador de Ventas y el borrador del Comprador son distintos, "
             "y el servidor vuelve a validar la autorización. `MOB-US-040` conserva el "
-            "significado del flujo del Comprador; esta regla no crea una historia nueva.",
+            "significado del flujo del Comprador; la cobertura de la captura asistida de "
+            "Ventas se mantiene como comportamiento de producto y se revisa frente al "
+            "catálogo antes de implementación.",
             "",
             functional_index(rows),
             "## Registros de historias funcionales",
@@ -1202,16 +1210,26 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
 
 def generate_product_backlog(rows: list[dict[str, str]]) -> str:
     row_by_id = {row["ID"]: row for row in rows}
-    if set(BUSINESS_ORDER) != set(row_by_id) or len(BUSINESS_ORDER) != len(row_by_id):
-        raise SystemExit("business order must contain each of the 73 functional story IDs exactly once")
-    ordered_rows = [row_by_id[story_id] for story_id in BUSINESS_ORDER]
-    all_rows = [
-        ("Mobile Functional", story_id, TITLE_ES[story_id], academic_points(row), planned_sprint(row))
-        for story_id, row in ((row["ID"], row) for row in ordered_rows)
-    ]
-    all_rows.extend(("Landing Functional", *item) for item in LANDING_BACKLOG)
-    all_rows.extend(("Technical", *item) for item in TECHNICAL_BACKLOG)
-    all_rows.extend(("Spike", *item) for item in SPIKE_BACKLOG)
+    functional_rows = {
+        story_id: ("Mobile Functional", story_id, TITLE_ES[story_id], academic_points(row), planned_sprint(row))
+        for story_id, row in row_by_id.items()
+    }
+    supplemental_rows = {
+        item[0]: ("Landing Functional", *item)
+        for item in LANDING_BACKLOG
+    }
+    supplemental_rows.update({
+        item[0]: ("Technical", *item)
+        for item in TECHNICAL_BACKLOG
+    })
+    supplemental_rows.update({
+        item[0]: ("Spike", *item)
+        for item in SPIKE_BACKLOG
+    })
+    all_by_id = {**functional_rows, **supplemental_rows}
+    if set(GLOBAL_BACKLOG_ORDER) != set(all_by_id) or len(GLOBAL_BACKLOG_ORDER) != len(all_by_id):
+        raise SystemExit("global backlog order must contain each of the 97 backlog IDs exactly once")
+    all_rows = [all_by_id[story_id] for story_id in GLOBAL_BACKLOG_ORDER]
     sprint_counts = {
         sprint: sum(1 for item in all_rows if item[4] == sprint)
         for sprint in ("S1", "S2", "S3", "S4", "Future")
@@ -1269,10 +1287,12 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
             "",
             "## Criterio de orden",
             "",
-            "El orden de las 73 historias funcionales prioriza primero recepción, preparación, "
-            "despacho, entrega y recepción del comprador; después ubica conveniencia comercial, "
-            "coordinación avanzada y capacidades futuras. Las dependencias técnicas pueden "
-            "influir en Sprint sin cambiar el valor de negocio de una historia.",
+            "El orden global de las 97 filas prioriza resultados de negocio y continuidad "
+            "operativa: acceso y contexto, adquisición, contratos, recepción, despacho, "
+            "entrega y recepción del comprador. Las filas Technical y Spike aparecen donde "
+            "reducen riesgo, aclaran dependencias o sostienen la calidad de ese resultado; "
+            "las capacidades futuras quedan después de los resultados de mayor valor. Sprint "
+            "sigue siendo una asignación planificada y no redefine el orden de prioridad.",
             "",
             "Referencias: [User Stories](./2.4.1-user-stories.md), [Landing stories](./2.4.1-landing-stories.md), "
             "[Technical Stories](./2.4.1-technical-stories.md), [Spike Stories](./2.4.1-spike-stories.md) "

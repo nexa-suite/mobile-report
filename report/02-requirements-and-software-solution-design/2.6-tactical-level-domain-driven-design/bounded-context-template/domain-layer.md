@@ -4,6 +4,8 @@ En esta capa se documentarán las Entities, Value Objects, Aggregates, Factories
 
 La selección debe derivarse de sus invariantes y responsabilidades, no de nombres de paquetes o tablas. No se copiarán las clases del proyecto anterior hasta verificar que representan el mismo lenguaje y el mismo límite en el modelo actual.
 
-## Información pendiente
+## Uso de la plantilla
 
-Faltan el Bounded Context seleccionado, sus invariantes y la evidencia de las clases de dominio actuales o propuestas.
+El contexto, invariantes y clases concretas están documentados en los once
+paquetes instanciados de [bounded-contexts](../bounded-contexts/). Este archivo
+no crea clases ni redefine límites desde paquetes Java o tablas.

@@ -4,6 +4,8 @@ En esta capa se documentarán las implementaciones de Repository, el acceso a Po
 
 Las integraciones deberán conservar los límites de autorización, idempotencia y traducción definidos en el Context Map.
 
-## Información pendiente
+## Uso de la plantilla
 
-Faltan el modelo de persistencia del contexto seleccionado, sus adaptadores, contratos de mensajería y evidencia de implementación.
+Cada paquete de [bounded-contexts](../bounded-contexts/) identifica persistencia
+objetivo, adapters y límites de evidencia. PostgreSQL es físicamente compartido
+con ownership lógico; este placeholder no asigna tablas.

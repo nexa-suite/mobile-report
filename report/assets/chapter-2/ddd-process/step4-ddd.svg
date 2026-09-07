@@ -1,0 +1,456 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="14683.6px" height="1537.41px"
+		style="transform-origin: 0px 0px 0px;" version="1.1"
+		xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><style xmlns="http://www.w3.org/2000/svg" type="text/css"><![CDATA[
+		* {
+			text-rendering: geometricprecision !important;
+		}
+		]]><![CDATA[@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans'), local('NotoSans'), url("https://mirostatic.com/app/static/a73798e3d459e1bc.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Noto Sans Italic'), local('NotoSans-Italic'), url("https://mirostatic.com/app/static/a8edd710f88715d4.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 500;
+  src: local('Noto Sans Medium'), local('NotoSans-Medium'), url("https://mirostatic.com/app/static/006d7e33e60b9e12.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 500;
+  src: local('Noto Sans Medium Italic'), local('NotoSans-MediumItalic'), url("https://mirostatic.com/app/static/31387059566a3171.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Noto Sans SemiBold'), local('NotoSans-SemiBold'), url("https://mirostatic.com/app/static/526dd53b40975c37.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 600;
+  src: local('Noto Sans SemiBold Italic'), local('NotoSans-SemiBoldItalic'), url("https://mirostatic.com/app/static/e73d4fdd87d7e319.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Bold'), local('NotoSans-Bold'), url("https://mirostatic.com/app/static/9f11d6779c14d2bc.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'Noto Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local('Noto Sans Bold Italic'), local('NotoSans-BoldItalic'), url("https://mirostatic.com/app/static/888e13e017cedc15.woff2") format('woff2');
+}
+]]><![CDATA[@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/800985e1502d12bf.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/d8a7ca42a20caea5.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/3cc74c1d3919bd5c.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/f0481285dc248cf0.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/2f5e8dcf6e47bf00.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/0e625f45b71a26f1.woff2") format('woff2');
+}
+@font-face {
+  font-family: 'OpenSans';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url("https://mirostatic.com/app/static/645c27eb7d93eca8.woff2") format('woff2');
+}
+]]><![CDATA[@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans Hebrew Regular'), local('Noto Sans Hebrew-Regular'), url("https://mirostatic.com/app/static/7ebe1dcf0343326c.woff2") format('woff2'), url("https://mirostatic.com/app/static/6c11f037d6968262.woff") format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans Hebrew';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Hebrew Bold'), local('Noto Sans Hebrew-Bold'), url("https://mirostatic.com/app/static/d2883e2f177d0dad.woff2") format('woff2'), url("https://mirostatic.com/app/static/8546991909eadbc9.woff") format('woff');
+}
+]]><![CDATA[@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Noto Sans Japanese Regular'), local('Noto Sans Japanese-Regular'), url("https://mirostatic.com/app/static/9320b3c07ab79383.woff2") format('woff2'), url("https://mirostatic.com/app/static/a43be2cbcfc0b250.woff") format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Noto Sans Japanese Bold'), local('Noto Sans Japanese-Bold'), url("https://mirostatic.com/app/static/7ab032c73212439f.woff2") format('woff2'), url("https://mirostatic.com/app/static/29f177f4466bd7a1.woff") format('woff');
+}
+]]><![CDATA[@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''), url("https://mirostatic.com/app/static/7a5b625774730d22.woff2") format('woff2'), url("https://mirostatic.com/app/static/2d84dc606f1fb88e.woff") format('woff');
+}
+@font-face {
+  font-family: 'Noto Sans KR';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''), url("https://mirostatic.com/app/static/fa5a3d9073cdd58f.woff2") format('woff2'), url("https://mirostatic.com/app/static/7ded243557c83342.woff") format('woff');
+}
+]]></style><filter x="-50%" y="-50%" width="200%" height="200%" id="StickerShadowFilter">
+				<feOffset result="offOut" in="SourceGraphic" dx="1" dy="3" />
+			<feGaussianBlur result="blurOut" in="offOut" stdDeviation="3" />
+			</filter><path id="StickerType2RPath" d="M.008.995C.003.445.44 0 1.008.003l688.984 1.994c.557.002 1.01.446 1.013 1.01l1.99 389.987c.003.556-.435 1.006-1.002 1.006H4.007c-.556 0-1.01-.445-1.015-.995L.008.995z"/><g id="StickerType2R" fill-rule="evenodd">
+					<path d="M.008.995C.003.445.44 0 1.008.003l688.984 1.994c.557.002 1.01.446 1.013 1.01l1.99 389.987c.003.556-.435 1.006-1.002 1.006H4.007c-.556 0-1.01-.445-1.015-.995L.008.995z" fill-opacity=".12" fill="#000" filter="url(#StickerShadowFilter)" transform="translate(1, 3)" />
+					<g><use fill="inherit" xlink:href="#StickerType2RPath"/></g>
+				</g><path id="StickerType1RPath" d="M1.995.996c.003-.55.444-.993 1.01-.99l685.99 3.988c.556.003 1 .453.995 1.006l-3.98 394c-.005.552-.46.997-1.01.994L1.5 396c-.5 0-1.5-1-1.5-1.5L1.995.996z"/><g id="StickerType1R" fill-rule="evenodd">
+					<path d="M1.995.996c.003-.55.444-.993 1.01-.99l685.99 3.988c.556.003 1 .453.995 1.006l-3.98 394c-.005.552-.46.997-1.01.994L1.5 396c-.5 0-1.5-1-1.5-1.5L1.995.996z" fill-opacity=".12" fill="#000" filter="url(#StickerShadowFilter)" transform="translate(1, 3)" />
+					<g><use fill="inherit" xlink:href="#StickerType1RPath"/></g>
+				</g></defs><rect id="svg-board-background-color" width="100%" height="100%" fill="#f2f2f2"></rect><g data-widget-id="3458764682061328705"><g width="0px" height="786.52px"  transform="translate(314.8, 550.21) scale(1) rotate(0, 0, 393.26)"><path stroke-linecap="butt"
+			stroke="#333333" stroke-width="5" fill="transparent"
+			d="M 0 0 L 0 786.5161622953306" /></g></g><g data-widget-id="3458764681985328004"><g width="137px" height="20px"  transform="translate(134.88, 257.12) scale(4.800695035939704) rotate(0, 68.5, 10)"><svg
+	width="137"
+	height="20"
+	shape-border-width="shape-background"
+	style="width:137px; height: 20px;"
+	class="shape-background"
+	preserveAspectRatio="none"
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<clipPath id="921887168707">
+		<rect
+			x="0"
+			y="0"
+			width="137"
+			height="20"
+			rx="0"
+			ry="0"
+		></rect>
+	</clipPath>
+	<g id="Page-1" stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+		<rect
+			class="shape-element shape-element-rect"
+			stroke="transparent"
+			stroke-width="0"
+			stroke-dasharray=""
+			stroke-opacity="0"
+			fill="transparent"
+			fill-opacity="0"
+			x="0"
+			y="0"
+			width="137"
+			height="20"
+			rx="0"
+			ry="0"
+			clip-path="url(#921887168707)"
+		></rect>
+	</g>
+</svg>
+</g><g width="657.6952199237394px" height="96.01390071879408px"  transform="translate(134.88, 257.12) rotate(0, 328.8476099618697, 48.00695035939704)"><g transform="translate(0, 0)"><text xml:space="preserve" x="0" y="67.20973050315585" width="657.6952199237394" textLength="657.6952199237394" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="67.20973050315585"
+				fill="#1a1a1a" direction="ltr" >STEP 4 Pivotal Points</text></g></g></g><g data-widget-id="3458764682061328214"><use xlink:href="#StickerType2R" transform="translate(140.23, 854.86) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(134.88, 851.65) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="22.5" y="88" width="257" textLength="257" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >CartDraftCreated</text></g></g></g><g data-widget-id="3458764682061328215"><use xlink:href="#StickerType2R" transform="translate(587.91, 738.42) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(582.56, 735.21) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="66" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >AuthoritativePriceR</text><text xml:space="preserve" x="94" y="110" width="114" textLength="114" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >esolved</text></g></g></g><g data-widget-id="3458764682061328216"><use xlink:href="#StickerType1R" transform="translate(3876.35, 714.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(3871, 711.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2" y="66" width="298" textLength="298" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >PurchaseRequestSu</text><text xml:space="preserve" x="91" y="110" width="120" textLength="120" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >bmitted</text></g></g></g><g data-widget-id="3458764682061328217"><use xlink:href="#StickerType2R" transform="translate(1059.33, 737.03) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(1053.98, 733.82) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2.5" y="66" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >CommercialCommit</text><text xml:space="preserve" x="25" y="110" width="252" textLength="252" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >mentEstablished</text></g></g></g><g data-widget-id="3458764682061328218"><use xlink:href="#StickerType1R" transform="translate(1528.85, 727.37) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(1523.5, 724.16) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="1" y="66" width="300" textLength="300" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >CreditReservationEs</text><text xml:space="preserve" x="81.5" y="110" width="139" textLength="139" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >tablished</text></g></g></g><g data-widget-id="3458764682061328219"><use xlink:href="#StickerType2R" transform="translate(1998.35, 727.37) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(1993, 724.16) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="0" y="66" width="302" textLength="302" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >PurchaseRequestVis</text><text xml:space="preserve" x="68" y="110" width="166" textLength="166" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >ibleToSales</text></g></g></g><g data-widget-id="3458764682061328220"><use xlink:href="#StickerType2R" transform="translate(2467.85, 714.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(2462.5, 711.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="66" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >MaterialChangePro</text><text xml:space="preserve" x="105" y="110" width="92" textLength="92" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >posed</text></g></g></g><g data-widget-id="3458764682061328221"><use xlink:href="#StickerType2R" transform="translate(2937.35, 714.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(2932, 711.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="5" y="66" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >BuyerChangeAccep</text><text xml:space="preserve" x="126" y="110" width="50" textLength="50" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >ted</text></g></g></g><g data-widget-id="3458764682061328222"><use xlink:href="#StickerType2R" transform="translate(3406.85, 714.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(3401.5, 711.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="8" y="66" width="286" textLength="286" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >SalesOrderConfirm</text><text xml:space="preserve" x="132" y="110" width="38" textLength="38" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >ed</text></g></g></g><g data-widget-id="3458764682061328223"><use xlink:href="#StickerType2R" transform="translate(1999.16, 1032.14) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(1993.81, 1028.93) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2.5" y="38" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >CommitmentOw</text><text xml:space="preserve" x="3" y="90" width="296" textLength="296" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >nershipTransferr</text><text xml:space="preserve" x="129" y="142" width="44" textLength="44" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >ed</text></g></g></g><g data-widget-id="3458764682061328224"><use xlink:href="#StickerType2R" transform="translate(587.91, 1032.14) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(582.56, 1028.93) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="66" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >AuthoritativePriceR</text><text xml:space="preserve" x="94" y="110" width="114" textLength="114" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >esolved</text></g></g></g><g data-widget-id="3458764682061328225"><use xlink:href="#StickerType1R" transform="translate(1058.16, 1032.14) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(1052.81, 1028.93) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2.5" y="66" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >CommercialCommit</text><text xml:space="preserve" x="25" y="110" width="252" textLength="252" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >mentEstablished</text></g></g></g><g data-widget-id="3458764682061328226"><use xlink:href="#StickerType2R" transform="translate(1528.66, 1032.14) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(1523.31, 1028.93) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="8" y="66" width="286" textLength="286" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >SalesOrderConfirm</text><text xml:space="preserve" x="132" y="110" width="38" textLength="38" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >ed</text></g></g></g><g data-widget-id="3458764682061328227"><g width="502.51px" height="410px"  transform="translate(1204.69, 323.82) scale(1) rotate(0, 251.255, 205)"><svg
+	width="502.5132540880975"
+	height="409.9994494372614"
+	style="width:502.5132540880975px; height: 409.9994494372614px;"
+	class="shape-background"
+	preserveAspectRatio="none"
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<clipPath id="1674044871111">
+		<path d="M251.25662704404874,0 L502.5132540880975,204.9997247186307 L251.25662704404874,409.9994494372614 L0,204.9997247186307 L251.25662704404874,0 Z"></path>
+	</clipPath>
+	<g stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+		<path
+			d="M251.25662704404874,0 L502.5132540880975,204.9997247186307 L251.25662704404874,409.9994494372614 L0,204.9997247186307 L251.25662704404874,0 Z"
+			class="shape-element shape-element-path"
+			stroke="#1a1a1a"
+			stroke-width="4"
+			stroke-dasharray=""
+			stroke-opacity="1"
+			fill="#db67bf"
+			fill-opacity="1"
+			clip-path="url(#1674044871111)"
+		></path>
+	</g>
+</svg>
+</g><g width="502.51px" height="410px"  transform="translate(1204.69, 323.82) rotate(0, 251.255, 205)"><g transform="translate(130.65344606290535, 106.59985685368797)"><text xml:space="preserve" x="66.6031809811434" y="50" width="121" textLength="121" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >﻿Dual </text><text xml:space="preserve" x="12.103180981143396" y="118" width="230" textLength="230" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Counting </text><text xml:space="preserve" x="73.1031809811434" y="186" width="95" textLength="95" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Risk</text></g></g></g><g data-widget-id="3458764682061328228"><g width="598.05px" height="440.98px"  transform="translate(2599.9, 308.32) scale(1) rotate(0, 299.025, 220.49)"><svg
+	width="598.0466354851127"
+	height="440.9832488092663"
+	style="width:598.0466354851127px; height: 440.9832488092663px;"
+	class="shape-background"
+	preserveAspectRatio="none"
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<clipPath id="1080582474095">
+		<path d="M299.02331774255634,0 L598.0466354851127,220.49162440463314 L299.02331774255634,440.9832488092663 L0,220.49162440463314 L299.02331774255634,0 Z"></path>
+	</clipPath>
+	<g stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+		<path
+			d="M299.02331774255634,0 L598.0466354851127,220.49162440463314 L299.02331774255634,440.9832488092663 L0,220.49162440463314 L299.02331774255634,0 Z"
+			class="shape-element shape-element-path"
+			stroke="#1a1a1a"
+			stroke-width="4"
+			stroke-dasharray=""
+			stroke-opacity="1"
+			fill="#db67bf"
+			fill-opacity="1"
+			clip-path="url(#1080582474095)"
+		></path>
+	</g>
+</svg>
+</g><g width="598.05px" height="440.98px"  transform="translate(2599.9, 308.32) rotate(0, 299.025, 220.49)"><g transform="translate(155.4921252261293, 114.65564469040923)"><text xml:space="preserve" x="2.0311925164270406" y="53.83597971422391" width="296" textLength="296" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Unvalidated </text><text xml:space="preserve" x="46.53119251642704" y="121.83597971422391" width="207" textLength="207" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Material </text><text xml:space="preserve" x="41.03119251642704" y="189.83597971422392" width="205" textLength="205" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Changes</text></g></g></g><g data-widget-id="3458764682061328292"><use xlink:href="#StickerType2R" transform="translate(4451.7, 842.26) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(4446.35, 839.05) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="4" y="92" width="294" textLength="294" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="44"
+				fill="#1a1a1a" direction="ltr" >StockReceived</text></g></g></g><g data-widget-id="3458764682061328293"><use xlink:href="#StickerType2R" transform="translate(4937.2, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(4931.85, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="0" y="96.5" width="302" textLength="302" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="58"
+				fill="#1a1a1a" direction="ltr" >LotCreated</text></g></g></g><g data-widget-id="3458764682061328294"><use xlink:href="#StickerType1R" transform="translate(5422.7, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5417.35, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="61" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >SellableAvaila</text><text xml:space="preserve" x="2.5" y="124" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >bilityChanged</text></g></g></g><g data-widget-id="3458764682061328295"><use xlink:href="#StickerType2R" transform="translate(5886.46, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5881.11, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2" y="63" width="298" textLength="298" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >CommitmentDe</text><text xml:space="preserve" x="5" y="118" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >mandObserved</text></g></g></g><g data-widget-id="3458764682061328296"><use xlink:href="#StickerType1R" transform="translate(6319.9, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6314.55, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="57" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >AllocationE</text><text xml:space="preserve" x="46.5" y="134" width="209" textLength="209" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >xecuted</text></g></g></g><g data-widget-id="3458764682061328297"><use xlink:href="#StickerType1R" transform="translate(6805.57, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6800.22, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="90" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >InventoryMoved</text></g></g></g><g data-widget-id="3458764682061328298"><use xlink:href="#StickerType1R" transform="translate(7291.07, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(7285.72, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="11.5" y="57" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Fulfillment</text><text xml:space="preserve" x="43.5" y="134" width="215" textLength="215" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Planned</text></g></g></g><g data-widget-id="3458764682061328299"><use xlink:href="#StickerType2R" transform="translate(7724.51, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(7719.16, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="11.5" y="57" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Fulfillment</text><text xml:space="preserve" x="30" y="134" width="242" textLength="242" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Allocated</text></g></g></g><g data-widget-id="3458764682061328300"><use xlink:href="#StickerType1R" transform="translate(8210.17, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(8204.82, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="88.5" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >PickingCompleted</text></g></g></g><g data-widget-id="3458764682061328301"><use xlink:href="#StickerType2R" transform="translate(8695.67, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(8690.32, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="43.5" y="98" width="215" textLength="215" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="64"
+				fill="#1a1a1a" direction="ltr" >Packed</text></g></g></g><g data-widget-id="3458764682061328302"><use xlink:href="#StickerType2R" transform="translate(9181.17, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(9175.82, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="47" y="98" width="208" textLength="208" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="64"
+				fill="#1a1a1a" direction="ltr" >Staged</text></g></g></g><g data-widget-id="3458764682061328303"><use xlink:href="#StickerType1R" transform="translate(9614.62, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(9609.27, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >ReadyForDispatch</text></g></g></g><g data-widget-id="3458764682061328304"><use xlink:href="#StickerType1R" transform="translate(10100.28, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(10094.93, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="1.5" y="94" width="299" textLength="299" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >HandedOver</text></g></g></g><g data-widget-id="3458764682061328305"><use xlink:href="#StickerType1R" transform="translate(10585.78, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(10580.43, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="57" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >DeliveryDis</text><text xml:space="preserve" x="44.5" y="134" width="213" textLength="213" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >patched</text></g></g></g><g data-widget-id="3458764682061328306"><use xlink:href="#StickerType1R" transform="translate(11071.28, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(11065.93, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="57" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >DeliveryAtt</text><text xml:space="preserve" x="49" y="134" width="204" textLength="204" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >empted</text></g></g></g><g data-widget-id="3458764682061328307"><use xlink:href="#StickerType1R" transform="translate(11556.78, 415.38) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(11551.43, 412.17) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="10" y="57" width="282" textLength="282" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >DeliveryCo</text><text xml:space="preserve" x="42" y="134" width="218" textLength="218" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >mpleted</text></g></g></g><g data-widget-id="3458764682061328308"><use xlink:href="#StickerType2R" transform="translate(6805.57, 668.72) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6800.22, 665.51) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >ShortageDetected</text></g></g></g><g data-widget-id="3458764682061328309"><use xlink:href="#StickerType1R" transform="translate(4924.38, 668.72) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(4919.03, 665.51) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="0" y="96.5" width="302" textLength="302" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="58"
+				fill="#1a1a1a" direction="ltr" >LotCreated</text></g></g></g><g data-widget-id="3458764682061328310"><use xlink:href="#StickerType2R" transform="translate(5409.88, 668.72) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5404.53, 665.51) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="61" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >SellableAvaila</text><text xml:space="preserve" x="2.5" y="124" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >bilityChanged</text></g></g></g><g data-widget-id="3458764682061328311"><use xlink:href="#StickerType1R" transform="translate(5873.64, 668.72) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5868.29, 665.51) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2" y="63" width="298" textLength="298" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >CommitmentDe</text><text xml:space="preserve" x="5" y="118" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >mandObserved</text></g></g></g><g data-widget-id="3458764682061328312"><use xlink:href="#StickerType2R" transform="translate(6319.9, 668.72) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6314.55, 665.51) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="57" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >AllocationE</text><text xml:space="preserve" x="46.5" y="134" width="209" textLength="209" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >xecuted</text></g></g></g><g data-widget-id="3458764682061328313"><use xlink:href="#StickerType1R" transform="translate(10585.78, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(10580.43, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="57" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >DeliveryDis</text><text xml:space="preserve" x="44.5" y="134" width="213" textLength="213" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >patched</text></g></g></g><g data-widget-id="3458764682061328314"><use xlink:href="#StickerType1R" transform="translate(11071.28, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(11065.93, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="57" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >DeliveryAtt</text><text xml:space="preserve" x="5" y="134" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >emptFailed</text></g></g></g><g data-widget-id="3458764682061328315"><use xlink:href="#StickerType2R" transform="translate(4937.2, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(4931.85, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="0" y="96.5" width="302" textLength="302" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="58"
+				fill="#1a1a1a" direction="ltr" >LotCreated</text></g></g></g><g data-widget-id="3458764682061328316"><use xlink:href="#StickerType2R" transform="translate(5422.7, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5417.35, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="61" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >SellableAvaila</text><text xml:space="preserve" x="2.5" y="124" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >bilityChanged</text></g></g></g><g data-widget-id="3458764682061328317"><use xlink:href="#StickerType2R" transform="translate(5886.46, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5881.11, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2" y="63" width="298" textLength="298" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >CommitmentDe</text><text xml:space="preserve" x="5" y="118" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >mandObserved</text></g></g></g><g data-widget-id="3458764682061328318"><use xlink:href="#StickerType1R" transform="translate(6319.9, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6314.55, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="57" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >AllocationE</text><text xml:space="preserve" x="46.5" y="134" width="209" textLength="209" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >xecuted</text></g></g></g><g data-widget-id="3458764682061328319"><use xlink:href="#StickerType1R" transform="translate(6805.57, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6800.22, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="90" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >InventoryMoved</text></g></g></g><g data-widget-id="3458764682061328320"><use xlink:href="#StickerType1R" transform="translate(7291.07, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(7285.72, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="11.5" y="57" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Fulfillment</text><text xml:space="preserve" x="43.5" y="134" width="215" textLength="215" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Planned</text></g></g></g><g data-widget-id="3458764682061328321"><use xlink:href="#StickerType1R" transform="translate(7724.51, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(7719.16, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="11.5" y="57" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Fulfillment</text><text xml:space="preserve" x="30" y="134" width="242" textLength="242" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Allocated</text></g></g></g><g data-widget-id="3458764682061328322"><use xlink:href="#StickerType1R" transform="translate(8210.17, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(8204.82, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="88.5" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >PickingCompleted</text></g></g></g><g data-widget-id="3458764682061328323"><use xlink:href="#StickerType2R" transform="translate(8695.67, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(8690.32, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="43.5" y="98" width="215" textLength="215" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="64"
+				fill="#1a1a1a" direction="ltr" >Packed</text></g></g></g><g data-widget-id="3458764682061328324"><use xlink:href="#StickerType1R" transform="translate(9181.17, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(9175.82, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="47" y="98" width="208" textLength="208" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="64"
+				fill="#1a1a1a" direction="ltr" >Staged</text></g></g></g><g data-widget-id="3458764682061328325"><use xlink:href="#StickerType2R" transform="translate(9614.62, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(9609.27, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >ReadyForDispatch</text></g></g></g><g data-widget-id="3458764682061328326"><use xlink:href="#StickerType1R" transform="translate(10100.28, 964.41) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(10094.93, 961.2) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="1.5" y="94" width="299" textLength="299" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >HandedOver</text></g></g></g><g data-widget-id="3458764682061328327"><use xlink:href="#StickerType2R" transform="translate(11071.28, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(11065.93, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="4" y="60" width="294" textLength="294" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >PartialDelive</text><text xml:space="preserve" x="16.5" y="128" width="269" textLength="269" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >ryRecorded</text></g></g></g><g data-widget-id="3458764682061328328"><use xlink:href="#StickerType1R" transform="translate(11556.78, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(11551.43, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="0.5" y="62" width="301" textLength="301" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="44"
+				fill="#1a1a1a" direction="ltr" >ContinuationD</text><text xml:space="preserve" x="2.5" y="122" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="44"
+				fill="#1a1a1a" direction="ltr" >eliveryCreated</text></g></g></g><g data-widget-id="3458764682061328329"><use xlink:href="#StickerType1R" transform="translate(10585.78, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(10580.43, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="57" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >DeliveryDis</text><text xml:space="preserve" x="44.5" y="134" width="213" textLength="213" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >patched</text></g></g></g><g data-widget-id="3458764682061328330"><use xlink:href="#StickerType1R" transform="translate(4937.2, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(4931.85, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="0" y="96.5" width="302" textLength="302" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="58"
+				fill="#1a1a1a" direction="ltr" >LotCreated</text></g></g></g><g data-widget-id="3458764682061328331"><use xlink:href="#StickerType2R" transform="translate(5422.7, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5417.35, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3.5" y="61" width="295" textLength="295" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >SellableAvaila</text><text xml:space="preserve" x="2.5" y="124" width="297" textLength="297" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="46"
+				fill="#1a1a1a" direction="ltr" >bilityChanged</text></g></g></g><g data-widget-id="3458764682061328332"><use xlink:href="#StickerType2R" transform="translate(5886.46, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(5881.11, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="2" y="63" width="298" textLength="298" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >CommitmentDe</text><text xml:space="preserve" x="5" y="118" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="40"
+				fill="#1a1a1a" direction="ltr" >mandObserved</text></g></g></g><g data-widget-id="3458764682061328333"><use xlink:href="#StickerType2R" transform="translate(6319.9, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6314.55, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="57" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >AllocationE</text><text xml:space="preserve" x="46.5" y="134" width="209" textLength="209" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >xecuted</text></g></g></g><g data-widget-id="3458764682061328334"><use xlink:href="#StickerType2R" transform="translate(6805.57, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(6800.22, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="90" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >InventoryMoved</text></g></g></g><g data-widget-id="3458764682061328335"><use xlink:href="#StickerType1R" transform="translate(7291.07, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(7285.72, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="11.5" y="57" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Fulfillment</text><text xml:space="preserve" x="43.5" y="134" width="215" textLength="215" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Planned</text></g></g></g><g data-widget-id="3458764682061328336"><use xlink:href="#StickerType2R" transform="translate(7724.51, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(7719.16, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="11.5" y="57" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Fulfillment</text><text xml:space="preserve" x="30" y="134" width="242" textLength="242" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Allocated</text></g></g></g><g data-widget-id="3458764682061328337"><use xlink:href="#StickerType1R" transform="translate(8210.17, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(8204.82, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="88.5" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >PickingCompleted</text></g></g></g><g data-widget-id="3458764682061328338"><use xlink:href="#StickerType1R" transform="translate(8695.67, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(8690.32, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="43.5" y="98" width="215" textLength="215" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="64"
+				fill="#1a1a1a" direction="ltr" >Packed</text></g></g></g><g data-widget-id="3458764682061328339"><use xlink:href="#StickerType1R" transform="translate(9181.17, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(9175.82, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="47" y="98" width="208" textLength="208" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="64"
+				fill="#1a1a1a" direction="ltr" >Staged</text></g></g></g><g data-widget-id="3458764682061328340"><use xlink:href="#StickerType2R" transform="translate(9614.62, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(9609.27, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >ReadyForDispatch</text></g></g></g><g data-widget-id="3458764682061328341"><use xlink:href="#StickerType2R" transform="translate(10100.28, 1239.84) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(10094.93, 1236.63) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="1.5" y="94" width="299" textLength="299" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >HandedOver</text></g></g></g><g data-widget-id="3458764682061328342"><g width="567.06px" height="412.58px"  transform="translate(6919.87, -41.72) scale(1) rotate(0, 283.53, 206.29)"><svg
+	width="567.0628361131078"
+	height="412.58143271826"
+	style="width:567.0628361131078px; height: 412.58143271826px;"
+	class="shape-background"
+	preserveAspectRatio="none"
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<clipPath id="1192767969203">
+		<path d="M283.5314180565539,0 L567.0628361131078,206.29071635913 L283.5314180565539,412.58143271826 L0,206.29071635913 L283.5314180565539,0 Z"></path>
+	</clipPath>
+	<g stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+		<path
+			d="M283.5314180565539,0 L567.0628361131078,206.29071635913 L283.5314180565539,412.58143271826 L0,206.29071635913 L283.5314180565539,0 Z"
+			class="shape-element shape-element-path"
+			stroke="#1a1a1a"
+			stroke-width="4"
+			stroke-dasharray=""
+			stroke-opacity="1"
+			fill="#db67bf"
+			fill-opacity="1"
+			clip-path="url(#1192767969203)"
+		></path>
+	</g>
+</svg>
+</g><g width="567.06px" height="412.58px"  transform="translate(6919.87, -41.72) rotate(0, 283.53, 206.29)"><g transform="translate(147.43633738940804, 107.2711725067476)"><text xml:space="preserve" x="23.09508066714585" y="50" width="239" textLength="239" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Inventory </text><text xml:space="preserve" x="29.09508066714585" y="118" width="227" textLength="227" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Shortage </text><text xml:space="preserve" x="88.59508066714585" y="186" width="95" textLength="95" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Gap</text></g></g></g><g data-widget-id="3458764682061328343"><g width="567.06px" height="453.89px"  transform="translate(10724.79, -41.72) scale(1) rotate(0, 283.53, 226.945)"><svg
+	width="567.0628361131078"
+	height="453.8931652142654"
+	style="width:567.0628361131078px; height: 453.8931652142654px;"
+	class="shape-background"
+	preserveAspectRatio="none"
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<clipPath id="397570608186">
+		<path d="M283.5314180565539,0 L567.0628361131078,226.9465826071327 L283.5314180565539,453.8931652142654 L0,226.9465826071327 L283.5314180565539,0 Z"></path>
+	</clipPath>
+	<g stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+		<path
+			d="M283.5314180565539,0 L567.0628361131078,226.9465826071327 L283.5314180565539,453.8931652142654 L0,226.9465826071327 L283.5314180565539,0 Z"
+			class="shape-element shape-element-path"
+			stroke="#1a1a1a"
+			stroke-width="4"
+			stroke-dasharray=""
+			stroke-opacity="1"
+			fill="#db67bf"
+			fill-opacity="1"
+			clip-path="url(#397570608186)"
+		></path>
+	</g>
+</svg>
+</g><g width="567.06px" height="453.89px"  transform="translate(10724.79, -41.72) rotate(0, 283.53, 226.945)"><g transform="translate(147.43633738940804, 118.01222295570902)"><text xml:space="preserve" x="16.09508066714585" y="56.93435965142369" width="253" textLength="253" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Orphaned </text><text xml:space="preserve" x="36.59508066714585" y="124.93435965142369" width="212" textLength="212" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Residual </text><text xml:space="preserve" x="0.5950806671458508" y="192.93435965142368" width="271" textLength="271" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Obligations</text></g></g></g><g data-widget-id="3458764682061418981"><g width="0px" height="786.52px"  transform="translate(4652.24, 528.17) scale(1) rotate(0, 0, 393.26)"><path stroke-linecap="butt"
+			stroke="#333333" stroke-width="5" fill="transparent"
+			d="M 0 0 L 0 786.5161622953306" /></g></g><g data-widget-id="3458764682061419018"><g width="0px" height="786.52px"  transform="translate(12434.67, 450.11) scale(1) rotate(0, 0, 393.26)"><path stroke-linecap="butt"
+			stroke="#333333" stroke-width="5" fill="transparent"
+			d="M 0 0 L 0 786.5161622953306" /></g></g><g data-widget-id="3458764682061328477"><use xlink:href="#StickerType2R" transform="translate(12249.72, 760.92) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(12244.37, 757.71) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="57" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >SalesOrder</text><text xml:space="preserve" x="11.5" y="134" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Confirmed</text></g></g></g><g data-widget-id="3458764682061328478"><use xlink:href="#StickerType1R" transform="translate(12735.22, 516.96) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(12729.87, 513.75) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="4.5" y="89.5" width="293" textLength="293" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="36"
+				fill="#1a1a1a" direction="ltr" >ReceivablePosted</text></g></g></g><g data-widget-id="3458764682061328479"><use xlink:href="#StickerType2R" transform="translate(13220.88, 516.96) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(13215.53, 513.75) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >PaymentReported</text></g></g></g><g data-widget-id="3458764682061328480"><use xlink:href="#StickerType1R" transform="translate(13706.38, 516.96) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(13701.03, 513.75) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="5" y="88" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >PaymentConfirmed</text></g></g></g><g data-widget-id="3458764682061328481"><use xlink:href="#StickerType1R" transform="translate(14191.88, 516.96) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(14186.53, 513.75) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="5.5" y="90" width="291" textLength="291" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="38"
+				fill="#1a1a1a" direction="ltr" >PaymentApplied</text></g></g></g><g data-widget-id="3458764682061328482"><use xlink:href="#StickerType2R" transform="translate(12735.22, 1095.98) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(12729.87, 1092.77) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >PaymentReported</text></g></g></g><g data-widget-id="3458764682061328483"><use xlink:href="#StickerType1R" transform="translate(13220.72, 1095.98) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(13215.37, 1092.77) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="5" y="88" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >PaymentConfirmed</text></g></g></g><g data-widget-id="3458764682061328484"><use xlink:href="#StickerType2R" transform="translate(12735.22, 798.22) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(12729.87, 795.01) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6.5" y="88.5" width="289" textLength="289" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="34"
+				fill="#1a1a1a" direction="ltr" >PaymentReported</text></g></g></g><g data-widget-id="3458764682061328485"><use xlink:href="#StickerType1R" transform="translate(13220.72, 798.22) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(13215.37, 795.01) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="5" y="88" width="292" textLength="292" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="32"
+				fill="#1a1a1a" direction="ltr" >PaymentConfirmed</text></g></g></g><g data-widget-id="3458764682061328486"><use xlink:href="#StickerType1R" transform="translate(13706.22, 1095.98) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(13700.87, 1092.77) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="6" y="57" width="290" textLength="290" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >SalesOrder</text><text xml:space="preserve" x="11.5" y="134" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="56"
+				fill="#1a1a1a" direction="ltr" >Confirmed</text></g></g></g><g data-widget-id="3458764682061328487"><g width="567.06px" height="424.77px"  transform="translate(13349.24, 70.51) scale(1) rotate(0, 283.53, 212.385)"><svg
+	width="567.0628361131078"
+	height="424.7694175817613"
+	style="width:567.0628361131078px; height: 424.7694175817613px;"
+	class="shape-background"
+	preserveAspectRatio="none"
+	version="1.1"
+	xmlns="http://www.w3.org/2000/svg"
+>
+	<clipPath id="1464834098898">
+		<path d="M283.5314180565539,0 L567.0628361131078,212.38470879088064 L283.5314180565539,424.7694175817613 L0,212.38470879088064 L283.5314180565539,0 Z"></path>
+	</clipPath>
+	<g stroke="none" stroke-width="0" fill="none" fill-rule="evenodd">
+		<path
+			d="M283.5314180565539,0 L567.0628361131078,212.38470879088064 L283.5314180565539,424.7694175817613 L0,212.38470879088064 L283.5314180565539,0 Z"
+			class="shape-element shape-element-path"
+			stroke="#1a1a1a"
+			stroke-width="4"
+			stroke-dasharray=""
+			stroke-opacity="1"
+			fill="#db67bf"
+			fill-opacity="1"
+			clip-path="url(#1464834098898)"
+		></path>
+	</g>
+</svg>
+</g><g width="567.06px" height="424.77px"  transform="translate(13349.24, 70.51) rotate(0, 283.53, 212.385)"><g transform="translate(147.43633738940804, 110.44004857125793)"><text xml:space="preserve" x="16.09508066714585" y="50" width="253" textLength="253" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Orphaned </text><text xml:space="preserve" x="32.59508066714585" y="118" width="220" textLength="220" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Payment </text><text xml:space="preserve" x="88.59508066714585" y="186" width="95" textLength="95" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="50"
+				fill="#1a1a1a" direction="ltr" >Risk</text></g></g></g><g data-widget-id="3458764682082720881"><use xlink:href="#StickerType2R" transform="translate(11556.78, 964.52) scale(1.07) rotate(0, 175, 114) scale(0.5, 0.5)" fill="#ffb575"/><g width="350px" height="228px"  transform="translate(11551.43, 961.31) scale(1.07) rotate(0, 175, 114)"><g transform="translate(24, 22)"><text xml:space="preserve" x="3" y="60" width="296" textLength="296" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="48"
+				fill="#1a1a1a" direction="ltr" >NotificationD</text><text xml:space="preserve" x="11.5" y="126" width="279" textLength="279" lengthAdjust="spacingAndGlyphs" letter-spacing="0" font-family='"Noto Sans", Helvetica, OpenSans, Arial, sans-serif, Noto Sans Hebrew, Noto Sans, Noto Sans JP, Noto Sans KR' font-size="48"
+				fill="#1a1a1a" direction="ltr" >eliveryFailed</text></g></g></g></svg>

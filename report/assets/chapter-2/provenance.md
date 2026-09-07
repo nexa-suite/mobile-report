@@ -16,7 +16,7 @@ TARGET product projections/containers; neither is a Bounded Context.
 
 | Evidence | Scope | Provenance and integrity | Classification |
 | :--- | :--- | :--- | :--- |
-| Final Project Statement V4.0 | Academic structure and rubric | Owner-provided attachment; SHA-256 `00da3fe7abe4d9fce306c42ad9328f9bcac40f35d3f7933874ecd6b654678c57`; attachment is not committed here | Normative input |
+| Final Project Statement V4.0 | Academic structure and rubric | Owner-provided attachment; SHA-256 `38be0c1baa77d0601c9605ef9ea72ad2fb510222a17a65944a06690621169f37`; attachment is not committed here | Normative input |
 | Nexa Blueprint | Product, strategic DDD, architecture and data decisions | Git `origin/main` at `fce3ba6f8ca1622084a2114424086364e1f7d93f`; local canonical checkout also contains an unrelated untracked logo, excluded from this evidence set | Canonical authority |
 | API repository | Existing Java/Spring implementation crosswalk | Git `origin/main` at `380e2427bc3883f23fbd7e9a82d452888f2074a8`; no target parity inferred from package names | AS-IS only |
 | `nexa-ddd` visual set | External DDD process material | Local directory has no Git metadata and no embedded date/author provenance; nine SVGs observed 2026-09-06 and hashed below | External evidence, review pending |

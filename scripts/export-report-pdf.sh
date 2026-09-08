@@ -26,12 +26,53 @@ SOURCES=(
   report/00-front-matter/05-smart-objectives.md
 )
 
+NAVIGATION_SOURCES="$BUILD_DIR/navigation-sources.txt"
+python3 - "$REPO_ROOT" > "$NAVIGATION_SOURCES" <<'PY'
+from pathlib import Path
+import re
+import sys
+
+root = Path(sys.argv[1]).resolve()
+contents = root / "report/00-front-matter/03-contents.md"
+links = re.compile(r"\]\(([^)]+)\)")
+seen = set()
+front_matter = {
+    "report/00-front-matter/00-cover.md",
+    "report/00-front-matter/01-version-history.md",
+    "report/00-front-matter/02-project-report-collaboration-insights.md",
+    "report/00-front-matter/03-contents.md",
+    "report/00-front-matter/04-student-outcome.md",
+    "report/00-front-matter/05-smart-objectives.md",
+}
+
+for match in links.finditer(contents.read_text(encoding="utf-8")):
+    target = match.group(1).split("#", 1)[0].split("?", 1)[0].strip()
+    if not target.endswith(".md") or target.startswith(("http://", "https://", "mailto:")):
+        continue
+    resolved = (contents.parent / target).resolve()
+    if not resolved.is_file():
+        raise SystemExit(f"missing export source from contents: {target}")
+    relative = resolved.relative_to(root).as_posix()
+    if relative in front_matter or relative in seen:
+        continue
+    seen.add(relative)
+    print(relative)
+PY
+
+while IFS= read -r source; do
+  [[ -z "$source" ]] && continue
+  SOURCES+=("$source")
+done < "$NAVIGATION_SOURCES"
+
 while IFS= read -r source; do
   case "$source" in
-    report/00-front-matter/03-contents.md)
+    report/00-front-matter/*|report/02-requirements-and-software-solution-design/*)
       continue
       ;;
   esac
+  if grep -Fqx "$source" "$NAVIGATION_SOURCES"; then
+    continue
+  fi
   SOURCES+=("$source")
 done < <(
   find \

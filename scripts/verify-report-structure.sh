@@ -12,7 +12,6 @@ required_files=(
   "$repo_root/report/00-front-matter/03-contents.md"
   "$repo_root/report/00-front-matter/04-student-outcome.md"
   "$repo_root/report/01-presentation/1.3-target-segments/target-segments.md"
-  "$repo_root/report/02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md"
   "$traceability"
   "$repo_root/report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6.1-bounded-context-coverage.md"
   "$repo_root/report/03-solution-ui-ux-design/chapter-overview.md"

@@ -105,8 +105,6 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md`
 - `delivery-checklists/historical-interview-reuse-ledger.md`
 - `report/93-annexes/annex-a-student-outcome/historical-interview-evidence-register.md`
-- `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md`
-- `report/02-requirements-and-software-solution-design/2.2-interviews/2.2.5-secondary-research-physical-operations-and-delivery.md`
 - `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md`
 - `report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md`
 - `report/02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md`
@@ -133,13 +131,12 @@ Exact files:
 Exact files:
 
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/section-overview.md`
-- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.0-to-be-scenario-mapping.md`
+- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/to-be-scenario-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md`
 - `delivery-checklists/mobile-v1-story-verification-register.md`
 - `delivery-checklists/mobile-v1-rubric-structure-register.md`
-- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.4-technical-stories.md`
 
 ## Unit D — Strategic DDD
 

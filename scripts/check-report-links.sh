@@ -13,6 +13,52 @@ files = [root / "README.md", root / "report", root / "delivery-checklists"]
 link_pattern = re.compile(r"\]\(([^)]+)\)")
 errors = []
 
+navigation_files = (
+    root / "report/00-front-matter/03-contents.md",
+    root / "delivery-checklists/rubric-gap-matrix.md",
+    root / "delivery-checklists/architecture-render-evidence-register.md",
+    root / "delivery-checklists/current-diff-ownership-matrix.md",
+    root / "delivery-checklists/conflict-reconciliation-ledger.md",
+)
+forbidden_navigation_references = (
+    "2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md",
+    "2.2-interviews/2.2.5-secondary-research-physical-operations-and-delivery.md",
+    "2.4-requirements-specification/2.4.0-to-be-scenario-mapping.md",
+    "2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/component-level-diagrams.md",
+    "2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3-deployment-diagrams.md",
+)
+required_navigation_references = (
+    "chapter-overview.md",
+    "2.4-requirements-specification/section-overview.md",
+    "2.4-requirements-specification/to-be-scenario-mapping.md",
+    "2.4-requirements-specification/2.4.1-user-stories.md",
+    "2.4-requirements-specification/2.4.2-impact-mapping.md",
+    "2.4-requirements-specification/2.4.3-product-backlog.md",
+    "2.5-strategic-level-domain-driven-design/section-overview.md",
+    "2.5.1-eventstorming/section-overview.md",
+    "2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md",
+    "2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md",
+    "2.5.1-eventstorming/2.5.1.3-bounded-context-canvases.md",
+    "2.5.2-context-mapping.md",
+    "2.5.3-software-architecture/section-overview.md",
+    "2.5.3-software-architecture/2.5.3.1-context-level-diagrams.md",
+    "2.5.3-software-architecture/2.5.3.2-container-level-diagrams.md",
+    "2.5.3-software-architecture/2.5.3.3-component-level-diagrams.md",
+    "2.5.3-software-architecture/2.5.3.4-deployment-diagrams.md",
+    "2.5.4-strategic-ddd-traceability.md",
+)
+
+for source in navigation_files:
+    text = source.read_text(encoding="utf-8")
+    for target in forbidden_navigation_references:
+        if target in text:
+            errors.append(f"obsolete Chapter II navigation reference: {source.relative_to(root)} -> {target}")
+
+contents_text = navigation_files[0].read_text(encoding="utf-8")
+for target in required_navigation_references:
+    if target not in contents_text:
+        errors.append(f"missing canonical Chapter II navigation reference: {target}")
+
 for base in files:
     paths = [base] if base.is_file() else base.rglob("*.md")
     for source in paths:

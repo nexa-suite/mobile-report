@@ -8,11 +8,13 @@ From the report repository:
 bash scripts/export-report-pdf.sh /tmp/nexa-mobile-report-final.pdf
 ```
 
-The script builds a deterministic source order from the report Markdown, places
-the generated table of contents after the cover, normalizes report-relative
-asset paths in the temporary build source, preserves the A4 page geometry of
-the official cover reference and writes the PDF to the requested path. The
-default output is temporary and is not a submission artifact.
+The script builds a deterministic source order from global Contents for
+professor-facing navigation, appends non-Chapter-II Markdown in stable path
+order, places the generated table of contents after the cover, normalizes
+report-relative asset paths in the temporary build source, preserves the A4
+page geometry of the official cover reference and writes the PDF to the
+requested path. The default output is temporary and is not a submission
+artifact.
 
 Docker mode is the default. It uses
 `pandoc/latex@sha256:6e71008186280e8908e3816481165c0103d04c64162bc9c3f3fe7bc27c681fc5`

@@ -20,6 +20,7 @@
 
 ## Chapter II — Requirements Development and Software Solution Design
 
+- [Chapter II overview](../02-requirements-and-software-solution-design/chapter-overview.md)
 - [Competitors](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
   - [Competitive analysis](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
   - [Strategies and tactics](../02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md)
@@ -27,8 +28,6 @@
   - [Interview design](../02-requirements-and-software-solution-design/2.2-interviews/2.2.1-interview-design.md)
   - [Interview records](../02-requirements-and-software-solution-design/2.2-interviews/2.2.2-interview-records.md)
   - [Interview analysis](../02-requirements-and-software-solution-design/2.2-interviews/2.2.3-interview-analysis.md)
-  - [Physical operations and delivery research plan](../02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md)
-  - [Secondary research: physical operations and delivery](../02-requirements-and-software-solution-design/2.2-interviews/2.2.5-secondary-research-physical-operations-and-delivery.md)
 - [Needfinding](../02-requirements-and-software-solution-design/2.3-needfinding/section-overview.md)
   - [Personas](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.1-user-personas.md)
   - [Task matrix](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md)

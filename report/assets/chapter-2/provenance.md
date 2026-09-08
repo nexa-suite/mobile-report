@@ -5,8 +5,11 @@
 This register covers the strategic DDD, C4 and tactical DDD material included
 in Chapter 2. `TARGET` describes the accepted construction model; `AS-IS`
 describes implementation evidence; `FUTURE` and `OPEN` remain outside the
-implemented baseline. A copied or rendered diagram is not evidence that a
-workshop, runtime, Product Acceptance or implementation review occurred.
+implemented baseline. A copied or rendered diagram is not, by itself, evidence
+of runtime, Product Acceptance or implementation review. The owner-provided
+report input records that the nine-stage Miro EventStorming sequence was
+performed collaboratively; the asset directory itself does not embed
+participant, date or author metadata.
 
 Canonical authority is the Nexa Blueprint. Current implementation repositories
 are used only for an AS-IS crosswalk. Operations Mobile and Buyer Mobile are
@@ -19,7 +22,7 @@ TARGET product projections/containers; neither is a Bounded Context.
 | Final Project Statement V4.0 | Academic structure and rubric | Owner-provided attachment; SHA-256 `38be0c1baa77d0601c9605ef9ea72ad2fb510222a17a65944a06690621169f37`; attachment is not committed here | Normative input |
 | Nexa Blueprint | Product, strategic DDD, architecture and data decisions | Git `origin/main` at `fce3ba6f8ca1622084a2114424086364e1f7d93f`; local canonical checkout also contains an unrelated untracked logo, excluded from this evidence set | Canonical authority |
 | API repository | Existing Java/Spring implementation crosswalk | Git `origin/main` at `380e2427bc3883f23fbd7e9a82d452888f2074a8`; no target parity inferred from package names | AS-IS only |
-| `nexa-ddd` visual set | External DDD process material | Local directory has no Git metadata and no embedded date/author provenance; nine SVGs observed 2026-09-06 and hashed below | External evidence, review pending |
+| `nexa-ddd` visual set | External DDD process material | Local directory has no Git metadata and no embedded date/author provenance; nine SVGs observed 2026-09-06 and hashed below | Workshop visual evidence; source metadata limited |
 
 ## C4 Structurizr source and export
 
@@ -71,8 +74,10 @@ authority in Blueprint.
 
 ## External `nexa-ddd` visual set
 
-The visual mapping and inspection notes are in
-[DDD process evidence](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md).
+The visual mapping and inspection notes are integrated into the
+[EventStorming section](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/section-overview.md),
+[candidate-context analysis](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md)
+and [domain stories](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md).
 Original SVG hashes:
 
 | Original image | Observed SHA-256 | Provenance |
@@ -90,8 +95,8 @@ Original SVG hashes:
 
 The `step6` artwork visibly contains a truncated personal name. It is not used
 as authorship or participant evidence. The images support visual discussion of
-the target model; they do not close the missing workshop, participant, date,
-tool, acceptance or implementation gates.
+the target model; they do not by themselves prove participant identity, formal
+acceptance, implementation, runtime or production readiness.
 
 ## Reproduction commands
 

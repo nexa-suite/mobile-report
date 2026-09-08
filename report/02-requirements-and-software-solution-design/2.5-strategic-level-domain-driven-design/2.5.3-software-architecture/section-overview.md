@@ -1,56 +1,41 @@
 # 2.5.3 Software Architecture
 
-La arquitectura se documentará con C4 y Structurizr para mantener una lectura
-consistente del sistema, sus containers y sus nodos. Nexa es el sistema
-principal; Website, Platform, Buyer Portal, API, PostgreSQL y Object Storage
-son los containers AS-IS/V1 aceptados. Operations Mobile y Buyer Mobile se
-incorporan sólo en la vista V1 TARGET como clientes planificados.
+La arquitectura estratégica se expresa con C4 y Structurizr. Nexa es un único
+sistema B2B SaaS multi-tenant implementado como modular monolith; los Bounded
+Contexts no se convierten automáticamente en containers, procesos o
+deployments.
 
-## Vistas y límite de evidencia
+## Organización de la vista C4
 
-| Vista C4 | Contenido requerido | Estado en este informe |
+| Vista | Propósito | Estado documentado |
 | :--- | :--- | :--- |
-| Context | Nexa, grupos de actores y sistemas externos abstractos | Diseño observado; taller y revisión del informe pendientes |
-| Container AS-IS | Website, Platform, Buyer Portal, API, PostgreSQL y Object Storage | Diseño observado; prueba de runtime pendiente |
-| Container V1 TARGET | Containers AS-IS más Operations Mobile y Buyer Mobile | Diseño objetivo; no se afirma runtime Mobile |
-| Component | Componentes dentro de un container ejecutable seleccionado | Diseño observado; vista y revisión seleccionadas pendientes |
-| Deployment local | Nodos, servicios, red y almacenamiento de un entorno ejecutado | Diseño observado; evidencia de ejecución pendiente |
-| Deployment cloud | Proveedor, red, secretos, backup, rollback y observabilidad | Abierto; no se afirma producción |
+| [2.5.3.1 Context](./2.5.3.1-context-level-diagrams.md) | Nexa, actores y sistemas externos abstractos | TARGET V1 y lectura AS-IS; no prueba runtime |
+| [2.5.3.2 Container](./2.5.3.2-container-level-diagrams.md) | Superficies, API y stores que componen el sistema | AS-IS observado y V1 TARGET para clientes móviles |
+| [Software Architecture Components Overview](./2.5.3.3-component-level-diagrams.md) | Componentes selectivos dentro de containers | Diseño objetivo; no inventario de clases |
+| [2.5.3.3 Deployment](./2.5.3.4-deployment-diagrams.md) | Nodos, límites y relaciones de runtime | Topología TARGET; runtime debe probarse aparte |
 
-La línea base del API es un modular monolith con Java 25, Spring Boot 4.1 y
-evidencia de Spring Modulith en el código compartido. Esta afirmación describe
-la base backend observada; no prueba un cliente Mobile ni un contrato API
-aceptado. PostgreSQL permanece físicamente compartido con ownership lógico por
-contexto.
+El orden visible sigue el rubric oficial: Context, Container y Deployment. La
+vista de componentes se conserva como un encabezado descriptivo sin numeración
+artificial; el trabajo táctico detallado pertenece a la sección posterior
+correspondiente.
 
-Los diagramas deben distinguir el modelo lógico de dominio, los containers
-ejecutables y los nodos de runtime. Los módulos de código no se convierten
-automáticamente en Bounded Contexts ni en containers C4. Cada imagen incluida
-requiere fuente, revisión, fecha de exportación y revisión visual humana. La
-procedencia observada se conserva en el
-[registro de evidencia de arquitectura y diagramas](../../../../delivery-checklists/architecture-render-evidence-register.md).
+## Decisiones de arquitectura
 
-## Corte AV1: fuente semántica y exports seleccionados
+- El backend mantiene Java 25, Spring Boot 4.1.x y Spring Modulith dentro de un
+  único modular monolith.
+- PostgreSQL es físicamente compartido y tiene ownership lógico por contexto,
+  con alcance explícito de Tenant/Workspace.
+- Object Storage se accede detrás de ports/adapters; sus bytes no se mezclan
+  con la autoridad transaccional de PostgreSQL.
+- Website, Platform, Buyer Portal, Operations Mobile y Buyer Mobile son
+  superficies/containers; no son Bounded Contexts.
+- No se agrega Kafka, otro broker, una segunda base de datos, Kubernetes,
+  microservicios ni transacciones distribuidas.
 
-La fuente semántica observada es
-`blueprint/01-shared/architecture/c4/structurizr/workspace.dsl`, con su JSON
-generado y espejo manual byte-identical. El corte canónico es Blueprint
-`origin/main` `fce3ba6f8ca1622084a2114424086364e1f7d93f`; hashes, export family,
-fecha observada y copias locales están en el
-[Chapter 2 provenance register](../../../assets/chapter-2/provenance.md).
+## AS-IS, TARGET y evidencia
 
-El informe incorpora cinco vistas de navegación exportadas: System Context V1
-TARGET, Containers V1 TARGET, Operations Mobile V1 TARGET, Buyer Mobile V1
-TARGET y Deployment V1 TARGET. También conserva cuatro familias L3 del API
-para enlazar los once paquetes tácticos. Las dos superficies Mobile permanecen
-`TARGET / PLANNED / PROPOSED`; no se afirma framework, build, runtime o
-Product Acceptance. Los exports no convierten C4 Containers en Bounded
-Contexts ni PostgreSQL en once bases físicas.
-
-La revisión visual fue realizada al incorporar las copias PNG; la revisión
-humana formal del equipo, ejecución local y deployment cloud permanecen
-`OPEN`. No se usan thumbnails `.structurizr` obsoletos.
-
-El lector puede contrastar cada afirmación con el [registro de autoridad y
-límites](../../../../delivery-checklists/architecture-authority-and-boundary-register.md)
-y con el [registro de evidencia Mobile](../../../../delivery-checklists/mobile-architecture-evidence-register.md).
+Las vistas distinguen implementación observada, diseño V1 aceptado y runway.
+Operations Mobile y Buyer Mobile son proyecciones V1 `TARGET / PLANNED /
+PROPOSED`; su presencia en C4 no prueba framework, build, runtime, aceptación
+de producto ni production readiness. Fuente semántica, hashes y exports están
+en el [Chapter 2 provenance register](../../../assets/chapter-2/provenance.md).

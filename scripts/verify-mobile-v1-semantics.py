@@ -87,6 +87,11 @@ def main() -> int:
             failures.append(f"English actor remains in functional story table: {old_role}")
     if "DIRECT_ORDER" not in story_text or "servidor vuelve a validar" not in story_text:
         failures.append("Direct Order authorization/revalidation rule missing")
+    if "### Trazabilidad de investigación a historias" not in story_text:
+        failures.append("research-to-story traceability section missing")
+    for term in ("Needfinding", "Lean UX", "To-Be Scenario Mapping", "Epics", "User Stories"):
+        if term not in story_text:
+            failures.append(f"research-to-story traceability missing: {term}")
 
     backlog_text = BACKLOG.read_text(encoding="utf-8")
     ids = backlog_ids(backlog_text)
@@ -105,10 +110,26 @@ def main() -> int:
     impact_story_ids = set(re.findall(r"\bMOB-US-\d{3}\b", impact_text))
     if impact_story_ids != EXPECTED_V1:
         failures.append("Impact Mapping does not contain exactly the 28 Mobile V1 references")
+    for heading in ("## Cadena de impacto", "Business Goal candidate", "Impacto observable", "Deliverable", "User Stories"):
+        if heading not in impact_text:
+            failures.append(f"Impact Mapping missing academic chain element: {heading}")
+    story_descriptions = {
+        story_id: match.group(1).strip()
+        for story_id, block in blocks
+        if (match := re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE))
+    }
+    for story_id in EXPECTED_V1:
+        if story_descriptions.get(story_id) not in impact_text:
+            failures.append(f"Impact Mapping does not preserve full story wording for {story_id}")
     if re.search(r"\[(?:baseline|target|metric|time window|segment/actor)[^\]]*\]", impact_text, re.IGNORECASE):
         failures.append("Impact Mapping contains bracket placeholders")
     if "[ ]" in impact_text or "validated persona pending" in impact_text.lower():
         failures.append("Impact Mapping contains checklist or internal persona state")
+
+    backlog_text = BACKLOG.read_text(encoding="utf-8")
+    for term in ("## Criterio de priorización", "valor de negocio", "riesgo", "dependencias"):
+        if term.lower() not in backlog_text.lower():
+            failures.append(f"Product Backlog prioritization criterion missing: {term}")
 
     if len(re.findall(r"^#### TS-MOB-\d{3} —", story_text, re.MULTILINE)) != 12:
         failures.append("Technical Stories must contain 12 outcomes")

@@ -25,6 +25,8 @@ CONTAINER_DIAGRAM = ARCHITECTURE_DIR / "2.5.3.2-container-level-diagrams.md"
 DEPLOYMENT_DIAGRAM = ARCHITECTURE_DIR / "2.5.3.3-deployment-diagrams.md"
 DDD_ASSETS = REPO_ROOT / "report/assets/chapter-2/ddd-process"
 CANVAS_ASSETS = REPO_ROOT / "report/assets/chapter-2/bounded-context-canvases"
+DOMAIN_STORY_GUIDE = REPO_ROOT / "delivery-checklists/chapter-02-domain-story-rendering.md"
+C4_MANUAL_GUIDE = REPO_ROOT / "delivery-checklists/chapter-02-c4-manual-review.md"
 
 EXPECTED_CONTEXTS = {
     "BC-01": ("Tenant & Access Governance", "Supporting"),
@@ -59,6 +61,7 @@ REQUIRED_FILES = (
     CONTAINER_DIAGRAM,
     DEPLOYMENT_DIAGRAM,
 )
+REQUIRED_INTERNAL_FILES = (DOMAIN_STORY_GUIDE, C4_MANUAL_GUIDE)
 OBSOLETE_FILES = (
     CHAPTER / "section-overview.md",
     EVENT_DIR / "section-overview.md",
@@ -84,6 +87,9 @@ def main() -> int:
     for path in REQUIRED_FILES:
         if not path.is_file():
             failures.append(f"missing required file: {path}")
+    for path in REQUIRED_INTERNAL_FILES:
+        if not path.is_file():
+            failures.append(f"missing internal completion guide: {path.relative_to(REPO_ROOT)}")
     for path in OBSOLETE_FILES:
         if path.exists():
             failures.append(f"obsolete Chapter 2.5 artifact remains: {path.relative_to(REPO_ROOT)}")
@@ -164,6 +170,15 @@ def main() -> int:
             failures.append(f"canvas cell {label!r} is not present exactly 11 times")
     if "Lectura visual" in canvases:
         failures.append("canvas primary Markdown must not use repeated visual-reading paragraphs")
+    if "## Cómo se derivaron los canvases" not in canvases:
+        failures.append("canvas derivation process is missing")
+    if canvases.count("**Strategic role:**") != 11:
+        failures.append("each strategic canvas must state its role")
+    if canvases.count("Alternativa:") != 11 or canvases.count("Se mantiene") < 10:
+        failures.append("each canvas Design Critique must state an alternative and decision")
+    for tactical_term in (r"row lock", r"\bRLS\b", r"\blease\b", r"\bfencing\b"):
+        if re.search(tactical_term, canvases, re.IGNORECASE):
+            failures.append(f"tactical implementation term remains in canvases: {tactical_term}")
     visual_canvas_count = 0
     for code in EXPECTED_CONTEXTS:
         svg_matches = list(CANVAS_ASSETS.glob(f"{code.lower()}-*.svg"))
@@ -183,6 +198,8 @@ def main() -> int:
     for term in ("BC-04 Sales Commitment", "BC-05 Inventory Availability", "BC-06 Fulfillment & Delivery", "BC-07 Credit & Receivables", "BC-08 Payments", "BC-10 Notifications", "BC-11 Business Traceability", "Anti-Corruption Layer", "outbox durable", "No se adopta Shared Kernel"):
         if term not in context_map:
             failures.append(f"context map missing: {term}")
+    if "## Cómo se evaluaron las relaciones" not in context_map:
+        failures.append("context map relationship-evaluation process is missing")
     if len(re.findall(r"^\| (Fusionar|Colocar) ", context_map, re.MULTILINE)) < 7:
         failures.append("context map alternatives incomplete")
 
@@ -203,6 +220,19 @@ def main() -> int:
         failures.append("deployment view does not use official 2.5.3.3 heading")
     if not re.search(r"Nexa es un único\s+sistema", architecture) and "un solo Nexa" not in architecture:
         failures.append("architecture does not preserve one-system boundary")
+    canonical_views = (
+        "Nexa-SystemContext-ASIS",
+        "Nexa-SystemContext-V1-TARGET",
+        "Nexa-SystemContext-Future-Runway",
+        "Nexa-Containers-ASIS",
+        "Nexa-Containers-V1-TARGET",
+        "Nexa-Deployment-Local-ASIS",
+        "Nexa-Deployment-V1-TARGET",
+    )
+    c4_guide = DOMAIN_STORY_GUIDE.read_text(encoding="utf-8") + C4_MANUAL_GUIDE.read_text(encoding="utf-8")
+    for view in canonical_views:
+        if view not in c4_guide:
+            failures.append(f"C4 manual guide missing canonical view key: {view}")
 
     forbidden_numbering = re.compile(r"\b(?:Figure|Figura|Table|Tabla|Illustration|Ilustración|Diagram|Canvas)\s+\d+\b", re.IGNORECASE)
     professor_files = [BIG_PICTURE, *CHAPTER.rglob("*.md")]

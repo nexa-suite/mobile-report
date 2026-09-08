@@ -152,6 +152,9 @@ def validate() -> list[str]:
         ):
             if marker not in block:
                 failures.append(f"{story_id}: missing {marker}")
+        description_match = re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE)
+        if not description_match or not re.fullmatch(r"Como .+, deseo .+, para .+\.", description_match.group(1).strip()):
+            failures.append(f"{story_id}: description must use 'Como ..., deseo ..., para ... .'")
         if not re.search(r"^\| MOB-US-\d{3} \| .+ \| (Alta|Media|Baja) \| .+ \|$", block, re.MULTILINE):
             failures.append(f"{story_id}: required fields or Spanish priority missing")
         scenarios = re.findall(r"\*\*Scenario: .+?\*\*", block)
@@ -224,6 +227,14 @@ def validate() -> list[str]:
     impact_story_ids = set(re.findall(r"\bMOB-US-\d{3}\b", impact_text))
     if impact_story_ids != EXPECTED_V1:
         failures.append("Impact Mapping must retain exactly the 28 Mobile V1 story references")
+    story_descriptions = {
+        story_id: match.group(1).strip()
+        for story_id, block in blocks.items()
+        if (match := re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE))
+    }
+    for story_id in EXPECTED_V1:
+        if story_descriptions.get(story_id) not in impact_text:
+            failures.append(f"Impact Mapping must retain the full description for {story_id}")
     if any(token.lower() in impact_text.lower() for token in ("[baseline]", "[target]", "[metric]", "[time window]", "[ ]", "SMART completion template", "Tool capture")):
         failures.append("Impact Mapping contains placeholders or checklist content")
 

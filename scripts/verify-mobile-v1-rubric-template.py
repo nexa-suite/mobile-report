@@ -48,6 +48,9 @@ def main() -> int:
         for marker in required:
             if marker not in block:
                 failures.append(f"{story_id}: missing {marker}")
+        description_match = re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE)
+        if not description_match or not re.fullmatch(r"Como .+, deseo .+, para .+\.", description_match.group(1).strip()):
+            failures.append(f"{story_id}: description must use 'Como ..., deseo ..., para ... .'")
         if not re.search(r"\| (Alta|Media|Baja) \|", block):
             failures.append(f"{story_id}: priority must be Alta, Media or Baja")
         scenarios = re.findall(r"\*\*Scenario: .+?\*\*", block)

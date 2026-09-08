@@ -198,6 +198,21 @@ def main() -> int:
     for term in ("BC-04 Sales Commitment", "BC-05 Inventory Availability", "BC-06 Fulfillment & Delivery", "BC-07 Credit & Receivables", "BC-08 Payments", "BC-10 Notifications", "BC-11 Business Traceability", "Anti-Corruption Layer", "outbox durable", "No se adopta Shared Kernel"):
         if term not in context_map:
             failures.append(f"context map missing: {term}")
+    for term in (
+        "Upstream Authorization Context + fail-closed ACL",
+        "Tenant/Workspace scope",
+        "membership",
+        "capability decision",
+        "proyecciones stale",
+    ):
+        if term not in context_map:
+            failures.append(f"context map authorization contract missing: {term}")
+    if context_map.count("authorized Tenant/Workspace context") != 1:
+        failures.append("Tenant Scope Map must contain exactly one authorized Tenant/Workspace edge")
+    if re.search(r"^\s*BC01\s+--> scoped\s*$", context_map, re.MULTILINE):
+        failures.append("Tenant Scope Map contains obsolete duplicate BC01 edge")
+    if "predicadas" in context_map:
+        failures.append("context map contains predicadas typo")
     if "## Cómo se evaluaron las relaciones" not in context_map:
         failures.append("context map relationship-evaluation process is missing")
     if len(re.findall(r"^\| (Fusionar|Colocar) ", context_map, re.MULTILINE)) < 7:

@@ -12,19 +12,14 @@ required_files=(
   "$repo_root/report/00-front-matter/03-contents.md"
   "$repo_root/report/00-front-matter/04-student-outcome.md"
   "$repo_root/report/01-presentation/1.3-target-segments/target-segments.md"
-  "$repo_root/report/02-requirements-and-software-solution-design/2.2-interviews/2.2.4-physical-operations-and-delivery-research-plan.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.2-interviews/2.2.3-interview-analysis.md"
   "$candidate_contexts"
   "$repo_root/report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6.1-bounded-context-coverage.md"
   "$repo_root/report/03-solution-ui-ux-design/chapter-overview.md"
   "$repo_root/report/04-product-implementation-and-validation/chapter-overview.md"
   "$repo_root/report/04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/section-overview.md"
   "$repo_root/delivery-checklists/mobile-v1-story-verification-register.md"
-  "$chapter/section-overview.md"
-  "$chapter/to-be-scenario-mapping.md"
   "$chapter/2.4.1-user-stories.md"
-  "$chapter/2.4.1-landing-stories.md"
-  "$chapter/2.4.1-technical-stories.md"
-  "$chapter/2.4.1-spike-stories.md"
   "$chapter/2.4.2-impact-mapping.md"
   "$chapter/2.4.3-product-backlog.md"
   "$repo_root/report/93-annexes/annex-d-spike-story/spike-story.md"
@@ -43,7 +38,7 @@ python3 "$repo_root/scripts/verify-chapter-2.5.py"
 python3 "$repo_root/scripts/verify-mobile-backlog.py"
 python3 "$repo_root/scripts/verify-mobile-v1-rubric-template.py"
 
-headings=$(rg -c '^### MOB-US-' "$stories")
+headings=$(rg -c '^##### MOB-US-' "$stories")
 functional_index_rows=$(awk -F'|' '/^\| [0-9]+ \| MOB-US-/{c++} END{print c+0}' "$stories")
 scenarios=$(rg -o '\*\*Scenario:' "$stories" | wc -l | tr -d ' ')
 context_rows=$(awk -F'|' '/^\| BC-[0-9][0-9] \|/{c++} END{print c+0}' "$candidate_contexts")

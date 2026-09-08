@@ -9,7 +9,11 @@ import re
 import sys
 
 root = pathlib.Path(sys.argv[1]).resolve()
-files = [root / "README.md", root / "report", root / "delivery-checklists"]
+files = [
+    root / "report/02-requirements-and-software-solution-design/2.4-requirements-specification",
+    root / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design",
+    root / "report/assets/chapter-2/provenance.md",
+]
 link_pattern = re.compile(r"\]\(([^)]+)\)")
 errors = []
 

@@ -75,7 +75,7 @@ authority in Blueprint.
 ## External `nexa-ddd` visual set
 
 The visual mapping and inspection notes are integrated into the
-[EventStorming section](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/section-overview.md),
+[EventStorming section](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md),
 [candidate-context analysis](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md)
 and [domain stories](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md).
 Original SVG hashes:
@@ -103,12 +103,13 @@ The nine real Miro assets are embedded in their professor-facing sections:
 Steps 1–3 in 2.3.5 and Steps 4–7, 9 and 10 in 2.5.1. The report does not
 reconstruct an additional board step.
 
-Eleven Bounded Context Canvas artifacts were generated from the accepted
-semantic source `2.5.1.3-bounded-context-canvases.md` by
-`scripts/render-chapter-2.5-canvases.py`. The generator uses only Python
-standard-library SVG output. `rsvg-convert` 2.62.3 produced deterministic PNG
-fallbacks for the PDF path. The SVG and PNG pairs are stored under
-`report/assets/chapter-2/bounded-context-canvases/`.
+Eleven existing Bounded Context Canvas artifacts are retained alongside the
+accepted semantic source `2.5.1.3-bounded-context-canvases.md`. The source was
+reworked into six-cell Markdown canvases; `scripts/render-chapter-2.5-canvases.py`
+parses that structure and remains the deterministic refresh path. The generator
+uses only Python standard-library SVG output. `rsvg-convert` 2.62.3 produced
+deterministic PNG fallbacks for the PDF path. The SVG and PNG pairs are stored
+under `report/assets/chapter-2/bounded-context-canvases/`.
 
 The five Domain Story Mermaid blocks remain the editable source in
 `2.5.1.2-domain-message-flows-modeling.md`. `mmdc` was unavailable in the

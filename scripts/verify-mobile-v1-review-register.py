@@ -43,7 +43,7 @@ def register_rows(text: str) -> list[list[str]]:
 
 
 def report_records(text: str) -> dict[str, tuple[str, str]]:
-    matches = list(re.finditer(r"^### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
+    matches = list(re.finditer(r"^##### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
     records: dict[str, tuple[str, str]] = {}
     for index, match in enumerate(matches):
         block = text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)]

@@ -14,11 +14,11 @@ SOURCE = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.5-st
 DEFAULT_OUTPUT = REPO_ROOT / "report/assets/chapter-2/bounded-context-canvases"
 EXPECTED_ORDER = ["BC-04", "BC-05", "BC-06", "BC-03", "BC-02", "BC-07", "BC-01", "BC-11", "BC-08", "BC-09", "BC-10"]
 STAGE_LABELS = {
-    "Context Overview Definition": "Context / Purpose",
-    "Business Rules Distillation & Ubiquitous Language Capture": "Ubiquitous Language / Invariants",
+    "Context Overview": "Context / Purpose",
+    "Business Rules & Ubiquitous Language": "Ubiquitous Language / Invariants",
     "Capability Analysis": "Capabilities",
     "Capability Layering": "Capability Layering",
-    "Dependencies Capture": "Inbound / Outbound Dependencies",
+    "Dependencies": "Inbound / Outbound Dependencies",
     "Design Critique": "Design Critique / Rejected Alternative",
 }
 COLORS = {"Core": "#0f4c5c", "Supporting": "#3d5a80", "Generic": "#495057"}
@@ -70,13 +70,16 @@ def text_element(value: str, x: int, y: int, size: int, *, weight: str = "400", 
 def parse_canvases(text: str) -> list[dict[str, object]]:
     headings = list(re.finditer(r"^## (BC-\d{2}) (.+?) — (Core|Supporting|Generic)$", text, re.MULTILINE))
     canvases: list[dict[str, object]] = []
-    stage_pattern = re.compile(r"^\*\*(.+?)\.\*\*\s*(.*?)(?=^\*\*|\Z)", re.MULTILINE | re.DOTALL)
+    table_cell_pattern = re.compile(r"^\| (.+?) \| (.+?) \|$", re.MULTILINE)
     for index, heading in enumerate(headings):
         end = headings[index + 1].start() if index + 1 < len(headings) else len(text)
         block = text[heading.start() : end]
         stages: dict[str, str] = {}
-        for stage in stage_pattern.finditer(block):
-            stages[stage.group(1).strip()] = compact(stage.group(2))
+        for row in table_cell_pattern.finditer(block):
+            for cell in row.groups():
+                match = re.match(r"\*\*(.+?)\*\*<br><br>(.+)$", cell.strip())
+                if match and match.group(1).strip() in STAGE_LABELS:
+                    stages[match.group(1).strip()] = compact(match.group(2))
         missing = [stage for stage in STAGE_LABELS if stage not in stages]
         if missing:
             raise SystemExit(f"{heading.group(1)} missing stages: {', '.join(missing)}")

@@ -18,7 +18,7 @@ def master_ids() -> list[str]:
 
 
 def story_blocks(text: str) -> list[tuple[str, str]]:
-    matches = list(re.finditer(r"^### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
+    matches = list(re.finditer(r"^##### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
     return [
         (match.group(1), text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)])
         for index, match in enumerate(matches)

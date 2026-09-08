@@ -13,10 +13,6 @@ CHAPTER = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.4-r
 STORIES = CHAPTER / "2.4.1-user-stories.md"
 BACKLOG = CHAPTER / "2.4.3-product-backlog.md"
 IMPACT = CHAPTER / "2.4.2-impact-mapping.md"
-TECHNICAL = CHAPTER / "2.4.1-technical-stories.md"
-SPIKES = CHAPTER / "2.4.1-spike-stories.md"
-TO_BE = CHAPTER / "to-be-scenario-mapping.md"
-LANDING = CHAPTER / "2.4.1-landing-stories.md"
 DDD_CONTEXT_DISCOVERY = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md"
 
 ACADEMIC_TOKENS = (
@@ -39,7 +35,7 @@ EXPECTED_V1 = {
 
 
 def story_blocks(text: str) -> list[tuple[str, str]]:
-    matches = list(re.finditer(r"^### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
+    matches = list(re.finditer(r"^##### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
     return [
         (match.group(1), text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)])
         for index, match in enumerate(matches)
@@ -60,7 +56,7 @@ def backlog_ids(text: str) -> set[str]:
 
 def main() -> int:
     failures: list[str] = []
-    chapter_files = (STORIES, LANDING, TECHNICAL, SPIKES, IMPACT, BACKLOG, TO_BE)
+    chapter_files = (STORIES, IMPACT, BACKLOG)
     for path in chapter_files:
         if not path.is_file():
             failures.append(f"missing Chapter 2.4 file: {path.name}")
@@ -102,26 +98,25 @@ def main() -> int:
     for sprint in ("S1", "S2", "S3", "S4", "Future"):
         if not re.search(rf"^\| {sprint} \|", backlog_text, re.MULTILINE):
             failures.append(f"Product Backlog missing {sprint}")
-    if "| # Orden | User Story Id | Title | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |" not in backlog_text:
+    if "| # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |" not in backlog_text:
         failures.append("Product Backlog five-column table missing")
 
     impact_text = IMPACT.read_text(encoding="utf-8")
-    if len(re.findall(r"\| G-0[1-4] \| MOB-US-\d{3} \|", impact_text)) != 28:
-        failures.append("Impact Mapping does not include all 28 V1 descriptions")
+    impact_story_ids = set(re.findall(r"\bMOB-US-\d{3}\b", impact_text))
+    if impact_story_ids != EXPECTED_V1:
+        failures.append("Impact Mapping does not contain exactly the 28 Mobile V1 references")
     if re.search(r"\[(?:baseline|target|metric|time window|segment/actor)[^\]]*\]", impact_text, re.IGNORECASE):
         failures.append("Impact Mapping contains bracket placeholders")
     if "[ ]" in impact_text or "validated persona pending" in impact_text.lower():
         failures.append("Impact Mapping contains checklist or internal persona state")
 
-    technical_text = TECHNICAL.read_text(encoding="utf-8")
-    if len(re.findall(r"^## TS-MOB-\d{3} —", technical_text, re.MULTILINE)) != 12:
+    if len(re.findall(r"^#### TS-MOB-\d{3} —", story_text, re.MULTILINE)) != 12:
         failures.append("Technical Stories must contain 12 outcomes")
-    if not all(term in technical_text for term in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI", "Liquid Glass")):
+    if not all(term in story_text for term in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI", "Liquid Glass")):
         failures.append("Technical technology boundaries are incomplete")
-    spike_text = SPIKES.read_text(encoding="utf-8")
-    if len(re.findall(r"^## SPIKE-\d{3} —", spike_text, re.MULTILINE)) != 6:
+    if len(re.findall(r"^#### SPIKE-\d{3} —", story_text, re.MULTILINE)) != 6:
         failures.append("Spike Stories must contain six research questions")
-    spike_002 = spike_text[spike_text.index("## SPIKE-002") : spike_text.index("## SPIKE-003")]
+    spike_002 = story_text[story_text.index("#### SPIKE-002") : story_text.index("#### SPIKE-003")]
     if re.search(r"\| Question \|[^\n]*(?:elegir|seleccionar una única|qué tecnología escoger)", spike_002, re.IGNORECASE):
         failures.append("SPIKE-002 asks for single-framework selection")
 

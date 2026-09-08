@@ -66,7 +66,7 @@ done < "$NAVIGATION_SOURCES"
 
 while IFS= read -r source; do
   case "$source" in
-    report/00-front-matter/*|report/02-requirements-and-software-solution-design/*)
+    report/00-front-matter/*|report/02-requirements-and-software-solution-design/*|report/assets/*|delivery-checklists/*)
       continue
       ;;
   esac

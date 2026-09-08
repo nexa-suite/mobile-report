@@ -130,8 +130,6 @@ Exact files:
 
 Exact files:
 
-- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/section-overview.md`
-- `report/02-requirements-and-software-solution-design/2.4-requirements-specification/to-be-scenario-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md`
 - `report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md`
@@ -152,14 +150,11 @@ Exact files:
 
 Exact files:
 
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/section-overview.md`
+- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.3-bounded-context-canvases.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.2-context-mapping.md`
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/section-overview.md`
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.4-strategic-ddd-traceability.md`
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md`
 - `report/assets/chapter-2/ddd-process/step1-ddd.png`
 - `report/assets/chapter-2/ddd-process/step1-ddd.svg`
 - `report/assets/chapter-2/ddd-process/step10-ddd.png`
@@ -196,9 +191,8 @@ Exact files:
 
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.1-context-level-diagrams.md`
 - `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.2-container-level-diagrams.md`
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.3-component-level-diagrams.md`
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.4-deployment-diagrams.md`
-- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/section-overview.md`
+- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture.md`
+- `report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.3-deployment-diagrams.md`
 - `delivery-checklists/architecture-render-evidence-register.md`
 - `delivery-checklists/architecture-authority-and-boundary-register.md`
 - `delivery-checklists/mobile-architecture-evidence-register.md`
@@ -260,7 +254,7 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-10-notifications.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-11-business-traceability.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/README.md`
-- `report/assets/chapter-2/provenance.md`
+- `delivery-checklists/chapter-02-evidence-provenance.md`
 - `report/assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.png`
 - `report/assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.svg`
 - `report/assets/chapter-2/tactical/BC-01/database-diagram.png`

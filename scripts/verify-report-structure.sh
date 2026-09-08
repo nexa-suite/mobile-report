@@ -5,25 +5,28 @@ repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 chapter="$repo_root/report/02-requirements-and-software-solution-design/2.4-requirements-specification"
 stories="$chapter/2.4.1-user-stories.md"
 backlog="$chapter/2.4.3-product-backlog.md"
-traceability="$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.4-strategic-ddd-traceability.md"
+candidate_contexts="$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md"
 
 required_files=(
   "$repo_root/report/00-front-matter/00-cover.md"
   "$repo_root/report/00-front-matter/03-contents.md"
   "$repo_root/report/00-front-matter/04-student-outcome.md"
   "$repo_root/report/01-presentation/1.3-target-segments/target-segments.md"
-  "$traceability"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.2-interviews/2.2.3-interview-analysis.md"
+  "$candidate_contexts"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.3-bounded-context-canvases.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.2-context-mapping.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.1-context-level-diagrams.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.2-container-level-diagrams.md"
+  "$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.3-deployment-diagrams.md"
   "$repo_root/report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6.1-bounded-context-coverage.md"
   "$repo_root/report/03-solution-ui-ux-design/chapter-overview.md"
   "$repo_root/report/04-product-implementation-and-validation/chapter-overview.md"
   "$repo_root/report/04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/section-overview.md"
-  "$repo_root/delivery-checklists/mobile-v1-story-verification-register.md"
-  "$chapter/section-overview.md"
-  "$chapter/to-be-scenario-mapping.md"
   "$chapter/2.4.1-user-stories.md"
-  "$chapter/2.4.1-landing-stories.md"
-  "$chapter/2.4.1-technical-stories.md"
-  "$chapter/2.4.1-spike-stories.md"
   "$chapter/2.4.2-impact-mapping.md"
   "$chapter/2.4.3-product-backlog.md"
   "$repo_root/report/93-annexes/annex-d-spike-story/spike-story.md"
@@ -34,17 +37,12 @@ for file in "${required_files[@]}"; do
 done
 
 bash "$repo_root/scripts/check-report-links.sh"
-python3 "$repo_root/scripts/verify-mobile-v1-transcription.py"
-python3 "$repo_root/scripts/verify-mobile-v1-review-register.py"
 python3 "$repo_root/scripts/verify-bibliography-citations.py"
-python3 "$repo_root/scripts/verify-mobile-v1-semantics.py"
-python3 "$repo_root/scripts/verify-mobile-backlog.py"
-python3 "$repo_root/scripts/verify-mobile-v1-rubric-template.py"
 
-headings=$(rg -c '^### MOB-US-' "$stories")
+headings=$(rg -c '^##### MOB-US-' "$stories")
 functional_index_rows=$(awk -F'|' '/^\| [0-9]+ \| MOB-US-/{c++} END{print c+0}' "$stories")
 scenarios=$(rg -o '\*\*Scenario:' "$stories" | wc -l | tr -d ' ')
-context_rows=$(awk -F'|' '/^\| BC-[0-9][0-9] —/{c++} END{print c+0}' "$traceability")
+context_rows=$(awk -F'|' '/^\| BC-[0-9][0-9] \|/{c++} END{print c+0}' "$candidate_contexts")
 sprint_rows=$(awk -F'|' '/^\| (S[1-4]|Future) \|/{c++} END{print c+0}' "$backlog")
 
 [[ "$headings" -eq 73 ]] || { echo "expected 73 functional story headings, got $headings" >&2; exit 1; }

@@ -1,5 +1,12 @@
 # Bibliography
 
+## Research protocol and status
+
+The bibliography uses APA 7 entries while preserving the report's reference IDs
+for the four rubric candidates. Quartile classification remains
+`PRELIMINARY` until the team attaches the official Scopus or Web of Science
+capture for the relevant year and category; the register remains `Pending team capture`.
+
 ## Arriaga-Lorenzo et al.
 
 Arriaga-Lorenzo, P., Maldonado-Simán, E., Ramírez-Valverde, R., Martínez-Hernández, P. A., Tirado-González, D. N., & Saavedra-Jiménez, L. A. (2023). Evaluación de la cadena de frío en cortes de res vendida en supermercados. *Revista Chapingo Serie Agricultura Tropical, 3*(1), 21–30. <https://doi.org/10.5154/r.rchsagt.2023.03.02>
@@ -48,9 +55,19 @@ Instituto Nacional de Estadística e Informática. (2025b). *Perú: estructura e
 
 Instituto Nacional de Estadística e Informática. (2026, marzo). *Las tecnologías de información y comunicación en los hogares: IV trimestre 2025*. <https://www.gob.pe/institucion/inei/informes-publicaciones/7932450-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-iv-trimestre-2025>
 
+## Mobile engineering and UX candidates
+
+**[M1]** Ilhan, A. E. (2025). Design approaches to improve user experience: An
+example of a mobile app prototyping process. *International Journal of
+Human-Computer Studies, 203*, 103569. <https://doi.org/10.1016/j.ijhcs.2025.103569>
+
+**[M2]** Maqbool, B., & Herold, S. (2024). Potential effectiveness and efficiency
+issues in usability evaluation within digital health: A systematic literature
+review. *Journal of Systems and Software, 208*, 111881. <https://doi.org/10.1016/j.jss.2023.111881>
+
 ## Mustafa et al.
 
-Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food cold chain logistics and management: A review of current development and emerging trends. *Journal of Agriculture and Food Research, 18*, Artículo 101343. <https://doi.org/10.1016/j.jafr.2024.101343>
+**[D1]** Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food cold chain logistics and management: A review of current development and emerging trends. *Journal of Agriculture and Food Research, 18*, Artículo 101343. <https://doi.org/10.1016/j.jafr.2024.101343>
 
 ## Negocia.pe
 
@@ -72,4 +89,4 @@ United Nations Environment Programme, & Food and Agriculture Organization of the
 
 ## Zhou et al.
 
-Zhou, X., Tang, J., Jacobs, T. L., & Saguy, I. S. (2025). Transforming food supply chains through digital tracking and monitoring technologies. *Trends in Food Science & Technology, 163*, Artículo 105142. <https://doi.org/10.1016/j.tifs.2025.105142>
+**[D2]** Zhou, X., Tang, J., Jacobs, T. L., & Saguy, I. S. (2025). Transforming food supply chains through digital tracking and monitoring technologies. *Trends in Food Science & Technology, 163*, Artículo 105142. <https://doi.org/10.1016/j.tifs.2025.105142>

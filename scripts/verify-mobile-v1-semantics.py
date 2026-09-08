@@ -17,7 +17,7 @@ TECHNICAL = CHAPTER / "2.4.1-technical-stories.md"
 SPIKES = CHAPTER / "2.4.1-spike-stories.md"
 TO_BE = CHAPTER / "to-be-scenario-mapping.md"
 LANDING = CHAPTER / "2.4.1-landing-stories.md"
-DDD_TRACEABILITY = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.4-strategic-ddd-traceability.md"
+DDD_CONTEXT_DISCOVERY = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md"
 
 ACADEMIC_TOKENS = (
     "P0", "P1", "P2", "P3", "PROPOSED", "PARTIAL", "COVERED",
@@ -125,8 +125,8 @@ def main() -> int:
     if re.search(r"\| Question \|[^\n]*(?:elegir|seleccionar una única|qué tecnología escoger)", spike_002, re.IGNORECASE):
         failures.append("SPIKE-002 asks for single-framework selection")
 
-    context_text = DDD_TRACEABILITY.read_text(encoding="utf-8")
-    context_rows = re.findall(r"^\| (BC-\d{2}) —", context_text, re.MULTILINE)
+    context_text = DDD_CONTEXT_DISCOVERY.read_text(encoding="utf-8")
+    context_rows = re.findall(r"^\| (BC-\d{2}) \|", context_text, re.MULTILINE)
     if len(context_rows) != 11 or set(context_rows) != {f"BC-{number:02d}" for number in range(1, 12)}:
         failures.append(f"strategic Bounded Context inventory is not exactly 11: {context_rows}")
     if re.search(r"(?:Mobile|Scanner|QR|Device|Offline|Tracking|Push|Maps) (?:Bounded Context|BC)", "\n".join(path.read_text(encoding="utf-8") for path in chapter_files if path.is_file()), re.IGNORECASE):

@@ -39,6 +39,7 @@ python3 "$repo_root/scripts/verify-mobile-v1-transcription.py"
 python3 "$repo_root/scripts/verify-mobile-v1-review-register.py"
 python3 "$repo_root/scripts/verify-bibliography-citations.py"
 python3 "$repo_root/scripts/verify-mobile-v1-semantics.py"
+python3 "$repo_root/scripts/verify-chapter-2.5.py"
 python3 "$repo_root/scripts/verify-mobile-backlog.py"
 python3 "$repo_root/scripts/verify-mobile-v1-rubric-template.py"
 

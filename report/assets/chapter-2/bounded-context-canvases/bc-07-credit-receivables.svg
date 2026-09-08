@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1244" viewBox="0 0 1600 1244">
+<rect width="100%" height="100%" fill="#f7f9fb"/>
+<rect width="1600" height="120" fill="#3d5a80"/>
+<text x="46" y="62" font-family="Arial, Helvetica, sans-serif" font-size="34px" font-weight="700" fill="#ffffff">BC-07 Credit &amp; Receivables — Bounded Context Canvas</text>
+<text x="46" y="98" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#e7eef3">Strategic DDD visual summary sourced from 2.5.1.3</text>
+<rect x="46" y="142" width="300" height="38" rx="19" fill="#3d5a80"/>
+<text x="68" y="167" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="700" fill="#ffffff">Classification: Supporting</text>
+<rect x="46" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Context / Purpose</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-07 owns Credit Account, Credit Limit, Credit Reservation,</text>
+<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Available Credit, Receivable, balance y Financial Adjustment.</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Protege riesgo y obligación formal sin convertirse en un Finance o</text>
+<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">accounting context completo. No owns Payment provider lifecycle ni</text>
+<text x="68" y="408" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">document rendering.</text>
+<rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Ubiquitous Language / Invariants</text>
+<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Available Credit = Credit Limit - active Credit Reservations -</text>
+<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">outstanding Receivable balances. Payment != Receivable.</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Reservation y Receivable no deben double count. Credit/net posts</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Receivable en SO confirmation según policy. Corrections agregan</text>
+<text x="846" y="408" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Financial Adjustment y nunca borran Payment history.</text>
+<rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Capabilities</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Las capacidades son credit policy, limit management, credit</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">evaluation, reservation, conversion to receivable, payment</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">application, release, balance projection y financial correction.</text>
+<rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Capability Layering</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">La capa risk decision produce accept/reject y reservation. La capa</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">obligation mantiene Receivable y application. La capa correction</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">conserva ajustes explícitos y reconciliación. Provider callbacks</text>
+<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">pertenecen a BC-08.</text>
+<rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Inbound / Outbound Dependencies</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Entra amount, terms y commitment reference de BC-04, y Payment</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Confirmed de BC-08. Sale credit decision a BC-04,</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">receivable/payment facts a BC-09, projections a Portal/Platform y</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">traceability a BC-11. Credit reservation durante submit/direct</text>
+<text x="68" y="1064" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">order es atómica con commitment y inventory backing cuando aplica.</text>
+<rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Design Critique / Rejected Alternative</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Fusionarlo con Payments ocultaría la diferencia entre confirmar un</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">movimiento externo y actualizar exposición. Separarlos permite</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">reconciliar provider facts, aplicar idempotencia y conservar una</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">autoridad financiera de negocio neutral al proveedor.</text>
+<text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
+</svg>

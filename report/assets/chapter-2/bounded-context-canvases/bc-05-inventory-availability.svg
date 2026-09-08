@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1244" viewBox="0 0 1600 1244">
+<rect width="100%" height="100%" fill="#f7f9fb"/>
+<rect width="1600" height="120" fill="#0f4c5c"/>
+<text x="46" y="62" font-family="Arial, Helvetica, sans-serif" font-size="34px" font-weight="700" fill="#ffffff">BC-05 Inventory Availability — Bounded Context Canvas</text>
+<text x="46" y="98" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#e7eef3">Strategic DDD visual summary sourced from 2.5.1.3</text>
+<rect x="46" y="142" width="300" height="38" rx="19" fill="#0f4c5c"/>
+<text x="68" y="167" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="700" fill="#ffffff">Classification: Core</text>
+<rect x="46" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#0f4c5c">Context / Purpose</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-05 owns la verdad física, Sellable Availability, Safety Stock,</text>
+<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Inventory Reservation/Warehouse Backing, lotes, movimientos y</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Physical Allocation. No confirma Sales Orders, no owns Fulfillment</text>
+<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">workflow y no aplica Payments.</text>
+<rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#0f4c5c">Ubiquitous Language / Invariants</text>
+<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Physical Stock es cantidad física; Sellable Availability descuenta</text>
+<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">commitments y Safety Stock. Warehouse Backing protege demanda sin</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">seleccionar lote. Physical Allocation selecciona lotes elegibles.</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">HOLD, QUARANTINE, DAMAGED/WASTE, EXPIRED e INTRANSIT no son</text>
+<text x="846" y="408" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">sellables…</text>
+<rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#0f4c5c">Capabilities</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Las capacidades son receiving, Lot registration,</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">temperature/disposition evaluation, quantity adjustment,</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">availability calculation, commitment demand observation,</text>
+<text x="68" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">deterministic Warehouse Backing, FEFO Physical Allocation, stock</text>
+<text x="68" y="736" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">movement, transfer y shortage handling.</text>
+<rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#0f4c5c">Capability Layering</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">La capa de truth management conserva lotes, disposición,</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">cantidades y movimientos. La capa de commercial protection</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">transforma demand en backing sin duplicar commitment. La capa de</text>
+<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">execution handoff expone allocation y mutation contracts a BC-06…</text>
+<rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#0f4c5c">Inbound / Outbound Dependencies</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Entra demand de BC-04 y SKU semantics de BC-03; sale</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">full-protection o rejection a BC-04, allocation/movement facts a</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-06 y availability projections a las superficies. El boundary</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">usa SKU, warehouse, lot y commitment IDs…</text>
+<rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#0f4c5c">Design Critique / Rejected Alternative</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Fusionarlo con Fulfillment simplificaría el flujo de Warehouse,</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">pero mezclaría stock físico con ejecución de trabajo y entrega.</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Separarlo protege Physical Stock != Fulfillment state y permite</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">que múltiples Fulfillments consuman una autoridad de inventario</text>
+<text x="846" y="1064" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">común.</text>
+<text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
+</svg>

@@ -363,17 +363,18 @@ UNESTIMATED_POINTS = {
 
 
 GLOBAL_BACKLOG_ORDER = [
-    "MOB-US-001", "MOB-US-002", "MOB-US-003",
     "LAND-US-001", "LAND-US-002", "LAND-US-003", "LAND-US-004",
-    "LAND-US-005", "LAND-US-006", "TS-MOB-001", "SPIKE-002", "TS-MOB-010",
+    "LAND-US-005", "LAND-US-006",
     "MOB-US-011", "MOB-US-012", "MOB-US-013", "MOB-US-014",
     "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019",
     "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-020",
     "MOB-US-021", "MOB-US-025", "MOB-US-026", "MOB-US-027",
     "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033",
     "MOB-US-034", "MOB-US-044", "MOB-US-047", "MOB-US-048",
-    "MOB-US-049", "TS-MOB-005", "TS-MOB-006", "TS-MOB-007",
-    "TS-MOB-008", "MOB-US-004", "MOB-US-005", "MOB-US-006",
+    "MOB-US-049", "MOB-US-001", "MOB-US-002", "MOB-US-003",
+    "TS-MOB-001", "TS-MOB-010", "SPIKE-002", "TS-MOB-005",
+    "TS-MOB-006", "TS-MOB-007", "TS-MOB-008", "MOB-US-004",
+    "MOB-US-005", "MOB-US-006",
     "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010",
     "MOB-US-018", "MOB-US-030", "MOB-US-035", "MOB-US-050",
     "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-057",
@@ -1042,7 +1043,7 @@ def story_table(row: dict[str, str]) -> str:
     sprint = markdown_cell(planned_sprint(row))
     return "\n".join(
         [
-            f"### {story_id} — {title}",
+            f"##### {story_id} — {title}",
             "",
             "| Story ID | User | Priority | Epic |",
             "| :--- | :--- | :--- | :--- |",
@@ -1070,7 +1071,7 @@ def story_table(row: dict[str, str]) -> str:
 
 def functional_index(rows: list[dict[str, str]]) -> str:
     output = [
-        "## Índice de historias funcionales",
+        "#### Índice de historias funcionales",
         "",
         "El catálogo funcional contiene las 73 historias `MOB-US-001` a `MOB-US-073`. "
         "Las 28 historias V1 se organizan en S1, S2 y S3 según la proyección de "
@@ -1099,22 +1100,78 @@ def functional_index(rows: list[dict[str, str]]) -> str:
     return "\n".join(output)
 
 
+def supplemental_body(
+    existing: str,
+    heading: str,
+    next_heading: str | None,
+    base_heading_level: int,
+) -> str:
+    """Recover a consolidated subsection at stable Markdown levels."""
+    boundary = rf"(?=^{re.escape(next_heading)}\n|\Z)" if next_heading else r"(?=\Z)"
+    match = re.search(
+        rf"^{re.escape(heading)}\n(.*?){boundary}",
+        existing,
+        re.MULTILINE | re.DOTALL,
+    )
+    if not match:
+        raise SystemExit(f"missing consolidated section: {heading}")
+    return normalize_headings(match.group(1).strip(), base_heading_level)
+
+
+def normalize_headings(body: str, base_level: int) -> str:
+    """Keep recovered supplemental sections at stable Markdown levels."""
+    matches = list(re.finditer(r"^(#{2,10}) (.+)$", body, re.MULTILINE))
+    if any(match.group(2).startswith("LAND-US-") for match in matches):
+        return re.sub(
+            r"^(#{2,10}) (.+)$",
+            lambda match: f"{'#' * (base_level + (1 if match.group(2).startswith('LAND-US-') else 0))} {match.group(2)}",
+            body,
+            flags=re.MULTILINE,
+        )
+    if any(match.group(2).startswith(("TS-MOB-", "SPIKE-")) for match in matches):
+        return re.sub(
+            r"^(#{2,10}) (.+)$",
+            lambda match: f"{'#' * base_level} {match.group(2)}",
+            body,
+            flags=re.MULTILINE,
+        )
+    levels = [len(match.group(1)) for match in matches]
+    if not levels:
+        return body
+    source_base = min(levels)
+    return re.sub(
+        r"^(#{2,10}) ",
+        lambda match: f"{'#' * (base_level + len(match.group(1)) - source_base)} ",
+        body,
+        flags=re.MULTILINE,
+    )
+
+
 def generate_user_stories(rows: list[dict[str, str]]) -> str:
+    existing = USER_STORIES.read_text(encoding="utf-8") if USER_STORIES.is_file() else ""
+    to_be = supplemental_body(existing, "## To-Be Scenario Mapping", "## 2.4.1 User Stories", 3)
+    landing = supplemental_body(existing, "### Landing Page User Stories", "### Technical Stories", 4)
+    technical = supplemental_body(existing, "### Technical Stories", "### Spike Stories", 4)
+    spikes = supplemental_body(existing, "### Spike Stories", None, 4)
     output = [
-        "# 2.4.1 User Stories",
+        "# 2.4 Requirements Specification",
         "",
-        "La especificación funcional conserva las 73 historias del catálogo móvil y "
-        "las expresa con roles naturales en español. Nexa Operations Mobile concentra "
-        "operaciones de negocio, ventas de campo, almacén, despacho y entrega; "
-        "Nexa Buyer Mobile cubre la paridad funcional de las capacidades aceptadas para "
-        "compradores, junto con capacidades móviles específicas. La paridad significa "
-        "equivalencia de capacidad de negocio, no copia de código, interfaz o defectos.",
+        "Esta sección especifica las necesidades de Nexa Operations Mobile y Nexa Buyer Mobile "
+        "como capacidades de negocio observables. Las User Stories expresan resultados para "
+        "personas y roles; la tecnología de implementación se documenta en Technical Stories "
+        "y no duplica la autoridad del dominio.",
         "",
-        "Las dos aplicaciones de producto son `Nexa Operations Mobile` y `Nexa Buyer Mobile`. "
-        "Las historias funcionales permanecen neutrales respecto de Android Native/Kotlin, "
-        "Flutter/Dart e iOS Native/SwiftUI.",
+        "Las dos aplicaciones proyectadas son `Nexa Operations Mobile` y `Nexa Buyer Mobile`. "
+        "La especificación permanece neutral respecto de Android Native/Kotlin, Flutter/Dart "
+        "e iOS Native/SwiftUI.",
         "",
-        "## Epics",
+        "## To-Be Scenario Mapping",
+        "",
+        to_be,
+        "",
+        "## 2.4.1 User Stories",
+        "",
+        "### Epics",
         "",
         "| Epic ID | Nombre | Descripción | Historias |",
         "| :--- | :--- | :--- | :--- |",
@@ -1127,7 +1184,7 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
             "Un Epic organiza requisitos; no representa un Bounded Context, una aplicación "
             "separada ni una unidad de despliegue.",
             "",
-            "## Decisiones de producto que orientan la lectura",
+            "### Decisiones de producto que orientan la lectura",
             "",
             "La autoridad de los hechos de negocio permanece en el servidor y en el "
             "Bounded Context responsable. La información local puede apoyar continuidad "
@@ -1142,8 +1199,10 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
             "Ventas se mantiene como comportamiento de producto y se revisa frente al "
             "catálogo antes de implementación.",
             "",
+            "### Mobile Functional User Stories",
+            "",
             functional_index(rows),
-            "## Registros de historias funcionales",
+            "#### Registros de historias funcionales",
             "",
             "Cada registro incluye Story ID, User, Priority, Epic, Title, Description y "
             "Acceptance Criteria. `Scenario`, `Given`, `When` y `Then` siguen la convención "
@@ -1156,52 +1215,17 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
         output.append(story_table(row))
     output.extend(
         [
-            "## Trabajo complementario de 2.4.1",
+            "### Landing Page User Stories",
             "",
-            "- [Landing Functional Stories](./2.4.1-landing-stories.md)",
-            "- [Technical Stories](./2.4.1-technical-stories.md)",
-            "- [Spike Stories](./2.4.1-spike-stories.md)",
-            "- [Annex D — detalle de Spike Stories](../../93-annexes/annex-d-spike-story/spike-story.md)",
+            landing,
             "",
-            "## Technical Stories",
+            "### Technical Stories",
             "",
-            "Las Technical Stories expresan resultados de habilitación para las dos "
-            "aplicaciones. No agregan Bounded Contexts y no sustituyen los contratos "
-            "compartidos; cada una usa `Developer` como actor.",
-            "",
-            "| ID | Actor | Resultado técnico | Sprint planificado | Detalle |",
-            "| :--- | :--- | :--- | :--- | :--- |",
-        ]
-    )
-    for story_id, title, _, sprint in TECHNICAL_BACKLOG:
-        output.append(
-            f"| {story_id} | Developer | {title} | {sprint} | "
-            "[Technical Stories](./2.4.1-technical-stories.md) |"
-        )
-    output.extend(
-        [
+            technical,
             "",
             "### Spike Stories",
             "",
-            "Los seis Spikes delimitan incertidumbres de investigación. El registro "
-            "resumido y su detalle en Annex D describen preguntas, artefactos esperados "
-            "y criterios de cierre sin inventar resultados.",
-            "",
-            "| ID | Objetivo de investigación | Artefacto / evidencia esperada | Criterios de cierre | Sprint planificado | Detalle |",
-            "| :--- | :--- | :--- | :--- | :--- | :--- |",
-        ]
-    )
-    for story_id, _, _, sprint in SPIKE_BACKLOG:
-        objective, artifact, completion = SPIKE_SUMMARY[story_id]
-        output.append(
-            f"| {story_id} | {objective} | {artifact} | {completion} | {sprint} | "
-            "[Spike Stories](./2.4.1-spike-stories.md) |"
-        )
-    output.extend(
-        [
-            "",
-            "La planificación técnica y de investigación complementa el Product Backlog; "
-            "no convierte este documento en un Sprint Backlog.",
+            spikes,
             "",
         ]
     )
@@ -1263,7 +1287,7 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
         "",
         "## Índice completo",
         "",
-        "| # Orden | User Story Id | Title | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |",
+        "| # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |",
         "| ---: | :--- | :--- | ---: | :--- |",
     ]
     for index, (_, story_id, title, points, sprint) in enumerate(all_rows, start=1):
@@ -1288,14 +1312,14 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
             "## Criterio de orden",
             "",
             "El orden global de las 97 filas prioriza resultados de negocio y continuidad "
-            "operativa: acceso y contexto, adquisición, contratos, recepción, despacho, "
-            "entrega y recepción del comprador. Las filas Technical y Spike aparecen donde "
+            "operativa: adquisición, recepción, despacho, entrega y recepción del comprador; "
+            "las capacidades de acceso y contexto se ubican después de esos resultados. "
+            "Las filas Technical y Spike aparecen donde "
             "reducen riesgo, aclaran dependencias o sostienen la calidad de ese resultado; "
             "las capacidades futuras quedan después de los resultados de mayor valor. Sprint "
             "sigue siendo una asignación planificada y no redefine el orden de prioridad.",
             "",
-            "Referencias: [User Stories](./2.4.1-user-stories.md), [Landing stories](./2.4.1-landing-stories.md), "
-            "[Technical Stories](./2.4.1-technical-stories.md), [Spike Stories](./2.4.1-spike-stories.md) "
+            "Referencias: [User Stories](./2.4.1-user-stories.md) "
             "y [Annex D](../../93-annexes/annex-d-spike-story/spike-story.md).",
             "",
         ]

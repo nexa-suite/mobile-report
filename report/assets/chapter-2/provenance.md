@@ -82,21 +82,38 @@ Original SVG hashes:
 
 | Original image | Observed SHA-256 | Provenance |
 | :--- | :--- | :--- |
-| `step1-ddd.svg` | `0cf1aa86d22f479e06b48edfd025448fa2db70ef6cf83142455717d852078ff6` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step2-ddd.svg` | `b21560183ba3f4ecd6a5868e5fdd8a9a6e2ba58b2dbe92b0be7d6ad980fab058` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step3-ddd.svg` | `a1bd86f5b9f1cf73ff43c7a7316912c3f4774e3cf57a7ea243235911d3e2d3e5` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step4-ddd.svg` | `8f1c302ec234c88b9cc9b750caff88eee5c9b98a9e454ed1d730ac0963aaa782` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step5-ddd.svg` | `a9536b18acf3a208b7e934c0fbedcf0aac97d5fb407fdb3b21dca7131b2d6a90` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step6-ddd.svg` | `3abfe44f687050d840dc64ab92f5e1ee3ab64cde1a18cd0de40420605b502e59` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step7-ddd.svg` | `b03bccf0e9fcc7130b7d7f6668ad4fac848a7c6f036eca9c3bd8801e44b1babe` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step8-ddd.svg` | — | Not present in source directory; no substitute invented |
-| `step9-ddd.svg` | `116631ba32f55e78a9af3b9dc2345e35b35dd4512c6b6db501a404437aae9d4a` | `nexa-ddd`; no Git SHA/date/author embedded |
-| `step10-ddd.svg` | `17230d2e03be50a05d7edd103477d4802032d85197eb3b107c0b447a267e5072` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step1-ddd.svg` | `452754afdb025fd31b81856fd164436a46e4d20d7f2b7463ed2d1b004145dcbc` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step2-ddd.svg` | `a297a385ae23f274f5836cb9685cb30d238cd6b8fb6aca1edc0ea76783130c1f` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step3-ddd.svg` | `e80e44bdded997dbc38f91622779aa24f49b9a4bcd49aa953fe3c489d78d6c10` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step4-ddd.svg` | `c6620d4b414142d4c4c09d628ffa828b17bd7c6ea7e39c340f260abc09ffbd` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step5-ddd.svg` | `06ceae65cfe103f168fc1731269bd6336913d537f6348378741190f6e3e9f4f4` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step6-ddd.svg` | `b64c9ce7f68d74ee25f07a5c3e91937a5f099dcb64b573d28b8900c2cb05ec94` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step7-ddd.svg` | `fcd1429ecedc48ce78878ee9e18610e42534e2f224ee015c4e0e39aa917fd695` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step9-ddd.svg` | `5b11da26d69497008cf06f2538149a3e2c8ff5773cc2c12cd3361bb6f6699720` | `nexa-ddd`; no Git SHA/date/author embedded |
+| `step10-ddd.svg` | `0a67e056ece90cf77a293aa7d351d657b628f89ece45e1607d08823b8add373e` | `nexa-ddd`; no Git SHA/date/author embedded |
 
 The `step6` artwork visibly contains a truncated personal name. It is not used
 as authorship or participant evidence. The images support visual discussion of
 the target model; they do not by themselves prove participant identity, formal
 acceptance, implementation, runtime or production readiness.
+
+## Chapter II visual closure artifacts
+
+The nine real Miro assets are embedded in their professor-facing sections:
+Steps 1–3 in 2.3.5 and Steps 4–7, 9 and 10 in 2.5.1. The report does not
+reconstruct an additional board step.
+
+Eleven Bounded Context Canvas artifacts were generated from the accepted
+semantic source `2.5.1.3-bounded-context-canvases.md` by
+`scripts/render-chapter-2.5-canvases.py`. The generator uses only Python
+standard-library SVG output. `rsvg-convert` 2.62.3 produced deterministic PNG
+fallbacks for the PDF path. The SVG and PNG pairs are stored under
+`report/assets/chapter-2/bounded-context-canvases/`.
+
+The five Domain Story Mermaid blocks remain the editable source in
+`2.5.1.2-domain-message-flows-modeling.md`. `mmdc` was unavailable in the
+working environment and no Domain Story image was fabricated; this is recorded
+as `BLOCKED — RENDER TOOLING` in the validator and final checkpoint.
 
 ## Reproduction commands
 

@@ -20,4 +20,4 @@ Diagrams, Domain Layer Class Diagram and Database Design Diagram.
 
 Every package declares `DOMAIN MODEL: TARGET / ACCEPTED` and
 `IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL`. Target diagrams and
-source hashes are in [Chapter 2 provenance](../../../assets/chapter-2/provenance.md).
+source hashes are in [Chapter 2 provenance](../../../../delivery-checklists/chapter-02-evidence-provenance.md).

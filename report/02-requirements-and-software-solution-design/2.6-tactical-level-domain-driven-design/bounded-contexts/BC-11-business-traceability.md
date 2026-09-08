@@ -64,7 +64,7 @@ one API container; BC-11 is not an audit deployment unit.
 ![BC-11 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.png)
 
 This is target component evidence only. Structurizr source/export provenance is
-in the [Chapter 2 register](../../../assets/chapter-2/provenance.md).
+in the [Chapter 2 register](../../../../delivery-checklists/chapter-02-evidence-provenance.md).
 
 ## 2.6.12.6 Bounded Context Software Architecture Code Level Diagrams
 

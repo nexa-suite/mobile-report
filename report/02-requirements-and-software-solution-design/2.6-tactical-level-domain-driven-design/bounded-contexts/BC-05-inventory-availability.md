@@ -67,7 +67,7 @@ it does not establish a separate Inventory container.
 
 ![BC-05 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png)
 
-See [provenance](../../../assets/chapter-2/provenance.md) for Structurizr
+See [provenance](../../../../delivery-checklists/chapter-02-evidence-provenance.md) for Structurizr
 source, export and hash.
 
 ## 2.6.6.6 Bounded Context Software Architecture Code Level Diagrams

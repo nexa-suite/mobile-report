@@ -65,7 +65,7 @@ single API container. It is not a notification deployment unit.
 ![BC-10 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.png)
 
 The relationship is a target component view; source/export hashes are in the
-[provenance register](../../../assets/chapter-2/provenance.md).
+[provenance register](../../../../delivery-checklists/chapter-02-evidence-provenance.md).
 
 ## 2.6.11.6 Bounded Context Software Architecture Code Level Diagrams
 

@@ -263,7 +263,7 @@ Exact files:
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-10-notifications.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-11-business-traceability.md`
 - `report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/README.md`
-- `report/assets/chapter-2/provenance.md`
+- `delivery-checklists/chapter-02-evidence-provenance.md`
 - `report/assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.png`
 - `report/assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.svg`
 - `report/assets/chapter-2/tactical/BC-01/database-diagram.png`

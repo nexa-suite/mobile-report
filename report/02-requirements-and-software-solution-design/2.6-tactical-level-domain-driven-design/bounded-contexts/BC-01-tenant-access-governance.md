@@ -68,7 +68,7 @@ API container; it does not create an Identity container or a new BC.
 ![BC-01 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.png)
 
 The export is target design, traced to Structurizr in the [provenance
-register](../../../assets/chapter-2/provenance.md). No component image proves
+register](../../../../delivery-checklists/chapter-02-evidence-provenance.md). No component image proves
 that an equivalent Java class or runtime deployment exists.
 
 ## 2.6.2.6 Bounded Context Software Architecture Code Level Diagrams

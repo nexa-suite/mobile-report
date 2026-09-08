@@ -1,5 +1,7 @@
 # Chapter 2 DDD and architecture evidence provenance
 
+> Internal evidence register. This file is not part of the professor-facing report and must not be exported to the PDF.
+
 ## Scope and reading rule
 
 This register covers the strategic DDD, C4 and tactical DDD material included
@@ -75,9 +77,9 @@ authority in Blueprint.
 ## External `nexa-ddd` visual set
 
 The visual mapping and inspection notes are integrated into the
-[EventStorming section](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md),
-[candidate-context analysis](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md)
-and [domain stories](../../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md).
+[EventStorming section](../report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md),
+[candidate-context analysis](../report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md)
+and [domain stories](../report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md).
 Original SVG hashes:
 
 | Original image | Observed SHA-256 | Provenance |

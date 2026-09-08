@@ -42,7 +42,7 @@ revisor pueda separar diseño objetivo, evidencia AS-IS y comportamiento Mobile:
 
 La matriz de [cobertura táctica](./2.6.1-bounded-context-coverage.md) enlaza
 cada contexto con sus artefactos. Las fuentes PlantUML, renders y hashes están
-en el [Chapter 2 provenance register](../../assets/chapter-2/provenance.md).
+en el [Chapter 2 provenance register](../../../delivery-checklists/chapter-02-evidence-provenance.md).
 Los diagramas son modelos objetivo; su existencia no demuestra que el equipo
 haya realizado la sesión, importado el diagrama en la herramienta académica o
 implementado el modelo.

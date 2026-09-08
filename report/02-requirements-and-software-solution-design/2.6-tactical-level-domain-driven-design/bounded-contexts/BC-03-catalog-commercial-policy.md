@@ -61,7 +61,7 @@ container. Component grouping is not BC/container/deployment equivalence.
 
 ![BC-03 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png)
 
-See [provenance](../../../assets/chapter-2/provenance.md) for Structurizr source,
+See [provenance](../../../../delivery-checklists/chapter-02-evidence-provenance.md) for Structurizr source,
 export hash and target caveat.
 
 ## 2.6.4.6 Bounded Context Software Architecture Code Level Diagrams

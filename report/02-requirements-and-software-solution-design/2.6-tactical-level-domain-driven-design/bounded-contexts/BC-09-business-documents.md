@@ -65,7 +65,7 @@ container; it is not a document microservice or separate database.
 
 ![BC-09 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png)
 
-Source/export provenance: [Chapter 2 register](../../../assets/chapter-2/provenance.md).
+Source/export provenance: [Chapter 2 register](../../../../delivery-checklists/chapter-02-evidence-provenance.md).
 
 ## 2.6.10.6 Bounded Context Software Architecture Code Level Diagrams
 

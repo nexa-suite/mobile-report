@@ -13,4 +13,4 @@ contexto.
 ## Estado de la información
 
 La plantilla no es evidencia de un contexto, clase o implementación. Para el
-corte AV1, consultar los once paquetes y el [registro de provenance](../../../assets/chapter-2/provenance.md).
+corte AV1, consultar los once paquetes y el [registro de provenance](../../../../delivery-checklists/chapter-02-evidence-provenance.md).

@@ -6,5 +6,5 @@ El Component Diagram deberá mostrar la descomposición interna de los container
 
 Los containers y familias C4 seleccionados por contexto están en los paquetes
 de [bounded-contexts](../bounded-contexts/) y en el [registro de
-provenance](../../../assets/chapter-2/provenance.md). Este placeholder no
+provenance](../../../../delivery-checklists/chapter-02-evidence-provenance.md). Este placeholder no
 convierte un componente C4 en Bounded Context.

@@ -9,51 +9,48 @@
 <rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Context / Purpose</text>
-<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-03 define el offer vendible: Product, SKU, visibility, Base</text>
-<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Price, Price List, Customer Terms, Promotion, operational currency</text>
-<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">y cold-chain requirement. No owns Customer Relationship, Physical</text>
-<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Stock, Sales Commitment o Payment status.</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Define Product, SKU, visibility, Base Price, Price List, Customer</text>
+<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Terms, Promotion, operational currency y cold-chain requirement.</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">No posee Customer Relationship, Physical Stock, Sales Commitment o</text>
+<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payment status.</text>
 <rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Ubiquitous Language / Invariants</text>
-<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Product no es SKU. Price resolution sigue Base Price, applicable</text>
-<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Price List, permitted Customer Terms y como máximo una Promotion</text>
-<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">transformation. Promotions no se acumulan. Price y terms se</text>
-<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">revalidan en submit. Una oferta privada requiere relationship</text>
-<text x="846" y="408" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">eligibility…</text>
+<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Product no es SKU. Price resolution combina Base Price, Price</text>
+<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">List, Customer Terms y como máximo una Promotion transformation.</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Price y terms se revalidan en submit; una oferta privada requiere</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">relationship eligibility.</text>
 <rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Capabilities</text>
-<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Las capacidades son Product/SKU lifecycle, catalog visibility,</text>
-<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Price List management, Customer Terms, Promotion policy,</text>
-<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">commercial currency, media metadata y Resolve Offer para un</text>
-<text x="68" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">relationship contexto autorizado.</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Product/SKU lifecycle, catalog visibility, Price List management,</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Customer Terms, Promotion policy, commercial currency, media</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">metadata y Resolve Offer para un relationship context autorizado.</text>
 <rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Capability Layering</text>
-<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">La capa catalog identity define Product y SKU. La capa policy</text>
-<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">configuration administra price, terms y promotion. La capa offer</text>
-<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">resolution produce un snapshot inmutable para BC-04. La</text>
-<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">disponibilidad y la selección física quedan fuera.</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Catalog identity define Product y SKU. Policy configuration</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">administra price, terms y promotion. Offer resolution produce</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">snapshot inmutable para BC-04; disponibilidad y selección física</text>
+<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">quedan fuera.</text>
 <rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Inbound / Outbound Dependencies</text>
-<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Entra Tenant scope de BC-01 y relationship eligibility de BC-02.</text>
-<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Sale resolved offer snapshot a BC-04 y authorized projections a</text>
-<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Platform, Portal y Mobile surfaces. El contrato traduce</text>
-<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">identificadores de Product/SKU y policy values; no comparte</text>
-<text x="68" y="1064" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">aggregate ni concede autoridad sobre inventory.</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Consume Tenant scope de BC-01 y relationship eligibility de BC-02.</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Entrega resolved offer snapshot a BC-04 y projections autorizadas</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">a Platform, Portal y Mobile. El contrato traduce Product/SKU y</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">policy values sin compartir aggregates.</text>
 <rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Design Critique / Rejected Alternative</text>
-<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Unir Catalog con Sales Commitment evitaría copiar el snapshot,</text>
-<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">pero permitiría que la oferta mutable reescriba una obligación</text>
-<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">histórica. La separación permite revalidar inputs y congelar el</text>
-<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">resultado comercial en BC-04.</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Alternativa: incluir catálogo dentro de Sales Commitment reduciría</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">una traducción, pero permitiría que una política mutable reescriba</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">una obligación histórica. Se mantiene separado y entrega un offer</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">snapshot para congelar el resultado comercial en BC-04.</text>
 <text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
 </svg>

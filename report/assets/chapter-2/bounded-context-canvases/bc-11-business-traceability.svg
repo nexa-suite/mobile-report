@@ -9,49 +9,47 @@
 <rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Context / Purpose</text>
-<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-11 conserva una representación durable, tenant-scoped y</text>
-<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">consultable de hechos significativos: actor, reason, evidence,</text>
-<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">correlation, before/after y timeline. No owns source aggregate,</text>
-<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Notification delivery ni Security Audit.</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Conserva una representación durable, tenant-scoped y consultable</text>
+<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">de hechos significativos: actor, reason, evidence, correlation,</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">before/after y timeline. No posee source aggregate, Notification</text>
+<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">delivery ni Security Audit.</text>
 <rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Ubiquitous Language / Invariants</text>
-<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Business Fact es una referencia segura a un hecho confirmado. Los</text>
+<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Business Fact es referencia segura a un hecho confirmado. Los</text>
 <text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">registros son append-only. Una correction agrega otro hecho. La</text>
-<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">proyección no puede conceder acceso ni modificar la fuente.</text>
-<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Secrets y datos sensibles innecesarios no entran en el payload…</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">proyección no concede acceso ni modifica la fuente; secretos y PII</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">innecesaria quedan fuera.</text>
 <rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Capabilities</text>
-<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Las capacidades son significant-fact selection, append-only</text>
-<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">recording, timeline projection, evidence-reference management,</text>
-<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">correlation y sensitive-payload filtering.</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Significant-fact selection, append-only recording, timeline</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">projection, evidence-reference management, correlation y</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">sensitive-payload filtering.</text>
 <rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Capability Layering</text>
-<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">La capa capture recibe hechos publicados. La capa projection</text>
-<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">construye timelines autorizadas para Platform, Portal y Mobile. La</text>
-<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">capa evidence mantiene referencias y hashes sin asumir ownership</text>
-<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">de los bytes de Object Storage.</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Capture recibe hechos publicados. Projection construye timelines</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">autorizadas. Evidence mantiene referencias y hashes sin asumir</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">ownership de los bytes de Object Storage.</text>
 <rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Inbound / Outbound Dependencies</text>
-<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Entra hechos publicados de todos los source BCs y Notification</text>
-<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">delivery outcomes. Sale una timeline autorizada y una</text>
-<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">representación de evidencia para lectores autorizados. La relación</text>
-<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">es asíncrona, durable y replayable con outbox/inbox; una falla de</text>
-<text x="68" y="1064" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">proyección no hace rollback del commit fuente.</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Consume hechos publicados de los source BCs y Notification</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">delivery outcomes. Entrega timeline autorizada y representación de</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">evidencia. La relación es asíncrona, durable y replayable; una</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">falla de proyección no revierte el commit fuente.</text>
 <rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#3d5a80">Design Critique / Rejected Alternative</text>
-<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Fusionarlo con Notifications ahorraría un consumidor, pero</text>
-<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">mezclaría delivery retry con historia de negocio. Separar BC-11</text>
-<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">conserva la trazabilidad aunque email o in-app fallen y permite</text>
-<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">distinguir Business Traceability de Security Audit.</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Alternativa: usar Notifications como timeline reduciría</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">consumidores, pero una falla o retención de comunicación</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">deformaría la historia de negocio. Se mantiene separado para</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">preservar evidencia durable y distinguirla de Security Audit.</text>
 <text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
 </svg>

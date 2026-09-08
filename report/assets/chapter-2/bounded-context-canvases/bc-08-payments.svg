@@ -9,49 +9,49 @@
 <rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Context / Purpose</text>
-<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-08 owns Payment, Payment Report, provider event, callback</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Posee Payment, Payment Report, provider event, callback</text>
 <text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">verification, confirmation, rejection, refund, correction y</text>
-<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">provider-neutral history. No owns Credit, Receivable, Sales Order</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">provider-neutral history. No posee Credit, Receivable, Sales Order</text>
 <text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">ni el provider como modelo de negocio.</text>
 <rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Ubiquitous Language / Invariants</text>
 <text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payment Reported es un reporte recibido; Payment Confirmed es un</text>
-<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">resultado verificado. Payment != Receivable != Credit != Stripe.</text>
-<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Callbacks se deduplican. Provider success con order failure</text>
-<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">produce UNALLOCATED / RECONCILIATIONREQUIRED; la historia no se</text>
-<text x="846" y="408" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">elimina.</text>
+<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">resultado verificado. Payment != Receivable != Credit. Callbacks</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">se deduplican. Provider success con order failure produce</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">UNALLOCATED / RECONCILIATIONREQUIRED; la historia no se elimina.</text>
 <rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Capabilities</text>
-<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Las capacidades son payment intent/report, provider adapter,</text>
-<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">callback verification, confirmation/rejection, refund, correction,</text>
-<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">reconciliation e idempotent inbox processing.</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payment intent/report, provider translation, callback</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">verification, confirmation/rejection, refund, correction,</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">reconciliation y recuperación de resultados no aplicados.</text>
 <rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Capability Layering</text>
-<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">La capa provider translation convierte DTOs externos en lenguaje</text>
-<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payment. La capa lifecycle conserva estados provider-neutral. La</text>
-<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">capa reconciliation resuelve duplicados, fallos y pagos no</text>
-<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">aplicados. Credit application queda en BC-07.</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Provider translation convierte estados externos en lenguaje</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payment. Lifecycle conserva estados provider-neutral.</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Reconciliation resuelve duplicados, fallos y pagos no aplicados;</text>
+<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Credit application queda en BC-07.</text>
 <rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
 <text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Inbound / Outbound Dependencies</text>
-<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Entra una intención de Buyer/Platform y callbacks del Payment</text>
-<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Provider; sale Payment Confirmed, rejected, refunded o correction</text>
-<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">facts a BC-07, BC-09, BC-10 y BC-11. Callback verification es</text>
-<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">síncrona con el inbox; propagación posterior es at-least-once.</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Consume intención de Buyer/Platform y callbacks del Payment</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Provider. Entrega Payment Confirmed, rejected, refunded o</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">correction facts a BC-07, BC-09, BC-10 y BC-11. La verificación</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">del callback es parte de la decisión fuente; la propagación</text>
+<text x="68" y="1064" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">posterior es at-least-once.</text>
 <rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
 <rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
 <rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
 <text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Design Critique / Rejected Alternative</text>
-<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Unir Payments con Credit &amp; Receivables reduciría un handoff, pero</text>
-<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">convertiría el provider lifecycle en autoridad financiera.</text>
-<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Separarlos aísla provider uncertainty y permite cambiar provider</text>
-<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">sin alterar Credit o Receivable semantics.</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Alternativa: fusionarlo con Credit &amp; Receivables reduciría</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">coordinación, pero haría que la incertidumbre del provider</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">redefina Credit o Receivable semantics. Se mantiene separado para</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">permitir cambiar provider sin alterar la autoridad financiera.</text>
 <text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
 </svg>

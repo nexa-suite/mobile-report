@@ -97,7 +97,7 @@ TITLE_ES = {
     "MOB-US-006": "Encontrar un cliente y su relación con el comprador",
     "MOB-US-007": "Revisar productos, precios y disponibilidad",
     "MOB-US-008": "Preparar una solicitud de cliente",
-    "MOB-US-009": "Enviar una Purchase Request desde el trabajo de campo",
+    "MOB-US-009": "Enviar una solicitud o Direct Order asistido desde el trabajo de campo",
     "MOB-US-010": "Seguir compromisos del cliente y crédito",
     "MOB-US-011": "Identificar un producto mediante el código del paquete o etiqueta",
     "MOB-US-012": "Buscar manualmente un producto cuando no hay escaneo",
@@ -283,6 +283,10 @@ def translate_text(text: str) -> str:
     translated = re.sub(r"\buna pedido\b", "un pedido", translated, flags=re.IGNORECASE)
     translated = re.sub(r"\bentrega correcto\b", "entrega correcta", translated, flags=re.IGNORECASE)
     translated = re.sub(r"\bentrega y Attempt\b", "entrega y Delivery Attempt", translated)
+    translated = re.sub(r"\bcliente Account\b", "Customer Account", translated)
+    translated = re.sub(r"\bcomprador Relationship\b", "Buyer Relationship", translated)
+    translated = re.sub(r"\bSales borrador\b", "Sales Draft", translated)
+    translated = re.sub(r"\bcomprador borrador\b", "Buyer Draft", translated)
     return translated
 
 
@@ -493,7 +497,7 @@ DESCRIPTIONS: dict[str, str] = {
     "MOB-US-006": "Como Sales Representative, quiero encontrar una relación entre customer y buyer, para trabajar con el customer correcto en un flujo mobile futuro.",
     "MOB-US-007": "Como Sales Representative, quiero revisar productos, precios y disponibilidad, para preparar demanda futura de un customer con información confiable.",
     "MOB-US-008": "Como Sales Representative, quiero preparar una solicitud de customer, para organizar una intención antes de un envío autorizado.",
-    "MOB-US-009": "Como Sales Representative, quiero enviar una Purchase Request desde el trabajo de campo, para que la demanda del customer entre en un proceso de compromiso autorizado.",
+    "MOB-US-009": "Como Sales Representative autorizado, quiero enviar la intención comercial del customer conforme a la política del Tenant, para convertir el trabajo de campo en una solicitud o compromiso válido sin suplantar al buyer.",
     "MOB-US-010": "Como Sales Representative, quiero seguir los compromisos y el crédito del customer, para comprender el progreso autorizado sin tomar localmente una decisión de crédito.",
     "MOB-US-011": "Como Warehouse Operator, quiero identificar un producto desde el código del paquete o etiqueta, para manipular el producto correcto durante el trabajo de almacén.",
     "MOB-US-012": "Como Warehouse Operator, quiero buscar manualmente un producto cuando el scanning no está disponible, para continuar el trabajo seguro sin adivinar el producto.",
@@ -611,10 +615,12 @@ AC: dict[str, list[str]] = {
         "Scenario: Postergación — Given la preparación comercial de campo está fuera de V1, When se considera esta historia, Then permanece deferred.",
     ],
     "MOB-US-009": [
-        "Scenario: Request válida — Given existe una request aceptada y una relación autorizada, When el representative la envía, Then se registra una única Purchase Request.",
-        "Scenario: Request inválida — Given la información está desactualizada o falta autorización, When el representative la envía, Then no se registra ningún compromiso parcial.",
-        "Scenario: Resultado incierto — Given el resultado es desconocido, When el representative reintenta, Then Nexa resuelve el primer resultado sin crear una segunda request.",
-        "Scenario: Postergación — Given el envío desde campo está fuera de V1, When se considera esta historia, Then permanece deferred.",
+        "Scenario: Política APPROVAL_REQUIRED — Given el actor es un Representante de Ventas autorizado, existe Customer Account y Buyer Relationship con elegibilidad válida, la política comercial es APPROVAL_REQUIRED y existe un Sales Draft válido, When envía la intención comercial, Then Nexa crea y envía una Purchase Request, no confirma un Direct Order y mantiene al actor como Sales Representative sin suplantar al Comprador.",
+        "Scenario: Direct Order asistido — Given el actor es un Representante de Ventas autorizado, existe Customer Account y Buyer Relationship con elegibilidad válida, la política comercial es DIRECT_ORDER y existe un Sales Draft válido, When confirma el Direct Order asistido, Then el servidor revalida autorización, relación, offer, price, terms, inventory protection y applicable credit y sólo confirma el compromiso si todas las decisiones tienen éxito, sin crear una Purchase Request artificial.",
+        "Scenario: Actor y borrador separados — Given el Representante de Ventas trabaja dentro de su propia relación y existe un Sales Draft, When envía la intención comercial, Then el actor continúa siendo Sales Representative, Sales Draft != Buyer Draft y Nexa no suplanta al Comprador.",
+        "Scenario: Validación rechazada — Given falla Customer Account, Buyer Relationship, offer, price, terms, inventory protection, applicable credit o autorización, When el representante intenta confirmar la intención, Then no se confirma un Direct Order válido ni se registra un compromiso parcial.",
+        "Scenario: Reintento idempotente — Given el representante reenvía la misma intención comercial, When Nexa procesa el reintento, Then conserva un único resultado comercial y no duplica Purchase Request ni compromiso.",
+        "Scenario: Política vigente — Given la política comercial cambia entre la preparación y el envío, When el representante envía su Sales Draft, Then Nexa usa la política vigente y no confirma una ruta que ya no está autorizada.",
     ],
     "MOB-US-010": [
         "Scenario: Progreso autorizado — Given existe una relación autorizada, When se revisa el progreso, Then los hechos de compromiso y crédito relevante muestran su frescura.",
@@ -799,7 +805,6 @@ AC: dict[str, list[str]] = {
         "Scenario: Purchase Request — Given existe un draft válido y una policy válida, When el buyer envía una request, Then se registra una única Purchase Request.",
         "Scenario: Direct order — Given está permitido ordenar directamente, When el buyer elige esa vía, Then se registra una única ruta de Sales Order sin inventar una Purchase Request.",
         "Scenario: Hechos modificados — Given cambiaron precio, disponibilidad, crédito o permiso, When el buyer envía, Then no se registra ningún compromiso parcial.",
-        "Scenario: Direct order asistido — Given la política del Tenant es DIRECT_ORDER y un Sales Representative autorizado actúa dentro de su relación, When envía su Sales Draft, Then el servidor revalida relación, oferta, precio, inventario, crédito y autorización y confirma el compromiso sólo después de una decisión exitosa, sin crear una Purchase Request artificial ni suplantar al Buyer.",
         "Scenario: Postergación — Given Buyer commitment está fuera de V1, When se considera esta historia, Then permanece deferred.",
     ],
     "MOB-US-041": [
@@ -1194,9 +1199,9 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
             "cuando la política del Tenant sea `DIRECT_ORDER`. Este flujo no suplanta al "
             "Comprador: el borrador de Ventas y el borrador del Comprador son distintos, "
             "y el servidor vuelve a validar la autorización. `MOB-US-040` conserva el "
-            "significado del flujo del Comprador; la cobertura de la captura asistida de "
-            "Ventas se mantiene como comportamiento de producto y se revisa frente al "
-            "catálogo antes de implementación.",
+            "significado del flujo del Comprador. La capacidad de captura asistida de "
+            "Ventas está representada en `MOB-US-009`; `MOB-US-040` permanece reservado "
+            "al comportamiento del Comprador.",
             "",
             "### Trazabilidad de investigación a historias",
             "",

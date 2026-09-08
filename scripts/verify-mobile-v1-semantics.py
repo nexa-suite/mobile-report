@@ -87,6 +87,25 @@ def main() -> int:
             failures.append(f"English actor remains in functional story table: {old_role}")
     if "DIRECT_ORDER" not in story_text or "servidor vuelve a validar" not in story_text:
         failures.append("Direct Order authorization/revalidation rule missing")
+    functional_blocks = dict(blocks)
+    sales_story = functional_blocks.get("MOB-US-009", "")
+    buyer_story = functional_blocks.get("MOB-US-040", "")
+    for term in (
+        "APPROVAL_REQUIRED", "DIRECT_ORDER", "Customer Account", "Buyer Relationship",
+        "Sales Draft", "Buyer Draft", "inventory protection", "applicable credit", "idempotente",
+    ):
+        if term.lower() not in sales_story.lower():
+            failures.append(f"MOB-US-009 missing assisted-commercial term: {term}")
+    for term in ("sin suplantar al Comprador", "no duplica", "Representante de Ventas"):
+        if term.lower() not in sales_story.lower():
+            failures.append(f"MOB-US-009 missing actor/idempotency rule: {term}")
+    if "MOB-US-074" in story_text:
+        failures.append("MOB-US-074 must not be introduced")
+    if not re.search(r"\*\*Description:\*\* Como Comprador\b", buyer_story):
+        failures.append("MOB-US-040 must retain Buyer ownership")
+    for forbidden in ("Sales Representative", "Representante de Ventas", "Sales Draft", "Buyer Draft"):
+        if forbidden.lower() in buyer_story.lower():
+            failures.append(f"MOB-US-040 must remain Buyer-only: {forbidden}")
     if "### Trazabilidad de investigación a historias" not in story_text:
         failures.append("research-to-story traceability section missing")
     for term in ("Needfinding", "Lean UX", "To-Be Scenario Mapping", "Epics", "User Stories"):
@@ -94,6 +113,8 @@ def main() -> int:
             failures.append(f"research-to-story traceability missing: {term}")
 
     backlog_text = BACKLOG.read_text(encoding="utf-8")
+    if "MOB-US-074" in backlog_text:
+        failures.append("MOB-US-074 must not be introduced in Product Backlog")
     ids = backlog_ids(backlog_text)
     expected_ids = {f"MOB-US-{number:03d}" for number in range(1, 74)} | {
         f"LAND-US-{number:03d}" for number in range(1, 7)

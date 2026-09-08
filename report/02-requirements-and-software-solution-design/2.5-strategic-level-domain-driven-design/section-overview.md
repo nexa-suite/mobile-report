@@ -1,37 +1,71 @@
 # 2.5 Strategic-Level Domain-Driven Design
 
-Esta sección adapta las decisiones estratégicas de dominio y arquitectura de
-Nexa para el alcance del curso de Aplicaciones Móviles. El dominio compartido
-adoptado es la referencia de consistencia; las aplicaciones móviles son
-superficies que proyectan ese dominio y no crean Bounded Contexts nuevos.
+Strategic Domain-Driven Design convierte el conocimiento del dominio en
+límites de modelo, responsabilidades y relaciones explícitas. En Nexa, el
+análisis parte de una sola plataforma B2B SaaS multi-tenant: las superficies
+Web y Mobile proyectan el dominio compartido, pero no crean Bounded Contexts
+adicionales.
 
-La propuesta mantiene separados el dominio aceptado, la evidencia de implementación existente y las decisiones futuras que todavía están en estado `PROPOSED`, `PLANNED` o `PENDING`.
+El Core Domain de Nexa es la coordinación confiable de compromisos comerciales
+B2B contra disponibilidad de inventario real, seguida de fulfillment físico y
+entrega trazables bajo lote, vencimiento y restricciones opcionales de cadena
+de frío.
 
-## Reconciliación vigente
+## Clasificación estratégica de los Bounded Contexts de Nexa
 
-- El modelo aceptado contiene 11 Bounded Contexts. La propuesta anterior de 10
-  contextos queda `SUPERSEDED`; Notifications y Business Traceability no se
-  fusionan porque tienen autoridad y fallos distintos.
-- Operations Mobile y Buyer Mobile son superficies/containers de una proyección
-  de producto. No son Bounded Contexts, aunque tengan navegación, almacenamiento
-  local o integraciones de dispositivo.
-- Los hechos de Tenant, Workspace, identidad, compromiso, inventario,
-  fulfillment, entrega, recepción, pago, documento, notificación y trazabilidad
-  conservan su contexto propietario.
+La clasificación expresa diferenciación, densidad de políticas y riesgo de
+negocio. Generic no significa irrelevante: indica una capacidad más
+reemplazable o común, mientras su corrección sigue siendo crítica.
 
-La procedencia, el impacto en el informe y las preguntas de revisión están en
-[2.5.4 Strategic DDD Traceability](./2.5.4-strategic-ddd-traceability.md).
+| Clasificación | Bounded Contexts | Razón estratégica |
+| :--- | :--- | :--- |
+| Core | BC-04 Sales Commitment; BC-05 Inventory Availability; BC-06 Fulfillment & Delivery | Diferencian la coordinación entre obligación comercial, verdad física y resultado de entrega. |
+| Supporting | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships; BC-03 Catalog & Commercial Policy; BC-07 Credit & Receivables; BC-11 Business Traceability | Hacen posible operar de forma segura, elegible, configurable, financieramente consistente y explicable. |
+| Generic | BC-08 Payments; BC-09 Business Documents; BC-10 Notifications | Aíslan capacidades comunes o sustituibles sin transferirles la autoridad de los hechos de negocio. |
 
-## Corte AV1 fuente-respaldado
+El modelo final contiene exactamente 11 Bounded Contexts:
 
-El catálogo y sus límites se contrastaron con el Blueprint `origin/main`
-`fce3ba6f8ca1622084a2114424086364e1f7d93f`. La evidencia visual externa de
-DDD, su inspección, hashes y la ausencia explícita de `step8` están en
-[2.5.1.0 DDD Process Evidence and Visual Mapping](./2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md).
-Las fuentes C4 Structurizr, exports seleccionados y artefactos tácticos
-copiados/renderizados tienen trazabilidad en el
-[Chapter 2 provenance register](../../assets/chapter-2/provenance.md).
+| Código | Bounded Context |
+| :--- | :--- |
+| BC-01 | Tenant & Access Governance |
+| BC-02 | Customer & Buyer Relationships |
+| BC-03 | Catalog & Commercial Policy |
+| BC-04 | Sales Commitment |
+| BC-05 | Inventory Availability |
+| BC-06 | Fulfillment & Delivery |
+| BC-07 | Credit & Receivables |
+| BC-08 | Payments |
+| BC-09 | Business Documents |
+| BC-10 | Notifications |
+| BC-11 | Business Traceability |
 
-La evidencia de workshop, participantes, fecha/herramienta, aprobación humana,
-runtime y Product Acceptance permanece `OPEN`; los artefactos no se presentan
-como una sesión ejecutada ni como implementación terminada.
+Mobile, Operations Mobile, Buyer Mobile, Android, Flutter, iOS, cámara,
+scanner, QR, push, offline, ubicación, mapas, cold chain e IoT no son
+Bounded Contexts. Son superficies, capacidades, integraciones o decisiones de
+implementación que consumen contratos de los contextos propietarios.
+
+## Organización de la sección
+
+- 2.5.1 EventStorming continúa el Big Picture presentado en 2.3.5 y lleva el
+  modelo hasta puntos pivote, comandos, políticas, read models, agregados y
+  límites estratégicos.
+- 2.5.1.1 explica el razonamiento para descubrir candidatos y conservar las
+  once fronteras.
+- 2.5.1.2 presenta cinco Domain Stories, con actores, actividades, objetos de
+  trabajo, autoridad y colaboración entre contextos.
+- 2.5.1.3 completa un Bounded Context Canvas para cada contexto, en orden de
+  importancia estratégica.
+- 2.5.2 representa el Context Map, sus contratos, patrones y alternativas.
+- 2.5.3 presenta la arquitectura C4 del sistema Nexa en niveles de contexto,
+  container, componentes y deployment.
+
+El diseño estratégico permanece separado de la implementación observada.
+Bounded Context, Spring Modulith ApplicationModule, paquete Java, esquema
+PostgreSQL, C4 Container y deployment unit son conceptos distintos. La
+arquitectura objetivo conserva un Spring Boot modular monolith, PostgreSQL
+físicamente compartido con ownership lógico y Object Storage detrás de puertos
+de aplicación.
+
+Las decisiones de dominio se leen junto con el Ubiquitous Language de 2.3.6 y
+el diseño táctico de 2.6; esta sección no duplica diccionarios completos,
+clases, tablas ni detalles de UX.

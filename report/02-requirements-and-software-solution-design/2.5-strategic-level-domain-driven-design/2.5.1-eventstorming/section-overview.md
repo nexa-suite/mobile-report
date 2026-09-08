@@ -1,31 +1,33 @@
 # 2.5.1 EventStorming
 
-El EventStorming permite ordenar los eventos relevantes del dominio antes de
-decidir sus límites. La sesión debe producir evidencia separable de las
-hipótesis del equipo y alinearse con los 11 Bounded Contexts adoptados.
+El equipo utilizó EventStorming colaborativo en Miro para pasar de hechos
+observables del dominio a una lectura estratégica de responsabilidades. La
+secuencia conserva la división académica:
 
-## Protocolo de sesión que debe evidenciarse
+- 2.3.5 presenta Big Picture EventStorming con Step 1 — Unstructured
+  Exploration, Step 2 — Timelines y Step 3 — Pain Points.
+- Esta sección continúa con Step 4 — Pivotal Points, Step 5 — Commands, Step 6
+  — Policies, Step 7 — Read Models, Step 9 — Aggregates y Step 10 — Bounded
+  Contexts.
 
-| Etapa | Resultado esperado | Evidencia requerida | Estado |
-| :--- | :--- | :--- | :--- |
-| Big Picture EventStorming | Timeline de eventos, comandos, actores, políticas y excepciones | Capturas progresivas, herramienta, fecha, duración y participantes | `WORKSHOP_PENDING` |
-| Candidate Context Discovery | Agrupación y separación de candidatos mediante una técnica explícita | Capturas antes/después y explicación `start-with-value`, `start-with-simple` o `look-for-pivotal-events` | `WORKSHOP_PENDING` |
-| Domain Storytelling | Flujos priorizados y mensajes entre autoridades | Diagramas por escenario, leyenda, fuente y revisión del equipo | `WORKSHOP_PENDING` |
-| Bounded Context Canvases | Propósito, lenguaje, reglas, capacidades, dependencias y crítica | Canvas por contexto, versión, participantes y decisión | `WORKSHOP_PENDING` |
+La secuencia colaborativa continuó de Step 7 a Step 9; el taller de Miro no
+definió una etapa Step 8. Se preserva la numeración real y no se reconstruye
+una etapa inexistente.
 
-La rúbrica recomienda una sesión de EventStorming de 1–2 horas y una sesión de
-Candidate Context Discovery de hasta 2 horas. Es una restricción de
-organización del trabajo, no evidencia de que las sesiones ya ocurrieron.
+## Lectura estratégica del modelado
 
-## Límite de evidencia
+Las capturas muestran cómo cada capa agrega una pregunta distinta:
 
-El registro visual de `nexa-ddd` está disponible en
-[2.5.1.0 DDD Process Evidence and Visual Mapping](./2.5.1.0-ddd-process-evidence.md).
-Incluye nueve SVG inspeccionados, PNG de lectura en el informe y hashes de las
-fuentes. El conjunto no contiene `step8`.
+| Etapa | Pregunta que responde | Resultado estratégico |
+| :--- | :--- | :--- |
+| Step 4 — Pivotal Points | ¿Dónde cambia autoridad, responsabilidad o consistencia? | Se aíslan decisiones comerciales, protección física, entrega, pago y corrección. |
+| Step 5 — Commands | ¿Qué intención de un actor solicita una decisión? | Se separan actor, intención, comando, decisión autoritativa y hecho resultante. |
+| Step 6 — Policies | ¿Qué reacción de negocio sigue a un hecho? | Se distinguen invariantes síncronas de propagación posterior a hechos confirmados. |
+| Step 7 — Read Models | ¿Qué información necesita cada actor para decidir? | Se separan proyecciones de lectura de la autoridad de los contextos fuente. |
+| Step 9 — Aggregates | ¿Qué debe ser consistente dentro de un modelo? | Se ubican límites de consistencia internos sin confundirlos con Bounded Contexts. |
+| Step 10 — Bounded Contexts | ¿Qué lenguaje, reglas y autoridad deben permanecer juntos? | Se consolidan los once límites estratégicos aceptados por Nexa. |
 
-Estas imágenes son material externo de diseño; no documentan por sí solas
-participantes, facilitador, fecha/herramienta, consenso o aceptación. La sesión
-colaborativa, sus capturas fuente y la crítica formal permanecen
-`WORKSHOP_PENDING`. La procedencia completa está en el
-[registro de Chapter 2](../../../assets/chapter-2/provenance.md).
+Los nombres de los eventos y comandos se mantienen como lenguaje de dominio.
+No representan automáticamente endpoints, clases Java, tablas ni eventos
+publicados. Las relaciones, contratos y consistencia se desarrollan en las
+secciones siguientes.

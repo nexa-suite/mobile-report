@@ -29,11 +29,10 @@ for base in files:
                 directory_indexes = (
                     "README.md",
                     "chapter-overview.md",
-                    "section-overview.md",
                 )
                 resolved = next(
                     (resolved / name for name in directory_indexes if (resolved / name).exists()),
-                    resolved / "README.md",
+                    next(iter(sorted(resolved.glob("*.md"))), resolved / "README.md"),
                 )
             if not resolved.exists():
                 errors.append(f"{source.relative_to(root)} -> {target}")

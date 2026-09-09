@@ -13,6 +13,6 @@ fecha y reviewer. Una carpeta de sprint o una referencia de repositorio no es,
 por sí sola, prueba de implementación de una historia.
 
 - [4.1 Software Configuration Management](./4.1-software-configuration-management/)
-- [4.2 Landing Page, Services and Applications Implementation](./4.2-landing-page-services-and-applications-implementation/)
+- [4.2 Landing Page, Services and Applications Implementation](./4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/sprint-1/sprint-overview.md)
 - [4.3 Validation Interviews](./4.3-validation-interviews/)
 - [Supplementary Sections](./supplementary-sections/video-app-validation.md)

@@ -22,9 +22,9 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 | Regla | Aplicación en el To-Be |
 | --- | --- |
 | Autoridad | El servidor confirma y persiste hechos de negocio; el cliente no sustituye esa confirmación. |
-| Conectividad | V1 es online-first. Caché segura, borradores y evidencia temporal apoyan continuidad, pero no confirman inventario, crédito, pagos, Sales Orders ni Delivery. |
+| Conectividad | El alcance priorizado es online-first. Caché segura, borradores y evidencia temporal apoyan continuidad, pero no confirman inventario, crédito, pagos, Sales Orders ni Delivery. |
 | Integridad histórica | Una corrección conserva evidencia correctiva o de reversión; no reemplaza silenciosamente un hecho existente. |
-| Ubicación | V1 entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
+| Ubicación | El alcance priorizado entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
 | Distinciones | Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship son distintos. Dispatch Handoff, Driver Outcome y Buyer Receipt también son hechos separados. |
 
 ## Artefactos
@@ -35,9 +35,9 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 - [2.4.2 Impact Mapping](../2.4.2-impact-mapping.md)
 - [2.4.3 Product Backlog](../2.4.3-product-backlog.md)
 
-V1 contiene 28 Functional User Stories. V2 (35), V3 (9) y V4/Future (1) se
-mantienen como roadmap diferido; no se les asigna una aceptación ni una
-implementación por aparecer en este informe.
+El catálogo contiene 73 Functional User Stories: 28 conforman el alcance
+priorizado y 45 se conservan como backlog posterior. Estar documentada no
+asigna a una historia implementación, evidencia de investigación ni aceptación.
 
 ---
 
@@ -53,15 +53,13 @@ incertidumbre en requisitos de negocio.
 ## Story Catalog and Traceability
 
 Nexa Operations Mobile y Nexa Buyer Mobile son las dos proyecciones Mobile.
-V1 es el alcance actual del curso; V2, V3 y V4/Future siguen visibles para
-completitud de roadmap y se mantienen diferidos.
+El alcance priorizado reúne 28 historias; las 45 restantes se mantienen como
+backlog posterior para conservar trazabilidad sin prometer su entrega.
 
-| Release | Functional Stories | Significado en este informe |
+| Horizonte académico | Functional Stories | Significado en este informe |
 | --- | ---: | --- |
-| V1 | 28 | Alcance actual de producto y curso. |
-| V2 | 35 | Roadmap diferido; requiere refinamiento y evidencia antes de entrega. |
-| V3 | 9 | Roadmap posterior de mayor costo o incertidumbre. |
-| V4/Future | 1 | Hipótesis futura; no es compromiso de entrega. |
+| Alcance priorizado | 28 | Candidatas para planificación; requieren evidencia y validación correspondiente. |
+| Backlog posterior | 45 | Requieren refinamiento, decisión de priorización y evidencia antes de cualquier entrega. |
 | **Total** | **73** | Inventario funcional canónico completo. |
 
 ## Epic registry
@@ -69,24 +67,24 @@ completitud de roadmap y se mantienen diferidos.
 Un Epic agrupa requisitos de producto. No representa un Bounded Context, una
 pantalla, una aplicación ni una unidad de despliegue.
 
-| Epic | Resultado agrupado | Release(s) | Stories |
+| Epic | Resultado agrupado | Horizonte académico | Stories |
 | --- | --- | --- | --- |
-| MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | V1 | MOB-US-001..003 |
-| MOBILE-EPIC-02 | Recepción, identificación y preparación de almacén | V1 | MOB-US-011..017, MOB-US-019 |
-| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | V1 | MOB-US-020..025 |
-| MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | V1 | MOB-US-026..028, MOB-US-031..034 |
-| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | V1 | MOB-US-044, MOB-US-047..049 |
-| MOBILE-EPIC-06 | Conveniencia comercial y operativa futura | V2 | MOB-US-004..010, MOB-US-036..043 |
-| MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | V2, V3 | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
-| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | V2, V3 | MOB-US-050..056 |
-| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | V2, V3 | MOB-US-057..066 |
-| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | V2 | MOB-US-067..069 |
-| MOBILE-EPIC-11 | Seguimiento comercial y financiero | V2, V3 | MOB-US-070..072 |
-| MOBILE-EPIC-12 | Automatización de almacén futura | V4/Future | MOB-US-073 |
+| MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Alcance priorizado | MOB-US-001..003 |
+| MOBILE-EPIC-02 | Recepción, identificación y preparación de almacén | Alcance priorizado | MOB-US-011..017, MOB-US-019 |
+| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Alcance priorizado | MOB-US-020..025 |
+| MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Alcance priorizado | MOB-US-026..028, MOB-US-031..034 |
+| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Alcance priorizado | MOB-US-044, MOB-US-047..049 |
+| MOBILE-EPIC-06 | Conveniencia comercial y operativa posterior | Backlog posterior | MOB-US-004..010, MOB-US-036..043 |
+| MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Backlog posterior | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
+| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Backlog posterior | MOB-US-050..056 |
+| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Backlog posterior | MOB-US-057..066 |
+| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Backlog posterior | MOB-US-067..069 |
+| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Backlog posterior | MOB-US-070..072 |
+| MOBILE-EPIC-12 | Automatización de almacén posterior | Backlog posterior | MOB-US-073 |
 
 ## Segmentos y actores actuales
 
-| Segmento de investigación y producto | Actores V1 | Proyección | Estado de evidencia |
+| Segmento de investigación y producto | Actores priorizados | Proyección | Estado de evidencia |
 | --- | --- | --- | --- |
 | Warehouse & Dispatch Operations | Warehouse Operator; Dispatch Coordinator | Nexa Operations Mobile | RESEARCH PENDING |
 | Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | RESEARCH PENDING |
@@ -101,7 +99,7 @@ segmento de investigación.
 
 | Epic / cluster | Current actor/segment | Lean UX relationship | Needfinding evidence | To-Be scenario | Stories |
 | --- | --- | --- | --- | --- | --- |
-| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores V1 | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | RESEARCH PENDING; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001..003 |
+| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | RESEARCH PENDING; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001..003 |
 | MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Warehouse Operator y Dispatch Coordinator | La continuidad entre hechos físicos, preparación y responsabilidad orienta el aprendizaje. | RESEARCH PENDING; se requiere investigación específica del segmento actual. | Warehouse Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-011..017, MOB-US-019..025 |
 | MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | RESEARCH PENDING; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026..028, MOB-US-031..034 |
 | MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | RESEARCH PENDING; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047..049 |
@@ -1364,12 +1362,11 @@ segmento de investigación.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-073</td><td>Warehouse Operator</td><td>Future</td><td>MOBILE-EPIC-12 — Automatización de almacén futura</td></tr>
+<tr><td>MOB-US-073</td><td>Warehouse Operator</td><td>Low</td><td>MOBILE-EPIC-12 — Automatización de almacén posterior</td></tr>
 <tr><th>Title</th><td colspan="3">Usar evidencia de automatización de almacén en un trabajo controlado</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo revisar observaciones avanzadas de almacén mediante una decisión controlada, para que una automatización futura ayude al trabajo sin convertirse en verdad de stock no examinada.</td></tr>
+<tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo revisar observaciones avanzadas de almacén mediante una decisión controlada, para que una automatización posterior ayude al trabajo sin convertirse en verdad de stock no examinada.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Resultado valioso antes de seleccionar tecnología</strong></p><p><strong>Given</strong> Product explora observaciones avanzadas de almacén</p><p><strong>When</strong> define el resultado de almacén antes de seleccionar un dispositivo o proveedor</p><p><strong>Then</strong> identifica primero un resultado valioso de almacén.</p><p><strong>Scenario: Observación automatizada subordinada</strong></p><p><strong>Given</strong> existe una observación automatizada considerada para el trabajo</p><p><strong>When</strong> se revisa para apoyar una decisión de almacén</p><p><strong>Then</strong> permanece atribuible y revisable y está subordinada a la autorización del responsable del Bounded Context.</p><p><strong>Scenario: Release sin implementación específica</strong></p><p><strong>Given</strong> el release contempla esta hipótesis de automatización futura</p><p><strong>When</strong> se describe su alcance</p><p><strong>Then</strong> no promete una implementación específica de RFID, scanner, sensor, label ni telemetry.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Resultado valioso antes de seleccionar tecnología</strong></p><p><strong>Given</strong> Product explora observaciones avanzadas de almacén</p><p><strong>When</strong> define el resultado de almacén antes de seleccionar un dispositivo o proveedor</p><p><strong>Then</strong> identifica primero un resultado valioso de almacén.</p><p><strong>Scenario: Observación automatizada subordinada</strong></p><p><strong>Given</strong> existe una observación automatizada considerada para el trabajo</p><p><strong>When</strong> se revisa para apoyar una decisión de almacén</p><p><strong>Then</strong> permanece atribuible y revisable y está subordinada a la autorización del responsable del Bounded Context.</p><p><strong>Scenario: Alcance posterior sin implementación específica</strong></p><p><strong>Given</strong> se documenta esta hipótesis de automatización posterior</p><p><strong>When</strong> se describe su alcance</p><p><strong>Then</strong> no promete una implementación específica de RFID, scanner, sensor, label ni telemetry.</p></td></tr>
 </tbody>
 </table>
-

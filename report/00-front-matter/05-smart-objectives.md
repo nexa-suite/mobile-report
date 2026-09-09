@@ -256,10 +256,10 @@ documentación técnica suficiente para explicar sus decisiones principales.
 
 ### Áreas de interés profesional
 
-Para Gerard se propone una orientación hacia **Cloud Architecture y
-DevOps/Platform Engineering**, debido a que estas áreas permiten combinar
-análisis técnico, arquitectura, infraestructura y comprensión integral de cómo
-una solución pasa del diseño a una operación confiable.
+Gerard orienta su desarrollo profesional hacia **Cloud Architecture y
+DevOps / Platform Engineering**. Estas áreas combinan análisis técnico,
+arquitectura, infraestructura y comprensión integral de cómo una solución pasa
+del diseño a una operación confiable.
 
 ### Objetivo SMART 1 — Formación y certificación en Cloud Engineering
 

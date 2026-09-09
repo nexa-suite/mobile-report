@@ -33,7 +33,6 @@ for base in files:
                 directory_indexes = (
                     "README.md",
                     "chapter-overview.md",
-                    "section-overview.md",
                 )
                 resolved = next(
                     (resolved / name for name in directory_indexes if (resolved / name).exists()),

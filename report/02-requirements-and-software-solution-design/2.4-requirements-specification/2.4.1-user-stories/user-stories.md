@@ -45,9 +45,8 @@ asigna a una historia implementación, evidencia de investigación ni aceptació
 
 Este catálogo contiene Functional User Stories de la Landing pública y de las
 dos proyecciones Mobile. El escenario To-Be, sus reglas transversales y los
-límites de autoridad están definidos en
-[2.4 Requirements Specification](../../chapter-overview.md). Las Technical Stories
-y los Spikes se mantienen separados para no convertir habilitación o
+límites de autoridad se presentan al inicio de esta misma sección. Las Technical
+Stories y los Spikes se mantienen separados para no convertir habilitación o
 incertidumbre en requisitos de negocio.
 
 ## Story Catalog and Traceability

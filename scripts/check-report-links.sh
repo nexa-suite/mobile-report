@@ -28,11 +28,9 @@ forbidden_navigation_references = (
     "2.4-requirements-specification/to-be-scenario-mapping.md",
     "2.5-strategic-level-domain-driven-design/section-overview.md",
     "2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/section-overview.md",
-    "2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md",
     "2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/section-overview.md",
     "2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/component-level-diagrams.md",
     "2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.3-component-level-diagrams.md",
-    "2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.4-deployment-diagrams.md",
     "2.5-strategic-level-domain-driven-design/2.5.4-strategic-ddd-traceability.md",
 )
 required_navigation_references = (
@@ -40,15 +38,14 @@ required_navigation_references = (
     "2.4-requirements-specification/2.4.1-user-stories.md",
     "2.4-requirements-specification/2.4.2-impact-mapping.md",
     "2.4-requirements-specification/2.4.3-product-backlog.md",
-    "2.5.1-eventstorming/2.5.1-eventstorming.md",
+    "2.5.1-eventstorming/2.5.1.0-ddd-process-evidence.md",
     "2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md",
     "2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md",
     "2.5.1-eventstorming/2.5.1.3-bounded-context-canvases.md",
     "2.5.2-context-mapping.md",
-    "2.5.3-software-architecture.md",
     "2.5.3-software-architecture/2.5.3.1-context-level-diagrams.md",
     "2.5.3-software-architecture/2.5.3.2-container-level-diagrams.md",
-    "2.5.3-software-architecture/2.5.3.3-deployment-diagrams.md",
+    "2.5.3-software-architecture/2.5.3.4-deployment-diagrams.md",
 )
 
 for source in navigation_files:

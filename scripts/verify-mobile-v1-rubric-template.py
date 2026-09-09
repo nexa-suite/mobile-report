@@ -39,7 +39,7 @@ def main() -> int:
 
     for story_id, block in blocks:
         required = (
-            "| Story ID | Persona | Producto | Priority | Epic |",
+            "| Story ID | User | Priority | Epic |",
             f"| {story_id} |",
             "**Title:**",
             "**Description:** Como ",

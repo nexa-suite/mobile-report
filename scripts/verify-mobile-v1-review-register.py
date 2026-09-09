@@ -11,7 +11,6 @@ from pathlib import Path
 REPO_ROOT = Path(__file__).resolve().parents[1]
 STORIES = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md"
 REGISTER = REPO_ROOT / "delivery-checklists/mobile-v1-story-verification-register.md"
-MASTER = REPO_ROOT.parent / "blueprint/03-mobile/requirements/master-mobile-backlog.md"
 V1_IDS = (
     "MOB-US-001", "MOB-US-002", "MOB-US-003", "MOB-US-011", "MOB-US-012",
     "MOB-US-013", "MOB-US-014", "MOB-US-015", "MOB-US-016", "MOB-US-017",
@@ -48,31 +47,16 @@ def report_records(text: str) -> dict[str, tuple[str, str]]:
     records: dict[str, tuple[str, str]] = {}
     for index, match in enumerate(matches):
         block = text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)]
-        first = re.search(r"^\| (MOB-US-\d{3}) \| (.+?) \| Nexa .+ Mobile(?:; Nexa .+ Mobile)? \| (Alta|Media|Baja) \| .+ \|$", block, re.MULTILINE)
-        if first:
-            records[first.group(1)] = (first.group(2), "")
+        first = re.search(r"^\| (MOB-US-\d{3}) \| (.+?) \| (Alta|Media|Baja) \| .+ \|$", block, re.MULTILINE)
+        bc = re.search(r"^\| (BC-\d{2} — .+?) \|", block, re.MULTILINE)
+        if first and bc:
+            records[first.group(1)] = (first.group(2), bc.group(1))
     return records
-
-
-def master_bounded_contexts() -> dict[str, str]:
-    lines = MASTER.read_text(encoding="utf-8").splitlines()
-    headers: list[str] | None = None
-    result: dict[str, str] = {}
-    for line in lines:
-        if line.startswith("| ID | Title | Actor |"):
-            headers = [cell.strip() for cell in line.strip().strip("|").split("|")]
-            continue
-        if headers and line.startswith("| MOB-US-"):
-            values = [cell.strip() for cell in line.strip().strip("|").split("|")]
-            if len(values) == len(headers):
-                result[values[0]] = values[headers.index("Primary BC")]
-    return result
 
 
 def main() -> int:
     failures: list[str] = []
     report = report_records(STORIES.read_text(encoding="utf-8"))
-    canonical_bcs = master_bounded_contexts()
     reviews = register_rows(REGISTER.read_text(encoding="utf-8"))
     if [row[0] for row in reviews] != list(V1_IDS):
         failures.append("manual review register IDs/order differ from the 28 V1 stories")
@@ -95,7 +79,7 @@ def main() -> int:
     }
     for review in reviews:
         story_id = review[0]
-        actor, _ = report.get(story_id, ("", ""))
+        actor, bc = report.get(story_id, ("", ""))
         if not actor:
             failures.append(f"{story_id}: report record missing")
             continue
@@ -104,10 +88,8 @@ def main() -> int:
             failures.append(f"{story_id} actor: report={actor!r}, expected={expected_actor!r}")
         if review[1] != f"{review[1].split(' / ', 1)[0]} / {segments[story_id]}":
             failures.append(f"{story_id}: malformed actor/segment field")
-        if review[2].split(" —", 1)[0] != canonical_bcs.get(story_id):
-            failures.append(
-                f"{story_id} Bounded Context: canonical={canonical_bcs.get(story_id)!r}, register={review[2]!r}"
-            )
+        if review[2] != bc:
+            failures.append(f"{story_id} Bounded Context: report={bc!r}, register={review[2]!r}")
         if review[3] != expected_leads[story_id]:
             failures.append(f"{story_id} review lead differs from the manual allocation")
         if len(review) != 8 or any(not cell for cell in review[3:]):

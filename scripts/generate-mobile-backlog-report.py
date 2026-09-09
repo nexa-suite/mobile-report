@@ -84,7 +84,7 @@ EPICS: dict[str, tuple[str, str, list[str]]] = {
     "MOBILE-EPIC-09": ("Excepciones de despacho y coordinación de entrega", "Resolver excepciones de despacho y entrega preservando responsabilidad y evidencia.", ["MOB-US-057", "MOB-US-058", "MOB-US-059", "MOB-US-060", "MOB-US-061", "MOB-US-062", "MOB-US-063", "MOB-US-064", "MOB-US-065", "MOB-US-066"]),
     "MOBILE-EPIC-10": ("Continuidad de entrega para el comprador", "Ayudar al comprador a preparar, comprender y evidenciar la continuidad de la entrega y su línea de tiempo.", ["MOB-US-067", "MOB-US-068", "MOB-US-069"]),
     "MOBILE-EPIC-11": ("Seguimiento comercial y financiero", "Llevar documentos, evidencia de pago y seguimiento de visitas de cliente con autorización verificable.", ["MOB-US-070", "MOB-US-071", "MOB-US-072"]),
-    "MOBILE-EPIC-12": ("Operaciones de campo inteligentes", "Explorar asistencia controlada a partir de observaciones más ricas del almacén.", ["MOB-US-073"]),
+    "MOBILE-EPIC-12": ("Operaciones de campo inteligentes futuras", "Explorar asistencia controlada a partir de observaciones más ricas del almacén.", ["MOB-US-073"]),
 }
 
 
@@ -396,39 +396,25 @@ GLOBAL_BACKLOG_ORDER = [
 ]
 
 
-S1_IDS = {
-    "MOB-US-001", "MOB-US-002", "MOB-US-003", "MOB-US-011",
-    "MOB-US-012", "MOB-US-013", "MOB-US-014", "MOB-US-015",
-    "MOB-US-016", "MOB-US-017", "MOB-US-019",
-}
-
-
 S2_IDS = {
-    "MOB-US-020", "MOB-US-021", "MOB-US-022", "MOB-US-023",
-    "MOB-US-024", "MOB-US-025", "MOB-US-026", "MOB-US-027",
-    "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033",
-    "MOB-US-034",
+    "MOB-US-004", "MOB-US-005", "MOB-US-006", "MOB-US-007",
+    "MOB-US-008", "MOB-US-009", "MOB-US-010", "MOB-US-018",
+    "MOB-US-030", "MOB-US-035", "MOB-US-050", "MOB-US-051",
+    "MOB-US-052", "MOB-US-053", "MOB-US-057", "MOB-US-058",
+    "MOB-US-061", "MOB-US-062", "MOB-US-063", "MOB-US-064",
+    "MOB-US-065",
 }
 
 
 S3_IDS = {
-    "MOB-US-004", "MOB-US-005", "MOB-US-006", "MOB-US-007",
-    "MOB-US-008", "MOB-US-009", "MOB-US-010", "MOB-US-018",
-    "MOB-US-030", "MOB-US-035", "MOB-US-036", "MOB-US-037",
-    "MOB-US-038", "MOB-US-039", "MOB-US-040", "MOB-US-041",
-    "MOB-US-042", "MOB-US-043", "MOB-US-044", "MOB-US-046",
-    "MOB-US-047", "MOB-US-048", "MOB-US-049", "MOB-US-050",
-    "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-057",
-    "MOB-US-058", "MOB-US-061", "MOB-US-062", "MOB-US-063",
-    "MOB-US-064", "MOB-US-065", "MOB-US-067", "MOB-US-068",
-    "MOB-US-069", "MOB-US-070", "MOB-US-071",
+    "MOB-US-036", "MOB-US-037", "MOB-US-038", "MOB-US-040",
+    "MOB-US-042", "MOB-US-043", "MOB-US-046",
 }
 
 
 S4_IDS = {
-    "MOB-US-029", "MOB-US-045", "MOB-US-054", "MOB-US-055",
-    "MOB-US-056", "MOB-US-059", "MOB-US-060", "MOB-US-066",
-    "MOB-US-072", "MOB-US-073",
+    "MOB-US-039", "MOB-US-041", "MOB-US-067", "MOB-US-068",
+    "MOB-US-069", "MOB-US-070", "MOB-US-071",
 }
 
 
@@ -985,7 +971,7 @@ AC: dict[str, list[str]] = {
     "MOB-US-073": [
         "Scenario: Resultado valioso antes de seleccionar tecnología — Given Product explora observaciones avanzadas de almacén, When define el resultado de almacén antes de seleccionar un device o provider, Then identifica primero un resultado valioso de almacén.",
         "Scenario: Observación automatizada subordinada — Given existe una observación automatizada considerada para el trabajo, When se revisa para apoyar una decisión de almacén, Then permanece atribuible y revisable y está subordinada a la autorización del owner del Bounded Context.",
-        "Scenario: Alcance sin implementación específica — Given el plan contempla esta capacidad en el Sprint S4, When se describe su alcance, Then no promete una implementación específica de RFID, scanner, sensor, label ni telemetry.",
+        "Scenario: Release sin implementación específica — Given el release contempla esta hipótesis de automatización futura, When se describe su alcance, Then no promete una implementación específica de RFID, scanner, sensor, label ni telemetry.",
     ],
 }
 
@@ -1013,15 +999,15 @@ def academic_points(row: dict[str, str]) -> str:
 
 
 def planned_sprint(row: dict[str, str]) -> str:
-    if row["ID"] in S1_IDS:
-        return "S1"
+    if row["Target Release"] == "V1":
+        return row["Sprint Planned"]
     if row["ID"] in S2_IDS:
         return "S2"
     if row["ID"] in S3_IDS:
         return "S3"
     if row["ID"] in S4_IDS:
         return "S4"
-    raise SystemExit(f"story has no Sprint S1-S4 assignment: {row['ID']}")
+    return "Future"
 
 
 def relevant_bcs(row: dict[str, str]) -> str:
@@ -1052,23 +1038,28 @@ def render_scenario(line: str, number: int) -> str:
 def story_table(row: dict[str, str]) -> str:
     story_id = row["ID"]
     epic_id = row["Epic"]
-    title = reader_facing_text(TITLE_ES[story_id])
-    translated = markdown_cell(reader_facing_text(translate_text(DESCRIPTIONS[story_id])))
+    title = TITLE_ES[story_id]
+    translated = markdown_cell(translate_text(DESCRIPTIONS[story_id]))
     criteria = "\n".join(
-        render_scenario(reader_facing_text(line), number)
+        render_scenario(line, number)
         for number, line in enumerate(academic_scenarios(story_id), start=1)
     )
     app = markdown_cell(app_label(row["Mobile App"]))
+    release = markdown_cell(row["Target Release"])
     sprint = markdown_cell(planned_sprint(row))
     return "\n".join(
         [
             f"##### {story_id} — {title}",
             "",
-            "| Story ID | Persona | Producto | Priority | Epic |",
-            "| :--- | :--- | :--- | :--- | :--- |",
-            f"| {story_id} | {actor_label(row['Actor'])} | {app} | {priority_label(row['Priority'])} | {markdown_cell(epic_label(epic_id))} |",
+            "| Story ID | User | Priority | Epic |",
+            "| :--- | :--- | :--- | :--- |",
+            f"| {story_id} | {actor_label(row['Actor'])} | {priority_label(row['Priority'])} | {markdown_cell(epic_label(epic_id))} |",
             "",
-            f"**Planificación:** Sprint {sprint}; esfuerzo estimado de {academic_points(row)} puntos.",
+            f"**Planning context:** {app}; {academic_points(row)} Story Points; release {release}; Sprint {sprint}.",
+            "",
+            "| Owning Bounded Context | Relevant Bounded Contexts | Business capability |",
+            "| :--- | :--- | :--- |",
+            f"| {markdown_cell(bc_label(row['Primary BC']))} | {markdown_cell(relevant_bcs(row))} | {markdown_cell(capability_label(row['Capability']))} |",
             "",
             f"**Title:** {title}",
             "",
@@ -1086,23 +1077,24 @@ def functional_index(rows: list[dict[str, str]]) -> str:
     output = [
         "#### Índice de historias funcionales",
         "",
-        "El catálogo presenta las 73 historias funcionales en orden consecutivo, desde "
-        "`MOB-US-001` hasta `MOB-US-073`. Todas se organizan dentro de los cuatro "
-        "sprints del proyecto para que el lector pueda seguir la secuencia completa.",
+        "El catálogo funcional contiene las 73 historias `MOB-US-001` a `MOB-US-073`. "
+        "Las 28 historias V1 se organizan en S1, S2 y S3 según la proyección de "
+        "producto; las demás historias se distribuyen en S2, S3, S4 o Future para "
+        "ordenar la investigación y el desarrollo posterior.",
         "",
-        "| # | Story ID | User | Priority | Epic | Sprint |",
-        "| ---: | :--- | :--- | :--- | :--- | :--- |",
+        "| # | Story ID | User | Priority | Epic | Release | Planned Sprint |",
+        "| ---: | :--- | :--- | :--- | :--- | :--- | :--- |",
     ]
     for index, row in enumerate(rows, start=1):
         output.append(
             f"| {index} | {row['ID']} | {actor_label(row['Actor'])} | "
             f"{priority_label(row['Priority'])} | {epic_label(row['Epic'])} | "
-            f"{planned_sprint(row)} |"
+            f"{row['Target Release']} | {planned_sprint(row)} |"
         )
     output.extend(
         [
             "",
-            "Reglas transversales: el trabajo se plantea con conexión como condición principal; el almacenamiento local "
+            "Reglas transversales: la conectividad es online-first; el almacenamiento local "
             "sólo conserva caché segura, borradores, evidencia temporal y metadatos de "
             "reintento; la autoridad de negocio permanece en el servidor. La ubicación "
             "inicial sólo abre navegación externa hacia el destino autorizado.",
@@ -1159,160 +1151,33 @@ def normalize_headings(body: str, base_level: int) -> str:
     )
 
 
-def extract_section(existing: str, heading: str, base_heading_level: int) -> str:
-    """Extract a top-level section while accepting the pre-consolidation heading level."""
-    matches = list(re.finditer(r"^(#{2,6}) (.+)$", existing, re.MULTILINE))
-    for index, match in enumerate(matches):
-        if match.group(2).strip() != heading:
-            continue
-        level = len(match.group(1))
-        end = len(existing)
-        for following in matches[index + 1 :]:
-            if len(following.group(1)) <= level:
-                end = following.start()
-                break
-        body = existing[match.end() : end].strip()
-        return normalize_headings(body, base_heading_level)
-    raise SystemExit(f"missing consolidated section: {heading}")
-
-
-def extract_any_section(existing: str, headings: tuple[str, ...], base_heading_level: int) -> str:
-    for heading in headings:
-        try:
-            return extract_section(existing, heading, base_heading_level)
-        except SystemExit:
-            continue
-    raise SystemExit(f"missing consolidated section: {' / '.join(headings)}")
-
-
-def reader_supporting_text(text: str) -> str:
-    """Keep supporting-story table content readable in the PDF export."""
-    return re.sub(r"<br\s*/?>", " ", text)
-
-
-def reader_facing_text(text: str) -> str:
-    """Keep the public report understandable without changing domain meaning."""
-    replacements = (
-        ("V2, V3 y V4/Future", "las demás historias"),
-        ("V4/Future", "el Sprint S4"),
-        ("V1 es online-first", "El trabajo se plantea con conexión como condición principal"),
-        ("El alcance V1", "El alcance de los cuatro sprints"),
-        ("V1", "los cuatro sprints"),
-        ("online-first", "con conexión como condición principal"),
-        ("Vista futura", "Vista operativa"),
-        ("vista operativa futura", "vista operativa prevista para el proyecto"),
-        ("futura vista de excepciones", "vista de excepciones prevista para el proyecto"),
-        ("flujo móvil futuro", "flujo móvil previsto"),
-        ("demanda futura", "demanda prevista"),
-        ("picking futuro", "picking posterior"),
-        ("servicio de ubicación futuro y aceptado", "servicio de ubicación autorizado"),
-        ("Consentimiento futuro", "Consentimiento autorizado"),
-        ("política futura de ubicación", "política de ubicación aprobada"),
-        ("Canal futuro", "Canal autorizado"),
-        ("canal futuro", "canal autorizado"),
-        ("recuperación futura de evidencia", "recuperación de evidencia"),
-        ("una entrega futura", "una entrega posterior"),
-        ("solicitud futura", "solicitud"),
-        ("en un flujo futuro", "en un flujo previsto"),
-        ("compromiso futuro", "compromiso resultante"),
-        ("automatización futura", "automatización propuesta"),
-        ("As-Is Journey", "situación actual"),
-        ("Bounded Context responsable", "área responsable"),
-        ("Bounded Context de dispositivo", "área responsable del proceso"),
-        ("Bounded Context", "área responsable"),
-        ("owner del área responsable", "responsable del área"),
-        ("work owner", "área responsable"),
-        ("owner", "responsable"),
-        ("Tenant/Workspace", "empresa y espacio de trabajo"),
-        ("fail-closed", "bloqueo seguro"),
-        ("RESEARCH PENDING", "pendiente de investigación"),
-        ("Mobile User", "Usuario móvil"),
-        ("Customer Buyer", "Comprador"),
-        ("Warehouse Operator", "Operador de almacén"),
-        ("Dispatch Coordinator", "Coordinador de despacho"),
-        ("Driver / Delivery Operator", "Conductor u operador de entrega"),
-    )
-    result = text
-    for source, target in replacements:
-        result = result.replace(source, target)
-    result = result.replace("no el situación actual", "no la situación actual")
-    result = result.replace("responsable del área responsable", "responsable del área")
-    result = result.replace("los cuatro sprints es con conexión", "el trabajo se plantea con conexión")
-    result = result.replace("El alcance los cuatro sprints", "El alcance de los cuatro sprints")
-    result = re.sub(r"\bfuturo\b", "previsto", result, flags=re.IGNORECASE)
-    result = re.sub(r"\bfutura\b", "prevista", result, flags=re.IGNORECASE)
-    result = re.sub(r"\bfuturos\b", "posteriores", result, flags=re.IGNORECASE)
-    result = re.sub(r"\bfuturas\b", "previstas", result, flags=re.IGNORECASE)
-    return result
-
-
-def scenario_mapping_text(text: str) -> str:
-    """Translate internal shorthand in the public scenario summary."""
-    result = reader_facing_text(text)
-    replacements = (
-        ("Authorized Mobile Work Context", "Contexto de trabajo móvil autorizado"),
-        ("Warehouse Receiving, Identification and Preparation", "Recepción, identificación y preparación de almacén"),
-        ("Dispatch Readiness and Handoff", "Preparación y entrega al conductor"),
-        ("Driver Delivery Execution", "Ejecución de entregas"),
-        ("Buyer Handoff, Receipt and Discrepancy", "Recepción y discrepancias del comprador"),
-        ("Acquisition, Contact and Onboarding Initiation", "Contacto y registro inicial"),
-        ("Nexa confirma Tenant, Workspace", "Nexa confirma la empresa y el espacio de trabajo"),
-        ("Product/SKU", "producto y código"),
-        ("Dispatch Handoff", "entrega al conductor"),
-        ("Delivery Attempt", "intento de entrega"),
-        ("Driver Outcome", "resultado del conductor"),
-        ("Proof of Delivery", "comprobante de entrega"),
-        ("Buyer Receipt", "recepción del comprador"),
-        ("Tenant o Workspace", "empresa o espacio de trabajo"),
-        ("Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship", "empresa, espacio de trabajo, identidad, pertenencia laboral, cuenta de cliente y relación con el comprador"),
-        ("Dispatch Handoff, Driver Outcome y Buyer Receipt", "entrega al conductor, resultado de entrega y recepción del comprador"),
-        ("Tenant, Workspace, identidad y relación", "empresa, espacio de trabajo, identidad y relación"),
-        ("Sales Orders ni finalización de Delivery", "pedidos de venta ni finalización de la entrega"),
-        ("Prospective Company Representative", "representante de una empresa interesada"),
-    )
-    for source, target in replacements:
-        result = result.replace(source, target)
-    result = result.replace("Nexa confirma la empresa y el espacio de trabajo y permisos", "Nexa confirma la empresa, el espacio de trabajo y los permisos")
-    result = result.replace("registra un entrega al conductor revisable", "registra una entrega al conductor revisable")
-    result = result.replace("declara el recepción del comprador", "declara la recepción del comprador")
-    result = result.replace("un empresa o espacio de trabajo", "una empresa o espacio de trabajo")
-    result = result.replace("una Delivery asignada", "una entrega asignada")
-    result = result.replace("verifica el handoff", "verifica la entrega")
-    return result
-
-
 def generate_user_stories(rows: list[dict[str, str]]) -> str:
     existing = USER_STORIES.read_text(encoding="utf-8") if USER_STORIES.is_file() else ""
-    to_be = scenario_mapping_text(
-        extract_any_section(existing, ("To-Be Scenario Mapping", "Mapa de escenarios objetivo"), 3)
-    )
-    landing = reader_supporting_text(extract_section(existing, "Landing Page User Stories", 4))
-    technical = reader_supporting_text(
-        reader_facing_text(extract_section(existing, "Technical Stories", 4))
-    )
-    spikes = reader_supporting_text(
-        reader_facing_text(extract_section(existing, "Spike Stories", 4))
-    )
-    story_rows = sorted(rows, key=lambda row: int(row["ID"].rsplit("-", 1)[1]))
+    to_be = supplemental_body(existing, "## To-Be Scenario Mapping", "## 2.4.1 User Stories", 3)
+    landing = supplemental_body(existing, "### Landing Page User Stories", "### Technical Stories", 4)
+    technical = supplemental_body(existing, "### Technical Stories", "### Spike Stories", 4)
+    spikes = supplemental_body(existing, "### Spike Stories", None, 4)
     output = [
         "# 2.4 Requirements Specification",
         "",
-        "Esta sección presenta las necesidades de Nexa Operations Mobile y Nexa Buyer Mobile "
-        "como resultados observables para las personas que usarán el producto. Las historias "
-        "se muestran en orden consecutivo y se distribuyen entre los cuatro sprints del proyecto.",
+        "Esta sección especifica las necesidades de Nexa Operations Mobile y Nexa Buyer Mobile "
+        "como capacidades de negocio observables. Las User Stories expresan resultados para "
+        "personas y roles; la tecnología de implementación se documenta en Technical Stories "
+        "y no duplica la autoridad del dominio.",
         "",
-        "La Landing pública y las dos aplicaciones móviles se presentan juntas para que el "
-        "lector pueda seguir el recorrido completo desde el primer contacto hasta la operación.",
+        "Las dos aplicaciones proyectadas son `Nexa Operations Mobile` y `Nexa Buyer Mobile`. "
+        "La especificación permanece neutral respecto de Android Native/Kotlin, Flutter/Dart "
+        "e iOS Native/SwiftUI.",
         "",
-        "## Mapa de escenarios objetivo",
+        "## To-Be Scenario Mapping",
         "",
         to_be,
         "",
         "## 2.4.1 User Stories",
         "",
-        "### Temas de negocio (Epics)",
+        "### Epics",
         "",
-        "| Epic ID | Tema | Resultado | Historias |",
+        "| Epic ID | Nombre | Descripción | Historias |",
         "| :--- | :--- | :--- | :--- |",
     ]
     for epic_id, (title, description, story_ids) in EPICS.items():
@@ -1320,12 +1185,15 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
     output.extend(
         [
             "",
+            "Un Epic organiza requisitos; no representa un Bounded Context, una aplicación "
+            "separada ni una unidad de despliegue.",
+            "",
             "### Decisiones de producto que orientan la lectura",
             "",
-            "Los hechos de negocio se confirman de manera central. La aplicación puede ayudar "
-            "a consultar información, preparar un borrador o conservar evidencia temporal, "
-            "pero no presenta como confirmado un inventario, pago, pedido, entrega o recepción "
-            "que todavía no haya sido validado.",
+            "La autoridad de los hechos de negocio permanece en el servidor y en el "
+            "Bounded Context responsable. La información local puede apoyar continuidad "
+            "de presentación, borradores y evidencia temporal, pero no confirma inventario, "
+            "crédito, pago, compromiso, entrega o recepción sin respuesta autoritativa.",
             "",
             "Un Representante de Ventas autorizado puede capturar un Direct Order asistido "
             "cuando la política del Tenant sea `DIRECT_ORDER`. Este flujo no suplanta al "
@@ -1335,13 +1203,17 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
             "Ventas está representada en `MOB-US-009`; `MOB-US-040` permanece reservado "
             "al comportamiento del Comprador.",
             "",
-            "### Cómo se relaciona el análisis con las historias",
+            "### Trazabilidad de investigación a historias",
             "",
-            "La investigación de usuarios (Needfinding), el trabajo Lean UX y el mapa de "
-            "escenarios objetivo (To-Be) conducen a los temas de negocio y a las historias. "
-            "La tabla resume esas relaciones para no repetir las 73 historias.",
+            "La especificación sigue una progresión explícita: la investigación y las "
+            "assumptions orientan una necesidad; Lean UX formula el resultado que se "
+            "quiere aprender; Needfinding aporta segmentos, tareas y fricciones; el "
+            "To-Be Scenario Mapping convierte esa lectura en comportamiento objetivo; "
+            "los Epics agrupan la capacidad y las User Stories la vuelven estimable y "
+            "aceptable. Las relaciones siguientes son de nivel de cluster para evitar "
+            "duplicar las 73 historias.",
             "",
-            "| Tema de negocio (Epic) | Evidencia de usuarios (Needfinding) | Relación con Lean UX | Escenario objetivo (To-Be) | Stories |",
+            "| Epic / cluster | Needfinding evidence | Lean UX relationship | To-Be scenario | Stories |",
             "| :--- | :--- | :--- | :--- | :--- |",
             "| MOBILE-EPIC-01 — Acceso seguro y contexto | [Personas y segmentos](../2.3-needfinding/2.3.1-user-personas.md); [lenguaje ubicuo](../2.3-needfinding/2.3.6-ubiquitous-language.md) separa Tenant, Workspace, identidad y relación. | [Problem Statement](../../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.1-problem-statements.md) plantea continuidad de contexto y trabajo autorizado. | Acceso seguro y contexto de trabajo. | MOB-US-001, MOB-US-002, MOB-US-003 |",
             "| MOBILE-EPIC-02/03 — Recepción a despacho | [Task Matrix](../2.3-needfinding/2.3.2-user-task-matrix.md), [Journey Mapping](../2.3-needfinding/2.3.3-user-journey-mapping.md) y [EventStorming](../2.3-needfinding/2.3.5-big-picture-eventstorming.md) muestran handoffs y evidencia física. | [Lean UX Canvas](../../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.4-lean-ux-canvas.md) conecta continuidad, reducción de reconstrucción y operación segura. | Recepción, identificación y preparación; preparación de despacho y transferencia de responsabilidad. | MOB-US-011..017, MOB-US-019..025 |",
@@ -1349,19 +1221,19 @@ def generate_user_stories(rows: list[dict[str, str]]) -> str:
             "| MOBILE-EPIC-06 — Conveniencia comercial y operativa | [Personas y tareas](../2.3-needfinding/2.3.1-user-personas.md) identifican trabajo comercial, comprador y supervisión transversal sin convertirlos en nuevos contextos. | [Assumptions](../../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.2-assumptions.md) y [Lean UX Canvas](../../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.4-lean-ux-canvas.md) expresan coordinación B2B como hipótesis por validar. | Trabajo comercial asistido y seguimiento autorizado. | MOB-US-004..010, MOB-US-036..043 |",
             "| MOBILE-EPIC-07..12 — Capacidades extendidas | [Needfinding](../2.3-needfinding/2.3.1-user-personas.md) y [Ubiquitous Language](../2.3-needfinding/2.3.6-ubiquitous-language.md) delimitan ubicación, offline, excepciones, documentos y automatización como capacidades, no contextos. | Las hipótesis de [Lean UX](../../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.3-hypothesis-statements.md) mantienen estas capacidades sujetas a aprendizaje y evidencia. | Movilidad avanzada, continuidad de entrega, excepciones, seguimiento documental y automatización controlada. | MOB-US-018, MOB-US-029..030, MOB-US-035, MOB-US-045..046, MOB-US-050..073 |",
             "",
-            "### Historias funcionales móviles",
+            "### Mobile Functional User Stories",
             "",
-            functional_index(story_rows),
+            functional_index(rows),
             "#### Registros de historias funcionales",
             "",
-            "Cada ficha identifica la historia, la persona, el producto, la prioridad, el tema, "
-            "el Sprint, la descripción y los criterios de aceptación. `Scenario`, `Given`, `When` "
-            "y `Then` siguen la convención Gherkin; el contenido de cada criterio es una condición "
-            "observable y no una descripción de interfaz.",
+            "Cada registro incluye Story ID, User, Priority, Epic, Title, Description y "
+            "Acceptance Criteria. `Scenario`, `Given`, `When` y `Then` siguen la convención "
+            "Gherkin; el contenido de cada criterio es una condición observable y no una "
+            "descripción de interfaz.",
             "",
         ]
     )
-    for row in story_rows:
+    for row in rows:
         output.append(story_table(row))
     output.extend(
         [
@@ -1406,27 +1278,24 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
     all_rows = [all_by_id[story_id] for story_id in GLOBAL_BACKLOG_ORDER]
     sprint_counts = {
         sprint: sum(1 for item in all_rows if item[4] == sprint)
-        for sprint in ("S1", "S2", "S3", "S4")
+        for sprint in ("S1", "S2", "S3", "S4", "Future")
     }
-    if sum(sprint_counts.values()) != len(all_rows):
-        raise SystemExit("every Product Backlog row must be assigned to Sprint S1-S4")
     output = [
         "# 2.4.3 Product Backlog",
         "",
         "Este Product Backlog presenta el inventario académico completo: 73 historias "
-        "Mobile funcionales, seis historias de Landing, doce historias de apoyo técnico y seis "
-        "preguntas de investigación. Todas las filas están distribuidas entre los cuatro sprints. "
-        "El orden global prioriza el valor de negocio; Sprint indica cuándo se trabajará cada "
-        "resultado dentro del proyecto.",
+        "Mobile funcionales, seis historias de Landing, doce Technical Stories y seis Spike "
+        "Stories. El orden es de valor de negocio; Sprint es una asignación planificada "
+        "de Chapter II y no un Sprint Backlog ni una lista de tareas.",
         "",
-        "## Distribución por sprint",
+        "## Distribución por release",
         "",
-        "| Sprint | Historias | Enfoque |",
+        "| Release objetivo | Historias | Lectura de producto |",
         "| :--- | ---: | :--- |",
-        f"| S1 | {sprint_counts['S1']} | Descubrimiento, Landing y base de operaciones. |",
-        f"| S2 | {sprint_counts['S2']} | Almacén, despacho, entrega y habilitación inicial. |",
-        f"| S3 | {sprint_counts['S3']} | Trabajo comercial, comprador y coordinación operativa. |",
-        f"| S4 | {sprint_counts['S4']} | Capacidades ampliadas, cierre y evidencia del proyecto. |",
+        "| V1 | 28 | Proyección funcional inicial. |",
+        "| V2 | 35 | Evolución funcional posterior. |",
+        "| V3 | 9 | Evolución funcional sujeta a investigación adicional. |",
+        "| V4_FUTURE | 1 | Hipótesis funcional futura. |",
         "",
         "## Inventario por tipo",
         "",
@@ -1443,7 +1312,7 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
         "La prioridad combina tres preguntas en este orden: ¿cuánto valor de negocio "
         "produce el resultado?, ¿qué riesgo o incertidumbre conviene resolver pronto? y "
         "¿qué dependencias condicionan una entrega segura? El valor sigue siendo el factor "
-        "principal; una historia de apoyo no sube automáticamente al inicio sólo por ser "
+        "principal; una Technical Story no sube automáticamente al inicio sólo por ser "
         "prerrequisito. El orden se revisa iterativamente cuando aparece nueva evidencia, "
         "sin confundir Sprint planificado con prioridad permanente.",
         "",
@@ -1461,10 +1330,11 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
             "",
             "| Sprint | Filas | Enfoque académico |",
             "| :--- | ---: | :--- |",
-            f"| S1 | {sprint_counts['S1']} | Descubrimiento, Landing y base de operaciones. |",
-            f"| S2 | {sprint_counts['S2']} | Almacén, despacho, entrega y habilitación inicial. |",
-            f"| S3 | {sprint_counts['S3']} | Trabajo comercial, comprador y coordinación operativa. |",
-            f"| S4 | {sprint_counts['S4']} | Capacidades ampliadas, cierre y evidencia del proyecto. |",
+            f"| S1 | {sprint_counts['S1']} | Descubrimiento, arquitectura, Landing y base de operaciones. |",
+            f"| S2 | {sprint_counts['S2']} | Android Native, almacén, despacho, entrega y primeras capacidades de campo. |",
+            f"| S3 | {sprint_counts['S3']} | Flutter, Buyer comercial, paridad cross-platform y base iOS. |",
+            f"| S4 | {sprint_counts['S4']} | Expansión iOS, cierre cross-platform, evidencia técnica y distribución. |",
+            f"| Future | {sprint_counts['Future']} | Historias V3/V4 que requieren trabajo posterior. |",
             "",
             "Las historias funcionales se asignan al primer Sprint de producto en el que "
             "se planifica su resultado. Las filas Technical y Spike representan trabajo "
@@ -1475,9 +1345,9 @@ def generate_product_backlog(rows: list[dict[str, str]]) -> str:
             "El orden global de las 97 filas prioriza resultados de negocio y continuidad "
             "operativa: adquisición, recepción, despacho, entrega y recepción del comprador; "
             "las capacidades de acceso y contexto se ubican después de esos resultados. "
-            "Las historias de apoyo técnico y las preguntas de investigación aparecen donde "
+            "Las filas Technical y Spike aparecen donde "
             "reducen riesgo, aclaran dependencias o sostienen la calidad de ese resultado; "
-            "las capacidades ampliadas quedan después de los resultados de mayor valor. Sprint "
+            "las capacidades futuras quedan después de los resultados de mayor valor. Sprint "
             "sigue siendo una asignación planificada y no redefine el orden de prioridad.",
             "",
             "Referencias: [User Stories](./2.4.1-user-stories.md) "

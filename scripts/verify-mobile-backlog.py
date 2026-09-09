@@ -18,7 +18,7 @@ IMPACT = STORY_DIR / "2.4.2-impact-mapping.md"
 BACKLOG = STORY_DIR / "2.4.3-product-backlog.md"
 
 EXPECTED_PRIORITY = {"Alta", "Media", "Baja"}
-EXPECTED_SPRINTS = {"S1", "S2", "S3", "S4"}
+EXPECTED_SPRINTS = {"S1", "S2", "S3", "S4", "Future"}
 EXPECTED_TECHNICAL = {f"TS-MOB-{number:03d}" for number in range(1, 13)}
 EXPECTED_SPIKES = {f"SPIKE-{number:03d}" for number in range(1, 7)}
 EXPECTED_LANDING = {f"LAND-US-{number:03d}" for number in range(1, 7)}
@@ -145,7 +145,7 @@ def validate() -> list[str]:
 
     for story_id, block in blocks.items():
         for marker in (
-            "| Story ID | Persona | Producto | Priority | Epic |",
+            "| Story ID | User | Priority | Epic |",
             "**Title:**",
             "**Description:** Como ",
             "**Acceptance Criteria**",
@@ -155,7 +155,7 @@ def validate() -> list[str]:
         description_match = re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE)
         if not description_match or not re.fullmatch(r"Como .+, deseo .+, para .+\.", description_match.group(1).strip()):
             failures.append(f"{story_id}: description must use 'Como ..., deseo ..., para ... .'")
-        if not re.search(r"^\| MOB-US-\d{3} \| .+ \| Nexa .+ Mobile(?:; Nexa .+ Mobile)? \| (Alta|Media|Baja) \| .+ \|$", block, re.MULTILINE):
+        if not re.search(r"^\| MOB-US-\d{3} \| .+ \| (Alta|Media|Baja) \| .+ \|$", block, re.MULTILINE):
             failures.append(f"{story_id}: required fields or Spanish priority missing")
         scenarios = re.findall(r"\*\*Scenario: .+?\*\*", block)
         if len(scenarios) < 2:
@@ -191,7 +191,7 @@ def validate() -> list[str]:
             failures.append(f"{row[1]} has invalid Sprint: {row[4]}")
     if "| # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |" not in backlog_text:
         failures.append("Product Backlog main table does not use the required five columns")
-    for sprint in ("S1", "S2", "S3", "S4"):
+    for sprint in ("S1", "S2", "S3", "S4", "Future"):
         if not re.search(rf"^\| {sprint} \|", backlog_text, re.MULTILINE):
             failures.append(f"Product Backlog missing Sprint row {sprint}")
 
@@ -202,17 +202,19 @@ def validate() -> list[str]:
     technical_ids = set(re.findall(r"^#### (TS-MOB-\d{3}) —", story_text, re.MULTILINE))
     if technical_ids != EXPECTED_TECHNICAL:
         failures.append("Technical Story set differs from TS-MOB-001..012")
-    for marker in ("Developer", "**Description:**", "**Acceptance Criteria**"):
+    for marker in ("Developer", "Story points", "Planned Sprint", "Acceptance Criteria"):
         if marker not in story_text:
             failures.append(f"Technical Stories missing {marker}")
     for technology in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI"):
         if technology not in story_text:
             failures.append(f"Technical Stories missing accepted technology {technology}")
+    if "Liquid Glass" not in story_text:
+        failures.append("Technical Stories do not limit Liquid Glass to presentation")
 
     spike_ids = set(re.findall(r"^#### (SPIKE-\d{3}) —", story_text, re.MULTILINE))
     if spike_ids != EXPECTED_SPIKES:
         failures.append("Spike Story set differs from SPIKE-001..006")
-    for marker in ("Oportunidad de aprendizaje", "Acceptance Criteria", "Evidencia esperada"):
+    for marker in ("Objective", "Question", "Expected artifact", "Completion criteria"):
         if marker not in story_text:
             failures.append(f"Spike Stories missing {marker}")
     spike_002 = story_text[story_text.index("#### SPIKE-002") : story_text.index("#### SPIKE-003")]
@@ -231,14 +233,7 @@ def validate() -> list[str]:
         if (match := re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE))
     }
     for story_id in EXPECTED_V1:
-        description = story_descriptions.get(story_id, "")
-        comparable = description.replace("Usuario móvil", "Mobile User")
-        comparable = comparable.replace("Operador de Almacén", "Warehouse Operator")
-        comparable = comparable.replace("Coordinador de Despacho", "Dispatch Coordinator")
-        comparable = comparable.replace("Conductor u Operador de Entrega", "Driver / Delivery Operator")
-        comparable = comparable.replace("Comprador", "Customer Buyer")
-        impact_without_emphasis = impact_text.replace("**", "")
-        if description not in impact_without_emphasis and comparable not in impact_without_emphasis:
+        if story_descriptions.get(story_id) not in impact_text:
             failures.append(f"Impact Mapping must retain the full description for {story_id}")
     if any(token.lower() in impact_text.lower() for token in ("[baseline]", "[target]", "[metric]", "[time window]", "[ ]", "SMART completion template", "Tool capture")):
         failures.append("Impact Mapping contains placeholders or checklist content")
@@ -253,8 +248,6 @@ def validate() -> list[str]:
             failures.append(f"numeric priority label in {path.name}")
         if "2.4.4-technical-stories" in text or "2.4.0-to-be-scenario-mapping" in text:
             failures.append(f"obsolete Chapter 2.4 filename in {path.name}")
-        if path in (STORIES, BACKLOG) and re.search(r"\b(?:V[1-4]|V4_FUTURE|Future|release|roadmap)\b", text, re.IGNORECASE):
-            failures.append(f"release roadmap language remains in professor-facing {path.name}")
 
     return failures
 
@@ -275,7 +268,7 @@ def main() -> int:
         return 1
     story_text = STORIES.read_text(encoding="utf-8")
     scenario_count = len(re.findall(r"\*\*Scenario: .+?\*\*", story_text))
-    print(f"mobile backlog validation OK: functional_stories=73; backlog_rows=97; rendered_scenarios={scenario_count}; sprints=S1/S2/S3/S4")
+    print(f"mobile backlog validation OK: functional_stories=73; backlog_rows=97; rendered_scenarios={scenario_count}; sprints=S1/S2/S3/S4/Future")
     return 0
 
 

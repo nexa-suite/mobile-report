@@ -106,9 +106,9 @@ def main() -> int:
     for forbidden in ("Sales Representative", "Representante de Ventas", "Sales Draft", "Buyer Draft"):
         if forbidden.lower() in buyer_story.lower():
             failures.append(f"MOB-US-040 must remain Buyer-only: {forbidden}")
-    if "### Cómo se relaciona el análisis con las historias" not in story_text:
+    if "### Trazabilidad de investigación a historias" not in story_text:
         failures.append("research-to-story traceability section missing")
-    for term in ("Needfinding", "Lean UX", "To-Be", "Epics", "User Stories"):
+    for term in ("Needfinding", "Lean UX", "To-Be Scenario Mapping", "Epics", "User Stories"):
         if term not in story_text:
             failures.append(f"research-to-story traceability missing: {term}")
 
@@ -121,7 +121,7 @@ def main() -> int:
     } | {f"TS-MOB-{number:03d}" for number in range(1, 13)} | {f"SPIKE-{number:03d}" for number in range(1, 7)}
     if ids != expected_ids:
         failures.append("Product Backlog does not contain the complete functional/supporting inventory")
-    for sprint in ("S1", "S2", "S3", "S4"):
+    for sprint in ("S1", "S2", "S3", "S4", "Future"):
         if not re.search(rf"^\| {sprint} \|", backlog_text, re.MULTILINE):
             failures.append(f"Product Backlog missing {sprint}")
     if "| # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |" not in backlog_text:
@@ -131,7 +131,7 @@ def main() -> int:
     impact_story_ids = set(re.findall(r"\bMOB-US-\d{3}\b", impact_text))
     if impact_story_ids != EXPECTED_V1:
         failures.append("Impact Mapping does not contain exactly the 28 Mobile V1 references")
-    for heading in ("## Cadena de impacto", "Objetivo de negocio", "Impacto observable", "Resultado esperado", "Historias"):
+    for heading in ("## Cadena de impacto", "Business Goal candidate", "Impacto observable", "Deliverable", "User Stories"):
         if heading not in impact_text:
             failures.append(f"Impact Mapping missing academic chain element: {heading}")
     story_descriptions = {
@@ -140,14 +140,7 @@ def main() -> int:
         if (match := re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE))
     }
     for story_id in EXPECTED_V1:
-        description = story_descriptions.get(story_id, "")
-        comparable = description.replace("Usuario móvil", "Mobile User")
-        comparable = comparable.replace("Operador de Almacén", "Warehouse Operator")
-        comparable = comparable.replace("Coordinador de Despacho", "Dispatch Coordinator")
-        comparable = comparable.replace("Conductor u Operador de Entrega", "Driver / Delivery Operator")
-        comparable = comparable.replace("Comprador", "Customer Buyer")
-        impact_without_emphasis = impact_text.replace("**", "")
-        if description not in impact_without_emphasis and comparable not in impact_without_emphasis:
+        if story_descriptions.get(story_id) not in impact_text:
             failures.append(f"Impact Mapping does not preserve full story wording for {story_id}")
     if re.search(r"\[(?:baseline|target|metric|time window|segment/actor)[^\]]*\]", impact_text, re.IGNORECASE):
         failures.append("Impact Mapping contains bracket placeholders")
@@ -158,13 +151,10 @@ def main() -> int:
     for term in ("## Criterio de priorización", "valor de negocio", "riesgo", "dependencias"):
         if term.lower() not in backlog_text.lower():
             failures.append(f"Product Backlog prioritization criterion missing: {term}")
-    for path, text in ((STORIES, story_text), (BACKLOG, backlog_text)):
-        if re.search(r"\b(?:V[1-4]|V4_FUTURE|Future|release|roadmap)\b", text, re.IGNORECASE):
-            failures.append(f"release roadmap language remains in professor-facing {path.name}")
 
     if len(re.findall(r"^#### TS-MOB-\d{3} —", story_text, re.MULTILINE)) != 12:
         failures.append("Technical Stories must contain 12 outcomes")
-    if not all(term in story_text for term in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI")):
+    if not all(term in story_text for term in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI", "Liquid Glass")):
         failures.append("Technical technology boundaries are incomplete")
     if len(re.findall(r"^#### SPIKE-\d{3} —", story_text, re.MULTILINE)) != 6:
         failures.append("Spike Stories must contain six research questions")

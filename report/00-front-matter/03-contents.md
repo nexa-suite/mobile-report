@@ -36,7 +36,7 @@
   - [Empathy maps](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.4-empathy-mapping.md)
   - [Big Picture EventStorming](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.5-big-picture-eventstorming.md)
   - [Ubiquitous Language](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md)
-- [Requirements specification and User Stories](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md)
+- [Requirements specification and User Stories](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories/user-stories.md)
   - [Impact mapping](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md)
   - [Product backlog](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md)
 - [Strategic DDD and architecture](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/section-overview.md)

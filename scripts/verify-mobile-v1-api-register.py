@@ -29,14 +29,14 @@ EXPECTED_IDS = [
 
 
 def backlog_rows(text: str) -> list[list[str]]:
-    start = text.index("## Índice de historias funcionales")
-    end = text.index("## Registros de historias funcionales", start)
+    start = text.index("#### Índice de historias funcionales")
+    end = text.index("#### Registros de historias funcionales", start)
     rows: list[list[str]] = []
     for line in text[start:end].splitlines():
         if not line.startswith("| ") or "MOB-US-" not in line:
             continue
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
-        if len(cells) >= 7 and re.fullmatch(r"\d+", cells[0]) and re.fullmatch(r"MOB-US-\d{3}", cells[1]):
+        if len(cells) >= 6 and re.fullmatch(r"\d+", cells[0]) and re.fullmatch(r"MOB-US-\d{3}", cells[1]):
             rows.append(cells)
     return rows
 
@@ -74,9 +74,9 @@ def main() -> int:
         if report_row is None:
             failures.append(f"API register story is absent from report backlog: {api_row[1]}")
             continue
-        if api_row[0] != report_row[6]:
+        if api_row[0] != report_row[5]:
             failures.append(
-                f"{api_row[1]} Sprint: API register={api_row[0]!r}, report={report_row[6]!r}"
+                f"{api_row[1]} Sprint: API register={api_row[0]!r}, report={report_row[5]!r}"
             )
         else:
             sprint_alignment += 1

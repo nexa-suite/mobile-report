@@ -1,92 +1,51 @@
-# Bibliography
+# Bibliografía
 
-## Research protocol and status
+Arriaga-Lorenzo, P., Maldonado-Simán, E., Ramírez-Valverde, R., Martínez-Hernández, P. A., Tirado-González, D. N., & Saavedra-Jiménez, L. A. (2023). Evaluación de la cadena de frío en cortes de res vendida en supermercados. *Revista Chapingo Serie Agricultura Tropical, 3*(1), 21–30. https://doi.org/10.5154/r.rchsagt.2023.03.02
 
-The bibliography uses APA 7 entries while preserving the report's reference IDs
-for the four rubric candidates. Quartile classification remains
-`PRELIMINARY` until the team attaches the official Scopus or Web of Science
-capture for the relevant year and category; the register remains `Pending team capture`.
+Bravo De la Cruz, R., Orihuela De Santana, L. E., & Huaman Huaman, M. L. (2025). Rupturas de cadena de frío en los establecimientos de salud de una Microred de salud - Perú. *Advances in Science and Innovation, 4*(1). https://doi.org/10.61210/asi.v4i1.183
 
-## Arriaga-Lorenzo et al.
+De Lombaert, T., Braekers, K., De Koster, R., & Ramaekers, K. (2024). What makes order picking so physically demanding? Ergonomic evidence from a large-scale lab experiment using subjective metrics. *IFAC-PapersOnLine, 58*(19), 181–186. https://doi.org/10.1016/j.ifacol.2024.09.139
 
-Arriaga-Lorenzo, P., Maldonado-Simán, E., Ramírez-Valverde, R., Martínez-Hernández, P. A., Tirado-González, D. N., & Saavedra-Jiménez, L. A. (2023). Evaluación de la cadena de frío en cortes de res vendida en supermercados. *Revista Chapingo Serie Agricultura Tropical, 3*(1), 21–30. <https://doi.org/10.5154/r.rchsagt.2023.03.02>
+Defontana. (s. f.-a). *ERP para medianas empresas en Perú*. Recuperado el 7 de septiembre de 2026, de https://www.defontana.com/pe/erp-software-peru
 
-## Arvis et al.
+Defontana. (s. f.-b). *Sistema ERP para grandes empresas en Perú*. Recuperado el 7 de septiembre de 2026, de https://www.defontana.com/pe/sistema-erp
 
-Arvis, J.-F., Ojala, L., Shepherd, B., Ulybina, D., & Wiederer, C. (2023). *Connecting to Compete 2023: Trade Logistics in an Uncertain Global Economy—The Logistics Performance Index and Its Indicators*. The World Bank. <https://lpi.worldbank.org/sites/default/files/2023-04/LPI_2023_report.pdf>
+Defontana. (s. f.-c). *Sistema y software ERP en Perú*. Recuperado el 7 de septiembre de 2026, de https://www.defontana.com/pe
 
-## Bravo De la Cruz et al.
+Drivin. (s. f.-a). *Mayor eficiencia logística con un software integral de gestión de transporte*. Recuperado el 7 de septiembre de 2026, de https://driv.in/es/solucion
 
-Bravo De la Cruz, R., Orihuela De Santana, L. E., & Huaman Huaman, M. L. (2025). Rupturas de cadena de frío en los establecimientos de salud de una Microred de salud - Perú. *Advances in Science and Innovation, 4*(1). <https://doi.org/10.61210/asi.v4i1.183>
+Drivin. (s. f.-b). *TMS solution*. Recuperado el 7 de septiembre de 2026, de https://driv.in/en/solutions
 
-## De Lombaert et al.
+Drivin. (s. f.-c). *Transport management system*. Recuperado el 7 de septiembre de 2026, de https://driv.in/en/home
 
-De Lombaert, T., Braekers, K., De Koster, R., & Ramaekers, K. (2024). What makes order picking so physically demanding? Ergonomic evidence from a large-scale lab experiment using subjective metrics. *IFAC-PapersOnLine, 58*(19), 181–186. <https://doi.org/10.1016/j.ifacol.2024.09.139>
+Grupo Lucky. (2022, 1 de septiembre). *El 28% de bodegas en el país utiliza algún aplicativo para potenciar sus ventas*. https://www.grupolucky.com/el-28-de-bodegas-en-el-pais-utiliza-algun-aplicativo-para-potenciar-sus-ventas/
 
-## Defontana
+GS1. (2017). *GS1 Global Traceability Standard: Release 2.0*. https://www.gs1.org/docs/traceability/Global_Traceability_Standard.pdf
 
-Defontana. (s. f.-a). *ERP para medianas empresas en Perú*. Recuperado el 7 de septiembre de 2026, de <https://www.defontana.com/pe/erp-software-peru>
+Ilhan, A. E. (2025). Design approaches to improve user experience: An example of a mobile app prototyping process. *International Journal of Human-Computer Studies, 203*, 103569. https://doi.org/10.1016/j.ijhcs.2025.103569
 
-Defontana. (s. f.-b). *Sistema ERP para grandes empresas en Perú*. Recuperado el 7 de septiembre de 2026, de <https://www.defontana.com/pe/sistema-erp>
+Instituto Nacional de Estadística e Informática. (2025a, septiembre). *Las tecnologías de información y comunicación en los hogares: II trimestre 2025*. https://www.gob.pe/institucion/inei/informes-publicaciones/7225962-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-ii-trimestre-2025
 
-Defontana. (s. f.-c). *Sistema y software ERP en Perú*. Recuperado el 7 de septiembre de 2026, de <https://www.defontana.com/pe>
+Instituto Nacional de Estadística e Informática. (2025b). *Perú: estructura empresarial, 2024*. https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib2045/libro.pdf
 
-## Drivin
+Instituto Nacional de Estadística e Informática. (2026, marzo). *Las tecnologías de información y comunicación en los hogares: IV trimestre 2025*. https://www.gob.pe/institucion/inei/informes-publicaciones/7932450-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-iv-trimestre-2025
 
-Drivin. (s. f.-a). *Mayor eficiencia logística con un software integral de gestión de transporte*. Recuperado el 7 de septiembre de 2026, de <https://driv.in/es/solucion>
+Maqbool, B., & Herold, S. (2024). Potential effectiveness and efficiency issues in usability evaluation within digital health: A systematic literature review. *Journal of Systems and Software, 208*, 111881. https://doi.org/10.1016/j.jss.2023.111881
 
-Drivin. (s. f.-b). *TMS solution*. Recuperado el 7 de septiembre de 2026, de <https://driv.in/en/solutions>
+Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food cold chain logistics and management: A review of current development and emerging trends. *Journal of Agriculture and Food Research, 18*, Article 101343. https://doi.org/10.1016/j.jafr.2024.101343
 
-Drivin. (s. f.-c). *Transport management system*. Recuperado el 7 de septiembre de 2026, de <https://driv.in/en/home>
+Negocia.pe. (s. f.-a). *Negocia.pe: soluciones tecnológicas para empresas de Perú y Latinoamérica*. Recuperado el 7 de septiembre de 2026, de https://www.negocia.pe
 
-## Grupo Lucky
+Negocia.pe. (s. f.-b). *Software para distribuidoras y mayoristas en Perú: ERP B2B*. Recuperado el 7 de septiembre de 2026, de https://www.negocia.pe/Distribuidoras.php
 
-Grupo Lucky. (2022, 1 de septiembre). *El 28% de bodegas en el país utiliza algún aplicativo para potenciar sus ventas*. <https://www.grupolucky.com/el-28-de-bodegas-en-el-pais-utiliza-algun-aplicativo-para-potenciar-sus-ventas/>
+Riqra. (s. f.-a). *Full Commerce para todas tus ventas*. Recuperado el 7 de septiembre de 2026, de https://www.riqra.com
 
-## GS1
+Riqra. (s. f.-b). *Portal B2B para fabricantes y distribuidores*. Recuperado el 7 de septiembre de 2026, de https://www.riqra.com/b2b-portal
 
-GS1. (2017). *GS1 Global Traceability Standard: Release 2.0*. <https://www.gs1.org/standards/gs1-global-traceability-standard/current-standard>
+Riqra. (s. f.-c). *Precios de Riqra: Full Commerce con 0 % de comisión*. Recuperado el 7 de septiembre de 2026, de https://www.riqra.com/pricing
 
-## Instituto Nacional de Estadística e Informática
+United Nations Environment Programme, & Food and Agriculture Organization of the United Nations. (2022). *Sustainable food cold chains: Opportunities, challenges and the way forward*. https://doi.org/10.4060/cc0923en
 
-Instituto Nacional de Estadística e Informática. (2025a, septiembre). *Las tecnologías de información y comunicación en los hogares: II trimestre 2025*. <https://www.gob.pe/institucion/inei/informes-publicaciones/7225962-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-ii-trimestre-2025>
+World Bank. (2023). *Connecting to compete 2023: Trade logistics in an uncertain global economy—The Logistics Performance Index and its indicators*. https://lpi.worldbank.org/sites/default/files/2023-04/LPI_2023_report.pdf
 
-Instituto Nacional de Estadística e Informática. (2025b). *Perú: estructura empresarial, 2024*. <https://www.inei.gob.pe/media/MenuRecursivo/publicaciones_digitales/Est/Lib2045/libro.pdf>
-
-Instituto Nacional de Estadística e Informática. (2026, marzo). *Las tecnologías de información y comunicación en los hogares: IV trimestre 2025*. <https://www.gob.pe/institucion/inei/informes-publicaciones/7932450-las-tecnologias-de-informacion-y-comunicacion-en-los-hogares-iv-trimestre-2025>
-
-## Mobile engineering and UX candidates
-
-**[M1]** Ilhan, A. E. (2025). Design approaches to improve user experience: An
-example of a mobile app prototyping process. *International Journal of
-Human-Computer Studies, 203*, 103569. <https://doi.org/10.1016/j.ijhcs.2025.103569>
-
-**[M2]** Maqbool, B., & Herold, S. (2024). Potential effectiveness and efficiency
-issues in usability evaluation within digital health: A systematic literature
-review. *Journal of Systems and Software, 208*, 111881. <https://doi.org/10.1016/j.jss.2023.111881>
-
-## Mustafa et al.
-
-**[D1]** Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food cold chain logistics and management: A review of current development and emerging trends. *Journal of Agriculture and Food Research, 18*, Artículo 101343. <https://doi.org/10.1016/j.jafr.2024.101343>
-
-## Negocia.pe
-
-Negocia.pe. (s. f.-a). *Negocia.pe: soluciones tecnológicas para empresas de Perú y Latinoamérica*. Recuperado el 7 de septiembre de 2026, de <https://www.negocia.pe>
-
-Negocia.pe. (s. f.-b). *Software para distribuidoras y mayoristas en Perú: ERP B2B*. Recuperado el 7 de septiembre de 2026, de <https://www.negocia.pe/Distribuidoras.php>
-
-## Riqra
-
-Riqra. (s. f.-a). *Full Commerce para todas tus ventas*. Recuperado el 7 de septiembre de 2026, de <https://www.riqra.com>
-
-Riqra. (s. f.-b). *Portal B2B para fabricantes y distribuidores*. Recuperado el 7 de septiembre de 2026, de <https://www.riqra.com/b2b-portal>
-
-Riqra. (s. f.-c). *Precios de Riqra: Full Commerce con 0 % de comisión*. Recuperado el 7 de septiembre de 2026, de <https://www.riqra.com/pricing>
-
-## United Nations Environment Programme & Food and Agriculture Organization of the United Nations
-
-United Nations Environment Programme, & Food and Agriculture Organization of the United Nations. (2022). *Sustainable Food Cold Chains: Opportunities, Challenges and the Way Forward*. <https://doi.org/10.4060/cc0923en>
-
-## Zhou et al.
-
-**[D2]** Zhou, X., Tang, J., Jacobs, T. L., & Saguy, I. S. (2025). Transforming food supply chains through digital tracking and monitoring technologies. *Trends in Food Science & Technology, 163*, Artículo 105142. <https://doi.org/10.1016/j.tifs.2025.105142>
+Zhou, X., Tang, J., Jacobs, T. L., & Saguy, I. S. (2025). Transforming food supply chains through digital tracking and monitoring technologies. *Trends in Food Science & Technology, 163*, Article 105142. https://doi.org/10.1016/j.tifs.2025.105142

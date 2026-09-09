@@ -1,79 +1,13 @@
 # Contents
 
-## Front matter
+The generated PDF table of contents is the authoritative navigation for this report. Its headings follow this order:
 
-- [Portada](./00-cover.md)
-- [Version History](./01-version-history.md)
-- [Project Report Collaboration Insights](./02-project-report-collaboration-insights.md)
-- [Student Outcome](./04-student-outcome.md)
-- [SMART objectives](./05-smart-objectives.md)
-
-## Chapter I — Presentation
-
-- [Startup profile](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md)
-  - [Startup description](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md#111-startup-description)
-  - [Team member profiles](../01-presentation/1.1-startup-profile/1.1.2-team-member-profiles.md)
-- [Solution profile](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md)
-  - [Background and problem](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md)
-  - [Lean UX process](../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.1-problem-statements.md)
-- [Target segments](../01-presentation/1.3-target-segments.md)
-
-## Chapter II — Requirements Development and Software Solution Design
-
-- [Competitors](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
-  - [Competitive analysis](../02-requirements-and-software-solution-design/2.1-competitors/2.1.1-competitive-analysis.md)
-  - [Strategies and tactics](../02-requirements-and-software-solution-design/2.1-competitors/2.1.2-competitor-strategies-and-tactics.md)
-- [Interviews](../02-requirements-and-software-solution-design/2.2-interviews/2.2.1-interview-design.md)
-  - [Interview design](../02-requirements-and-software-solution-design/2.2-interviews/2.2.1-interview-design.md)
-  - [Interview records](../02-requirements-and-software-solution-design/2.2-interviews/2.2.2-interview-records.md)
-  - [Interview analysis](../02-requirements-and-software-solution-design/2.2-interviews/2.2.3-interview-analysis.md)
-- [Needfinding](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.1-user-personas.md)
-  - [Personas](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.1-user-personas.md)
-  - [Task matrix](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md)
-  - [Journey mapping](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.3-user-journey-mapping.md)
-  - [Empathy maps](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.4-empathy-mapping.md)
-  - [Big Picture EventStorming](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.5-big-picture-eventstorming.md)
-  - [Ubiquitous Language](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md)
-- [Requirements specification and User Stories](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories/user-stories.md)
-  - [Technical stories](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories/technical-stories.md)
-  - [Spike stories](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories/spike-stories.md)
-  - [Impact mapping](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.2-impact-mapping.md)
-  - [Product backlog](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md)
-- [Strategic DDD and architecture](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md)
-  - [EventStorming](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md)
-  - [Candidate Context Discovery](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md)
-  - [Domain message flows](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md)
-  - [Bounded Context canvases](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.3-bounded-context-canvases.md)
-  - [Context Map](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.2-context-mapping.md)
-  - [Software architecture](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture.md)
-    - [Context-level diagrams](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.1-context-level-diagrams.md)
-    - [Container-level diagrams](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.2-container-level-diagrams.md)
-    - [Deployment diagrams](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture/2.5.3.3-deployment-diagrams.md)
-- [Tactical DDD](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6.1-bounded-context-coverage.md)
-  - [Tactical DDD coverage](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6.1-bounded-context-coverage.md)
-  - [Domain-layer class diagrams](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/2.6.x.6.1-domain-layer-class-diagrams.md)
-  - [Database design diagrams](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-context-template/code-level-diagrams/2.6.x.6.2-database-design-diagrams.md)
-
-## Chapters III-IV, conclusions and annexes
-
-- [Chapter III — Solution UI/UX Design](../03-solution-ui-ux-design/chapter-overview.md)
-  - [Product Design](../03-solution-ui-ux-design/3.1-product-design/3.1.1-style-guidelines/3.1.1.1-general-style-guidelines.md)
-    - [Style Guidelines](../03-solution-ui-ux-design/3.1-product-design/3.1.1-style-guidelines/3.1.1.1-general-style-guidelines.md)
-    - [Information Architecture](../03-solution-ui-ux-design/3.1-product-design/3.1.2-information-architecture/3.1.2.1-organization-systems.md)
-    - [Landing Page UI Design](../03-solution-ui-ux-design/3.1-product-design/3.1.3-landing-page-ui-design/3.1.3.1-landing-page-wireframes.md)
-    - [Mobile Applications UX/UI Design](../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/3.1.4.1-mobile-application-wireframes.md)
-- [Chapter IV — Product Implementation and Validation](../04-product-implementation-and-validation/chapter-overview.md)
-  - [Software Configuration Management](../04-product-implementation-and-validation/4.1-software-configuration-management/4.1.1-development-environment-configuration.md)
-  - [Landing Page, Services and Applications Implementation](../04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/sprint-1/sprint-overview.md)
-    - [Sprints](../04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/sprint-1/sprint-overview.md)
-  - [Validation Interviews](../04-product-implementation-and-validation/4.3-validation-interviews/4.3.1-interview-design.md)
-    - [Interview Design](../04-product-implementation-and-validation/4.3-validation-interviews/4.3.1-interview-design.md)
-    - [Interview Records](../04-product-implementation-and-validation/4.3-validation-interviews/4.3.2-interview-records.md)
-    - [Heuristic Evaluations](../04-product-implementation-and-validation/4.3-validation-interviews/4.3.3-heuristic-evaluations.md)
-- [Conclusions](../90-conclusions/conclusions-and-recommendations.md)
-  - [Video App Validation](../04-product-implementation-and-validation/supplementary-sections/video-app-validation.md)
-  - [Video About-the-Product](../04-product-implementation-and-validation/supplementary-sections/video-about-the-product.md)
-  - [Video About-The-Team](../04-product-implementation-and-validation/supplementary-sections/video-about-the-team.md)
-- [Glossary](../91-glossary/glossary.md)
-- [Bibliography](../92-bibliography/bibliography.md)
-- [Annexes](../93-annexes/annexes-overview.md)
+1. Front Matter: Cover, Version History, Contents, Student Outcome 7, SMART Objectives, and Collaboration Insights.
+2. Chapter I — Presentation.
+3. Chapter II — Requirements Development and Software Solution Design.
+4. Chapter III — Solution UI/UX Design.
+5. Chapter IV — Product Implementation and Validation.
+6. Conclusions and Recommendations.
+7. Glossary.
+8. Bibliography.
+9. Annexes.

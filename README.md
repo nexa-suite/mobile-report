@@ -1,74 +1,59 @@
-# Final Project Report
+<div align="center">
 
-Repositorio Docs-as-Code del trabajo final del curso **1ACC0238 Aplicaciones para Dispositivos Móviles**.
+<img src="https://raw.githubusercontent.com/nexa-suite/.github/develop/profile/assets/nexa-logo.svg" alt="Nexa logo" width="220" />
 
-| Campo | Valor |
-| :--- | :--- |
-| Periodo | 202620 |
-| NRC | 4949 |
-| Startup | nexa-team |
-| Documento | Final Project Report |
-| Formato fuente | Markdown modular |
-| Flujo | GitFlow |
-| Commits | Conventional Commits |
+# Nexa Mobile Report
 
-## Navegación del informe
+Academic final-project report for **Nexa Suite**.
 
-El contenido principal se encuentra en [Contents](./report/00-front-matter/03-contents.md), organizado según la estructura oficial del enunciado:
+[![Course](https://img.shields.io/badge/Course-1ACC0238-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
+[![Period](https://img.shields.io/badge/Period-2026--20-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
+[![UPC](https://img.shields.io/badge/UPC-Universidad%20Peruana%20de%20Ciencias%20Aplicadas-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
+[![Team](https://img.shields.io/badge/Team-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
+[![Release](https://img.shields.io/badge/Release-v0.1.0-0F172A?style=flat-square)](./CHANGELOG.md)
 
-1. [Front matter](./report/00-front-matter/03-contents.md)
-2. [Capítulo I: Presentación](./report/00-front-matter/03-contents.md#chapter-i--presentation)
-3. [Capítulo II: Requirements Development and Software Solution Design](./report/02-requirements-and-software-solution-design/chapter-overview.md)
-4. [Capítulo III: Solution UI/UX Design](./report/03-solution-ui-ux-design/chapter-overview.md)
-5. [Capítulo IV: Product Implementation and Validation](./report/04-product-implementation-and-validation/chapter-overview.md)
-6. [Conclusiones](./report/90-conclusions/conclusions-and-recommendations.md)
-7. [Glosario](./report/91-glossary/glossary.md)
-8. [Bibliografía](./report/92-bibliography/bibliography.md)
-9. [Anexos](./report/93-annexes/annexes-overview.md)
+</div>
 
-## Control de avance
+## About
 
-Los controles de entrega, el baseline de repositorios y la reconciliación con
-las fuentes de autoridad se mantienen en [live-baseline.md](./delivery-checklists/live-baseline.md).
-La procedencia de C4, Structurizr, PlantUML y los diagramas de datos se resume
-en el [architecture and diagram evidence register](./delivery-checklists/architecture-render-evidence-register.md).
-La nomenclatura oficial de entregables y videos se mantiene en
-[file-naming.md](./delivery-checklists/file-naming.md).
-Esos documentos distinguen evidencia comprobada, estructura preparada y datos
-que todavía requieren revisión o entrega humana.
+This repository contains the academic report for Nexa Suite in course 1ACC0238, *Aplicaciones para Dispositivos Móviles*. It documents the product scope, research framing, software solution design, UI/UX design, and Sprint 1 planning. It does not present planned mobile work as a completed application, build, deployment, or user-study result.
 
-## Convención de organización
+## Report Structure
 
-Cada subpunto numerado de nivel 2 es una carpeta. Sus subpuntos de nivel 3 se encuentran directamente dentro de ella como archivos o carpetas anidadas. Las carpetas sin subpuntos utilizan un documento de contenido con nombre semántico, no un `README.md`.
+- Front Matter
+- Chapter I — Presentation
+- Chapter II — Requirements Development and Software Solution Design
+- Chapter III — Solution UI/UX Design
+- Chapter IV — Product Implementation and Validation
+- Conclusions and Recommendations
+- Glossary
+- Bibliography
+- Annexes
 
-## Flujo de ramas
+## Nexa Ecosystem
 
-```text
-main
-└── develop
-    └── reconcile/report-integration-20260902
-```
+| Repository | Scope |
+|---|---|
+| [Blueprint](https://github.com/nexa-suite/blueprint) | Accepted product, domain, architecture, and design decisions. |
+| [Mobile Report](https://github.com/nexa-suite/mobile-report) | Academic report and its source materials. |
+| [Mobile](https://github.com/nexa-suite/mobile) | Planned mobile product projection. |
+| [API](https://github.com/nexa-suite/api) | Business and integration contracts. |
+| [Website](https://github.com/nexa-suite/website) | Public product presence. |
+| [Platform](https://github.com/nexa-suite/platform) | Internal operational workspace. |
+| [Portal](https://github.com/nexa-suite/portal) | Buyer-facing experience. |
 
-`main` es la línea estable y `develop` la línea de integración. Las ramas
-`chapter-0X` del historial inicial se conservan como provenance; el estado
-actual autorizado usa `reconcile/report-integration-20260902` y todavía no se
-ha integrado en `develop` ni publicado como release.
-
-## Estado documental
-
-Los documentos inicialmente creados como estructura son plantillas de trabajo. Cada marcador debe ser reemplazado con evidencia contextualizada del proyecto antes de una entrega académica.
-
-## Fuentes locales requeridas
-
-La validación de fuentes externas no depende de rutas personales. Antes de ejecutar
-el validador estructural, declare la ubicación local del Statement oficial:
+## PDF Export
 
 ```bash
-export NEXA_MOBILE_STATEMENT_PDF='/ruta/local/final-project-statement-202620.pdf'
-export NEXA_BLUEPRINT_ROOT='/ruta/local/nexa-suite/blueprint'
-bash scripts/verify-report-structure.sh
+./scripts/export-report-pdf.sh
 ```
 
-Si una fuente externa no está disponible, el resultado esperado es
-`BLOCKED BY MISSING LOCAL EXTERNAL SOURCE`. El inventario de autoridad, hashes y
-cortes consultados está en [`delivery-checklists/source-manifest.md`](./delivery-checklists/source-manifest.md).
+The generated PDF must be visually reviewed before it is used as a submission artifact.
+
+## Collaboration
+
+The report follows GitFlow and Conventional Commits. Meaningful academic changes are committed with the real configured contributor profile and a verified signature.
+
+## Release v0.1.0
+
+`v0.1.0` is the first public academic release of the Nexa Mobile Report. Its release notes and source history preserve the report's scope and provenance.

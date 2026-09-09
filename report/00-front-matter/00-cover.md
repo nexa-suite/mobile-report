@@ -14,17 +14,17 @@
 
 NRC **4949**
 
-## Informe del Trabajo Final
+## Informe de Trabajo Final
 
 **Docente**
 
 Quevedo Velasco, David Gerardo
 
-**Equipo**
+**Startup**
 
 nexa-team
 
-**Proyecto**
+**Producto**
 
 Nexa Suite
 
@@ -32,11 +32,11 @@ Nexa Suite
 
 | Código | Apellidos y Nombres |
 | :---: | :--- |
-| U202414345 | Pinedo, Sebastián |
-| U202413142 | Rojas Mancilla, Gerard |
-| U202416289 | Torrejón De Los Santos, Gino |
-| U20241A054 | Verde Bueno, Joaquín |
-| U202323040 | Yucra Sandoval, Diego |
+| U202414345 | Pinedo Sanchez, Sebastián Martín |
+| U202413142 | Rojas Mancilla, Gerard Gianpier |
+| U202416289 | Torrejón De Los Santos, Gino Rodrigo |
+| U20241A054 | Verde Bueno, Joaquín Francisco |
+| U202323040 | Yucra Sandoval, Diego Sebastián |
 
 **Período 202620**
 

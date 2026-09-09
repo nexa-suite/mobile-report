@@ -128,12 +128,18 @@ end
 
 function Table(element)
   local column_count = #element.colspecs
+  local is_sprint_backlog = pandoc.utils.stringify(element):find("SB1-T01", 1, true)
+    ~= nil
   if column_count > 1 then
     local widths = {}
-    if column_count == 5 then
+    if is_sprint_backlog then
+      widths = { 0.13, 0.18, 0.43, 0.07, 0.19 }
+    elseif column_count == 5 then
       widths = { 0.18, 0.25, 0.22, 0.23, 0.12 }
     elseif column_count == 6 then
       widths = { 0.14, 0.18, 0.17, 0.18, 0.20, 0.13 }
+    elseif column_count == 9 then
+      widths = { 0.07, 0.10, 0.12, 0.08, 0.12, 0.22, 0.07, 0.17, 0.05 }
     else
       for index = 1, column_count do
         widths[index] = 1 / column_count
@@ -143,6 +149,20 @@ function Table(element)
       local specification = element.colspecs[index]
       element.colspecs[index] = { specification[1], widths[index] }
     end
+  end
+  if column_count >= 8 then
+    return {
+      pandoc.RawBlock("tex", "\\begin{landscape}\\tiny"),
+      element,
+      pandoc.RawBlock("tex", "\\end{landscape}"),
+    }
+  end
+  if is_sprint_backlog then
+    return {
+      pandoc.RawBlock("tex", "\\begingroup\\small"),
+      element,
+      pandoc.RawBlock("tex", "\\endgroup"),
+    }
   end
   if column_count >= 5 then
     return {

@@ -174,7 +174,6 @@ segmento de investigación.
 
 ## Mobile Functional User Stories
 
-### V1
 #### MOB-US-001 — Continuar el trabajo autorizado después de volver a Nexa
 
 | Story ID | User | Priority | Epic |
@@ -210,6 +209,90 @@ segmento de investigación.
 | **Title** | Ver sólo el trabajo permitido para el rol |
 | **Description** | Como **Mobile User**, deseo ver solo el trabajo permitido para mi rol, para no intentar tareas que mi rol o relación no autorizan. |
 | **Acceptance Criteria** | **Scenario 1 — Trabajo permitido**<br>**Given** el rol de la persona permite una tarea<br>**When** Nexa confirma el rol<br>**Then** la persona puede realizarla en el contexto activo.<br><br>**Scenario 2 — Permiso faltante**<br>**Given** el rol no permite una tarea<br>**When** la persona intenta realizarla<br>**Then** Nexa la rechaza aunque información antigua sugiera lo contrario.<br><br>**Scenario 3 — Cambio de permisos**<br>**Given** cambian los permisos<br>**When** Nexa vuelve a comprobar el rol<br>**Then** el trabajo no disponible deja de aceptarse.<br><br>**Scenario 4 — Permiso no confirmado**<br>**Given** no se puede comprobar el permiso<br>**When** la persona intenta una tarea<br>**Then** Nexa la bloquea e indica que se requiere confirmación. |
+
+#### MOB-US-004 — Revisar el trabajo operativo de un vistazo
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-004` | Business Operations Manager | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Revisar el trabajo operativo de un vistazo |
+| **Description** | Como **Business Operations Manager**, deseo revisar el trabajo operativo de un vistazo, para priorizarlo usando hechos actuales y confiables. |
+| **Acceptance Criteria** | **Scenario 1 — Vista futura**<br>**Given** existe una vista operativa futura aceptada<br>**When** el responsable la revisa<br>**Then** cada elemento indica su contexto y frescura.<br><br>**Scenario 2 — Hechos incompletos**<br>**Given** faltan hechos fuente o están desactualizados<br>**When** el responsable revisa la vista<br>**Then** la limitación es explícita y no se inventa ningún total.<br><br>**Scenario 3 — Alcance no autorizado**<br>**Given** el responsable carece de permiso de alcance<br>**When** solicita la vista<br>**Then** no se expone información operativa privada. |
+
+#### MOB-US-005 — Identificar excepciones operativas críticas
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-005` | Business Operations Manager | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Identificar excepciones operativas críticas |
+| **Description** | Como **Business Operations Manager**, deseo identificar excepciones operativas críticas, para atender trabajo bloqueado antes de que retrase a un cliente o una entrega. |
+| **Acceptance Criteria** | **Scenario 1 — Excepción aceptada**<br>**Given** existe una futura vista de excepciones aceptada<br>**When** el responsable revisa un elemento<br>**Then** quedan claros su alcance, severidad y trabajo responsable.<br><br>**Scenario 2 — Excepción incompleta**<br>**Given** los hechos de la excepción están incompletos<br>**When** se revisa el elemento<br>**Then** se marca como incompleto y no se trata como un nuevo estado de negocio.<br><br>**Scenario 3 — Respuesta autorizada**<br>**Given** una excepción requiere corrección<br>**When** el responsable la sigue<br>**Then** Nexa dirige a la persona al trabajo responsable autorizado. |
+
+#### MOB-US-006 — Encontrar un cliente y su relación con el comprador
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-006` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Encontrar un cliente y su relación con el comprador |
+| **Description** | Como **Sales Representative**, deseo encontrar una relación entre cliente y comprador, para trabajar con el cliente correcto en un flujo móvil futuro. |
+| **Acceptance Criteria** | **Scenario 1 — cliente autorizado**<br>**Given** existe una relación autorizada<br>**When** el representante busca<br>**Then** solo se devuelven clientes permitidos.<br><br>**Scenario 2 — cliente no relacionado**<br>**Given** el cliente no está relacionado o está suspendido<br>**When** el representante lo abre<br>**Then** el trabajo protegido no está disponible.<br><br>**Scenario 3 — Resultado no confiable**<br>**Given** la búsqueda está vacía o no disponible<br>**When** termina<br>**Then** no se adivina ni expone ningún cliente. |
+
+#### MOB-US-007 — Revisar productos, precios y disponibilidad
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-007` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Revisar productos, precios y disponibilidad |
+| **Description** | Como **Sales Representative**, deseo revisar productos, precios y disponibilidad, para preparar demanda futura de un cliente con información confiable. |
+| **Acceptance Criteria** | **Scenario 1 — Producto autorizado**<br>**Given** existe una relación autorizada con el cliente<br>**When** se revisa un producto<br>**Then** se muestran precio y disponibilidad permitidos con su frescura.<br><br>**Scenario 2 — Producto no disponible**<br>**Given** un producto está oculto o no disponible<br>**When** se solicita<br>**Then** no puede tratarse como un compromiso.<br><br>**Scenario 3 — Información modificada**<br>**Given** cambia el precio o disponibilidad<br>**When** el representante continúa<br>**Then** Nexa exige confirmación actual. |
+
+#### MOB-US-008 — Preparar una solicitud de cliente
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-008` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Preparar una solicitud de cliente |
+| **Description** | Como **Sales Representative**, deseo preparar una solicitud de cliente, para organizar una intención antes de un envío autorizado. |
+| **Acceptance Criteria** | **Scenario 1 — Preparación de borrador**<br>**Given** se conocen productos permitidos<br>**When** el representante prepara una solicitud<br>**Then** las cantidades permanecen como intención y no crean compromiso.<br><br>**Scenario 2 — Información modificada**<br>**Given** cambia información del producto o cliente<br>**When** se revisa la solicitud<br>**Then** el cambio es visible antes de la envío.<br><br>**Scenario 3 — borrador local**<br>**Given** la persona pierde conexión<br>**When** edita la solicitud<br>**Then** permanece como borrador no confirmado. |
+
+#### MOB-US-009 — Enviar una solicitud o Direct Order asistido desde el trabajo de campo
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-009` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Enviar una solicitud o Direct Order asistido desde el trabajo de campo |
+| **Description** | Como Representante de Ventas autorizado, deseo enviar la intención comercial del cliente conforme a la política del Tenant, para convertir el trabajo de campo en una solicitud o compromiso válido sin suplantar al comprador. |
+| **Acceptance Criteria** | **Scenario 1 — Política APPROVAL_REQUIRED**<br>**Given** el actor es un Representante de Ventas autorizado, existe Customer Account y Buyer Relationship con elegibilidad válida, la política comercial es APPROVAL_REQUIRED y existe un Sales Draft válido<br>**When** envía la intención comercial<br>**Then** Nexa crea y envía una Purchase Request, no confirma un Direct Order y mantiene al actor como Representante de Ventas sin suplantar al Comprador.<br><br>**Scenario 2 — Direct Order asistido**<br>**Given** el actor es un Representante de Ventas autorizado, existe Customer Account y Buyer Relationship con elegibilidad válida, la política comercial es DIRECT_ORDER y existe un Sales Draft válido<br>**When** confirma el Direct Order asistido<br>**Then** el servidor revalida autorización, relación, offer, price, terms, inventory protection y applicable credit y sólo confirma el compromiso si todas las decisiones tienen éxito, sin crear una Purchase Request artificial.<br><br>**Scenario 3 — Actor y borrador separados**<br>**Given** el Representante de Ventas trabaja dentro de su propia relación y existe un Sales Draft<br>**When** envía la intención comercial<br>**Then** el actor continúa siendo Representante de Ventas, Sales Draft != Buyer Draft y Nexa no suplanta al Comprador.<br><br>**Scenario 4 — Validación rechazada**<br>**Given** falla Customer Account, Buyer Relationship, offer, price, terms, inventory protection, applicable credit o autorización<br>**When** el representante intenta confirmar la intención<br>**Then** no se confirma un Direct Order válido ni se registra un compromiso parcial.<br><br>**Scenario 5 — Reintento idempotente**<br>**Given** el representante reenvía la misma intención comercial<br>**When** Nexa procesa el reintento<br>**Then** conserva un único resultado comercial y no duplica Purchase Request ni compromiso.<br><br>**Scenario 6 — Política vigente**<br>**Given** la política comercial cambia entre la preparación y el envío<br>**When** el representante envía su Sales Draft<br>**Then** Nexa usa la política vigente y no confirma una ruta que ya no está autorizada. |
+
+#### MOB-US-010 — Seguir compromisos del cliente y crédito
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-010` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Seguir compromisos del cliente y crédito |
+| **Description** | Como **Sales Representative**, deseo seguir los compromisos y el crédito del cliente, para comprender el progreso autorizado sin tomar localmente una decisión de crédito. |
+| **Acceptance Criteria** | **Scenario 1 — Progreso autorizado**<br>**Given** existe una relación autorizada<br>**When** se revisa el progreso<br>**Then** los hechos de compromiso y crédito relevante muestran su frescura.<br><br>**Scenario 2 — Hechos financieros incompletos**<br>**Given** los hechos financieros están desactualizados o incompletos<br>**When** se revisan<br>**Then** la limitación es explícita y no se inventa ninguna decisión.<br><br>**Scenario 3 — Pérdida de relación**<br>**Given** la relación ya no está autorizada<br>**When** se solicita el progreso<br>**Then** no se exponen hechos protegidos. |
 
 #### MOB-US-011 — Identificar un producto mediante el código del paquete o etiqueta
 
@@ -294,6 +377,18 @@ segmento de investigación.
 | **Title** | Reportar una discrepancia física o disposición autorizada de stock |
 | **Description** | Como **Warehouse Operator**, deseo reportar una discrepancia física o disposición autorizada del stock, para mantener visible la excepción sin borrar lo ocurrido. |
 | **Acceptance Criteria** | **Scenario 1 — Diferencia observada**<br>**Given** el operador observa una diferencia<br>**When** se acepta el reporte autorizado<br>**Then** las cantidades ofrecidas, seleccionadas y restantes permanecen registradas por separado.<br><br>**Scenario 2 — Autoridad faltante**<br>**Given** falta permiso, motivo o evidencia requerida<br>**When** el operador reporta la diferencia<br>**Then** Nexa no registra ningún cambio de stock no autorizado.<br><br>**Scenario 3 — Reporte repetido**<br>**Given** el resultado es desconocido<br>**When** el operador repite el mismo reporte<br>**Then** Nexa conserva un único hecho de discrepancia.<br><br>**Scenario 4 — Nota sin conexión**<br>**Given** el operador no tiene conexión<br>**When** prepara un reporte<br>**Then** queda marcado como no confirmado y no puede cambiar el stock vendible. |
+
+#### MOB-US-018 — Mover stock entre ubicaciones del almacén
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-018` | Warehouse Operator | High | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Mover stock entre ubicaciones del almacén |
+| **Description** | Como **Warehouse Operator**, deseo mover stock entre ubicaciones del almacén, para que el movimiento físico sea atribuible desde el origen hasta el destino. |
+| **Acceptance Criteria** | **Scenario 1 — Movimiento autorizado**<br>**Given** existen origen, destino, lote y cantidad autorizados<br>**When** el operador inicia una transferencia<br>**Then** Nexa conserva esos datos para revisión.<br><br>**Scenario 2 — Dato de transferencia faltante**<br>**Given** falta origen, destino, lote o motivo requerido<br>**When** el operador inicia la transferencia<br>**Then** Nexa deja el stock sin cambios.<br><br>**Scenario 3 — Destino incompatible**<br>**Given** el destino no puede aceptar la transferencia<br>**When** el operador la registra<br>**Then** Nexa mantiene la transferencia sin resolver y no afirma recepción.<br><br>**Scenario 4 — Reintento**<br>**Given** el resultado de la transferencia es desconocido<br>**When** el operador repite el movimiento<br>**Then** permanece una única transferencia trazable. |
 
 #### MOB-US-019 — Registrar evidencia de temperatura para stock relevante
 
@@ -415,6 +510,30 @@ segmento de investigación.
 | **Description** | Como **Driver / Delivery Operator**, deseo abrir indicaciones hacia el destino autorizado de la entrega, para viajar al destino correcto sin cambiar el registro de entrega. |
 | **Acceptance Criteria** | **Scenario 1 — Destino autorizado**<br>**Given** una entrega activa y autorizada tiene destino<br>**When** el conductor solicita indicaciones<br>**Then** Nexa entrega ese destino al servicio de navegación elegido.<br><br>**Scenario 2 — Destino faltante**<br>**Given** falta el destino o no está autorizado<br>**When** se solicitan indicaciones<br>**Then** Nexa no revela una ubicación no verificada.<br><br>**Scenario 3 — Navegación no disponible**<br>**Given** el servicio de navegación no está disponible<br>**When** se solicitan indicaciones<br>**Then** el Delivery Attempt no cambia y el fallo queda claro.<br><br>**Scenario 4 — Sin seguimiento almacenado**<br>**Given** se abren las indicaciones<br>**When** termina el handoff<br>**Then** Nexa no almacena ubicación continua ni background del conductor por esta acción. |
 
+#### MOB-US-029 — Compartir la ubicación durante una entrega activa
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-029` | Driver or Delivery Operator | Low | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Compartir la ubicación durante una entrega activa |
+| **Description** | Como **Driver / Delivery Operator**, deseo compartir la ubicación de una entrega durante una entrega activa, para que un servicio de ubicación futuro y aceptado atienda una necesidad acotada de entrega. |
+| **Acceptance Criteria** | **Scenario 1 — Consentimiento futuro**<br>**Given** se acepta una política futura de ubicación<br>**When** el conductor comparte una ubicación<br>**Then** consentimiento, alcance y retención quedan explícitos.<br><br>**Scenario 2 — Sin entrega activo**<br>**Given** no existe una entrega activa<br>**When** se solicita la ubicación<br>**Then** no se comparte ninguna ubicación.<br><br>**Scenario 3 — Límite de privacidad**<br>**Given** la persona retira el permiso<br>**When** se solicita compartir ubicación<br>**Then** no se divulga ninguna ubicación nueva. |
+
+#### MOB-US-030 — Contactar al comprador durante la entrega
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-030` | Driver or Delivery Operator | High | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Contactar al comprador durante la entrega |
+| **Description** | Como **Driver / Delivery Operator**, deseo contactar al comprador durante la entrega, para resolver una duda de llegada mediante un canal autorizado. |
+| **Acceptance Criteria** | **Scenario 1 — Canal futuro**<br>**Given** existe una política de contacto aceptada<br>**When** el conductor contacta al comprador<br>**Then** solo se usa el canal autorizado y su uso queda registrado.<br><br>**Scenario 2 — Consentimiento faltante**<br>**Given** falta consentimiento o asignación<br>**When** se solicita el contacto<br>**Then** no se inicia contacto personal.<br><br>**Scenario 3 — Resultado separado**<br>**Given** ocurre el contacto<br>**When** termina<br>**Then** por sí mismo no cambia el resultado de entrega ni el Buyer Receipt. |
+
 #### MOB-US-031 — Registrar el resultado del intento de entrega
 
 | Story ID | User | Priority | Epic |
@@ -462,164 +581,6 @@ segmento de investigación.
 | **Title** | Presentar un código acotado de handoff de entrega |
 | **Description** | Como **Driver / Delivery Operator**, deseo presentar un código acotado de handoff de entrega, para que el comprador identifique correctamente la entrega de forma segura. |
 | **Acceptance Criteria** | **Scenario 1 — Código válido**<br>**Given** existe una entrega activo y autorizado<br>**When** el conductor presenta su código<br>**Then** Nexa vincula el código con esa entrega y Delivery Attempt.<br><br>**Scenario 2 — Código expirado o incorrecto**<br>**Given** el código está expirado, reutilizado o pertenece a otro entrega<br>**When** se comprueba<br>**Then** Nexa lo rechaza sin cambiar el estado de entrega.<br><br>**Scenario 3 — Código no disponible**<br>**Given** no se puede presentar el código<br>**When** el conductor usa el alternativa aprobado<br>**Then** el handoff permanece explícito y no se registra aceptación falsa.<br><br>**Scenario 4 — Hechos separados**<br>**Given** el comprador verifica el código<br>**When** la verificación tiene éxito<br>**Then** por sí sola no crea recepción, POD, pago ni finalización de entrega. |
-
-#### MOB-US-044 — Saber cuándo una entrega requiere atención
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-044` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Saber cuándo una entrega requiere atención |
-| **Description** | Como **Customer Buyer**, deseo saber cuándo una entrega requiere atención, para responder oportunamente a un cambio relevante. |
-| **Acceptance Criteria** | **Scenario 1 — Actualización relevante**<br>**Given** un hecho permitido de entrega requiere atención del comprador<br>**When** Nexa envía una actualización<br>**Then** el comprador puede identificar la entrega relevante.<br><br>**Scenario 2 — Actualización no relacionada**<br>**Given** la entrega está fuera de la relación del comprador<br>**When** se prepara una actualización<br>**Then** no se revela información privada de la entrega.<br><br>**Scenario 3 — Fallo de entrega**<br>**Given** una actualización no puede entregarse<br>**When** el comprador abre Nexa<br>**Then** los hechos actuales de entrega siguen disponibles para actualización y ningún hecho cambia.<br><br>**Scenario 4 — Reintento de actualización**<br>**Given** una actualización se repite<br>**When** el comprador la recibe<br>**Then** no crea un segundo entrega, recepción ni hecho de discrepancia. |
-
-#### MOB-US-047 — Verificar una entrega mediante el código de handoff
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-047` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Verificar una entrega mediante el código de handoff |
-| **Description** | Como **Customer Buyer**, deseo verificar una entrega mediante el código de handoff, para confirmar que reviso la entrega correcta. |
-| **Acceptance Criteria** | **Scenario 1 — Código coincidente**<br>**Given** existe un código válido, no expirado y una relación autorizada<br>**When** el comprador lo verifica<br>**Then** Nexa identifica la entrega y Delivery Attempt coincidentes.<br><br>**Scenario 2 — Código inválido**<br>**Given** el código está expirado, reutilizado, malformado o no relacionado<br>**When** el comprador lo verifica<br>**Then** Nexa lo rechaza y no cambia ningún hecho de recepción.<br><br>**Scenario 3 — Sin conexión**<br>**Given** no se puede confirmar el código<br>**When** el comprador lo verifica<br>**Then** Nexa muestra un estado no confirmado y ningún recepción tiene éxito.<br><br>**Scenario 4 — Límite de verificación**<br>**Given** el código está verificado<br>**When** el comprador continúa<br>**Then** la verificación por sí sola no confirma cantidades, POD, pago ni finalización de entrega. |
-
-#### MOB-US-048 — Confirmar las cantidades realmente recibidas
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-048` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Confirmar las cantidades realmente recibidas |
-| **Description** | Como **Customer Buyer**, deseo confirmar las cantidades realmente recibidas, para que el proveedor tenga un registro veraz de mi Buyer Receipt. |
-| **Acceptance Criteria** | **Scenario 1 — recepción coincidente**<br>**Given** existe un handoff verificado y autorizado<br>**When** el comprador confirma las cantidades recibidas<br>**Then** Nexa registra un único hecho de Buyer Receipt con persona, momento y entrega.<br><br>**Scenario 2 — Cantidades diferentes**<br>**Given** las cantidades recibidas difieren del resultado del conductor<br>**When** el comprador las confirma<br>**Then** ambos hechos permanecen separados y la diferencia queda visible.<br><br>**Scenario 3 — Handoff desactualizado o reutilizado**<br>**Given** el handoff está desactualizado, expirado o ya utilizado<br>**When** el comprador confirma cantidades<br>**Then** Nexa rechaza la confirmación o devuelve el resultado original sin un segundo recepción.<br><br>**Scenario 4 — Sin conexión**<br>**Given** no se puede comprobar la confirmación del recepción<br>**When** el comprador lo intenta<br>**Then** Nexa no muestra éxito de recepción hasta recibir confirmación. |
-
-#### MOB-US-049 — Reportar una discrepancia sin borrar los hechos
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-049` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Reportar una discrepancia sin borrar los hechos |
-| **Description** | Como **Customer Buyer**, deseo reportar una discrepancia sin borrar los hechos, para que el proveedor resuelva la diferencia manteniendo un historial confiable. |
-| **Acceptance Criteria** | **Scenario 1 — Discrepancia registrada**<br>**Given** existe un contexto de handoff o recepción verificado<br>**When** el comprador reporta una discrepancia<br>**Then** Nexa conserva motivo, cantidad afectada, persona, momento y evidencia.<br><br>**Scenario 2 — Historiales separados**<br>**Given** el resultado del Driver outcome difiere del Buyer Receipt<br>**When** se registra la discrepancia<br>**Then** ambos hechos originales permanecen sin cambios y la diferencia queda visible.<br><br>**Scenario 3 — Reporte inválido**<br>**Given** falta motivo, permiso o evidencia requerida<br>**When** el comprador lo reporta<br>**Then** Nexa no registra una corrección no autorizada.<br><br>**Scenario 4 — Fallo temporal**<br>**Given** no se puede confirmar el reporte<br>**When** el comprador reintenta<br>**Then** Nexa conserva un único resultado pendiente o aceptado y no implica reembolso, cambio de pago ni finalización de entrega. |
-
-
-### V2
-#### MOB-US-004 — Revisar el trabajo operativo de un vistazo
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-004` | Business Operations Manager | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Revisar el trabajo operativo de un vistazo |
-| **Description** | Como **Business Operations Manager**, deseo revisar el trabajo operativo de un vistazo, para priorizarlo usando hechos actuales y confiables. |
-| **Acceptance Criteria** | **Scenario 1 — Vista futura**<br>**Given** existe una vista operativa futura aceptada<br>**When** el responsable la revisa<br>**Then** cada elemento indica su contexto y frescura.<br><br>**Scenario 2 — Hechos incompletos**<br>**Given** faltan hechos fuente o están desactualizados<br>**When** el responsable revisa la vista<br>**Then** la limitación es explícita y no se inventa ningún total.<br><br>**Scenario 3 — Alcance no autorizado**<br>**Given** el responsable carece de permiso de alcance<br>**When** solicita la vista<br>**Then** no se expone información operativa privada. |
-
-#### MOB-US-005 — Identificar excepciones operativas críticas
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-005` | Business Operations Manager | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Identificar excepciones operativas críticas |
-| **Description** | Como **Business Operations Manager**, deseo identificar excepciones operativas críticas, para atender trabajo bloqueado antes de que retrase a un cliente o una entrega. |
-| **Acceptance Criteria** | **Scenario 1 — Excepción aceptada**<br>**Given** existe una futura vista de excepciones aceptada<br>**When** el responsable revisa un elemento<br>**Then** quedan claros su alcance, severidad y trabajo responsable.<br><br>**Scenario 2 — Excepción incompleta**<br>**Given** los hechos de la excepción están incompletos<br>**When** se revisa el elemento<br>**Then** se marca como incompleto y no se trata como un nuevo estado de negocio.<br><br>**Scenario 3 — Respuesta autorizada**<br>**Given** una excepción requiere corrección<br>**When** el responsable la sigue<br>**Then** Nexa dirige a la persona al trabajo responsable autorizado. |
-
-#### MOB-US-006 — Encontrar un cliente y su relación con el comprador
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-006` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Encontrar un cliente y su relación con el comprador |
-| **Description** | Como **Sales Representative**, deseo encontrar una relación entre cliente y comprador, para trabajar con el cliente correcto en un flujo móvil futuro. |
-| **Acceptance Criteria** | **Scenario 1 — cliente autorizado**<br>**Given** existe una relación autorizada<br>**When** el representante busca<br>**Then** solo se devuelven clientes permitidos.<br><br>**Scenario 2 — cliente no relacionado**<br>**Given** el cliente no está relacionado o está suspendido<br>**When** el representante lo abre<br>**Then** el trabajo protegido no está disponible.<br><br>**Scenario 3 — Resultado no confiable**<br>**Given** la búsqueda está vacía o no disponible<br>**When** termina<br>**Then** no se adivina ni expone ningún cliente. |
-
-#### MOB-US-007 — Revisar productos, precios y disponibilidad
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-007` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Revisar productos, precios y disponibilidad |
-| **Description** | Como **Sales Representative**, deseo revisar productos, precios y disponibilidad, para preparar demanda futura de un cliente con información confiable. |
-| **Acceptance Criteria** | **Scenario 1 — Producto autorizado**<br>**Given** existe una relación autorizada con el cliente<br>**When** se revisa un producto<br>**Then** se muestran precio y disponibilidad permitidos con su frescura.<br><br>**Scenario 2 — Producto no disponible**<br>**Given** un producto está oculto o no disponible<br>**When** se solicita<br>**Then** no puede tratarse como un compromiso.<br><br>**Scenario 3 — Información modificada**<br>**Given** cambia el precio o disponibilidad<br>**When** el representante continúa<br>**Then** Nexa exige confirmación actual. |
-
-#### MOB-US-008 — Preparar una solicitud de cliente
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-008` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Preparar una solicitud de cliente |
-| **Description** | Como **Sales Representative**, deseo preparar una solicitud de cliente, para organizar una intención antes de un envío autorizado. |
-| **Acceptance Criteria** | **Scenario 1 — Preparación de borrador**<br>**Given** se conocen productos permitidos<br>**When** el representante prepara una solicitud<br>**Then** las cantidades permanecen como intención y no crean compromiso.<br><br>**Scenario 2 — Información modificada**<br>**Given** cambia información del producto o cliente<br>**When** se revisa la solicitud<br>**Then** el cambio es visible antes de la envío.<br><br>**Scenario 3 — borrador local**<br>**Given** la persona pierde conexión<br>**When** edita la solicitud<br>**Then** permanece como borrador no confirmado. |
-
-#### MOB-US-009 — Enviar una solicitud o Direct Order asistido desde el trabajo de campo
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-009` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Enviar una solicitud o Direct Order asistido desde el trabajo de campo |
-| **Description** | Como Representante de Ventas autorizado, deseo enviar la intención comercial del cliente conforme a la política del Tenant, para convertir el trabajo de campo en una solicitud o compromiso válido sin suplantar al comprador. |
-| **Acceptance Criteria** | **Scenario 1 — Política APPROVAL_REQUIRED**<br>**Given** el actor es un Representante de Ventas autorizado, existe Customer Account y Buyer Relationship con elegibilidad válida, la política comercial es APPROVAL_REQUIRED y existe un Sales Draft válido<br>**When** envía la intención comercial<br>**Then** Nexa crea y envía una Purchase Request, no confirma un Direct Order y mantiene al actor como Representante de Ventas sin suplantar al Comprador.<br><br>**Scenario 2 — Direct Order asistido**<br>**Given** el actor es un Representante de Ventas autorizado, existe Customer Account y Buyer Relationship con elegibilidad válida, la política comercial es DIRECT_ORDER y existe un Sales Draft válido<br>**When** confirma el Direct Order asistido<br>**Then** el servidor revalida autorización, relación, offer, price, terms, inventory protection y applicable credit y sólo confirma el compromiso si todas las decisiones tienen éxito, sin crear una Purchase Request artificial.<br><br>**Scenario 3 — Actor y borrador separados**<br>**Given** el Representante de Ventas trabaja dentro de su propia relación y existe un Sales Draft<br>**When** envía la intención comercial<br>**Then** el actor continúa siendo Representante de Ventas, Sales Draft != Buyer Draft y Nexa no suplanta al Comprador.<br><br>**Scenario 4 — Validación rechazada**<br>**Given** falla Customer Account, Buyer Relationship, offer, price, terms, inventory protection, applicable credit o autorización<br>**When** el representante intenta confirmar la intención<br>**Then** no se confirma un Direct Order válido ni se registra un compromiso parcial.<br><br>**Scenario 5 — Reintento idempotente**<br>**Given** el representante reenvía la misma intención comercial<br>**When** Nexa procesa el reintento<br>**Then** conserva un único resultado comercial y no duplica Purchase Request ni compromiso.<br><br>**Scenario 6 — Política vigente**<br>**Given** la política comercial cambia entre la preparación y el envío<br>**When** el representante envía su Sales Draft<br>**Then** Nexa usa la política vigente y no confirma una ruta que ya no está autorizada. |
-
-#### MOB-US-010 — Seguir compromisos del cliente y crédito
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-010` | Sales Representative | Medium | `MOBILE-EPIC-06` — Conveniencia comercial y operativa futura |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Seguir compromisos del cliente y crédito |
-| **Description** | Como **Sales Representative**, deseo seguir los compromisos y el crédito del cliente, para comprender el progreso autorizado sin tomar localmente una decisión de crédito. |
-| **Acceptance Criteria** | **Scenario 1 — Progreso autorizado**<br>**Given** existe una relación autorizada<br>**When** se revisa el progreso<br>**Then** los hechos de compromiso y crédito relevante muestran su frescura.<br><br>**Scenario 2 — Hechos financieros incompletos**<br>**Given** los hechos financieros están desactualizados o incompletos<br>**When** se revisan<br>**Then** la limitación es explícita y no se inventa ninguna decisión.<br><br>**Scenario 3 — Pérdida de relación**<br>**Given** la relación ya no está autorizada<br>**When** se solicita el progreso<br>**Then** no se exponen hechos protegidos. |
-
-#### MOB-US-018 — Mover stock entre ubicaciones del almacén
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-018` | Warehouse Operator | High | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Mover stock entre ubicaciones del almacén |
-| **Description** | Como **Warehouse Operator**, deseo mover stock entre ubicaciones del almacén, para que el movimiento físico sea atribuible desde el origen hasta el destino. |
-| **Acceptance Criteria** | **Scenario 1 — Movimiento autorizado**<br>**Given** existen origen, destino, lote y cantidad autorizados<br>**When** el operador inicia una transferencia<br>**Then** Nexa conserva esos datos para revisión.<br><br>**Scenario 2 — Dato de transferencia faltante**<br>**Given** falta origen, destino, lote o motivo requerido<br>**When** el operador inicia la transferencia<br>**Then** Nexa deja el stock sin cambios.<br><br>**Scenario 3 — Destino incompatible**<br>**Given** el destino no puede aceptar la transferencia<br>**When** el operador la registra<br>**Then** Nexa mantiene la transferencia sin resolver y no afirma recepción.<br><br>**Scenario 4 — Reintento**<br>**Given** el resultado de la transferencia es desconocido<br>**When** el operador repite el movimiento<br>**Then** permanece una única transferencia trazable. |
-
-#### MOB-US-030 — Contactar al comprador durante la entrega
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-030` | Driver or Delivery Operator | High | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Contactar al comprador durante la entrega |
-| **Description** | Como **Driver / Delivery Operator**, deseo contactar al comprador durante la entrega, para resolver una duda de llegada mediante un canal autorizado. |
-| **Acceptance Criteria** | **Scenario 1 — Canal futuro**<br>**Given** existe una política de contacto aceptada<br>**When** el conductor contacta al comprador<br>**Then** solo se usa el canal autorizado y su uso queda registrado.<br><br>**Scenario 2 — Consentimiento faltante**<br>**Given** falta consentimiento o asignación<br>**When** se solicita el contacto<br>**Then** no se inicia contacto personal.<br><br>**Scenario 3 — Resultado separado**<br>**Given** ocurre el contacto<br>**When** termina<br>**Then** por sí mismo no cambia el resultado de entrega ni el Buyer Receipt. |
 
 #### MOB-US-035 — Continuar la evidencia de entrega después de perder conexión
 
@@ -729,6 +690,30 @@ segmento de investigación.
 | **Description** | Como **Customer Buyer**, deseo revisar el estado del crédito y del pago, para comprender lo adeudado sin tratar la evidencia reportada como confirmación. |
 | **Acceptance Criteria** | **Scenario 1 — Crédito actual**<br>**Given** existe una relación autorizada<br>**When** se revisa el crédito<br>**Then** importe, moneda, frescura y fuente quedan claros.<br><br>**Scenario 2 — Estado de pago**<br>**Given** existe evidencia de pago<br>**When** el comprador la revisa<br>**Then** los estados reported, confirmed y rejected permanecen diferenciados.<br><br>**Scenario 3 — Estado desactualizado**<br>**Given** el estado de pago está desactualizado<br>**When** el comprador hace actualización<br>**Then** Nexa expone el estado actual o un estado no disponible veraz. |
 
+#### MOB-US-044 — Saber cuándo una entrega requiere atención
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-044` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Saber cuándo una entrega requiere atención |
+| **Description** | Como **Customer Buyer**, deseo saber cuándo una entrega requiere atención, para responder oportunamente a un cambio relevante. |
+| **Acceptance Criteria** | **Scenario 1 — Actualización relevante**<br>**Given** un hecho permitido de entrega requiere atención del comprador<br>**When** Nexa envía una actualización<br>**Then** el comprador puede identificar la entrega relevante.<br><br>**Scenario 2 — Actualización no relacionada**<br>**Given** la entrega está fuera de la relación del comprador<br>**When** se prepara una actualización<br>**Then** no se revela información privada de la entrega.<br><br>**Scenario 3 — Fallo de entrega**<br>**Given** una actualización no puede entregarse<br>**When** el comprador abre Nexa<br>**Then** los hechos actuales de entrega siguen disponibles para actualización y ningún hecho cambia.<br><br>**Scenario 4 — Reintento de actualización**<br>**Given** una actualización se repite<br>**When** el comprador la recibe<br>**Then** no crea un segundo entrega, recepción ni hecho de discrepancia. |
+
+#### MOB-US-045 — Ver un conductor activo en un mapa
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-045` | Customer Buyer | Low | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Ver un conductor activo en un mapa |
+| **Description** | Como **Customer Buyer**, deseo ver en un mapa un conductor activo, para que un servicio futuro y autorizado me ayude a comprender el horario de llegada. |
+| **Acceptance Criteria** | **Scenario 1 — Ubicación futura**<br>**Given** se acepta una política futura de ubicación<br>**When** el comprador abre una entrega activo<br>**Then** solo se muestra ubicación acotada con consentimiento.<br><br>**Scenario 2 — Sin entrega activo**<br>**Given** no existe una entrega activo<br>**When** el comprador solicita un mapa<br>**Then** no se divulga la ubicación del conductor.<br><br>**Scenario 3 — Límite de privacidad**<br>**Given** falta permiso o relación<br>**When** el comprador solicita un mapa<br>**Then** no se divulga ninguna ubicación. |
+
 #### MOB-US-046 — Contactar al conductor
 
 | Story ID | User | Priority | Epic |
@@ -740,6 +725,43 @@ segmento de investigación.
 | **Title** | Contactar al conductor |
 | **Description** | Como **Customer Buyer**, deseo contactar al conductor, para resolver una duda de llegada mediante un canal autorizado de entrega. |
 | **Acceptance Criteria** | **Scenario 1 — Canal futuro**<br>**Given** existe una política de canal aceptada y una entrega activo<br>**When** el comprador contacta al conductor<br>**Then** solo se usa el canal autorizado.<br><br>**Scenario 2 — Sin permiso**<br>**Given** falta consentimiento o entrega activo<br>**When** se solicita el contacto<br>**Then** no se inicia contacto personal.<br><br>**Scenario 3 — Hechos separados**<br>**Given** ocurre el contacto<br>**When** termina<br>**Then** no cambia Driver outcome, Buyer Receipt ni el estado de entrega. |
+
+#### MOB-US-047 — Verificar una entrega mediante el código de handoff
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-047` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Verificar una entrega mediante el código de handoff |
+| **Description** | Como **Customer Buyer**, deseo verificar una entrega mediante el código de handoff, para confirmar que reviso la entrega correcta. |
+| **Acceptance Criteria** | **Scenario 1 — Código coincidente**<br>**Given** existe un código válido, no expirado y una relación autorizada<br>**When** el comprador lo verifica<br>**Then** Nexa identifica la entrega y Delivery Attempt coincidentes.<br><br>**Scenario 2 — Código inválido**<br>**Given** el código está expirado, reutilizado, malformado o no relacionado<br>**When** el comprador lo verifica<br>**Then** Nexa lo rechaza y no cambia ningún hecho de recepción.<br><br>**Scenario 3 — Sin conexión**<br>**Given** no se puede confirmar el código<br>**When** el comprador lo verifica<br>**Then** Nexa muestra un estado no confirmado y ningún recepción tiene éxito.<br><br>**Scenario 4 — Límite de verificación**<br>**Given** el código está verificado<br>**When** el comprador continúa<br>**Then** la verificación por sí sola no confirma cantidades, POD, pago ni finalización de entrega. |
+
+#### MOB-US-048 — Confirmar las cantidades realmente recibidas
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-048` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Confirmar las cantidades realmente recibidas |
+| **Description** | Como **Customer Buyer**, deseo confirmar las cantidades realmente recibidas, para que el proveedor tenga un registro veraz de mi Buyer Receipt. |
+| **Acceptance Criteria** | **Scenario 1 — recepción coincidente**<br>**Given** existe un handoff verificado y autorizado<br>**When** el comprador confirma las cantidades recibidas<br>**Then** Nexa registra un único hecho de Buyer Receipt con persona, momento y entrega.<br><br>**Scenario 2 — Cantidades diferentes**<br>**Given** las cantidades recibidas difieren del resultado del conductor<br>**When** el comprador las confirma<br>**Then** ambos hechos permanecen separados y la diferencia queda visible.<br><br>**Scenario 3 — Handoff desactualizado o reutilizado**<br>**Given** el handoff está desactualizado, expirado o ya utilizado<br>**When** el comprador confirma cantidades<br>**Then** Nexa rechaza la confirmación o devuelve el resultado original sin un segundo recepción.<br><br>**Scenario 4 — Sin conexión**<br>**Given** no se puede comprobar la confirmación del recepción<br>**When** el comprador lo intenta<br>**Then** Nexa no muestra éxito de recepción hasta recibir confirmación. |
+
+#### MOB-US-049 — Reportar una discrepancia sin borrar los hechos
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-049` | Customer Buyer | Critical | `MOBILE-EPIC-05` — Handoff de Delivery, Buyer Receipt y actualizaciones críticas |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Reportar una discrepancia sin borrar los hechos |
+| **Description** | Como **Customer Buyer**, deseo reportar una discrepancia sin borrar los hechos, para que el proveedor resuelva la diferencia manteniendo un historial confiable. |
+| **Acceptance Criteria** | **Scenario 1 — Discrepancia registrada**<br>**Given** existe un contexto de handoff o recepción verificado<br>**When** el comprador reporta una discrepancia<br>**Then** Nexa conserva motivo, cantidad afectada, persona, momento y evidencia.<br><br>**Scenario 2 — Historiales separados**<br>**Given** el resultado del Driver outcome difiere del Buyer Receipt<br>**When** se registra la discrepancia<br>**Then** ambos hechos originales permanecen sin cambios y la diferencia queda visible.<br><br>**Scenario 3 — Reporte inválido**<br>**Given** falta motivo, permiso o evidencia requerida<br>**When** el comprador lo reporta<br>**Then** Nexa no registra una corrección no autorizada.<br><br>**Scenario 4 — Fallo temporal**<br>**Given** no se puede confirmar el reporte<br>**When** el comprador reintenta<br>**Then** Nexa conserva un único resultado pendiente o aceptado y no implica reembolso, cambio de pago ni finalización de entrega. |
+
 
 #### MOB-US-050 — Gestionar una discrepancia de recepción con evidencia
 
@@ -789,6 +811,42 @@ segmento de investigación.
 | **Description** | Como **Warehouse Operator**, deseo contar una ubicación de almacenamiento y solicitar una corrección de stock, para resolver una diferencia física sin reescribir el historial. |
 | **Acceptance Criteria** | **Scenario 1 — Conteo registrado**<br>**Given** existe una ubicación permitida y una vista actual del stock<br>**When** el operador registra lote y cantidad observados<br>**Then** Nexa conserva el conteo con persona, momento y ubicación.<br><br>**Scenario 2 — Corrección revisada**<br>**Given** el conteo difiere del stock registrado<br>**When** se aprueba una corrección autorizada<br>**Then** Nexa registra evidencia correctiva y la cantidad resultante sin borrar movimientos anteriores.<br><br>**Scenario 3 — Cambio concurrente**<br>**Given** el stock cambió después de iniciar el conteo<br>**When** el operador envía la corrección<br>**Then** Nexa rechaza o reabre el conteo desactualizado en lugar de aplicar una corrección última escritura gana. |
 
+#### MOB-US-054 — Solicitar sustitución de lote cuando FEFO no completa el trabajo
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-054` | Warehouse Operator | Low | `MOBILE-EPIC-08` — Transferencias y exactitud de inventario |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Solicitar sustitución de lote cuando FEFO no completa el trabajo |
+| **Description** | Como **Warehouse Operator**, deseo solicitar una sustitución permitida de lote cuando el lote esperado no puede completar el trabajo, para revisar el pedido sin omitir la política de disponibilidad. |
+| **Acceptance Criteria** | **Scenario 1 — Sustitución solicitada**<br>**Given** el lote esperado no puede suministrar la cantidad preparada<br>**When** el operador propone una alternativa elegible<br>**Then** Nexa la envía a decisión autorizada con ambos lotes visibles.<br><br>**Scenario 2 — Decisión controlada**<br>**Given** una sustitución es rechazada o queda desactualizada<br>**When** el operador continúa<br>**Then** Nexa conserva la asignación original y explica la siguiente acción permitida. |
+
+#### MOB-US-055 — Usar información ampliada de identidad de producto, paquete y almacenamiento
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-055` | Warehouse Operator | Low | `MOBILE-EPIC-08` — Transferencias y exactitud de inventario |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Usar información ampliada de identidad de producto, paquete y almacenamiento |
+| **Description** | Como **Warehouse Operator**, deseo usar información más rica de identidad de producto, paquete y almacenamiento, para manipular el stock previsto con menos errores de identificación. |
+| **Acceptance Criteria** | **Scenario 1 — Identidad resuelta**<br>**Given** existe un identificador permitido de paquete o almacenamiento<br>**When** el operador lo presenta<br>**Then** Nexa muestra el producto correspondiente y el contexto actual antes de iniciar el trabajo.<br><br>**Scenario 2 — Identidad no disponible**<br>**Given** el identificador es desconocido o ilegible<br>**When** el operador intenta continuar<br>**Then** Nexa ofrece un alternativa explícito o indica que se requiere confirmación. |
+
+#### MOB-US-056 — Preparar un grupo de tareas de almacén
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-056` | Warehouse Operator | Low | `MOBILE-EPIC-08` — Transferencias y exactitud de inventario |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Preparar un grupo de tareas de almacén |
+| **Description** | Como **Warehouse Operator**, deseo preparar un grupo de tareas de almacén, para trabajar eficientemente sin perder el resultado de cada elemento. |
+| **Acceptance Criteria** | **Scenario 1 — Grupo preparado**<br>**Given** hay varias tareas permitidas disponibles<br>**When** el operador las agrupa<br>**Then** Nexa muestra claramente elementos, secuencia y comprobaciones requeridas.<br><br>**Scenario 2 — Un elemento difiere**<br>**Given** una tarea no puede completarse como fue preparada<br>**When** el operador registra la diferencia<br>**Then** Nexa mantiene separados los resultados de las otras tareas e identifica el elemento que requiere revisión. |
+
 #### MOB-US-057 — Resolver una discrepancia de despacho antes del handoff
 
 | Story ID | User | Priority | Epic |
@@ -812,6 +870,30 @@ segmento de investigación.
 | **Title** | Reasignar un conductor o reprogramar el despacho de forma segura |
 | **Description** | Como **Dispatch Coordinator**, deseo reasignar un conductor o reprogramar un despacho de forma segura, para que la entrega siga siendo responsabilidad de una persona elegible en un momento acordado. |
 | **Acceptance Criteria** | **Scenario 1 — Reasignación elegible**<br>**Given** una entrega preparada necesita otro conductor<br>**When** el coordinador selecciona una persona elegible<br>**Then** Nexa registra la nueva responsabilidad y conserva el historial de asignación anterior.<br><br>**Scenario 2 — Cambio de horario**<br>**Given** el despacho no puede continuar en el horario previsto<br>**When** el coordinador propone un nuevo horario<br>**Then** Nexa muestra el impacto y confirma el cambio una sola vez.<br><br>**Scenario 3 — Cambio concurrente**<br>**Given** otra persona cambió primero la entrega<br>**When** el coordinador envía el plan antiguo<br>**Then** Nexa lo rechaza y muestra la responsabilidad y horario actuales. |
+
+#### MOB-US-059 — Preparar cargas agrupadas y múltiples paradas
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-059` | Dispatch Coordinator | Low | `MOBILE-EPIC-09` — Excepciones de despacho y coordinación de Delivery |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Preparar cargas agrupadas y múltiples paradas |
+| **Description** | Como **Dispatch Coordinator**, deseo preparar una carga de entrega agrupada con sus paradas, para despachar entregas compatibles manteniendo visibles sus restricciones. |
+| **Acceptance Criteria** | **Scenario 1 — Carga compatible**<br>**Given** las entregas cumplen las reglas de agrupación aceptadas<br>**When** el coordinador prepara una carga<br>**Then** Nexa muestra cada entrega, parada y condición requerida.<br><br>**Scenario 2 — Entrega incompatible**<br>**Given** una entrega incumple una regla de cliente o cadena de frío<br>**When** el coordinador prepara la carga<br>**Then** Nexa la mantiene fuera de la carga y explica por qué. |
+
+#### MOB-US-060 — Completar un handoff al transportista con responsabilidad trazable
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-060` | Dispatch Coordinator | Low | `MOBILE-EPIC-09` — Excepciones de despacho y coordinación de Delivery |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Completar un handoff al transportista con responsabilidad trazable |
+| **Description** | Como **Dispatch Coordinator**, deseo completar un handoff al transportista con responsabilidad clara, para que todos sepan quién controla la carga después de que abandona el almacén. |
+| **Acceptance Criteria** | **Scenario 1 — Handoff aceptado**<br>**Given** existe una carga preparada y un carrier autorizado<br>**When** el coordinador registra el handoff<br>**Then** Nexa conserva carrier, persona, momento y responsabilidad de entrega.<br><br>**Scenario 2 — Evidencia incompleta**<br>**Given** falta evidencia requerida del handoff<br>**When** el coordinador intenta finalizarlo<br>**Then** Nexa deja la responsabilidad en el responsable actual e indica qué se requiere. |
 
 #### MOB-US-061 — Registrar evidencia de temperatura en el despacho
 
@@ -872,6 +954,18 @@ segmento de investigación.
 | **Title** | Registrar un incidente de entrega con mayor detalle |
 | **Description** | Como **Driver / Delivery Operator**, deseo registrar un incidente de entrega con sus detalles relevantes, para que el equipo tome una decisión de seguimiento informada. |
 | **Acceptance Criteria** | **Scenario 1 — Incidente descrito**<br>**Given** una entrega activa encuentra un incidente permitido<br>**When** el conductor registra motivo, lugar dentro de la entrega y evidencia<br>**Then** Nexa conserva el incidente para revisión autorizada.<br><br>**Scenario 2 — El incidente no reescribe el resultado**<br>**Given** ya existe un resultado de entrega<br>**When** se añade un incidente<br>**Then** Nexa conserva el resultado original y vincula la evidencia nueva.<br><br>**Scenario 3 — Incidente incompleto**<br>**Given** faltan detalles requeridos<br>**When** el conductor intenta enviarlo<br>**Then** Nexa identifica la información faltante y no afirma un seguimiento completado. |
+
+#### MOB-US-066 — Recuperar una entrega activa mediante operación offline selectiva
+
+| Story ID | User | Priority | Epic |
+| --- | --- | --- | --- |
+| `MOB-US-066` | Driver or Delivery Operator | Low | `MOBILE-EPIC-09` — Excepciones de despacho y coordinación de Delivery |
+
+| Field | Content |
+| --- | --- |
+| **Title** | Recuperar una entrega activa mediante operación offline selectiva |
+| **Description** | Como **Driver / Delivery Operator**, deseo conservar evidencia seleccionada de entrega durante una pérdida de conexión, para recuperar el trabajo sin afirmar un resultado de entrega no confirmado. |
+| **Acceptance Criteria** | **Scenario 1 — Evidencia retenida**<br>**Given** se captura un elemento de evidencia permitido sin conexión<br>**When** el conductor vuelve a tener cobertura<br>**Then** Nexa muestra su estado pendiente y permite revisarlo antes del envío.<br><br>**Scenario 2 — Recuperación autoritativa**<br>**Given** la entrega cambió mientras el dispositivo estaba offline<br>**When** se revisa la evidencia<br>**Then** Nexa resuelve explícitamente el conflicto y nunca aplica silenciosamente un resultado desactualizado. |
 
 #### MOB-US-067 — Proporcionar instrucciones de entrega y contacto alternativo para la recepción
 
@@ -934,103 +1028,6 @@ segmento de investigación.
 | **Acceptance Criteria** | **Scenario 1 — Evidencia reportada**<br>**Given** están disponibles una referencia, importe y evidencia permitidos<br>**When** el comprador los reporta<br>**Then** Nexa registra el reporte como no confirmado.<br><br>**Scenario 2 — Evidencia revisada**<br>**Given** el proceso responsable revisa el reporte<br>**When** el comprador consulta el estado<br>**Then** Nexa muestra el resultado de revisión sin reescribir el reporte.<br><br>**Scenario 3 — Reporte duplicado**<br>**Given** se vuelve a enviar el mismo reporte<br>**When** Nexa lo recibe<br>**Then** no aplica la evidencia dos veces. |
 
 
-### V3
-#### MOB-US-029 — Compartir la ubicación durante una entrega activa
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-029` | Driver or Delivery Operator | Low | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Compartir la ubicación durante una entrega activa |
-| **Description** | Como **Driver / Delivery Operator**, deseo compartir la ubicación de una entrega durante una entrega activa, para que un servicio de ubicación futuro y aceptado atienda una necesidad acotada de entrega. |
-| **Acceptance Criteria** | **Scenario 1 — Consentimiento futuro**<br>**Given** se acepta una política futura de ubicación<br>**When** el conductor comparte una ubicación<br>**Then** consentimiento, alcance y retención quedan explícitos.<br><br>**Scenario 2 — Sin entrega activo**<br>**Given** no existe una entrega activa<br>**When** se solicita la ubicación<br>**Then** no se comparte ninguna ubicación.<br><br>**Scenario 3 — Límite de privacidad**<br>**Given** la persona retira el permiso<br>**When** se solicita compartir ubicación<br>**Then** no se divulga ninguna ubicación nueva. |
-
-#### MOB-US-045 — Ver un conductor activo en un mapa
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-045` | Customer Buyer | Low | `MOBILE-EPIC-07` — Operación de campo avanzada y continuidad selectiva |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Ver un conductor activo en un mapa |
-| **Description** | Como **Customer Buyer**, deseo ver en un mapa un conductor activo, para que un servicio futuro y autorizado me ayude a comprender el horario de llegada. |
-| **Acceptance Criteria** | **Scenario 1 — Ubicación futura**<br>**Given** se acepta una política futura de ubicación<br>**When** el comprador abre una entrega activo<br>**Then** solo se muestra ubicación acotada con consentimiento.<br><br>**Scenario 2 — Sin entrega activo**<br>**Given** no existe una entrega activo<br>**When** el comprador solicita un mapa<br>**Then** no se divulga la ubicación del conductor.<br><br>**Scenario 3 — Límite de privacidad**<br>**Given** falta permiso o relación<br>**When** el comprador solicita un mapa<br>**Then** no se divulga ninguna ubicación. |
-
-#### MOB-US-054 — Solicitar sustitución de lote cuando FEFO no completa el trabajo
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-054` | Warehouse Operator | Low | `MOBILE-EPIC-08` — Transferencias y exactitud de inventario |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Solicitar sustitución de lote cuando FEFO no completa el trabajo |
-| **Description** | Como **Warehouse Operator**, deseo solicitar una sustitución permitida de lote cuando el lote esperado no puede completar el trabajo, para revisar el pedido sin omitir la política de disponibilidad. |
-| **Acceptance Criteria** | **Scenario 1 — Sustitución solicitada**<br>**Given** el lote esperado no puede suministrar la cantidad preparada<br>**When** el operador propone una alternativa elegible<br>**Then** Nexa la envía a decisión autorizada con ambos lotes visibles.<br><br>**Scenario 2 — Decisión controlada**<br>**Given** una sustitución es rechazada o queda desactualizada<br>**When** el operador continúa<br>**Then** Nexa conserva la asignación original y explica la siguiente acción permitida. |
-
-#### MOB-US-055 — Usar información ampliada de identidad de producto, paquete y almacenamiento
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-055` | Warehouse Operator | Low | `MOBILE-EPIC-08` — Transferencias y exactitud de inventario |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Usar información ampliada de identidad de producto, paquete y almacenamiento |
-| **Description** | Como **Warehouse Operator**, deseo usar información más rica de identidad de producto, paquete y almacenamiento, para manipular el stock previsto con menos errores de identificación. |
-| **Acceptance Criteria** | **Scenario 1 — Identidad resuelta**<br>**Given** existe un identificador permitido de paquete o almacenamiento<br>**When** el operador lo presenta<br>**Then** Nexa muestra el producto correspondiente y el contexto actual antes de iniciar el trabajo.<br><br>**Scenario 2 — Identidad no disponible**<br>**Given** el identificador es desconocido o ilegible<br>**When** el operador intenta continuar<br>**Then** Nexa ofrece un alternativa explícito o indica que se requiere confirmación. |
-
-#### MOB-US-056 — Preparar un grupo de tareas de almacén
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-056` | Warehouse Operator | Low | `MOBILE-EPIC-08` — Transferencias y exactitud de inventario |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Preparar un grupo de tareas de almacén |
-| **Description** | Como **Warehouse Operator**, deseo preparar un grupo de tareas de almacén, para trabajar eficientemente sin perder el resultado de cada elemento. |
-| **Acceptance Criteria** | **Scenario 1 — Grupo preparado**<br>**Given** hay varias tareas permitidas disponibles<br>**When** el operador las agrupa<br>**Then** Nexa muestra claramente elementos, secuencia y comprobaciones requeridas.<br><br>**Scenario 2 — Un elemento difiere**<br>**Given** una tarea no puede completarse como fue preparada<br>**When** el operador registra la diferencia<br>**Then** Nexa mantiene separados los resultados de las otras tareas e identifica el elemento que requiere revisión. |
-
-#### MOB-US-059 — Preparar cargas agrupadas y múltiples paradas
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-059` | Dispatch Coordinator | Low | `MOBILE-EPIC-09` — Excepciones de despacho y coordinación de Delivery |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Preparar cargas agrupadas y múltiples paradas |
-| **Description** | Como **Dispatch Coordinator**, deseo preparar una carga de entrega agrupada con sus paradas, para despachar entregas compatibles manteniendo visibles sus restricciones. |
-| **Acceptance Criteria** | **Scenario 1 — Carga compatible**<br>**Given** las entregas cumplen las reglas de agrupación aceptadas<br>**When** el coordinador prepara una carga<br>**Then** Nexa muestra cada entrega, parada y condición requerida.<br><br>**Scenario 2 — Entrega incompatible**<br>**Given** una entrega incumple una regla de cliente o cadena de frío<br>**When** el coordinador prepara la carga<br>**Then** Nexa la mantiene fuera de la carga y explica por qué. |
-
-#### MOB-US-060 — Completar un handoff al transportista con responsabilidad trazable
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-060` | Dispatch Coordinator | Low | `MOBILE-EPIC-09` — Excepciones de despacho y coordinación de Delivery |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Completar un handoff al transportista con responsabilidad trazable |
-| **Description** | Como **Dispatch Coordinator**, deseo completar un handoff al transportista con responsabilidad clara, para que todos sepan quién controla la carga después de que abandona el almacén. |
-| **Acceptance Criteria** | **Scenario 1 — Handoff aceptado**<br>**Given** existe una carga preparada y un carrier autorizado<br>**When** el coordinador registra el handoff<br>**Then** Nexa conserva carrier, persona, momento y responsabilidad de entrega.<br><br>**Scenario 2 — Evidencia incompleta**<br>**Given** falta evidencia requerida del handoff<br>**When** el coordinador intenta finalizarlo<br>**Then** Nexa deja la responsabilidad en el responsable actual e indica qué se requiere. |
-
-#### MOB-US-066 — Recuperar una entrega activa mediante operación offline selectiva
-
-| Story ID | User | Priority | Epic |
-| --- | --- | --- | --- |
-| `MOB-US-066` | Driver or Delivery Operator | Low | `MOBILE-EPIC-09` — Excepciones de despacho y coordinación de Delivery |
-
-| Field | Content |
-| --- | --- |
-| **Title** | Recuperar una entrega activa mediante operación offline selectiva |
-| **Description** | Como **Driver / Delivery Operator**, deseo conservar evidencia seleccionada de entrega durante una pérdida de conexión, para recuperar el trabajo sin afirmar un resultado de entrega no confirmado. |
-| **Acceptance Criteria** | **Scenario 1 — Evidencia retenida**<br>**Given** se captura un elemento de evidencia permitido sin conexión<br>**When** el conductor vuelve a tener cobertura<br>**Then** Nexa muestra su estado pendiente y permite revisarlo antes del envío.<br><br>**Scenario 2 — Recuperación autoritativa**<br>**Given** la entrega cambió mientras el dispositivo estaba offline<br>**When** se revisa la evidencia<br>**Then** Nexa resuelve explícitamente el conflicto y nunca aplica silenciosamente un resultado desactualizado. |
-
 #### MOB-US-072 — Trabajar con un cliente mediante una visita de campo autorizada
 
 | Story ID | User | Priority | Epic |
@@ -1044,7 +1041,6 @@ segmento de investigación.
 | **Acceptance Criteria** | **Scenario 1 — Visita autorizada**<br>**Given** el representante tiene permiso para la relación del cliente<br>**When** inicia una visita<br>**Then** Nexa muestra el contexto permitido del cliente y su propósito.<br><br>**Scenario 2 — Seguimiento capturado**<br>**Given** la visita produce un seguimiento permitido<br>**When** el representante lo registra<br>**Then** Nexa vincula el resultado con la relación del cliente sin crear un compromiso no aprobado. |
 
 
-### V4/Future Roadmap
 #### MOB-US-073 — Usar evidencia de automatización de almacén en un trabajo controlado
 
 | Story ID | User | Priority | Epic |

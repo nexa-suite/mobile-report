@@ -20,6 +20,8 @@ Drivin. (s. f.-c). *Transport management system*. Recuperado el 7 de septiembre 
 
 Grupo Lucky. (2022, 1 de septiembre). *El 28% de bodegas en el país utiliza algún aplicativo para potenciar sus ventas*. https://www.grupolucky.com/el-28-de-bodegas-en-el-pais-utiliza-algun-aplicativo-para-potenciar-sus-ventas/
 
+Gothelf, J., & Seiden, J. (2021). *Lean UX: Designing great products with agile teams* (3rd ed.). O'Reilly Media. https://www.oreilly.com/library/view/lean-ux-3rd/9781098116293/
+
 GS1. (2017). *GS1 Global Traceability Standard: Release 2.0*. https://www.gs1.org/docs/traceability/Global_Traceability_Standard.pdf
 
 Ilhan, A. E. (2025). Design approaches to improve user experience: An example of a mobile app prototyping process. *International Journal of Human-Computer Studies, 203*, 103569. https://doi.org/10.1016/j.ijhcs.2025.103569

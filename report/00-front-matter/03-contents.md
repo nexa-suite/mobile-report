@@ -61,11 +61,11 @@
 ## Chapters III-IV, conclusions and annexes
 
 - [Chapter III — Solution UI/UX Design](../03-solution-ui-ux-design/chapter-overview.md)
-  - [Product Design](../03-solution-ui-ux-design/3.1-product-design/section-overview.md)
-    - [Style Guidelines](../03-solution-ui-ux-design/3.1-product-design/3.1.1-style-guidelines/section-overview.md)
-    - [Information Architecture](../03-solution-ui-ux-design/3.1-product-design/3.1.2-information-architecture/section-overview.md)
-    - [Landing Page UI Design](../03-solution-ui-ux-design/3.1-product-design/3.1.3-landing-page-ui-design/section-overview.md)
-    - [Mobile Applications UX/UI Design](../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/section-overview.md)
+  - [Product Design](../03-solution-ui-ux-design/3.1-product-design/3.1.1-style-guidelines/3.1.1.1-general-style-guidelines.md)
+    - [Style Guidelines](../03-solution-ui-ux-design/3.1-product-design/3.1.1-style-guidelines/3.1.1.1-general-style-guidelines.md)
+    - [Information Architecture](../03-solution-ui-ux-design/3.1-product-design/3.1.2-information-architecture/3.1.2.1-organization-systems.md)
+    - [Landing Page UI Design](../03-solution-ui-ux-design/3.1-product-design/3.1.3-landing-page-ui-design/3.1.3.1-landing-page-wireframes.md)
+    - [Mobile Applications UX/UI Design](../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/3.1.4.1-mobile-application-wireframes.md)
 - [Chapter IV — Product Implementation and Validation](../04-product-implementation-and-validation/chapter-overview.md)
   - [Software Configuration Management](../04-product-implementation-and-validation/4.1-software-configuration-management/section-overview.md)
   - [Landing Page, Services and Applications Implementation](../04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/section-overview.md)

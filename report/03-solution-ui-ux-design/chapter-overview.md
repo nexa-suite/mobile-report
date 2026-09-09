@@ -14,4 +14,4 @@ prueban que exista una aplicación Mobile. Website es una superficie separada
 HTML5/CSS3/vanilla JavaScript con 15 páginas HTML y navegación estática propia;
 se registra como evidencia Web, no como evidencia de runtime Mobile.
 
-- [3.1 Product Design](./3.1-product-design/)
+- [3.1 Product Design](./3.1-product-design/3.1.1-style-guidelines/3.1.1.1-general-style-guidelines.md)

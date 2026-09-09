@@ -1,7 +1,5 @@
-# 2.6.6. BC-06 — Fulfillment & Delivery
+### 2.6.6 BC-06 — Fulfillment & Delivery
 
-`DOMAIN MODEL: TARGET / ACCEPTED`
-`IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL`
 
 Canonical target: Blueprint `01-shared/domain/bounded-contexts/BC-06-fulfillment-delivery/`.
 This Core Domain context owns execution plans, dispatch handoff, delivery
@@ -9,7 +7,7 @@ attempts, quantity outcomes, receipt and delivery evidence. Driver outcome,
 Buyer receipt, Proof of Delivery and Business Traceability remain separate
 facts.
 
-## 2.6.6.1 Domain Layer
+#### 2.6.6.1 Domain Layer
 
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
@@ -32,14 +30,14 @@ and creates one continuation for remaining obligation; POD is immutable and
 corrected by addendum; temperature evidence is manual in the initial scope and excursion places
 affected quantity on HOLD pending explicit disposition.
 
-## 2.6.6.2 Interface Layer
+#### 2.6.6.2 Interface Layer
 
 Target contracts cover fulfillment planning, picking result, dispatch handoff,
 assignment, delivery attempt, outcome, buyer receipt, POD and temperature
 evidence. Exact URI/DTO names are not invented. The server authorizes every
 critical transition; Operations Mobile and Buyer Mobile are planned projections.
 
-## 2.6.6.3 Application Layer
+#### 2.6.6.3 Application Layer
 
 Target handlers coordinate fulfillment start/complete/cancel, handoff issue and
 resolution, delivery assignment/attempt, partial continuation, receipt and
@@ -47,7 +45,7 @@ evidence registration. Idempotency, tenant scope, immutable evidence metadata
 and conflict outcomes are explicit. Durable outbox/inbox supports downstream
 notifications and traceability after commit.
 
-## 2.6.6.4 Infrastructure Layer
+#### 2.6.6.4 Infrastructure Layer
 
 Target shared PostgreSQL ownership covers `fulfillment`, `fulfillment_line`,
 `picking_result`, `picking_discrepancy`, `delivery`, `delivery_assignment`,
@@ -64,7 +62,7 @@ delivery, attempt, handoff and evidence code is `AS-IS VERIFIED`; full target
 receipt/continuation/temperature semantics are `PARTIAL`; Mobile runtime,
 device proof and validación de producto are `NOT EVIDENCED`.
 
-## 2.6.6.5 Bounded Context Software Architecture Component Level Diagrams
+#### 2.6.6.5 Bounded Context Software Architecture Component Level Diagrams
 
 The selected family is `Nexa-API-FulfillmentDelivery-TARGET`, a logical view
 inside the single API container. It is not a delivery microservice or Mobile
@@ -72,17 +70,16 @@ BC.
 
 ![BC-06 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.png)
 
-Source/export provenance: [Chapter 2 register](../../../../delivery-checklists/chapter-02-evidence-provenance.md).
 
-## 2.6.6.6 Bounded Context Software Architecture Code Level Diagrams
+#### 2.6.6.6 Bounded Context Software Architecture Code Level Diagrams
 
-### 2.6.6.6.1 Bounded Context Domain Layer Class Diagrams
+##### 2.6.6.6.1 Bounded Context Domain Layer Class Diagrams
 
 ![BC-06 tactical domain model — TARGET](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.png)
 
 Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-06/domain-model.puml).
 
-### 2.6.6.6.2 Bounded Context Database Design Diagram
+##### 2.6.6.6.2 Bounded Context Database Design Diagram
 
 ![BC-06 target database projection](../../../assets/chapter-2/tactical/BC-06/database-diagram.png)
 
@@ -90,7 +87,7 @@ Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-06/databas
 Logical ownership is in shared PostgreSQL; canonical SQL defines constraints,
 tenant scope and evidence references.
 
-## Crosswalk and open evidence
+#### Lectura de implementación y límite de evidencia
 
 | Concern | Classification | Evidence boundary |
 | :--- | :--- | :--- |

@@ -1,13 +1,11 @@
-# 2.6.8. BC-08 — Payments
+### 2.6.8 BC-08 — Payments
 
-`DOMAIN MODEL: TARGET / ACCEPTED`
-`IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL`
 
 Canonical target: Blueprint `01-shared/domain/bounded-contexts/BC-08-payments/`.
 This context owns provider-neutral Payment facts, attempts, callbacks, refunds,
 corrections and reconciliation. Payment Reported is not Payment Confirmed.
 
-## 2.6.8.1 Domain Layer
+#### 2.6.8.1 Domain Layer
 
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
@@ -27,21 +25,21 @@ failure becomes `UNALLOCATED / RECONCILIATION_REQUIRED`; payment history is
 immutable and refund/correction is explicit. PAN, CVV and secrets are never
 stored.
 
-## 2.6.8.2 Interface Layer
+#### 2.6.8.2 Interface Layer
 
 Target contracts cover payment intent/report/status, provider callback,
 refund/correction and reconciliation. Exact routes not verified in API are not
 invented. The webhook edge verifies provider signatures and deduplication;
 clients consume server status and cannot declare confirmation.
 
-## 2.6.8.3 Application Layer
+#### 2.6.8.3 Application Layer
 
 Target handlers initiate provider work, accept callbacks, confirm/reconcile,
 request refunds and expose safe status. External I/O occurs outside long DB
 transactions; local intent/attempt state is fenced and idempotent. BC-07
 application coordination references Receivable by ID.
 
-## 2.6.8.4 Infrastructure Layer
+#### 2.6.8.4 Infrastructure Layer
 
 Target shared PostgreSQL ownership covers `payment`, `payment_attempt`,
 `payment_provider_event`, `payment_refund`, `payment_correction` and
@@ -55,7 +53,7 @@ callback code is `AS-IS VERIFIED`; provider-neutral reconciliation and all
 failure compensation is `PARTIAL`; Mobile payment workflow/runtime and
 validación de producto are `NOT EVIDENCED`.
 
-## 2.6.8.5 Bounded Context Software Architecture Component Level Diagrams
+#### 2.6.8.5 Bounded Context Software Architecture Component Level Diagrams
 
 `Nexa-API-CreditPaymentDocuments-TARGET` is the selected API component family.
 It is a logical view across three BC concerns inside one API container, not a
@@ -63,17 +61,16 @@ physical deployment boundary.
 
 ![BC-08 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png)
 
-Source/export provenance: [Chapter 2 register](../../../../delivery-checklists/chapter-02-evidence-provenance.md).
 
-## 2.6.8.6 Bounded Context Software Architecture Code Level Diagrams
+#### 2.6.8.6 Bounded Context Software Architecture Code Level Diagrams
 
-### 2.6.8.6.1 Bounded Context Domain Layer Class Diagrams
+##### 2.6.8.6.1 Bounded Context Domain Layer Class Diagrams
 
 ![BC-08 tactical domain model — TARGET](../../../assets/chapter-2/tactical/BC-08/BC08_Payments.png)
 
 Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-08/domain-model.puml).
 
-### 2.6.8.6.2 Bounded Context Database Design Diagram
+##### 2.6.8.6.2 Bounded Context Database Design Diagram
 
 ![BC-08 target database projection](../../../assets/chapter-2/tactical/BC-08/database-diagram.png)
 
@@ -81,7 +78,7 @@ Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-08/databas
 The drawing is a logical shared-PostgreSQL projection; target keys and
 provider-event dedupe remain defined by canonical SQL.
 
-## Crosswalk and open evidence
+#### Lectura de implementación y límite de evidencia
 
 | Concern | Classification | Evidence boundary |
 | :--- | :--- | :--- |

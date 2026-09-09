@@ -1,14 +1,12 @@
-# 2.6.10. BC-10 — Notifications
+### 2.6.10 BC-10 — Notifications
 
-`DOMAIN MODEL: TARGET / ACCEPTED`
-`IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL`
 
 Canonical target: Blueprint `01-shared/domain/bounded-contexts/BC-10-notifications/`.
 This context owns notification intent, recipient/channel policy, in-app/email
 delivery and retry facts. Notification failure never changes source business
 state. Mobile delivery is a projection, not a Mobile BC.
 
-## 2.6.10.1 Domain Layer
+#### 2.6.10.1 Domain Layer
 
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
@@ -28,21 +26,21 @@ retry/terminal failure never mutates PR, SO, Payment or Delivery; payloads
 exclude secrets/unnecessary PII; subscription rotation and invalid-token
 handling remain technical delivery behavior.
 
-## 2.6.10.2 Interface Layer
+#### 2.6.10.2 Interface Layer
 
 Target contracts cover notification read/preferences, notification intent,
 channel status, subscription lifecycle and worker callbacks. Exact routes or
 provider DTOs absent from API evidence are not invented. Source facts enter
 through durable outbox/inbox; client acknowledgment is not source confirmation.
 
-## 2.6.10.3 Application Layer
+#### 2.6.10.3 Application Layer
 
 Target handlers consume source facts, persist notification intent, choose
 recipient/channel, dispatch, retry and project an in-app view. Lease/fencing,
 idempotency and bounded backoff protect duplicate delivery. Source business
 state remains owned by its origin BC.
 
-## 2.6.10.4 Infrastructure Layer
+#### 2.6.10.4 Infrastructure Layer
 
 Target shared PostgreSQL ownership covers `notification_template`,
 `notification`, `notification_recipient`, `notification_preference`,
@@ -56,7 +54,7 @@ V36/V44/V59/V94–V100 where present at `origin/main`. In-app inbox/preferences
 are `AS-IS VERIFIED`; durable intent/attempt and full email retry are `PARTIAL`;
 Mobile provider configuration, runtime and validación de producto are `NOT EVIDENCED`.
 
-## 2.6.10.5 Bounded Context Software Architecture Component Level Diagrams
+#### 2.6.10.5 Bounded Context Software Architecture Component Level Diagrams
 
 The selected logical API family is `Nexa-API-FulfillmentDelivery-TARGET`,
 which shows one possible source-event/notification collaboration inside the
@@ -64,18 +62,16 @@ single API container. It is not a notification deployment unit.
 
 ![BC-10 component family — TARGET](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.png)
 
-The relationship is a target component view; source/export hashes are in the
-[provenance register](../../../../delivery-checklists/chapter-02-evidence-provenance.md).
 
-## 2.6.10.6 Bounded Context Software Architecture Code Level Diagrams
+#### 2.6.10.6 Bounded Context Software Architecture Code Level Diagrams
 
-### 2.6.10.6.1 Bounded Context Domain Layer Class Diagrams
+##### 2.6.10.6.1 Bounded Context Domain Layer Class Diagrams
 
 ![BC-10 tactical domain model — TARGET](../../../assets/chapter-2/tactical/BC-10/BC10_Notifications.png)
 
 Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-10/domain-model.puml).
 
-### 2.6.10.6.2 Bounded Context Database Design Diagram
+##### 2.6.10.6.2 Bounded Context Database Design Diagram
 
 ![BC-10 target database projection](../../../assets/chapter-2/tactical/BC-10/database-diagram.png)
 
@@ -83,7 +79,7 @@ Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-10/databas
 This is shared-PostgreSQL logical ownership with target delivery constraints;
 it does not imply a Mobile database or push provider deployment.
 
-## Crosswalk and open evidence
+#### Lectura de implementación y límite de evidencia
 
 | Concern | Classification | Evidence boundary |
 | :--- | :--- | :--- |

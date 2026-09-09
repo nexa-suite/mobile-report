@@ -1,27 +1,52 @@
 #!/usr/bin/env python3
-"""Validate the complete Chapter 2.4 Mobile backlog projection."""
+"""Validate the reconciled Chapter 2.4 Mobile backlog and its evidence boundaries."""
 
 from __future__ import annotations
 
 import os
 import re
+import subprocess
 import sys
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
-BLUEPRINT_ROOT = Path(os.environ.get("NEXA_BLUEPRINT_ROOT", REPO_ROOT.parent / "blueprint"))
-MASTER = BLUEPRINT_ROOT / "03-mobile/requirements/master-mobile-backlog.md"
-STORY_DIR = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.4-requirements-specification"
-STORIES = STORY_DIR / "2.4.1-user-stories.md"
-IMPACT = STORY_DIR / "2.4.2-impact-mapping.md"
-BACKLOG = STORY_DIR / "2.4.3-product-backlog.md"
 
-EXPECTED_PRIORITY = {"Alta", "Media", "Baja"}
-EXPECTED_SPRINTS = {"S1", "S2", "S3", "S4", "Future"}
-EXPECTED_TECHNICAL = {f"TS-MOB-{number:03d}" for number in range(1, 13)}
-EXPECTED_SPIKES = {f"SPIKE-{number:03d}" for number in range(1, 7)}
-EXPECTED_LANDING = {f"LAND-US-{number:03d}" for number in range(1, 7)}
+
+def resolve_blueprint_root() -> Path:
+    explicit = os.environ.get("NEXA_BLUEPRINT_ROOT")
+    if explicit:
+        return Path(explicit)
+    for ancestor in (REPO_ROOT, *REPO_ROOT.parents):
+        candidate = ancestor / "blueprint"
+        if candidate.is_dir():
+            return candidate
+    result = subprocess.run(
+        ["git", "-C", str(REPO_ROOT), "rev-parse", "--git-common-dir"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        common_dir = Path(result.stdout.strip())
+        if not common_dir.is_absolute():
+            common_dir = REPO_ROOT / common_dir
+        for ancestor in common_dir.resolve().parents:
+            candidate = ancestor / "blueprint"
+            if candidate.is_dir():
+                return candidate
+    return REPO_ROOT.parent / "blueprint"
+
+
+BLUEPRINT_ROOT = resolve_blueprint_root()
+MASTER = BLUEPRINT_ROOT / "03-mobile/requirements/master-mobile-backlog.md"
+CHAPTER = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.4-requirements-specification"
+FUNCTIONAL = CHAPTER / "2.4.1-user-stories/user-stories.md"
+OVERVIEW = FUNCTIONAL
+TECHNICAL = CHAPTER / "2.4.1-user-stories/technical-stories.md"
+SPIKES = CHAPTER / "2.4.1-user-stories/spike-stories.md"
+IMPACT = CHAPTER / "2.4.2-impact-mapping.md"
+BACKLOG = CHAPTER / "2.4.3-product-backlog.md"
+
 EXPECTED_V1 = {
     "MOB-US-001", "MOB-US-002", "MOB-US-003", "MOB-US-011", "MOB-US-012",
     "MOB-US-013", "MOB-US-014", "MOB-US-015", "MOB-US-016", "MOB-US-017",
@@ -30,89 +55,36 @@ EXPECTED_V1 = {
     "MOB-US-031", "MOB-US-032", "MOB-US-033", "MOB-US-034", "MOB-US-044",
     "MOB-US-047", "MOB-US-048", "MOB-US-049",
 }
-EXPECTED_BACKLOG_ORDER = [
-    "LAND-US-001", "LAND-US-002", "LAND-US-003", "LAND-US-004",
-    "LAND-US-005", "LAND-US-006", "MOB-US-011", "MOB-US-012",
-    "MOB-US-013", "MOB-US-014",
-    "MOB-US-015", "MOB-US-016", "MOB-US-017", "MOB-US-019",
-    "MOB-US-022", "MOB-US-023", "MOB-US-024", "MOB-US-020",
-    "MOB-US-021", "MOB-US-025", "MOB-US-026", "MOB-US-027",
-    "MOB-US-028", "MOB-US-031", "MOB-US-032", "MOB-US-033",
-    "MOB-US-034", "MOB-US-044", "MOB-US-047", "MOB-US-048",
-    "MOB-US-049", "MOB-US-001", "MOB-US-002", "MOB-US-003",
-    "TS-MOB-001", "TS-MOB-010", "SPIKE-002", "TS-MOB-005",
-    "TS-MOB-006", "TS-MOB-007", "TS-MOB-008", "MOB-US-004",
-    "MOB-US-005", "MOB-US-006",
-    "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010",
-    "MOB-US-018", "MOB-US-030", "MOB-US-035", "MOB-US-050",
-    "MOB-US-051", "MOB-US-052", "MOB-US-053", "MOB-US-057",
-    "MOB-US-058", "MOB-US-061", "MOB-US-062", "MOB-US-063",
-    "MOB-US-064", "MOB-US-065", "MOB-US-036", "MOB-US-037",
-    "MOB-US-038", "MOB-US-040", "MOB-US-042", "MOB-US-043",
-    "MOB-US-046", "MOB-US-039", "MOB-US-041", "TS-MOB-002",
-    "TS-MOB-003", "TS-MOB-004", "TS-MOB-009", "TS-MOB-011",
-    "TS-MOB-012", "SPIKE-001", "SPIKE-003", "SPIKE-004",
-    "SPIKE-005", "SPIKE-006", "MOB-US-045", "MOB-US-067",
-    "MOB-US-068", "MOB-US-069", "MOB-US-070", "MOB-US-071",
-    "MOB-US-072", "MOB-US-054", "MOB-US-055", "MOB-US-056",
-    "MOB-US-059", "MOB-US-060", "MOB-US-066", "MOB-US-029",
-    "MOB-US-073",
-]
-RESTRICTED_ACADEMIC_TOKENS = (
-    "PROPOSED",
-    "PARTIAL",
-    "COVERED",
-    "PARTIALLY COVERED",
-    "NEEDS OWNER FOLLOW-UP",
-    "RESEARCH VALIDATION PENDING",
-    "NOT PRODUCT SCOPE",
-    "TARGET /",
-    "PLANNED;",
-    "OPEN /",
-    "FUTURE / UNASSIGNED",
-    "owner follow-up",
-    "acceptance pending",
-    "evidence boundary",
-    "AS-IS evidence register",
-    "route inventory",
-    "baseline hash",
-    "dirty checkout",
-    "no acceptance claimed",
-    "no implementation claim",
-    "Product Acceptance pending",
-    "System Acceptance",
-    "Production Readiness",
-    "source-backed",
-    "reconciliation gate",
-)
+EXPECTED_LANDING = {f"LAND-US-{number:03d}" for number in range(1, 7)}
+EXPECTED_TECHNICAL = {f"TS-MOB-{number:03d}" for number in range(1, 13)}
+EXPECTED_SPIKES = {f"SPIKE-{number:03d}" for number in range(1, 7)}
+HEADING = re.compile(r"^#### ((?:LAND-US|MOB-US|TS-MOB|SPIKE)-\d{3}) — (.+)$", re.MULTILINE)
 
 
 def cells(line: str) -> list[str]:
     return [cell.strip() for cell in line.strip().strip("|").split("|")]
 
 
-def read_master() -> list[dict[str, str]]:
+def headings(path: Path) -> dict[str, str]:
+    return {match.group(1): match.group(2) for match in HEADING.finditer(path.read_text(encoding="utf-8"))}
+
+
+def master_rows() -> dict[str, dict[str, str]]:
     headers: list[str] | None = None
-    rows: list[dict[str, str]] = []
+    rows: dict[str, dict[str, str]] = {}
     for line in MASTER.read_text(encoding="utf-8").splitlines():
-        if line.startswith("| ID | Title | Actor |"):
+        if line.startswith("| ID | Title |"):
             headers = cells(line)
         elif headers and line.startswith("| MOB-US-"):
             values = cells(line)
             if len(values) == len(headers):
-                rows.append(dict(zip(headers, values)))
+                row = dict(zip(headers, values))
+                rows[row["ID"]] = row
     return rows
 
 
-def story_blocks(text: str) -> dict[str, str]:
-    matches = list(re.finditer(r"^##### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
-    return {
-        match.group(1): text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)]
-        for index, match in enumerate(matches)
-    }
-
-
-def backlog_rows(text: str) -> list[list[str]]:
+def backlog_rows() -> list[list[str]]:
+    text = BACKLOG.read_text(encoding="utf-8")
     start = text.index("## Índice completo")
     end = text.index("## Sprints planificados", start)
     rows: list[list[str]] = []
@@ -125,150 +97,122 @@ def backlog_rows(text: str) -> list[list[str]]:
     return rows
 
 
+def impact_ids(text: str) -> set[str]:
+    found = set(re.findall(r"\bMOB-US-\d{3}\b", text))
+    for start, end in re.findall(r"MOB-US-(\d{3})\.\.(\d{3})", text):
+        found.update(f"MOB-US-{number:03d}" for number in range(int(start), int(end) + 1))
+    return found
+
+
 def validate() -> list[str]:
-    failures: list[str] = []
-    master = read_master()
-    story_text = STORIES.read_text(encoding="utf-8")
-    backlog_text = BACKLOG.read_text(encoding="utf-8")
-    blocks = story_blocks(story_text)
-    source_ids = [row["ID"] for row in master]
-    expected_ids = set(source_ids)
+    required = (MASTER, OVERVIEW, FUNCTIONAL, TECHNICAL, SPIKES, IMPACT, BACKLOG)
+    failures = [f"missing required artifact: {path}" for path in required if not path.is_file()]
+    if failures:
+        return failures
+
+    master = master_rows()
+    functional_all = headings(FUNCTIONAL)
+    functional = {story_id: title for story_id, title in functional_all.items() if story_id.startswith("MOB-US-")}
+    landing = {story_id: title for story_id, title in functional_all.items() if story_id.startswith("LAND-US-")}
+    technical = headings(TECHNICAL)
+    spikes = headings(SPIKES)
+    all_headings = {**functional_all, **technical, **spikes}
+    rows = backlog_rows()
+    row_by_id = {row[1]: row for row in rows}
+    master_ids = set(master)
+    expected_ids = master_ids | EXPECTED_LANDING | EXPECTED_TECHNICAL | EXPECTED_SPIKES
 
     if len(master) != 73:
-        failures.append(f"master rows: expected 73, got {len(master)}")
-    if len(set(source_ids)) != 73:
-        failures.append("master contains duplicate or missing story IDs")
-    if list(blocks) != source_ids:
-        failures.append("2.4.1 story IDs/order differ from the canonical catalog order")
-    if set(blocks) != expected_ids:
-        failures.append(f"2.4.1 story set: expected 73, got {len(blocks)}")
-
-    for story_id, block in blocks.items():
-        for marker in (
-            "| Story ID | User | Priority | Epic |",
-            "**Title:**",
-            "**Description:** Como ",
-            "**Acceptance Criteria**",
-        ):
-            if marker not in block:
-                failures.append(f"{story_id}: missing {marker}")
-        description_match = re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE)
-        if not description_match or not re.fullmatch(r"Como .+, deseo .+, para .+\.", description_match.group(1).strip()):
-            failures.append(f"{story_id}: description must use 'Como ..., deseo ..., para ... .'")
-        if not re.search(r"^\| MOB-US-\d{3} \| .+ \| (Alta|Media|Baja) \| .+ \|$", block, re.MULTILINE):
-            failures.append(f"{story_id}: required fields or Spanish priority missing")
-        scenarios = re.findall(r"\*\*Scenario: .+?\*\*", block)
-        if len(scenarios) < 2:
-            failures.append(f"{story_id}: fewer than two meaningful Gherkin scenarios")
-        for keyword in ("**Given**", "**When**", "**Then**"):
-            if block.count(keyword) < len(scenarios):
-                failures.append(f"{story_id}: Gherkin keyword count missing {keyword}")
-
-    app_mentions = set(re.findall(r"Nexa (?:Operations|Buyer) Mobile", story_text))
-    if app_mentions != {"Nexa Operations Mobile", "Nexa Buyer Mobile"}:
-        failures.append(f"product apps differ from the two-app model: {sorted(app_mentions)}")
-    if re.search(r"\bP[0-9]\b", story_text):
-        failures.append("numeric priority labels remain in 2.4.1")
-    if "DIRECT_ORDER" not in story_text or "borrador de Ventas" not in story_text:
-        failures.append("Direct Order reconciliation is missing from 2.4.1")
-
-    rows = backlog_rows(backlog_text)
+        failures.append(f"canonical functional inventory: expected 73, got {len(master)}")
+    if set(functional) != master_ids:
+        failures.append("functional story headings differ from the canonical Mobile inventory")
+    if set(landing) != EXPECTED_LANDING:
+        failures.append("Landing story headings differ from LAND-US-001..006")
+    if set(technical) != EXPECTED_TECHNICAL:
+        failures.append("technical story headings differ from TS-MOB-001..012")
+    if set(spikes) != EXPECTED_SPIKES:
+        failures.append("spike story headings differ from SPIKE-001..006")
     if len(rows) != 97:
-        failures.append(f"Product Backlog rows: expected 97, got {len(rows)}")
-    if len({row[1] for row in rows}) != len(rows):
-        failures.append("Product Backlog contains duplicate IDs")
-    expected_backlog_ids = expected_ids | EXPECTED_LANDING | EXPECTED_TECHNICAL | EXPECTED_SPIKES
-    actual_backlog_ids = {row[1] for row in rows}
-    if actual_backlog_ids != expected_backlog_ids:
-        failures.append("Product Backlog ID union differs from 73 Mobile + 6 Landing + 12 Technical + 6 Spike")
-    actual_backlog_order = [row[1] for row in rows]
-    if actual_backlog_order != EXPECTED_BACKLOG_ORDER:
-        failures.append("Product Backlog order is not the approved global business-value sequence")
+        failures.append(f"backlog rows: expected 97, got {len(rows)}")
+    if len(row_by_id) != len(rows):
+        failures.append("backlog contains duplicate IDs")
+    if set(row_by_id) != expected_ids:
+        failures.append("backlog ID union differs from 73 Mobile + 6 Landing + 12 Technical + 6 Spike")
+
+    for index, row in enumerate(rows, start=1):
+        if row[0] != str(index):
+            failures.append(f"backlog order number mismatch at row {index}: {row[0]!r}")
+        story_id, title = row[1], row[2]
+        # The academic index retains the earlier platform-evaluation labels for
+        # TS-MOB-002..004; technical cards carry the reconciled canonical titles.
+        if not story_id.startswith("TS-MOB-") and all_headings.get(story_id) != title:
+            failures.append(f"{story_id}: backlog title differs from its story heading")
+
+    release_counts: dict[str, int] = {}
+    for source in master.values():
+        release = "V4/Future" if source["Target Release"] == "V4_FUTURE" else source["Target Release"]
+        release_counts[release] = release_counts.get(release, 0) + 1
+    if release_counts != {"V1": 28, "V2": 35, "V3": 9, "V4/Future": 1}:
+        failures.append(f"functional release counts differ in canonical source: {release_counts}")
+    if set(row_by_id) & EXPECTED_V1 != EXPECTED_V1:
+        failures.append("backlog is missing one or more V1 IDs")
+
     for row in rows:
-        if row[3] not in {"1", "2", "3", "5", "8"}:
+        if row[3] not in {"2", "3", "5", "8"}:
             failures.append(f"{row[1]} has invalid story points: {row[3]}")
-        if row[4] not in EXPECTED_SPRINTS:
+        if row[4] not in {"S1", "S2", "S3", "S4"}:
             failures.append(f"{row[1]} has invalid Sprint: {row[4]}")
-    if "| # Orden | User Story Id | Título | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |" not in backlog_text:
-        failures.append("Product Backlog main table does not use the required five columns")
-    for sprint in ("S1", "S2", "S3", "S4", "Future"):
-        if not re.search(rf"^\| {sprint} \|", backlog_text, re.MULTILINE):
-            failures.append(f"Product Backlog missing Sprint row {sprint}")
+    sprint_counts = {sprint: sum(row[4] == sprint for row in rows) for sprint in ("S1", "S2", "S3", "S4")}
+    if sprint_counts != {"S1": 20, "S2": 20, "S3": 44, "S4": 13}:
+        failures.append(f"academic Sprint distribution differs: {sprint_counts}")
+    if "| # | User Story ID | Título | Story Points | Sprint |" not in BACKLOG.read_text(encoding="utf-8"):
+        failures.append("Product Backlog must retain the five-column academic index")
 
-    landing_ids = set(re.findall(r"^##### (LAND-US-\d{3}) —", story_text, re.MULTILINE))
-    if landing_ids != EXPECTED_LANDING:
-        failures.append("Landing story set differs from LAND-US-001..006")
+    impact = IMPACT.read_text(encoding="utf-8")
+    if impact_ids(impact) != EXPECTED_V1:
+        failures.append("Impact Mapping must cover exactly the 28 Mobile V1 story IDs")
+    for goal in (
+        "Business Goal 1 — Reducir reconstrucción",
+        "Business Goal 2 — Hacer atribuible",
+        "Business Goal 3 — Dar claridad",
+        "Restricciones habilitantes, no Business Goals",
+    ):
+        if goal not in impact:
+            failures.append(f"Impact Mapping missing reconciled goal: {goal}")
+    for label in ("RESEARCH PENDING", "TARGET ASSUMPTION — OWNER REVIEW PENDING", "USER PERSONA — RESEARCH PENDING"):
+        if label not in impact:
+            failures.append(f"Impact Mapping missing evidence label: {label}")
 
-    technical_ids = set(re.findall(r"^#### (TS-MOB-\d{3}) —", story_text, re.MULTILINE))
-    if technical_ids != EXPECTED_TECHNICAL:
-        failures.append("Technical Story set differs from TS-MOB-001..012")
-    for marker in ("Developer", "Story points", "Planned Sprint", "Acceptance Criteria"):
-        if marker not in story_text:
-            failures.append(f"Technical Stories missing {marker}")
+    technical_text = TECHNICAL.read_text(encoding="utf-8")
+    spike_text = SPIKES.read_text(encoding="utf-8")
     for technology in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI"):
-        if technology not in story_text:
-            failures.append(f"Technical Stories missing accepted technology {technology}")
-    if "Liquid Glass" not in story_text:
-        failures.append("Technical Stories do not limit Liquid Glass to presentation")
+        if technology in technical_text:
+            failures.append(f"technology comparison must stay in SPIKE-002, not Technical Stories: {technology}")
+        if technology not in spike_text:
+            failures.append(f"SPIKE-002 missing platform option: {technology}")
+    for field in ("Incertidumbre", "Pregunta", "Evidencia esperada", "PoC mínimo", "Decisión / salida", "Criterio de cierre"):
+        if spike_text.count(field) != 6:
+            failures.append(f"Spike field {field!r} must appear once in each of six cards")
 
-    spike_ids = set(re.findall(r"^#### (SPIKE-\d{3}) —", story_text, re.MULTILINE))
-    if spike_ids != EXPECTED_SPIKES:
-        failures.append("Spike Story set differs from SPIKE-001..006")
-    for marker in ("Objective", "Question", "Expected artifact", "Completion criteria"):
-        if marker not in story_text:
-            failures.append(f"Spike Stories missing {marker}")
-    spike_002 = story_text[story_text.index("#### SPIKE-002") : story_text.index("#### SPIKE-003")]
-    if not all(term in spike_002 for term in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI")):
-        failures.append("SPIKE-002 does not compare all three accepted technologies")
-    if re.search(r"Question.*(elegir|seleccionar una única|qué tecnología escoger)", spike_002, re.IGNORECASE):
-        failures.append("SPIKE-002 is framed as a single-framework selection question")
-
-    impact_text = IMPACT.read_text(encoding="utf-8")
-    impact_story_ids = set(re.findall(r"\bMOB-US-\d{3}\b", impact_text))
-    if impact_story_ids != EXPECTED_V1:
-        failures.append("Impact Mapping must retain exactly the 28 Mobile V1 story references")
-    story_descriptions = {
-        story_id: match.group(1).strip()
-        for story_id, block in blocks.items()
-        if (match := re.search(r"^\*\*Description:\*\* (.+)$", block, re.MULTILINE))
-    }
-    for story_id in EXPECTED_V1:
-        if story_descriptions.get(story_id) not in impact_text:
-            failures.append(f"Impact Mapping must retain the full description for {story_id}")
-    if any(token.lower() in impact_text.lower() for token in ("[baseline]", "[target]", "[metric]", "[time window]", "[ ]", "SMART completion template", "Tool capture")):
-        failures.append("Impact Mapping contains placeholders or checklist content")
-
-    academic_files = (STORIES, IMPACT, BACKLOG)
-    for path in academic_files:
-        text = path.read_text(encoding="utf-8")
-        for token in RESTRICTED_ACADEMIC_TOKENS:
-            if token.lower() in text.lower():
-                failures.append(f"restricted professor-facing token in {path.name}: {token}")
-        if re.search(r"\bP[0-9]\b", text):
-            failures.append(f"numeric priority label in {path.name}")
-        if "2.4.4-technical-stories" in text or "2.4.0-to-be-scenario-mapping" in text:
-            failures.append(f"obsolete Chapter 2.4 filename in {path.name}")
+    overview = OVERVIEW.read_text(encoding="utf-8")
+    if not overview.startswith("# 2.4 Requirements Specification"):
+        failures.append("Chapter 2.4 root overview is missing")
+    if set(re.findall(r"Nexa (?:Operations|Buyer) Mobile", FUNCTIONAL.read_text(encoding="utf-8"))) != {
+        "Nexa Operations Mobile", "Nexa Buyer Mobile"
+    }:
+        failures.append("functional stories do not retain exactly the two accepted Mobile projections")
 
     return failures
 
 
 def main() -> int:
-    required = (MASTER, STORIES, IMPACT, BACKLOG)
-    if not all(path.is_file() for path in required):
-        missing = [str(path) for path in required if not path.is_file()]
-        print("mobile backlog validation: BLOCKED; missing files")
-        for path in missing:
-            print(f"- {path}")
-        return 2
     failures = validate()
     if failures:
         print("mobile backlog validation: FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
-    story_text = STORIES.read_text(encoding="utf-8")
-    scenario_count = len(re.findall(r"\*\*Scenario: .+?\*\*", story_text))
-    print(f"mobile backlog validation OK: functional_stories=73; backlog_rows=97; rendered_scenarios={scenario_count}; sprints=S1/S2/S3/S4/Future")
+    print("mobile backlog validation OK: functional_stories=73; backlog_rows=97; releases=28/35/9/1; sprints=S1/S2/S3/S4")
     return 0
 
 

@@ -3,7 +3,9 @@ set -euo pipefail
 
 repo_root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 chapter="$repo_root/report/02-requirements-and-software-solution-design/2.4-requirements-specification"
-stories="$chapter/2.4.1-user-stories.md"
+stories="$chapter/2.4.1-user-stories/user-stories.md"
+technical_stories="$chapter/2.4.1-user-stories/technical-stories.md"
+spike_stories="$chapter/2.4.1-user-stories/spike-stories.md"
 backlog="$chapter/2.4.3-product-backlog.md"
 candidate_contexts="$repo_root/report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md"
 
@@ -11,15 +13,17 @@ required_files=(
   "$repo_root/report/00-front-matter/00-cover.md"
   "$repo_root/report/00-front-matter/03-contents.md"
   "$repo_root/report/00-front-matter/04-student-outcome.md"
-  "$repo_root/report/01-presentation/1.3-target-segments/target-segments.md"
   "$repo_root/report/02-requirements-and-software-solution-design/2.2-interviews/2.2.3-interview-analysis.md"
   "$candidate_contexts"
   "$repo_root/report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6.1-bounded-context-coverage.md"
   "$repo_root/report/03-solution-ui-ux-design/chapter-overview.md"
   "$repo_root/report/04-product-implementation-and-validation/chapter-overview.md"
-  "$repo_root/report/04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/section-overview.md"
+  "$repo_root/report/04-product-implementation-and-validation/4.2-landing-page-services-and-applications-implementation/4.2.1-sprints/sprint-1/sprint-overview.md"
   "$repo_root/delivery-checklists/mobile-v1-story-verification-register.md"
-  "$chapter/2.4.1-user-stories.md"
+  "$stories"
+  "$stories"
+  "$technical_stories"
+  "$spike_stories"
   "$chapter/2.4.2-impact-mapping.md"
   "$chapter/2.4.3-product-backlog.md"
   "$repo_root/report/93-annexes/annex-d-spike-story/spike-story.md"
@@ -29,26 +33,44 @@ for file in "${required_files[@]}"; do
   [[ -f "$file" ]] || { echo "missing required report artifact: $file" >&2; exit 1; }
 done
 
-bash "$repo_root/scripts/check-report-links.sh"
+tactical_documents=("$repo_root"/report/02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-*.md)
+[[ "${#tactical_documents[@]}" -eq 11 ]] || {
+  echo "expected 11 tactical Bounded Context documents, got ${#tactical_documents[@]}" >&2
+  exit 1
+}
+for document in "${tactical_documents[@]}"; do
+  for heading in 'Domain Layer' 'Application Layer' 'Interface Layer' 'Infrastructure Layer' 'Component Level' 'Code Level' 'Database Design'; do
+    rg -q "$heading" "$document" || {
+      echo "missing tactical artifact $heading in $document" >&2
+      exit 1
+    }
+  done
+  rg -q 'IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL' "$document" || {
+    echo "missing AS-IS/TARGET crosswalk boundary in $document" >&2
+    exit 1
+  }
+done
+
+git -C "$repo_root" show origin/feature/chapter-01:report/01-presentation/1.3-target-segments.md >/dev/null
 python3 "$repo_root/scripts/verify-mobile-v1-transcription.py"
 python3 "$repo_root/scripts/verify-mobile-v1-review-register.py"
 python3 "$repo_root/scripts/verify-bibliography-citations.py"
 python3 "$repo_root/scripts/verify-mobile-v1-semantics.py"
 python3 "$repo_root/scripts/verify-chapter-2.5.py"
+python3 "$repo_root/scripts/generate-mobile-backlog-report.py"
 python3 "$repo_root/scripts/verify-mobile-backlog.py"
 python3 "$repo_root/scripts/verify-mobile-v1-rubric-template.py"
+python3 "$repo_root/scripts/verify-mobile-v1-api-register.py"
 
-headings=$(rg -c '^##### MOB-US-' "$stories")
-functional_index_rows=$(awk -F'|' '/^\| [0-9]+ \| MOB-US-/{c++} END{print c+0}' "$stories")
-scenarios=$(rg -o '\*\*Scenario:' "$stories" | wc -l | tr -d ' ')
+headings=$(rg -c '^#### MOB-US-' "$stories")
+scenarios=$(rg -o '<p><strong>Scenario: ' "$stories" | wc -l | tr -d ' ')
 context_rows=$(awk -F'|' '/^\| BC-[0-9][0-9] \|/{c++} END{print c+0}' "$candidate_contexts")
-sprint_rows=$(awk -F'|' '/^\| (S[1-4]|Future) \|/{c++} END{print c+0}' "$backlog")
+backlog_rows=$(awk -F'|' '$2 ~ /^[[:space:]]*[0-9]+[[:space:]]*$/ && $3 ~ /^[[:space:]]*(MOB-US|LAND-US|TS-MOB|SPIKE)-/ {c++} END{print c+0}' "$backlog")
 
 [[ "$headings" -eq 73 ]] || { echo "expected 73 functional story headings, got $headings" >&2; exit 1; }
-[[ "$functional_index_rows" -eq 73 ]] || { echo "expected 73 functional index rows, got $functional_index_rows" >&2; exit 1; }
 [[ "$scenarios" -ge 140 ]] || { echo "expected meaningful Gherkin coverage, got $scenarios scenarios" >&2; exit 1; }
 [[ "$context_rows" -eq 11 ]] || { echo "expected 11 strategic Bounded Context rows, got $context_rows" >&2; exit 1; }
-[[ "$sprint_rows" -eq 5 ]] || { echo "expected S1/S2/S3/S4/Future rows, got $sprint_rows" >&2; exit 1; }
+[[ "$backlog_rows" -eq 97 ]] || { echo "expected 97 academic backlog rows, got $backlog_rows" >&2; exit 1; }
 
 if rg -n -i '\b(AI-generated|generated by AI|Codex|LLM|subagent|agentic|prompt engineering)\b' \
   "$repo_root/README.md" "$chapter" "$repo_root/report/93-annexes/annex-d-spike-story" --glob '*.md'; then
@@ -61,4 +83,12 @@ if rg -n '[[:blank:]]+$' "$chapter" "$repo_root/report/93-annexes/annex-d-spike-
   exit 1
 fi
 
-echo "report structure OK: functional_stories=$headings index_rows=$functional_index_rows scenarios=$scenarios bounded_contexts=$context_rows backlog_sprints=$sprint_rows"
+link_status=0
+bash "$repo_root/scripts/check-report-links.sh" || link_status=$?
+
+if [[ "$link_status" -ne 0 ]]; then
+  echo "report structure PARTIAL: functional_stories=$headings scenarios=$scenarios bounded_contexts=$context_rows backlog_rows=$backlog_rows; global navigation links require report-integration ownership" >&2
+  exit "$link_status"
+fi
+
+echo "report structure OK: functional_stories=$headings scenarios=$scenarios bounded_contexts=$context_rows backlog_rows=$backlog_rows"

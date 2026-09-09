@@ -13,10 +13,10 @@
 - [Startup profile](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md)
   - [Startup description](../01-presentation/1.1-startup-profile/1.1.1-startup-description.md#111-startup-description)
   - [Team member profiles](../01-presentation/1.1-startup-profile/1.1.2-team-member-profiles.md)
-- [Solution profile](../01-presentation/1.2-solution-profile/section-overview.md)
+- [Solution profile](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md)
   - [Background and problem](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md)
-  - [Lean UX process](../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/section-overview.md)
-- [Target segments](../01-presentation/1.3-target-segments/target-segments.md)
+  - [Lean UX process](../01-presentation/1.2-solution-profile/1.2.2-lean-ux-process/1.2.2.1-problem-statements.md)
+- [Target segments](../01-presentation/1.3-target-segments.md)
 
 ## Chapter II — Requirements Development and Software Solution Design
 

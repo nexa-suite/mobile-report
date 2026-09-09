@@ -17,7 +17,7 @@ Repositorio Docs-as-Code del trabajo final del curso **1ACC0238 Aplicaciones par
 El contenido principal se encuentra en [Contents](./report/00-front-matter/03-contents.md), organizado según la estructura oficial del enunciado:
 
 1. [Front matter](./report/00-front-matter/03-contents.md)
-2. [Capítulo I: Presentación](./report/01-presentation/chapter-overview.md)
+2. [Capítulo I: Presentación](./report/00-front-matter/03-contents.md#chapter-i--presentation)
 3. [Capítulo II: Requirements Development and Software Solution Design](./report/02-requirements-and-software-solution-design/chapter-overview.md)
 4. [Capítulo III: Solution UI/UX Design](./report/03-solution-ui-ux-design/chapter-overview.md)
 5. [Capítulo IV: Product Implementation and Validation](./report/04-product-implementation-and-validation/chapter-overview.md)

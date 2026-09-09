@@ -1,4 +1,4 @@
-# 2.6.6. BC-05 — Inventory Availability
+# 2.6.5. BC-05 — Inventory Availability
 
 `DOMAIN MODEL: TARGET / ACCEPTED`
 `IMPLEMENTATION CROSSWALK: AS-IS VERIFIED / PARTIAL`
@@ -8,7 +8,7 @@ This Core Domain context owns physical stock truth, sellable availability,
 lot/expiry/disposition, inventory backing and Physical Allocation. Safety Stock
 is a policy, not a reservation.
 
-## 2.6.6.1 Domain Layer
+## 2.6.5.1 Domain Layer
 
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
@@ -30,21 +30,21 @@ DAMAGED/WASTE, EXPIRED and IN_TRANSIT are not sellable. Allocation cannot
 exceed committed/backed or usable lot quantity. Scarce inventory uses
 conditional updates, locks and version/CAS; no last-write-wins.
 
-## 2.6.6.2 Interface Layer
+## 2.6.5.2 Interface Layer
 
 Target contracts cover warehouse/lot receipt, availability, backing,
 allocation, transfer, adjustment and picking inputs. URI/DTO names not present
 in verified API evidence remain open. Any Mobile command is submitted to the
 server; local scans/evidence cannot authorize allocation or mutate stock.
 
-## 2.6.6.3 Application Layer
+## 2.6.5.3 Application Layer
 
 Target handlers coordinate availability decisions, commitment backing, FEFO
 allocation and transfer transitions. They enforce Tenant scope, deterministic
 warehouse selection and idempotent movement commands. Fulfillment receives
 stable allocation IDs; it does not write inventory tables directly.
 
-## 2.6.6.4 Infrastructure Layer
+## 2.6.5.4 Infrastructure Layer
 
 Target shared PostgreSQL ownership covers `warehouse`, `safety_stock_policy`,
 `inventory_lot`, `inventory_position`, `inventory_movement`, `lot_disposition`,
@@ -57,9 +57,9 @@ AS-IS anchor: API `inventoryavailability` domain/application/persistence and
 warehouse/inventory migrations V15, V17, V38, V49 and V57. Warehouse,
 reservation and availability code is `AS-IS VERIFIED`; full target backing,
 allocation and no-double-count semantics are `PARTIAL`; Mobile runtime and
-Product Acceptance are `NOT EVIDENCED`.
+validación de producto are `NOT EVIDENCED`.
 
-## 2.6.6.5 Bounded Context Software Architecture Component Level Diagrams
+## 2.6.5.5 Bounded Context Software Architecture Component Level Diagrams
 
 The API component family is `Nexa-API-CommercialInventory-TARGET`. It shows
 logical commercial/inventory components inside the single Nexa API container;
@@ -70,15 +70,15 @@ it does not establish a separate Inventory container.
 See [provenance](../../../../delivery-checklists/chapter-02-evidence-provenance.md) for Structurizr
 source, export and hash.
 
-## 2.6.6.6 Bounded Context Software Architecture Code Level Diagrams
+## 2.6.5.6 Bounded Context Software Architecture Code Level Diagrams
 
-### 2.6.6.6.1 Bounded Context Domain Layer Class Diagrams
+### 2.6.5.6.1 Bounded Context Domain Layer Class Diagrams
 
 ![BC-05 tactical domain model — TARGET](../../../assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.png)
 
 Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-05/domain-model.puml).
 
-### 2.6.6.6.2 Bounded Context Database Design Diagram
+### 2.6.5.6.2 Bounded Context Database Design Diagram
 
 ![BC-05 target database projection](../../../assets/chapter-2/tactical/BC-05/database-diagram.png)
 
@@ -93,4 +93,4 @@ authority for PK/FK/unique/check and RLS/tenant-scope details.
 | Warehouse/inventory/reservation implementation | `AS-IS VERIFIED` | API `inventoryavailability` and migrations at `origin/main` |
 | Availability, backing and Physical Allocation target | `TARGET / ACCEPTED` | Blueprint tactical model/data model |
 | Complete concurrency and double-count closure | `PARTIAL` | Target rules not upgraded from diagram presence |
-| Mobile capture, runtime and Product Acceptance | `NOT EVIDENCED` | Mobile is a planned projection |
+| Mobile capture, runtime and validación de producto | `NOT EVIDENCED` | Mobile is a planned projection |

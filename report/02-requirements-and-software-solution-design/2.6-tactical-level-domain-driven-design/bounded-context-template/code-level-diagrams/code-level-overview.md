@@ -19,4 +19,4 @@ Bounded Context.
 Las fuentes PlantUML y renders de los once contextos se incorporan al paquete
 AV1. La importación académica, la legibilidad, el ownership final y la
 aceptación humana siguen pendientes de revisión. Ningún diagrama de esta
-sección prueba implementación Mobile o Product Acceptance.
+sección prueba implementación Mobile o validación de producto.

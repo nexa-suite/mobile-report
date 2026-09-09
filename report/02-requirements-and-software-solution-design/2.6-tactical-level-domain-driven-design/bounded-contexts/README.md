@@ -1,6 +1,6 @@
 # Tactical bounded-context packages
 
-Each package follows the Statement V4.0 order: Domain Layer, Interface Layer,
+Each package follows the current Statement order: Domain Layer, Interface Layer,
 Application Layer, Infrastructure Layer, Component Level Diagrams, Code Level
 Diagrams, Domain Layer Class Diagram and Database Design Diagram.
 

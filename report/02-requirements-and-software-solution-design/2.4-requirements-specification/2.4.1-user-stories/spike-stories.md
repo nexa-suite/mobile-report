@@ -1,4 +1,4 @@
-# Spike Stories
+#### Spike Stories
 
 Un Spike reduce una incertidumbre antes de una decisión. No es una Functional
 User Story ni prueba arquitectura, investigación, integración, implementación o
@@ -6,7 +6,7 @@ validación de producto. Cada Spike deja fuente, experimento mínimo, límites y
 una salida explícita: adoptar, diferir, rechazar o continuar con evidencia
 adicional.
 
-#### SPIKE-001 — Evaluar oportunidad de aprendizaje autónomo
+##### SPIKE-001 — Evaluar oportunidad de aprendizaje autónomo
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -20,7 +20,7 @@ adicional.
 </tbody>
 </table>
 
-#### SPIKE-002 — Establecer tracks Mobile y límites de contratos
+##### SPIKE-002 — Establecer tracks Mobile y límites de contratos
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -34,7 +34,7 @@ adicional.
 </tbody>
 </table>
 
-#### SPIKE-003 — Delimitar identificadores de producto
+##### SPIKE-003 — Delimitar identificadores de producto
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -48,7 +48,7 @@ adicional.
 </tbody>
 </table>
 
-#### SPIKE-004 — Delimitar persistencia y recuperación local
+##### SPIKE-004 — Delimitar persistencia y recuperación local
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -62,7 +62,7 @@ adicional.
 </tbody>
 </table>
 
-#### SPIKE-005 — Delimitar notificaciones y deep links
+##### SPIKE-005 — Delimitar notificaciones y deep links
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -76,7 +76,7 @@ adicional.
 </tbody>
 </table>
 
-#### SPIKE-006 — Delimitar mapas y ubicación
+##### SPIKE-006 — Delimitar mapas y ubicación
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>

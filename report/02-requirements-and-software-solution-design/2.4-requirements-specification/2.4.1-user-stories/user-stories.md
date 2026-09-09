@@ -1,4 +1,4 @@
-# 2.4 Requirements Specification
+## 2.4 Requirements Specification
 
 Esta sección especifica el escenario **To-Be** de Nexa sin presentarlo como
 evidencia As-Is ni como una implementación aceptada. Las Functional User
@@ -6,7 +6,7 @@ Stories expresan resultados de negocio para actores; las Technical Stories
 delimitan habilitación técnica; y los Spikes reducen incertidumbre antes de una
 decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 
-## To-Be Scenario Mapping
+### To-Be Scenario Mapping
 
 | Escenario objetivo | Actor y proyección | Comportamiento objetivo | Historias relacionadas |
 | --- | --- | --- | --- |
@@ -17,7 +17,7 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 | Buyer Handoff, Receipt and Discrepancy | Customer Buyer; Buyer Mobile | La persona verifica el handoff, declara el Buyer Receipt y comunica discrepancias sin borrar hechos previos. | MOB-US-044, MOB-US-047..049 |
 | Acquisition, Contact and Onboarding Initiation | Prospective Company Representative; Landing pública | La Landing explica Nexa, habilita contacto y recibe una solicitud sin crear un Tenant o Workspace como hecho autoritativo. | LAND-US-001..006 |
 
-### Reglas transversales
+#### Reglas transversales
 
 | Regla | Aplicación en el To-Be |
 | --- | --- |
@@ -27,7 +27,7 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 | Ubicación | El alcance priorizado entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
 | Distinciones | Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship son distintos. Dispatch Handoff, Driver Outcome y Buyer Receipt también son hechos separados. |
 
-## Artefactos
+### Artefactos
 
 - [2.4.1 User Stories](./user-stories.md)
 - [Technical Stories](./technical-stories.md)
@@ -41,7 +41,7 @@ asigna a una historia implementación, evidencia de investigación ni aceptació
 
 ---
 
-# 2.4.1 User Stories
+### 2.4.1 User Stories
 
 Este catálogo contiene Functional User Stories de la Landing pública y de las
 dos proyecciones Mobile. El escenario To-Be, sus reglas transversales y los
@@ -49,7 +49,7 @@ límites de autoridad se presentan al inicio de esta misma sección. Las Technic
 Stories y los Spikes se mantienen separados para no convertir habilitación o
 incertidumbre en requisitos de negocio.
 
-## Story Catalog and Traceability
+#### Story Catalog and Traceability
 
 Nexa Operations Mobile y Nexa Buyer Mobile son las dos proyecciones Mobile.
 El alcance priorizado reúne 28 historias; las 45 restantes se mantienen como
@@ -61,7 +61,7 @@ backlog posterior para conservar trazabilidad sin prometer su entrega.
 | Backlog posterior | 45 | Requieren refinamiento, decisión de priorización y evidencia antes de cualquier entrega. |
 | **Total** | **73** | Inventario funcional canónico completo. |
 
-## Epic registry
+#### Epic registry
 
 Un Epic agrupa requisitos de producto. No representa un Bounded Context, una
 pantalla, una aplicación ni una unidad de despliegue.
@@ -81,32 +81,32 @@ pantalla, una aplicación ni una unidad de despliegue.
 | MOBILE-EPIC-11 | Seguimiento comercial y financiero | Backlog posterior | MOB-US-070..072 |
 | MOBILE-EPIC-12 | Automatización de almacén posterior | Backlog posterior | MOB-US-073 |
 
-## Segmentos y actores actuales
+#### Segmentos y actores actuales
 
 | Segmento de investigación y producto | Actores priorizados | Proyección | Estado de evidencia |
 | --- | --- | --- | --- |
-| Warehouse & Dispatch Operations | Warehouse Operator; Dispatch Coordinator | Nexa Operations Mobile | RESEARCH PENDING |
-| Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | RESEARCH PENDING |
-| B2B Buyers | Customer Buyer | Nexa Buyer Mobile | RESEARCH PENDING |
+| Warehouse & Dispatch Operations | Warehouse Operator; Dispatch Coordinator | Nexa Operations Mobile | Por contrastar mediante investigación directa |
+| Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | Por contrastar mediante investigación directa |
+| B2B Buyers | Customer Buyer | Nexa Buyer Mobile | Por contrastar mediante investigación directa |
 
 Mobile User es una abstracción transversal de MOB-US-001..003. Sirve a
 Warehouse Operator, Dispatch Coordinator, Driver / Delivery Operator y
 Customer Buyer cuando retoman trabajo autorizado; no es una User Persona ni un
 segmento de investigación.
 
-## Trazabilidad a nivel de Epic y cluster
+#### Trazabilidad a nivel de Epic y cluster
 
 | Epic / cluster | Current actor/segment | Lean UX relationship | Needfinding evidence | To-Be scenario | Stories |
 | --- | --- | --- | --- | --- | --- |
-| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | RESEARCH PENDING; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001..003 |
-| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Warehouse Operator y Dispatch Coordinator | La continuidad entre hechos físicos, preparación y responsabilidad orienta el aprendizaje. | RESEARCH PENDING; se requiere investigación específica del segmento actual. | Warehouse Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-011..017, MOB-US-019..025 |
-| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | RESEARCH PENDING; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026..028, MOB-US-031..034 |
-| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | RESEARCH PENDING; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047..049 |
-| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | RESEARCH PENDING | Acquisition, Contact and Onboarding Initiation | LAND-US-001..006 |
+| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Por contrastar mediante investigación directa; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001..003 |
+| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Warehouse Operator y Dispatch Coordinator | La continuidad entre hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Por contrastar mediante investigación directa; se requiere investigación específica del segmento actual. | Warehouse Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-011..017, MOB-US-019..025 |
+| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Por contrastar mediante investigación directa; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026..028, MOB-US-031..034 |
+| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Por contrastar mediante investigación directa; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047..049 |
+| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | Por contrastar mediante investigación directa | Acquisition, Contact and Onboarding Initiation | LAND-US-001..006 |
 
-## Landing Page User Stories
+#### Landing Page User Stories
 
-#### LAND-US-001 — Comprender la propuesta B2B de Nexa
+##### LAND-US-001 — Comprender la propuesta B2B de Nexa
 
 <table>
 <thead>
@@ -122,7 +122,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### LAND-US-002 — Evaluar el ajuste con el perfil operativo
+##### LAND-US-002 — Evaluar el ajuste con el perfil operativo
 
 <table>
 <thead>
@@ -138,7 +138,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### LAND-US-003 — Revisar capacidades y límites del producto
+##### LAND-US-003 — Revisar capacidades y límites del producto
 
 <table>
 <thead>
@@ -154,7 +154,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### LAND-US-004 — Revisar precios, preguntas frecuentes e información legal
+##### LAND-US-004 — Revisar precios, preguntas frecuentes e información legal
 
 <table>
 <thead>
@@ -170,7 +170,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### LAND-US-005 — Iniciar el onboarding de una empresa
+##### LAND-US-005 — Iniciar el onboarding de una empresa
 
 <table>
 <thead>
@@ -186,7 +186,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### LAND-US-006 — Contactar a Nexa o solicitar una demostración
+##### LAND-US-006 — Contactar a Nexa o solicitar una demostración
 
 <table>
 <thead>
@@ -202,7 +202,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-001 — Continuar el trabajo autorizado después de volver a Nexa
+##### MOB-US-001 — Continuar el trabajo autorizado después de volver a Nexa
 
 <table>
 <thead>
@@ -218,7 +218,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-002 — Trabajar en la empresa y contexto de negocio previstos
+##### MOB-US-002 — Trabajar en la empresa y contexto de negocio previstos
 
 <table>
 <thead>
@@ -234,7 +234,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-003 — Ver sólo el trabajo permitido para el rol
+##### MOB-US-003 — Ver sólo el trabajo permitido para el rol
 
 <table>
 <thead>
@@ -250,7 +250,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-004 — Revisar el trabajo operativo de un vistazo
+##### MOB-US-004 — Revisar el trabajo operativo de un vistazo
 
 <table>
 <thead>
@@ -266,7 +266,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-005 — Identificar excepciones operativas críticas
+##### MOB-US-005 — Identificar excepciones operativas críticas
 
 <table>
 <thead>
@@ -282,7 +282,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-006 — Encontrar un cliente y su relación con el comprador
+##### MOB-US-006 — Encontrar un cliente y su relación con el comprador
 
 <table>
 <thead>
@@ -298,7 +298,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-007 — Revisar productos, precios y disponibilidad
+##### MOB-US-007 — Revisar productos, precios y disponibilidad
 
 <table>
 <thead>
@@ -314,7 +314,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-008 — Preparar una solicitud de cliente
+##### MOB-US-008 — Preparar una solicitud de cliente
 
 <table>
 <thead>
@@ -330,7 +330,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-009 — Enviar una solicitud o Direct Order asistido desde el trabajo de campo
+##### MOB-US-009 — Enviar una solicitud o Direct Order asistido desde el trabajo de campo
 
 <table>
 <thead>
@@ -346,7 +346,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-010 — Seguir compromisos del cliente y crédito
+##### MOB-US-010 — Seguir compromisos del cliente y crédito
 
 <table>
 <thead>
@@ -362,7 +362,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-011 — Identificar un producto mediante el código del paquete o etiqueta
+##### MOB-US-011 — Identificar un producto mediante el código del paquete o etiqueta
 
 <table>
 <thead>
@@ -378,7 +378,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-012 — Buscar manualmente un producto cuando no hay escaneo
+##### MOB-US-012 — Buscar manualmente un producto cuando no hay escaneo
 
 <table>
 <thead>
@@ -394,7 +394,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-013 — Registrar el stock recién recibido
+##### MOB-US-013 — Registrar el stock recién recibido
 
 <table>
 <thead>
@@ -410,7 +410,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-014 — Registrar lote, vencimiento y cantidad reales
+##### MOB-US-014 — Registrar lote, vencimiento y cantidad reales
 
 <table>
 <thead>
@@ -426,7 +426,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-015 — Comprobar lote y condición del stock antes del trabajo físico
+##### MOB-US-015 — Comprobar lote y condición del stock antes del trabajo físico
 
 <table>
 <thead>
@@ -442,7 +442,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-016 — Preparar el lote y cantidad correctos para el trabajo
+##### MOB-US-016 — Preparar el lote y cantidad correctos para el trabajo
 
 <table>
 <thead>
@@ -458,7 +458,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-017 — Reportar una discrepancia física o disposición autorizada de stock
+##### MOB-US-017 — Reportar una discrepancia física o disposición autorizada de stock
 
 <table>
 <thead>
@@ -474,7 +474,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-018 — Mover stock entre ubicaciones del almacén
+##### MOB-US-018 — Mover stock entre ubicaciones del almacén
 
 <table>
 <thead>
@@ -490,7 +490,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-019 — Registrar evidencia de temperatura para stock relevante
+##### MOB-US-019 — Registrar evidencia de temperatura para stock relevante
 
 <table>
 <thead>
@@ -506,7 +506,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-020 — Ver entregas listas para preparar el despacho
+##### MOB-US-020 — Ver entregas listas para preparar el despacho
 
 <table>
 <thead>
@@ -522,7 +522,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-021 — Asignar un conductor a una entrega lista
+##### MOB-US-021 — Asignar un conductor a una entrega lista
 
 <table>
 <thead>
@@ -538,7 +538,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-022 — Comprobar bienes salientes contra la entrega preparada
+##### MOB-US-022 — Comprobar bienes salientes contra la entrega preparada
 
 <table>
 <thead>
@@ -554,7 +554,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-023 — Conservar evidencia del handoff entre almacén y conductor
+##### MOB-US-023 — Conservar evidencia del handoff entre almacén y conductor
 
 <table>
 <thead>
@@ -570,7 +570,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-024 — Identificar de forma confiable un handoff de despacho
+##### MOB-US-024 — Identificar de forma confiable un handoff de despacho
 
 <table>
 <thead>
@@ -586,7 +586,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-025 — Confirmar que los bienes dejaron el control del almacén
+##### MOB-US-025 — Confirmar que los bienes dejaron el control del almacén
 
 <table>
 <thead>
@@ -602,7 +602,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-026 — Ver entregas asignadas al conductor
+##### MOB-US-026 — Ver entregas asignadas al conductor
 
 <table>
 <thead>
@@ -618,7 +618,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-027 — Iniciar una entrega asignada
+##### MOB-US-027 — Iniciar una entrega asignada
 
 <table>
 <thead>
@@ -634,7 +634,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-028 — Abrir indicaciones hacia el destino autorizado de la entrega
+##### MOB-US-028 — Abrir indicaciones hacia el destino autorizado de la entrega
 
 <table>
 <thead>
@@ -650,7 +650,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-029 — Compartir la ubicación durante una entrega activa
+##### MOB-US-029 — Compartir la ubicación durante una entrega activa
 
 <table>
 <thead>
@@ -666,7 +666,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-030 — Contactar al comprador durante la entrega
+##### MOB-US-030 — Contactar al comprador durante la entrega
 
 <table>
 <thead>
@@ -682,7 +682,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-031 — Registrar el resultado del intento de entrega
+##### MOB-US-031 — Registrar el resultado del intento de entrega
 
 <table>
 <thead>
@@ -698,7 +698,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-032 — Registrar una entrega parcial o rechazada y lo que queda
+##### MOB-US-032 — Registrar una entrega parcial o rechazada y lo que queda
 
 <table>
 <thead>
@@ -714,7 +714,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-033 — Conservar el Proof of Delivery
+##### MOB-US-033 — Conservar el Proof of Delivery
 
 <table>
 <thead>
@@ -730,7 +730,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-034 — Presentar un código acotado de handoff de entrega
+##### MOB-US-034 — Presentar un código acotado de handoff de entrega
 
 <table>
 <thead>
@@ -746,7 +746,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-035 — Continuar la evidencia de entrega después de perder conexión
+##### MOB-US-035 — Continuar la evidencia de entrega después de perder conexión
 
 <table>
 <thead>
@@ -762,7 +762,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-036 — Explorar productos del proveedor
+##### MOB-US-036 — Explorar productos del proveedor
 
 <table>
 <thead>
@@ -778,7 +778,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-037 — Revisar precio y disponibilidad del producto
+##### MOB-US-037 — Revisar precio y disponibilidad del producto
 
 <table>
 <thead>
@@ -794,7 +794,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-038 — Preparar una Purchase Request
+##### MOB-US-038 — Preparar una Purchase Request
 
 <table>
 <thead>
@@ -810,7 +810,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-039 — Repetir una compra anterior
+##### MOB-US-039 — Repetir una compra anterior
 
 <table>
 <thead>
@@ -826,7 +826,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-040 — Enviar una solicitud o realizar un Direct Order
+##### MOB-US-040 — Enviar una solicitud o realizar un Direct Order
 
 <table>
 <thead>
@@ -842,7 +842,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-041 — Responder a un cambio material
+##### MOB-US-041 — Responder a un cambio material
 
 <table>
 <thead>
@@ -858,7 +858,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-042 — Seguir solicitudes y pedidos
+##### MOB-US-042 — Seguir solicitudes y pedidos
 
 <table>
 <thead>
@@ -874,7 +874,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-043 — Revisar estado de crédito y pago
+##### MOB-US-043 — Revisar estado de crédito y pago
 
 <table>
 <thead>
@@ -890,7 +890,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-044 — Saber cuándo una entrega requiere atención
+##### MOB-US-044 — Saber cuándo una entrega requiere atención
 
 <table>
 <thead>
@@ -906,7 +906,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-045 — Ver un conductor activo en un mapa
+##### MOB-US-045 — Ver un conductor activo en un mapa
 
 <table>
 <thead>
@@ -922,7 +922,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-046 — Contactar al conductor
+##### MOB-US-046 — Contactar al conductor
 
 <table>
 <thead>
@@ -938,7 +938,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-047 — Verificar una entrega mediante el código de handoff
+##### MOB-US-047 — Verificar una entrega mediante el código de handoff
 
 <table>
 <thead>
@@ -954,7 +954,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-048 — Confirmar las cantidades realmente recibidas
+##### MOB-US-048 — Confirmar las cantidades realmente recibidas
 
 <table>
 <thead>
@@ -970,7 +970,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-049 — Reportar una discrepancia sin borrar los hechos
+##### MOB-US-049 — Reportar una discrepancia sin borrar los hechos
 
 <table>
 <thead>
@@ -986,7 +986,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-050 — Gestionar una discrepancia de recepción con evidencia
+##### MOB-US-050 — Gestionar una discrepancia de recepción con evidencia
 
 <table>
 <thead>
@@ -1002,7 +1002,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-051 — Retener o poner en cuarentena stock y resolverlo
+##### MOB-US-051 — Retener o poner en cuarentena stock y resolverlo
 
 <table>
 <thead>
@@ -1018,7 +1018,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-052 — Confirmar la recepción en el destino de una transferencia interna
+##### MOB-US-052 — Confirmar la recepción en el destino de una transferencia interna
 
 <table>
 <thead>
@@ -1034,7 +1034,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-053 — Realizar un conteo cíclico y solicitar corrección de stock
+##### MOB-US-053 — Realizar un conteo cíclico y solicitar corrección de stock
 
 <table>
 <thead>
@@ -1050,7 +1050,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-054 — Solicitar sustitución de lote cuando FEFO no completa el trabajo
+##### MOB-US-054 — Solicitar sustitución de lote cuando FEFO no completa el trabajo
 
 <table>
 <thead>
@@ -1066,7 +1066,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-055 — Usar información ampliada de identidad de producto, paquete y almacenamiento
+##### MOB-US-055 — Usar información ampliada de identidad de producto, paquete y almacenamiento
 
 <table>
 <thead>
@@ -1082,7 +1082,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-056 — Preparar un grupo de tareas de almacén
+##### MOB-US-056 — Preparar un grupo de tareas de almacén
 
 <table>
 <thead>
@@ -1098,7 +1098,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-057 — Resolver una discrepancia de despacho antes del handoff
+##### MOB-US-057 — Resolver una discrepancia de despacho antes del handoff
 
 <table>
 <thead>
@@ -1114,7 +1114,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-058 — Reasignar un conductor o reprogramar el despacho de forma segura
+##### MOB-US-058 — Reasignar un conductor o reprogramar el despacho de forma segura
 
 <table>
 <thead>
@@ -1130,7 +1130,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-059 — Preparar cargas agrupadas y múltiples paradas
+##### MOB-US-059 — Preparar cargas agrupadas y múltiples paradas
 
 <table>
 <thead>
@@ -1146,7 +1146,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-060 — Completar un handoff al transportista con responsabilidad trazable
+##### MOB-US-060 — Completar un handoff al transportista con responsabilidad trazable
 
 <table>
 <thead>
@@ -1162,7 +1162,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-061 — Registrar evidencia de temperatura en el despacho
+##### MOB-US-061 — Registrar evidencia de temperatura en el despacho
 
 <table>
 <thead>
@@ -1178,7 +1178,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-062 — Señalar la llegada de una entrega activa
+##### MOB-US-062 — Señalar la llegada de una entrega activa
 
 <table>
 <thead>
@@ -1194,7 +1194,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-063 — Seguir instrucciones de entrega y datos de contacto autorizados
+##### MOB-US-063 — Seguir instrucciones de entrega y datos de contacto autorizados
 
 <table>
 <thead>
@@ -1210,7 +1210,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-064 — Solicitar reprogramación de una entrega desde el campo
+##### MOB-US-064 — Solicitar reprogramación de una entrega desde el campo
 
 <table>
 <thead>
@@ -1226,7 +1226,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-065 — Registrar un incidente de entrega con mayor detalle
+##### MOB-US-065 — Registrar un incidente de entrega con mayor detalle
 
 <table>
 <thead>
@@ -1242,7 +1242,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-066 — Recuperar una entrega activa mediante operación offline selectiva
+##### MOB-US-066 — Recuperar una entrega activa mediante operación offline selectiva
 
 <table>
 <thead>
@@ -1258,7 +1258,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-067 — Proporcionar instrucciones de entrega y contacto alternativo para la recepción
+##### MOB-US-067 — Proporcionar instrucciones de entrega y contacto alternativo para la recepción
 
 <table>
 <thead>
@@ -1274,7 +1274,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-068 — Revisar la línea de tiempo de la entrega y reconocer su finalización
+##### MOB-US-068 — Revisar la línea de tiempo de la entrega y reconocer su finalización
 
 <table>
 <thead>
@@ -1290,7 +1290,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-069 — Adjuntar evidencia a una discrepancia de entrega
+##### MOB-US-069 — Adjuntar evidencia a una discrepancia de entrega
 
 <table>
 <thead>
@@ -1306,7 +1306,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-070 — Ver documentos de negocio vinculados a solicitud o pedido
+##### MOB-US-070 — Ver documentos de negocio vinculados a solicitud o pedido
 
 <table>
 <thead>
@@ -1322,7 +1322,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-071 — Reportar evidencia de pago y ver el resultado de revisión
+##### MOB-US-071 — Reportar evidencia de pago y ver el resultado de revisión
 
 <table>
 <thead>
@@ -1338,7 +1338,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-072 — Trabajar con un cliente mediante una visita de campo autorizada
+##### MOB-US-072 — Trabajar con un cliente mediante una visita de campo autorizada
 
 <table>
 <thead>
@@ -1354,7 +1354,7 @@ segmento de investigación.
 </tbody>
 </table>
 
-#### MOB-US-073 — Usar evidencia de automatización de almacén en un trabajo controlado
+##### MOB-US-073 — Usar evidencia de automatización de almacén en un trabajo controlado
 
 <table>
 <thead>

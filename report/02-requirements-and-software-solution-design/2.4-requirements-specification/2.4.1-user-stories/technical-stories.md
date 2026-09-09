@@ -1,6 +1,9 @@
 # Technical Stories
 
-Estas historias habilitan capacidades sin duplicar autoridad de negocio. Android Native/Kotlin, Flutter/Dart e iOS Native/SwiftUI permanecen como opciones de factibilidad donde la decisión de framework sigue abierta; las tarjetas de evaluación producen evidencia, no una selección implícita.
+Estas historias habilitan capacidades sin duplicar autoridad de negocio. La
+selección de framework o runtime permanece abierta y se investiga exclusivamente
+en SPIKE-002; estas tarjetas definen límites técnicos que deben cumplirse
+independientemente de la opción elegida.
 
 #### TS-MOB-001 — Integrar contratos REST con autoridad del servidor
 
@@ -15,7 +18,7 @@ Estas historias habilitan capacidades sin duplicar autoridad de negocio. Android
 | **Acceptance Criteria** | **Scenario 1 — Solicitud con contexto**<br>**Given** una persona tiene una sesión y un contexto de Tenant autorizados,<br>**When** Developer envía una solicitud REST con el contexto requerido,<br>**Then** la respuesta contiene sólo datos y acciones permitidos para esa relación.<br><br>**Scenario 2 — Solicitud sin contexto**<br>**Given** una solicitud no contiene contexto válido o autorización suficiente,<br>**When** Developer la envía,<br>**Then** el contrato devuelve un error explícito y no expone datos de negocio.<br><br>**Scenario 3 — Resultado de negocio**<br>**Given** una operación modifica un hecho de negocio,<br>**When** Developer procesa la respuesta del servidor,<br>**Then** la aplicación conserva el resultado autoritativo y no lo sustituye con un valor local. |
 
 
-#### TS-MOB-002 — Evaluar una base Android Native con Kotlin
+#### TS-MOB-002 — Definir criterios de compatibilidad de plataforma
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
@@ -23,12 +26,12 @@ Estas historias habilitan capacidades sin duplicar autoridad de negocio. Android
 
 | Field | Content |
 | --- | --- |
-| **Title** | Evaluar una base Android Native con Kotlin |
-| **Description** | Como **Developer**, deseo evaluar una base Android Native con Kotlin como opción técnica, para obtener evidencia de factibilidad de un flujo representativo sin declarar una arquitectura móvil ya seleccionada. |
-| **Acceptance Criteria** | **Scenario 1 — Evaluación reproducible**<br>**Given** la opción Android Native con Kotlin tiene una configuración documentada<br>**When** Developer ejecuta una prueba acotada<br>**Then** obtiene evidencia de compilación y limitaciones reproducibles sin convertir la opción en una decisión aceptada.<br><br>**Scenario 2 — Contrato compartido**<br>**Given** existe un contrato REST autorizado para un flujo representativo<br>**When** Developer lo prueba desde la opción evaluada<br>**Then** la respuesta conserva la autoridad del servidor y la diferencia técnica queda documentada.<br><br>**Scenario 3 — Límite de la evaluación**<br>**Given** una regla pertenece al servidor o al dominio compartido<br>**When** Developer revisa la prueba<br>**Then** no introduce una segunda autoridad local para esa regla. |
+| **Title** | Definir criterios de compatibilidad de plataforma |
+| **Description** | Como **Developer**, deseo definir criterios verificables de compatibilidad, seguridad, distribución, mantenimiento y soporte de dispositivo, para que una decisión posterior de plataforma se base en evidencia y no se declare implícitamente en una historia técnica. |
+| **Acceptance Criteria** | **Scenario 1 — Criterios explícitos**<br>**Given** la plataforma Mobile aún no está seleccionada<br>**When** Developer prepara la evaluación<br>**Then** documenta criterios de contrato, seguridad, accesibilidad, dispositivo, build, prueba y mantenimiento.<br><br>**Scenario 2 — Límite de decisión**<br>**Given** una alternativa satisface algunos criterios<br>**When** Developer registra la evidencia<br>**Then** no declara una selección hasta que SPIKE-002 y la decisión correspondiente estén cerrados.<br><br>**Scenario 3 — Dominio protegido**<br>**Given** una regla pertenece al servidor o al dominio compartido<br>**When** Developer aplica los criterios<br>**Then** no acepta una alternativa que duplique esa autoridad en el cliente. |
 
 
-#### TS-MOB-003 — Evaluar una base Flutter con Dart
+#### TS-MOB-003 — Preservar paridad de contratos entre proyecciones Mobile
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
@@ -36,12 +39,12 @@ Estas historias habilitan capacidades sin duplicar autoridad de negocio. Android
 
 | Field | Content |
 | --- | --- |
-| **Title** | Evaluar una base Flutter con Dart |
-| **Description** | Como **Developer**, deseo evaluar una base Flutter con Dart como opción cross-platform, para comparar su factibilidad en Android e iOS sin afirmar que el framework haya sido seleccionado. |
-| **Acceptance Criteria** | **Scenario 1 — Prueba cross-platform**<br>**Given** la opción Flutter con Dart está documentada para evaluación<br>**When** Developer ejecuta un flujo acotado en los destinos disponibles<br>**Then** registra la evidencia de factibilidad y sus límites sin declarar una selección de framework.<br><br>**Scenario 2 — Contrato compartido**<br>**Given** un flujo usa un contrato REST autorizado<br>**When** Developer lo prueba desde la opción evaluada<br>**Then** la respuesta del servidor conserva el mismo significado de negocio.<br><br>**Scenario 3 — Diferencia de plataforma**<br>**Given** Android e iOS requieren capacidades distintas del dispositivo<br>**When** Developer compara la opción<br>**Then** documenta la diferencia técnica sin alterar el resultado de negocio. |
+| **Title** | Preservar paridad de contratos entre proyecciones Mobile |
+| **Description** | Como **Developer**, deseo que Operations Mobile y Buyer Mobile consuman contratos y estados de error con el mismo significado de negocio, para que una diferencia de interfaz o plataforma no cambie las reglas compartidas. |
+| **Acceptance Criteria** | **Scenario 1 — Contrato compartido**<br>**Given** un flujo usa un contrato REST autorizado<br>**When** Developer lo implementa en una proyección Mobile<br>**Then** conserva el mismo significado de datos, autorización, conflicto e idempotencia.<br><br>**Scenario 2 — Diferencia permitida**<br>**Given** una plataforma exige una adaptación de interfaz o dispositivo<br>**When** Developer la documenta<br>**Then** la adaptación no altera el resultado de negocio ni el control de Tenant/Workspace.<br><br>**Scenario 3 — Cambio de contrato**<br>**Given** una proyección necesita información no disponible<br>**When** Developer propone un cambio<br>**Then** lo eleva como contrato explícito y no crea una regla paralela en el cliente. |
 
 
-#### TS-MOB-004 — Evaluar una base iOS Native con SwiftUI
+#### TS-MOB-004 — Aislar capacidades de dispositivo de las reglas de negocio
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
@@ -49,9 +52,9 @@ Estas historias habilitan capacidades sin duplicar autoridad de negocio. Android
 
 | Field | Content |
 | --- | --- |
-| **Title** | Evaluar una base iOS Native con SwiftUI |
-| **Description** | Como **Developer**, deseo evaluar una base iOS Native con SwiftUI como opción técnica, para obtener evidencia de factibilidad de los flujos que puedan proyectarse en iOS sin afirmar una decisión de arquitectura. |
-| **Acceptance Criteria** | **Scenario 1 — Prueba iOS**<br>**Given** la opción iOS Native con SwiftUI está documentada para evaluación<br>**When** Developer prueba un flujo autorizado<br>**Then** registra su resultado y limitaciones sin presentar la opción como seleccionada.<br><br>**Scenario 2 — Contrato autorizado**<br>**Given** un flujo iOS dispone de un contrato REST autorizado<br>**When** Developer lo prueba<br>**Then** la respuesta conserva el significado del contrato compartido.<br><br>**Scenario 3 — Responsabilidad separada**<br>**Given** una regla pertenece al servidor<br>**When** Developer revisa la prueba iOS<br>**Then** no encuentra una autoridad de negocio duplicada en el cliente. |
+| **Title** | Aislar capacidades de dispositivo de las reglas de negocio |
+| **Description** | Como **Developer**, deseo encapsular cámara, navegación, almacenamiento, notificaciones y otras capacidades de dispositivo detrás de límites técnicos, para que su disponibilidad no redefina autoridad, estado ni reglas del dominio. |
+| **Acceptance Criteria** | **Scenario 1 — Capacidad disponible**<br>**Given** una capacidad de dispositivo está autorizada para un flujo<br>**When** Developer la invoca<br>**Then** entrega sólo la información permitida y espera confirmación del servidor cuando el hecho es de negocio.<br><br>**Scenario 2 — Capacidad no disponible**<br>**Given** la capacidad falla, no tiene permiso o no existe<br>**When** Developer maneja la condición<br>**Then** ofrece una alternativa segura o comunica el límite sin inventar un resultado de negocio.<br><br>**Scenario 3 — Límite de plataforma**<br>**Given** una adaptación técnica varía entre plataformas<br>**When** Developer la incorpora<br>**Then** el contrato, la autorización y la trazabilidad permanecen equivalentes. |
 
 
 #### TS-MOB-005 — Proteger el estado local selectivo y no autoritativo

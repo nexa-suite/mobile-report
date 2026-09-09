@@ -1,80 +1,96 @@
 # Spike Stories
 
-Los Spikes reducen incertidumbre antes de una decisión. No son Functional User Stories ni acreditan una arquitectura, integración, investigación o implementación como completada.
+Un Spike reduce una incertidumbre antes de una decisión. No es una Functional
+User Story ni prueba arquitectura, integración, investigación, implementación o
+aceptación de producto. Cada Spike debe dejar evidencia revisable y una salida
+explícita: decidir, diferir o descartar.
 
 #### SPIKE-001 — Oportunidad de aprendizaje autónomo
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
-| `SPIKE-001` | Developer | Medium | `SPIKE-EPIC-01` — Investigación de producto móvil |
+| SPIKE-001 | Developer | Medium | SPIKE-EPIC-01 — Investigación de producto móvil |
 
-| Field | Content |
+| Campo | Contenido |
 | --- | --- |
-| **Title** | Oportunidad de aprendizaje autónomo |
-| **Description** | Como **Developer**, deseo investigar oportunidad de aprendizaje autónomo, para reducir una incertidumbre antes de comprometer una decisión o una implementación. |
-| **Acceptance Criteria** | **Scenario 1 — Objetivo de investigación**<br>**Given** Determinar qué oportunidad de aprendizaje autónomo aporta valor al trabajo móvil sin crear una autoridad paralela.<br>**When** Developer investiga la pregunta ¿Qué resultado observable, datos, límites de privacidad y mecanismo de revisión requiere la oportunidad seleccionada?<br>**Then** documenta la incertidumbre que debe reducirse sin promover una hipótesis como hecho de negocio.<br><br>**Scenario 2 — Evidencia esperada**<br>**Given** la investigación necesita evidencia verificable<br>**When** Developer compara alternativas o ejecuta una prueba acotada<br>**Then** Matriz de oportunidades, fuentes, datos, privacidad, factibilidad y prueba acotada.<br><br>**Scenario 3 — Cierre**<br>**Given** la evidencia fue revisada<br>**When** Developer cierra el Spike<br>**Then** Recomendación documentada, límites de uso definidos y ausencia explícita de afirmaciones de producción. |
-
+| Incertidumbre | No existe decisión aceptada que justifique una capacidad de aprendizaje autónomo para Mobile. |
+| Pregunta | ¿Hay una necesidad de producto con fuente canónica, resultado observable y límites de datos que justifique explorarla? |
+| Evidencia esperada | Referencias de producto, matriz de valor/riesgo, límites de privacidad y evidencia de necesidad; ausencia de fuente también es evidencia para diferir. |
+| PoC mínimo | No se ejecuta PoC sin alcance aceptado. Si se autoriza, usa datos no sensibles y un artefacto aislado que no modifica hechos de negocio. |
+| Decisión / salida | Recomendar explorar, diferir o descartar; documentar el alcance y las restricciones si procede. |
+| Criterio de cierre | La incertidumbre, fuente, evidencia y decisión quedan registradas; no se presenta una capacidad propuesta como funcionalidad de Nexa. |
 
 #### SPIKE-002 — Bases compartidas y paridad funcional
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
-| `SPIKE-002` | Developer | High | `SPIKE-EPIC-02` — Estrategia de implementación móvil |
+| SPIKE-002 | Developer | High | SPIKE-EPIC-02 — Estrategia de implementación móvil |
 
-| Field | Content |
+| Campo | Contenido |
 | --- | --- |
-| **Title** | Bases compartidas y paridad funcional |
-| **Description** | Como **Developer**, deseo investigar bases compartidas y paridad funcional, para reducir una incertidumbre antes de comprometer una decisión o una implementación. |
-| **Acceptance Criteria** | **Scenario 1 — Objetivo de investigación**<br>**Given** Determinar bases compartidas y estrategia de paridad funcional para Nexa Operations Mobile y Nexa Buyer Mobile.<br>**When** Developer investiga la pregunta ¿Cómo se comparan Android Native/Kotlin, Flutter/Dart e iOS Native/SwiftUI como opciones en evaluación para sostener contratos compartidos, estado local seguro, distribución y paridad funcional entre las dos aplicaciones?<br>**Then** documenta la incertidumbre que debe reducirse sin promover una hipótesis como hecho de negocio.<br><br>**Scenario 2 — Evidencia esperada**<br>**Given** la investigación necesita evidencia verificable<br>**When** Developer compara alternativas o ejecuta una prueba acotada<br>**Then** Matriz comparativa de flujos, seguridad, estado local, contratos, distribución, pruebas y mantenimiento para las opciones evaluadas; prueba acotada de un flujo común.<br><br>**Scenario 3 — Cierre**<br>**Given** la evidencia fue revisada<br>**When** Developer cierra el Spike<br>**Then** Trade-offs, límites, responsabilidades compartidas y diferencias permitidas de plataforma documentados. La evidencia no selecciona un framework ni duplica reglas de negocio. |
-
+| Incertidumbre | Aún no se ha seleccionado framework o runtime para Operations Mobile y Buyer Mobile. |
+| Pregunta | ¿Cómo comparan Android Native/Kotlin, Flutter/Dart e iOS Native/SwiftUI frente a contratos, seguridad, accesibilidad, distribución, pruebas y mantenimiento? |
+| Evidencia esperada | Matriz con criterios de TS-MOB-002, build reproducible, límites de dispositivo y prueba acotada de un flujo representativo sin duplicar reglas de negocio. |
+| PoC mínimo | Un flujo técnico no autoritativo que consume o valida un contrato permitido y registra versión, entorno, resultado y limitación. |
+| Decisión / salida | ADR o registro de decisión que seleccione, difiera o descarte alternativas, con trade-offs y responsable de aprobación. |
+| Criterio de cierre | La comparación es reproducible, no infiere Product Acceptance y no convierte una alternativa en selección antes de la decisión explícita. |
 
 #### SPIKE-003 — Identificadores de producto
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
-| `SPIKE-003` | Developer | Medium | `SPIKE-EPIC-03` — Capacidades del dispositivo |
+| SPIKE-003 | Developer | Medium | SPIKE-EPIC-03 — Capacidades del dispositivo |
 
-| Field | Content |
+| Campo | Contenido |
 | --- | --- |
-| **Title** | Identificadores de producto |
-| **Description** | Como **Developer**, deseo investigar identificadores de producto, para reducir una incertidumbre antes de comprometer una decisión o una implementación. |
-| **Acceptance Criteria** | **Scenario 1 — Objetivo de investigación**<br>**Given** Determinar el alcance de Barcode, QR, GS1 y la alternativa manual para identificar productos, paquetes y ubicaciones.<br>**When** Developer investiga la pregunta ¿Qué formatos, permisos, ambigüedades, expiración, reutilización y validaciones del servidor son necesarios para una identificación confiable?<br>**Then** documenta la incertidumbre que debe reducirse sin promover una hipótesis como hecho de negocio.<br><br>**Scenario 2 — Evidencia esperada**<br>**Given** la investigación necesita evidencia verificable<br>**When** Developer compara alternativas o ejecuta una prueba acotada<br>**Then** Comparación de formatos, reglas de identificación, límites de seguridad y prueba controlada en dispositivo.<br><br>**Scenario 3 — Cierre**<br>**Given** la evidencia fue revisada<br>**When** Developer cierra el Spike<br>**Then** Alcance de identificadores, alternativa manual y preguntas de integración documentados sin crear un Bounded Context de dispositivo. |
-
+| Incertidumbre | No está definido qué formatos de Barcode, QR o GS1 son necesarios ni cuándo una alternativa manual es suficiente. |
+| Pregunta | ¿Qué formatos, permisos, ambigüedades, caducidad y validaciones del servidor se requieren para identificar un producto, paquete o ubicación de manera segura? |
+| Evidencia esperada | Inventario de formatos encontrados, reglas de identificación, fallos/ambigüedades y límites de seguridad. |
+| PoC mínimo | Lectura controlada de un identificador no sensible y búsqueda manual equivalente; ninguna prueba registra recepción o picking por sí sola. |
+| Decisión / salida | Alcance de formatos soportados, alternativa manual y preguntas de contrato pendientes. |
+| Criterio de cierre | La recomendación separa identificación de cualquier decisión de inventario y no crea un Bounded Context de dispositivo. |
 
 #### SPIKE-004 — Persistencia y recuperación local
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
-| `SPIKE-004` | Developer | High | `SPIKE-EPIC-04` — Continuidad controlada |
+| SPIKE-004 | Developer | High | SPIKE-EPIC-04 — Continuidad controlada |
 
-| Field | Content |
+| Campo | Contenido |
 | --- | --- |
-| **Title** | Persistencia y recuperación local |
-| **Description** | Como **Developer**, deseo investigar persistencia y recuperación local, para reducir una incertidumbre antes de comprometer una decisión o una implementación. |
-| **Acceptance Criteria** | **Scenario 1 — Objetivo de investigación**<br>**Given** Determinar qué información puede conservarse localmente y cómo recuperar cambios sin presentar éxito de negocio no confirmado.<br>**When** Developer investiga la pregunta ¿Cómo se clasifican, protegen, reintentan y reconcilian caché, borradores, evidencia temporal y metadatos de reintento?<br>**Then** documenta la incertidumbre que debe reducirse sin promover una hipótesis como hecho de negocio.<br><br>**Scenario 2 — Evidencia esperada**<br>**Given** la investigación necesita evidencia verificable<br>**When** Developer compara alternativas o ejecuta una prueba acotada<br>**Then** Clasificación de datos, modelo de protección, secuencia de sincronización, política de conflictos y prueba de recuperación.<br><br>**Scenario 3 — Cierre**<br>**Given** la evidencia fue revisada<br>**When** Developer cierra el Spike<br>**Then** Límite offline seguro documentado; inventario, compromiso, crédito, pago, entrega y recepción siguen dependiendo de confirmación autoritativa. |
-
+| Incertidumbre | Falta decidir qué caché segura, borrador, evidencia temporal y metadato de reintento puede persistir sin declarar éxito de negocio. |
+| Pregunta | ¿Cómo se protegen, expiran, reintentan y recuperan esos datos cuando se pierde conectividad o cambia el contexto autorizado? |
+| Evidencia esperada | Clasificación de datos, política de protección/limpieza, secuencia de reintento, comportamiento ante conflicto y resultado de recuperación. |
+| PoC mínimo | Crear un borrador o evidencia temporal, interrumpir la red y comprobar que la aplicación lo muestra como no confirmado hasta la respuesta autoritativa. |
+| Decisión / salida | Límite offline seguro y política de recuperación; no constituye un motor genérico de sincronización. |
+| Criterio de cierre | Inventario, compromiso, crédito, pago, entrega y recepción conservan confirmación del servidor; no hay last-write-wins silencioso. |
 
 #### SPIKE-005 — Notificaciones y deep links
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
-| `SPIKE-005` | Developer | Medium | `SPIKE-EPIC-05` — Comunicación contextual |
+| SPIKE-005 | Developer | Medium | SPIKE-EPIC-05 — Comunicación contextual |
 
-| Field | Content |
+| Campo | Contenido |
 | --- | --- |
-| **Title** | Notificaciones y deep links |
-| **Description** | Como **Developer**, deseo investigar notificaciones y deep links, para reducir una incertidumbre antes de comprometer una decisión o una implementación. |
-| **Acceptance Criteria** | **Scenario 1 — Objetivo de investigación**<br>**Given** Determinar usos autorizados de notificaciones push y deep links para llevar a una persona a un contexto móvil válido.<br>**When** Developer investiga la pregunta ¿Qué eventos pueden iniciar una notificación, cómo se comprueban Tenant y permisos, y cómo expiran o se repiten los enlaces?<br>**Then** documenta la incertidumbre que debe reducirse sin promover una hipótesis como hecho de negocio.<br><br>**Scenario 2 — Evidencia esperada**<br>**Given** la investigación necesita evidencia verificable<br>**When** Developer compara alternativas o ejecuta una prueba acotada<br>**Then** Matriz de evento, canal, permiso, ámbito, expiración, reintento y destino permitido.<br><br>**Scenario 3 — Cierre**<br>**Given** la evidencia fue revisada<br>**When** Developer cierra el Spike<br>**Then** Reglas de navegación y seguridad documentadas; una notificación no cambia por sí sola el estado de negocio. |
-
+| Incertidumbre | No se han seleccionado proveedor, eventos permitidos ni límites de navegación para notificaciones. |
+| Pregunta | ¿Qué evento, permiso, ámbito, expiración y validación de Tenant/relación requiere cada deep link? |
+| Evidencia esperada | Matriz evento-canal-destino, política de expiración/reintento, prueba de autorización y riesgos de información expuesta. |
+| PoC mínimo | Abrir un deep link de prueba hacia un contexto autorizado y comprobar que un enlace inválido, expirado o sin permiso no expone datos. |
+| Decisión / salida | Lista de casos permitidos, restricciones de proveedor y contrato de revalidación al abrir. |
+| Criterio de cierre | La notificación no cambia por sí sola un hecho de negocio y la decisión de proveedor sigue explícita si aún no existe. |
 
 #### SPIKE-006 — Mapas y ubicación
 
 | Story ID | User | Priority | Epic |
 | --- | --- | --- | --- |
-| `SPIKE-006` | Developer | Medium | `SPIKE-EPIC-06` — Navegación responsable |
+| SPIKE-006 | Developer | Medium | SPIKE-EPIC-06 — Navegación responsable |
 
-| Field | Content |
+| Campo | Contenido |
 | --- | --- |
-| **Title** | Mapas y ubicación |
-| **Description** | Como **Developer**, deseo investigar mapas y ubicación, para reducir una incertidumbre antes de comprometer una decisión o una implementación. |
-| **Acceptance Criteria** | **Scenario 1 — Objetivo de investigación**<br>**Given** Determinar el uso móvil de mapas y ubicación respetando privacidad, batería y conectividad.<br>**When** Developer investiga la pregunta ¿Qué destino, permiso, observación del dispositivo, alternativa y límite de retención son necesarios para apoyar una entrega?<br>**Then** documenta la incertidumbre que debe reducirse sin promover una hipótesis como hecho de negocio.<br><br>**Scenario 2 — Evidencia esperada**<br>**Given** la investigación necesita evidencia verificable<br>**When** Developer compara alternativas o ejecuta una prueba acotada<br>**Then** Comparación de navegación externa, permisos, consumo, conectividad y alternativas de operación.<br><br>**Scenario 3 — Cierre**<br>**Given** la evidencia fue revisada<br>**When** Developer cierra el Spike<br>**Then** Límite mínimo documentado; el alcance inicial se mantiene en navegación externa autorizada y no en seguimiento continuo. |
+| Incertidumbre | Falta confirmar qué uso de ubicación aporta valor sin introducir tracking continuo, retención excesiva o una autoridad de ubicación. |
+| Pregunta | ¿Qué destino autorizado, permiso, alternativa, límite de retención y comportamiento ante falla necesita la navegación externa? |
+| Evidencia esperada | Comparación de navegación externa, permisos, conectividad, batería, privacidad y alternativas manuales. |
+| PoC mínimo | Abrir un destino autorizado en una aplicación externa y comprobar que la falla no modifica Delivery ni inventa llegada. |
+| Decisión / salida | Límite de ubicación permitido, requisitos de privacidad y criterios para diferir cualquier tracking adicional. |
+| Criterio de cierre | El alcance inicial queda limitado a navegación externa autorizada; no se declara ETA, optimización de rutas ni seguimiento continuo. |

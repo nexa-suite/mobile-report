@@ -7,6 +7,6 @@ Las secciones que dependen de entrevistas, validación de usuarios, métricas, p
 - [2.1 Competitors](./2.1-competitors/2.1.1-competitive-analysis.md)
 - [2.2 Interviews](./2.2-interviews/)
 - [2.3 Needfinding](./2.3-needfinding/)
-- [2.4 Requirements Specification](./2.4-requirements-specification/)
+- [2.4 Requirements Specification](./2.4-requirements-specification/2.4.1-user-stories/user-stories.md)
 - [2.5 Strategic-Level Domain-Driven Design](./2.5-strategic-level-domain-driven-design/)
 - [2.6 Tactical-Level Domain-Driven Design](./2.6-tactical-level-domain-driven-design/)

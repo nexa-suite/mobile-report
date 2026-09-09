@@ -9,7 +9,7 @@ historia detallada V1 debe presentar, en este orden, los siete campos:
 `Acceptance Criteria`.
 
 La descripción y los criterios permanecen en la historia fuente
-[2.4.1 User Stories](../report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories/2.4.1-user-stories.md).
+[2.4.1 User Stories](../report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories/user-stories.md).
 Cada criterio contiene exactamente cuatro bloques `Scenario / Given / When /
 Then`. Este registro demuestra estructura y no sustituye la revisión del
 contenido, la decisión de Product Acceptance ni la defensa individual.

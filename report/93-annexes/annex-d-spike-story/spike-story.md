@@ -72,4 +72,4 @@ No representa una decisión o resultado que todavía no haya sido producido.
 
 ## Relación con la especificación
 
-Los seis registros resumidos están en [2.4.1 Spike Stories](../../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-spike-stories.md). Sus preguntas se relacionan con las historias `MOB-US` correspondientes, pero no agregan historias funcionales ni Bounded Contexts.
+Los seis registros resumidos forman el catálogo de Spike Stories. Sus preguntas se relacionan con las historias `MOB-US` correspondientes, pero no agregan historias funcionales ni Bounded Contexts.

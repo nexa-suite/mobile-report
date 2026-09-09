@@ -1,144 +1,101 @@
 #!/usr/bin/env python3
-"""Audit Chapter 2.4 wording and cross-document Mobile boundaries."""
+"""Validate Mobile V1 semantic boundaries across the reconciled Chapter 2.4."""
 
 from __future__ import annotations
 
+import importlib.util
 import re
 import sys
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 CHAPTER = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.4-requirements-specification"
-STORIES = CHAPTER / "2.4.1-user-stories.md"
-BACKLOG = CHAPTER / "2.4.3-product-backlog.md"
+FUNCTIONAL = CHAPTER / "2.4.1-user-stories/user-stories.md"
+TECHNICAL = CHAPTER / "2.4.1-user-stories/technical-stories.md"
+SPIKES = CHAPTER / "2.4.1-user-stories/spike-stories.md"
 IMPACT = CHAPTER / "2.4.2-impact-mapping.md"
-TECHNICAL = CHAPTER / "2.4.1-technical-stories.md"
-SPIKES = CHAPTER / "2.4.1-spike-stories.md"
-TO_BE = CHAPTER / "to-be-scenario-mapping.md"
-LANDING = CHAPTER / "2.4.1-landing-stories.md"
-DDD_TRACEABILITY = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.4-strategic-ddd-traceability.md"
+BACKLOG = CHAPTER / "2.4.3-product-backlog.md"
+NEEDFINDING = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md"
+CONTEXT_DISCOVERY = REPO_ROOT / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.1-candidate-context-discovery.md"
 
-ACADEMIC_TOKENS = (
-    "P0", "P1", "P2", "P3", "PROPOSED", "PARTIAL", "COVERED",
-    "PARTIALLY COVERED", "NEEDS OWNER FOLLOW-UP", "RESEARCH VALIDATION PENDING",
-    "NOT PRODUCT SCOPE", "TARGET /", "PLANNED;", "OPEN /", "FUTURE / UNASSIGNED",
-    "owner follow-up", "acceptance pending", "evidence boundary", "route inventory",
-    "AS-IS evidence register", "baseline hash", "dirty checkout", "snapshot",
-    "no acceptance claimed", "no implementation claim", "Product Acceptance pending",
-    "System Acceptance", "Production Readiness", "source-backed", "reconciliation gate",
-)
-EXPECTED_V1 = {
-    "MOB-US-001", "MOB-US-002", "MOB-US-003", "MOB-US-011", "MOB-US-012",
-    "MOB-US-013", "MOB-US-014", "MOB-US-015", "MOB-US-016", "MOB-US-017",
-    "MOB-US-019", "MOB-US-020", "MOB-US-021", "MOB-US-022", "MOB-US-023",
-    "MOB-US-024", "MOB-US-025", "MOB-US-026", "MOB-US-027", "MOB-US-028",
-    "MOB-US-031", "MOB-US-032", "MOB-US-033", "MOB-US-034", "MOB-US-044",
-    "MOB-US-047", "MOB-US-048", "MOB-US-049",
-}
+MODULE_PATH = Path(__file__).with_name("verify-mobile-backlog.py")
+spec = importlib.util.spec_from_file_location("verify_mobile_backlog", MODULE_PATH)
+if spec is None or spec.loader is None:
+    raise SystemExit(f"cannot load validator: {MODULE_PATH}")
+validator = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(validator)
 
 
-def story_blocks(text: str) -> list[tuple[str, str]]:
-    matches = list(re.finditer(r"^### (MOB-US-\d{3}) — .+$", text, re.MULTILINE))
-    return [
-        (match.group(1), text[match.start() : matches[index + 1].start() if index + 1 < len(matches) else len(text)])
-        for index, match in enumerate(matches)
-    ]
-
-
-def backlog_ids(text: str) -> set[str]:
-    start = text.index("## Índice completo")
-    end = text.index("## Sprints planificados", start)
-    return {
-        values[1]
-        for line in text[start:end].splitlines()
-        if line.startswith("| ")
-        for values in [[cell.strip() for cell in line.strip().strip("|").split("|")]]
-        if len(values) == 5 and re.fullmatch(r"\d+", values[0])
-    }
+def backlog_row(text: str, story_id: str) -> list[str] | None:
+    match = re.search(rf"^\| \d+ \| {re.escape(story_id)} \|(.+)$", text, re.MULTILINE)
+    if not match:
+        return None
+    return [cell.strip() for cell in f"| {story_id} |{match.group(1)}".strip().strip("|").split("|")]
 
 
 def main() -> int:
-    failures: list[str] = []
-    chapter_files = (STORIES, LANDING, TECHNICAL, SPIKES, IMPACT, BACKLOG, TO_BE)
-    for path in chapter_files:
-        if not path.is_file():
-            failures.append(f"missing Chapter 2.4 file: {path.name}")
-            continue
-        text = path.read_text(encoding="utf-8")
-        for token in ACADEMIC_TOKENS:
-            if token.lower() in text.lower():
-                failures.append(f"internal token in {path.name}: {token}")
-        if "2.4.0-to-be-scenario-mapping" in text or "2.4.4-technical-stories" in text:
-            failures.append(f"obsolete Chapter 2.4 reference in {path.name}")
+    failures = validator.validate()
+    required = (FUNCTIONAL, TECHNICAL, SPIKES, IMPACT, BACKLOG, NEEDFINDING, CONTEXT_DISCOVERY)
+    failures.extend(f"missing required semantic artifact: {path}" for path in required if not path.is_file())
+    if failures:
+        print("mobile Chapter 2.4 semantic validation: FAIL")
+        for failure in failures:
+            print(f"- {failure}")
+        return 1
 
-    story_text = STORIES.read_text(encoding="utf-8")
-    blocks = story_blocks(story_text)
-    story_ids = {story_id for story_id, _ in blocks}
-    if story_ids != {f"MOB-US-{number:03d}" for number in range(1, 74)}:
-        failures.append(f"functional story inventory is not exactly MOB-US-001..073: {len(story_ids)}")
-    if len(blocks) != 73:
-        failures.append(f"functional story headings: expected 73, got {len(blocks)}")
-    if len(set(re.findall(r"\*\*Scenario: .+?\*\*", story_text))) == 0:
-        failures.append("no Gherkin scenarios found in functional stories")
-    if re.search(r"\bP[0-9]\b", story_text):
-        failures.append("numeric priorities remain in functional stories")
-    app_mentions = set(re.findall(r"Nexa (?:Operations|Buyer) Mobile", story_text))
-    if app_mentions != {"Nexa Operations Mobile", "Nexa Buyer Mobile"}:
-        failures.append(f"unexpected Mobile product apps: {sorted(app_mentions)}")
-    for old_role in ("Mobile User", "Business Operations Manager", "Sales Representative", "Warehouse Operator", "Dispatch Coordinator", "Customer Buyer"):
-        if re.search(rf"^\| MOB-US-\d{{3}} \| {re.escape(old_role)} \|", story_text, re.MULTILINE):
-            failures.append(f"English actor remains in functional story table: {old_role}")
-    if "DIRECT_ORDER" not in story_text or "servidor vuelve a validar" not in story_text:
-        failures.append("Direct Order authorization/revalidation rule missing")
+    functional = FUNCTIONAL.read_text(encoding="utf-8")
+    technical = TECHNICAL.read_text(encoding="utf-8")
+    spikes = SPIKES.read_text(encoding="utf-8")
+    impact = IMPACT.read_text(encoding="utf-8")
+    backlog = BACKLOG.read_text(encoding="utf-8")
+    needfinding = NEEDFINDING.read_text(encoding="utf-8")
+    scoped_text = "\n".join((functional, technical, spikes, impact, backlog, needfinding))
 
-    backlog_text = BACKLOG.read_text(encoding="utf-8")
-    ids = backlog_ids(backlog_text)
-    expected_ids = {f"MOB-US-{number:03d}" for number in range(1, 74)} | {
-        f"LAND-US-{number:03d}" for number in range(1, 7)
-    } | {f"TS-MOB-{number:03d}" for number in range(1, 13)} | {f"SPIKE-{number:03d}" for number in range(1, 7)}
-    if ids != expected_ids:
-        failures.append("Product Backlog does not contain the complete functional/supporting inventory")
-    for sprint in ("S1", "S2", "S3", "S4", "Future"):
-        if not re.search(rf"^\| {sprint} \|", backlog_text, re.MULTILINE):
-            failures.append(f"Product Backlog missing {sprint}")
-    if "| # Orden | User Story Id | Title | Story Points (1 / 2 / 3 / 5 / 8) | Sprint |" not in backlog_text:
-        failures.append("Product Backlog five-column table missing")
+    apps = set(re.findall(r"Nexa (?:Operations|Buyer) Mobile", functional))
+    if apps != {"Nexa Operations Mobile", "Nexa Buyer Mobile"}:
+        failures.append(f"accepted two-app model differs: {sorted(apps)}")
+    for stale_term in ("Field & Warehouse Operations", "Delivery Workforce", "Sales Mobile"):
+        if stale_term in scoped_text:
+            failures.append(f"stale Mobile terminology remains: {stale_term}")
+    if "Sales no es un segmento de investigación\nMobile V1" not in needfinding:
+        failures.append("Needfinding must keep Sales outside Mobile V1 research")
+    for story_id in ("MOB-US-006", "MOB-US-007", "MOB-US-008", "MOB-US-009", "MOB-US-010"):
+        row = backlog_row(backlog, story_id)
+        if row is None or row[2] not in {"2", "3", "5", "8"} or row[3] not in {"S1", "S2", "S3", "S4"}:
+            failures.append(f"{story_id}: Sales convenience must retain a bounded academic plan")
 
-    impact_text = IMPACT.read_text(encoding="utf-8")
-    if len(re.findall(r"\| G-0[1-4] \| MOB-US-\d{3} \|", impact_text)) != 28:
-        failures.append("Impact Mapping does not include all 28 V1 descriptions")
-    if re.search(r"\[(?:baseline|target|metric|time window|segment/actor)[^\]]*\]", impact_text, re.IGNORECASE):
-        failures.append("Impact Mapping contains bracket placeholders")
-    if "[ ]" in impact_text or "validated persona pending" in impact_text.lower():
-        failures.append("Impact Mapping contains checklist or internal persona state")
+    for technology in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI"):
+        if technology in technical:
+            failures.append(f"{technology}: framework comparison duplicated outside SPIKE-002")
+        if technology not in spikes:
+            failures.append(f"{technology}: missing from SPIKE-002")
+    if "no constituye un motor genérico de sincronización" not in spikes:
+        failures.append("SPIKE-004 must explicitly reject a generic synchronization engine")
+    for spike_field in ("Incertidumbre", "Pregunta", "Evidencia esperada", "PoC mínimo", "Decisión / salida", "Criterio de cierre"):
+        if spikes.count(spike_field) != 6:
+            failures.append(f"each Spike must expose {spike_field}")
 
-    technical_text = TECHNICAL.read_text(encoding="utf-8")
-    if len(re.findall(r"^## TS-MOB-\d{3} —", technical_text, re.MULTILINE)) != 12:
-        failures.append("Technical Stories must contain 12 outcomes")
-    if not all(term in technical_text for term in ("Android Native/Kotlin", "Flutter/Dart", "iOS Native/SwiftUI", "Liquid Glass")):
-        failures.append("Technical technology boundaries are incomplete")
-    spike_text = SPIKES.read_text(encoding="utf-8")
-    if len(re.findall(r"^## SPIKE-\d{3} —", spike_text, re.MULTILINE)) != 6:
-        failures.append("Spike Stories must contain six research questions")
-    spike_002 = spike_text[spike_text.index("## SPIKE-002") : spike_text.index("## SPIKE-003")]
-    if re.search(r"\| Question \|[^\n]*(?:elegir|seleccionar una única|qué tecnología escoger)", spike_002, re.IGNORECASE):
-        failures.append("SPIKE-002 asks for single-framework selection")
+    first_goal = impact.find("Business Goal 1")
+    enabling = impact.find("Restricciones habilitantes, no Business Goals")
+    auth = impact.find("MOB-US-001")
+    if first_goal < 0 or enabling < 0 or auth < enabling:
+        failures.append("Impact Mapping must keep authorization as an enabling constraint, not the first Business Goal")
+    for label in ("RESEARCH PENDING", "TARGET ASSUMPTION — OWNER REVIEW PENDING", "USER PERSONA — RESEARCH PENDING"):
+        if label not in impact:
+            failures.append(f"Impact Mapping evidence state missing: {label}")
 
-    context_text = DDD_TRACEABILITY.read_text(encoding="utf-8")
-    context_rows = re.findall(r"^\| (BC-\d{2}) —", context_text, re.MULTILINE)
-    if len(context_rows) != 11 or set(context_rows) != {f"BC-{number:02d}" for number in range(1, 12)}:
-        failures.append(f"strategic Bounded Context inventory is not exactly 11: {context_rows}")
-    if re.search(r"(?:Mobile|Scanner|QR|Device|Offline|Tracking|Push|Maps) (?:Bounded Context|BC)", "\n".join(path.read_text(encoding="utf-8") for path in chapter_files if path.is_file()), re.IGNORECASE):
-        failures.append("technical surface presented as a Bounded Context")
+    context_rows = re.findall(r"^\| (BC-\d{2}) \|", CONTEXT_DISCOVERY.read_text(encoding="utf-8"), re.MULTILINE)
+    if set(context_rows) != {f"BC-{number:02d}" for number in range(1, 12)} or len(context_rows) != 11:
+        failures.append("Strategic DDD must retain exactly 11 Bounded Contexts")
+    if re.search(r"(?:Mobile|Scanner|QR|Device|Offline|Tracking|Push|Maps) (?:Bounded Context|BC)", scoped_text, re.IGNORECASE):
+        failures.append("a technical surface is presented as a Bounded Context")
 
     if failures:
         print("mobile Chapter 2.4 semantic validation: FAIL")
         for failure in failures:
             print(f"- {failure}")
         return 1
-    scenario_count = len(re.findall(r"\*\*Scenario: .+?\*\*", story_text))
-    print(f"mobile Chapter 2.4 semantic validation OK: stories=73; v1={len(EXPECTED_V1)}; scenarios={scenario_count}; bounded_contexts=11; apps=2")
+    print("mobile Chapter 2.4 semantic validation OK: apps=2; v1=28; contexts=11; future_sprints=none")
     return 0
 
 

@@ -6,16 +6,38 @@ from __future__ import annotations
 import os
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 
 REPORT_ROOT = Path(__file__).resolve().parents[1]
-API_ROOT = Path(os.environ.get("NEXA_API_ROOT", REPORT_ROOT.parent / "api"))
+
+
+def resolve_api_root() -> Path:
+    explicit = os.environ.get("NEXA_API_ROOT")
+    if explicit:
+        return Path(explicit)
+    candidates = [REPORT_ROOT.parent / "api"]
+    result = subprocess.run(
+        ["git", "-C", str(REPORT_ROOT), "rev-parse", "--git-common-dir"],
+        check=False,
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode == 0:
+        common = Path(result.stdout.strip())
+        if not common.is_absolute():
+            common = REPORT_ROOT / common
+        candidates.extend(ancestor / "api" for ancestor in common.resolve().parents)
+    return next((candidate for candidate in candidates if candidate.is_dir()), candidates[0])
+
+
+API_ROOT = resolve_api_root()
 REGISTER = REPORT_ROOT / "delivery-checklists/mobile-v1-api-contract-register.md"
-STORIES = (
+BACKLOG = (
     REPORT_ROOT
-    / "report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.1-user-stories.md"
+    / "report/02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md"
 )
 OPENAPI = API_ROOT / "docs/openapi/openapi.json"
 EXPECTED_IDS = [
@@ -29,14 +51,14 @@ EXPECTED_IDS = [
 
 
 def backlog_rows(text: str) -> list[list[str]]:
-    start = text.index("## Índice de historias funcionales")
-    end = text.index("## Registros de historias funcionales", start)
+    start = text.index("## Índice completo")
+    end = text.index("## Sprints planificados", start)
     rows: list[list[str]] = []
     for line in text[start:end].splitlines():
         if not line.startswith("| ") or "MOB-US-" not in line:
             continue
         cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
-        if len(cells) >= 7 and re.fullmatch(r"\d+", cells[0]) and re.fullmatch(r"MOB-US-\d{3}", cells[1]):
+        if len(cells) == 5 and re.fullmatch(r"\d+", cells[0]) and re.fullmatch(r"MOB-US-\d{3}", cells[1]):
             rows.append(cells)
     return rows
 
@@ -57,7 +79,7 @@ def api_projection_rows(text: str) -> list[list[str]]:
 def main() -> int:
     register_text = REGISTER.read_text(encoding="utf-8")
     document = json.loads(OPENAPI.read_text(encoding="utf-8"))
-    backlog = backlog_rows(STORIES.read_text(encoding="utf-8"))
+    backlog = backlog_rows(BACKLOG.read_text(encoding="utf-8"))
     api_rows = api_projection_rows(register_text)
     story_ids = re.findall(r"^\| S[123] \| (MOB-US-\d{3}) \|", register_text, re.MULTILINE)
     failures: list[str] = []
@@ -74,7 +96,7 @@ def main() -> int:
         if report_row is None:
             failures.append(f"API register story is absent from report backlog: {api_row[1]}")
             continue
-        if api_row[0] != report_row[6]:
+        if api_row[0] != report_row[4]:
             failures.append(
                 f"{api_row[1]} Sprint: API register={api_row[0]!r}, report={report_row[6]!r}"
             )

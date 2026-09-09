@@ -25,8 +25,8 @@ def main() -> int:
         for failure in failures:
             print(f"- {failure}")
         return 1
-    text = module.STORIES.read_text(encoding="utf-8")
-    scenarios = len(re.findall(r"\*\*Scenario: .+?\*\*", text))
+    text = module.FUNCTIONAL.read_text(encoding="utf-8")
+    scenarios = len(re.findall(r"<p><strong>Scenario: .+?</strong></p>", text))
     print(
         "mobile transcription OK: functional_stories=73; "
         f"rendered_gherkin_scenarios={scenarios}; backlog_rows=97"

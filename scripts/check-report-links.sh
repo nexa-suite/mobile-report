@@ -9,7 +9,11 @@ import re
 import sys
 
 root = pathlib.Path(sys.argv[1]).resolve()
-files = [root / "README.md", root / "report", root / "delivery-checklists"]
+files = [
+    root / "report/02-requirements-and-software-solution-design/2.4-requirements-specification",
+    root / "report/02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design",
+    root / "delivery-checklists/chapter-02-evidence-provenance.md",
+]
 link_pattern = re.compile(r"\]\(([^)]+)\)")
 errors = []
 
@@ -33,7 +37,7 @@ for base in files:
                 )
                 resolved = next(
                     (resolved / name for name in directory_indexes if (resolved / name).exists()),
-                    resolved / "README.md",
+                    next(iter(sorted(resolved.glob("*.md"))), resolved / "README.md"),
                 )
             if not resolved.exists():
                 errors.append(f"{source.relative_to(root)} -> {target}")

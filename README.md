@@ -57,3 +57,6 @@ The report follows GitFlow and Conventional Commits. Meaningful academic changes
 ## Release v0.1.0
 
 `v0.1.0` is the first public academic release of the Nexa Mobile Report. Its release notes and source history preserve the report's scope and provenance.
+
+- [Changelog](./CHANGELOG.md)
+- [Release evidence](./docs/releases/v0.1.0.md)

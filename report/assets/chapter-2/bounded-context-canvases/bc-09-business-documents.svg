@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1244" viewBox="0 0 1600 1244">
+<rect width="100%" height="100%" fill="#f7f9fb"/>
+<rect width="1600" height="120" fill="#495057"/>
+<text x="46" y="62" font-family="Arial, Helvetica, sans-serif" font-size="34px" font-weight="700" fill="#ffffff">BC-09 Business Documents — Bounded Context Canvas</text>
+<text x="46" y="98" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#e7eef3">Strategic DDD visual summary sourced from 2.5.1.3</text>
+<rect x="46" y="142" width="300" height="38" rx="19" fill="#495057"/>
+<text x="68" y="167" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="700" fill="#ffffff">Classification: Generic</text>
+<rect x="46" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Context / Purpose</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Conserva Sales Order Document, Delivery Note, Commercial Invoice,</text>
+<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payment Receipt, Financial Adjustment, numbering, issued</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">snapshots, replacements y evidence references. No posee source</text>
+<text x="68" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">transaction, Payment, Receivable ni SUNAT fiscal authority.</text>
+<rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Ubiquitous Language / Invariants</text>
+<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Issued documents son inmutables. Una corrección crea linked</text>
+<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">revision/replacement. Commercial Invoice de Nexa no es</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">automáticamente fiscal/SUNAT. La emisión requiere source snapshot</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">válido.</text>
+<rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Capabilities</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Document request, source snapshot capture, number allocation,</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">issue, replacement/addendum, evidence-reference registration,</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">availability publication y controlled download.</text>
+<rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Capability Layering</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Issuance crea el documento inmutable. Evidence enlaza POD o media</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">sin asumir su autoridad. Availability publica a Portal, Mobile y</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Notifications. Rendering y Object Storage son adapters detrás de</text>
+<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">puertos.</text>
+<rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Inbound / Outbound Dependencies</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Consume snapshot de BC-04, evidence de BC-06 y Payment o Financial</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Adjustment de BC-07/08. Entrega issued document fact a BC-10,</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">BC-11 y lecturas autorizadas. Falta de snapshot bloquea issue;</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">storage failure deja un estado revisable.</text>
+<rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Design Critique / Rejected Alternative</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Alternativa: emitir documentos dentro de Sales Commitment o</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Payments reduciría un contexto visible, pero haría que cada fuente</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">defina numeración y reemplazo de manera distinta. BC-09 mantiene</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">una autoridad documental común sin redefinir los hechos fuente ni</text>
+<text x="846" y="1064" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">convertir el documento de Nexa en documento fiscal</text>
+<text x="846" y="1090" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">automáticamente.</text>
+<text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
+</svg>

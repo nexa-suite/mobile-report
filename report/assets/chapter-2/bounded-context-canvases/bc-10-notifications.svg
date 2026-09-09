@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1244" viewBox="0 0 1600 1244">
+<rect width="100%" height="100%" fill="#f7f9fb"/>
+<rect width="1600" height="120" fill="#495057"/>
+<text x="46" y="62" font-family="Arial, Helvetica, sans-serif" font-size="34px" font-weight="700" fill="#ffffff">BC-10 Notifications — Bounded Context Canvas</text>
+<text x="46" y="98" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#e7eef3">Strategic DDD visual summary sourced from 2.5.1.3</text>
+<rect x="46" y="142" width="300" height="38" rx="19" fill="#495057"/>
+<text x="68" y="167" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="700" fill="#ffffff">Classification: Generic</text>
+<rect x="46" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Context / Purpose</text>
+<text x="68" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Posee Notification intent, candidate, template, recipient,</text>
+<text x="68" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">channel, preference, attempt, retry y delivery state. No posee</text>
+<text x="68" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">source lifecycle, Payment, Delivery ni Business Traceability.</text>
+<rect x="824" y="216" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="216" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="256" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="251" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Ubiquitous Language / Invariants</text>
+<text x="846" y="304" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">At-least-once delivery es la expectativa. Retryable failure y</text>
+<text x="846" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">terminal failure son estados explícitos. Notification failure</text>
+<text x="846" y="356" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">nunca muta source business state. V1 usa in-app y email; no crea</text>
+<text x="846" y="382" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">un Push Device o Mobile Notifications context.</text>
+<rect x="46" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Capabilities</text>
+<text x="68" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Notification candidate creation, recipient/channel selection,</text>
+<text x="68" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">template resolution, dispatch, retry, suppression, delivery</text>
+<text x="68" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">evidence y terminal-failure review.</text>
+<rect x="824" y="544" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="544" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="584" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="579" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Capability Layering</text>
+<text x="846" y="632" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Intent traduce source fact a candidate. Delivery ejecuta channel</text>
+<text x="846" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">adapter y attempt. Reliability aplica retry y dedupe según el</text>
+<text x="846" y="684" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">contrato de entrega. La proyección in-app es lectura de</text>
+<text x="846" y="710" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Notification.</text>
+<rect x="46" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="46" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="46" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="68" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Inbound / Outbound Dependencies</text>
+<text x="68" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Consume published facts y preferences autorizadas. Entrega</text>
+<text x="68" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">delivery attempts, retries y outcomes a recipients y BC-11. La</text>
+<text x="68" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">publicación durable y los providers abstractos aíslan una</text>
+<text x="68" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">interrupción del canal del estado fuente.</text>
+<rect x="824" y="872" width="750" height="300" rx="14" fill="#ffffff" stroke="#c8d2dc" stroke-width="2"/>
+<rect x="824" y="872" width="750" height="54" rx="14" fill="#eaf0f5"/>
+<rect x="824" y="912" width="750" height="14" fill="#eaf0f5"/>
+<text x="846" y="907" font-family="Arial, Helvetica, sans-serif" font-size="21px" font-weight="700" fill="#495057">Design Critique / Rejected Alternative</text>
+<text x="846" y="960" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">Alternativa: fusionarlo con Business Traceability reduciría</text>
+<text x="846" y="986" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">consumidores, pero mezclaría delivery operativo con timeline</text>
+<text x="846" y="1012" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">durable y replayable. Se mantiene separado para reintentar</text>
+<text x="846" y="1038" font-family="Arial, Helvetica, sans-serif" font-size="18px" font-weight="400" fill="#18212b">comunicación sin alterar timeline, order, payment o delivery.</text>
+<text x="46" y="1216" font-family="Arial, Helvetica, sans-serif" font-size="16px" font-weight="400" fill="#5e6b78">Source: accepted semantic canvas content in report/2.5.1.3</text>
+</svg>

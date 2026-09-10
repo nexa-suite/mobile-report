@@ -27,17 +27,11 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 | Ubicación | El alcance priorizado entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
 | Distinciones | Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship son distintos. Dispatch Handoff, Driver Outcome y Buyer Receipt también son hechos separados. |
 
-### Artefactos
-
-- [2.4.1 User Stories](./user-stories.md)
-- [Technical Stories](./technical-stories.md)
-- [Spike Stories](./spike-stories.md)
-- [2.4.2 Impact Mapping](../2.4.2-impact-mapping.md)
-- [2.4.3 Product Backlog](../2.4.3-product-backlog.md)
-
 El catálogo contiene 73 Functional User Stories: 28 conforman el alcance
-priorizado y 45 se conservan como backlog posterior. Estar documentada no
-asigna a una historia implementación, evidencia de investigación ni aceptación.
+priorizado y 45 se conservan como backlog posterior. Las Technical Stories, los
+Spikes, el Impact Mapping y el Product Backlog complementan esta especificación
+en sus secciones respectivas. Estar documentada no asigna a una historia
+implementación, evidencia de investigación ni aceptación.
 
 ---
 

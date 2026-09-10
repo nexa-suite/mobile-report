@@ -256,21 +256,21 @@ documentación técnica suficiente para explicar sus decisiones principales.
 
 ### Áreas de interés profesional
 
-Gerard orienta su desarrollo profesional hacia **Cloud Architecture y
-DevOps / Platform Engineering**. Estas áreas combinan análisis técnico,
-arquitectura, infraestructura y comprensión integral de cómo una solución pasa
-del diseño a una operación confiable.
+Gerard orienta su desarrollo profesional hacia **Systems Analysis, Software
+Modeling y Technical Communication**. Busca profundizar la comprensión de
+necesidades, modelos de dominio y sistema, decisiones técnicas y comunicación
+clara de sus trade-offs para equipos de ingeniería y actores de negocio.
 
-### Objetivo SMART 1 — Formación y certificación en Cloud Engineering
+### Objetivo SMART 1 — Formación rigurosa en análisis y modelado de software
 
 **Objetivo consolidado**
 
 Durante los **12 meses posteriores a la culminación del pregrado**, completar
-un mínimo de **120 horas de formación práctica en cloud computing**, incluyendo
-redes, cómputo, almacenamiento, seguridad, bases de datos, observabilidad y
-arquitecturas de alta disponibilidad, y obtener **una certificación profesional
-de nivel associate en un proveedor cloud reconocido**, dedicando
-aproximadamente **6 horas semanales** entre estudio y laboratorios.
+un mínimo de **120 horas de formación** en análisis de requisitos,
+Domain-Driven Design, UML, C4 y técnicas de modelado de software, dedicando al
+menos **6 horas semanales** a estudio y aplicación. Documentará un caso de
+análisis completo con requisitos, modelo de dominio, modelos de sistema,
+decisiones y trade-offs explicados para lectores técnicos y de negocio.
 
 **Tabla**
 
@@ -278,22 +278,22 @@ aproximadamente **6 horas semanales** entre estudio y laboratorios.
 
 | Criterio | Aplicación |
 | --- | --- |
-| **Specific** | Especializarse en fundamentos de Cloud Engineering y obtener una certificación profesional. |
-| **Measurable** | 120 horas de formación y una certificación de nivel associate obtenida. |
-| **Achievable** | Dedicación aproximada de 6 horas semanales mediante formación oficial, laboratorios y proyectos personales. |
-| **Relevant** | Proporciona una base para desempeñarse en Cloud Engineering, Platform Engineering o responsabilidades de arquitectura. |
+| **Specific** | Profundizar análisis de requisitos, DDD, UML, C4 y comunicación de decisiones mediante un caso documentado. |
+| **Measurable** | 120 horas de formación y un caso con requisitos, modelos, decisiones y trade-offs. |
+| **Achievable** | Dedicación aproximada de 6 horas semanales mediante bibliografía, cursos y casos prácticos. |
+| **Relevant** | Fortalece competencias para Systems Analysis, Software Modeling y Technical Communication. |
 | **Time-bound** | Dentro de los 12 meses posteriores a culminar el pregrado. |
 
-### Objetivo SMART 2 — Automatización y operación de una plataforma cloud
+### Objetivo SMART 2 — Portafolio de casos de análisis y comunicación técnica
 
 **Objetivo consolidado**
 
 Durante los **18 meses posteriores a la culminación del pregrado**, diseñar y
-publicar una solución desplegada en cloud que incorpore **Infrastructure as
-Code, pipeline CI/CD, administración segura de configuración, observabilidad y
-procedimientos de recuperación**, documentando su arquitectura y demostrando al
-menos **tres escenarios controlados de fallo y recuperación**. El proyecto se
-desarrollará dedicando aproximadamente **5 horas semanales**.
+publicar un portafolio de al menos **tres casos de análisis y modelado de
+software**, cada uno con requerimientos, modelo de dominio o sistema, decisiones
+técnicas, trade-offs y una explicación destinada a lectores técnicos y no
+técnicos. Dedicará al menos **5 horas semanales** a construcción, revisión y
+comunicación de los casos.
 
 **Tabla**
 
@@ -301,8 +301,8 @@ desarrollará dedicando aproximadamente **5 horas semanales**.
 
 | Criterio | Aplicación |
 | --- | --- |
-| **Specific** | Construir y operar una plataforma cloud automatizada con prácticas de infraestructura y confiabilidad. |
-| **Measurable** | Una solución desplegada, IaC, CI/CD, observabilidad y tres escenarios documentados de fallo y recuperación. |
-| **Achievable** | Desarrollo gradual utilizando servicios cloud de laboratorio o free tier, herramientas de automatización y aproximadamente 5 horas semanales. |
-| **Relevant** | Genera experiencia demostrable para funciones de Cloud, DevOps o Platform Engineering. |
+| **Specific** | Crear un portafolio de análisis y modelado con comunicación técnica clara. |
+| **Measurable** | Tres casos publicados con requisitos, modelos, decisiones y trade-offs. |
+| **Achievable** | Desarrollo gradual mediante casos académicos, personales u Open Source y aproximadamente 5 horas semanales. |
+| **Relevant** | Genera evidencia demostrable para funciones de Systems Analysis, Software Modeling y Technical Communication. |
 | **Time-bound** | Dentro de los 18 meses posteriores a la culminación del pregrado. |

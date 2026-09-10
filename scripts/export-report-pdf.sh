@@ -84,10 +84,12 @@ append_source() {
 }
 
 {
-  append_source "${FRONT_MATTER[0]}"
-  printf '\\clearpage\n\\tableofcontents\n\\clearpage\n\n'
-  for source in "${FRONT_MATTER[@]:1}"; do
+  for index in "${!FRONT_MATTER[@]}"; do
+    source="${FRONT_MATTER[$index]}"
     append_source "$source"
+    if (( index < ${#FRONT_MATTER[@]} - 1 )); then
+      printf '\\clearpage\n\n'
+    fi
   done
   while IFS= read -r absolute_source; do
     source="${absolute_source#"$REPO_ROOT/"}"
@@ -95,7 +97,12 @@ append_source() {
   done < "$CANONICAL_SOURCES"
 } > "$COMBINED_SOURCE"
 
-printf '%s\n' '\usepackage{pdflscape}' > "$HEADER_FILE"
+{
+  printf '%s\n' '\usepackage{pdflscape}'
+  printf '%s\n' '\usepackage{setspace}'
+  printf '%s\n' '\usepackage{ragged2e}'
+  printf '%s\n' '\AtBeginDocument{\onehalfspacing\RaggedRight\setlength{\parindent}{0.5in}\setlength{\parskip}{0pt}\pagestyle{plain}}'
+} > "$HEADER_FILE"
 
 PANDOC_ARGUMENTS=(
   --from=markdown+raw_tex+task_lists+strikeout+autolink_bare_uris+emoji

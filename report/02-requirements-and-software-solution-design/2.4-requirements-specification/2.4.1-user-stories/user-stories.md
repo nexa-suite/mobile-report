@@ -1,4 +1,4 @@
-## 2.4 Requirements Specification
+## 2.4. Requirements specification
 
 Esta sección especifica el escenario **To-Be** de Nexa sin presentarlo como
 evidencia As-Is ni como una implementación aceptada. Las Functional User
@@ -41,7 +41,7 @@ asigna a una historia implementación, evidencia de investigación ni aceptació
 
 ---
 
-### 2.4.1 User Stories
+### 2.4.1. User Stories
 
 Este catálogo contiene Functional User Stories de la Landing pública y de las
 dos proyecciones Mobile. El escenario To-Be, sus reglas transversales y los

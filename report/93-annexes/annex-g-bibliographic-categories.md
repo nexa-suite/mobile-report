@@ -1,4 +1,4 @@
-# Annex G: Bibliographic Categories
+## Annex G: Bibliographic Categories
 
 This annex groups the sources cited in the report by their contribution to the
 academic discussion. The complete APA 7 references appear in the Bibliography.

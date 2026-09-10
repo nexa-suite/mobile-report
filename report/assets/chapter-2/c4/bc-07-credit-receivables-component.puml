@@ -1,0 +1,28 @@
+@startuml
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam componentStyle rectangle
+title BC-07 Credit & Receivables — C4 L3 TARGET
+legend bottom
+  Component view inside the shared Nexa API modular monolith; no separate deployment is implied.
+endlegend
+package "Nexa API — logical BC-07 ownership" {
+  component "Credit & Receivables API\n<<Interface>>" as api
+  component "EvaluateCreditHandler\nEstablishCreditReservationHandler\nApplyPaymentToReceivableHandler\n<<Application>>" as app
+  component "Credit Account, Reservation, Receivable & Adjustment\n<<Domain>>" as domain
+  component "Financial Repositories, Locks/CAS & Outbox\n<<Infrastructure>>" as infra
+  database "Shared PostgreSQL\nBC-07 logical tables" as db
+}
+component "BC-04 commercial decision / BC-08 confirmed payment\n<<explicit contracts>>" as contracts
+component "BC-09, BC-10 and BC-11\n<<post-commit consumers>>" as consumers
+api --> app
+app --> domain : protect last credit
+domain --> infra
+infra --> db
+app --> contracts
+infra --> consumers : durable facts
+note bottom of domain
+Payment != Receivable; reservations and outstanding balances never double count.
+end note
+@enduml

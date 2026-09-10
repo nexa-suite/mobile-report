@@ -50,11 +50,9 @@ history rules remain in canonical SQL; no physical BC database is asserted.
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-07 component family](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png)
+![BC-07 Credit & Receivables — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-07-credit-receivables-component.png)
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -62,12 +60,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-07 tactical domain model](../../../assets/chapter-2/tactical/BC-07/BC07_CreditReceivables.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-07/domain-model.puml).
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
 
 ![BC-07 database design projection](../../../assets/chapter-2/tactical/BC-07/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-07/database-diagram.puml).
 This is a logical projection of shared PostgreSQL with constraints and
 tenant scope; canonical SQL remains authority.

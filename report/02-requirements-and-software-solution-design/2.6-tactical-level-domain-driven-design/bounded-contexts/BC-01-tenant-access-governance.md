@@ -76,6 +76,26 @@ owned by this context.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
+Las siguientes clases son especificaciones **TARGET** de construcción. Sus nombres
+describen límites de responsabilidad; no afirman que todas existan en el código
+actual ni definen nuevas rutas HTTP.
+
+*Clases TARGET por capa de BC-01*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `OrganizationRegistrationController` | Controller | Recibe la solicitud pública de onboarding y la traduce a un comando; no concede acceso. |
+| Interface | `TenantAccessController` | Controller | Expone una proyección de contexto y capacidades ya resuelta por el servidor; nunca acepta un Tenant como autoridad desde el cliente. |
+| Interface | `AccessContextConsumer` | Consumer | Recibe una proyección autorizada para Platform, Portal o Mobile sin crear un contexto adicional. |
+| Application | `SubmitCompanyOnboardingHandler` | Command handler | Persiste la solicitud y su idempotencia; el límite termina antes de activar Tenant o Membership. |
+| Application | `ActivateTenantHandler` | Command handler | Activa Tenant, Workspace y la membresía inicial en una transacción local con outbox. |
+| Application | `EvaluateAccessHandler` | Query/application service | Reconstruye Tenant, Workspace y Membership en el servidor y aplica la política de elegibilidad. |
+| Application | `TransferCompanyOwnershipHandler` | Command handler | Usa CAS o bloqueo determinista para preservar un único Company Owner activo. |
+| Infrastructure | `TenantRepositoryAdapter` | Repository implementation | Mapea `tenant` y `workspace` en PostgreSQL compartido con alcance Tenant. |
+| Infrastructure | `WorkforceMembershipRepositoryAdapter` | Repository implementation | Persiste membresías, roles y capacidades sin convertirlas en un grafo de otros BC. |
+| Infrastructure | `TransactionTenantScopePort` | Technical adapter | Establece y limpia el contexto Tenant/Workspace transaccional; ante ambigüedad falla cerrado. |
+| Infrastructure | `AccessOutboxAdapter` | Outbox adapter | Conserva hechos comprometidos para entrega posterior al commit, bajo semántica al menos una vez. |
+
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-01 Tenant & Access Governance — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-01-tenant-access-governance-component.png)

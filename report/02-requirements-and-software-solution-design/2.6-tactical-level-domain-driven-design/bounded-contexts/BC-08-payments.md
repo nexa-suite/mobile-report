@@ -47,6 +47,27 @@ shared and no payment microservice is inferred.
 
 #### 2.6.8.5. Bounded Context Software Architecture Component Level Diagrams
 
+Las siguientes clases son especificaciones **TARGET**. Separan el ingreso de
+proveedor de la decisión de negocio y modelan callbacks como mensajes al menos
+una vez, nunca como confirmación automática del cliente.
+
+*Clases TARGET por capa de BC-08*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `PaymentController` | Controller | Recibe intent, reporte y consulta de estado con idempotencia; el cliente no declara Payment Confirmed. |
+| Interface | `PaymentWebhookController` | Webhook controller | Verifica firma y traduce callback del proveedor antes de llegar a aplicación. |
+| Interface | `PaymentProjectionConsumer` | Consumer | Proyecta estado seguro a Platform, Portal o Mobile sin exponer secretos. |
+| Application | `ReportPaymentHandler` | Command handler | Registra intención o reporte con alcance y referencia segura. |
+| Application | `InitiateProviderPaymentHandler` | Application service | Persiste/asegura intención, hace I/O fuera de transacción larga y finaliza de forma cercada. |
+| Application | `AcceptProviderWebhookHandler` | Event handler | Deduplica `(provider,eventId)`, procesa una transición de Payment y abre reconciliación si existe incertidumbre. |
+| Application | `RequestRefundHandler` | Command handler | Inicia reverso explícito sin borrar Payment ni su historial. |
+| Application | `ResolvePaymentReconciliationHandler` | Command handler | Cierra caso visible de resultado proveedor/local incongruente. |
+| Infrastructure | `PaymentRepositoryAdapter` | Repository implementation | Persiste Payment, attempts y casos de reconciliación en PostgreSQL compartido. |
+| Infrastructure | `StripePaymentProviderAdapter` | Provider ACL | Traduce proveedor concreto a contrato neutral y mantiene reemplazable la integración. |
+| Infrastructure | `ProviderWebhookInboxAdapter` | Inbox adapter | Conserva deduplicación, lease y reintento de callbacks al menos una vez. |
+| Infrastructure | `PaymentOutboxAdapter` | Outbox adapter | Publica `PaymentConfirmed` únicamente después del commit local. |
+
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-08 Payments — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-08-payments-component.png)

@@ -45,6 +45,22 @@ correlation IDs are non-owning references. Evidence metadata can point through
 BC-09/Object Storage ports; canonical SQL defines tenant scope and append-only
 constraints. No separate audit database is inferred.
 
+**Clases TARGET por capa de BC-11.** Los nombres siguientes concretan responsabilidades previstas; no implican endpoints ni convierten este contexto en propietario de hechos ajenos.
+
+| Capa | Clase / componente TARGET | Responsabilidad |
+|---|---|---|
+| Interface | `AuditViewerController` | Entrega consultas autorizadas de trazabilidad, manteniendo filtros de tenant y sensibilidad. |
+| Interface | `BusinessTimelineController` | Expone la línea de tiempo como proyección de lectura, no como mutación del hecho origen. |
+| Interface | `TraceabilityProjectionConsumer` | Consume hechos publicados para actualizar vistas locales de auditoría. |
+| Application | `TraceBusinessFactHandler` | Acepta un hecho comprometido y conserva su correlación, causalidad y procedencia. |
+| Application | `ProjectBusinessTimelineHandler` | Construye una línea de tiempo ordenada sin alterar el estado del contexto emisor. |
+| Application | `AppendEvidenceReferenceHandler` | Vincula evidencia inmutable por referencia y bajo autorización explícita. |
+| Application | `ProtectSensitivePayloadHandler` | Minimiza y protege cargas sensibles antes de persistir la proyección de auditoría. |
+| Infrastructure | `BusinessFactRepositoryAdapter` | Persiste hechos, correlaciones y metadatos de consulta propios de BC-11. |
+| Infrastructure | `TraceabilityInboxAdapter` | Deduplica hechos recibidos con semántica al-menos-una-vez. |
+| Infrastructure | `TraceabilityOutboxAdapter` | Publica hechos propios ya comprometidos mediante outbox durable. |
+| Infrastructure | `EvidenceReferenceAdapter` | Resuelve referencias de evidencia sin copiar ni mutar el registro histórico de origen. |
+
 #### 2.6.11.5. Bounded Context Software Architecture Component Level Diagrams
 
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.

@@ -50,6 +50,28 @@ history rules remain in canonical SQL; no physical BC database is asserted.
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
+Las siguientes clases son especificaciones **TARGET**. Preservan que Payment y
+Receivable son autoridades distintas, y que la corrección financiera agrega un
+hecho en vez de reescribir la obligación original.
+
+*Clases TARGET por capa de BC-07*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `CreditExposureController` | Controller | Presenta exposición y decisiones permitidas sin revelar política interna a un Buyer. |
+| Interface | `ReceivablesController` | Controller | Expone historial financiero autorizado, no la confirmación de un proveedor de pagos. |
+| Interface | `CreditReservationPort` | Contract interface | Recibe la solicitud síncrona de BC-04; no es una ruta REST inventada. |
+| Interface | `ReceivableProjectionConsumer` | Consumer | Proyecta información segura para Platform, Portal o Mobile. |
+| Application | `EvaluateCreditHandler` | Application service | Calcula crédito disponible bajo bloqueo/CAS sobre cuenta y reservas activas. |
+| Application | `EstablishCreditReservationHandler` | Command handler | Protege crédito en submit PR o confirmación Direct Order con idempotencia durable. |
+| Application | `PostReceivableHandler` | Command handler | Publica obligación crédito/net en confirmación de Sales Order, no universalmente en entrega o factura. |
+| Application | `ApplyPaymentToReceivableHandler` | Command handler | Consume un Payment confirmado por ID y evita sobreaplicar o duplicar la aplicación. |
+| Application | `RecordFinancialAdjustmentHandler` | Command handler | Añade ajuste explícito, actor y razón conservando ledger e importe original. |
+| Infrastructure | `CreditAccountRepositoryAdapter` | Repository implementation | Persiste cuenta y reserva con restricciones monetarias y alcance Tenant. |
+| Infrastructure | `ReceivableRepositoryAdapter` | Repository implementation | Persiste obligación, aplicaciones y ledger sin poseer Payment. |
+| Infrastructure | `PaymentFactPort` | Contract adapter | Consume el resultado proveedor-neutral de BC-08 por contrato explícito. |
+| Infrastructure | `CreditOutboxAdapter` | Outbox adapter | Emite hechos de reserva y obligación sólo al finalizar la transacción. |
+
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-07 Credit & Receivables — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-07-credit-receivables-component.png)

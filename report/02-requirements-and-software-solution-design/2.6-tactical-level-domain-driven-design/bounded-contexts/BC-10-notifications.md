@@ -46,6 +46,23 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 no provider or third channel is assumed. Technical outbox/inbox persistence is
 shared infrastructure, not a new BC.
 
+**Clases TARGET por capa de BC-10.** Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, canales ni proveedores ya implementados.
+
+| Capa | Clase / componente TARGET | Responsabilidad |
+|---|---|---|
+| Interface | `NotificationController` | Expone operaciones de consulta y preferencia sin decidir reglas de negocio. |
+| Interface | `NotificationDeliveryConsumer` | Recibe hechos comprometidos que habilitan una entrega al destinatario. |
+| Interface | `NotificationProjectionConsumer` | Materializa vistas de notificación sin convertirse en autoridad sobre el hecho origen. |
+| Application | `CreateNotificationCandidateHandler` | Convierte un hecho elegible en un candidato deduplicable y auditable. |
+| Application | `DispatchNotificationHandler` | Orquesta la entrega por canal usando preferencias resueltas por contrato. |
+| Application | `RetryNotificationDeliveryHandler` | Programa un reintento acotado sin duplicar una entrega aceptada. |
+| Application | `ManageNotificationPreferenceHandler` | Cambia preferencias explícitas del destinatario bajo su alcance autorizado. |
+| Application | `ProjectNotificationHandler` | Actualiza la proyección de lectura a partir de hechos ya comprometidos. |
+| Infrastructure | `NotificationRepositoryAdapter` | Persiste candidatos, intentos, preferencias y estados de entrega. |
+| Infrastructure | `EmailDeliveryAdapter` | Implementa el puerto de entrega por correo sin filtrar secretos o PII innecesaria. |
+| Infrastructure | `InAppNotificationAdapter` | Implementa el canal interno de notificaciones de la plataforma. |
+| Infrastructure | `NotificationOutboxWorker` | Publica y consume trabajo durable con semántica al-menos-una-vez. |
+
 #### 2.6.10.5. Bounded Context Software Architecture Component Level Diagrams
 
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.

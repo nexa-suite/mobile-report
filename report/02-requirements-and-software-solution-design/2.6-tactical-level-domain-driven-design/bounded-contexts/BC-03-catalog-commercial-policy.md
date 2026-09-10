@@ -45,6 +45,26 @@ snapshots are used.
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
+Las siguientes clases son especificaciones **TARGET**. Conservan `Product` y
+`SKU` como conceptos distintos, y separan una consulta de precio de la decisión
+comercial autoritativa posterior.
+
+*Clases TARGET por capa de BC-03*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `CatalogManagementController` | Controller | Traduce altas y cambios de Product, SKU y política comercial autorizados. |
+| Interface | `CatalogPricingController` | Controller | Expone una consulta de precio/términos; una respuesta previa no crea compromiso. |
+| Interface | `CatalogProjectionConsumer` | Consumer | Proyecta catálogo seguro para Platform, Portal o Mobile sin conceder visibilidad por sí mismo. |
+| Application | `ManageProductHandler` | Command handler | Mantiene ciclo de vida de Product y metadatos de media dentro de su límite. |
+| Application | `ManageSkuHandler` | Command handler | Conserva la identidad independiente de SKU y su requisito de cadena de frío cuando corresponda. |
+| Application | `ResolveCatalogPriceHandler` | Query/application service | Aplica precedencia Base Price, Price List, Customer Terms y una Promotion; distingue preview de snapshot autoritativo. |
+| Application | `ManagePriceListHandler` | Command handler | Protege intervalos efectivos versionados para evitar precios activos solapados. |
+| Infrastructure | `CatalogProductRepositoryAdapter` | Repository implementation | Persiste Product y media referenciada en PostgreSQL compartido. |
+| Infrastructure | `CatalogPricingAdapter` | Query adapter | Ejecuta la consulta efectiva de precio sin trasladar la política al cliente. |
+| Infrastructure | `ObjectStorageMediaPort` | Storage adapter | Mantiene bytes de media fuera de PostgreSQL y bajo autorización de aplicación. |
+| Infrastructure | `CatalogAuthorizationPort` | Contract adapter | Revalida Tenant y capacidad con BC-01 antes de mutar catálogo. |
+
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-03 Catalog & Commercial Policy — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-03-catalog-commercial-policy-component.png)

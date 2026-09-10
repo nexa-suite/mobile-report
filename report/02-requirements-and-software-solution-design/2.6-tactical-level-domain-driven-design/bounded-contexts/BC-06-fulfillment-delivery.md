@@ -56,6 +56,28 @@ Object bytes use BC-09/Object Storage ports; no public URL is inferred.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
+Las siguientes clases son especificaciones **TARGET**. Mantienen separados
+Dispatch Handoff, Driver Outcome, Buyer Receipt y Proof of Delivery; cada hecho
+conserva su propio emisor e historia.
+
+*Clases TARGET por capa de BC-06*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `FulfillmentController` | Controller | Traduce comandos de planificación, picking y empaquetado con autorización de servidor. |
+| Interface | `DeliveryController` | Controller | Recibe asignación, intentos y outcomes sin confundirlos con la recepción Buyer. |
+| Interface | `ProofOfDeliveryController` | Controller | Registra evidencia inmutable y sus addenda; no expone bytes privados directamente. |
+| Interface | `DeliveryTrackingConsumer` | Consumer | Proyecta una vista autorizada para Portal/Mobile, sin convertirla en autoridad de ciclo de vida. |
+| Application | `PlanFulfillmentHandler` | Command handler | Valida contrato de Physical Allocation de BC-05 antes de crear o avanzar Fulfillment. |
+| Application | `ConfirmPickingHandler` | Command handler | Aplica idempotencia de scan, versión y discrepancia sin mutar inventario fuera del contrato. |
+| Application | `FinalizeDeliveryAttemptHandler` | Command handler | Persiste outcome inmutable, conserva el mismo Delivery en falla y crea una sola Continuation Delivery si corresponde. |
+| Application | `FinalizeProofOfDeliveryHandler` | Command handler | Verifica campos de política y registra referencia de evidencia antes de publicar el hecho comprometido. |
+| Infrastructure | `FulfillmentRepositoryAdapter` | Repository implementation | Persiste fulfillment, líneas, picking y sus hechos bajo propiedad BC-06. |
+| Infrastructure | `DeliveryRepositoryAdapter` | Repository implementation | Persiste Delivery, Assignment, Attempt y Continuation sin crear un Delivery por intento fallido. |
+| Infrastructure | `ProofEvidenceObjectPort` | Storage adapter | Gestiona referencias autorizadas a Object Storage, no URLs públicas inferidas. |
+| Infrastructure | `MapRoutingPort` | External ACL | Aísla navegación/ruta externa del dominio y evita afirmar tracking continuo. |
+| Infrastructure | `FulfillmentOutboxAdapter` | Outbox adapter | Entrega hechos posteriores al commit a documentos, notificaciones y trazabilidad. |
+
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-06 Fulfillment & Delivery — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-06-fulfillment-delivery-component.png)

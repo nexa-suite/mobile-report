@@ -9,6 +9,8 @@ implementación, validación de producto o despliegue.
 
 ## Repositorio y práctica de colaboración
 
+*Prácticas de colaboración verificables para el Project Report.*
+
 | Práctica | Aplicación verificable en el Project Report |
 | --- | --- |
 | Repositorio público | [`nexa-suite/mobile-report`](https://github.com/nexa-suite/mobile-report), con historial revisable por commit y rama. |
@@ -18,19 +20,28 @@ implementación, validación de producto o despliegue.
 | Integridad de autoría | Los cambios materiales se atribuyen al perfil Git del integrante; las firmas se verifican con las herramientas de contribución autorizadas, no por texto del informe. |
 | Revisión e integración | Los cambios por capítulo se aíslan antes de integrarse; las decisiones de alcance se contrastan contra el Blueprint canónico. |
 
+*Nota.* La práctica de repositorio demuestra trazabilidad de cambios de informe;
+no sustituye evidencia de comportamiento, validación o despliegue de producto.
+
 ![Contribuciones públicas de los cinco integrantes en GitHub](../assets/chapter-4/collaboration/github-contributors-2026-09-09.png)
 
-> *Nota.* Captura directa de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública muestra contribuciones a `main` de Joaquín Verde, Diego Yucra, Gino Torrejón, Sebastián Pinedo y Gerard Rojas; GitHub excluye merge commits en esta gráfica. No se añade una captura de actividad nueva cuando no existe una sesión autenticada disponible para obtenerla de forma legítima.
+> *Nota.* Captura histórica de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública representa contribuciones a `main` y no cuantifica las revisiones por rama de esta misión; los commits enlazados a continuación son la evidencia específica de cambios documentales.
 
 ## AV1 — aportes documentados
 
+*Aportes documentales representativos por integrante para AV1.*
+
 | Integrante | Perfil GitHub | Aporte al informe | Evidencia representativa |
 | --- | --- | --- | --- |
-| Pinedo Sanchez, Sebastián Martín | [spinedo214](https://github.com/spinedo214) | Reorganizó Needfinding, requisitos, Impact Mapping y los límites de evidencia de entrevistas del Capítulo II. | [`b62ab29`](https://github.com/nexa-suite/mobile-report/commit/b62ab29b444ee8b3d4c5048dd8478ef594eeb583), [`05ac97d`](https://github.com/nexa-suite/mobile-report/commit/05ac97d4b7664ba2904f83b68088d9334f63d3bf) |
-| Rojas Mancilla, Gerard Gianpier | [GerardRojasMancilla](https://github.com/GerardRojasMancilla) | Estructuró Sprint 1 y refinó la documentación de configuración y validación del Capítulo IV. | [`51a43ec`](https://github.com/nexa-suite/mobile-report/commit/51a43ec84934b5c92f3213de678fc4a5f7da2ab9), [`d560031`](https://github.com/nexa-suite/mobile-report/commit/d5600315472cefc6a53a4291024159483bfe8466) |
-| Torrejón De Los Santos, Gino Rodrigo | [R0obxdnt](https://github.com/R0obxdnt) | Integró los capítulos y consolidó la rama global del informe para la publicación. | [`d0d38f4`](https://github.com/nexa-suite/mobile-report/commit/d0d38f442907971e09cb9ce9aab40319c701bd00), [`7ab621d`](https://github.com/nexa-suite/mobile-report/commit/7ab621d180ab79f7053c1849f4d0baa3672d9e5e) |
-| Verde Bueno, Joaquín Francisco | [JoaquinBV511](https://github.com/JoaquinBV511) | Normalizó la navegación del Capítulo III y aclaró los límites de la evidencia de UI/UX. | [`a68d788`](https://github.com/nexa-suite/mobile-report/commit/a68d788d57abf0a97a1a669cb03885fa93995605), [`4d0e903`](https://github.com/nexa-suite/mobile-report/commit/4d0e903d321a935743aa5695e6c3b181ca05270c) |
-| Yucra Sandoval, Diego Sebastián | [DiegoS284](https://github.com/DiegoS284) | Refinó la evidencia Lean UX y la redacción del Capítulo I. | [`c1f86f7`](https://github.com/nexa-suite/mobile-report/commit/c1f86f70d5e478bf6a8434ae84a03063e8281fa6) |
+| Pinedo Sanchez, Sebastián Martín | [spinedo214](https://github.com/spinedo214) | Recompuso el Lean UX Canvas, preparó los artefactos preliminares de Needfinding y alineó los incrementos académicos de Sprint. | [`6ec00a4`](https://github.com/nexa-suite/mobile-report/commit/6ec00a42b7b18ec24bdedb716207af7852fc9491), [`b777bf7`](https://github.com/nexa-suite/mobile-report/commit/b777bf77c87ce1c847ad66fbd23c491f68da546e), [`1a9c889`](https://github.com/nexa-suite/mobile-report/commit/1a9c889f58ed6857495b118984dec48aa004f631) |
+| Rojas Mancilla, Gerard Gianpier | [GerardRojasMancilla](https://github.com/GerardRojasMancilla) | Migró evidencia C4 a Structurizr y preparó tareas y liderazgo trazables para Sprint 1. | [`cfbd775`](https://github.com/nexa-suite/mobile-report/commit/cfbd7756df987b4e4fe3f132e4830cc0ff53fb39), [`427ebe5`](https://github.com/nexa-suite/mobile-report/commit/427ebe541327fa971a7f43e23a7bc2a62c5b0c12), [`56a1420`](https://github.com/nexa-suite/mobile-report/commit/56a1420c4b5936e10a66dfa5d3dd058c45145271) |
+| Torrejón De Los Santos, Gino Rodrigo | [R0obxdnt](https://github.com/R0obxdnt) | Redujo la proyección académica, normalizó la presentación de UI/UX y alineó el alcance Buyer/hardening de Sprint 4. | [`d5d5daf`](https://github.com/nexa-suite/mobile-report/commit/d5d5daf79e460adda6c4927230205d77ded4012a), [`68cdb88`](https://github.com/nexa-suite/mobile-report/commit/68cdb880e67414fea1c29ddf52c495b3b10e4a1b), [`b297448`](https://github.com/nexa-suite/mobile-report/commit/b29744804819d1403c578d16d580e47209515ff7) |
+| Verde Bueno, Joaquín Francisco | [JoaquinBV511](https://github.com/JoaquinBV511) | Precisó los límites de evidencia de diseño futuro y la postura de Figma/prototipado sin generar artefactos ficticios. | [`d2d8cb2`](https://github.com/nexa-suite/mobile-report/commit/d2d8cb2909c62ce0193ef2fc948a2deaf33f9584) |
+| Yucra Sandoval, Diego Sebastián | [DiegoS284](https://github.com/DiegoS284) | Anotó los límites de evidencia C4 y reconcilió SCM, Sprint y evidencia futura del Capítulo IV. | [`6b19b26`](https://github.com/nexa-suite/mobile-report/commit/6b19b261c9668585a55b6688a249cfd66abdc744), [`e818e76`](https://github.com/nexa-suite/mobile-report/commit/e818e76abe76ab55d0404256cdccfa1f42afedfb) |
+
+*Nota.* Los commits muestran contribuciones documentales reales en ramas
+propietarias. No se usan para inferir implementación, entrevistas, UXPressia,
+Jira, despliegue ni aceptación de producto.
 
 La distribución se interpreta por responsabilidad y contenido de los cambios,
 no por un conteo mecánico de commits. La entrega AV1 conserva sólo actividades

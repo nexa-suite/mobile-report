@@ -45,11 +45,9 @@ snapshots are used.
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-03 component family](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png)
+![BC-03 Catalog & Commercial Policy — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-03-catalog-commercial-policy-component.png)
 
 El diagrama se presenta como modelo de diseño y no como prueba de una
 implementación en ejecución.
@@ -60,12 +58,10 @@ implementación en ejecución.
 
 ![BC-03 tactical domain model](../../../assets/chapter-2/tactical/BC-03/BC03_CatalogCommercialPolicy.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-03/domain-model.puml).
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
 ![BC-03 database design projection](../../../assets/chapter-2/tactical/BC-03/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-03/database-diagram.puml).
 Diagram is a shared-PostgreSQL logical projection with constraints;
 canonical SQL remains authority.

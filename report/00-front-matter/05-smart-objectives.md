@@ -40,8 +40,6 @@ y aplicación práctica. El objetivo busca fortalecer las competencias necesaria
 para progresar hacia posiciones como Product Manager, Product Lead o funciones
 equivalentes de liderazgo de producto.
 
-**Tabla**
-
 *Evaluación SMART del objetivo de Product Management*
 
 | Criterio | Aplicación |
@@ -65,8 +63,6 @@ modelos C4, estrategia de calidad, pruebas y criterios de observabilidad,
 dedicando un promedio mínimo de **6 horas semanales** al desarrollo técnico. El
 objetivo permitirá mantener una base técnica sólida para ejercer liderazgo de
 producto sobre sistemas de software complejos.
-
-**Tabla**
 
 *Evaluación SMART del objetivo de arquitectura y calidad*
 
@@ -100,8 +96,6 @@ arquitecturas cloud, complementándolas con la obtención de **una certificació
 profesional relacionada con arquitectura o cloud computing**, mediante una
 dedicación promedio de **6 horas semanales**.
 
-**Tabla**
-
 *Evaluación SMART del primer objetivo de Sebastián*
 
 | Criterio | Aplicación |
@@ -123,8 +117,6 @@ arquitectónicas, atributos de calidad, trade-offs y estrategia de validación,
 incluyendo al menos **un proyecto ejecutable y públicamente demostrable**. El
 trabajo se realizará dedicando aproximadamente **5 horas semanales** a diseño,
 implementación y documentación.
-
-**Tabla**
 
 *Evaluación SMART del segundo objetivo de Sebastián*
 
@@ -158,8 +150,6 @@ obtener **una certificación profesional en Data Analytics o Business
 Intelligence**, dedicando un promedio de **6 horas semanales** al aprendizaje y
 resolución de casos prácticos.
 
-**Tabla**
-
 *Evaluación SMART del primer objetivo de Joaquín*
 
 | Criterio | Aplicación |
@@ -180,8 +170,6 @@ Analytics**, utilizando datasets reales e incluyendo limpieza de datos, análisi
 exploratorio, definición de indicadores y visualización de resultados; al menos
 **dos proyectos deberán incorporar dashboards interactivos** y todos deberán
 estar documentados en un repositorio público.
-
-**Tabla**
 
 *Evaluación SMART del segundo objetivo de Joaquín*
 
@@ -215,8 +203,6 @@ de cloud deployment, además de obtener **una certificación técnica relacionad
 con Java, Spring o cloud computing**, dedicando aproximadamente **7 horas
 semanales**.
 
-**Tabla**
-
 *Evaluación SMART del primer objetivo de Gino*
 
 | Criterio | Aplicación |
@@ -237,8 +223,6 @@ API documentada, PostgreSQL, autenticación y autorización, pruebas automatizad
 con una cobertura mínima del **80 % sobre los componentes críticos**, ejecución
 contenedorizada y despliegue demostrable. Cada proyecto deberá incluir
 documentación técnica suficiente para explicar sus decisiones principales.
-
-**Tabla**
 
 *Evaluación SMART del segundo objetivo de Gino*
 
@@ -272,8 +256,6 @@ menos **6 horas semanales** a estudio y aplicación. Documentará un caso de
 análisis completo con requisitos, modelo de dominio, modelos de sistema,
 decisiones y trade-offs explicados para lectores técnicos y de negocio.
 
-**Tabla**
-
 *Evaluación SMART del primer objetivo de Gerard*
 
 | Criterio | Aplicación |
@@ -294,8 +276,6 @@ software**, cada uno con requerimientos, modelo de dominio o sistema, decisiones
 técnicas, trade-offs y una explicación destinada a lectores técnicos y no
 técnicos. Dedicará al menos **5 horas semanales** a construcción, revisión y
 comunicación de los casos.
-
-**Tabla**
 
 *Evaluación SMART del segundo objetivo de Gerard*
 

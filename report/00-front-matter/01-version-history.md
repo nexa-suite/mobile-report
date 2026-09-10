@@ -27,6 +27,7 @@ implementación del producto.
 | r14 [`d5d5daf`](https://github.com/nexa-suite/mobile-report/commit/d5d5daf79e460adda6c4927230205d77ded4012a) | 2026-09-10 | R0obxdnt | Redujo la proyección académica de Sprint 1 y preservó el orden canónico del Product Backlog. |
 | r15 [`d2d8cb2`](https://github.com/nexa-suite/mobile-report/commit/d2d8cb2909c62ce0193ef2fc948a2deaf33f9584) | 2026-09-10 | JoaquinBV511 | Precisó la postura de evidencia de UI/UX sin fabricar artefactos de diseño futuros. |
 | r16 [`e818e76`](https://github.com/nexa-suite/mobile-report/commit/e818e76abe76ab55d0404256cdccfa1f42afedfb) | 2026-09-10 | DiegoS284 | Reconcilió SCM, planificación de Sprint y estados de evidencia futura del Capítulo IV. |
+| r17 [`6cbce20`](https://github.com/nexa-suite/mobile-report/commit/6cbce20671a4b3a33b1327a9768eb0c89585d8ce) | 2026-09-10 | GerardRojasMancilla | Alineó la evidencia individual de Student Outcome con la rúbrica ABET vigente y sus límites verificables. |
 
 *Nota.* Las referencias identifican commits publicados en sus ramas
 propietarias. Una revisión documental no acredita implementación, prueba con

@@ -1,0 +1,26 @@
+@startuml
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam componentStyle rectangle
+title BC-05 Inventory Availability — C4 L3 TARGET
+legend bottom
+  Component view inside the shared Nexa API modular monolith; no separate deployment is implied.
+endlegend
+package "Nexa API — logical BC-05 ownership" {
+  component "Availability & Inventory API\n<<Interface>>" as api
+  component "EstablishInventoryBackingHandler\nAllocatePhysicalStockHandler\nTransferInventoryHandler\n<<Application>>" as app
+  component "Inventory Position, Lot, Backing & Allocation\n<<Domain>>" as domain
+  component "Inventory Repositories, Locks/CAS & Outbox\n<<Infrastructure>>" as infra
+  database "Shared PostgreSQL\nBC-05 logical tables" as db
+}
+component "BC-03 SKU / BC-04 demand / BC-06 execution\n<<explicit contracts>>" as contracts
+api --> app
+app --> domain : protect scarce stock
+domain --> infra
+infra --> db
+app --> contracts : backing / allocation by ID
+note bottom of domain
+Safety Stock != Reservation; Backing != Physical Allocation; no last-write-wins.
+end note
+@enduml

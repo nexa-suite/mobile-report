@@ -76,11 +76,9 @@ owned by this context.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-01 component family](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.png)
+![BC-01 Tenant & Access Governance — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-01-tenant-access-governance-component.png)
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -91,13 +89,11 @@ inventario de código fuente.
 
 ![BC-01 tactical domain model](../../../assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-01/domain-model.puml).
 El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
 ![BC-01 database design projection](../../../assets/chapter-2/tactical/BC-01/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-01/database-diagram.puml).
 Es una proyección de propiedad lógica en PostgreSQL compartido; muestra claves,
 restricciones y alcance Tenant, no una base de datos física por contexto.

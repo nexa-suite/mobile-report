@@ -1,0 +1,28 @@
+@startuml
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam componentStyle rectangle
+title BC-11 Business Traceability — C4 L3 TARGET
+legend bottom
+  Component view inside the shared Nexa API modular monolith; it projects facts and does not own source aggregates.
+endlegend
+package "Nexa API — logical BC-11 ownership" {
+  component "Business Timeline & Evidence API\n<<Interface>>" as api
+  component "TraceBusinessFactHandler\nProjectBusinessTimelineHandler\nAppendEvidenceReferenceHandler\n<<Application>>" as app
+  component "Business Fact, Timeline & Evidence Reference\n<<Domain>>" as domain
+  component "Inbox, Append-only Repositories & Redaction Adapter\n<<Infrastructure>>" as infra
+  database "Shared PostgreSQL\nBC-11 logical tables" as db
+}
+component "Published business facts\n<<source BC contracts>>" as facts
+component "BC-09 / Object Storage references\n<<explicit evidence contract>>" as evidence
+api --> app
+facts --> app : replayable / at-least-once
+app --> domain : append safe metadata
+domain --> infra
+infra --> db
+app --> evidence : references only
+note bottom of domain
+Business Traceability != Notification != Security Audit; records are append-only.
+end note
+@enduml

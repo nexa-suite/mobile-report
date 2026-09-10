@@ -1,6 +1,4 @@
-# Conclusiones y recomendaciones
-
-## Conclusiones
+# Conclusiones
 
 1. Nexa aborda un problema de continuidad B2B: una necesidad comercial debe
    conservar contexto al pasar por preparación, despacho, entrega y recepción.

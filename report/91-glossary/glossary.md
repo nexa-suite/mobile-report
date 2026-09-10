@@ -3,7 +3,7 @@
 | Término | Definición en este informe |
 | :--- | :--- |
 | Tenant | Límite máximo de datos y seguridad para una organización de Nexa. |
-| Workspace | Entorno operativo asociado uno a uno con un Tenant en V1; no reemplaza autorización ni es un contenedor C4. |
+| Workspace | Entorno operativo asociado uno a uno con un Tenant en el alcance académico actual; no reemplaza autorización ni es un contenedor C4. |
 | Human Identity | Identidad de una persona usada para autenticación y atribución. |
 | Workforce Membership | Relación de autorización entre una Human Identity, un Workspace y capacidades permitidas. |
 | Customer Account | Organización comercial representada en Nexa. |

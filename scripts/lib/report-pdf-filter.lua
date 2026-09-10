@@ -93,10 +93,27 @@ function Div(element)
   return element
 end
 
+-- Keep the public collaboration capture with its heading and explanatory note
+-- instead of allowing the image float to separate them across front-matter pages.
+function Header(element)
+  local text = pandoc.utils.stringify(element)
+  if text == "Captura de colaboración pública"
+    or text == "AV1 — Aportes documentados"
+  then
+    return {
+      pandoc.RawBlock("tex", "\\clearpage"),
+      element,
+    }
+  end
+  return element
+end
+
 -- Keep exported evidence figures inside the A4 text area. The source Markdown
 -- remains unmodified; explicit image widths, when present, retain precedence.
 function Image(element)
-  if not element.attributes.width then
+  if element.src:match("github%-contributors%-2026%-09%-09%.png$") then
+    element.attributes.width = "75%"
+  elseif not element.attributes.width then
     element.attributes.width = "90%"
   end
   return element
@@ -128,12 +145,15 @@ end
 
 function Table(element)
   local column_count = #element.colspecs
-  local is_sprint_backlog = pandoc.utils.stringify(element):find("SB1-T01", 1, true)
+  local table_text = pandoc.utils.stringify(element)
+  local is_student_outcome = table_text:find("Actualiza conceptos y conocimientos", 1, true)
+    ~= nil
+  local is_sprint_backlog = table_text:find("SB1-T01", 1, true)
     ~= nil
   if column_count > 1 then
     local widths = {}
     if is_sprint_backlog then
-      widths = { 0.13, 0.18, 0.43, 0.07, 0.19 }
+      widths = { 0.095, 0.14, 0.09, 0.12, 0.27, 0.065, 0.15, 0.07 }
     elseif column_count == 5 then
       widths = { 0.18, 0.25, 0.22, 0.23, 0.12 }
     elseif column_count == 6 then
@@ -150,18 +170,25 @@ function Table(element)
       element.colspecs[index] = { specification[1], widths[index] }
     end
   end
+  if is_sprint_backlog then
+    return {
+      pandoc.RawBlock("tex", "\\begin{landscape}\\scriptsize"),
+      element,
+      pandoc.RawBlock("tex", "\\end{landscape}"),
+    }
+  end
+  if is_student_outcome then
+    return {
+      pandoc.RawBlock("tex", "\\begingroup\\tiny"),
+      element,
+      pandoc.RawBlock("tex", "\\endgroup"),
+    }
+  end
   if column_count >= 8 then
     return {
       pandoc.RawBlock("tex", "\\begin{landscape}\\tiny"),
       element,
       pandoc.RawBlock("tex", "\\end{landscape}"),
-    }
-  end
-  if is_sprint_backlog then
-    return {
-      pandoc.RawBlock("tex", "\\begingroup\\small"),
-      element,
-      pandoc.RawBlock("tex", "\\endgroup"),
     }
   end
   if column_count >= 5 then
@@ -172,4 +199,39 @@ function Table(element)
     }
   end
   return element
+end
+
+-- Apply a hanging indent only to the bibliography. The source remains ordinary
+-- Markdown paragraphs, so GitHub rendering is unaffected.
+function Pandoc(document)
+  local blocks = {}
+  local bibliography_open = false
+
+  for _, block in ipairs(document.blocks) do
+    local is_top_level_heading = block.t == "Header" and block.level <= 1
+    local is_bibliography = is_top_level_heading
+      and pandoc.utils.stringify(block) == "Bibliografía"
+
+    if bibliography_open and is_top_level_heading and not is_bibliography then
+      blocks[#blocks + 1] = pandoc.RawBlock("tex", "\\endgroup")
+      bibliography_open = false
+    end
+
+    blocks[#blocks + 1] = block
+
+    if is_bibliography then
+      blocks[#blocks + 1] = pandoc.RawBlock(
+        "tex",
+        "\\begingroup\\setlength{\\parindent}{-0.5in}\\setlength{\\leftskip}{0.5in}"
+      )
+      bibliography_open = true
+    end
+  end
+
+  if bibliography_open then
+    blocks[#blocks + 1] = pandoc.RawBlock("tex", "\\endgroup")
+  end
+
+  document.blocks = blocks
+  return document
 end

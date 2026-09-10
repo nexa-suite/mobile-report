@@ -1,18 +1,17 @@
-# Annex A: Student Outcome 7
+# Anexos
 
-This annex summarizes the individual AV1 activities that support the Student
-Outcome 7 discussion in the front matter. It records only documented work on
-the academic report and does not replace evidence of implementation, deployment,
-or user validation.
+## Anexo A: Student Outcome 7
 
-| Integrante | Actividad AV1 documentada | Relación con aprendizaje continuo |
+Este anexo respalda la sección Student Outcome del front matter. Mantiene los
+mismos criterios y la misma evidencia AV1 para evitar dos interpretaciones
+distintas del logro del curso.
+
+### ABET - EAC - Student Outcome 7
+
+**Criterio:** *La capacidad de adquirir y aplicar nuevos conocimientos según sea
+necesario, utilizando estrategias de aprendizaje apropiadas.*
+
+| Criterio específico | Acciones realizadas | Conclusiones |
 | --- | --- | --- |
-| Pinedo Sanchez, Sebastián Martín | Reorganización de Needfinding, requisitos, Impact Mapping y límites de evidencia de entrevistas. | Profundiza Software Architecture mediante los dos objetivos SMART establecidos en el informe. |
-| Rojas Mancilla, Gerard Gianpier | Estructura de Sprint 1 y refinamiento de configuración y validación del Capítulo IV. | Orienta su desarrollo hacia Cloud Architecture y DevOps / Platform Engineering mediante dos objetivos SMART. |
-| Torrejón De Los Santos, Gino Rodrigo | Integración de ramas de capítulo y consolidación global del informe con GitFlow y commits firmados. | Profundiza Backend Engineering mediante los dos objetivos SMART del informe. |
-| Verde Bueno, Joaquín Francisco | Normalización de navegación y límites de evidencia de UI/UX del Capítulo III. | Desarrolla Data Analytics mediante los dos objetivos SMART del informe. |
-| Yucra Sandoval, Diego Sebastián | Refinamiento del razonamiento Lean UX y la evidencia del Capítulo I. | Desarrolla Product Leadership, Software Architecture y Software Quality Assurance mediante dos objetivos SMART. |
-
-La evidencia individual se interpreta junto con el historial Git y la sección
-Student Outcome 7. Los objetivos profesionales describen aprendizaje posterior
-al pregrado; no son certificaciones ni resultados ya obtenidos.
+| **Actualiza conceptos y conocimientos necesarios para su desarrollo profesional y en especial para su proyecto en soluciones de software.** | En AV1, **Pinedo Sanchez, Sebastián Martín** aplicó Lean UX, requisitos e Impact Mapping; **Rojas Mancilla, Gerard Gianpier** aplicó planificación y modelado de información; **Torrejón De Los Santos, Gino Rodrigo** aplicó GitFlow e integración; **Verde Bueno, Joaquín Francisco** aplicó arquitectura de información y calidad; y **Yucra Sandoval, Diego Sebastián** aplicó Lean UX, 5W2H y análisis competitivo. Cada actividad relacionó el contexto B2B y de cadena de frío con un método de ingeniería y explicitó sus límites de evidencia. | El equipo fortaleció capacidades de investigación, requisitos, diseño, planificación y configuración sin presentar la documentación como sustituto de investigación directa o ejecución de producto. |
+| **Reconoce la necesidad del aprendizaje permanente para el desempeño profesional y el desarrollo de proyectos en soluciones de software.** | En AV1, cada integrante formuló dos objetivos SMART posteriores al pregrado: Software Architecture para **Pinedo Sanchez, Sebastián Martín**; Systems Analysis, Software Modeling y Technical Communication para **Rojas Mancilla, Gerard Gianpier**; Backend Engineering para **Torrejón De Los Santos, Gino Rodrigo**; Data Analytics para **Verde Bueno, Joaquín Francisco**; y Product Leadership, Software Architecture y Software Quality Assurance para **Yucra Sandoval, Diego Sebastián**. | Los planes incluyen horizonte temporal, horas de formación y artefactos verificables. Son compromisos de aprendizaje futuro, no credenciales obtenidas. |

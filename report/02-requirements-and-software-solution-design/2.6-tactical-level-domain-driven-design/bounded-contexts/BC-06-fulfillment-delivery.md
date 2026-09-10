@@ -56,11 +56,9 @@ Object bytes use BC-09/Object Storage ports; no public URL is inferred.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-06 component family](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.png)
+![BC-06 Fulfillment & Delivery — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-06-fulfillment-delivery-component.png)
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -68,12 +66,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-06 tactical domain model](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-06/domain-model.puml).
 
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
 
 ![BC-06 database design projection](../../../assets/chapter-2/tactical/BC-06/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-06/database-diagram.puml).
 Logical ownership is in shared PostgreSQL; canonical SQL defines constraints,
 tenant scope and evidence references.

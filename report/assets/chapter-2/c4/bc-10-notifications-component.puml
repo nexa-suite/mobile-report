@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam componentStyle rectangle
+title BC-10 Notifications — C4 L3 TARGET
+legend bottom
+  Component view inside the shared Nexa API modular monolith; delivery channels are adapters, not Bounded Contexts.
+endlegend
+package "Nexa API — logical BC-10 ownership" {
+  component "Notification Read & Preference API\n<<Interface>>" as api
+  component "CreateNotificationCandidateHandler\nDispatchNotificationHandler\nRetryNotificationHandler\n<<Application>>" as app
+  component "Notification, Preference, Template & Attempt\n<<Domain>>" as domain
+  component "Inbox/Outbox, Channel ACLs & Repositories\n<<Infrastructure>>" as infra
+  database "Shared PostgreSQL\nBC-10 logical tables" as db
+}
+component "Published source facts\n<<durable contracts>>" as facts
+component "In-app / Email adapters\n<<external channels>>" as channels
+component "BC-11 delivery evidence\n<<consumer>>" as trace
+api --> app
+facts --> app : at-least-once
+app --> domain
+domain --> infra
+infra --> db
+infra --> channels : retry / dedupe
+infra --> trace : delivery facts
+note bottom of domain
+Notification failure never mutates source business state.
+end note
+@enduml

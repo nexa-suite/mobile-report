@@ -74,7 +74,11 @@ hecho en vez de reescribir la obligación original.
 
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-07 Credit & Receivables — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-07-credit-receivables-component.png)
+*Vista C4 L3 TARGET de BC-07 Credit & Receivables.*
+
+![BC-07 Credit & Receivables — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-07-CreditReceivables-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-07 Credit & Receivables, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 

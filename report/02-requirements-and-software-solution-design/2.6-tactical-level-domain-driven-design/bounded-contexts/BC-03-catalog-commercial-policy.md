@@ -67,7 +67,11 @@ comercial autoritativa posterior.
 
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-03 Catalog & Commercial Policy — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-03-catalog-commercial-policy-component.png)
+*Vista C4 L3 TARGET de BC-03 Catalog & Commercial Policy.*
+
+![BC-03 Catalog & Commercial Policy — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-03-CatalogCommercialPolicy-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-03 Catalog & Commercial Policy, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 El diagrama se presenta como modelo de diseño y no como prueba de una
 implementación en ejecución.

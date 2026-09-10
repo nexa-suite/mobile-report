@@ -70,7 +70,11 @@ una vez, nunca como confirmación automática del cliente.
 
 La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-08 Payments — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-08-payments-component.png)
+*Vista C4 L3 TARGET de BC-08 Payments.*
+
+![BC-08 Payments — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-08-Payments-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-08 Payments, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.8.6. Bounded Context Software Architecture Code Level Diagrams
 

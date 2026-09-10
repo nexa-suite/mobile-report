@@ -1,33 +1,28 @@
 # Project Report Collaboration Insights
 
-Esta sección resume la colaboración documentada para la entrega AV1 del
+Esta sección presenta la colaboración verificable para la entrega AV1 del
 **Project Report de Nexa**, mantenido en el repositorio público
 [`nexa-suite/mobile-report`](https://github.com/nexa-suite/mobile-report). La
-autoría de los cambios corresponde al historial Git; no convierte documentación
-del informe en evidencia de implementación de los productos Nexa.
+autoría de los cambios se interpreta a partir del historial Git y de sus firmas
+cuando estén disponibles; la documentación no se presenta como evidencia de
+implementación, validación de producto o despliegue.
 
-## Repositorio y flujo de colaboración
+## Repositorio y práctica de colaboración
 
-| Elemento | Aplicación en el Project Report |
+| Práctica | Aplicación verificable en el Project Report |
 | --- | --- |
-| Repositorio público | [`nexa-suite/mobile-report`](https://github.com/nexa-suite/mobile-report) |
-| Formato principal | Markdown modular organizado por front matter, capítulos, conclusiones, glosario, bibliografía y anexos. |
-| Control de versiones | Git mediante GitHub. |
-| Flujo de colaboración | GitFlow con `main`, `develop`, ramas de capítulo y una rama de integración del informe. |
-| Convención de commits | Conventional Commits. |
-| Integridad de autoría | Cada cambio significativo se registra con el perfil real del integrante y una firma verificada. |
-
-## Captura de colaboración pública
-
-**Figura 1**
-
-*GitHub Insights — contribuciones al repositorio mobile-report*
+| Repositorio público | [`nexa-suite/mobile-report`](https://github.com/nexa-suite/mobile-report), con historial revisable por commit y rama. |
+| Docs-as-Code | Informe Markdown modular, revisable mediante diff, enlaces relativos y validadores del repositorio. |
+| Flujo de ramas | GitFlow restaurado con `main`, `develop`, ramas de front matter, capítulos y una rama de integración. La restauración describe el estado actual del repositorio; no reescribe el historial previo. |
+| Convenciones | Mensajes Conventional Commits para expresar intención documental y de mantenimiento. |
+| Integridad de autoría | Los cambios materiales se atribuyen al perfil Git del integrante; las firmas se verifican con las herramientas de contribución autorizadas, no por texto del informe. |
+| Revisión e integración | Los cambios por capítulo se aíslan antes de integrarse; las decisiones de alcance se contrastan contra el Blueprint canónico. |
 
 ![Contribuciones públicas de los cinco integrantes en GitHub](../assets/chapter-4/collaboration/github-contributors-2026-09-09.png)
 
-> *Nota.* Captura directa de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública muestra contribuciones a `main` de Joaquín Verde, Diego Yucra, Gino Torrejón, Sebastián Pinedo y Gerard Rojas; GitHub excluye merge commits en esta gráfica.
+> *Nota.* Captura directa de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública muestra contribuciones a `main` de Joaquín Verde, Diego Yucra, Gino Torrejón, Sebastián Pinedo y Gerard Rojas; GitHub excluye merge commits en esta gráfica. No se añade una captura de actividad nueva cuando no existe una sesión autenticada disponible para obtenerla de forma legítima.
 
-## AV1 — Aportes documentados
+## AV1 — aportes documentados
 
 | Integrante | Perfil GitHub | Aporte al informe | Evidencia representativa |
 | --- | --- | --- | --- |
@@ -37,7 +32,7 @@ del informe en evidencia de implementación de los productos Nexa.
 | Verde Bueno, Joaquín Francisco | [JoaquinBV511](https://github.com/JoaquinBV511) | Normalizó la navegación del Capítulo III y aclaró los límites de la evidencia de UI/UX. | [`a68d788`](https://github.com/nexa-suite/mobile-report/commit/a68d788d57abf0a97a1a669cb03885fa93995605), [`4d0e903`](https://github.com/nexa-suite/mobile-report/commit/4d0e903d321a935743aa5695e6c3b181ca05270c) |
 | Yucra Sandoval, Diego Sebastián | [DiegoS284](https://github.com/DiegoS284) | Refinó la evidencia Lean UX y la redacción del Capítulo I. | [`c1f86f7`](https://github.com/nexa-suite/mobile-report/commit/c1f86f70d5e478bf6a8434ae84a03063e8281fa6) |
 
-La distribución de contribuciones se interpreta por el contenido y la
-responsabilidad de cada cambio, no por un conteo mecánico de commits. La entrega
-AV1 conserva sólo actividades realmente registradas; no anticipa actividades de
-entregas académicas posteriores.
+La distribución se interpreta por responsabilidad y contenido de los cambios,
+no por un conteo mecánico de commits. La entrega AV1 conserva sólo actividades
+realmente registradas; no anticipa actividades de entregas académicas
+posteriores.

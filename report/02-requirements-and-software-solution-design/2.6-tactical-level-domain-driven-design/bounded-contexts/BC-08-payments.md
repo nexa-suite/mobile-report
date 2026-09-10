@@ -47,11 +47,9 @@ shared and no payment microservice is inferred.
 
 #### 2.6.8.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-08 component family](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png)
+![BC-08 Payments — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-08-payments-component.png)
 
 #### 2.6.8.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -59,12 +57,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-08 tactical domain model](../../../assets/chapter-2/tactical/BC-08/BC08_Payments.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-08/domain-model.puml).
 
 ##### 2.6.8.6.2. Bounded Context Database Design Diagram
 
 ![BC-08 database design projection](../../../assets/chapter-2/tactical/BC-08/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-08/database-diagram.puml).
 The drawing is a logical shared-PostgreSQL projection; keys and
 provider-event dedupe remain defined by canonical SQL.

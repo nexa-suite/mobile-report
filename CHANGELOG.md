@@ -2,6 +2,44 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.2.0] - 2026-09-10
+
+Integrated AV1 academic report closure across the front matter and Chapters
+I–IV, with canonical Nexa domain/architecture evidence and explicit limits on
+future implementation evidence.
+
+### Added
+
+- Complete Lean UX, needfinding, product backlog, Strategic DDD, Tactical DDD,
+  C4, UI/UX traceability, and Sprint Planning evidence for the AV1 report.
+- Four coherent Sprint Planning increments and Jira-ready task source.
+- UXPressia-ready research source, eleven Structurizr-native Bounded Context
+  component views, canonical glossary terms, and expanded bibliography.
+- Reconciled ABET Student Outcome 7 evidence and individual SMART objectives.
+
+### Changed
+
+- Integrated the signed `feature/front-master`, `feature/chapter-01`,
+  `feature/chapter-02`, `feature/chapter-03`, `feature/chapter-04`, and
+  `feature/report-integration` histories into `develop`.
+- Strengthened AS-IS, TARGET, and `NOT YET DUE` evidence boundaries throughout
+  the report; no implementation, deployment, interview, or device result is
+  represented without its source evidence.
+
+### Validation
+
+- Rebuilt the virtual manuscript from the separate remote branch states before
+  integration and revalidated it after integration.
+- Relative links, table structure, C4 SVG/XML, PlantUML syntax, story/backlog
+  counts, GitHub signature verification, and Battle Mode readiness passed.
+
+### Evidence boundaries
+
+- Jira Board creation/evidence and final UXPressia transfer/exports remain
+  explicitly open external actions.
+- Mobile framework selection, prototypes, builds, device execution, interviews,
+  deployment, and TB2 videos remain `NOT YET DUE`.
+
 ## [0.1.1] - 2026-09-09
 
 Canonical 202620 academic-structure correction for Nexa Mobile Report.

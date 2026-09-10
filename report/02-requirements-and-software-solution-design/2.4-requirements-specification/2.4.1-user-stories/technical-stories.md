@@ -1,10 +1,12 @@
 #### Technical Stories
 
 Las Technical Stories habilitan resultados de las Functional User Stories; no
-crean reglas de negocio ni prueban una implementación. El plan académico
-priorizado usa **Operations Mobile en Android/Kotlin nativo** y **Buyer Mobile
-en Flutter/Dart**. La selección debe verificarse con evidencia técnica; no
-declara runtime, distribución ni validación de producto.
+crean reglas de negocio ni prueban una implementación. La restricción académica
+del curso plantea **Kotlin nativo + Flutter/Dart, o Kotlin Multiplatform
+(KMP)** como alternativas a evaluar. La selección de framework Mobile en
+Blueprint continúa **OPEN / NOT STARTED**: este plan no asigna framework a
+Operations Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o
+validación de producto.
 
 ##### TS-MOB-001 — Integrar contratos REST con autoridad del servidor
 
@@ -14,7 +16,7 @@ declara runtime, distribución ni validación de producto.
 <tr><td>TS-MOB-001</td><td>Developer</td><td>High</td><td>TECH-EPIC-01 — Contract and security foundations</td></tr>
 <tr><th>Title</th><td colspan="3">Integrar contratos REST con autoridad del servidor</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar contratos REST explícitos con Nexa API, para que Android/Kotlin y Flutter/Dart consuman datos y comandos sin crear una autoridad paralela.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar contratos REST explícitos con Nexa API, para que los tracks académicos que se evalúen consuman datos y comandos sin crear una autoridad paralela ni seleccionar un framework fuera del experimento.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Contrato autorizado</strong></p><p><strong>Given</strong> una proyección Mobile solicita trabajo protegido</p><p><strong>When</strong> consume un contrato REST aprobado</p><p><strong>Then</strong> conserva Tenant, Workspace, autorización y significado de respuesta definidos por el servidor.</p><p><strong>Scenario: Respuesta de error</strong></p><p><strong>Given</strong> el servidor rechaza, encuentra conflicto o no puede procesar una solicitud</p><p><strong>When</strong> el cliente recibe Problem Details</p><p><strong>Then</strong> comunica el estado sin inventar una confirmación local.</p></td></tr>
 </tbody>
@@ -28,9 +30,9 @@ declara runtime, distribución ni validación de producto.
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
 <tr><th>Title</th><td colspan="3">Definir criterios de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para Operations Mobile Android/Kotlin y Buyer Mobile Flutter/Dart, para evaluar límites técnicos sin ampliar el alcance a iOS en Sprint 1.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para la restricción académica Kotlin nativo + Flutter/Dart, o Kotlin Multiplatform (KMP), para evaluar límites técnicos sin convertir el experimento en una selección canónica de Blueprint.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Baselines separados</strong></p><p><strong>Given</strong> existen dos proyecciones Mobile</p><p><strong>When</strong> se definen sus baselines</p><p><strong>Then</strong> Operations Mobile usa criterios Android/Kotlin y Buyer Mobile usa criterios Flutter/Dart con versiones, dispositivo/emulador y límites identificables.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma no planificada</p><p><strong>When</strong> se evalúa su incorporación</p><p><strong>Then</strong> queda diferida hasta una decisión explícita y no se presenta como trabajo de Sprint 1.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Baseline de experimento</strong></p><p><strong>Given</strong> existe la restricción académica Kotlin nativo + Flutter/Dart, o KMP</p><p><strong>When</strong> se define un baseline mínimo</p><p><strong>Then</strong> documenta versiones, dispositivo/emulador, límites y criterios de comparación sin asignar un framework a una proyección de producto.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma o proveedor no evaluado</p><p><strong>When</strong> se propone incorporarlo</p><p><strong>Then</strong> queda fuera del experimento hasta una decisión explícita y no se presenta como trabajo de Sprint 1.</p></td></tr>
 </tbody>
 </table>
 
@@ -44,7 +46,7 @@ declara runtime, distribución ni validación de producto.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo preservar el significado de contratos, errores, autorización e idempotencia entre las dos proyecciones, para que una diferencia de plataforma no cambie reglas compartidas.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Flujo compartido</strong></p><p><strong>Given</strong> Android/Kotlin y Flutter/Dart implementan un flujo permitido</p><p><strong>When</strong> consumen el mismo contrato</p><p><strong>Then</strong> interpretan los mismos estados de éxito, error, conflicto e idempotencia.</p><p><strong>Scenario: Adaptación de interfaz</strong></p><p><strong>Given</strong> una plataforma exige una adaptación de presentación o dispositivo</p><p><strong>When</strong> se documenta la adaptación</p><p><strong>Then</strong> no altera autorización, Tenant/Workspace ni resultado de negocio.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Flujo comparable</strong></p><p><strong>Given</strong> dos opciones evaluadas implementan un flujo permitido</p><p><strong>When</strong> consumen el mismo contrato</p><p><strong>Then</strong> interpretan los mismos estados de éxito, error, conflicto e idempotencia.</p><p><strong>Scenario: Adaptación de interfaz</strong></p><p><strong>Given</strong> una opción exige una adaptación de presentación o dispositivo</p><p><strong>When</strong> se documenta la adaptación</p><p><strong>Then</strong> no altera autorización, Tenant/Workspace ni resultado de negocio.</p></td></tr>
 </tbody>
 </table>
 

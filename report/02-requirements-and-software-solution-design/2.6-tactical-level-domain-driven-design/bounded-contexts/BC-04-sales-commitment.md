@@ -55,11 +55,34 @@ through explicit contracts/IDs, not direct table ownership.
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+Las siguientes clases son especificaciones **TARGET**. Expresan una decisión
+comercial atómica por contratos explícitos: no cargan agregados ajenos ni
+convierten un Draft en Sales Order sin la transición aceptada.
 
-![BC-04 component family](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png)
+*Clases TARGET por capa de BC-04*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `BuyerRequestController` | Controller | Recibe comandos de Draft y Purchase Request con `Idempotency-Key`; no confirma inventario localmente. |
+| Interface | `SalesOrderController` | Controller | Expone consultas y transiciones comerciales autorizadas con versión cuando corresponde. |
+| Interface | `SalesCommitmentConsumer` | Contract consumer | Recibe resultados explícitos de inventory/credit; no es un endpoint ni comparte agregados. |
+| Application | `SubmitPurchaseRequestHandler` | Command handler | Coordina en un límite lógico la validación, Commitment, backing y crédito antes del commit. |
+| Application | `AcceptMaterialChangeHandler` | Command handler | Revalida precio, inventario y crédito tras aceptación Buyer; preserva el estado previo si falla. |
+| Application | `ConvertPurchaseRequestHandler` | Command handler | Aplica CAS y guardia `now >= expiresAt`, transfiriendo el Commitment sin liberar y re-reservar. |
+| Application | `ConfirmDirectOrderHandler` | Command handler | Confirma Direct Order con Commitment de origen explícito, sin fabricar Purchase Request. |
+| Infrastructure | `PurchaseRequestRepositoryAdapter` | Repository implementation | Persiste PR, líneas y snapshots inmutables de BC-04. |
+| Infrastructure | `CommercialCommitmentRepositoryAdapter` | Repository implementation | Conserva Commitment warehouse-neutral y su transferencia de titularidad. |
+| Infrastructure | `InventoryAvailabilityPort` | Synchronous contract adapter | Solicita backing a BC-05 por ID y resultado, sin mutar tablas de inventario. |
+| Infrastructure | `CreditReservationPort` | Synchronous contract adapter | Solicita decisión de BC-07 sin apropiarse de Receivable o ledger. |
+| Infrastructure | `SalesOutboxAdapter` | Outbox adapter | Publica hechos sólo después del commit local, con entrega al menos una vez. |
+
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
+
+*Vista C4 L3 TARGET de BC-04 Sales Commitment.*
+
+![BC-04 Sales Commitment — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-04-SalesCommitment-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-04 Sales Commitment, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -67,12 +90,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-04 tactical domain model](../../../assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-04/domain-model.puml).
 
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
 
 ![BC-04 database design projection](../../../assets/chapter-2/tactical/BC-04/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-04/database-diagram.puml).
 The drawing is a logical projection of shared PostgreSQL; immutable snapshots,
 PK/FK/unique/check constraints and ownership are defined by canonical SQL.

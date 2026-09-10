@@ -48,13 +48,33 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 bytes use an application port. Document renderer/scanner adapters are external
 ACLs; no database blob or fiscal integration is inferred.
 
+**Clases TARGET por capa de BC-09.** Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, proveedores ni implementación ya disponible.
+
+| Capa | Clase / componente TARGET | Responsabilidad |
+|---|---|---|
+| Interface | `BusinessDocumentController` | Recibe comandos y consultas de documentos sin exponer entidades de persistencia. |
+| Interface | `DocumentGenerationConsumer` | Consume hechos publicados que justifican solicitar una generación documental. |
+| Interface | `DocumentAvailabilityConsumer` | Publica al borde de interfaz la disponibilidad de un artefacto ya emitido. |
+| Application | `RequestBusinessDocumentHandler` | Valida la solicitud idempotente y fija el snapshot de origen que será trazable. |
+| Application | `IssueBusinessDocumentHandler` | Coordina emisión, versionado y publicación del hecho de documento emitido. |
+| Application | `ReplaceBusinessDocumentHandler` | Gestiona una sustitución explícita sin reescribir la evidencia histórica. |
+| Application | `RegisterEvidenceReferenceHandler` | Registra referencias de evidencia bajo las reglas de retención del contexto. |
+| Application | `RetryDocumentGenerationHandler` | Reintenta una generación fallida con una clave de deduplicación estable. |
+| Infrastructure | `BusinessDocumentRepositoryAdapter` | Persiste metadatos, versiones y referencias del documento. |
+| Infrastructure | `DocumentRendererAdapter` | Adapta el renderizado técnico a un contrato de aplicación. |
+| Infrastructure | `ObjectStorageAdapter` | Guarda el binario fuera del agregado y devuelve una referencia controlada. |
+| Infrastructure | `DocumentGenerationWorker` | Ejecuta trabajo diferido después del commit, sin I/O externo en la transacción de solicitud. |
+| Infrastructure | `DocumentOutboxAdapter` | Publica hechos comprometidos mediante outbox durable. |
+
 #### 2.6.9.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-09 component family](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png)
+*Vista C4 L3 TARGET de BC-09 Business Documents.*
+
+![BC-09 Business Documents — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-09-BusinessDocuments-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-09 Business Documents, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.9.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -62,12 +82,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-09 tactical domain model](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-09/domain-model.puml).
 
 ##### 2.6.9.6.2. Bounded Context Database Design Diagram
 
 ![BC-09 database design projection](../../../assets/chapter-2/tactical/BC-09/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-09/database-diagram.puml).
 This is a logical shared-PostgreSQL projection; bytes stay in Object Storage
 behind authorization and canonical SQL defines constraints.

@@ -17,9 +17,17 @@
    Esa relación alimenta historias de usuario, Impact Mapping y Product Backlog
    de forma trazable.
 5. El diseño estratégico preserva los once Bounded Contexts aceptados de Nexa.
-   Las vistas C4 y el diseño táctico los presentan como una propuesta de
-   arquitectura coherente; una superficie móvil los proyecta sin convertirse en
-   una nueva fuente de autoridad de negocio.
+   Las vistas C4 producidas desde Structurizr DSL y el diseño táctico los
+   presentan como una propuesta de arquitectura coherente; una superficie móvil
+   los proyecta sin convertirse en una nueva fuente de autoridad de negocio.
+6. El Product Backlog y los cuatro Sprint Planning constituyen una proyección
+   académica trazable de alcance, estimación y tareas. Son fuente lista para
+   Jira, pero no prueban ejecución: el **JIRA BOARD: OPEN** permanece como
+   acción externa separada.
+7. Personas, Journeys y Empathy Maps contienen una fuente preparada para
+   transferencia a UXPressia. La transferencia y sus exportaciones siguen
+   **OPEN**; prototipos, builds, pruebas en dispositivo, entrevistas de
+   validación y videos corresponden a hitos **NOT YET DUE**.
 
 ## Recomendaciones
 
@@ -34,3 +42,9 @@
 - Validar una propuesta visual o prototipo antes de atribuir resultados de
   usabilidad, y documentar posteriormente cualquier build o despliegue con
   evidencia propia.
+- Crear el Board de Jira y transferir los artefactos fuente a UXPressia sólo
+  con la sesión autenticada y la evidencia externa que corresponda; ambos
+  pasos quedan fuera de esta revisión documental.
+- Seleccionar y evaluar la tecnología Mobile mediante los Spikes planificados,
+  sin presentar una alternativa de framework como decisión aceptada antes de
+  contar con la evidencia y autoridad requeridas.

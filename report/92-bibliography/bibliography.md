@@ -4,6 +4,8 @@ Arriaga-Lorenzo, P., Maldonado-Simán, E., Ramírez-Valverde, R., Martínez-Hern
 
 Bravo De la Cruz, R., Orihuela De Santana, L. E., & Huaman Huaman, M. L. (2025). Rupturas de cadena de frío en los establecimientos de salud de una Microred de salud - Perú. *Advances in Science and Innovation, 4*(1). https://doi.org/10.61210/asi.v4i1.183
 
+CommonMark. (2024). *CommonMark specification* (Version 0.31.2). https://spec.commonmark.org/spec
+
 De Lombaert, T., Braekers, K., De Koster, R., & Ramaekers, K. (2024). What makes order picking so physically demanding? Ergonomic evidence from a large-scale lab experiment using subjective metrics. *IFAC-PapersOnLine, 58*(19), 181–186. https://doi.org/10.1016/j.ifacol.2024.09.139
 
 Defontana. (s. f.-a). *ERP para medianas empresas en Perú*. Recuperado el 7 de septiembre de 2026, de https://www.defontana.com/pe/erp-software-peru
@@ -17,6 +19,8 @@ Drivin. (s. f.-a). *Mayor eficiencia logística con un software integral de gest
 Drivin. (s. f.-b). *TMS solution*. Recuperado el 7 de septiembre de 2026, de https://driv.in/en/solutions
 
 Drivin. (s. f.-c). *Transport management system*. Recuperado el 7 de septiembre de 2026, de https://driv.in/en/home
+
+Evans, E. (2004). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley.
 
 Grupo Lucky. (2022, 1 de septiembre). *El 28% de bodegas en el país utiliza algún aplicativo para potenciar sus ventas*. https://www.grupolucky.com/el-28-de-bodegas-en-el-pais-utiliza-algun-aplicativo-para-potenciar-sus-ventas/
 
@@ -36,6 +40,8 @@ Maqbool, B., & Herold, S. (2024). Potential effectiveness and efficiency issues 
 
 Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food cold chain logistics and management: A review of current development and emerging trends. *Journal of Agriculture and Food Research, 18*, Article 101343. https://doi.org/10.1016/j.jafr.2024.101343
 
+Pandoc. (s. f.). *Pandoc user’s guide*. https://pandoc.org/MANUAL.pdf
+
 Negocia.pe. (s. f.-a). *Negocia.pe: soluciones tecnológicas para empresas de Perú y Latinoamérica*. Recuperado el 7 de septiembre de 2026, de https://www.negocia.pe
 
 Negocia.pe. (s. f.-b). *Software para distribuidoras y mayoristas en Perú: ERP B2B*. Recuperado el 7 de septiembre de 2026, de https://www.negocia.pe/Distribuidoras.php
@@ -46,7 +52,15 @@ Riqra. (s. f.-b). *Portal B2B para fabricantes y distribuidores*. Recuperado el 
 
 Riqra. (s. f.-c). *Precios de Riqra: Full Commerce con 0 % de comisión*. Recuperado el 7 de septiembre de 2026, de https://www.riqra.com/pricing
 
+SCRUMstudy. (2025). *Una guía para el cuerpo de conocimiento de Scrum (Guía SBOK®)* (5.ª ed.). VMEdu, Inc.
+
+Structurizr. (s. f.). *Structurizr DSL*. https://docs.structurizr.com/dsl
+
 United Nations Environment Programme, & Food and Agriculture Organization of the United Nations. (2022). *Sustainable food cold chains: Opportunities, challenges and the way forward*. https://doi.org/10.4060/cc0923en
+
+Universidad Peruana de Ciencias Aplicadas. (s. f.). *Guía maestra de Docs-as-Code y gobernanza de repositorios* (V1.0) [Guía académica interna].
+
+Vernon, V. (2016). *Domain-driven design distilled*. Addison-Wesley Professional.
 
 World Bank. (2023). *Connecting to compete 2023: Trade logistics in an uncertain global economy—The Logistics Performance Index and its indicators*. https://lpi.worldbank.org/sites/default/files/2023-04/LPI_2023_report.pdf
 

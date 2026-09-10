@@ -4,6 +4,10 @@ Este anexo amplía los seis Spike Stories de la sección 2.4.1. Cada Spike
 investiga una incertidumbre concreta y define el material que permite cerrarla.
 No representa una decisión o resultado que todavía no haya sido producido.
 
+**Estado de evidencia:** los seis Spikes están planificados y sus resultados,
+benchmarks, prototipos y decisiones de selección son **NOT YET DUE** hasta el
+hito de Sprint que corresponda.
+
 ## SPIKE-001 — Oportunidad de aprendizaje autónomo
 
 | Campo | Definición |
@@ -19,9 +23,9 @@ No representa una decisión o resultado que todavía no haya sido producido.
 | Campo | Definición |
 | :--- | :--- |
 | Objective | Determinar bases compartidas para Nexa Operations Mobile y Nexa Buyer Mobile. |
-| Question | ¿Cómo pueden Android Native/Kotlin y una alternativa Cross-Platform basada en Flutter/Dart —o KMP si se acepta explícitamente— sostener contratos compartidos, estado local seguro, distribución y paridad funcional entre las dos aplicaciones? |
+| Question | ¿Cómo pueden Kotlin nativo junto con Flutter/Dart, o Kotlin Multiplatform (KMP), sostener contratos compartidos, estado local seguro, distribución y paridad funcional entre las dos aplicaciones sin presumir una selección? |
 | Expected artifact | Matriz de flujos, seguridad, contrato, estado local, pruebas, distribución y mantenimiento, acompañada por una prueba acotada de un flujo común. |
-| Completion criteria | Trade-offs, límites, responsabilidades compartidas y diferencias permitidas de plataforma documentados. No se reduce la investigación a elegir una única tecnología. |
+| Completion criteria | Trade-offs, límites, responsabilidades compartidas y diferencias permitidas de plataforma documentados. Ninguna alternativa queda seleccionada o canónica sin evidencia y autoridad explícitas. |
 | Scope | Las tecnologías se evalúan como alternativas de implementación; ninguna crea un Bounded Context ni sustituye la autoridad del servidor. |
 
 ## SPIKE-003 — Identificadores de producto
@@ -77,8 +81,8 @@ implementado o validado.
 
 | Requisito posterior | Punto de decisión y Product Backlog relacionado | Evidencia necesaria para comunicar avance |
 | --- | --- | --- |
-| Native Mobile: Android + Kotlin | `TS-MOB-002` define compatibilidad; los flujos operativos de Sprint 2 dan el siguiente corte funcional. | Build identificable, contrato consumido, prueba en emulador o dispositivo y resultados observados. |
-| Cross-Platform: Flutter + Dart | `SPIKE-002` compara la alternativa Cross-Platform con Android Native. KMP sólo puede considerarse tras aceptación explícita. | Decisión documentada, proyecto reproducible, flujo equivalente y límites de paridad. |
+| Mobile nativo: Kotlin | `TS-MOB-002` define la restricción académica; los flujos operativos de Sprint 2 dan el siguiente corte funcional. No equivale a una selección de framework. | Build identificable, contrato consumido, prueba en emulador o dispositivo y resultados observados. |
+| Multi-plataforma: Flutter/Dart o Kotlin Multiplatform (KMP) | `SPIKE-002` compara alternativas para paridad con el corte nativo. Ninguna se presupone aceptada. | Decisión documentada, proyecto reproducible, flujo equivalente y límites de paridad. |
 | Local storage no autoritativo | `SPIKE-004` y `TS-MOB-005` delimitan caché, borradores, recuperación y protección. | Clasificación de datos, prueba de interrupción/recuperación y confirmación posterior del servidor. |
 | Recurso de dispositivo | `SPIKE-003`, `TS-MOB-007` y `MOB-US-011..012` delimitan cámara, identificadores y entrada manual. | Permiso, alternativa manual, prueba controlada y contrato autorizado. |
 | Servicio REST interno | `TS-MOB-001` conecta los clientes con Nexa API. | Contrato REST/OpenAPI, manejo de Problem Details, idempotencia y prueba de integración. |

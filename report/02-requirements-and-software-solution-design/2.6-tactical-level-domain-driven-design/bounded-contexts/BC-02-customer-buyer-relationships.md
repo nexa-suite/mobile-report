@@ -47,11 +47,33 @@ by the canonical SQL.
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+Las siguientes clases son especificaciones **TARGET**. Distinguen la cuenta del
+cliente, la relación Buyer y la identidad humana; no inventan endpoints ni
+trasladan la autorización a Portal o Mobile.
 
-![BC-02 component family](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.png)
+*Clases TARGET por capa de BC-02*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `CustomerAccountController` | Controller | Traduce comandos de cuenta, contacto y dirección autorizados por BC-01. |
+| Interface | `BuyerRelationshipController` | Controller | Expone invitación, aprobación, suspensión y revocación de la relación Buyer, sin administrar Human Identity. |
+| Interface | `CustomerAccountQueryConsumer` | Consumer | Entrega proyecciones autorizadas a Portal o Mobile; una proyección no autoriza una compra. |
+| Application | `CreateCustomerAccountHandler` | Command handler | Crea la cuenta en el alcance Tenant/Workspace y protege su identidad comercial. |
+| Application | `ManageCustomerAddressHandler` | Command handler | Mantiene direcciones y la invariante de dirección predeterminada dentro de `CustomerAccount`. |
+| Application | `ApproveBuyerRelationshipHandler` | Command handler | Verifica autoridad, regla de Buyer principal y escribe historia/outbox tras el commit. |
+| Application | `SuspendBuyerRelationshipHandler` | Command handler | Ejecuta transición versionada y obliga a que los consumidores revaliden elegibilidad. |
+| Infrastructure | `CustomerAccountRepositoryAdapter` | Repository implementation | Persiste cuenta, contactos y direcciones en tablas de propiedad lógica BC-02. |
+| Infrastructure | `BuyerRelationshipRepositoryAdapter` | Repository implementation | Persiste relación e historia inmutable, referenciando identidad por ID. |
+| Infrastructure | `TenantAccessPort` | Contract adapter | Consulta el contexto/capacidad de BC-01 sin leer ni mutar sus agregados. |
+| Infrastructure | `TraceabilityPublisher` | Outbox adapter | Publica el hecho comprometido para BC-11 mediante outbox durable. |
+
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
+
+*Vista C4 L3 TARGET de BC-02 Customer & Buyer Relationships.*
+
+![BC-02 Customer & Buyer Relationships — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-02-CustomerBuyerRelationships-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-02 Customer & Buyer Relationships, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -59,12 +81,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-02 tactical domain model](../../../assets/chapter-2/tactical/BC-02/BC02_CustomerBuyerRelationships.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-02/domain-model.puml).
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
 ![BC-02 database design projection](../../../assets/chapter-2/tactical/BC-02/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-02/database-diagram.puml).
 Shared PostgreSQL and logical ownership remain the design; no physical
 database per context is asserted.

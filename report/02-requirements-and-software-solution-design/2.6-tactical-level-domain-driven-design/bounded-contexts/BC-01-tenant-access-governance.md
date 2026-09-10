@@ -76,11 +76,33 @@ owned by this context.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+Las siguientes clases son especificaciones **TARGET** de construcción. Sus nombres
+describen límites de responsabilidad; no afirman que todas existan en el código
+actual ni definen nuevas rutas HTTP.
 
-![BC-01 component family](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.png)
+*Clases TARGET por capa de BC-01*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `OrganizationRegistrationController` | Controller | Recibe la solicitud pública de onboarding y la traduce a un comando; no concede acceso. |
+| Interface | `TenantAccessController` | Controller | Expone una proyección de contexto y capacidades ya resuelta por el servidor; nunca acepta un Tenant como autoridad desde el cliente. |
+| Interface | `AccessContextConsumer` | Consumer | Recibe una proyección autorizada para Platform, Portal o Mobile sin crear un contexto adicional. |
+| Application | `SubmitCompanyOnboardingHandler` | Command handler | Persiste la solicitud y su idempotencia; el límite termina antes de activar Tenant o Membership. |
+| Application | `ActivateTenantHandler` | Command handler | Activa Tenant, Workspace y la membresía inicial en una transacción local con outbox. |
+| Application | `EvaluateAccessHandler` | Query/application service | Reconstruye Tenant, Workspace y Membership en el servidor y aplica la política de elegibilidad. |
+| Application | `TransferCompanyOwnershipHandler` | Command handler | Usa CAS o bloqueo determinista para preservar un único Company Owner activo. |
+| Infrastructure | `TenantRepositoryAdapter` | Repository implementation | Mapea `tenant` y `workspace` en PostgreSQL compartido con alcance Tenant. |
+| Infrastructure | `WorkforceMembershipRepositoryAdapter` | Repository implementation | Persiste membresías, roles y capacidades sin convertirlas en un grafo de otros BC. |
+| Infrastructure | `TransactionTenantScopePort` | Technical adapter | Establece y limpia el contexto Tenant/Workspace transaccional; ante ambigüedad falla cerrado. |
+| Infrastructure | `AccessOutboxAdapter` | Outbox adapter | Conserva hechos comprometidos para entrega posterior al commit, bajo semántica al menos una vez. |
+
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
+
+*Vista C4 L3 TARGET de BC-01 Tenant & Access Governance.*
+
+![BC-01 Tenant & Access Governance — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-01-TenantAccessGovernance-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-01 Tenant & Access Governance, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -91,13 +113,11 @@ inventario de código fuente.
 
 ![BC-01 tactical domain model](../../../assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-01/domain-model.puml).
 El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
 ![BC-01 database design projection](../../../assets/chapter-2/tactical/BC-01/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-01/database-diagram.puml).
 Es una proyección de propiedad lógica en PostgreSQL compartido; muestra claves,
 restricciones y alcance Tenant, no una base de datos física por contexto.

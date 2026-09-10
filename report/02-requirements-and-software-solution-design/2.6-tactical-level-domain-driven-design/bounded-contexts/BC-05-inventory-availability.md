@@ -51,11 +51,34 @@ SQL. No physical database per BC is implied.
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+Las siguientes clases son especificaciones **TARGET**. Protegen stock escaso
+mediante contratos y concurrencia explícitos; `SafetyStock`, `InventoryBacking`
+y `PhysicalAllocation` no se tratan como sinónimos.
 
-![BC-05 component family](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.png)
+*Clases TARGET por capa de BC-05*
+
+| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
+| --- | --- | --- | --- |
+| Interface | `InventoryController` | Controller | Recibe comandos de disponibilidad, ajuste y disposición autorizados; no acepta una lectura Mobile como verdad final. |
+| Interface | `WarehouseController` | Controller | Mantiene configuración de Warehouse y políticas bajo alcance Tenant. |
+| Interface | `OperationsInventoryConsumer` | Consumer | Recibe trabajo o proyecciones de scan para Operations Mobile sin conceder asignación física. |
+| Application | `EstablishInventoryBackingHandler` | Command handler | Elige Warehouse de modo determinista y protege demanda comercial en el límite lógico requerido con BC-04/BC-07. |
+| Application | `AllocatePhysicalStockHandler` | Command handler | Bloquea SKU/Warehouse/Lot en orden determinista y aplica FEFO sin seleccionar stock no vendible. |
+| Application | `TransferInventoryHandler` | Command handler | Mantiene `REQUESTED`, `IN_TRANSIT` y `RECEIVED`, dejando el stock no vendible durante tránsito. |
+| Application | `RecordDispositionHandler` | Command handler | Registra HOLD, quarentena o disposición con motivo, preservando hechos de inventario. |
+| Infrastructure | `InventoryRepositoryAdapter` | Repository implementation | Persiste posición, lote y movimiento con CAS o actualización condicional. |
+| Infrastructure | `InventoryBackingAdapter` | Repository implementation | Persiste backing sin duplicar el descuento de Commitment en disponibilidad. |
+| Infrastructure | `FEFOQueryAdapter` | Query adapter | Ordena lotes elegibles para la política FEFO sin incluir vencidos o en cuarentena. |
+| Infrastructure | `TenantScopedTransactionPort` | Technical adapter | Fija alcance de RLS/worker y falla cerrado si éste es ambiguo. |
+| Infrastructure | `InventoryOutboxAdapter` | Outbox adapter | Publica el hecho comprometido, no una transición provisional. |
+
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
+
+*Vista C4 L3 TARGET de BC-05 Inventory Availability.*
+
+![BC-05 Inventory Availability — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-05-InventoryAvailability-TARGET-dark.svg)
+
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-05 Inventory Availability, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -63,12 +86,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-05 tactical domain model](../../../assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-05/domain-model.puml).
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
 ![BC-05 database design projection](../../../assets/chapter-2/tactical/BC-05/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-05/database-diagram.puml).
 It is a logical shared-PostgreSQL projection; canonical SQL remains the
 authority for PK/FK/unique/check and RLS/tenant-scope details.

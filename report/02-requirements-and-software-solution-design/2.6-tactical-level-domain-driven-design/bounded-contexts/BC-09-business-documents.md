@@ -50,11 +50,9 @@ ACLs; no database blob or fiscal integration is inferred.
 
 #### 2.6.9.5. Bounded Context Software Architecture Component Level Diagrams
 
-La familia de componentes de Nexa API representa la colaboración lógica
-mostrada dentro de una API compartida. No equivale a un Bounded Context
-adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
 
-![BC-09 component family](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.png)
+![BC-09 Business Documents — C4 L3 TARGET](../../../assets/chapter-2/c4/bc-09-business-documents-component.png)
 
 #### 2.6.9.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -62,12 +60,10 @@ adicional, una base de datos independiente ni una unidad de despliegue.
 
 ![BC-09 tactical domain model](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.png)
 
-Source: [domain-model.puml](../../../assets/chapter-2/tactical/BC-09/domain-model.puml).
 
 ##### 2.6.9.6.2. Bounded Context Database Design Diagram
 
 ![BC-09 database design projection](../../../assets/chapter-2/tactical/BC-09/database-diagram.png)
 
-Source: [database-diagram.puml](../../../assets/chapter-2/tactical/BC-09/database-diagram.puml).
 This is a logical shared-PostgreSQL projection; bytes stay in Object Storage
 behind authorization and canonical SQL defines constraints.

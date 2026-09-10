@@ -1,0 +1,30 @@
+@startuml
+!theme plain
+left to right direction
+skinparam shadowing false
+skinparam componentStyle rectangle
+title BC-09 Business Documents — C4 L3 TARGET
+legend bottom
+  Component view inside the shared Nexa API modular monolith; no separate document service is implied.
+endlegend
+package "Nexa API — logical BC-09 ownership" {
+  component "Business Documents API\n<<Interface>>" as api
+  component "RequestBusinessDocumentHandler\nIssueBusinessDocumentHandler\nRetryDocumentGenerationHandler\n<<Application>>" as app
+  component "Business Document, Numbering & Snapshot\n<<Domain>>" as domain
+  component "Renderer/Object Storage Ports, Repositories & Outbox\n<<Infrastructure>>" as infra
+  database "Shared PostgreSQL\nBC-09 logical tables" as db
+}
+component "Source snapshot contracts\nBC-04, BC-06, BC-07 and BC-08" as sources
+component "Private Object Storage\n<<external system>>" as storage
+component "BC-10 and BC-11\n<<post-commit consumers>>" as consumers
+api --> app
+app --> domain : preserve immutable document history
+domain --> infra
+infra --> db
+app --> sources
+infra --> storage : authorized bytes through port
+infra --> consumers : issued facts
+note bottom of domain
+Issued documents are immutable; a correction creates a linked replacement.
+end note
+@enduml

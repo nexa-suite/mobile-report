@@ -10,6 +10,8 @@ en los testimonios expuestos que forman parte del video *About The Team*.
 La evidencia disponible corresponde a AV1: no asigna puntajes ni anticipa
 resultados de hitos posteriores.
 
+En el siguiente cuadro se describe las acciones realizadas y enunciados de conclusiones por parte del grupo, que permiten sustentar el haber alcanzado el logro del ABET – EAC - Student Outcome 7.
+
 El curso contribuye al cumplimiento del Student Outcome ABET:
 
 ### ABET - EAC - Student Outcome 7

@@ -1,5 +1,5 @@
 @startuml BC02_CustomerBuyerRelationships
-title BC-02 Customer & Buyer Relationships — Tactical Domain Model (TARGET / V1)
+title BC-02 Customer & Buyer Relationships — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -94,7 +94,7 @@ CustomerAccountRepository ..> CustomerAccount : persists
 BuyerRelationshipRepository ..> BuyerRelationship : persists
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Customer account owns commercial relationship data.
 HumanIdentity belongs to BC-01; reference is non-owning.
 *-- composition | --> domain dependency | ..> port/use

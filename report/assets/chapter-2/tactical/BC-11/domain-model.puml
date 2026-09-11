@@ -1,5 +1,5 @@
 @startuml BC11_BusinessTraceability
-title BC-11 Business Traceability — Tactical Domain Model (TARGET / V1)
+title BC-11 Business Traceability — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -59,7 +59,7 @@ enum EvidenceKind <<Enum>>
 enum AggregateType <<Enum>>
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Append-only business traceability; no rewrite/delete operation.
 Evidence references point to source records or Object Storage metadata.
 *-- composition | --> domain dependency | ..> port/use

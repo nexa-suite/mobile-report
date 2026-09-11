@@ -1,7 +1,7 @@
 # Glosario
 
 Este glosario resume el lenguaje ubicuo de negocio usado en el informe. Conserva
-los términos canónicos en inglés cuando evitan ambigüedad; no define paquetes,
+los términos en inglés cuando evitan ambigüedad; no define paquetes,
 tablas, endpoints ni decisiones de implementación.
 
 *Vocabulario de negocio canónico utilizado por Nexa.*
@@ -9,7 +9,7 @@ tablas, endpoints ni decisiones de implementación.
 | Término | Significado en Nexa | No debe confundirse con |
 | --- | --- | --- |
 | Tenant | Cliente Nexa y límite máximo de aislamiento de negocio y datos. | Workspace, Customer Account o despliegue. |
-| Workspace | Entorno operativo V1 asociado 1:1 con un Tenant. | Tenant, C4 Container o frontera de seguridad independiente. |
+| Workspace | Entorno operativo actual asociado 1:1 con un Tenant. | Tenant, C4 Container o frontera de seguridad independiente. |
 | Human Identity | Identidad global de una persona para autenticación. | Workforce Membership o Buyer Relationship. |
 | Workforce Membership | Relación de trabajo, acceso y capacidades dentro de un Tenant. | Human Identity o Buyer Relationship. |
 | Customer Account | Registro comercial de un cliente dentro de un Tenant. | Human Identity o Buyer Relationship. |
@@ -19,7 +19,7 @@ tablas, endpoints ni decisiones de implementación.
 | Base Price | Precio inicial autorizado del catálogo. | Precio final resuelto. |
 | Price List | Configuración de precios aplicable a Tenant o cliente. | Identidad de SKU u override comercial arbitrario. |
 | Customer Terms | Condiciones comerciales permitidas para un cliente. | Price List, Payment o Receivable. |
-| Promotion | Única transformación permitida sobre el precio resuelto en V1. | Descuentos acumulados o autoridad de precio. |
+| Promotion | Única transformación permitida sobre el precio resuelto en el alcance actual. | Descuentos acumulados o autoridad de precio. |
 | Draft (Cart / Request Draft) | Intención del Buyer antes de un envío autoritativo. | Purchase Request o compromiso de inventario. |
 | Purchase Request | Solicitud comercial del Buyer sujeta a revisión. | Sales Order, orden de compra de proveedor o Draft SO. |
 | Commercial Commitment | Demanda persistente de SKU y cantidad, propiedad de un PR/SO y neutral respecto de Warehouse. | Inventory Reservation, Warehouse Backing, Physical Allocation o Inventory Lot. |
@@ -52,5 +52,6 @@ tablas, endpoints ni decisiones de implementación.
 | Business Traceability | Representación durable de hechos significativos y su línea de tiempo. | Notification o Security Audit. |
 | Security Audit | Evidencia de seguridad y autorización. | Línea de tiempo de negocio del Buyer. |
 
-*Nota.* El vocabulario expresa el TARGET aceptado de Nexa y no acredita que una
-capacidad, estado o integración esté implementada en una aplicación actual.
+*Nota.* El vocabulario expresa el diseño de dominio propuesto para Nexa y no
+acredita que una capacidad, estado o integración esté implementada en una
+aplicación actual.

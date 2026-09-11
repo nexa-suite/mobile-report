@@ -4,6 +4,7 @@ Esta sección describe los once Bounded Contexts aceptados para Nexa. Operations
 Mobile y Buyer Mobile son proyecciones de estos contextos compartidos; no crean
 un contexto táctico propio ni modifican la autoridad del dominio.
 
+*Bounded Contexts de Nexa*
 | Código | Bounded Context |
 | --- | --- |
 | BC-01 | Tenant & Access Governance |
@@ -32,6 +33,7 @@ capacidades. `Tenant` no es `Workspace`; `HumanIdentity` no es
 
 #### 2.6.1.1. Domain Layer
 
+*Agregados y límites invariantes de BC-01.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `Tenant` | Lifecycle and isolation policy; one active Workspace and one active Company Owner in initial scope |
@@ -111,13 +113,14 @@ inventario de código fuente.
 
 ##### 2.6.1.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-01 Tenant & Access Governance.*
 ![BC-01 tactical domain model](../../../assets/chapter-2/tactical/BC-01/BC01_TenantAccessGovernance.png)
 
-El diagrama se presenta como modelo de diseño, no como inventario de código.
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-01.*
 ![BC-01 database design projection](../../../assets/chapter-2/tactical/BC-01/database-diagram.png)
 
-Es una proyección de propiedad lógica en PostgreSQL compartido; muestra claves,
-restricciones y alcance Tenant, no una base de datos física por contexto.
+*Nota.* Es una proyección de propiedad lógica en PostgreSQL compartido; muestra claves, restricciones y alcance Tenant, no una base de datos física por contexto.

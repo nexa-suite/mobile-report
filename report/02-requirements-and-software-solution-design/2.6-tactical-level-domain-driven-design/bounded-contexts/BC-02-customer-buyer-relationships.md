@@ -6,6 +6,7 @@ identity; Buyer Relationship is not Human Identity or Workforce Membership.
 
 #### 2.6.2.1. Domain Layer
 
+*Agregados y límites invariantes de BC-02.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `CustomerAccount` | Account, contacts and addresses for a supplier Tenant |
@@ -79,12 +80,13 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.2.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-02 Customer & Buyer Relationships.*
 ![BC-02 tactical domain model](../../../assets/chapter-2/tactical/BC-02/BC02_CustomerBuyerRelationships.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.2.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-02.*
 ![BC-02 database design projection](../../../assets/chapter-2/tactical/BC-02/database-diagram.png)
-
-Shared PostgreSQL and logical ownership remain the design; no physical
-database per context is asserted.
+*Nota.* PostgreSQL compartido y la propiedad lógica forman parte del diseño; no se afirma la existencia de una base de datos física por contexto.

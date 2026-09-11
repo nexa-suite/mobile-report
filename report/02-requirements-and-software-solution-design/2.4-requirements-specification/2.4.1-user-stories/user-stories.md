@@ -6,12 +6,29 @@ Stories expresan resultados de negocio para actores; las Technical Stories
 delimitan habilitación técnica; y los Spikes reducen incertidumbre antes de una
 decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 
+### As-Is → To-Be Traceability
+
+Los Journey Maps de la sección 2.3 permanecen como recorridos As-Is centrados en
+persona. Esta tabla es un suplemento de trazabilidad hacia el escenario To-Be;
+no crea Journey Maps To-Be, no convierte hipótesis en hallazgos y no declara
+implementación ni aceptación.
+
+| Segmento | Problema o hipótesis actual | Desired outcome | User Stories | Academic Sprint | Domain boundary | Evidence status |
+| --- | --- | --- | --- | --- | --- | --- |
+| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`; `MOB-US-011..017`, `MOB-US-019..022` | Sprint 1; Sprint 2 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023..034` | Sprint 3 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Verificar la recepción frente a lo esperado y comunicar discrepancias con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-044`, `MOB-US-047..049` | Sprint 4 | BC-06 Fulfillment & Delivery; BC-09 Business Documents; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
+
+La trazabilidad operativa es: problema o hipótesis As-Is → resultado deseado
+To-Be → User Story → Sprint → estado de evidencia. El resultado deseado es una
+dirección de diseño, no prueba de que Nexa Mobile ya exista.
+
 ### To-Be Scenario Mapping
 
 | Escenario objetivo | Actor y proyección | Comportamiento objetivo | Historias relacionadas |
 | --- | --- | --- | --- |
 | Authorized Mobile Work Context | Mobile User; Operations Mobile y Buyer Mobile | Nexa confirma Tenant, Workspace y permisos antes de exponer trabajo protegido. | MOB-US-001..003 |
-| Warehouse Receiving, Identification and Preparation | Warehouse Operator; Operations Mobile | La persona identifica Product/SKU, registra hechos físicos y prepara trabajo con lote, condición y evidencia. | MOB-US-011..017, MOB-US-019 |
+| Warehouse Work Overview, Receiving, Identification and Preparation | Business Operations Manager; Warehouse Operator; Operations Mobile | La persona entra en un contexto autorizado, revisa el trabajo Warehouse y después identifica Product/SKU, registra hechos físicos y prepara trabajo con lote, condición y evidencia. | MOB-US-001..004, MOB-US-011..017, MOB-US-019 |
 | Dispatch Readiness and Handoff | Dispatch Coordinator; Operations Mobile | La persona verifica bienes, asigna responsabilidad y registra un Dispatch Handoff revisable. | MOB-US-020..025 |
 | Driver Delivery Execution | Driver / Delivery Operator; Operations Mobile | La persona trabaja sobre una Delivery asignada, abre navegación externa cuando corresponde y registra Delivery Attempt, Driver Outcome y Proof of Delivery. | MOB-US-026..034 |
 | Buyer Handoff, Receipt and Discrepancy | Customer Buyer; Buyer Mobile | La persona verifica el handoff, declara el Buyer Receipt y comunica discrepancias sin borrar hechos previos. | MOB-US-044, MOB-US-047..049 |
@@ -27,11 +44,14 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 | Ubicación | El alcance priorizado entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
 | Distinciones | Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship son distintos. Dispatch Handoff, Driver Outcome y Buyer Receipt también son hechos separados. |
 
-El catálogo contiene 73 Functional User Stories: 28 conforman el alcance
-priorizado y 45 se conservan como backlog posterior. Las Technical Stories, los
-Spikes, el Impact Mapping y el Product Backlog complementan esta especificación
-en sus secciones respectivas. Estar documentada no asigna a una historia
-implementación, evidencia de investigación ni aceptación.
+El catálogo funcional contiene 73 Mobile Functional User Stories y 6 Landing
+Page Functional User Stories, para un total de 79 historias funcionales. La
+relación entre el catálogo completo y el alcance académico comprometido se
+mantiene en el Product Backlog; esa separación evita eliminar historias
+legítimas para ajustar el trabajo del curso. Las Technical Stories, los Spikes
+y el Impact Mapping complementan esta especificación en sus secciones
+respectivas. Estar documentada no asigna a una historia implementación,
+evidencia de investigación ni aceptación.
 
 ---
 
@@ -46,14 +66,15 @@ incertidumbre en requisitos de negocio.
 #### Story Catalog and Traceability
 
 Nexa Operations Mobile y Nexa Buyer Mobile son las dos proyecciones Mobile.
-El alcance priorizado reúne 28 historias; las 45 restantes se mantienen como
-backlog posterior para conservar trazabilidad sin prometer su entrega.
+Este archivo conserva el catálogo funcional completo; el Product Backlog
+identifica por separado las historias comprometidas en los cuatro Sprints
+académicos y las historias que permanecen fuera de esa selección.
 
-| Horizonte académico | Functional Stories | Significado en este informe |
+| Estado de compromiso académico | Functional Stories | Significado en este informe |
 | --- | ---: | --- |
-| Alcance priorizado | 28 | Candidatas para planificación; requieren evidencia y validación correspondiente. |
-| Backlog posterior | 45 | Requieren refinamiento, decisión de priorización y evidencia antes de cualquier entrega. |
-| **Total** | **73** | Inventario funcional canónico completo. |
+| Academic commitment | 35 | Seleccionadas en el Product Backlog para los cuatro Sprints: 29 Mobile y 6 Landing Page. |
+| Outside current academic commitment | 44 | 44 historias Mobile conservadas para trazabilidad del producto; no reciben un Sprint académico en este informe. |
+| **Total** | **79** | Catálogo funcional completo: 73 Mobile + 6 Landing Page. |
 
 #### Epic registry
 
@@ -63,17 +84,17 @@ pantalla, una aplicación ni una unidad de despliegue.
 | Epic | Resultado agrupado | Horizonte académico | Stories |
 | --- | --- | --- | --- |
 | MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Alcance priorizado | MOB-US-001..003 |
-| MOBILE-EPIC-02 | Recepción, identificación y preparación de almacén | Alcance priorizado | MOB-US-011..017, MOB-US-019 |
+| MOBILE-EPIC-02 | Primera experiencia Warehouse, recepción, identificación y preparación | Academic commitment | MOB-US-004, MOB-US-011..017, MOB-US-019 |
 | MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Alcance priorizado | MOB-US-020..025 |
 | MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Alcance priorizado | MOB-US-026..028, MOB-US-031..034 |
 | MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Alcance priorizado | MOB-US-044, MOB-US-047..049 |
-| MOBILE-EPIC-06 | Conveniencia comercial y operativa posterior | Backlog posterior | MOB-US-004..010, MOB-US-036..043 |
-| MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Backlog posterior | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
-| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Backlog posterior | MOB-US-050..056 |
-| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Backlog posterior | MOB-US-057..066 |
-| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Backlog posterior | MOB-US-067..069 |
-| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Backlog posterior | MOB-US-070..072 |
-| MOBILE-EPIC-12 | Automatización de almacén posterior | Backlog posterior | MOB-US-073 |
+| MOBILE-EPIC-06 | Conveniencia comercial y operativa | Canonical catalog outside current academic commitment | MOB-US-005..010, MOB-US-036..043 |
+| MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Canonical catalog outside current academic commitment | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
+| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Canonical catalog outside current academic commitment | MOB-US-050..056 |
+| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Canonical catalog outside current academic commitment | MOB-US-057..066 |
+| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Canonical catalog outside current academic commitment | MOB-US-067..069 |
+| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Canonical catalog outside current academic commitment | MOB-US-070..072 |
+| MOBILE-EPIC-12 | Automatización de almacén | Canonical catalog outside current academic commitment | MOB-US-073 |
 
 #### Segmentos y actores actuales
 
@@ -93,7 +114,7 @@ segmento de investigación.
 | Epic / cluster | Current actor/segment | Lean UX relationship | Needfinding evidence | To-Be scenario | Stories |
 | --- | --- | --- | --- | --- | --- |
 | MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Por contrastar mediante investigación directa; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001..003 |
-| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Warehouse Operator y Dispatch Coordinator | La continuidad entre hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Por contrastar mediante investigación directa; se requiere investigación específica del segmento actual. | Warehouse Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-011..017, MOB-US-019..025 |
+| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Business Operations Manager, Warehouse Operator y Dispatch Coordinator | La continuidad entre contexto, hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Por contrastar mediante investigación directa; se requiere investigación específica del segmento actual. | Warehouse Work Overview, Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-004, MOB-US-011..017, MOB-US-019..025 |
 | MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Por contrastar mediante investigación directa; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026..028, MOB-US-031..034 |
 | MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Por contrastar mediante investigación directa; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047..049 |
 | LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | Por contrastar mediante investigación directa | Acquisition, Contact and Onboarding Initiation | LAND-US-001..006 |
@@ -251,12 +272,12 @@ segmento de investigación.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-004</td><td>Business Operations Manager</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-004</td><td>Business Operations Manager</td><td>High</td><td>MOBILE-EPIC-02 — Primera experiencia Warehouse, recepción, identificación y preparación</td></tr>
 <tr><th>Title</th><td colspan="3">Revisar el trabajo operativo de un vistazo</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Business Operations Manager</strong>, deseo revisar el trabajo operativo de un vistazo, para priorizarlo usando hechos actuales y confiables.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Vista futura</strong></p><p><strong>Given</strong> existe una vista operativa futura aceptada</p><p><strong>When</strong> el responsable la revisa</p><p><strong>Then</strong> cada elemento indica su contexto y frescura.</p><p><strong>Scenario: Hechos incompletos</strong></p><p><strong>Given</strong> faltan hechos fuente o están desactualizados</p><p><strong>When</strong> el responsable revisa la vista</p><p><strong>Then</strong> la limitación es explícita y no se inventa ningún total.</p><p><strong>Scenario: Alcance no autorizado</strong></p><p><strong>Given</strong> el responsable carece de permiso de alcance</p><p><strong>When</strong> solicita la vista</p><p><strong>Then</strong> no se expone información operativa privada.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Vista operativa autorizada</strong></p><p><strong>Given</strong> existe una vista operativa autorizada</p><p><strong>When</strong> el responsable la revisa</p><p><strong>Then</strong> cada elemento indica su contexto y frescura.</p><p><strong>Scenario: Hechos incompletos</strong></p><p><strong>Given</strong> faltan hechos fuente o están desactualizados</p><p><strong>When</strong> el responsable revisa la vista</p><p><strong>Then</strong> la limitación es explícita y no se inventa ningún total.</p><p><strong>Scenario: Alcance no autorizado</strong></p><p><strong>Given</strong> el responsable carece de permiso de alcance</p><p><strong>When</strong> solicita la vista</p><p><strong>Then</strong> no se expone información operativa privada.</p></td></tr>
 </tbody>
 </table>
 
@@ -272,7 +293,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Business Operations Manager</strong>, deseo identificar excepciones operativas críticas, para atender trabajo bloqueado antes de que retrase a un cliente o una entrega.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Excepción aceptada</strong></p><p><strong>Given</strong> existe una futura vista de excepciones aceptada</p><p><strong>When</strong> el responsable revisa un elemento</p><p><strong>Then</strong> quedan claros su alcance, severidad y trabajo responsable.</p><p><strong>Scenario: Excepción incompleta</strong></p><p><strong>Given</strong> los hechos de la excepción están incompletos</p><p><strong>When</strong> se revisa el elemento</p><p><strong>Then</strong> se marca como incompleto y no se trata como un nuevo estado de negocio.</p><p><strong>Scenario: Respuesta autorizada</strong></p><p><strong>Given</strong> una excepción requiere corrección</p><p><strong>When</strong> el responsable la sigue</p><p><strong>Then</strong> Nexa dirige a la persona al trabajo responsable autorizado.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Excepción aceptada</strong></p><p><strong>Given</strong> existe una vista de excepciones aceptada</p><p><strong>When</strong> el responsable revisa un elemento</p><p><strong>Then</strong> quedan claros su alcance, severidad y trabajo responsable.</p><p><strong>Scenario: Excepción incompleta</strong></p><p><strong>Given</strong> los hechos de la excepción están incompletos</p><p><strong>When</strong> se revisa el elemento</p><p><strong>Then</strong> se marca como incompleto y no se trata como un nuevo estado de negocio.</p><p><strong>Scenario: Respuesta autorizada</strong></p><p><strong>Given</strong> una excepción requiere corrección</p><p><strong>When</strong> el responsable la sigue</p><p><strong>Then</strong> Nexa dirige a la persona al trabajo responsable autorizado.</p></td></tr>
 </tbody>
 </table>
 
@@ -288,7 +309,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo encontrar una relación entre cliente y comprador, para trabajar con el cliente correcto en un flujo móvil futuro.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: cliente autorizado</strong></p><p><strong>Given</strong> existe una relación autorizada</p><p><strong>When</strong> el representante busca</p><p><strong>Then</strong> solo se devuelven clientes permitidos.</p><p><strong>Scenario: cliente no relacionado</strong></p><p><strong>Given</strong> el cliente no está relacionado o está suspendido</p><p><strong>When</strong> el representante lo abre</p><p><strong>Then</strong> el trabajo protegido no está disponible.</p><p><strong>Scenario: Resultado no confiable</strong></p><p><strong>Given</strong> la búsqueda está vacía o no disponible</p><p><strong>When</strong> termina</p><p><strong>Then</strong> no se adivina ni expone ningún cliente.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Cliente autorizado</strong></p><p><strong>Given</strong> existe una relación autorizada</p><p><strong>When</strong> el representante busca</p><p><strong>Then</strong> solo se devuelven clientes permitidos.</p><p><strong>Scenario: Cliente no relacionado</strong></p><p><strong>Given</strong> el cliente no está relacionado o está suspendido</p><p><strong>When</strong> el representante lo abre</p><p><strong>Then</strong> el trabajo protegido no está disponible.</p><p><strong>Scenario: Resultado no confiable</strong></p><p><strong>Given</strong> la búsqueda está vacía o no disponible</p><p><strong>When</strong> termina</p><p><strong>Then</strong> no se adivina ni expone ningún cliente.</p></td></tr>
 </tbody>
 </table>
 
@@ -320,7 +341,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo preparar una solicitud de cliente, para organizar una intención antes de un envío autorizado.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Preparación de borrador</strong></p><p><strong>Given</strong> se conocen productos permitidos</p><p><strong>When</strong> el representante prepara una solicitud</p><p><strong>Then</strong> las cantidades permanecen como intención y no crean compromiso.</p><p><strong>Scenario: Información modificada</strong></p><p><strong>Given</strong> cambia información del producto o cliente</p><p><strong>When</strong> se revisa la solicitud</p><p><strong>Then</strong> el cambio es visible antes de la envío.</p><p><strong>Scenario: borrador local</strong></p><p><strong>Given</strong> la persona pierde conexión</p><p><strong>When</strong> edita la solicitud</p><p><strong>Then</strong> permanece como borrador no confirmado.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Preparación de borrador</strong></p><p><strong>Given</strong> se conocen productos permitidos</p><p><strong>When</strong> el representante prepara una solicitud</p><p><strong>Then</strong> las cantidades permanecen como intención y no crean compromiso.</p><p><strong>Scenario: Información modificada</strong></p><p><strong>Given</strong> cambia información del producto o cliente</p><p><strong>When</strong> se revisa la solicitud</p><p><strong>Then</strong> el cambio es visible antes del envío.</p><p><strong>Scenario: Borrador local</strong></p><p><strong>Given</strong> la persona pierde conexión</p><p><strong>When</strong> edita la solicitud</p><p><strong>Then</strong> permanece como borrador no confirmado.</p></td></tr>
 </tbody>
 </table>
 
@@ -528,7 +549,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo asignar un conductor a una entrega lista, para que la responsabilidad quede clara antes del handoff.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: conductor elegible</strong></p><p><strong>Given</strong> una entrega está lista y un conductor es elegible</p><p><strong>When</strong> el coordinador lo asigna</p><p><strong>Then</strong> Nexa registra una única asignación.</p><p><strong>Scenario: Asignación no elegible</strong></p><p><strong>Given</strong> la entrega o el conductor no son elegibles</p><p><strong>When</strong> el coordinador realiza la asignación</p><p><strong>Then</strong> Nexa la rechaza y no cambia la responsabilidad de la entrega.</p><p><strong>Scenario: Asignación desactualizada</strong></p><p><strong>Given</strong> la entrega cambió después de ser leída</p><p><strong>When</strong> el coordinador asigna el conductor</p><p><strong>Then</strong> Nexa solicita información actual en lugar de sobrescribir el cambio.</p><p><strong>Scenario: Asignación repetida</strong></p><p><strong>Given</strong> el coordinador repite la misma asignación</p><p><strong>When</strong> Nexa la recibe</p><p><strong>Then</strong> la entrega conserva un único resultado de asignación.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Conductor elegible</strong></p><p><strong>Given</strong> una entrega está lista y un conductor es elegible</p><p><strong>When</strong> el coordinador lo asigna</p><p><strong>Then</strong> Nexa registra una única asignación.</p><p><strong>Scenario: Asignación no elegible</strong></p><p><strong>Given</strong> la entrega o el conductor no son elegibles</p><p><strong>When</strong> el coordinador realiza la asignación</p><p><strong>Then</strong> Nexa la rechaza y no cambia la responsabilidad de la entrega.</p><p><strong>Scenario: Asignación desactualizada</strong></p><p><strong>Given</strong> la entrega cambió después de ser leída</p><p><strong>When</strong> el coordinador asigna el conductor</p><p><strong>Then</strong> Nexa solicita información actual en lugar de sobrescribir el cambio.</p><p><strong>Scenario: Asignación repetida</strong></p><p><strong>Given</strong> el coordinador repite la misma asignación</p><p><strong>When</strong> Nexa la recibe</p><p><strong>Then</strong> la entrega conserva un único resultado de asignación.</p></td></tr>
 </tbody>
 </table>
 
@@ -654,9 +675,9 @@ segmento de investigación.
 <tr><td>MOB-US-029</td><td>Driver or Delivery Operator</td><td>Low</td><td>MOBILE-EPIC-07 — Operación de campo avanzada y continuidad selectiva</td></tr>
 <tr><th>Title</th><td colspan="3">Compartir la ubicación durante una entrega activa</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo compartir la ubicación de una entrega durante una entrega activa, para que un servicio de ubicación futuro y aceptado atienda una necesidad acotada de entrega.</td></tr>
+<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo compartir la ubicación de una entrega durante una entrega activa, para que un servicio de ubicación previsto y aceptado atienda una necesidad acotada de entrega.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Consentimiento futuro</strong></p><p><strong>Given</strong> se acepta una política futura de ubicación</p><p><strong>When</strong> el conductor comparte una ubicación</p><p><strong>Then</strong> consentimiento, alcance y retención quedan explícitos.</p><p><strong>Scenario: Sin entrega activo</strong></p><p><strong>Given</strong> no existe una entrega activa</p><p><strong>When</strong> se solicita la ubicación</p><p><strong>Then</strong> no se comparte ninguna ubicación.</p><p><strong>Scenario: Límite de privacidad</strong></p><p><strong>Given</strong> la persona retira el permiso</p><p><strong>When</strong> se solicita compartir ubicación</p><p><strong>Then</strong> no se divulga ninguna ubicación nueva.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Consentimiento de ubicación</strong></p><p><strong>Given</strong> se acepta una política de ubicación</p><p><strong>When</strong> el conductor comparte una ubicación</p><p><strong>Then</strong> consentimiento, alcance y retención quedan explícitos.</p><p><strong>Scenario: Sin entrega activa</strong></p><p><strong>Given</strong> no existe una entrega activa</p><p><strong>When</strong> se solicita la ubicación</p><p><strong>Then</strong> no se comparte ninguna ubicación.</p><p><strong>Scenario: Límite de privacidad</strong></p><p><strong>Given</strong> la persona retira el permiso</p><p><strong>When</strong> se solicita compartir ubicación</p><p><strong>Then</strong> no se divulga ninguna ubicación nueva.</p></td></tr>
 </tbody>
 </table>
 
@@ -672,7 +693,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo contactar al comprador durante la entrega, para resolver una duda de llegada mediante un canal autorizado.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Canal futuro</strong></p><p><strong>Given</strong> existe una política de contacto aceptada</p><p><strong>When</strong> el conductor contacta al comprador</p><p><strong>Then</strong> solo se usa el canal autorizado y su uso queda registrado.</p><p><strong>Scenario: Consentimiento faltante</strong></p><p><strong>Given</strong> falta consentimiento o asignación</p><p><strong>When</strong> se solicita el contacto</p><p><strong>Then</strong> no se inicia contacto personal.</p><p><strong>Scenario: Resultado separado</strong></p><p><strong>Given</strong> ocurre el contacto</p><p><strong>When</strong> termina</p><p><strong>Then</strong> por sí mismo no cambia el resultado de entrega ni el Buyer Receipt.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Canal autorizado</strong></p><p><strong>Given</strong> existe una política de contacto aceptada</p><p><strong>When</strong> el conductor contacta al comprador</p><p><strong>Then</strong> solo se usa el canal autorizado y su uso queda registrado.</p><p><strong>Scenario: Consentimiento faltante</strong></p><p><strong>Given</strong> falta consentimiento o asignación</p><p><strong>When</strong> se solicita el contacto</p><p><strong>Then</strong> no se inicia contacto personal.</p><p><strong>Scenario: Resultado separado</strong></p><p><strong>Given</strong> ocurre el contacto</p><p><strong>When</strong> termina</p><p><strong>Then</strong> por sí mismo no cambia el resultado de entrega ni el Buyer Receipt.</p></td></tr>
 </tbody>
 </table>
 
@@ -736,7 +757,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo presentar un código acotado de handoff de entrega, para que el comprador identifique correctamente la entrega de forma segura.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Código válido</strong></p><p><strong>Given</strong> existe una entrega activo y autorizado</p><p><strong>When</strong> el conductor presenta su código</p><p><strong>Then</strong> Nexa vincula el código con esa entrega y Delivery Attempt.</p><p><strong>Scenario: Código expirado o incorrecto</strong></p><p><strong>Given</strong> el código está expirado, reutilizado o pertenece a otro entrega</p><p><strong>When</strong> se comprueba</p><p><strong>Then</strong> Nexa lo rechaza sin cambiar el estado de entrega.</p><p><strong>Scenario: Código no disponible</strong></p><p><strong>Given</strong> no se puede presentar el código</p><p><strong>When</strong> el conductor usa el alternativa aprobado</p><p><strong>Then</strong> el handoff permanece explícito y no se registra aceptación falsa.</p><p><strong>Scenario: Hechos separados</strong></p><p><strong>Given</strong> el comprador verifica el código</p><p><strong>When</strong> la verificación tiene éxito</p><p><strong>Then</strong> por sí sola no crea recepción, POD, pago ni finalización de entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Código válido</strong></p><p><strong>Given</strong> existe una entrega activa y autorizada</p><p><strong>When</strong> el conductor presenta su código</p><p><strong>Then</strong> Nexa vincula el código con esa entrega y Delivery Attempt.</p><p><strong>Scenario: Código expirado o incorrecto</strong></p><p><strong>Given</strong> el código está expirado, reutilizado o pertenece a otra entrega</p><p><strong>When</strong> se comprueba</p><p><strong>Then</strong> Nexa lo rechaza sin cambiar el estado de entrega.</p><p><strong>Scenario: Código no disponible</strong></p><p><strong>Given</strong> no se puede presentar el código</p><p><strong>When</strong> el conductor usa la alternativa aprobada</p><p><strong>Then</strong> el handoff permanece explícito y no se registra aceptación falsa.</p><p><strong>Scenario: Hechos separados</strong></p><p><strong>Given</strong> el comprador verifica el código</p><p><strong>When</strong> la verificación tiene éxito</p><p><strong>Then</strong> por sí sola no crea recepción, POD, pago ni finalización de entrega.</p></td></tr>
 </tbody>
 </table>
 
@@ -752,7 +773,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo continuar la evidencia de entrega después de perder conexión, para que un flujo futuro de recuperación proteja la evidencia sin afirmar éxito falso.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Recuperación futura de evidencia</strong></p><p><strong>Given</strong> se acepta una política futura de recuperación</p><p><strong>When</strong> se captura evidencia sin conexión</p><p><strong>Then</strong> su estado pendiente y contenido protegido mínimo quedan claros.</p><p><strong>Scenario: Confirmación posterior</strong></p><p><strong>Given</strong> la evidencia preparada se revisa posteriormente</p><p><strong>When</strong> Nexa la acepta</p><p><strong>Then</strong> solo el hecho exacto aceptado se vuelve autoritativo.</p><p><strong>Scenario: Rechazo</strong></p><p><strong>Given</strong> se rechaza la evidencia preparada</p><p><strong>When</strong> se revisa</p><p><strong>Then</strong> el motivo permanece claro y no se implica éxito de entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Recuperación de evidencia</strong></p><p><strong>Given</strong> se acepta una política de recuperación</p><p><strong>When</strong> se captura evidencia sin conexión</p><p><strong>Then</strong> su estado pendiente y contenido protegido mínimo quedan claros.</p><p><strong>Scenario: Confirmación posterior</strong></p><p><strong>Given</strong> la evidencia preparada se revisa posteriormente</p><p><strong>When</strong> Nexa la acepta</p><p><strong>Then</strong> solo el hecho exacto aceptado se vuelve autoritativo.</p><p><strong>Scenario: Rechazo</strong></p><p><strong>Given</strong> se rechaza la evidencia preparada</p><p><strong>When</strong> se revisa</p><p><strong>Then</strong> el motivo permanece claro y no se implica éxito de entrega.</p></td></tr>
 </tbody>
 </table>
 
@@ -800,7 +821,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo preparar una Purchase Request, para organizar una compra futura sin confirmarla falsamente.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: borrador</strong></p><p><strong>Given</strong> hay productos permitidos disponibles</p><p><strong>When</strong> el comprador prepara una solicitud</p><p><strong>Then</strong> permanece como borrador y no crea reserva.</p><p><strong>Scenario: Producto modificado</strong></p><p><strong>Given</strong> cambia el precio o disponibilidad</p><p><strong>When</strong> el comprador revisa el borrador</p><p><strong>Then</strong> el cambio es claro antes de la envío.</p><p><strong>Scenario: Preparación local</strong></p><p><strong>Given</strong> el comprador pierde conexión</p><p><strong>When</strong> edita el borrador</p><p><strong>Then</strong> permanece no confirmado.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Borrador</strong></p><p><strong>Given</strong> hay productos permitidos disponibles</p><p><strong>When</strong> el comprador prepara una solicitud</p><p><strong>Then</strong> permanece como borrador y no crea reserva.</p><p><strong>Scenario: Producto modificado</strong></p><p><strong>Given</strong> cambia el precio o disponibilidad</p><p><strong>When</strong> el comprador revisa el borrador</p><p><strong>Then</strong> el cambio es claro antes del envío.</p><p><strong>Scenario: Preparación local</strong></p><p><strong>Given</strong> el comprador pierde conexión</p><p><strong>When</strong> edita el borrador</p><p><strong>Then</strong> permanece no confirmado.</p></td></tr>
 </tbody>
 </table>
 
@@ -896,7 +917,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo saber cuándo una entrega requiere atención, para responder oportunamente a un cambio relevante.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Actualización relevante</strong></p><p><strong>Given</strong> un hecho permitido de entrega requiere atención del comprador</p><p><strong>When</strong> Nexa envía una actualización</p><p><strong>Then</strong> el comprador puede identificar la entrega relevante.</p><p><strong>Scenario: Actualización no relacionada</strong></p><p><strong>Given</strong> la entrega está fuera de la relación del comprador</p><p><strong>When</strong> se prepara una actualización</p><p><strong>Then</strong> no se revela información privada de la entrega.</p><p><strong>Scenario: Fallo de entrega</strong></p><p><strong>Given</strong> una actualización no puede entregarse</p><p><strong>When</strong> el comprador abre Nexa</p><p><strong>Then</strong> los hechos actuales de entrega siguen disponibles para actualización y ningún hecho cambia.</p><p><strong>Scenario: Reintento de actualización</strong></p><p><strong>Given</strong> una actualización se repite</p><p><strong>When</strong> el comprador la recibe</p><p><strong>Then</strong> no crea un segundo entrega, recepción ni hecho de discrepancia.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Actualización relevante</strong></p><p><strong>Given</strong> un hecho permitido de entrega requiere atención del comprador</p><p><strong>When</strong> Nexa envía una actualización</p><p><strong>Then</strong> el comprador puede identificar la entrega relevante.</p><p><strong>Scenario: Actualización no relacionada</strong></p><p><strong>Given</strong> la entrega está fuera de la relación del comprador</p><p><strong>When</strong> se prepara una actualización</p><p><strong>Then</strong> no se revela información privada de la entrega.</p><p><strong>Scenario: Fallo de entrega</strong></p><p><strong>Given</strong> una actualización no puede entregarse</p><p><strong>When</strong> el comprador abre Nexa</p><p><strong>Then</strong> los hechos actuales de entrega siguen disponibles para actualización y ningún hecho cambia.</p><p><strong>Scenario: Reintento de actualización</strong></p><p><strong>Given</strong> una actualización se repite</p><p><strong>When</strong> el comprador la recibe</p><p><strong>Then</strong> no crea una segunda entrega, recepción ni hecho de discrepancia.</p></td></tr>
 </tbody>
 </table>
 
@@ -910,9 +931,9 @@ segmento de investigación.
 <tr><td>MOB-US-045</td><td>Customer Buyer</td><td>Low</td><td>MOBILE-EPIC-07 — Operación de campo avanzada y continuidad selectiva</td></tr>
 <tr><th>Title</th><td colspan="3">Ver un conductor activo en un mapa</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo ver en un mapa un conductor activo, para que un servicio futuro y autorizado me ayude a comprender el horario de llegada.</td></tr>
+<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo ver en un mapa un conductor activo, para que un servicio previsto y autorizado me ayude a comprender el horario de llegada.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Ubicación futura</strong></p><p><strong>Given</strong> se acepta una política futura de ubicación</p><p><strong>When</strong> el comprador abre una entrega activo</p><p><strong>Then</strong> solo se muestra ubicación acotada con consentimiento.</p><p><strong>Scenario: Sin entrega activo</strong></p><p><strong>Given</strong> no existe una entrega activo</p><p><strong>When</strong> el comprador solicita un mapa</p><p><strong>Then</strong> no se divulga la ubicación del conductor.</p><p><strong>Scenario: Límite de privacidad</strong></p><p><strong>Given</strong> falta permiso o relación</p><p><strong>When</strong> el comprador solicita un mapa</p><p><strong>Then</strong> no se divulga ninguna ubicación.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Ubicación autorizada</strong></p><p><strong>Given</strong> se acepta una política de ubicación</p><p><strong>When</strong> el comprador abre una entrega activa</p><p><strong>Then</strong> solo se muestra ubicación acotada con consentimiento.</p><p><strong>Scenario: Sin entrega activa</strong></p><p><strong>Given</strong> no existe una entrega activa</p><p><strong>When</strong> el comprador solicita un mapa</p><p><strong>Then</strong> no se divulga la ubicación del conductor.</p><p><strong>Scenario: Límite de privacidad</strong></p><p><strong>Given</strong> falta permiso o relación</p><p><strong>When</strong> el comprador solicita un mapa</p><p><strong>Then</strong> no se divulga ninguna ubicación.</p></td></tr>
 </tbody>
 </table>
 
@@ -928,7 +949,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo contactar al conductor, para resolver una duda de llegada mediante un canal autorizado de entrega.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Canal futuro</strong></p><p><strong>Given</strong> existe una política de canal aceptada y una entrega activo</p><p><strong>When</strong> el comprador contacta al conductor</p><p><strong>Then</strong> solo se usa el canal autorizado.</p><p><strong>Scenario: Sin permiso</strong></p><p><strong>Given</strong> falta consentimiento o entrega activo</p><p><strong>When</strong> se solicita el contacto</p><p><strong>Then</strong> no se inicia contacto personal.</p><p><strong>Scenario: Hechos separados</strong></p><p><strong>Given</strong> ocurre el contacto</p><p><strong>When</strong> termina</p><p><strong>Then</strong> no cambia Driver outcome, Buyer Receipt ni el estado de entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Canal autorizado</strong></p><p><strong>Given</strong> existe una política de canal aceptada y una entrega activa</p><p><strong>When</strong> el comprador contacta al conductor</p><p><strong>Then</strong> solo se usa el canal autorizado.</p><p><strong>Scenario: Sin permiso</strong></p><p><strong>Given</strong> falta consentimiento o entrega activa</p><p><strong>When</strong> se solicita el contacto</p><p><strong>Then</strong> no se inicia contacto personal.</p><p><strong>Scenario: Hechos separados</strong></p><p><strong>Given</strong> ocurre el contacto</p><p><strong>When</strong> termina</p><p><strong>Then</strong> no cambia Driver outcome, Buyer Receipt ni el estado de entrega.</p></td></tr>
 </tbody>
 </table>
 
@@ -944,7 +965,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo verificar una entrega mediante el código de handoff, para confirmar que reviso la entrega correcta.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Código coincidente</strong></p><p><strong>Given</strong> existe un código válido, no expirado y una relación autorizada</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa identifica la entrega y Delivery Attempt coincidentes.</p><p><strong>Scenario: Código inválido</strong></p><p><strong>Given</strong> el código está expirado, reutilizado, malformado o no relacionado</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa lo rechaza y no cambia ningún hecho de recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede confirmar el código</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa muestra un estado no confirmado y ningún recepción tiene éxito.</p><p><strong>Scenario: Límite de verificación</strong></p><p><strong>Given</strong> el código está verificado</p><p><strong>When</strong> el comprador continúa</p><p><strong>Then</strong> la verificación por sí sola no confirma cantidades, POD, pago ni finalización de entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Código coincidente</strong></p><p><strong>Given</strong> existe un código válido, no expirado y una relación autorizada</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa identifica la entrega y Delivery Attempt coincidentes.</p><p><strong>Scenario: Código inválido</strong></p><p><strong>Given</strong> el código está expirado, reutilizado, malformado o no relacionado</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa lo rechaza y no cambia ningún hecho de recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede confirmar el código</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa muestra un estado no confirmado y ninguna recepción tiene éxito.</p><p><strong>Scenario: Límite de verificación</strong></p><p><strong>Given</strong> el código está verificado</p><p><strong>When</strong> el comprador continúa</p><p><strong>Then</strong> la verificación por sí sola no confirma cantidades, POD, pago ni finalización de entrega.</p></td></tr>
 </tbody>
 </table>
 
@@ -960,7 +981,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo confirmar las cantidades realmente recibidas, para que el proveedor tenga un registro veraz de mi Buyer Receipt.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: recepción coincidente</strong></p><p><strong>Given</strong> existe un handoff verificado y autorizado</p><p><strong>When</strong> el comprador confirma las cantidades recibidas</p><p><strong>Then</strong> Nexa registra un único hecho de Buyer Receipt con persona, momento y entrega.</p><p><strong>Scenario: Cantidades diferentes</strong></p><p><strong>Given</strong> las cantidades recibidas difieren del resultado del conductor</p><p><strong>When</strong> el comprador las confirma</p><p><strong>Then</strong> ambos hechos permanecen separados y la diferencia queda visible.</p><p><strong>Scenario: Handoff desactualizado o reutilizado</strong></p><p><strong>Given</strong> el handoff está desactualizado, expirado o ya utilizado</p><p><strong>When</strong> el comprador confirma cantidades</p><p><strong>Then</strong> Nexa rechaza la confirmación o devuelve el resultado original sin un segundo recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede comprobar la confirmación del recepción</p><p><strong>When</strong> el comprador lo intenta</p><p><strong>Then</strong> Nexa no muestra éxito de recepción hasta recibir confirmación.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Recepción coincidente</strong></p><p><strong>Given</strong> existe un handoff verificado y autorizado</p><p><strong>When</strong> el comprador confirma las cantidades recibidas</p><p><strong>Then</strong> Nexa registra un único hecho de Buyer Receipt con persona, momento y entrega.</p><p><strong>Scenario: Cantidades diferentes</strong></p><p><strong>Given</strong> las cantidades recibidas difieren del resultado del conductor</p><p><strong>When</strong> el comprador las confirma</p><p><strong>Then</strong> ambos hechos permanecen separados y la diferencia queda visible.</p><p><strong>Scenario: Handoff desactualizado o reutilizado</strong></p><p><strong>Given</strong> el handoff está desactualizado, expirado o ya utilizado</p><p><strong>When</strong> el comprador confirma cantidades</p><p><strong>Then</strong> Nexa rechaza la confirmación o devuelve el resultado original sin una segunda recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede comprobar la confirmación de la recepción</p><p><strong>When</strong> el comprador lo intenta</p><p><strong>Then</strong> Nexa no muestra éxito de recepción hasta recibir confirmación.</p></td></tr>
 </tbody>
 </table>
 
@@ -992,7 +1013,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo registrar una discrepancia de recepción de entrada con evidencia, para que la decisión de recepción refleje lo encontrado físicamente.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Diferencia capturada</strong></p><p><strong>Given</strong> se inspecciona una entrega de entrada</p><p><strong>When</strong> el operador registra daño, fuga, producto incorrecto o cantidad incorrecta</p><p><strong>Then</strong> Nexa conserva motivo, artículos afectados y evidencia para revisión.</p><p><strong>Scenario: recepción controlado</strong></p><p><strong>Given</strong> se registra una discrepancia</p><p><strong>When</strong> el operador envía el resultado de recepción</p><p><strong>Then</strong> Nexa no incrementa el stock vendible más allá de los hechos confirmados.</p><p><strong>Scenario: Evidencia faltante</strong></p><p><strong>Given</strong> falta un hecho o evidencia requerida</p><p><strong>When</strong> el operador intenta enviar la discrepancia</p><p><strong>Then</strong> Nexa explica qué falta y no registra una decisión incompleta.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Diferencia capturada</strong></p><p><strong>Given</strong> se inspecciona una entrega de entrada</p><p><strong>When</strong> el operador registra daño, fuga, producto incorrecto o cantidad incorrecta</p><p><strong>Then</strong> Nexa conserva motivo, artículos afectados y evidencia para revisión.</p><p><strong>Scenario: Recepción controlada</strong></p><p><strong>Given</strong> se registra una discrepancia</p><p><strong>When</strong> el operador envía el resultado de recepción</p><p><strong>Then</strong> Nexa no incrementa el stock vendible más allá de los hechos confirmados.</p><p><strong>Scenario: Evidencia faltante</strong></p><p><strong>Given</strong> falta un hecho o evidencia requerida</p><p><strong>When</strong> el operador intenta enviar la discrepancia</p><p><strong>Then</strong> Nexa explica qué falta y no registra una decisión incompleta.</p></td></tr>
 </tbody>
 </table>
 
@@ -1024,7 +1045,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo confirmar lo que llegó al destino de una transferencia interna, para que el registro de stock refleje el movimiento físico y cualquier diferencia.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: recepción completo</strong></p><p><strong>Given</strong> una transferencia autorizada está en tránsito</p><p><strong>When</strong> el operador destino confirma lote y cantidad esperados</p><p><strong>Then</strong> Nexa registra destination recepción y cierra el movimiento de transferencia.</p><p><strong>Scenario: recepción parcial o diferente</strong></p><p><strong>Given</strong> el destino recibe otro lote o cantidad</p><p><strong>When</strong> el operador lo registra</p><p><strong>Then</strong> Nexa mantiene separados los hechos de origen y destino y expone la diferencia para resolución.</p><p><strong>Scenario: recepción repetido</strong></p><p><strong>Given</strong> destination recepción ya tiene un resultado aceptado</p><p><strong>When</strong> el operador reintenta</p><p><strong>Then</strong> Nexa devuelve el resultado original sin un segundo recepción.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Recepción completa</strong></p><p><strong>Given</strong> una transferencia autorizada está en tránsito</p><p><strong>When</strong> el operador destino confirma lote y cantidad esperados</p><p><strong>Then</strong> Nexa registra la recepción en destino y cierra el movimiento de transferencia.</p><p><strong>Scenario: Recepción parcial o diferente</strong></p><p><strong>Given</strong> el destino recibe otro lote o cantidad</p><p><strong>When</strong> el operador lo registra</p><p><strong>Then</strong> Nexa mantiene separados los hechos de origen y destino y expone la diferencia para resolución.</p><p><strong>Scenario: Recepción repetida</strong></p><p><strong>Given</strong> la recepción en destino ya tiene un resultado aceptado</p><p><strong>When</strong> el operador reintenta</p><p><strong>Then</strong> Nexa devuelve el resultado original sin una segunda recepción.</p></td></tr>
 </tbody>
 </table>
 
@@ -1072,7 +1093,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo usar información más rica de identidad de producto, paquete y almacenamiento, para manipular el stock previsto con menos errores de identificación.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Identidad resuelta</strong></p><p><strong>Given</strong> existe un identificador permitido de paquete o almacenamiento</p><p><strong>When</strong> el operador lo presenta</p><p><strong>Then</strong> Nexa muestra el producto correspondiente y el contexto actual antes de iniciar el trabajo.</p><p><strong>Scenario: Identidad no disponible</strong></p><p><strong>Given</strong> el identificador es desconocido o ilegible</p><p><strong>When</strong> el operador intenta continuar</p><p><strong>Then</strong> Nexa ofrece un alternativa explícito o indica que se requiere confirmación.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Identidad resuelta</strong></p><p><strong>Given</strong> existe un identificador permitido de paquete o almacenamiento</p><p><strong>When</strong> el operador lo presenta</p><p><strong>Then</strong> Nexa muestra el producto correspondiente y el contexto actual antes de iniciar el trabajo.</p><p><strong>Scenario: Identidad no disponible</strong></p><p><strong>Given</strong> el identificador es desconocido o ilegible</p><p><strong>When</strong> el operador intenta continuar</p><p><strong>Then</strong> Nexa ofrece una alternativa explícita o indica que se requiere confirmación.</p></td></tr>
 </tbody>
 </table>
 
@@ -1184,7 +1205,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo señalar la llegada de una entrega activa, para que el comprador y el equipo de entrega sepan que puede comenzar el handoff.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Llegada registrada</strong></p><p><strong>Given</strong> el conductor tiene una entrega activo y autorizado</p><p><strong>When</strong> señala su llegada</p><p><strong>Then</strong> Nexa registra el evento y lo hace visible a destinatarios permitidos.</p><p><strong>Scenario: Sin entrega activo</strong></p><p><strong>Given</strong> el conductor no está asignado a una entrega activo</p><p><strong>When</strong> señala llegada</p><p><strong>Then</strong> Nexa rechaza la señal sin revelar otra entrega.</p><p><strong>Scenario: entrega permanece abierto</strong></p><p><strong>Given</strong> se registró la llegada</p><p><strong>When</strong> el comprador o conductor consulta la entrega</p><p><strong>Then</strong> permanece abierto hasta registrar por separado handoff y recepción.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Llegada registrada</strong></p><p><strong>Given</strong> el conductor tiene una entrega activa y autorizada</p><p><strong>When</strong> señala su llegada</p><p><strong>Then</strong> Nexa registra el evento y lo hace visible a destinatarios permitidos.</p><p><strong>Scenario: Sin entrega activa</strong></p><p><strong>Given</strong> el conductor no está asignado a una entrega activa</p><p><strong>When</strong> señala llegada</p><p><strong>Then</strong> Nexa rechaza la señal sin revelar otra entrega.</p><p><strong>Scenario: Entrega permanece abierta</strong></p><p><strong>Given</strong> se registró la llegada</p><p><strong>When</strong> el comprador o conductor consulta la entrega</p><p><strong>Then</strong> permanece abierta hasta registrar por separado handoff y recepción.</p></td></tr>
 </tbody>
 </table>
 
@@ -1216,7 +1237,7 @@ segmento de investigación.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo solicitar un horario de entrega diferente, para que el equipo de entrega decida cómo gestionar mi disponibilidad.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: solicitud enviada</strong></p><p><strong>Given</strong> el comprador está autorizado para una entrega activa</p><p><strong>When</strong> propone un horario alternativo</p><p><strong>Then</strong> Nexa registra una solicitud y muestra que espera una decisión de entrega.</p><p><strong>Scenario: Decisión devuelta</strong></p><p><strong>Given</strong> el equipo de entrega acepta o rechaza la solicitud</p><p><strong>When</strong> el comprador consulta la entrega</p><p><strong>Then</strong> Nexa muestra la decisión y el horario efectivo sin reescribir hechos anteriores.</p><p><strong>Scenario: solicitud desactualizada</strong></p><p><strong>Given</strong> la entrega ya es terminal o cambió</p><p><strong>When</strong> el comprador envía la solicitud antigua</p><p><strong>Then</strong> Nexa la rechaza con el estado actual de la entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Solicitud enviada</strong></p><p><strong>Given</strong> el comprador está autorizado para una entrega activa</p><p><strong>When</strong> propone un horario alternativo</p><p><strong>Then</strong> Nexa registra una solicitud y muestra que espera una decisión de entrega.</p><p><strong>Scenario: Decisión devuelta</strong></p><p><strong>Given</strong> el equipo de entrega acepta o rechaza la solicitud</p><p><strong>When</strong> el comprador consulta la entrega</p><p><strong>Then</strong> Nexa muestra la decisión y el horario efectivo sin reescribir hechos anteriores.</p><p><strong>Scenario: Solicitud desactualizada</strong></p><p><strong>Given</strong> la entrega ya es terminal o cambió</p><p><strong>When</strong> el comprador envía la solicitud antigua</p><p><strong>Then</strong> Nexa la rechaza con el estado actual de la entrega.</p></td></tr>
 </tbody>
 </table>
 

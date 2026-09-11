@@ -1,5 +1,5 @@
 @startuml BC03_CatalogCommercialPolicy
-title BC-03 Catalog & Commercial Policy — Tactical Domain Model (TARGET / V1)
+title BC-03 Catalog & Commercial Policy — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -139,7 +139,7 @@ ResolvedPrice *-- Money : amount
 Promotion *-- TimeWindow : validity
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Price precedence: Base Price -> Price List -> Customer Terms -> max one Promotion.
 CustomerAccountId is a non-owning BC-02 reference.
 *-- composition | --> domain dependency | ..> port/use

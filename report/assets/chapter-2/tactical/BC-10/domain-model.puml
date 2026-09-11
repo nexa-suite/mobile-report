@@ -1,5 +1,5 @@
 @startuml BC10_Notifications
-title BC-10 Notifications — Tactical Domain Model (TARGET / V1)
+title BC-10 Notifications — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -95,7 +95,7 @@ NotificationPolicy ..> DeliveryChannelPort : dispatches
 NotificationPolicy --> NotificationPreference : applies
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Notification is delivery state, not business truth; source event remains authoritative.
 Preferences and recipients are tenant-scoped; retries are explicit attempts.
 *-- composition | --> domain dependency | ..> port/use

@@ -22,9 +22,9 @@ Drivin. (s. f.-c). *Transport management system*. Recuperado el 7 de septiembre 
 
 Evans, E. (2004). *Domain-driven design: Tackling complexity in the heart of software*. Addison-Wesley.
 
-Grupo Lucky. (2022, 1 de septiembre). *El 28% de bodegas en el país utiliza algún aplicativo para potenciar sus ventas*. https://www.grupolucky.com/el-28-de-bodegas-en-el-pais-utiliza-algun-aplicativo-para-potenciar-sus-ventas/
-
 Gothelf, J., & Seiden, J. (2021). *Lean UX: Designing great products with agile teams* (3rd ed.). O'Reilly Media. https://www.oreilly.com/library/view/lean-ux-3rd/9781098116293/
+
+Grupo Lucky. (2022, 1 de septiembre). *El 28% de bodegas en el país utiliza algún aplicativo para potenciar sus ventas*. https://www.grupolucky.com/el-28-de-bodegas-en-el-pais-utiliza-algun-aplicativo-para-potenciar-sus-ventas/
 
 GS1. (2017). *GS1 Global Traceability Standard: Release 2.0*. https://www.gs1.org/docs/traceability/Global_Traceability_Standard.pdf
 
@@ -40,11 +40,11 @@ Maqbool, B., & Herold, S. (2024). Potential effectiveness and efficiency issues 
 
 Mustafa, M. F. M. S., Navaranjan, N., & Demirovic, A. (2024). Food cold chain logistics and management: A review of current development and emerging trends. *Journal of Agriculture and Food Research, 18*, Article 101343. https://doi.org/10.1016/j.jafr.2024.101343
 
-Pandoc. (s. f.). *Pandoc user’s guide*. https://pandoc.org/MANUAL.pdf
-
 Negocia.pe. (s. f.-a). *Negocia.pe: soluciones tecnológicas para empresas de Perú y Latinoamérica*. Recuperado el 7 de septiembre de 2026, de https://www.negocia.pe
 
 Negocia.pe. (s. f.-b). *Software para distribuidoras y mayoristas en Perú: ERP B2B*. Recuperado el 7 de septiembre de 2026, de https://www.negocia.pe/Distribuidoras.php
+
+Pandoc. (s. f.). *Pandoc user’s guide*. https://pandoc.org/MANUAL.pdf
 
 Riqra. (s. f.-a). *Full Commerce para todas tus ventas*. Recuperado el 7 de septiembre de 2026, de https://www.riqra.com
 
@@ -61,6 +61,8 @@ United Nations Environment Programme, & Food and Agriculture Organization of the
 Universidad Peruana de Ciencias Aplicadas. (s. f.). *Guía maestra de Docs-as-Code y gobernanza de repositorios* (V1.0) [Guía académica interna].
 
 Vernon, V. (2016). *Domain-driven design distilled*. Addison-Wesley Professional.
+
+Weichbroth, P. (2024). Usability of mobile applications: A consolidated model. *IEEE Access, 12*, 62378–62391. https://doi.org/10.1109/ACCESS.2024.3395528
 
 World Bank. (2023). *Connecting to compete 2023: Trade logistics in an uncertain global economy—The Logistics Performance Index and its indicators*. https://lpi.worldbank.org/sites/default/files/2023-04/LPI_2023_report.pdf
 

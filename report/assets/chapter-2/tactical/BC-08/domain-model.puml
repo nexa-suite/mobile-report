@@ -1,5 +1,5 @@
 @startuml BC08_Payments
-title BC-08 Payments — Tactical Domain Model (TARGET / V1)
+title BC-08 Payments — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -104,7 +104,7 @@ PaymentPolicy ..> PaymentRepository : loads
 PaymentPolicy ..> PaymentProviderPort : requests provider action
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Provider events are immutable evidence; reconciliation handles mismatch.
 Payment success is server-authoritative; Mobile offline state is never proof.
 *-- composition | --> domain dependency | ..> port/use

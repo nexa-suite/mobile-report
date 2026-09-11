@@ -45,17 +45,19 @@ correlation IDs are non-owning references. Evidence metadata can point through
 BC-09/Object Storage ports; canonical SQL defines tenant scope and append-only
 constraints. No separate audit database is inferred.
 
-**Clases TARGET por capa de BC-11.** Los nombres siguientes concretan responsabilidades previstas; no implican endpoints ni convierten este contexto en propietario de hechos ajenos.
+*Clases TARGET por capa de BC-11.*
+
+Los nombres siguientes concretan responsabilidades previstas; no implican endpoints ni convierten este contexto en propietario de hechos ajenos.
 
 | Capa | Clase / componente TARGET | Responsabilidad |
 |---|---|---|
-| Interface | `AuditViewerController` | Entrega consultas autorizadas de trazabilidad, manteniendo filtros de tenant y sensibilidad. |
+| Interface | `TraceabilityViewerController` | Entrega consultas autorizadas de trazabilidad de negocio, manteniendo filtros de tenant y sensibilidad. |
 | Interface | `BusinessTimelineController` | Expone la línea de tiempo como proyección de lectura, no como mutación del hecho origen. |
-| Interface | `TraceabilityProjectionConsumer` | Consume hechos publicados para actualizar vistas locales de auditoría. |
+| Interface | `BusinessTraceabilityProjectionConsumer` | Consume hechos publicados para actualizar una timeline de negocio, sin convertirse en Security Audit. |
 | Application | `TraceBusinessFactHandler` | Acepta un hecho comprometido y conserva su correlación, causalidad y procedencia. |
 | Application | `ProjectBusinessTimelineHandler` | Construye una línea de tiempo ordenada sin alterar el estado del contexto emisor. |
 | Application | `AppendEvidenceReferenceHandler` | Vincula evidencia inmutable por referencia y bajo autorización explícita. |
-| Application | `ProtectSensitivePayloadHandler` | Minimiza y protege cargas sensibles antes de persistir la proyección de auditoría. |
+| Application | `ProtectSensitivePayloadHandler` | Minimiza y protege cargas sensibles antes de persistir la proyección de trazabilidad. |
 | Infrastructure | `BusinessFactRepositoryAdapter` | Persiste hechos, correlaciones y metadatos de consulta propios de BC-11. |
 | Infrastructure | `TraceabilityInboxAdapter` | Deduplica hechos recibidos con semántica al-menos-una-vez. |
 | Infrastructure | `TraceabilityOutboxAdapter` | Publica hechos propios ya comprometidos mediante outbox durable. |
@@ -75,12 +77,15 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.11.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-11 Business Traceability.*
 ![BC-11 tactical domain model](../../../assets/chapter-2/tactical/BC-11/BC11_BusinessTraceability.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.11.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-11.*
+
 ![BC-11 database design projection](../../../assets/chapter-2/tactical/BC-11/database-diagram.png)
 
-The drawing is a logical projection of shared PostgreSQL; append-only and
-tenant-scope constraints remain canonical SQL concerns.
+*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las restricciones de solo adición y alcance Tenant permanecen definidas por el SQL canónico.

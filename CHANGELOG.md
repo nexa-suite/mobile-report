@@ -2,19 +2,53 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.3.0] - 2026-09-11
+
+Pre-AV1 academic hardening release for the Nexa Mobile Report.
+
+### Added
+
+- Explicit As-Is Scenario Mapping for the three Mobile research segments, with
+  current evidence status and links to the corresponding research artifacts.
+- Rendered Domain Storytelling visuals and a Videos de Exposiciones annex with
+  truthful pending fields where an authorized source is unavailable.
+
+### Changed
+
+- Reconciled interview design, Buyer evidence (`n = 2`), functional-story
+  catalog counts (73 Mobile + 6 Landing Page), and four-Sprint commitment.
+- Clarified Landing Page consideration from Sprint 1 while preserving its
+  committed implementation in Sprint 2.
+- Refined Ubiquitous Language, EventStorming, tactical DDD, diagram labels,
+  academic wording, citations, and bibliographic classification links.
+
+### Validation
+
+- Checked the 11 Bounded Contexts, relative links, SVG/XML assets, PlantUML,
+  Mermaid render assets, Markdown consistency, shell syntax, and Git
+  signatures.
+- Exported the report PDF natively and rendered a local cover preview.
+
+### Evidence boundaries
+
+- Required interview coverage, final Impact Mapping, Jira/Product Board visual
+  evidence, and exposition-video evidence remain pending external inputs.
+
 ## [0.2.0] - 2026-09-10
 
-Integrated AV1 academic report closure across the front matter and Chapters
-I–IV, with canonical Nexa domain/architecture evidence and explicit limits on
-future implementation evidence.
+Integrated a pre-AV1 academic report revision across the front matter and
+Chapters I–IV, with domain and architecture documentation plus explicit limits
+on future implementation evidence.
 
 ### Added
 
 - Complete Lean UX, needfinding, product backlog, Strategic DDD, Tactical DDD,
-  C4, UI/UX traceability, and Sprint Planning evidence for the AV1 report.
-- Four coherent Sprint Planning increments and Jira-ready task source.
-- UXPressia-ready research source, eleven Structurizr-native Bounded Context
-  component views, canonical glossary terms, and expanded bibliography.
+  C4, UI/UX traceability, and Sprint Planning documentation.
+- Four coherent Sprint Planning increments and a task source for future Board
+  registration.
+- Research artifacts for possible external transfer, eleven Structurizr-native
+  Bounded Context component views, domain glossary terms, and expanded
+  bibliography.
 - Reconciled ABET Student Outcome 7 evidence and individual SMART objectives.
 
 ### Changed
@@ -31,18 +65,18 @@ future implementation evidence.
 - Rebuilt the virtual manuscript from the separate remote branch states before
   integration and revalidated it after integration.
 - Relative links, table structure, C4 SVG/XML, PlantUML syntax, story/backlog
-  counts, GitHub signature verification, and Battle Mode readiness passed.
+  counts, and Git signature verification passed.
 
 ### Evidence boundaries
 
 - Jira Board creation/evidence and final UXPressia transfer/exports remain
   explicitly open external actions.
 - Mobile framework selection, prototypes, builds, device execution, interviews,
-  deployment, and TB2 videos remain `NOT YET DUE`.
+  deployment, and exposition videos remain `NOT YET DUE`.
 
 ## [0.1.1] - 2026-09-09
 
-Canonical 202620 academic-structure correction for Nexa Mobile Report.
+Academic-structure correction for Nexa Mobile Report.
 
 ### Fixed
 
@@ -60,8 +94,8 @@ Canonical 202620 academic-structure correction for Nexa Mobile Report.
   and Sprint Goal.
 - Reconciled Gerard's professional-development plan with systems analysis,
   modeling, and technical communication.
-- Reduced internal roadmap and audit terminology from public academic prose.
-- Strengthened AV1 traceability without representing planned work as completed.
+- Simplified planning terminology in public academic prose.
+- Strengthened traceability without representing planned work as completed.
 
 ### Validation
 
@@ -74,12 +108,12 @@ Canonical 202620 academic-structure correction for Nexa Mobile Report.
 ### Added
 
 - First public release of the Nexa Mobile Report for course 1ACC0238.
-- Consolidated AV1 Student Outcome 7 evidence and individual SMART objectives.
+- Consolidated Student Outcome 7 evidence and individual SMART objectives.
 - Public PDF export command with a reproducible source order.
 
 ### Changed
 
-- Canonicalized Chapter II Needfinding, Impact Mapping, Product Backlog, and
+- Organized Chapter II Needfinding, Impact Mapping, Product Backlog, and
   Strategic and Tactical DDD navigation.
 - Structured Chapter IV Sprint 1 planning and backlog as planning evidence,
   keeping implementation, testing, execution, service, and deployment claims
@@ -89,8 +123,7 @@ Canonical 202620 academic-structure correction for Nexa Mobile Report.
 
 ### Removed
 
-- Internal delivery checklists, report-audit tooling, temporary navigation
-  artifacts, and private interview image assets.
+- Temporary navigation artifacts and private interview image assets.
 
 ### Evidence boundaries
 

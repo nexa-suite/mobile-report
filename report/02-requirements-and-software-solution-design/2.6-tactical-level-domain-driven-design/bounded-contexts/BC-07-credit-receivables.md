@@ -5,6 +5,7 @@ Payment is a separate context; Payment Confirmed is not a Receivable.
 
 #### 2.6.7.1. Domain Layer
 
+*Agregados y límites invariantes de BC-07.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `CreditAccount` | Limit, exposure and reservation policy for one Customer Account |
@@ -84,12 +85,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-07 Credit & Receivables.*
 ![BC-07 tactical domain model](../../../assets/chapter-2/tactical/BC-07/BC07_CreditReceivables.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-07.*
 ![BC-07 database design projection](../../../assets/chapter-2/tactical/BC-07/database-diagram.png)
 
-This is a logical projection of shared PostgreSQL with constraints and
-tenant scope; canonical SQL remains authority.
+*Nota.* Es una proyección lógica de PostgreSQL compartido con restricciones y alcance Tenant; el SQL canónico mantiene la autoridad.

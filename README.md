@@ -13,9 +13,9 @@
 [![Period](https://img.shields.io/badge/Period-202620-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![University](https://img.shields.io/badge/University-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Team](https://img.shields.io/badge/Team-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Status](https://img.shields.io/badge/Status-v0.1.1%20hotfix-F59E0B?style=flat-square)](./docs/releases/v0.1.1.md)
+[![Status](https://img.shields.io/badge/Status-v0.3.0%20academic%20baseline-0F766E?style=flat-square)](./docs/releases/v0.3.0.md)
 
-[Report chapters](./report) · [Release evidence](./docs/releases/v0.1.1.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
+[Report chapters](./report) · [Release evidence](./docs/releases/v0.3.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
 
 </div>
 
@@ -43,7 +43,7 @@ flow:
 This repository contains the academic report for Nexa in course 1ACC0238,
 *Aplicaciones para Dispositivos Móviles*. It documents product scope, research
 framing, software solution design, UI/UX design, configuration management, and
-Sprint 1 planning.
+four-Sprint academic Mobile planning.
 
 It is documentation and academic evidence, not a mobile application. A report
 section may describe a planned workflow or a design artifact, but it does not
@@ -58,8 +58,9 @@ study exists.
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Documentation and planning runway for future buyer and cold-chain field
-experiences. No mobile application framework is established by this report.
+Documentation and planning runway for future B2B buyer and operational field
+experiences, with cold-chain specialization. No mobile application framework is
+established by this report.
 
 [Open Repository](https://github.com/nexa-suite/mobile)
 
@@ -194,18 +195,20 @@ README.md
 ## Documentation
 
 - [Report chapters](./report)
-- [v0.1.1 release notes](./docs/releases/v0.1.1.md)
+- [v0.3.0 release notes](./docs/releases/v0.3.0.md)
 - [Changelog](./CHANGELOG.md)
 - [Mobile repository](https://github.com/nexa-suite/mobile)
 - [API contracts](https://github.com/nexa-suite/api/tree/main/docs/openapi)
 - [Canonical Blueprint](https://github.com/nexa-suite/blueprint)
 
-## v0.1.1 Hotfix
+## v0.3.0 Academic baseline
 
-`v0.1.1` reconciles the report with the current 202620 statement and rubrics
-while preserving `v0.1.0` as historical provenance. Its release notes retain
-the genuine human and external evidence that remains open; the hotfix does not
-represent those records as completed.
+`v0.3.0` is the current integrated academic baseline for the report. It
+preserves `v0.1.0` and `v0.1.1` as historical provenance while consolidating
+the approved front matter, four-chapter structure, evidence boundaries and
+four-sprint planning. The release notes retain the genuine human and external
+evidence that remains open; this baseline does not represent a Mobile client,
+device execution or product validation as completed.
 
 <div align="center">
 

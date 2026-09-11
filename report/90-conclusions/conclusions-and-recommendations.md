@@ -1,50 +1,69 @@
 # Conclusiones
 
-1. Nexa aborda un problema de continuidad B2B: una necesidad comercial debe
-   conservar contexto al pasar por preparación, despacho, entrega y recepción.
-   El valor de la propuesta no depende sólo de digitalizar pedidos, sino de
-   mantener comprensibles las responsabilidades y los hechos de cada etapa.
-2. Los segmentos de Warehouse & Dispatch Operations, Driver Delivery Execution
-   y B2B Buyers permiten estudiar ese recorrido desde tareas distintas. Lean UX
-   organiza la problemática, los supuestos y las hipótesis como material de
-   investigación, no como resultados ya validados.
-3. El análisis competitivo muestra la oportunidad de diferenciar a Nexa por la
-   coordinación entre compromiso comercial, disponibilidad, fulfillment,
-   entrega y trazabilidad, sin extender el alcance hacia un ERP completo o un
-   sistema de transporte integral.
-4. Needfinding conecta las preguntas de los segmentos con User Personas, User
-   Task Matrix, User Journey Mapping, Empathy Mapping y Ubiquitous Language.
-   Esa relación alimenta historias de usuario, Impact Mapping y Product Backlog
-   de forma trazable.
-5. El diseño estratégico preserva los once Bounded Contexts aceptados de Nexa.
-   Las vistas C4 producidas desde Structurizr DSL y el diseño táctico los
-   presentan como una propuesta de arquitectura coherente; una superficie móvil
-   los proyecta sin convertirse en una nueva fuente de autoridad de negocio.
-6. El Product Backlog y los cuatro Sprint Planning constituyen una proyección
-   académica trazable de alcance, estimación y tareas. Son fuente lista para
-   Jira, pero no prueban ejecución: el **JIRA BOARD: OPEN** permanece como
-   acción externa separada.
-7. Personas, Journeys y Empathy Maps contienen una fuente preparada para
-   transferencia a UXPressia. La transferencia y sus exportaciones siguen
-   **OPEN**; prototipos, builds, pruebas en dispositivo, entrevistas de
-   validación y videos corresponden a hitos **NOT YET DUE**.
+Este cierre conecta el problema, los supuestos y las hipótesis con la
+evidencia disponible. La conclusión es deliberadamente provisional: distingue
+lo que la investigación ya permite sostener de lo que todavía requiere casos
+directos, y no presenta el diseño ni la planificación como aceptación de
+producto.
+
+## Cierre del ciclo Lean UX hasta la evidencia disponible
+
+| Elemento | Evidencia disponible | Conclusión actual | Estado |
+| --- | --- | --- | --- |
+| **Problem Statement** | Estadísticas de INEI, análisis competitivo y lenguaje de dominio describen una oportunidad de continuidad entre compromiso, preparación, despacho, entrega y recepción. | El problema es legítimo como objeto de investigación. Su magnitud en usuarios específicos de Nexa, su frecuencia y su impacto económico todavía no están cuantificados con investigación primaria. | **PARCIAL** |
+| **Supuestos de negocio** | El contexto sectorial y la propuesta de valor tienen respaldo secundario; los artefactos Lean UX hacen explícitas las decisiones que deben contrastarse. | Existe una base razonable para investigar, pero monetización, adopción, disposición a cambiar y tamaño de la oportunidad no están validados. | **PARCIAL / PENDIENTE** |
+| **H1 — Warehouse & Dispatch Operations** | El diseño de entrevistas define casos de preparación, readiness y handoff, pero no hay entrevistas directas registradas para `Warehouse Operator` o `Dispatch Coordinator`. | No es posible confirmar ni rechazar que la pérdida de continuidad sea material ni que FA1 sea la respuesta adecuada. | **PENDIENTE** |
+| **H2 — Driver Delivery Execution** | El diseño de entrevistas define el `Delivery Attempt`, sus incidencias y su evidencia, pero no hay entrevistas directas registradas de `Driver` o `Delivery Operator`. | No es posible confirmar ni rechazar la hipótesis sobre atribución, recuperación y utilidad del recorrido Mobile. | **PENDIENTE** |
+| **H3 — B2B Buyers** | El registro del capítulo II conserva dos entrevistas Buyer (`INT-S3-01` e `INT-S3-02`) sobre visibilidad de llegada, continuidad del abastecimiento, confianza y soporte humano. Ninguna describe de principio a fin la recepción y verificación de cantidades. | La muestra aporta una señal exploratoria para investigar llegada, continuidad y soporte, pero no valida la recepción ni las discrepancias. Permanece por debajo de la cobertura requerida de 3–5 casos. | **PARCIAL / PENDIENTE DE VALIDACIÓN** |
+
+## Conclusiones generales
+
+1. La evidencia secundaria y de dominio permite sostener el Problem Statement
+   como una pregunta de ingeniería de software pertinente: la continuidad de
+   información puede perderse cuando cambian la responsabilidad, el estado o
+   la evidencia del pedido. Aún no permite atribuir una magnitud concreta a
+   usuarios de Nexa.
+2. La evidencia primaria no tiene la misma cobertura por segmento. Las dos
+   entrevistas Buyer sugieren que la visibilidad de llegada, la continuidad del
+   abastecimiento y el soporte humano merecen investigación adicional; H1 y H2
+   siguen sin una base directa para decidir mantener, ajustar o descartar sus
+   supuestos.
+3. El resultado declarado por un Driver y la recepción declarada por un Buyer
+   son hechos distintos. Mantener esa separación evita que una entrega marcada
+   como realizada se convierta automáticamente en aceptación, y conserva la
+   responsabilidad y la evidencia de cada actor.
+4. DDD estratégico, C4 y los modelos tácticos aportan una forma coherente de
+   asignar responsabilidades y diseñar contratos. Son evidencia de diseño
+   propuesto; no prueban una aplicación implementada, un flujo ejecutado, una
+   prueba en dispositivo ni aceptación de producto.
+5. El Product Backlog y los cuatro Sprint Backlogs traducen el alcance
+   académico a una secuencia de trabajo trazable, con estimaciones, tareas y
+   subtareas. Constituyen planificación y aprendizaje pendiente, no evidencia
+   de que un Sprint, un build, una integración o un despliegue hayan concluido.
+6. La siguiente evidencia debe actualizar los supuestos sin reescribir la
+   historia: una contradicción puede ajustar o descartar una hipótesis, y una
+   señal consistente puede justificar el experimento mínimo siguiente. La
+   trazabilidad exige conservar el caso, el denominador, la fuente y la
+   decisión tomada.
+7. Los Personas, Journey Maps y Empathy Maps del informe fueron elaborados en
+   UXPressia y exportados para su incorporación; esa procedencia no acredita
+   resultados de validación. La evidencia visual del Board de Jira y los videos
+   de exposición no están disponibles y no se atribuyen resultados de esos
+   medios.
 
 ## Recomendaciones
 
-- Realizar investigación directa con consentimiento y registros publicables
-  para contrastar las hipótesis de cada segmento sin extrapolar resultados de
-  un rol a otro.
-- Usar los hallazgos obtenidos para priorizar el Product Backlog y ajustar los
-  recorridos de preparación, Delivery Attempt, Buyer Receipt y discrepancias.
-- Mantener separados los hechos de negocio, las responsabilidades por Bounded
-  Context y las capacidades auxiliares del dispositivo en cualquier evolución
-  del producto.
-- Validar una propuesta visual o prototipo antes de atribuir resultados de
-  usabilidad, y documentar posteriormente cualquier build o despliegue con
-  evidencia propia.
-- Crear el Board de Jira y transferir los artefactos fuente a UXPressia sólo
-  con la sesión autenticada y la evidencia externa que corresponda; ambos
-  pasos quedan fuera de esta revisión documental.
-- Seleccionar y evaluar la tecnología Mobile mediante los Spikes planificados,
-  sin presentar una alternativa de framework como decisión aceptada antes de
-  contar con la evidencia y autoridad requeridas.
+- Completar entrevistas consentidas de Warehouse & Dispatch y Driver antes de
+  caracterizar H1 o H2, y ampliar Buyer con casos de recepción, verificación y
+  discrepancia.
+- Ejecutar primero el descubrimiento mínimo de Lean UX: reconstruir un caso
+  As-Is reciente, registrar fuentes, aclaraciones, tiempo, omisiones,
+  asistencia y ambigüedad del handoff; sólo si el problema es material pasar a
+  una representación de bajo costo y comparar contra la línea base.
+- Mantener separados `Driver Outcome`, `Buyer Receipt`, `Proof of Delivery` y
+  `Discrepancy` en requisitos, diseño, evidencia y futuras implementaciones.
+- Registrar por separado cualquier prototipo, build, prueba de dispositivo,
+  despliegue o resultado de usabilidad cuando exista su fuente verificable; no
+  inferirlo desde el backlog, C4 o el PDF.
+- Revisar supuestos de adopción y monetización con evidencia directa antes de
+  convertirlos en decisiones de producto o de alcance.

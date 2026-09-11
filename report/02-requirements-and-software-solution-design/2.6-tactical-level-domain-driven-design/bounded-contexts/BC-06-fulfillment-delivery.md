@@ -7,6 +7,7 @@ facts.
 
 #### 2.6.6.1. Domain Layer
 
+*Agregados y límites invariantes de BC-06.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `Fulfillment` | Sales Order execution plan and picking/packing progression |
@@ -90,12 +91,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-06 Fulfillment & Delivery.*
 ![BC-06 tactical domain model](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-06.*
 ![BC-06 database design projection](../../../assets/chapter-2/tactical/BC-06/database-diagram.png)
 
-Logical ownership is in shared PostgreSQL; canonical SQL defines constraints,
-tenant scope and evidence references.
+*Nota.* La propiedad lógica está en PostgreSQL compartido; el SQL canónico define las restricciones, el alcance Tenant y las referencias de evidencia.

@@ -5,6 +5,7 @@ corrections and reconciliation. Payment Reported is not Payment Confirmed.
 
 #### 2.6.8.1. Domain Layer
 
+*Agregados y límites invariantes de BC-08.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `Payment` | Intent/report/confirmation lifecycle and immutable monetary facts |
@@ -80,12 +81,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.8.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-08 Payments.*
 ![BC-08 tactical domain model](../../../assets/chapter-2/tactical/BC-08/BC08_Payments.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.8.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-08.*
 ![BC-08 database design projection](../../../assets/chapter-2/tactical/BC-08/database-diagram.png)
 
-The drawing is a logical shared-PostgreSQL projection; keys and
-provider-event dedupe remain defined by canonical SQL.
+*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las claves y la deduplicación de eventos del proveedor están definidas por el SQL canónico.

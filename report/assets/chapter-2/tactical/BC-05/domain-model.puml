@@ -1,5 +1,5 @@
 @startuml BC05_InventoryAvailability
-title BC-05 Inventory Availability — Tactical Domain Model (TARGET / V1)
+title BC-05 Inventory Availability — Tactical Domain Model (TARGET)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -55,26 +55,34 @@ class SafetyStockPolicy <<Entity>> {
   +changeMinimum(quantity: Quantity): void
 }
 
-class InventoryBacking <<Aggregate Root>> {
-  -backingId: InventoryBackingId
+class InventoryReservation <<Aggregate Root>> {
+  -reservationId: InventoryReservationId
   -commercialCommitmentId: CommitmentId
-  -status: BackingStatus
-  +back(): void
+  -status: ReservationStatus
+  +reserve(): void
   +release(): void
-  +complete(): void
 }
 
-class InventoryBackingLine <<Entity>> {
-  -lineId: InventoryBackingLineId
-  -backingId: InventoryBackingId
+class InventoryReservationLine <<Entity>> {
+  -lineId: InventoryReservationLineId
+  -reservationId: InventoryReservationId
   -skuId: SkuId
   -quantity: Quantity
-  +allocate(quantity: Quantity): void
+  +protect(quantity: Quantity): void
+}
+
+class WarehouseBacking <<Aggregate Root>> {
+  -backingId: WarehouseBackingId
+  -reservationId: InventoryReservationId
+  -warehouseId: WarehouseId
+  -status: BackingStatus
+  +distribute(): void
+  +release(): void
 }
 
 class PhysicalAllocation <<Aggregate Root>> {
   -allocationId: PhysicalAllocationId
-  -backingId: InventoryBackingId
+  -backingId: WarehouseBackingId
   -status: AllocationStatus
   +allocate(): void
   +release(): void
@@ -138,6 +146,7 @@ interface InventoryRepository <<Repository>> {
 
 enum WarehouseStatus <<Enum>>
 enum LotStatus <<Enum>>
+enum ReservationStatus <<Enum>>
 enum BackingStatus <<Enum>>
 enum AllocationStatus <<Enum>>
 enum TransferStatus <<Enum>>
@@ -148,19 +157,22 @@ Warehouse "1" o-- "0..*" InventoryPosition : positions
 Warehouse "1" o-- "0..*" SafetyStockPolicy : policies
 InventoryLot "1" *-- "0..*" InventoryMovement : movements
 InventoryLot "1" *-- "0..*" LotDisposition : dispositions
-InventoryBacking "1" *-- "1..*" InventoryBackingLine : demand
+InventoryReservation "1" *-- "1..*" InventoryReservationLine : protected demand
+InventoryReservation "1" o-- "1..*" WarehouseBacking : warehouse distribution
 PhysicalAllocation "1" *-- "1..*" PhysicalAllocationLine : physical lots
 WarehouseTransfer "1" *-- "1..*" WarehouseTransferLine : lines
 InventoryPosition --> Sku : stable SKU id
-InventoryBacking --> CommercialCommitment : stable commitment id
-InventoryBackingLine --> Sku : stable SKU id
+InventoryReservation --> CommercialCommitment : stable commitment id
+InventoryReservationLine --> Sku : stable SKU id
+WarehouseBacking --> Warehouse : selected warehouse id
 AvailabilityPolicy ..> InventoryRepository : reads
 AvailabilityPolicy --> InventoryLot : FEFO selects
 InventoryPosition --> SafetyStockPolicy : protects minimum
 
 legend right
-TARGET / V1 / tactical design aid
-Sellable Availability = on-hand - reserved - hold - safety stock.
+TARGET / tactical design aid
+Commercial Commitment -> Inventory Reservation -> Warehouse Backing -> Physical Allocation.
+Sellable Availability = on-hand - active reservations - hold - safety stock.
 FEFO is a policy over lot expiry; no cross-BC FK is implied.
 *-- composition | --> domain dependency | ..> port/use
 endlegend

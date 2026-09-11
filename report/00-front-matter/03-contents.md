@@ -28,6 +28,7 @@
     - [2.3.1. User Personas](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.1-user-personas.md)
     - [2.3.2. User Task Matrix](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.2-user-task-matrix.md)
     - [2.3.3. User Journey Mapping](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.3-user-journey-mapping.md)
+    - [2.3.3.1. As-Is Scenario Mapping](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.3.1-as-is-scenario-mapping.md)
     - [2.3.4. Empathy Mapping](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.4-empathy-mapping.md)
     - [2.3.5. Big Picture EventStorming](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.5-big-picture-eventstorming.md)
     - [2.3.6. Ubiquitous Language](../02-requirements-and-software-solution-design/2.3-needfinding/2.3.6-ubiquitous-language.md)

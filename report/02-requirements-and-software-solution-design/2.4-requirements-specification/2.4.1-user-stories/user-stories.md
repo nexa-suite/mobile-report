@@ -70,9 +70,9 @@ académicos y las historias que permanecen fuera de esa selección.
 
 | Estado de compromiso académico | Functional Stories | Significado en este informe |
 | --- | ---: | --- |
-| Academic commitment | 29 | Seleccionadas en el Product Backlog para los cuatro Sprints; requieren evidencia y validación correspondiente. |
-| Canonical catalog outside current academic commitment | 44 | Conservadas para trazabilidad del producto; no se les asigna un Sprint académico en este informe. |
-| **Total** | **73** | Inventario funcional canónico completo. |
+| Academic commitment | 35 | Seleccionadas en el Product Backlog para los cuatro Sprints: 29 Mobile y 6 Landing Page. |
+| Outside current academic commitment | 44 | 44 historias Mobile conservadas para trazabilidad del producto; no reciben un Sprint académico en este informe. |
+| **Total** | **79** | Catálogo funcional completo: 73 Mobile + 6 Landing Page. |
 
 #### Epic registry
 

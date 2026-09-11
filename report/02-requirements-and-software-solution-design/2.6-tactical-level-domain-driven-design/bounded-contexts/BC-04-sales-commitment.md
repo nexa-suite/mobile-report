@@ -6,6 +6,7 @@ allocation are different facts and authorities.
 
 #### 2.6.4.1. Domain Layer
 
+*Agregados y límites invariantes de BC-04.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `RequestDraft` | Editable intent; creates no commitment or reservation |
@@ -88,12 +89,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-04 Sales Commitment.*
 ![BC-04 tactical domain model](../../../assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-04.*
 ![BC-04 database design projection](../../../assets/chapter-2/tactical/BC-04/database-diagram.png)
 
-The drawing is a logical projection of shared PostgreSQL; immutable snapshots,
-PK/FK/unique/check constraints and ownership are defined by canonical SQL.
+*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las instantáneas inmutables, las restricciones PK/FK/unique/check y la propiedad están definidas por el SQL canónico.

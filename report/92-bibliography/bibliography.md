@@ -62,6 +62,8 @@ Universidad Peruana de Ciencias Aplicadas. (s. f.). *Guía maestra de Docs-as-Co
 
 Vernon, V. (2016). *Domain-driven design distilled*. Addison-Wesley Professional.
 
+Weichbroth, P. (2024). Usability of mobile applications: A consolidated model. *IEEE Access, 12*, 62378–62391. https://doi.org/10.1109/ACCESS.2024.3395528
+
 World Bank. (2023). *Connecting to compete 2023: Trade logistics in an uncertain global economy—The Logistics Performance Index and its indicators*. https://lpi.worldbank.org/sites/default/files/2023-04/LPI_2023_report.pdf
 
 Zhou, X., Tang, J., Jacobs, T. L., & Saguy, I. S. (2025). Transforming food supply chains through digital tracking and monitoring technologies. *Trends in Food Science & Technology, 163*, Article 105142. https://doi.org/10.1016/j.tifs.2025.105142

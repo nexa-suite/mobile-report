@@ -36,10 +36,10 @@ producto.
    asignar responsabilidades y diseñar contratos. Son evidencia de diseño
    TARGET; no prueban una aplicación implementada, un flujo ejecutado, una
    prueba en dispositivo ni aceptación de producto.
-5. Los cuatro Sprint Planning traducen el alcance académico a una secuencia de
-   trabajo trazable. Constituyen planificación y aprendizaje pendiente, no
-   evidencia de que un Sprint, un build, una integración o un despliegue hayan
-   concluido.
+5. La planificación y estructura académica de los cuatro Sprints traducen el
+   alcance académico a una secuencia de trabajo trazable. Constituyen
+   planificación y aprendizaje pendiente, no evidencia de que un Sprint, un
+   build, una integración o un despliegue hayan concluido.
 6. La siguiente evidencia debe actualizar los supuestos sin reescribir la
    historia: una contradicción puede ajustar o descartar una hipótesis, y una
    señal consistente puede justificar el experimento mínimo siguiente. La

@@ -43,7 +43,7 @@ flow:
 This repository contains the academic report for Nexa in course 1ACC0238,
 *Aplicaciones para Dispositivos Móviles*. It documents product scope, research
 framing, software solution design, UI/UX design, configuration management, and
-Sprint 1 planning.
+four-Sprint academic Mobile planning.
 
 It is documentation and academic evidence, not a mobile application. A report
 section may describe a planned workflow or a design artifact, but it does not
@@ -58,8 +58,9 @@ study exists.
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Documentation and planning runway for future buyer and cold-chain field
-experiences. No mobile application framework is established by this report.
+Documentation and planning runway for future B2B buyer and operational field
+experiences, with cold-chain specialization. No mobile application framework is
+established by this report.
 
 [Open Repository](https://github.com/nexa-suite/mobile)
 

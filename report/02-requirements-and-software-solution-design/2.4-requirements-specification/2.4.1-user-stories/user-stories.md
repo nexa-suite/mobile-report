@@ -44,12 +44,14 @@ dirección de diseño, no prueba de que Nexa Mobile ya exista.
 | Ubicación | El alcance priorizado entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
 | Distinciones | Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship son distintos. Dispatch Handoff, Driver Outcome y Buyer Receipt también son hechos separados. |
 
-El catálogo contiene 73 Functional User Stories. La relación entre el catálogo
-completo y el alcance académico comprometido se mantiene en el Product Backlog;
-esa separación evita eliminar historias legítimas para ajustar el trabajo del
-curso. Las Technical Stories, los Spikes y el Impact Mapping complementan esta
-especificación en sus secciones respectivas. Estar documentada no asigna a una
-historia implementación, evidencia de investigación ni aceptación.
+El catálogo funcional contiene 73 Mobile Functional User Stories y 6 Landing
+Page Functional User Stories, para un total de 79 historias funcionales. La
+relación entre el catálogo completo y el alcance académico comprometido se
+mantiene en el Product Backlog; esa separación evita eliminar historias
+legítimas para ajustar el trabajo del curso. Las Technical Stories, los Spikes
+y el Impact Mapping complementan esta especificación en sus secciones
+respectivas. Estar documentada no asigna a una historia implementación,
+evidencia de investigación ni aceptación.
 
 ---
 

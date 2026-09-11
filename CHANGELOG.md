@@ -62,7 +62,7 @@ Academic-structure correction for Nexa Mobile Report.
   and Sprint Goal.
 - Reconciled Gerard's professional-development plan with systems analysis,
   modeling, and technical communication.
-- Reduced internal planning terminology from public academic prose.
+- Simplified planning terminology in public academic prose.
 - Strengthened traceability without representing planned work as completed.
 
 ### Validation

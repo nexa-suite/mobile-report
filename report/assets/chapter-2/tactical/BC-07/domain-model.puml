@@ -1,5 +1,5 @@
 @startuml BC07_CreditReceivables
-title BC-07 Credit & Receivables — Tactical Domain Model (TARGET / V1)
+title BC-07 Credit & Receivables — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -106,7 +106,7 @@ CreditDecisionPolicy --> Money : calculates
 ReceivableRepository ..> Receivable : persists
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Available credit = limit - active reservations - outstanding receivables.
 Payment and BusinessDocument references are stable IDs; no cross-BC FK.
 *-- composition | --> domain dependency | ..> port/use

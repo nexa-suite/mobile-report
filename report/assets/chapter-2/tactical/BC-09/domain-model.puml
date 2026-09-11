@@ -1,5 +1,5 @@
 @startuml BC09_BusinessDocuments
-title BC-09 Business Documents — Tactical Domain Model (TARGET / V1)
+title BC-09 Business Documents — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -99,7 +99,7 @@ DocumentIssuancePolicy ..> BusinessDocumentRepository : persists
 DocumentIssuancePolicy ..> ObjectStoragePort : stores bytes
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Issued documents and snapshots are immutable; corrections create revisions.
 Object Storage holds bytes; PostgreSQL holds metadata and hashes only.
 *-- composition | --> domain dependency | ..> port/use

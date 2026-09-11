@@ -1,5 +1,5 @@
 @startuml BC06_FulfillmentDelivery
-title BC-06 Fulfillment & Delivery — Tactical Domain Model (TARGET / V1)
+title BC-06 Fulfillment & Delivery — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -165,7 +165,7 @@ DeliveryExecutionPolicy --> ProofOfDelivery : verifies
 Delivery *-- DestinationSnapshot : freezes destination
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 POD is immutable; corrections are addenda. Temperature excursion may HOLD.
 Partial delivery opens ContinuationDelivery; it does not rewrite history.
 *-- composition | --> domain dependency | ..> port/use

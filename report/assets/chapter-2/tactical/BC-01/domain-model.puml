@@ -1,5 +1,5 @@
 @startuml BC01_TenantAccessGovernance
-title BC-01 Tenant & Access Governance — Tactical Domain Model (TARGET / V1)
+title BC-01 Tenant & Access Governance — Tactical Domain Model (TARGET / current scope)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -122,7 +122,7 @@ AccessPolicy ..> MembershipRepository : loads
 AccessPolicy --> CapabilityDefinition : evaluates
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / current scope / tactical design aid
 Aggregate Roots own local consistency boundaries.
 Cross-BC IDs are values; no cross-BC composition.
 *-- composition | --> domain dependency | ..> port/use

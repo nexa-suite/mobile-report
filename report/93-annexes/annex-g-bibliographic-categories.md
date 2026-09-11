@@ -24,10 +24,10 @@ Bibliografía y se citan en los capítulos indicados.
 
 | Fuente | Año | Categoría | Clasificación registrada | Uso y cita en el informe |
 | --- | ---: | --- | --- | --- |
-| Mustafa et al., *Journal of Agriculture and Food Research*, 18, 101343 | 2024 | Dominio: cadena de frío | Q1, SJR/Scopus 2024 | Contexto de continuidad y cadena de frío en [1.2.1](../../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md). |
-| Zhou et al., *Trends in Food Science & Technology*, 163, 105142 | 2025 | Dominio: trazabilidad y monitoreo | Q1, SJR/Scopus 2024 | Contexto de seguimiento digital en [1.2.1](../../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md). |
-| Ilhan, *International Journal of Human-Computer Studies*, 203, 103569 | 2025 | Técnica Mobile: proceso de prototipado | Q1, SJR/Scopus 2024 | Delimitación del prototipado en [3.1.4.5](../../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/3.1.4.5-mobile-application-prototyping.md). |
-| Weichbroth, *IEEE Access*, 12, 62378–62391 | 2024 | Técnica Mobile: evaluación de usabilidad | Q1, SJR/Scopus 2024 | Preparación de evaluación de usabilidad en [3.1.4.5](../../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/3.1.4.5-mobile-application-prototyping.md). |
+| Mustafa et al., *Journal of Agriculture and Food Research*, 18, 101343 | 2024 | Dominio: cadena de frío | Q1, SJR/Scopus 2024 | Contexto de continuidad y cadena de frío en [1.2.1](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md). |
+| Zhou et al., *Trends in Food Science & Technology*, 163, 105142 | 2025 | Dominio: trazabilidad y monitoreo | Q1, SJR/Scopus 2024 | Contexto de seguimiento digital en [1.2.1](../01-presentation/1.2-solution-profile/1.2.1-background-and-problem.md). |
+| Ilhan, *International Journal of Human-Computer Studies*, 203, 103569 | 2025 | Técnica Mobile: proceso de prototipado | Q1, SJR/Scopus 2024 | Delimitación del prototipado en [3.1.4.5](../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/3.1.4.5-mobile-application-prototyping.md). |
+| Weichbroth, *IEEE Access*, 12, 62378–62391 | 2024 | Técnica Mobile: evaluación de usabilidad | Q1, SJR/Scopus 2024 | Preparación de evaluación de usabilidad en [3.1.4.5](../03-solution-ui-ux-design/3.1-product-design/3.1.4-mobile-applications-ux-ui-design/3.1.4.5-mobile-application-prototyping.md). |
 
 La clasificación se consultó por título de revista y edición 2024 en
 [SCImago Journal Rank](https://www.scimagojr.com/journalrank.php?year=2024).

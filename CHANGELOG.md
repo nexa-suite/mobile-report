@@ -2,6 +2,38 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.3.0] - 2026-09-11
+
+Pre-AV1 academic hardening release for the Nexa Mobile Report.
+
+### Added
+
+- Explicit As-Is Scenario Mapping for the three Mobile research segments, with
+  current evidence status and links to the corresponding research artifacts.
+- Rendered Domain Storytelling visuals and a Videos de Exposiciones annex with
+  truthful pending fields where an authorized source is unavailable.
+
+### Changed
+
+- Reconciled interview design, Buyer evidence (`n = 2`), functional-story
+  catalog counts (73 Mobile + 6 Landing Page), and four-Sprint commitment.
+- Clarified Landing Page consideration from Sprint 1 while preserving its
+  committed implementation in Sprint 2.
+- Refined Ubiquitous Language, EventStorming, tactical DDD, diagram labels,
+  academic wording, citations, and bibliographic classification links.
+
+### Validation
+
+- Checked the 11 Bounded Contexts, relative links, SVG/XML assets, PlantUML,
+  Mermaid render assets, Markdown consistency, shell syntax, and Git
+  signatures.
+- Exported the report PDF natively and rendered a local cover preview.
+
+### Evidence boundaries
+
+- Required interview coverage, final Impact Mapping, Jira/Product Board visual
+  evidence, and exposition-video evidence remain pending external inputs.
+
 ## [0.2.0] - 2026-09-10
 
 Integrated a pre-AV1 academic report revision across the front matter and

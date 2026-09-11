@@ -13,9 +13,9 @@
 [![Period](https://img.shields.io/badge/Period-202620-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![University](https://img.shields.io/badge/University-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Team](https://img.shields.io/badge/Team-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Status](https://img.shields.io/badge/Status-v0.2.0%20academic%20baseline-0F766E?style=flat-square)](./docs/releases/v0.2.0.md)
+[![Status](https://img.shields.io/badge/Status-v0.3.0%20academic%20baseline-0F766E?style=flat-square)](./docs/releases/v0.3.0.md)
 
-[Report chapters](./report) · [Release evidence](./docs/releases/v0.2.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
+[Report chapters](./report) · [Release evidence](./docs/releases/v0.3.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
 
 </div>
 
@@ -195,15 +195,15 @@ README.md
 ## Documentation
 
 - [Report chapters](./report)
-- [v0.2.0 release notes](./docs/releases/v0.2.0.md)
+- [v0.3.0 release notes](./docs/releases/v0.3.0.md)
 - [Changelog](./CHANGELOG.md)
 - [Mobile repository](https://github.com/nexa-suite/mobile)
 - [API contracts](https://github.com/nexa-suite/api/tree/main/docs/openapi)
 - [Canonical Blueprint](https://github.com/nexa-suite/blueprint)
 
-## v0.2.0 Academic baseline
+## v0.3.0 Academic baseline
 
-`v0.2.0` is the current integrated academic baseline for the report. It
+`v0.3.0` is the current integrated academic baseline for the report. It
 preserves `v0.1.0` and `v0.1.1` as historical provenance while consolidating
 the approved front matter, four-chapter structure, evidence boundaries and
 four-sprint planning. The release notes retain the genuine human and external

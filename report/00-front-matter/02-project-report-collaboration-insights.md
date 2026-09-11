@@ -56,11 +56,12 @@ posteriores.
 
 Estado verificable al 11 de septiembre de 2026: las correcciones de cierre se
 publicaron en ramas propietarias, sin merge a `main` o `develop`, sin release y
-sin tag. Los commits nuevos son `6035172` en `feature/chapter-01`, `d3666f6`
-en `feature/chapter-02`, `56d2944` en `feature/chapter-04` y `1b0e0c8` en
-`feature/report-integration`; Blueprint se publicó en su rama dedicada con
-`d2f507e`. El front matter permanece en `feature/front-master` y conserva la
-historia previa de Wave 1 antes de este registro.
+sin tag. Las cabezas publicadas son `edaa0b8` en `feature/chapter-01` (incluye
+`6035172`), `b809325` en `feature/chapter-02` (incluye `d3666f6`), `56d2944`
+en `feature/chapter-04` y `1b0e0c8` en `feature/report-integration`; Blueprint
+se publicó en su rama dedicada con `d2f507e`. El front matter permanece en
+`feature/front-master` y conserva la historia previa de Wave 1 antes de este
+registro.
 
 R0obxdnt firmó los cierres de capítulos e integración; DiegoS284 firmó el
 cierre Blueprint. Esta atribución no pretende distribuir el cierre entre los

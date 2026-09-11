@@ -45,10 +45,11 @@ producto.
    señal consistente puede justificar el experimento mínimo siguiente. La
    trazabilidad exige conservar el caso, el denominador, la fuente y la
    decisión tomada.
-7. La evidencia visual del Board de Jira, la procedencia verificable de una
-   plataforma externa para los artefactos UX y los videos de exposición no están
-   disponibles. No se atribuyen resultados de esos medios hasta contar con su
-   fuente autorizada.
+7. Los Personas, Journey Maps y Empathy Maps del informe fueron elaborados en
+   UXPressia y exportados para su incorporación; esa procedencia no acredita
+   resultados de validación. La evidencia visual del Board de Jira y los videos
+   de exposición no están disponibles y no se atribuyen resultados de esos
+   medios.
 
 ## Recomendaciones
 

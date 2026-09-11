@@ -20,14 +20,14 @@
    Las vistas C4 producidas desde Structurizr DSL y el diseño táctico los
    presentan como una propuesta de arquitectura coherente; una superficie móvil
    los proyecta sin convertirse en una nueva fuente de autoridad de negocio.
-6. El Product Backlog y los cuatro Sprint Planning constituyen una proyección
-   académica trazable de alcance, estimación y tareas. Son fuente lista para
-   Jira, pero no prueban ejecución: el **JIRA BOARD: OPEN** permanece como
-   acción externa separada.
-7. Personas, Journeys y Empathy Maps contienen una fuente preparada para
-   transferencia a UXPressia. La transferencia y sus exportaciones siguen
-   **OPEN**; prototipos, builds, pruebas en dispositivo, entrevistas de
-   validación y videos corresponden a hitos **NOT YET DUE**.
+6. El Product Backlog y los cuatro Sprint Backlogs articulan la proyección
+   académica de alcance, estimación, tareas y subtareas. Su contenido no prueba
+   ejecución; la evidencia visual del Board de Jira permanece pendiente y es
+   externa a este informe.
+7. Personas, Journeys y Empathy Maps se conservan como artefactos del informe.
+   La procedencia verificable de una plataforma externa y sus exportaciones no
+   está disponible; prototipos, builds, pruebas en dispositivo, entrevistas de
+   validación y videos requieren evidencia propia antes de atribuir resultados.
 
 ## Recomendaciones
 

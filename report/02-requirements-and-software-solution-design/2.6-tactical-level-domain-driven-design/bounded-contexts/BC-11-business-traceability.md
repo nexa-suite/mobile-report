@@ -51,13 +51,13 @@ Los nombres siguientes concretan responsabilidades previstas; no implican endpoi
 
 | Capa | Clase / componente TARGET | Responsabilidad |
 |---|---|---|
-| Interface | `AuditViewerController` | Entrega consultas autorizadas de trazabilidad, manteniendo filtros de tenant y sensibilidad. |
+| Interface | `TraceabilityViewerController` | Entrega consultas autorizadas de trazabilidad de negocio, manteniendo filtros de tenant y sensibilidad. |
 | Interface | `BusinessTimelineController` | Expone la línea de tiempo como proyección de lectura, no como mutación del hecho origen. |
-| Interface | `TraceabilityProjectionConsumer` | Consume hechos publicados para actualizar vistas locales de auditoría. |
+| Interface | `BusinessTraceabilityProjectionConsumer` | Consume hechos publicados para actualizar una timeline de negocio, sin convertirse en Security Audit. |
 | Application | `TraceBusinessFactHandler` | Acepta un hecho comprometido y conserva su correlación, causalidad y procedencia. |
 | Application | `ProjectBusinessTimelineHandler` | Construye una línea de tiempo ordenada sin alterar el estado del contexto emisor. |
 | Application | `AppendEvidenceReferenceHandler` | Vincula evidencia inmutable por referencia y bajo autorización explícita. |
-| Application | `ProtectSensitivePayloadHandler` | Minimiza y protege cargas sensibles antes de persistir la proyección de auditoría. |
+| Application | `ProtectSensitivePayloadHandler` | Minimiza y protege cargas sensibles antes de persistir la proyección de trazabilidad. |
 | Infrastructure | `BusinessFactRepositoryAdapter` | Persiste hechos, correlaciones y metadatos de consulta propios de BC-11. |
 | Infrastructure | `TraceabilityInboxAdapter` | Deduplica hechos recibidos con semántica al-menos-una-vez. |
 | Infrastructure | `TraceabilityOutboxAdapter` | Publica hechos propios ya comprometidos mediante outbox durable. |

@@ -2,11 +2,12 @@
 
 Las Technical Stories habilitan resultados de las Functional User Stories; no
 crean reglas de negocio ni prueban una implementación. La restricción académica
-del curso plantea **Kotlin nativo + Flutter/Dart, o Kotlin Multiplatform
-(KMP)** como alternativas a evaluar. La selección de framework Mobile en
-Blueprint continúa **OPEN / NOT STARTED**: este plan no asigna framework a
-Operations Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o
-validación de producto.
+se representa con dos tracks: **Track A, Android nativo con Kotlin**, y
+**Track B, una alternativa multiplataforma permitida: Flutter/Dart o Kotlin
+Multiplatform (KMP)**. La selección de framework Mobile en Blueprint continúa
+**OPEN / NOT STARTED**: este plan no asigna framework a Operations Mobile o
+Buyer Mobile, ni declara runtime, proveedor, distribución o validación de
+producto.
 
 ##### TS-MOB-001 — Integrar contratos REST con autoridad del servidor
 
@@ -30,9 +31,9 @@ validación de producto.
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
 <tr><th>Title</th><td colspan="3">Definir criterios de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para la restricción académica Kotlin nativo + Flutter/Dart, o Kotlin Multiplatform (KMP), para evaluar límites técnicos sin convertir el experimento en una selección canónica de Blueprint.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para el Track A de Android nativo con Kotlin y el Track B de una alternativa multiplataforma permitida (Flutter/Dart o KMP), para evaluar límites técnicos sin convertir el experimento en una selección canónica de Blueprint.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Baseline de experimento</strong></p><p><strong>Given</strong> existe la restricción académica Kotlin nativo + Flutter/Dart, o KMP</p><p><strong>When</strong> se define un baseline mínimo</p><p><strong>Then</strong> documenta versiones, dispositivo/emulador, límites y criterios de comparación sin asignar un framework a una proyección de producto.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma o proveedor no evaluado</p><p><strong>When</strong> se propone incorporarlo</p><p><strong>Then</strong> queda fuera del experimento hasta una decisión explícita y no se presenta como trabajo de Sprint 1.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Baseline de experimento</strong></p><p><strong>Given</strong> existen el Track A de Android nativo con Kotlin y el Track B de Flutter/Dart o KMP</p><p><strong>When</strong> se define un baseline mínimo</p><p><strong>Then</strong> documenta versiones, dispositivo/emulador, límites y criterios de comparación sin asignar un framework a una proyección de producto.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma o proveedor no evaluado</p><p><strong>When</strong> se propone incorporarlo</p><p><strong>Then</strong> queda fuera del experimento hasta una decisión explícita y no se presenta como trabajo académico comprometido.</p></td></tr>
 </tbody>
 </table>
 

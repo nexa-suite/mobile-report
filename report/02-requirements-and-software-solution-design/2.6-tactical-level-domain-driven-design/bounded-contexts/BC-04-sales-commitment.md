@@ -1,8 +1,8 @@
 ### 2.6.4. Bounded Context: Sales Commitment
 
 This Core Domain context owns buyer intent, Purchase Request, Commercial
-Commitment and Sales Order. Draft, commitment, inventory backing and physical
-allocation are different facts and authorities.
+Commitment and Sales Order. Draft, commitment, Inventory Reservation, Warehouse
+Backing and Physical Allocation are different facts and authorities.
 
 #### 2.6.4.1. Domain Layer
 
@@ -21,10 +21,12 @@ line/history boundaries. Value objects include `CommitmentId`, `SkuQuantity`,
 `MaterialChangePolicy` coordinate domain decisions. Repositories own purchase
 request and sales order roots.
 
-Invariantes de diseño: PR submit establishes complete inventory backing and
-applicable credit reservation before commit; `PURCHASE_REQUEST` origin requires
-a real PR reference while `DIRECT_ORDER` has none; PR-to-SO transfers
-commitment ownership without release/re-reserve; expiry is checked at
+Invariantes de diseño: PR submit establishes complete Inventory Reservation,
+deterministic Warehouse Backing and applicable credit reservation before commit;
+Physical Allocation remains a later Inventory-owned lot selection for
+fulfillment. `PURCHASE_REQUEST` origin requires a real PR reference while
+`DIRECT_ORDER` has none; PR-to-SO transfers commitment ownership without
+release/re-reserve; expiry is checked at
 `now >= expiresAt`; material change requires buyer acceptance and
 revalidation. SO completion is not payment confirmation.
 
@@ -39,8 +41,9 @@ remain authoritative; Mobile is only a planned projection.
 #### 2.6.4.3. Application Layer
 
 La Application Layer coordina el snapshot de catálogo, la elegibilidad de Buyer,
-el respaldo de inventario y los contratos de decisión de crédito dentro del
-límite lógico de consistencia requerido. They preserve direct-order versus PR origin and use durable
+la Inventory Reservation, el Warehouse Backing y los contratos de decisión de
+crédito dentro del límite lógico de consistencia requerido. It preserves
+direct-order versus PR origin and uses durable
 idempotency. Integration events are emitted only after local commit; no
 cross-context aggregate is loaded.
 
@@ -51,8 +54,9 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 `material_change_proposal`, `commercial_commitment`,
 `commercial_commitment_line`, `commitment_owner_transfer`,
 `sales_commitment_adjustment`, `sales_order` and `sales_order_line`.
-Inventory backing, physical allocation and credit reservation remain referenced
-through explicit contracts/IDs, not direct table ownership.
+Inventory Reservation, Warehouse Backing, Physical Allocation and credit
+reservation remain referenced through explicit contracts/IDs, not direct table
+ownership.
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
@@ -67,13 +71,13 @@ convierten un Draft en Sales Order sin la transición aceptada.
 | Interface | `BuyerRequestController` | Controller | Recibe comandos de Draft y Purchase Request con `Idempotency-Key`; no confirma inventario localmente. |
 | Interface | `SalesOrderController` | Controller | Expone consultas y transiciones comerciales autorizadas con versión cuando corresponde. |
 | Interface | `SalesCommitmentConsumer` | Contract consumer | Recibe resultados explícitos de inventory/credit; no es un endpoint ni comparte agregados. |
-| Application | `SubmitPurchaseRequestHandler` | Command handler | Coordina en un límite lógico la validación, Commitment, backing y crédito antes del commit. |
+| Application | `SubmitPurchaseRequestHandler` | Command handler | Coordina en un límite lógico la validación, Commitment, Inventory Reservation, Warehouse Backing y crédito antes del commit. |
 | Application | `AcceptMaterialChangeHandler` | Command handler | Revalida precio, inventario y crédito tras aceptación Buyer; preserva el estado previo si falla. |
 | Application | `ConvertPurchaseRequestHandler` | Command handler | Aplica CAS y guardia `now >= expiresAt`, transfiriendo el Commitment sin liberar y re-reservar. |
 | Application | `ConfirmDirectOrderHandler` | Command handler | Confirma Direct Order con Commitment de origen explícito, sin fabricar Purchase Request. |
 | Infrastructure | `PurchaseRequestRepositoryAdapter` | Repository implementation | Persiste PR, líneas y snapshots inmutables de BC-04. |
 | Infrastructure | `CommercialCommitmentRepositoryAdapter` | Repository implementation | Conserva Commitment warehouse-neutral y su transferencia de titularidad. |
-| Infrastructure | `InventoryAvailabilityPort` | Synchronous contract adapter | Solicita backing a BC-05 por ID y resultado, sin mutar tablas de inventario. |
+| Infrastructure | `InventoryAvailabilityPort` | Synchronous contract adapter | Solicita Inventory Reservation y Warehouse Backing a BC-05 por ID y resultado, sin mutar tablas de inventario. |
 | Infrastructure | `CreditReservationPort` | Synchronous contract adapter | Solicita decisión de BC-07 sin apropiarse de Receivable o ledger. |
 | Infrastructure | `SalesOutboxAdapter` | Outbox adapter | Publica hechos sólo después del commit local, con entrega al menos una vez. |
 

@@ -1,5 +1,5 @@
 @startuml BC04_SalesCommitment
-title BC-04 Sales Commitment — Tactical Domain Model (TARGET / V1)
+title BC-04 Sales Commitment — Tactical Domain Model (TARGET)
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -103,7 +103,7 @@ class SalesCommitmentAdjustment <<Entity>> {
 }
 
 class CommitmentAcceptancePolicy <<Domain Service>> {
-  +canCommit(request: PurchaseRequest, backing: BackingDecision, credit: CreditDecision): boolean
+  +canCommit(request: PurchaseRequest, reservation: InventoryReservationDecision, backing: WarehouseBackingDecision, credit: CreditDecision): boolean
   +requiresBuyerAcceptance(proposal: MaterialChangeProposal): boolean
 }
 
@@ -139,7 +139,8 @@ CommercialCommitment "1" *-- "0..*" CommitmentOwnerTransfer : ownership
 CommercialCommitment "1" *-- "0..*" SalesCommitmentAdjustment : adjustments
 PurchaseRequest --> BuyerRelationship : stable relationship id
 PurchaseRequestLine --> Sku : stable SKU id
-CommercialCommitment --> InventoryBacking : decision id
+CommercialCommitment --> InventoryReservation : reservation decision id
+CommercialCommitment --> WarehouseBacking : warehouse backing decision id
 CommercialCommitment --> CreditReservation : decision id
 CommercialCommitment "1" --> "0..1" SalesOrder : transfers ownership
 CommitmentAcceptancePolicy ..> PurchaseRequestRepository : loads
@@ -148,9 +149,9 @@ PurchaseRequestLine *-- TermsSnapshot : freezes terms
 CommercialCommitmentLine *-- TermsSnapshot : preserves terms
 
 legend right
-TARGET / V1 / tactical design aid
+TARGET / tactical design aid
 PR -> Commitment -> SO ownership transfer has no release/re-reserve gap.
-BC-05 backing and BC-07 credit are stable decision references, not compositions.
+BC-05 Inventory Reservation/Warehouse Backing and BC-07 credit are stable decision references, not compositions.
 *-- composition | --> domain dependency | ..> port/use
 endlegend
 @enduml

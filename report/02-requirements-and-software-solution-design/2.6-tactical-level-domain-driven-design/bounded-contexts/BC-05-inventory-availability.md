@@ -6,6 +6,7 @@ is a policy, not a reservation.
 
 #### 2.6.5.1. Domain Layer
 
+*Agregados y límites invariantes de BC-05.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `InventoryPosition` | SKU + Warehouse quantity authority and sellable inputs |
@@ -84,12 +85,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-05 Inventory Availability.*
 ![BC-05 tactical domain model](../../../assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-05.*
 ![BC-05 database design projection](../../../assets/chapter-2/tactical/BC-05/database-diagram.png)
 
-It is a logical shared-PostgreSQL projection; canonical SQL remains the
-authority for PK/FK/unique/check and RLS/tenant-scope details.
+*Nota.* Es una proyección lógica de PostgreSQL compartido; el SQL canónico mantiene la autoridad sobre las restricciones PK/FK/unique/check y los detalles de RLS/alcance Tenant.

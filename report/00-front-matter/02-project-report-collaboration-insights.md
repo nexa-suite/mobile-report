@@ -27,11 +27,9 @@ no sustituye evidencia de comportamiento, validación o despliegue de producto.
 
 > *Nota.* Captura histórica de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública representa contribuciones a `main` y no cuantifica las revisiones por rama de esta misión; los commits enlazados a continuación son la evidencia específica de cambios documentales.
 
-> **Evidencia externa adicional — BLOCKED.** Se intentó capturar una vista
-> pública de historial de commits con múltiples integrantes, pero el entorno no
-> permitió guardar la captura visual por falta de permiso de Screen Recording.
-> No se incorpora una imagen sintética ni se presenta la vista consultada como
-> un archivo de evidencia.
+![Historial público de commits con múltiples integrantes en GitHub](../assets/chapter-4/collaboration/github-commit-history-2026-09-11.png)
+
+> *Nota.* Captura de [GitHub — historial de commits de `main`](https://github.com/nexa-suite/mobile-report/commits/main/), tomada el 11 de septiembre de 2026. La vista muestra commits públicos con firmas visibles de R0obxdnt, DiegoS284, JoaquinBV511 y GerardRojasMancilla. Es evidencia externa de colaboración documental publicada; no cuantifica las ramas locales de Wave 1 ni acredita implementación o aceptación de producto.
 
 ## AV1 — aportes documentados
 

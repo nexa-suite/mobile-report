@@ -78,3 +78,7 @@
 - [Glosario](../91-glossary/glossary.md)
 - [Bibliografía](../92-bibliography/bibliography.md)
 - [Anexos](../93-annexes/annex-a-student-outcome/student-outcome-7.md)
+  - [Anexo A: Student Outcome](../93-annexes/annex-a-student-outcome/student-outcome-7.md)
+  - [Anexo D: Spike Stories](../93-annexes/annex-d-spike-story/spike-story.md)
+  - [Anexo G: Categorías de recursos bibliográficos](../93-annexes/annex-g-bibliographic-categories.md)
+  - [Anexo H: Videos de Exposiciones](../93-annexes/annex-h-videos-de-exposiciones.md)

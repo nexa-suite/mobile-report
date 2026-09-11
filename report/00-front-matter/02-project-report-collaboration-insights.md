@@ -52,12 +52,19 @@ no por un conteo mecánico de commits. La entrega AV1 conserva sólo actividades
 realmente registradas; no anticipa actividades de entregas académicas
 posteriores.
 
-## Wave 1 — colaboración de la revisión actual
+## Wave 1 + Wave 2 — colaboración y publicación por ramas
 
-Después de crear los cambios, la revisión local se completó con contribuciones
-firmadas de Gino y Gerard en sus ramas propietarias: `feature/front-master`
-(`1fd151e`, `217de4c`), `feature/chapter-01` (`748a1e5`, `039229a`,
-`a485e50`) y `feature/report-integration` (`97d3762`, `f19f622`, `7cf02db`).
-Estas referencias prueban la existencia local de los cambios y su autoría
-configurada; no se presentan como nuevos commits publicados hasta que exista
-una publicación remota verificable.
+Estado verificable al 11 de septiembre de 2026: las correcciones de cierre se
+publicaron en ramas propietarias, sin merge a `main` o `develop`, sin release y
+sin tag. Los commits nuevos son `6035172` en `feature/chapter-01`, `d3666f6`
+en `feature/chapter-02`, `56d2944` en `feature/chapter-04` y `1b0e0c8` en
+`feature/report-integration`; Blueprint se publicó en su rama dedicada con
+`d2f507e`. El front matter permanece en `feature/front-master` y conserva la
+historia previa de Wave 1 antes de este registro.
+
+R0obxdnt firmó los cierres de capítulos e integración; DiegoS284 firmó el
+cierre Blueprint. Esta atribución no pretende distribuir el cierre entre los
+cinco integrantes ni convertir commits documentales en evidencia de
+implementación, pruebas, entrevistas o aceptación. Los commits Wave 2 de mayor
+tamaño publicados anteriormente se conservan como deuda SCM aceptada y no se
+reescriben.

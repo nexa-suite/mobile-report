@@ -38,6 +38,7 @@
     - [2.4.3. Product Backlog](../02-requirements-and-software-solution-design/2.4-requirements-specification/2.4.3-product-backlog.md)
   - [2.5. Strategic-Level Domain-Driven Design](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md)
     - [2.5.1. EventStorming](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1-eventstorming.md)
+      - [2.5.1.2. Domain Storytelling](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-storytelling.md)
     - [2.5.2. Context Mapping](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.2-context-mapping.md)
     - [2.5.3. Software Architecture](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture.md)
   - [2.6. Tactical-Level Domain-Driven Design](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-01-tenant-access-governance.md)

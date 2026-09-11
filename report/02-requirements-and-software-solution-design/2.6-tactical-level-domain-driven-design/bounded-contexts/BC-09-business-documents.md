@@ -49,7 +49,7 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 bytes use an application port. Document renderer/scanner adapters are external
 ACLs; no database blob or fiscal integration is inferred.
 
-*Clases TARGET por capa de BC-09.* 
+*Clases TARGET por capa de BC-09.*
 
 Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, proveedores ni implementación ya disponible.
 

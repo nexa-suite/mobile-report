@@ -6,6 +6,23 @@ Stories expresan resultados de negocio para actores; las Technical Stories
 delimitan habilitación técnica; y los Spikes reducen incertidumbre antes de una
 decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 
+### As-Is → To-Be Traceability
+
+Los Journey Maps de la sección 2.3 permanecen como recorridos As-Is centrados en
+persona. Esta tabla es un suplemento de trazabilidad hacia el escenario To-Be;
+no crea Journey Maps To-Be, no convierte hipótesis en hallazgos y no declara
+implementación ni aceptación.
+
+| Segmento | Problema o hipótesis actual | Desired outcome | User Stories | Academic Sprint | Domain boundary | Evidence status |
+| --- | --- | --- | --- | --- | --- | --- |
+| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`; `MOB-US-011..017`, `MOB-US-019..022` | Sprint 1; Sprint 2 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023..034` | Sprint 3 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Verificar la recepción frente a lo esperado y comunicar discrepancias con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-044`, `MOB-US-047..049` | Sprint 4 | BC-06 Fulfillment & Delivery; BC-09 Business Documents; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
+
+La trazabilidad operativa es: problema o hipótesis As-Is → resultado deseado
+To-Be → User Story → Sprint → estado de evidencia. El resultado deseado es una
+dirección de diseño, no prueba de que Nexa Mobile ya exista.
+
 ### To-Be Scenario Mapping
 
 | Escenario objetivo | Actor y proyección | Comportamiento objetivo | Historias relacionadas |

@@ -5,6 +5,7 @@ reference SKU identity/snapshots, not a Product object graph.
 
 #### 2.6.3.1. Domain Layer
 
+*Agregados y límites invariantes de BC-03.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `Product` | Merchandising identity and lifecycle; media/SKU references stay bounded |
@@ -71,7 +72,7 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ![BC-03 Catalog & Commercial Policy — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-03-CatalogCommercialPolicy-TARGET-dark.svg)
 
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-03 Catalog & Commercial Policy, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
+*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-03 Catalog & Commercial Policy, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente. El diagrama se presenta como modelo de diseño y no como prueba de una implementación en ejecución.
 
 El diagrama se presenta como modelo de diseño y no como prueba de una
 implementación en ejecución.
@@ -80,12 +81,14 @@ implementación en ejecución.
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-03 Catalog & Commercial Policy.*
 ![BC-03 tactical domain model](../../../assets/chapter-2/tactical/BC-03/BC03_CatalogCommercialPolicy.png)
+*Nota.* El diagrama se presenta como modelo de diseño y no como prueba de una implementación en ejecución.
 
 
 ##### 2.6.3.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-03.*
 ![BC-03 database design projection](../../../assets/chapter-2/tactical/BC-03/database-diagram.png)
 
-Diagram is a shared-PostgreSQL logical projection with constraints;
-canonical SQL remains authority.
+*Nota.* Es una proyección lógica de PostgreSQL compartido con restricciones; el SQL canónico mantiene la autoridad.

@@ -5,7 +5,7 @@ crean reglas de negocio ni prueban una implementación. La obligación académic
 se lee inequívocamente como **Kotlin Android AND (Flutter/Dart OR KMP/Kotlin)**:
 Track A es obligatorio y exige Android nativo con Kotlin; Track B también es
 obligatorio y permite una alternativa multiplataforma, Flutter con Dart o Kotlin
-Multiplatform (KMP) con Kotlin. La selección de framework Mobile en Blueprint
+Multiplatform (KMP) con Kotlin. La selección de framework Mobile
 continúa **OPEN / NOT STARTED**: este plan no asigna framework a Operations
 Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o validación
 de producto.
@@ -32,7 +32,7 @@ de producto.
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
 <tr><th>Title</th><td colspan="3">Definir criterios de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para el Track A obligatorio de Android nativo con Kotlin y el Track B obligatorio de una alternativa multiplataforma permitida (Flutter/Dart o KMP/Kotlin), para evaluar límites técnicos sin convertir el experimento en una selección canónica de Blueprint.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para el Track A obligatorio de Android nativo con Kotlin y el Track B obligatorio de una alternativa multiplataforma permitida (Flutter/Dart o KMP/Kotlin), para evaluar límites técnicos sin convertir el experimento en una selección de producto.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Baseline de experimento</strong></p><p><strong>Given</strong> existen el Track A obligatorio de Android nativo con Kotlin y el Track B obligatorio de Flutter/Dart o KMP/Kotlin</p><p><strong>When</strong> se define un baseline mínimo</p><p><strong>Then</strong> documenta versiones, dispositivo/emulador, límites y criterios de comparación sin asignar un framework a una proyección de producto.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma o proveedor no evaluado</p><p><strong>When</strong> se propone incorporarlo</p><p><strong>Then</strong> queda fuera del experimento hasta una decisión explícita y no se presenta como trabajo académico comprometido.</p></td></tr>
 </tbody>

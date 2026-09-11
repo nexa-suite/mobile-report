@@ -6,6 +6,7 @@ Payment, Delivery or fiscal authority.
 
 #### 2.6.9.1. Domain Layer
 
+*Agregados y límites invariantes de BC-09.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `BusinessDocument` | Requested/issued/replaced snapshot and availability metadata |
@@ -48,7 +49,9 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 bytes use an application port. Document renderer/scanner adapters are external
 ACLs; no database blob or fiscal integration is inferred.
 
-**Clases TARGET por capa de BC-09.** Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, proveedores ni implementación ya disponible.
+*Clases TARGET por capa de BC-09.* 
+
+Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, proveedores ni implementación ya disponible.
 
 | Capa | Clase / componente TARGET | Responsabilidad |
 |---|---|---|
@@ -80,12 +83,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.9.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-09 Business Documents.*
 ![BC-09 tactical domain model](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.9.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-09.*
 ![BC-09 database design projection](../../../assets/chapter-2/tactical/BC-09/database-diagram.png)
 
-This is a logical shared-PostgreSQL projection; bytes stay in Object Storage
-behind authorization and canonical SQL defines constraints.
+*Nota.* Es una proyección lógica de PostgreSQL compartido; los bytes permanecen en Object Storage bajo autorización y el SQL canónico define las restricciones.

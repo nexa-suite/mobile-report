@@ -25,7 +25,7 @@ no sustituye evidencia de comportamiento, validación o despliegue de producto.
 
 ![Contribuciones públicas de los cinco integrantes en GitHub](../assets/chapter-4/collaboration/github-contributors-2026-09-09.png)
 
-> *Nota.* Captura histórica de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública representa contribuciones a `main` y no cuantifica las revisiones por rama de esta misión; los commits enlazados a continuación son la evidencia específica de cambios documentales.
+*Nota.* Captura histórica de [GitHub Insights — Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors), consultada el 9 de septiembre de 2026. La vista pública representa contribuciones a `main` y no cuantifica las revisiones por rama de esta misión; los commits enlazados a continuación son la evidencia específica de cambios documentales.
 
 ## AV1 — aportes documentados
 

@@ -6,6 +6,7 @@ state. Mobile delivery is a projection, not a Mobile BC.
 
 #### 2.6.10.1. Domain Layer
 
+*Agregados y límites invariantes de BC-10.*
 | Aggregate/root | Boundary and invariant |
 | :--- | :--- |
 | `Notification` | Intent, recipient/channel selection and lifecycle |
@@ -46,7 +47,9 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 no provider or third channel is assumed. Technical outbox/inbox persistence is
 shared infrastructure, not a new BC.
 
-**Clases TARGET por capa de BC-10.** Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, canales ni proveedores ya implementados.
+*Clases TARGET por capa de BC-10.*
+
+Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, canales ni proveedores ya implementados.
 
 | Capa | Clase / componente TARGET | Responsabilidad |
 |---|---|---|
@@ -77,12 +80,14 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 ##### 2.6.10.6.1. Bounded Context Domain Layer Class Diagrams
 
+*Modelo de dominio táctico de BC-10 Notifications.*
 ![BC-10 tactical domain model](../../../assets/chapter-2/tactical/BC-10/BC10_Notifications.png)
+*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
 
 ##### 2.6.10.6.2. Bounded Context Database Design Diagram
 
+*Proyección del diseño de base de datos de BC-10.*
 ![BC-10 database design projection](../../../assets/chapter-2/tactical/BC-10/database-diagram.png)
 
-This is shared-PostgreSQL logical ownership with delivery constraints;
-it does not imply a Mobile database or push provider deployment.
+*Nota.* Es propiedad lógica en PostgreSQL compartido con restricciones de entrega; no implica una base de datos Mobile ni el despliegue de un proveedor push.

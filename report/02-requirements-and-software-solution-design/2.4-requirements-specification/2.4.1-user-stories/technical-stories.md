@@ -10,6 +10,8 @@ continúa **OPEN / NOT STARTED**: este plan no asigna framework a Operations
 Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o validación
 de producto.
 
+**Tabla**
+
 *TS-MOB-001 — Integrar contratos REST con autoridad del servidor*
 
 <table>
@@ -23,6 +25,8 @@ de producto.
 <tr><td colspan="4"><p><strong>Scenario: Contrato autorizado</strong></p><p><strong>Given</strong> una proyección Mobile solicita trabajo protegido</p><p><strong>When</strong> consume un contrato REST aprobado</p><p><strong>Then</strong> conserva Tenant, Workspace, autorización y significado de respuesta definidos por el servidor.</p><p><strong>Scenario: Respuesta de error</strong></p><p><strong>Given</strong> el servidor rechaza, encuentra conflicto o no puede procesar una solicitud</p><p><strong>When</strong> el cliente recibe Problem Details</p><p><strong>Then</strong> comunica el estado sin inventar una confirmación local.</p></td></tr>
 </tbody>
 </table>
+
+**Tabla**
 
 *TS-MOB-002 — Definir criterios de compatibilidad de plataforma*
 
@@ -38,6 +42,8 @@ de producto.
 </tbody>
 </table>
 
+**Tabla**
+
 *TS-MOB-003 — Preservar paridad de contratos entre proyecciones Mobile*
 
 <table>
@@ -51,6 +57,8 @@ de producto.
 <tr><td colspan="4"><p><strong>Scenario: Flujo comparable</strong></p><p><strong>Given</strong> dos opciones evaluadas implementan un flujo permitido</p><p><strong>When</strong> consumen el mismo contrato</p><p><strong>Then</strong> interpretan los mismos estados de éxito, error, conflicto e idempotencia.</p><p><strong>Scenario: Adaptación de interfaz</strong></p><p><strong>Given</strong> una opción exige una adaptación de presentación o dispositivo</p><p><strong>When</strong> se documenta la adaptación</p><p><strong>Then</strong> no altera autorización, Tenant/Workspace ni resultado de negocio.</p></td></tr>
 </tbody>
 </table>
+
+**Tabla**
 
 *TS-MOB-004 — Aislar capacidades de dispositivo de las reglas de negocio*
 
@@ -66,6 +74,8 @@ de producto.
 </tbody>
 </table>
 
+**Tabla**
+
 *TS-MOB-005 — Proteger el estado local selectivo y no autoritativo*
 
 <table>
@@ -79,6 +89,8 @@ de producto.
 <tr><td colspan="4"><p><strong>Scenario: Dato permitido</strong></p><p><strong>Given</strong> el dato está clasificado como caché, borrador, evidencia temporal o metadato de reintento</p><p><strong>When</strong> se persiste localmente</p><p><strong>Then</strong> queda protegido y vinculado al contexto autorizado.</p><p><strong>Scenario: Cambio de contexto</strong></p><p><strong>Given</strong> la persona cierra sesión o cambia de Tenant</p><p><strong>When</strong> se limpia el contexto local</p><p><strong>Then</strong> el siguiente contexto no puede leer datos protegidos del anterior.</p></td></tr>
 </tbody>
 </table>
+
+**Tabla**
 
 *TS-MOB-006 — Resolver reintentos, resultados inciertos e idempotencia*
 
@@ -94,6 +106,8 @@ de producto.
 </tbody>
 </table>
 
+**Tabla**
+
 *TS-MOB-007 — Integrar cámara e identificadores con alternativa manual*
 
 <table>
@@ -107,6 +121,8 @@ de producto.
 <tr><td colspan="4"><p><strong>Scenario: Identificador único</strong></p><p><strong>Given</strong> la cámara obtiene un identificador permitido con coincidencia única</p><p><strong>When</strong> se envía al contrato autorizado</p><p><strong>Then</strong> identifica el producto sin registrar recepción o picking por sí sola.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> la cámara no está disponible o el identificador es ambiguo</p><p><strong>When</strong> la persona usa la alternativa manual</p><p><strong>Then</strong> el flujo continúa solo después de una identificación autorizada.</p></td></tr>
 </tbody>
 </table>
+
+**Tabla**
 
 *TS-MOB-008 — Abrir navegación externa con un límite de ubicación*
 
@@ -122,6 +138,8 @@ de producto.
 </tbody>
 </table>
 
+**Tabla**
+
 *TS-MOB-009 — Evaluar notificaciones y deep links con autorización*
 
 <table>
@@ -135,6 +153,8 @@ de producto.
 <tr><td colspan="4"><p><strong>Scenario: Contexto autorizado</strong></p><p><strong>Given</strong> un deep link refiere a trabajo protegido</p><p><strong>When</strong> la aplicación lo abre</p><p><strong>Then</strong> vuelve a comprobar Tenant, relación y permisos antes de mostrar información.</p><p><strong>Scenario: Destino vencido</strong></p><p><strong>Given</strong> el enlace venció o el contexto ya no es válido</p><p><strong>When</strong> se intenta abrir</p><p><strong>Then</strong> comunica el estado y no expone datos protegidos.</p></td></tr>
 </tbody>
 </table>
+
+**Tabla**
 
 *TS-MOB-010 — Aplicar i18n y accesibilidad en las aplicaciones móviles*
 
@@ -150,6 +170,8 @@ de producto.
 </tbody>
 </table>
 
+**Tabla**
+
 *TS-MOB-011 — Preparar validación técnica y observabilidad mínima*
 
 <table>
@@ -163,6 +185,8 @@ de producto.
 <tr><td colspan="4"><p><strong>Scenario: Validación de contrato</strong></p><p><strong>Given</strong> existe una operación Mobile representativa</p><p><strong>When</strong> se prueba éxito y error</p><p><strong>Then</strong> se verifica autorización, estructura, conflicto e idempotencia.</p><p><strong>Scenario: Señal segura</strong></p><p><strong>Given</strong> una solicitud Mobile falla</p><p><strong>When</strong> se registra una señal diagnóstica</p><p><strong>Then</strong> conserva correlación y causa útil sin incluir tokens, secretos o datos sensibles innecesarios.</p></td></tr>
 </tbody>
 </table>
+
+**Tabla**
 
 *TS-MOB-012 — Preparar evidencia técnica de build, instalación y dispositivos*
 

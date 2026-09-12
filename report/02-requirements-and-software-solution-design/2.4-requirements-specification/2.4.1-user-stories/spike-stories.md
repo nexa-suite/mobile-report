@@ -7,7 +7,7 @@ una salida explícita: adoptar, diferir, rechazar o continuar con evidencia
 adicional. Cuando el alcance del Spike lo exige, la integración queda
 documentada como evidencia técnica acotada y no como runtime aceptado.
 
-##### SPIKE-001 — Investigar, seleccionar e integrar una feature de aprendizaje autónomo
+*SPIKE-001 — Investigar, seleccionar e integrar una feature de aprendizaje autónomo*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -21,7 +21,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-##### SPIKE-002 — Establecer tracks Mobile y límites de contratos
+*SPIKE-002 — Establecer tracks Mobile y límites de contratos*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -35,7 +35,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-##### SPIKE-003 — Delimitar identificadores de producto
+*SPIKE-003 — Delimitar identificadores de producto*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -49,7 +49,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-##### SPIKE-004 — Delimitar persistencia y recuperación local
+*SPIKE-004 — Delimitar persistencia y recuperación local*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -63,7 +63,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-##### SPIKE-005 — Delimitar notificaciones y deep links
+*SPIKE-005 — Delimitar notificaciones y deep links*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -77,7 +77,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-##### SPIKE-006 — Delimitar mapas y ubicación
+*SPIKE-006 — Delimitar mapas y ubicación*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>

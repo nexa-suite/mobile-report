@@ -10,8 +10,7 @@ continúa **OPEN / NOT STARTED**: este plan no asigna framework a Operations
 Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o validación
 de producto.
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-001 — Integrar contratos REST con autoridad del servidor*
 
 <table>
@@ -26,8 +25,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-002 — Definir criterios de compatibilidad de plataforma*
 
 <table>
@@ -42,8 +40,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-003 — Preservar paridad de contratos entre proyecciones Mobile*
 
 <table>
@@ -58,8 +55,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-004 — Aislar capacidades de dispositivo de las reglas de negocio*
 
 <table>
@@ -74,8 +70,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-005 — Proteger el estado local selectivo y no autoritativo*
 
 <table>
@@ -90,8 +85,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-006 — Resolver reintentos, resultados inciertos e idempotencia*
 
 <table>
@@ -106,8 +100,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-007 — Integrar cámara e identificadores con alternativa manual*
 
 <table>
@@ -122,8 +115,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-008 — Abrir navegación externa con un límite de ubicación*
 
 <table>
@@ -138,8 +130,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-009 — Evaluar notificaciones y deep links con autorización*
 
 <table>
@@ -154,8 +145,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-010 — Aplicar i18n y accesibilidad en las aplicaciones móviles*
 
 <table>
@@ -170,8 +160,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-011 — Preparar validación técnica y observabilidad mínima*
 
 <table>
@@ -186,8 +175,7 @@ de producto.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *TS-MOB-012 — Preparar evidencia técnica de build, instalación y dispositivos*
 
 <table>

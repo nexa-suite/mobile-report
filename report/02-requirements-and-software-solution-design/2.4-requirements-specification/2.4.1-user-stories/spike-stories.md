@@ -7,8 +7,7 @@ una salida explícita: adoptar, diferir, rechazar o continuar con evidencia
 adicional. Cuando el alcance del Spike lo exige, la integración queda
 documentada como evidencia técnica acotada y no como runtime aceptado.
 
-**Tabla**
-
+**Tabla**<br>
 *SPIKE-001 — Investigar, seleccionar e integrar una feature de aprendizaje autónomo*
 
 <table>
@@ -23,8 +22,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *SPIKE-002 — Establecer tracks Mobile y límites de contratos*
 
 <table>
@@ -39,7 +37,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-**Tabla**
+**Tabla**<br>
 
 *SPIKE-003 — Delimitar identificadores de producto*
 
@@ -55,8 +53,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *SPIKE-004 — Delimitar persistencia y recuperación local*
 
 <table>
@@ -71,8 +68,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *SPIKE-005 — Delimitar notificaciones y deep links*
 
 <table>
@@ -87,8 +83,7 @@ documentada como evidencia técnica acotada y no como runtime aceptado.
 </tbody>
 </table>
 
-**Tabla**
-
+**Tabla**<br>
 *SPIKE-006 — Delimitar mapas y ubicación*
 
 <table>

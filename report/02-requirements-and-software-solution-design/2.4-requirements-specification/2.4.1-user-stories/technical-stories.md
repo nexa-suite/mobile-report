@@ -10,7 +10,7 @@ continúa **OPEN / NOT STARTED**: este plan no asigna framework a Operations
 Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o validación
 de producto.
 
-##### TS-MOB-001 — Integrar contratos REST con autoridad del servidor
+*TS-MOB-001 — Integrar contratos REST con autoridad del servidor*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -24,7 +24,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-002 — Definir criterios de compatibilidad de plataforma
+*TS-MOB-002 — Definir criterios de compatibilidad de plataforma*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -38,7 +38,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-003 — Preservar paridad de contratos entre proyecciones Mobile
+*TS-MOB-003 — Preservar paridad de contratos entre proyecciones Mobile*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -52,7 +52,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-004 — Aislar capacidades de dispositivo de las reglas de negocio
+*TS-MOB-004 — Aislar capacidades de dispositivo de las reglas de negocio*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -66,7 +66,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-005 — Proteger el estado local selectivo y no autoritativo
+*TS-MOB-005 — Proteger el estado local selectivo y no autoritativo*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -80,7 +80,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-006 — Resolver reintentos, resultados inciertos e idempotencia
+*TS-MOB-006 — Resolver reintentos, resultados inciertos e idempotencia*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -94,7 +94,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-007 — Integrar cámara e identificadores con alternativa manual
+*TS-MOB-007 — Integrar cámara e identificadores con alternativa manual*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -108,7 +108,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-008 — Abrir navegación externa con un límite de ubicación
+*TS-MOB-008 — Abrir navegación externa con un límite de ubicación*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -122,7 +122,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-009 — Evaluar notificaciones y deep links con autorización
+*TS-MOB-009 — Evaluar notificaciones y deep links con autorización*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -136,7 +136,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-010 — Aplicar i18n y accesibilidad en las aplicaciones móviles
+*TS-MOB-010 — Aplicar i18n y accesibilidad en las aplicaciones móviles*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -150,7 +150,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-011 — Preparar validación técnica y observabilidad mínima
+*TS-MOB-011 — Preparar validación técnica y observabilidad mínima*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
@@ -164,7 +164,7 @@ de producto.
 </tbody>
 </table>
 
-##### TS-MOB-012 — Preparar evidencia técnica de build, instalación y dispositivos
+*TS-MOB-012 — Preparar evidencia técnica de build, instalación y dispositivos*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>

@@ -1,11 +1,11 @@
 #### Spike Stories
 
-Un Spike reduce una incertidumbre antes de una decisión. No es una Functional
-User Story ni convierte por sí solo una investigación, PoC o integración en
-validación de producto. Cada Spike deja fuente, experimento mínimo, límites y
-una salida explícita: adoptar, diferir, rechazar o continuar con evidencia
-adicional. Cuando el alcance del Spike lo exige, la integración queda
-documentada como evidencia técnica acotada y no como runtime aceptado.
+Un Spike reduce una incertidumbre delimitada. No es una Functional User Story
+ni convierte por sí solo una investigación, PoC o integración en validación de
+producto. Cada Spike deja fuente, experimento mínimo, límites, criterios de
+selección y el trabajo de integración que corresponda. Cuando el alcance del
+Spike exige integración, ésta se documenta como evidencia técnica acotada y no
+como runtime aceptado.
 
 **Tabla**<br>
 *SPIKE-001 — Investigar, seleccionar e integrar una feature de aprendizaje autónomo*

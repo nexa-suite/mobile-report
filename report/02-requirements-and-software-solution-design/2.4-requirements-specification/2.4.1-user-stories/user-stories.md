@@ -15,11 +15,13 @@ implementación ni aceptación.
 
 **Tabla**<br>
 *Trazabilidad del escenario As-Is hacia los resultados To-Be de Nexa Mobile*
-| Segmento | Problema o hipótesis actual | Desired outcome | User Stories | Academic Sprint | Domain boundary | Evidence status |
+| Segmento | Problema o hipótesis actual | Desired outcome | User Stories | Sprint | Domain boundary | Evidence status |
 | --- | --- | --- | --- | --- | --- | --- |
-| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`; `MOB-US-011..017`, `MOB-US-019..022` | Sprint 1; Sprint 2 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023..034` | Sprint 3 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Verificar la recepción frente a lo esperado y comunicar discrepancias con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-044`, `MOB-US-047..049` | Sprint 4 | BC-06 Fulfillment & Delivery; BC-09 Business Documents; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
+| Contexto de trabajo autorizado | El retorno al trabajo puede exponer contexto vencido, ajeno o no autorizado. Hipótesis As-Is transversal; no se presenta como hallazgo de un segmento distinto. | Revalidar Tenant, Workspace y permiso antes de mostrar trabajo protegido. | `MOB-US-001..003` | Sprint 1 | BC-01 Tenant & Access Governance | **NOT EVIDENCED** — hipótesis transversal; no hay investigación directa válida de este comportamiento. |
+| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`, `MOB-US-011..022`, `MOB-US-050..056`, `MOB-US-073` | Sprint 1; Sprint 2; Sprint 4 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023..035`, `MOB-US-045..046`, `MOB-US-057..069` | Sprint 3; Sprint 4 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Consultar relación comercial, pedido, crédito, recepción y discrepancia con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-005..010`, `MOB-US-036..044`, `MOB-US-047..049`, `MOB-US-070..072` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
+| Representante de empresa prospectiva | La comprensión de la propuesta B2B, los límites del producto y el siguiente paso comercial no está validada mediante investigación directa en este corte. | Comprender Nexa, contrastar el ajuste operativo y solicitar contacto u onboarding sin crear un Tenant o Workspace por sí solo. | `LAND-US-001..006` | Sprint 2 | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships | **NOT EVIDENCED** — hipótesis de adquisición; no se presentan entrevistas inexistentes. |
 
 La trazabilidad operativa es: problema o hipótesis As-Is → resultado deseado
 To-Be → User Story → Sprint → estado de evidencia. El resultado deseado es una
@@ -50,37 +52,37 @@ dirección de diseño, no prueba de que Nexa Mobile ya exista.
 | Ubicación | El alcance priorizado entrega un destino autorizado a navegación externa; no introduce tracking continuo, ETA ni optimización de rutas. |
 | Distinciones | Tenant, Workspace, Human Identity, Workforce Membership, Customer Account y Buyer Relationship son distintos. Dispatch Handoff, Driver Outcome y Buyer Receipt también son hechos separados. |
 
-El catálogo contiene 73 Functional User Stories. La relación entre el catálogo
-completo y el alcance académico comprometido se mantiene en el Product Backlog;
-esa separación evita eliminar historias legítimas para ajustar el trabajo del
-curso. Las Technical Stories, los Spikes y el Impact Mapping complementan esta
-especificación en sus secciones respectivas. Estar documentada no asigna a una
-historia implementación, evidencia de investigación ni aceptación.
+Las 73 Functional User Stories, las 6 historias de Landing Page, las 12
+Technical Stories y los 6 Spikes se planifican en el único Product Backlog y
+en los cuatro Sprints. El Impact Mapping complementa esta especificación en su
+sección respectiva. Estar documentada o planificada no asigna a una historia
+implementación, evidencia de investigación ni aceptación.
 
 ---
 
 ### 2.4.1. User Stories
 
-Este catálogo contiene Functional User Stories de la Landing pública y de las
+Esta sección contiene Functional User Stories de la Landing pública y de las
 dos proyecciones Mobile. El escenario To-Be, sus reglas transversales y los
 límites de autoridad se presentan al inicio de esta misma sección. Las Technical
-Stories y los Spikes se mantienen separados para no convertir habilitación o
-incertidumbre en requisitos de negocio.
+Stories y los Spikes se mantienen diferenciados por tipo, sin convertir
+habilitación o incertidumbre en requisitos de negocio.
 
 #### Story Catalog and Traceability
 
 Nexa Operations Mobile y Nexa Buyer Mobile son las dos proyecciones Mobile.
-Este archivo conserva el catálogo funcional completo; el Product Backlog
-identifica por separado las historias comprometidas en los cuatro Sprints
-académicos y las historias que permanecen fuera de esa selección.
+El único Product Backlog asigna todas las historias funcionales, las Technical
+Stories y los Spikes a los cuatro Sprints.
 
 **Tabla**<br>
-*Distribución del catálogo de Functional User Stories según compromiso académico*
-| Estado de compromiso académico | Functional Stories | Significado en este informe |
-| --- | ---: | --- |
-| Academic commitment | 35 | Seleccionadas en el Product Backlog para los cuatro Sprints: 29 Mobile y 6 Landing Page. |
-| Outside current academic commitment | 44 | 44 historias Mobile conservadas para trazabilidad del producto; no reciben un Sprint académico en este informe. |
-| **Total** | **79** | Catálogo funcional completo: 73 Mobile + 6 Landing Page. |
+*Distribución del único Product Backlog por Sprint*
+| Sprint | Landing | Mobile Functional | Technical | Spikes | Total | SP |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Sprint 1 | 0 | 4 | 1 | 0 | 5 | 18 |
+| Sprint 2 | 6 | 18 | 6 | 4 | 34 | 135 |
+| Sprint 3 | 0 | 27 | 2 | 2 | 31 | 134 |
+| Sprint 4 | 0 | 24 | 3 | 0 | 27 | 139 |
+| **Total** | **6** | **73** | **12** | **6** | **97** | **426** |
 
 #### Epic registry
 
@@ -89,20 +91,20 @@ pantalla, una aplicación ni una unidad de despliegue.
 
 **Tabla**<br>
 *Registro de Epics y Functional User Stories del catálogo de Nexa Mobile*
-| Epic | Resultado agrupado | Horizonte académico | Stories |
+| Epic | Resultado agrupado | Sprints | Stories |
 | --- | --- | --- | --- |
-| MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Alcance priorizado | MOB-US-001..003 |
-| MOBILE-EPIC-02 | Primera experiencia Warehouse, recepción, identificación y preparación | Academic commitment | MOB-US-004, MOB-US-011..017, MOB-US-019 |
-| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Alcance priorizado | MOB-US-020..025 |
-| MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Alcance priorizado | MOB-US-026..028, MOB-US-031..034 |
-| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Alcance priorizado | MOB-US-044, MOB-US-047..049 |
-| MOBILE-EPIC-06 | Conveniencia comercial y operativa | Canonical catalog outside current academic commitment | MOB-US-005..010, MOB-US-036..043 |
-| MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Canonical catalog outside current academic commitment | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
-| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Canonical catalog outside current academic commitment | MOB-US-050..056 |
-| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Canonical catalog outside current academic commitment | MOB-US-057..066 |
-| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Canonical catalog outside current academic commitment | MOB-US-067..069 |
-| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Canonical catalog outside current academic commitment | MOB-US-070..072 |
-| MOBILE-EPIC-12 | Automatización de almacén | Canonical catalog outside current academic commitment | MOB-US-073 |
+| MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Sprint 1 | MOB-US-001..003 |
+| MOBILE-EPIC-02 | Primera experiencia Warehouse, recepción, identificación y preparación | Sprint 1; Sprint 2 | MOB-US-004, MOB-US-011..017, MOB-US-019 |
+| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Sprint 2; Sprint 3 | MOB-US-020..025 |
+| MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Sprint 3 | MOB-US-026..028, MOB-US-031..034 |
+| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Sprint 3 | MOB-US-044, MOB-US-047..049 |
+| MOBILE-EPIC-06 | Conveniencia comercial y operativa | Sprint 2; Sprint 3 | MOB-US-005..010, MOB-US-036..043 |
+| MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Sprint 2; Sprint 3 | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
+| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Sprint 4 | MOB-US-050..056 |
+| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Sprint 4 | MOB-US-057..066 |
+| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Sprint 4 | MOB-US-067..069 |
+| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Sprint 4 | MOB-US-070..072 |
+| MOBILE-EPIC-12 | Automatización de almacén | Sprint 4 | MOB-US-073 |
 
 #### Segmentos y actores actuales
 

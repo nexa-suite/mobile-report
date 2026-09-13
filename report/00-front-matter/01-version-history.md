@@ -2,7 +2,7 @@
 
 Este registro reúne las revisiones académicamente relevantes del Nexa Mobile
 Report. Las versiones publicadas conservan su referencia de Git como respaldo;
-la revisión publicada más reciente es `v0.3.1`.
+la revisión publicada más reciente es `v0.4.0`.
 
 | Versión | Fecha | Autor | Descripción de modificación |
 | :--- | :--- | :--- | :--- |
@@ -12,6 +12,7 @@ la revisión publicada más reciente es `v0.3.1`.
 | [0.2.0](https://github.com/nexa-suite/mobile-report/commit/c8f6697dd26e8b28a42f95206a5dd90d022e7edc) | 10 de septiembre de 2026 | Torrejón De Los Santos, Gino Rodrigo | Consolidó una línea base académica previa a AV1: presentación, documentación DDD/C4/UI/UX y planificación de cuatro Sprints. |
 | [0.3.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.3.0) | 11 de septiembre de 2026 | Equipo Nexa | Consolidó el mapa de escenarios As-Is, la trazabilidad de investigación y planificación, las evidencias visuales de dominio y las referencias bibliográficas de la entrega previa a AV1. |
 | [0.3.1](https://github.com/nexa-suite/mobile-report/releases/tag/v0.3.1) | 13 de septiembre de 2026 | Equipo Nexa | Reconcilió un único Product Backlog completo entre los cuatro Sprints académicos y alineó los totales de los capítulos II y IV. |
+| [0.4.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.4.0) | 13 de septiembre de 2026 | Equipo Nexa | Refinó la consistencia de Impact Mapping, trazabilidad de actores, lenguaje de dominio, Domain Stories y arquitectura de información sin modificar el Product Backlog ni la distribución de Sprints. |
 
 *Nota.* El detalle de procedencia por commit permanece disponible en Git y
 GitHub. Este registro no acredita implementación, pruebas con personas usuarias,

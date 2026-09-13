@@ -92,4 +92,4 @@ implementado o validado.
 | Landing Page estática | `LAND-US-001..006` forman el corte de entrada pública de Sprint 2. | Artefacto HTML5/CSS3/JavaScript identificable, revisión de enlaces legales y comportamiento responsive observado. |
 | Internacionalización y accesibilidad | `TS-MOB-010` cubre i18n y accesibilidad para clientes Mobile; la Landing aplica sus equivalentes web. | Recursos `en_US` y `es_419`, revisión de foco/contraste/tamaño táctil y, para web, semántica y ARIA. |
 | Ética y comunicación legal | `LAND-US-004` organiza información comercial, preguntas frecuentes y enlaces legales. | Términos, condiciones y referencias éticas revisadas en el artefacto correspondiente. |
-| Videos de exposición | [Anexo H: Videos de Exposiciones](../annex-h-videos-de-exposiciones.md) registra el estado de la evidencia audiovisual. | Archivo o enlace autorizado, descripción, fecha, duración y evidencia de la entrega correspondiente. |
+| Videos de exposición | Anexo H: Videos de Exposiciones registra el estado de la evidencia audiovisual. | Archivo o enlace autorizado, descripción, fecha, duración y evidencia de la entrega correspondiente. |

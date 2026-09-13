@@ -39,8 +39,7 @@ Pre-AV1 academic hardening release for the Nexa Mobile Report.
 
 - Reconciled interview design, Buyer evidence (`n = 2`), functional-story
   catalog counts (73 Mobile + 6 Landing Page), and four-Sprint planning.
-- Clarified Landing Page consideration from Sprint 1 while preserving its
-  committed implementation in Sprint 2.
+- Scheduled Landing Page work in Sprint 2.
 - Refined Ubiquitous Language, EventStorming, tactical DDD, diagram labels,
   academic wording, citations, and bibliographic classification links.
 
@@ -140,7 +139,7 @@ Academic-structure correction for Nexa Mobile Report.
 - Structured Chapter IV Sprint 1 planning and backlog as planning evidence,
   keeping implementation, testing, execution, service, and deployment claims
   separate from unavailable evidence.
-- Normalized public front matter, conclusions, glossary, bibliography, annexes,
+- Normalized public front matter, final chapter, glossary, bibliography, annexes,
   and the repository entry point.
 
 ### Removed

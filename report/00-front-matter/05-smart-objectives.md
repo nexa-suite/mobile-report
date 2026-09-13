@@ -81,7 +81,7 @@ producto sobre sistemas de software complejos.
 ### Área de interés profesional
 
 Sebastián proyecta su desarrollo profesional hacia **Software Architecture**,
-buscando evolucionar desde la implementación y análisis de requerimientos hacia
+buscando evolucionar desde la implementación y análisis de requisitos hacia
 la capacidad de diseñar, justificar y evaluar estructuras de software que puedan
 mantenerse y evolucionar de manera sostenible.
 
@@ -272,7 +272,7 @@ decisiones y trade-offs explicados para lectores técnicos y de negocio.
 
 Durante los **18 meses posteriores a la culminación del pregrado**, diseñar y
 publicar un portafolio de al menos **tres casos de análisis y modelado de
-software**, cada uno con requerimientos, modelo de dominio o sistema, decisiones
+software**, cada uno con requisitos, modelo de dominio o sistema, decisiones
 técnicas, trade-offs y una explicación destinada a lectores técnicos y no
 técnicos. Dedicará al menos **5 horas semanales** a construcción, revisión y
 comunicación de los casos.

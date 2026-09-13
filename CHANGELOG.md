@@ -2,6 +2,33 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.4.0] - 2026-09-13
+
+Content consistency release for the Nexa Mobile Report.
+
+### Fixed
+
+- Aligned the Carlos Mendoza Impact Mapping narrative with the four selected
+  Buyer stories.
+- Clarified the B2B Buyers traceability segment without changing the Product
+  Backlog or Sprint allocation.
+- Corrected onboarding actors, inventory terminology, payment terminology and
+  modeled EventStorming language.
+- Preserved reproducible Mermaid sources for the five Domain Stories and
+  refreshed the onboarding render.
+- Removed stale counts and historical-site wording from Chapter III.
+
+### Changed
+
+- Kept UXPressia research and exported assets as evidence boundaries; no
+  prototype, validation result or implementation is inferred from them.
+- Kept the Product Backlog at 97 elements, 426 SP and four academic Sprints.
+
+### Validation
+
+- Validated Markdown whitespace, Mermaid source/render syntax, SVG/XML and
+  signed feature-branch commits.
+
 ## [0.3.1] - 2026-09-13
 
 Planning reconciliation release for the Nexa Mobile Report.

@@ -26,7 +26,7 @@ nexa-team
 
 **Producto**
 
-Nexa Suite
+Nexa
 
 ### Integrantes
 

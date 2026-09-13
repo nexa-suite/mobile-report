@@ -34,13 +34,13 @@ capacidades. `Tenant` no es `Workspace`; `HumanIdentity` no es
 #### 2.6.1.1. Domain Layer
 
 *Agregados y límites invariantes de BC-01.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `Tenant` | Lifecycle and isolation policy; one active Workspace and one active Company Owner in initial scope |
-| `HumanIdentity` | Global person identity; never duplicated per Tenant |
-| `WorkforceMembership` | Tenant/workspace participation, status and capability context |
-| `RoleDefinition` | Role lifecycle and capability assignment |
-| `CompanyOnboardingRequest` | Intake and activation handoff; no access before Tenant lifecycle gate |
+| `Tenant` | Política de ciclo de vida y aislamiento; un Workspace activo y un Company Owner activo en el alcance inicial |
+| `HumanIdentity` | Identidad global de persona; nunca se duplica por Tenant |
+| `WorkforceMembership` | Participación en Tenant y Workspace, estado y contexto de capacidades |
+| `RoleDefinition` | Ciclo de vida de Role y asignación de capacidades |
+| `CompanyOnboardingRequest` | Registro inicial y handoff de activación; sin acceso antes de la compuerta de ciclo de vida Tenant |
 
 `Workspace` es una entidad propiedad de Tenant con identidad propia. Los value
 objects son `TenantId`, `WorkspaceId`, `MembershipId`, `CompanyInformation`,
@@ -71,7 +71,7 @@ hecho durable mediante outbox; aquí no se infiere un nuevo evento publicado.
 
 La Infrastructure Layer organiza la persistencia lógica en PostgreSQL compartido: `tenant`, `workspace`,
 `human_identity`, `company_onboarding_request`, `workforce_membership`,
-`role_definition`, `capability_definition`, `membership_role` and
+`role_definition`, `capability_definition`, `membership_role` y
 `membership_capability_override`, con alcance Tenant y restricciones definidos
 por el SQL canónico. Los Repository y adapters de autorización delimitan
 propiedad lógica, no bases de datos separadas. Object Storage y Mobile no son

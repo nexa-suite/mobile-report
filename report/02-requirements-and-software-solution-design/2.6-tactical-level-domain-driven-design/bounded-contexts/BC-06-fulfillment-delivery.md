@@ -8,12 +8,12 @@ permanecen como hechos separados.
 #### 2.6.6.1. Domain Layer
 
 *Agregados y límites invariantes de BC-06.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `Fulfillment` | Sales Order execution plan and picking/packing progression |
-| `Delivery` | Delivery obligation, assignment, attempts and remaining quantity |
-| `ProofOfDelivery` | Immutable delivery evidence; corrections are addenda |
-| `TemperatureEvidence` | Manual reading/evidence and excursion decision input |
+| `Fulfillment` | Plan de ejecución de Sales Order y progresión de picking y packing |
+| `Delivery` | Obligación de Delivery, asignación, intentos y cantidad restante |
+| `ProofOfDelivery` | Evidencia inmutable de entrega; las correcciones son adendas |
+| `TemperatureEvidence` | Lectura o evidencia manual e insumo para decidir una excursión |
 
 `FulfillmentLine`, `PickingResult`, `PickingDiscrepancy`, `DeliveryAssignment`,
 `DeliveryAttempt`, `DeliveryQuantityOutcome`, `DeliveryHandoffToken`,

@@ -7,20 +7,21 @@ Backing y Physical Allocation. Safety Stock es una política, no una reserva.
 #### 2.6.5.1. Domain Layer
 
 *Agregados y límites invariantes de BC-05.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `InventoryPosition` | SKU + Warehouse quantity authority and sellable inputs |
-| `InventoryLot` | Lot, expiry, disposition and physical quantity |
-| `InventoryReservation` | Inventory-owned protection of Commercial Commitment demand; it does not select a Lot |
-| `WarehouseBacking` | Deterministic distribution of an Inventory Reservation across eligible Warehouses |
-| `PhysicalAllocation` | Selects lot quantities for a Fulfillment contract |
-| `WarehouseTransfer` | Explicit `REQUESTED -> IN_TRANSIT -> RECEIVED` movement |
+| `InventoryPosition` | Autoridad sobre cantidad por SKU y Warehouse, e insumos vendibles |
+| `InventoryLot` | Lote, vencimiento, disposición y cantidad física |
+| `InventoryReservation` | Protección de demanda de Commercial Commitment propiedad de Inventory; no selecciona un Lot |
+| `WarehouseBacking` | Distribución determinista de una Inventory Reservation entre Warehouse elegibles |
+| `PhysicalAllocation` | Selecciona cantidades de lote para un contrato de Fulfillment |
+| `WarehouseTransfer` | Movimiento explícito `REQUESTED -> IN_TRANSIT -> RECEIVED` |
 
-`Warehouse`, `SafetyStockPolicy`, `InventoryMovement`, `LotDisposition`,
-`PhysicalAllocationLine` and adjustment/count facts support the roots. Value
-objects include `SkuId`, `WarehouseId`, `LotId`, `Quantity`, `ExpiryDate` and
-`Disposition`; policies include `SellableAvailabilityPolicy` and
-`FEFOAllocationPolicy`. Movement/adjustment facts are append-only.
+`Warehouse`, `SafetyStockPolicy`, `InventoryMovement`, `LotDisposition` y
+`PhysicalAllocationLine`, junto con los hechos de ajuste y conteo, respaldan
+las raíces. Los Value Objects incluyen `SkuId`, `WarehouseId`, `LotId`,
+`Quantity`, `ExpiryDate` y `Disposition`; las políticas incluyen
+`SellableAvailabilityPolicy` y `FEFOAllocationPolicy`. Los hechos de movimiento
+y ajuste son append-only.
 
 Invariante de diseño: Sellable Availability = usable on-hand − active Inventory
 Reservations − Safety Stock, con cada reserva contada una sola vez. Warehouse

@@ -7,12 +7,12 @@ Object Storage. No posee la autoridad de Sales, Payment, Delivery ni fiscal.
 #### 2.6.9.1. Domain Layer
 
 *Agregados y límites invariantes de BC-09.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `BusinessDocument` | Requested/issued/replaced snapshot and availability metadata |
-| `DocumentNumberSeries` | Scoped numbering allocation |
-| `DocumentGenerationRequest` | Retryable generation intent with idempotency/lease |
-| `ObjectStorageReference` | Metadata for private bytes outside PostgreSQL |
+| `BusinessDocument` | Snapshot solicitado, emitido o reemplazado y metadatos de disponibilidad |
+| `DocumentNumberSeries` | Asignación de numeración con alcance definido |
+| `DocumentGenerationRequest` | Intención de generación reintentable con idempotencia y lease |
+| `ObjectStorageReference` | Metadatos para bytes privados fuera de PostgreSQL |
 
 `DocumentSnapshotLine`, `DocumentRevision` y `EvidenceReference` preservan el
 historial inmutable. Los Value Objects incluyen `DocumentId`, `DocumentNumber`,

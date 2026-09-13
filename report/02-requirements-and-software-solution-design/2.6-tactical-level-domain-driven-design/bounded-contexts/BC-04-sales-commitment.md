@@ -7,12 +7,12 @@ Warehouse Backing y Physical Allocation son hechos y autoridades distintos.
 #### 2.6.4.1. Domain Layer
 
 *Agregados y límites invariantes de BC-04.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `RequestDraft` | Editable intent; creates no commitment or reservation |
-| `PurchaseRequest` | Submitted all-or-nothing intent with expiry and immutable snapshots |
-| `CommercialCommitment` | Warehouse-neutral SKU demand with one explicit origin |
-| `SalesOrder` | Confirmed commercial roll-up and lifecycle; no draft SO in initial scope |
+| `RequestDraft` | Intención editable; no crea compromiso ni reserva |
+| `PurchaseRequest` | Intención enviada de todo o nada con vencimiento y snapshots inmutables |
+| `CommercialCommitment` | Demanda de SKU independiente de Warehouse con un origen explícito |
+| `SalesOrder` | Consolidación comercial y ciclo de vida confirmados; sin SO en borrador en el alcance inicial |
 
 `RequestDraftLine`, `PurchaseRequestLine`, `CommitmentLine`,
 `MaterialChangeProposal`, `CommercialSnapshot` y los hechos de ajuste

@@ -8,11 +8,11 @@ Workforce Membership.
 #### 2.6.2.1. Domain Layer
 
 *Agregados y límites invariantes de BC-02.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `CustomerAccount` | Account, contacts and addresses for a supplier Tenant |
-| `BuyerRelationship` | Invitation, approval, suspension and revocation for one supplier Tenant |
-| `BuyerRelationshipHistory` | Immutable lifecycle facts, not a mutable child graph |
+| `CustomerAccount` | Cuenta, contactos y direcciones de un Tenant proveedor |
+| `BuyerRelationship` | Invitación, aprobación, suspensión y revocación para un Tenant proveedor |
+| `BuyerRelationshipHistory` | Hechos inmutables de ciclo de vida, no un grafo hijo mutable |
 
 `CustomerContact` y `CustomerAddress` componen CustomerAccount.
 `ContactInformation`, `Address`, `CustomerAccountId`, `RelationshipId`,
@@ -41,7 +41,7 @@ comprometidos pueden llegar a BC-11 mediante outbox.
 #### 2.6.2.4. Infrastructure Layer
 
 La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `customer_account`,
-`customer_contact`, `customer_address`, `buyer_relationship` and
+`customer_contact`, `customer_address`, `buyer_relationship` y
 `buyer_relationship_history`. Las foreign keys hacia Tenant, Workspace y Human
 Identity son referencias estables; no se infiere un grafo de Aggregate
 inter-BC ni escritura directa en tablas de BC-01. Los predicados RLS/Tenant

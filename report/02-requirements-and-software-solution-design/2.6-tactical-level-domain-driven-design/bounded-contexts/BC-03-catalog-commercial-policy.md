@@ -7,15 +7,15 @@ objetos Product.
 #### 2.6.3.1. Domain Layer
 
 *Agregados y límites invariantes de BC-03.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `Product` | Merchandising identity and lifecycle; media/SKU references stay bounded |
-| `SKU` | Independently addressable sellable identity, packaging and cold-chain policy |
-| `PriceList` | Effective price items and validity windows |
-| `CustomerTerms` | Terms eligibility for a referenced Customer Account |
-| `Promotion` | One eligible transformation; promotions do not stack |
+| `Product` | Identidad y ciclo de vida comercial; las referencias a media y SKU permanecen acotadas |
+| `SKU` | Identidad vendible direccionable de forma independiente, empaque y política de cadena de frío |
+| `PriceList` | Ítems de precio efectivo e intervalos de vigencia |
+| `CustomerTerms` | Elegibilidad de términos para un Customer Account referenciado |
+| `Promotion` | Una transformación elegible; las promociones no se acumulan |
 
-Los value objects de diseño incluyen `Money`, `Currency`, `SkuId`, `Visibility`,
+Los Value Objects de diseño incluyen `Money`, `Currency`, `SkuId`, `Visibility`,
 `CommercialSnapshot` y `ColdChainRequirement`. `PriceResolver`,
 `OfferResolutionPolicy` y `PromotionStackingPolicy` son límites de políticas de
 dominio; `ProductRepository` y `SkuRepository` poseen sólo los roots de este

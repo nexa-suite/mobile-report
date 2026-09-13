@@ -7,11 +7,11 @@ no equivale a Payment Confirmed.
 #### 2.6.8.1. Domain Layer
 
 *Agregados y límites invariantes de BC-08.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `Payment` | Intent/report/confirmation lifecycle and immutable monetary facts |
-| `PaymentProviderEvent` | Verified callback identity and preserved payload metadata |
-| `PaymentReconciliationCase` | Provider success/local failure or uncertain outcome |
+| `Payment` | Ciclo de vida de intent, reporte y confirmación, y hechos monetarios inmutables |
+| `PaymentProviderEvent` | Identidad verificada de callback y metadatos preservados del payload |
+| `PaymentReconciliationCase` | Éxito del proveedor con fallo local o resultado incierto |
 
 `PaymentAttempt`, `PaymentRefund` y `PaymentCorrection` son hechos propiedad de
 Payment. Los Value Objects incluyen `PaymentId`, `ProviderReference`, `Money` y

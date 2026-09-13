@@ -19,7 +19,7 @@ servicios de dominio son `TraceabilityProjectionPolicy` y
 `SensitivePayloadPolicy`. `BusinessFactRepository` sólo admite append/query.
 Las correcciones agregan hechos nuevos; no reescriben el historial.
 
-Invariantes de diseño: los records tienen alcance Tenant y son append-only; las
+Invariantes de diseño: los registros tienen alcance Tenant y son append-only; las
 transiciones significativas conservan actor, momento, motivo, correlación y
 evidencia cuando corresponde; el fallo de una proyección es reproducible y no
 revierte el commit de origen; Security Audit mantiene su autoridad y retención
@@ -35,9 +35,10 @@ inferir autoridad a partir de una proyección de línea de tiempo.
 
 #### 2.6.11.3. Application Layer
 
-La Application Layer valida el scope, normaliza metadatos seguros, agrega hechos
+La Application Layer valida el alcance, normaliza metadatos seguros, agrega hechos
 de origen, ingiere hechos de outbox/inbox y construye líneas de tiempo
-autorizadas. Dedupe/replay mantiene visible la propagación al menos una vez. Los
+autorizadas. La deduplicación y reproducción mantienen visible la propagación al
+menos una vez. Los
 metadatos sensibles pueden redactarse o ponerse en cuarentena; Business
 Traceability no se convierte en un almacén general de eventos.
 

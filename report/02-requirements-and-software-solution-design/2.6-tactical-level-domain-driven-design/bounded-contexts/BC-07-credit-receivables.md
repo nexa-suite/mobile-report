@@ -7,12 +7,12 @@ un Receivable.
 #### 2.6.7.1. Domain Layer
 
 *Agregados y límites invariantes de BC-07.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `CreditAccount` | Limit, exposure and reservation policy for one Customer Account |
-| `CreditReservation` | Active protection for one commercial source; released/converted once |
-| `Receivable` | Posted obligation, balance and due state |
-| `FinancialAdjustment` | Explicit correction with reason and actor |
+| `CreditAccount` | Límite, exposición y política de reserva para un Customer Account |
+| `CreditReservation` | Protección activa de una fuente comercial; se libera o convierte una sola vez |
+| `Receivable` | Obligación registrada, saldo y estado de vencimiento |
+| `FinancialAdjustment` | Corrección explícita con motivo y actor |
 
 `ReceivableApplication` pertenece a la autoridad financiera y referencia
 Payment por ID. Los Value Objects incluyen `CreditAmount`, `AvailableCredit`,

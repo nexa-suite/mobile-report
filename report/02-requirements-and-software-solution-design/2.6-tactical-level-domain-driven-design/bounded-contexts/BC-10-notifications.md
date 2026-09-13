@@ -8,12 +8,12 @@ una proyección, no un BC Mobile.
 #### 2.6.10.1. Domain Layer
 
 *Agregados y límites invariantes de BC-10.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `Notification` | Intent, recipient/channel selection and lifecycle |
-| `NotificationTemplate` | Versioned channel template/content policy |
-| `NotificationPreference` | Recipient/channel preference and suppression |
-| `PushSubscription` | Recipient/device delivery record, not a Mobile aggregate |
+| `Notification` | Intent, selección de destinatario y canal, y ciclo de vida |
+| `NotificationTemplate` | Política versionada de template y contenido por canal |
+| `NotificationPreference` | Preferencia y supresión por destinatario y canal |
+| `PushSubscription` | Registro de entrega por destinatario y dispositivo, no un Aggregate Mobile |
 
 `NotificationRecipient` y `NotificationAttempt` son hechos propiedad de
 Notifications. Los Value Objects incluyen `NotificationId`, `TemplateKey`,

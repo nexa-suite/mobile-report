@@ -2,6 +2,28 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.3.1] - 2026-09-13
+
+Planning reconciliation release for the Nexa Mobile Report.
+
+### Fixed
+
+- Replaced separate backlog classifications with one Product Backlog.
+- Assigned every backlog element to exactly one of the four academic Sprints.
+- Aligned the Chapter II backlog and Chapter IV Sprint Planning totals.
+
+### Changed
+
+- Kept Sprint 1 as a small access-and-Warehouse increment and kept Landing
+  Page implementation in Sprint 2.
+- Preserved the existing Chapter II publication history while integrating its
+  completed corrections into the release line.
+
+### Validation
+
+- Checked backlog identifiers, element types, Sprint allocation, story points,
+  Markdown whitespace, report links and signed Git history.
+
 ## [0.3.0] - 2026-09-11
 
 Pre-AV1 academic hardening release for the Nexa Mobile Report.
@@ -16,7 +38,7 @@ Pre-AV1 academic hardening release for the Nexa Mobile Report.
 ### Changed
 
 - Reconciled interview design, Buyer evidence (`n = 2`), functional-story
-  catalog counts (73 Mobile + 6 Landing Page), and four-Sprint commitment.
+  catalog counts (73 Mobile + 6 Landing Page), and four-Sprint planning.
 - Clarified Landing Page consideration from Sprint 1 while preserving its
   committed implementation in Sprint 2.
 - Refined Ubiquitous Language, EventStorming, tactical DDD, diagram labels,

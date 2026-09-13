@@ -1,50 +1,51 @@
 ### 2.6.2. Bounded Context: Customer & Buyer Relationships
 
-This context owns supplier-Tenant customer accounts, contacts, addresses and
-Buyer Relationship lifecycle. Customer Account may exist without Portal
-identity; Buyer Relationship is not Human Identity or Workforce Membership.
+Este contexto posee cuentas de cliente, contactos, direcciones y el ciclo de
+vida de Buyer Relationship para cada supplier-Tenant. Customer Account puede
+existir sin identidad Portal; Buyer Relationship no es Human Identity ni
+Workforce Membership.
 
 #### 2.6.2.1. Domain Layer
 
 *Agregados y límites invariantes de BC-02.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `CustomerAccount` | Account, contacts and addresses for a supplier Tenant |
-| `BuyerRelationship` | Invitation, approval, suspension and revocation for one supplier Tenant |
-| `BuyerRelationshipHistory` | Immutable lifecycle facts, not a mutable child graph |
+| `CustomerAccount` | Cuenta, contactos y direcciones de un Tenant proveedor |
+| `BuyerRelationship` | Invitación, aprobación, suspensión y revocación para un Tenant proveedor |
+| `BuyerRelationshipHistory` | Hechos inmutables de ciclo de vida, no un grafo hijo mutable |
 
-`CustomerContact` and `CustomerAddress` compose into CustomerAccount.
+`CustomerContact` y `CustomerAddress` componen CustomerAccount.
 `ContactInformation`, `Address`, `CustomerAccountId`, `RelationshipId`,
-`SupplierTenantId` and `RelationshipStatus` are value objects/types of the model.
-`BuyerEligibilityPolicy` evaluates status and Tenant scope. Repositories are
-`CustomerAccountRepository` and `BuyerRelationshipRepository`. The accepted scope allows one
-active principal Buyer Identity per Customer Account and preserves lifecycle
-history.
+`SupplierTenantId` y `RelationshipStatus` son value objects/tipos del modelo.
+`BuyerEligibilityPolicy` evalúa estado y alcance Tenant. Los Repository son
+`CustomerAccountRepository` y `BuyerRelationshipRepository`. El alcance actual
+permite una Buyer Identity principal activa por Customer Account y preserva el
+historial de ciclo de vida.
 
 #### 2.6.2.2. Interface Layer
 
-La Interface Layer expone comandos y consultas versionados de cuenta, dirección y
-Buyer Relationship. The exact URI is not invented. Authorization
-comes from BC-01; Sales Commitment revalidates relationship eligibility when a
-purchase is submitted. Portal/Mobile read projections cannot authorize by
-themselves.
+La Interface Layer expone Command y consultas versionadas de cuenta, dirección
+y Buyer Relationship. No se inventa la URI exacta. La autorización proviene de
+BC-01; Sales Commitment revalida elegibilidad de relación al enviar una compra.
+Las proyecciones de lectura Portal/Mobile no pueden autorizar por sí mismas.
 
 #### 2.6.2.3. Application Layer
 
 La Application Layer crea cuentas, mantiene datos de contacto y dirección,
-aprueba o suspende relaciones y vincula una identidad principal por referencia. Account and
-relationship transitions are separate local consistency boundaries. Commands
-carry idempotency/version semantics where retries or stale relationship state
-could duplicate approval; committed facts may reach BC-11 through outbox.
+aprueba o suspende relaciones y vincula una identidad principal por referencia.
+Las transiciones de Account y Relationship son límites locales de consistencia
+separados. Los Command llevan semántica de idempotency/version cuando reintentos
+o estado obsoleto de relación podrían duplicar una aprobación; los hechos
+comprometidos pueden llegar a BC-11 mediante outbox.
 
 #### 2.6.2.4. Infrastructure Layer
 
 La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `customer_account`,
-`customer_contact`, `customer_address`, `buyer_relationship` and
-`buyer_relationship_history`. Foreign keys to Tenant, Workspace and Human
-Identity are stable references; no cross-BC aggregate graph or direct write to
-BC-01 tables is implied. RLS/tenant predicates remain required where supported
-by the canonical SQL.
+`customer_contact`, `customer_address`, `buyer_relationship` y
+`buyer_relationship_history`. Las foreign keys hacia Tenant, Workspace y Human
+Identity son referencias estables; no se infiere un grafo de Aggregate
+inter-BC ni escritura directa en tablas de BC-01. Los predicados RLS/Tenant
+siguen siendo necesarios donde los soporte el SQL canónico.
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 

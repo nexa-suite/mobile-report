@@ -4,7 +4,7 @@
 
 # nexa-mobile-report
 
-**Academic report and delivery evidence for the Nexa mobile planning runway.**
+**Academic report and delivery evidence for Nexa Mobile.**
 
 [![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=for-the-badge&logo=markdown&logoColor=white)](./report)
 [![Git](https://img.shields.io/badge/Git-Academic%20history-F05032?style=for-the-badge&logo=git&logoColor=white)](./report/04-product-implementation-and-validation/4.1-software-configuration-management/4.1.2-source-code-management.md)
@@ -28,8 +28,8 @@ flow:
 
 1. **Accepted product, domain, architecture, and design decisions** define
    scope and semantics.
-2. **Mobile** provides the current mobile planning runway; it is not evidence
-   of a completed native client.
+2. **Mobile** provides planned B2B field experiences; it is not evidence of a
+   completed native client.
 3. **Mobile Report** organizes academic chapters, source materials, evidence
    boundaries, and export assets.
 4. **API** provides business and integration-contract context.
@@ -58,9 +58,9 @@ study exists.
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Documentation and planning runway for future B2B buyer and operational field
-experiences, with cold-chain specialization. No mobile application framework is
-established by this report.
+Documentation for planned B2B buyer and operational field experiences, with
+cold-chain specialization. No mobile application framework is established by
+this report.
 
 [Open Repository](https://github.com/nexa-suite/mobile)
 
@@ -72,7 +72,7 @@ established by this report.
 ### [Nexa Mobile Report](https://github.com/nexa-suite/mobile-report)
 
 Academic report, evidence boundaries, source materials, and reproducible PDF
-export for the mobile planning runway.
+export for Mobile planning.
 
 [Open Repository](https://github.com/nexa-suite/mobile-report)
 
@@ -154,9 +154,9 @@ git diff --check
 NEXA_REPORT_EXPORT_MODE=native bash scripts/export-report-pdf.sh
 ```
 
-Review the current report, release notes, and canonical Blueprint before
-changing product, domain, or architecture wording. A generated PDF requires
-visual review before it is used as a submission artifact.
+Review the current report, release notes, and accepted product, domain,
+architecture, and design decisions before changing semantic wording. A generated
+PDF requires visual review before it is used as a submission artifact.
 
 ## Project Structure
 
@@ -185,7 +185,7 @@ README.md
   evidence.
 - Accepted product, domain, architecture, and design decisions own Nexa
   semantics; the report does not redefine them.
-- Mobile owns the client-planning runway.
+- Mobile maintains the client planning context.
 - API owns business and integration contracts referenced by the report.
 - Product surfaces provide visual or technical evidence only when the report
   cites a verifiable source.
@@ -199,7 +199,6 @@ README.md
 - [Changelog](./CHANGELOG.md)
 - [Mobile repository](https://github.com/nexa-suite/mobile)
 - [API contracts](https://github.com/nexa-suite/api/tree/main/docs/openapi)
-- [Canonical Blueprint](https://github.com/nexa-suite/blueprint)
 
 ## v0.3.1 Academic baseline
 

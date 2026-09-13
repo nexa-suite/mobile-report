@@ -1,48 +1,50 @@
 ### 2.6.6. Bounded Context: Fulfillment & Delivery
 
-This Core Domain context owns execution plans, dispatch handoff, delivery
-attempts, quantity outcomes, receipt and delivery evidence. Driver outcome,
-Buyer receipt, Proof of Delivery and Business Traceability remain separate
-facts.
+Este contexto de Core Domain posee planes de ejecución, dispatch handoff,
+delivery attempts, resultados de cantidad, recepción y evidencia de entrega.
+Driver Outcome, Buyer Receipt, Proof of Delivery y Business Traceability
+permanecen como hechos separados.
 
 #### 2.6.6.1. Domain Layer
 
 *Agregados y límites invariantes de BC-06.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `Fulfillment` | Sales Order execution plan and picking/packing progression |
-| `Delivery` | Delivery obligation, assignment, attempts and remaining quantity |
-| `ProofOfDelivery` | Immutable delivery evidence; corrections are addenda |
-| `TemperatureEvidence` | Manual reading/evidence and excursion decision input |
+| `Fulfillment` | Plan de ejecución de Sales Order y progresión de picking y packing |
+| `Delivery` | Obligación de Delivery, asignación, intentos y cantidad restante |
+| `ProofOfDelivery` | Evidencia inmutable de entrega; las correcciones son adendas |
+| `TemperatureEvidence` | Lectura o evidencia manual e insumo para decidir una excursión |
 
 `FulfillmentLine`, `PickingResult`, `PickingDiscrepancy`, `DeliveryAssignment`,
 `DeliveryAttempt`, `DeliveryQuantityOutcome`, `DeliveryHandoffToken`,
-`BuyerReceiptFact`, `ProofOfDeliveryAddendum`, `TemperatureExcursion` and
-`ContinuationDelivery` are entities/facts with bounded lifecycles. Value
-objects include `DeliveryId`, `HandoffId`, `AttemptId`, `EvidenceRef`,
-`GeoPoint` and `DeliveryQuantity`; policies include `PartialDeliveryPolicy`
-and `DeliveryLocationPrivacyPolicy`.
+`BuyerReceiptFact`, `ProofOfDeliveryAddendum`, `TemperatureExcursion` y
+`ContinuationDelivery` son Entity/hechos con ciclos de vida acotados. Los value
+objects incluyen `DeliveryId`, `HandoffId`, `AttemptId`, `EvidenceRef`,
+`GeoPoint` y `DeliveryQuantity`; las políticas incluyen
+`PartialDeliveryPolicy` y `DeliveryLocationPrivacyPolicy`.
 
-Invariantes de diseño: allocation authority stays BC-05; failed attempts remain
-under one Delivery; partial delivery records actual delivered/rejected truth
-and creates one continuation for remaining obligation; POD is immutable and
-corrected by addendum; temperature evidence is manual in the initial scope and excursion places
-affected quantity on HOLD pending explicit disposition.
+Invariantes de diseño: la autoridad de Allocation permanece en BC-05; los
+intentos fallidos permanecen bajo una Delivery; una entrega parcial registra la
+verdad entregada o rechazada y crea una sola continuación para la obligación
+restante; POD es inmutable y se corrige mediante addendum; la evidencia de
+temperatura es manual en el alcance inicial y una excursión coloca la cantidad
+afectada en HOLD hasta una disposición explícita.
 
 #### 2.6.6.2. Interface Layer
 
-La Interface Layer cubre fulfillment planning, picking result, dispatch handoff,
-assignment, delivery attempt, outcome, buyer receipt, POD and temperature
-evidence. Exact URI/DTO names are not invented. The server authorizes every
-critical transition; Operations Mobile and Buyer Mobile are planned projections.
+La Interface Layer cubre planificación de fulfillment, resultado de picking,
+dispatch handoff, assignment, delivery attempt, outcome, Buyer Receipt, POD y
+evidencia de temperatura. No se inventan nombres URI/DTO exactos. El servidor
+autoriza toda transición crítica; Operations Mobile y Buyer Mobile son
+proyecciones planificadas.
 
 #### 2.6.6.3. Application Layer
 
-La Application Layer coordina inicio, finalización o cancelación del fulfillment,
+La Application Layer coordina inicio, finalización o cancelación de fulfillment,
 emisión y resolución de handoff, asignación e intento de entrega, continuidad
-parcial, recepción y registro de evidencia. Idempotency, tenant scope, immutable evidence metadata
-and conflict outcomes are explicit. Durable outbox/inbox supports downstream
-notifications and traceability after commit.
+parcial, recepción y registro de evidencia. Idempotency, alcance Tenant,
+metadatos de evidencia inmutables y resultados de conflicto son explícitos. Un
+outbox/inbox durable apoya notificaciones y trazabilidad posteriores al commit.
 
 #### 2.6.6.4. Infrastructure Layer
 
@@ -51,9 +53,10 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 `delivery_attempt`, `delivery_attempt_line`, `delivery_quantity_outcome`,
 `delivery_handoff_token`, `buyer_receipt_fact`, `proof_of_delivery`,
 `proof_of_delivery_addendum`, `temperature_evidence`,
-`temperature_excursion` and `continuation_delivery`. `sales_order_id`,
-`physical_allocation_id` and SKU/operator IDs are non-owning cross-BC refs.
-Object bytes use BC-09/Object Storage ports; no public URL is inferred.
+`temperature_excursion` y `continuation_delivery`. `sales_order_id`,
+`physical_allocation_id` e IDs de SKU/operator son referencias inter-BC sin
+propiedad. Los bytes de Object usan ports de BC-09/Object Storage; no se
+infiere una URL pública.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 

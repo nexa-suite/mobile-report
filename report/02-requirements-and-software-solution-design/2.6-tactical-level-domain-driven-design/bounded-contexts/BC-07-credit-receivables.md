@@ -1,53 +1,57 @@
 ### 2.6.7. Bounded Context: Credit & Receivables
 
-This context owns credit exposure, reservation and Receivable authority.
-Payment is a separate context; Payment Confirmed is not a Receivable.
+Este contexto posee la autoridad sobre la exposición crediticia, las reservas y
+los Receivable. Payment es un contexto separado; Payment Confirmed no constituye
+un Receivable.
 
 #### 2.6.7.1. Domain Layer
 
 *Agregados y límites invariantes de BC-07.*
-| Aggregate/root | Boundary and invariant |
+| Aggregate/raíz | Límite e invariante |
 | :--- | :--- |
-| `CreditAccount` | Limit, exposure and reservation policy for one Customer Account |
-| `CreditReservation` | Active protection for one commercial source; released/converted once |
-| `Receivable` | Posted obligation, balance and due state |
-| `FinancialAdjustment` | Explicit correction with reason and actor |
+| `CreditAccount` | Límite, exposición y política de reserva para un Customer Account |
+| `CreditReservation` | Protección activa de una fuente comercial; se libera o convierte una sola vez |
+| `Receivable` | Obligación registrada, saldo y estado de vencimiento |
+| `FinancialAdjustment` | Corrección explícita con motivo y actor |
 
-`ReceivableApplication` belongs to financial authority and references Payment
-by ID. Value objects include `CreditAmount`, `AvailableCredit`, `Terms` and
-`AdjustmentReason`; policies include `CreditDecisionPolicy` and
-`DoubleCountPreventionPolicy`. Repositories own CreditAccount and Receivable
-roots.
+`ReceivableApplication` pertenece a la autoridad financiera y referencia
+Payment por ID. Los Value Objects incluyen `CreditAmount`, `AvailableCredit`,
+`Terms` y `AdjustmentReason`; las políticas incluyen `CreditDecisionPolicy` y
+`DoubleCountPreventionPolicy`. Los Repository poseen las raíces CreditAccount y
+Receivable.
 
 Invariante de diseño: Available Credit = Credit Limit − Active Credit Reservations
-− Outstanding Receivable Balances. Credit purchase reserves at PR submission;
-direct order reserves in the same logical confirmation; credit/net Receivable
-posts at SO confirmation. Applications cannot over-apply or double-apply;
-corrections preserve original facts. Buyer sees safe projections, not internal
-risk policy.
+− Outstanding Receivable Balances. La compra a crédito reserva al enviar la PR;
+el pedido directo reserva en la misma confirmación lógica; el Receivable de
+crédito o neto se registra al confirmar la SO. Las aplicaciones no pueden
+aplicar montos por encima del saldo ni duplicarlos; las correcciones preservan
+los hechos originales. Buyer recibe proyecciones seguras, no la política interna
+de riesgo.
 
 #### 2.6.7.2. Interface Layer
 
-La Interface Layer cubre credit exposure, reservation, receivable posting,
-payment application and explicit financial adjustment. Exact routes and DTOs
-remain unclaimed where absent from API evidence. Capability authorization and
-Tenant scope are server-side; external payment provider data enters through
-BC-08 contracts.
+La Interface Layer cubre la exposición crediticia, la reserva, el registro de
+Receivable, la aplicación de Payment y el ajuste financiero explícito. No se
+declaran rutas ni DTOs exactos cuando no existe evidencia de API. La autorización
+por capacidad y el alcance Tenant se resuelven del lado del servidor; los datos
+del proveedor externo de pagos ingresan mediante contratos de BC-08.
 
 #### 2.6.7.3. Application Layer
 
 La Application Layer evalúa y reserva crédito, registra Receivable, aplica o
-revierte referencias de Payment y registra ajustes. Application boundaries coordinate BC-08
-without a cross-context aggregate. Idempotency and concurrency protect last
-credit; committed facts feed documents/notifications/traceability after commit.
+revierte referencias de Payment y registra ajustes. Los límites de Application
+coordinan BC-08 sin un Aggregate entre contextos. La idempotencia y la
+concurrencia protegen el último crédito; los hechos confirmados alimentan
+documentos, notificaciones y trazabilidad después del commit.
 
 #### 2.6.7.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `credit_account`,
-`credit_reservation`, `receivable`, `receivable_application`,
-`financial_adjustment` and `financial_ledger_entry`. Payment and Sales Order
-identifiers are non-owning references. Tenant predicates, monetary checks and
-history rules remain in canonical SQL; no physical BC database is asserted.
+La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
+sobre `credit_account`, `credit_reservation`, `receivable`,
+`receivable_application`, `financial_adjustment` y `financial_ledger_entry`.
+Los identificadores de Payment y Sales Order son referencias sin propiedad. Los
+predicados Tenant, las validaciones monetarias y las reglas de historial se
+mantienen en SQL canónico; no se afirma una base de datos física por BC.
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 

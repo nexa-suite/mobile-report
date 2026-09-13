@@ -1,49 +1,55 @@
 ### 2.6.11. Bounded Context: Business Traceability
 
-This supporting context owns append-only business facts and evidence references;
-source BCs retain aggregate authority. Business Traceability is not Security
-Audit, Notification or a reconstruction of source aggregates.
+Este contexto de apoyo posee los hechos de negocio append-only y las referencias
+de evidencia; los BC de origen mantienen la autoridad de sus Aggregate. Business
+Traceability no es Security Audit, Notification ni una reconstrucción de los
+Aggregate de origen.
 
 #### 2.6.11.1. Domain Layer
 
-`BusinessTraceabilityRecord` is a lightweight append-only aggregate/root. It
-stores Tenant/optional Workspace, event type, subject reference, actor, time,
-reason, correlation and safe evidence metadata. `TraceabilityEvidenceReference`
-is a child fact; Object Storage bytes remain external.
+`BusinessTraceabilityRecord` es un Aggregate/root liviano y append-only.
+Almacena Tenant, Workspace opcional, tipo de evento, referencia de sujeto,
+actor, momento, motivo, correlación y metadatos seguros de evidencia.
+`TraceabilityEvidenceReference` es un hecho hijo; los bytes de Object Storage
+permanecen externos.
 
-Value objects are `BusinessObjectReference`, `ActorReference`, `CorrelationId`,
-`Reason`, `FactId`, `SourceReference` and `TimelineEntry`. Domain services are
-`TraceabilityProjectionPolicy` and `SensitivePayloadPolicy`. The
-`BusinessFactRepository` supports append/query only. Corrections append new
-facts; they do not rewrite history.
+Los Value Objects son `BusinessObjectReference`, `ActorReference`,
+`CorrelationId`, `Reason`, `FactId`, `SourceReference` y `TimelineEntry`. Los
+servicios de dominio son `TraceabilityProjectionPolicy` y
+`SensitivePayloadPolicy`. `BusinessFactRepository` sólo admite append/query.
+Las correcciones agregan hechos nuevos; no reescriben el historial.
 
-Invariantes de diseño: records are tenant-scoped and append-only; significant
-transitions retain actor/time/reason/correlation/evidence where relevant;
-projection failure is replayable and does not roll back source commit; security
-audit retains its separate authority/retention and neither store receives
-secrets or raw payment credentials.
+Invariantes de diseño: los registros tienen alcance Tenant y son append-only; las
+transiciones significativas conservan actor, momento, motivo, correlación y
+evidencia cuando corresponde; el fallo de una proyección es reproducible y no
+revierte el commit de origen; Security Audit mantiene su autoridad y retención
+separadas, y ningún almacén recibe secretos ni credenciales de pago sin tratar.
 
 #### 2.6.11.2. Interface Layer
 
-La Interface Layer cubre authorized business timeline/query, append fact,
-evidence-reference and safe metadata projection. Exact URI/DTO names are not
-invented. Consumers receive references to source facts; they cannot mutate
-source aggregates or infer authority from a timeline projection.
+La Interface Layer cubre la línea de tiempo y consulta de negocio autorizadas,
+el append de hechos, la referencia de evidencia y la proyección de metadatos
+seguros. No se inventan nombres URI ni DTO exactos. Los consumidores reciben
+referencias a hechos de origen; no pueden mutar los Aggregate de origen ni
+inferir autoridad a partir de una proyección de línea de tiempo.
 
 #### 2.6.11.3. Application Layer
 
-La Application Layer valida scope, normaliza metadatos seguros, agrega hechos de
-origen, ingiere hechos de outbox/inbox y construye timelines autorizados. Dedupe/replay keeps
-at-least-once propagation visible. Sensitive metadata may be redacted or
-quarantined; traceability does not become a general-purpose event store.
+La Application Layer valida el alcance, normaliza metadatos seguros, agrega hechos
+de origen, ingiere hechos de outbox/inbox y construye líneas de tiempo
+autorizadas. La deduplicación y reproducción mantienen visible la propagación al
+menos una vez. Los
+metadatos sensibles pueden redactarse o ponerse en cuarentena; Business
+Traceability no se convierte en un almacén general de eventos.
 
 #### 2.6.11.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `business_traceability_record` and
-`traceability_evidence_reference`. Cross-BC subject IDs, event IDs and
-correlation IDs are non-owning references. Evidence metadata can point through
-BC-09/Object Storage ports; canonical SQL defines tenant scope and append-only
-constraints. No separate audit database is inferred.
+La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
+sobre `business_traceability_record` y `traceability_evidence_reference`. Los
+ID de sujeto entre BC, los ID de evento y los ID de correlación son referencias
+sin propiedad. Los metadatos de evidencia pueden apuntar mediante puertos de
+BC-09 u Object Storage; SQL canónico define el alcance Tenant y las restricciones
+append-only. No se infiere una base de datos separada de Security Audit.
 
 *Clases TARGET por capa de BC-11.*
 

@@ -20,7 +20,7 @@ implementación ni aceptación.
 | Contexto de trabajo autorizado | El retorno al trabajo puede exponer contexto vencido, ajeno o no autorizado. Hipótesis As-Is transversal; no se presenta como hallazgo de un segmento distinto. | Revalidar Tenant, Workspace y permiso antes de mostrar trabajo protegido. | `MOB-US-001..003` | Sprint 1 | BC-01 Tenant & Access Governance | **NOT EVIDENCED** — hipótesis transversal; no hay investigación directa válida de este comportamiento. |
 | `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`, `MOB-US-011..022`, `MOB-US-050..056`, `MOB-US-073` | Sprint 1; Sprint 2; Sprint 4 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
 | `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023..035`, `MOB-US-045..046`, `MOB-US-057..069` | Sprint 3; Sprint 4 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Consultar relación comercial, pedido, crédito, recepción y discrepancia con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-005..010`, `MOB-US-036..044`, `MOB-US-047..049`, `MOB-US-070..072` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
+| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Consultar relación comercial, pedido, crédito, recepción y discrepancia con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-036..049`, `MOB-US-064`, `MOB-US-067..071` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
 | Representante de empresa prospectiva | La comprensión de la propuesta B2B, los límites del producto y el siguiente paso comercial no está validada mediante investigación directa en este corte. | Comprender Nexa, contrastar el ajuste operativo y solicitar contacto u onboarding sin crear un Tenant o Workspace por sí solo. | `LAND-US-001..006` | Sprint 2 | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships | **NOT EVIDENCED** — hipótesis de adquisición; no se presentan entrevistas inexistentes. |
 
 La trazabilidad operativa es: problema o hipótesis As-Is → resultado deseado
@@ -120,6 +120,13 @@ Mobile User es una abstracción transversal de MOB-US-001..003. Sirve a
 Warehouse Operator, Dispatch Coordinator, Driver / Delivery Operator y
 Customer Buyer cuando retoman trabajo autorizado; no es una User Persona ni un
 segmento de investigación.
+
+La trazabilidad del segmento B2B Buyers se limita a historias cuyo actor
+funcional es Customer Buyer o cuyo recorrido incluye explícitamente recepción,
+continuidad o discrepancia del Buyer. Las historias de conveniencia comercial y
+operativa `MOB-US-005..010` permanecen en el único catálogo porque sirven a
+Business Operations Manager o Sales Representative; no se presentan como
+historias del segmento investigado B2B Buyers.
 
 #### Trazabilidad a nivel de Epic y cluster
 

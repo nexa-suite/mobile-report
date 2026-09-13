@@ -1,7 +1,8 @@
 ### 2.6.3. Bounded Context: Catalog & Commercial Policy
 
-Product, SKU, price, terms and promotions remain distinct. Downstream contexts
-reference SKU identity/snapshots, not a Product object graph.
+Product, SKU, precio, términos y promociones permanecen diferenciados. Los
+contextos posteriores referencian identidad o snapshots de SKU, no un grafo de
+objetos Product.
 
 #### 2.6.3.1. Domain Layer
 
@@ -15,34 +16,35 @@ reference SKU identity/snapshots, not a Product object graph.
 | `Promotion` | One eligible transformation; promotions do not stack |
 
 Los value objects de diseño incluyen `Money`, `Currency`, `SkuId`, `Visibility`,
-`CommercialSnapshot` and `ColdChainRequirement`. `PriceResolver`,
-`OfferResolutionPolicy` and `PromotionStackingPolicy` are domain policy seams;
-`ProductRepository` and `SkuRepository` own only this context's roots.
-Authoritative price resolution revalidates at PR/SO decision; previews do not
-reserve inventory or credit. Product != SKU.
+`CommercialSnapshot` y `ColdChainRequirement`. `PriceResolver`,
+`OfferResolutionPolicy` y `PromotionStackingPolicy` son límites de políticas de
+dominio; `ProductRepository` y `SkuRepository` poseen sólo los roots de este
+contexto. La resolución autoritativa de precio se revalida en la decisión PR/SO;
+los previews no reservan inventario ni crédito. Product != SKU.
 
 #### 2.6.3.2. Interface Layer
 
-La Interface Layer cubre catalog product/SKU lifecycle, catalog query and effective
-price/terms resolution. API responses are contracts, not persistence entities;
-Mobile may cache safe projections but cannot establish price authority or cold
-chain requirements. URI and DTO names beyond verified API evidence are left
-open.
+La Interface Layer cubre ciclo de vida de Product/SKU, consulta de catálogo y
+resolución efectiva de precio/términos. Las respuestas API son contratos, no
+entidades de persistencia; Mobile puede almacenar proyecciones seguras, pero no
+establecer autoridad de precio ni requisitos de cold chain. Los nombres de URI y
+DTO fuera de la evidencia API verificada permanecen abiertos.
 
 #### 2.6.3.3. Application Layer
 
 La Application Layer gestiona Product, SKU, listas de precios, promociones y la
-resolución autoritativa de ofertas. They validate Tenant scope, effective intervals and policy
-precedence. Idempotency/version semantics protect concurrent catalog changes;
-authoritative snapshots cross into Sales Commitment as immutable data.
+resolución autoritativa de ofertas. Valida alcance Tenant, intervalos efectivos
+y precedencia de políticas. La semántica de idempotency/version protege cambios
+concurrentes de catálogo; los snapshots autoritativos pasan a Sales Commitment
+como datos inmutables.
 
 #### 2.6.3.4. Infrastructure Layer
 
 La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `product`, `sku`, `catalog_media`,
 `price_list`, `price_list_item`, `base_price`, `customer_terms`, `promotion`
-and `promotion_sku`. Object Storage bytes remain behind an application port.
-No Product/SKU table is directly owned by Sales or Inventory; cross-BC IDs and
-snapshots are used.
+y `promotion_sku`. Los bytes de Object Storage permanecen detrás de un port de
+aplicación. Ninguna tabla Product/SKU pertenece directamente a Sales o
+Inventory; se usan IDs y snapshots inter-BC.
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 

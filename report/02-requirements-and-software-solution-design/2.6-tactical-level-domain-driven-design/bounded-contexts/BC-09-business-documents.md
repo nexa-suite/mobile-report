@@ -1,8 +1,8 @@
 ### 2.6.9. Bounded Context: Business Documents
 
-This context owns issued document identity, numbering, immutable snapshots,
-generation intent and private Object Storage references. It does not own Sales,
-Payment, Delivery or fiscal authority.
+Este contexto posee la identidad de documentos emitidos, la numeración,
+snapshots inmutables, la intención de generación y las referencias privadas de
+Object Storage. No posee la autoridad de Sales, Payment, Delivery ni fiscal.
 
 #### 2.6.9.1. Domain Layer
 
@@ -14,40 +14,42 @@ Payment, Delivery or fiscal authority.
 | `DocumentGenerationRequest` | Retryable generation intent with idempotency/lease |
 | `ObjectStorageReference` | Metadata for private bytes outside PostgreSQL |
 
-`DocumentSnapshotLine`, `DocumentRevision` and `EvidenceReference` preserve
-immutable history. Value objects include `DocumentId`, `DocumentNumber`,
-`DocumentType`, `IssuedSnapshot`, `StorageReference` and `ContentHash`.
-`DocumentNumberingPolicy` and `DocumentIssuePolicy` validate source snapshots;
-`BusinessDocumentRepository` owns document state.
+`DocumentSnapshotLine`, `DocumentRevision` y `EvidenceReference` preservan el
+historial inmutable. Los Value Objects incluyen `DocumentId`, `DocumentNumber`,
+`DocumentType`, `IssuedSnapshot`, `StorageReference` y `ContentHash`.
+`DocumentNumberingPolicy` y `DocumentIssuePolicy` validan los snapshots de
+origen; `BusinessDocumentRepository` posee el estado del documento.
 
-Invariantes de diseño: issued documents never mutate; corrections link a new
-revision/replacement; Commercial Invoice is not automatically a SUNAT fiscal
-document; PostgreSQL stores metadata/snapshots while Object Storage holds
-private bytes; numbering and generation are idempotent and sequence gaps are
-explicit.
+Invariantes de diseño: los documentos emitidos nunca se mutan; las correcciones
+vinculan una revisión o reemplazo nuevo; Commercial Invoice no es
+automáticamente un documento fiscal SUNAT; PostgreSQL almacena metadatos y
+snapshots mientras Object Storage contiene bytes privados; la numeración y la
+generación son idempotentes y las brechas de secuencia son explícitas.
 
 #### 2.6.9.2. Interface Layer
 
-La Interface Layer cubre document request, availability, authorized metadata/
-download and evidence reference. Exact routes are not invented. Authorization
-is API-side; Portal and planned Mobile surfaces receive safe projections and
-never access public object URLs by inference.
+La Interface Layer cubre la solicitud de documento, disponibilidad, metadatos y
+descarga autorizados, y la referencia de evidencia. No se inventan rutas
+exactas. La autorización se resuelve en la API; las superficies Portal y Mobile
+planificada reciben proyecciones seguras y nunca acceden a URL públicas de
+objetos por inferencia.
 
 #### 2.6.9.3. Application Layer
 
 La Application Layer solicita y emite documentos, reemplaza o corrige mediante
-revisiones vinculadas, registra metadatos de evidencia y reintenta generación
-con leases/fencing.
-Source snapshots are read through explicit contracts; issuance commits metadata
-and durable intent before external rendering/storage work.
+revisiones vinculadas, registra metadatos de evidencia y reintenta la generación
+con leases/fencing. Los snapshots de origen se leen mediante contratos
+explícitos; la emisión confirma metadatos e intención durable antes del trabajo
+externo de renderizado o almacenamiento.
 
 #### 2.6.9.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `document_number_series`,
-`business_document`, `document_snapshot_line`, `document_revision`,
-`object_storage_reference` and `document_generation_request`. Object Storage
-bytes use an application port. Document renderer/scanner adapters are external
-ACLs; no database blob or fiscal integration is inferred.
+La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
+sobre `document_number_series`, `business_document`, `document_snapshot_line`,
+`document_revision`, `object_storage_reference` y
+`document_generation_request`. Los bytes de Object Storage usan un puerto de
+Application. Los adaptadores externos de renderizador o escáner de documentos
+son ACL; no se infiere un blob de base de datos ni integración fiscal.
 
 *Clases TARGET por capa de BC-09.*
 

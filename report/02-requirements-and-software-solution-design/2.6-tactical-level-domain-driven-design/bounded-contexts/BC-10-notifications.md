@@ -1,8 +1,9 @@
 ### 2.6.10. Bounded Context: Notifications
 
-This context owns notification intent, recipient/channel policy, in-app/email
-delivery and retry facts. Notification failure never changes source business
-state. Mobile delivery is a projection, not a Mobile BC.
+Este contexto posee la intención de notificación, la política de destinatario y
+canal, la entrega in-app o por correo y los hechos de reintento. El fallo de una
+notificación nunca cambia el estado de negocio de origen. La entrega Mobile es
+una proyección, no un BC Mobile.
 
 #### 2.6.10.1. Domain Layer
 
@@ -14,38 +15,42 @@ state. Mobile delivery is a projection, not a Mobile BC.
 | `NotificationPreference` | Recipient/channel preference and suppression |
 | `PushSubscription` | Recipient/device delivery record, not a Mobile aggregate |
 
-`NotificationRecipient` and `NotificationAttempt` are notification-owned
-facts. Value objects include `NotificationId`, `TemplateKey`, `Channel`,
-`DeliveryStatus` and `RecipientReference`; `ChannelSelectionPolicy` and
-`RetryPolicy` are domain services. Initial-scope channels are in-app and email; WhatsApp
-is external/manual.
+`NotificationRecipient` y `NotificationAttempt` son hechos propiedad de
+Notifications. Los Value Objects incluyen `NotificationId`, `TemplateKey`,
+`Channel`, `DeliveryStatus` y `RecipientReference`; `ChannelSelectionPolicy` y
+`RetryPolicy` son servicios de dominio. Los canales del alcance inicial son
+in-app y correo; WhatsApp es externo o manual.
 
-Invariantes de diseño: delivery is at-least-once with visible deduped attempts;
-retry/terminal failure never mutates PR, SO, Payment or Delivery; payloads
-exclude secrets/unnecessary PII; subscription rotation and invalid-token
-handling remain technical delivery behavior.
+Invariantes de diseño: la entrega es al menos una vez con intentos deduplicados
+visibles; el reintento o fallo terminal nunca muta PR, SO, Payment ni Delivery;
+los payloads excluyen secretos y PII innecesario; la rotación de suscripciones y
+el manejo de tokens inválidos se mantienen como comportamiento técnico de
+entrega.
 
 #### 2.6.10.2. Interface Layer
 
-La Interface Layer cubre notification read/preferences, notification intent,
-channel status, subscription lifecycle and worker callbacks. Exact routes or
-provider DTOs absent from API evidence are not invented. Source facts enter
-through durable outbox/inbox; client acknowledgment is not source confirmation.
+La Interface Layer cubre la lectura y preferencias de Notifications, la intención
+de notificación, el estado de canal, el ciclo de vida de suscripciones y los
+callbacks de workers. No se inventan rutas exactas ni DTOs de proveedor ausentes
+en la evidencia de API. Los hechos de origen ingresan por outbox/inbox durable;
+la confirmación del cliente no es confirmación del hecho de origen.
 
 #### 2.6.10.3. Application Layer
 
-La Application Layer consume hechos de origen, persiste intención de notificación,
-elige destinatario/canal, despacha, reintenta y proyecta una vista in-app. Lease/fencing,
-idempotency and bounded backoff protect duplicate delivery. Source business
-state remains owned by its origin BC.
+La Application Layer consume hechos de origen, persiste la intención de
+notificación, elige destinatario y canal, despacha, reintenta y proyecta una
+vista in-app. Lease/fencing, idempotencia y backoff acotado protegen contra la
+entrega duplicada. El estado de negocio de origen permanece bajo propiedad de su
+BC de origen.
 
 #### 2.6.10.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `notification_template`,
-`notification`, `notification_recipient`, `notification_preference`,
-`notification_attempt` and `push_subscription`. Provider adapters remain ACLs;
-no provider or third channel is assumed. Technical outbox/inbox persistence is
-shared infrastructure, not a new BC.
+La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
+sobre `notification_template`, `notification`, `notification_recipient`,
+`notification_preference`, `notification_attempt` y `push_subscription`. Los
+adaptadores de proveedor se mantienen como ACL; no se asume un proveedor ni un
+tercer canal. La persistencia técnica de outbox/inbox es infraestructura
+compartida, no un BC nuevo.
 
 *Clases TARGET por capa de BC-10.*
 

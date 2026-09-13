@@ -42,39 +42,40 @@ capacidades. `Tenant` no es `Workspace`; `HumanIdentity` no es
 | `RoleDefinition` | Role lifecycle and capability assignment |
 | `CompanyOnboardingRequest` | Intake and activation handoff; no access before Tenant lifecycle gate |
 
-`Workspace` is a Tenant-owned entity with its own identity. Value objects are
-`TenantId`, `WorkspaceId`, `MembershipId`, `CompanyInformation`, `AccessContext`
-and `CapabilityCode`; `AccessEligibilityPolicy` is a domain service.
-`TenantRepository` and `WorkforceMembershipRepository` persist roots. Invariantes de diseño: missing scope fails closed, Tenant is the maximum isolation
-boundary, the current scope has one Workspace/active owner, and client-supplied tenant IDs do
-not establish authorization.
+`Workspace` es una entidad propiedad de Tenant con identidad propia. Los value
+objects son `TenantId`, `WorkspaceId`, `MembershipId`, `CompanyInformation`,
+`AccessContext` y `CapabilityCode`; `AccessEligibilityPolicy` es un domain
+service. `TenantRepository` y `WorkforceMembershipRepository` persisten roots.
+Invariantes de diseño: si falta scope se falla cerrado, Tenant es el límite
+máximo de aislamiento, el alcance actual tiene un Workspace/active owner y los
+tenant IDs proporcionados por el cliente no establecen autorización.
 
 #### 2.6.1.2. Interface Layer
 
-La Interface Layer cubre onboarding, authentication/session, tenant access
-and capability resolution. URI names are intentionally omitted until a
-versioned contract is accepted. The API remains authoritative; Portal and
-planned Mobile surfaces consume authorized projections. Security audit remains
-distinct from BC-11 business traceability.
+La Interface Layer cubre onboarding, authentication/session, acceso Tenant y
+resolución de capacidades. Los nombres de URI se omiten hasta contar con un
+contrato versionado. La API permanece como autoridad; Portal y las superficies
+Mobile planificadas consumen proyecciones autorizadas. Security Audit se
+mantiene separado de BC-11 Business Traceability.
 
 #### 2.6.1.3. Application Layer
 
-La Application Layer coordina onboarding submission, Tenant activation, access
-evaluation, membership capability changes and ownership transfer. Each command
-reconstructs Tenant/Workspace context server-side, applies authorization and
-uses version/CAS or deterministic locking where an owner or membership race
-matters. Local commit may publish a durable outbox fact; no new published event
-is inferred here.
+La Application Layer coordina envío de onboarding, activación de Tenant,
+evaluación de acceso, cambios de capacidades de membresía y transferencia de
+propiedad. Cada Command reconstruye el contexto Tenant/Workspace en el
+servidor, aplica autorización y usa version/CAS o bloqueo determinista cuando
+importa una carrera de owner o membership. El commit local puede publicar un
+hecho durable mediante outbox; aquí no se infiere un nuevo evento publicado.
 
 #### 2.6.1.4. Infrastructure Layer
 
 La Infrastructure Layer organiza la persistencia lógica en PostgreSQL compartido: `tenant`, `workspace`,
 `human_identity`, `company_onboarding_request`, `workforce_membership`,
 `role_definition`, `capability_definition`, `membership_role` and
-`membership_capability_override`, with tenant scope and constraints defined by
-the canonical SQL. Repositories and authorization adapters are logical
-ownership seams, not separate databases. Object Storage and Mobile are not
-owned by this context.
+`membership_capability_override`, con alcance Tenant y restricciones definidos
+por el SQL canónico. Los Repository y adapters de autorización delimitan
+propiedad lógica, no bases de datos separadas. Object Storage y Mobile no son
+propiedad de este contexto.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 

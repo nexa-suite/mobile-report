@@ -1,7 +1,8 @@
 ### 2.6.8. Bounded Context: Payments
 
-This context owns provider-neutral Payment facts, attempts, callbacks, refunds,
-corrections and reconciliation. Payment Reported is not Payment Confirmed.
+Este contexto posee los hechos de Payment independientes del proveedor, los
+intentos, callbacks, reembolsos, correcciones y conciliación. Payment Reported
+no equivale a Payment Confirmed.
 
 #### 2.6.8.1. Domain Layer
 
@@ -12,39 +13,44 @@ corrections and reconciliation. Payment Reported is not Payment Confirmed.
 | `PaymentProviderEvent` | Verified callback identity and preserved payload metadata |
 | `PaymentReconciliationCase` | Provider success/local failure or uncertain outcome |
 
-`PaymentAttempt`, `PaymentRefund` and `PaymentCorrection` are Payment-owned
-facts. Value objects include `PaymentId`, `ProviderReference`, `Money` and
-`PaymentStatus`; policies include provider callback verification and payment
-reconciliation. Payment application to Receivable is an explicit BC-07 port.
+`PaymentAttempt`, `PaymentRefund` y `PaymentCorrection` son hechos propiedad de
+Payment. Los Value Objects incluyen `PaymentId`, `ProviderReference`, `Money` y
+`PaymentStatus`; las políticas incluyen la verificación de callbacks del
+proveedor y la conciliación de pagos. La aplicación de Payment a Receivable es
+un puerto explícito de BC-07.
 
-Invariantes de diseño: PREPAID needs Payment Confirmed before SO confirmation and
-physical fulfillment; IMMEDIATE may confirm SO first and becomes due. Webhooks
-are at-least-once and dedupe `(provider, eventId)`; provider success/local SO
-failure becomes `UNALLOCATED / RECONCILIATION_REQUIRED`; payment history is
-immutable and refund/correction is explicit. PAN, CVV and secrets are never
-stored.
+Invariantes de diseño: PREPAID requiere Payment Confirmed antes de la
+confirmación de la SO y del fulfillment físico; IMMEDIATE puede confirmar primero
+la SO y pasa a estar pendiente de pago. Los webhooks son al menos una vez y
+deduplican `(provider, eventId)`; el éxito del proveedor con fallo local de SO
+se convierte en `UNALLOCATED / RECONCILIATION_REQUIRED`; el historial de pagos
+es inmutable y el reembolso o la corrección son explícitos. PAN, CVV y secretos
+nunca se almacenan.
 
 #### 2.6.8.2. Interface Layer
 
-La Interface Layer cubre payment intent/report/status, provider callback,
-refund/correction and reconciliation. Exact routes not verified in API are not
-invented. The webhook edge verifies provider signatures and deduplication;
-clients consume server status and cannot declare confirmation.
+La Interface Layer cubre el intent, reporte y estado de Payment, el callback del
+proveedor, el reembolso o corrección y la conciliación. No se inventan rutas
+exactas no verificadas en la API. El borde del webhook verifica firmas y
+deduplicación del proveedor; los clientes consumen el estado del servidor y no
+pueden declarar una confirmación.
 
 #### 2.6.8.3. Application Layer
 
-La Application Layer inicia trabajo con proveedor, acepta callbacks, confirma o
-reconcilia, solicita reembolsos y expone estado seguro. External I/O occurs outside long DB
-transactions; local intent/attempt state is fenced and idempotent. BC-07
-application coordination references Receivable by ID.
+La Application Layer inicia el trabajo con el proveedor, acepta callbacks,
+confirma o concilia, solicita reembolsos y expone estado seguro. El I/O externo
+ocurre fuera de transacciones largas de base de datos; el estado local de intent
+e intento se protege con fencing e idempotencia. La coordinación de Application
+con BC-07 referencia Receivable por ID.
 
 #### 2.6.8.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `payment`, `payment_attempt`,
-`payment_provider_event`, `payment_refund`, `payment_correction` and
-`payment_reconciliation_case`. Provider payload metadata is immutable and
-secret-free. Stripe/provider adapters are ACLs; physical PostgreSQL remains
-shared and no payment microservice is inferred.
+La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
+sobre `payment`, `payment_attempt`, `payment_provider_event`, `payment_refund`,
+`payment_correction` y `payment_reconciliation_case`. Los metadatos del payload
+del proveedor son inmutables y no contienen secretos. Los adaptadores de Stripe
+o de otros proveedores son ACL; PostgreSQL físico continúa compartido y no se
+infiere un microservicio de pagos.
 
 #### 2.6.8.5. Bounded Context Software Architecture Component Level Diagrams
 

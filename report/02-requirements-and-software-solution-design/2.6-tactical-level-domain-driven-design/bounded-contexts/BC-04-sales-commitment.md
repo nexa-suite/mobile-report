@@ -1,8 +1,8 @@
 ### 2.6.4. Bounded Context: Sales Commitment
 
-This Core Domain context owns buyer intent, Purchase Request, Commercial
-Commitment and Sales Order. Draft, commitment, Inventory Reservation, Warehouse
-Backing and Physical Allocation are different facts and authorities.
+Este contexto de Core Domain posee intención Buyer, Purchase Request,
+Commercial Commitment y Sales Order. Draft, commitment, Inventory Reservation,
+Warehouse Backing y Physical Allocation son hechos y autoridades distintos.
 
 #### 2.6.4.1. Domain Layer
 
@@ -15,37 +15,37 @@ Backing and Physical Allocation are different facts and authorities.
 | `SalesOrder` | Confirmed commercial roll-up and lifecycle; no draft SO in initial scope |
 
 `RequestDraftLine`, `PurchaseRequestLine`, `CommitmentLine`,
-`MaterialChangeProposal`, `CommercialSnapshot` and adjustment facts preserve
-line/history boundaries. Value objects include `CommitmentId`, `SkuQuantity`,
-`TermsSnapshot` and `OrderRevision`; `CommitmentAcceptancePolicy` and
-`MaterialChangePolicy` coordinate domain decisions. Repositories own purchase
-request and sales order roots.
+`MaterialChangeProposal`, `CommercialSnapshot` y los hechos de ajuste
+preservan límites de línea e historial. Los value objects incluyen
+`CommitmentId`, `SkuQuantity`, `TermsSnapshot` y `OrderRevision`;
+`CommitmentAcceptancePolicy` y `MaterialChangePolicy` coordinan decisiones de
+dominio. Los Repository poseen los roots de Purchase Request y Sales Order.
 
-Invariantes de diseño: PR submit establishes complete Inventory Reservation,
-deterministic Warehouse Backing and applicable credit reservation before commit;
-Physical Allocation remains a later Inventory-owned lot selection for
-fulfillment. `PURCHASE_REQUEST` origin requires a real PR reference while
-`DIRECT_ORDER` has none; PR-to-SO transfers commitment ownership without
-release/re-reserve; expiry is checked at
-`now >= expiresAt`; material change requires buyer acceptance and
-revalidation. SO completion is not payment confirmation.
+Invariantes de diseño: enviar una PR establece Inventory Reservation completa,
+Warehouse Backing determinista y la reserva de crédito aplicable antes del
+commit; Physical Allocation permanece como una selección posterior de lotes
+propiedad de Inventory para fulfillment. El origen `PURCHASE_REQUEST` requiere
+una referencia PR real, mientras que `DIRECT_ORDER` no la tiene; PR-to-SO
+transfiere propiedad de Commitment sin liberar ni reservar otra vez; la
+expiración se comprueba con `now >= expiresAt`; un cambio material requiere
+aceptación Buyer y revalidación. Completar una SO no confirma Payment.
 
 #### 2.6.4.2. Interface Layer
 
-La Interface Layer expresa contratos para draft, submit, approve/convert, direct order, material
-change and order query behavior. Exact endpoint names are not invented here.
-Retry-sensitive commands require idempotency and stale mutable resources use
-version/If-Match semantics where accepted. API authorization and decision state
-remain authoritative; Mobile is only a planned projection.
+La Interface Layer expresa contratos para draft, submit, approve/convert,
+direct order, material change y consultas de pedido. Aquí no se inventan
+endpoint names exactos. Los Command sensibles a reintentos requieren
+idempotency y los recursos mutables obsoletos usan semántica version/If-Match
+cuando corresponda. La autorización API y el estado de decisión permanecen
+autoritativos; Mobile sólo es una proyección planificada.
 
 #### 2.6.4.3. Application Layer
 
 La Application Layer coordina el snapshot de catálogo, la elegibilidad de Buyer,
 la Inventory Reservation, el Warehouse Backing y los contratos de decisión de
-crédito dentro del límite lógico de consistencia requerido. It preserves
-direct-order versus PR origin and uses durable
-idempotency. Integration events are emitted only after local commit; no
-cross-context aggregate is loaded.
+crédito dentro del límite lógico de consistencia requerido. Preserva el origen
+direct-order frente a PR y usa idempotency durable. Los integration events se
+emiten sólo después del commit local; no se carga un Aggregate de otro contexto.
 
 #### 2.6.4.4. Infrastructure Layer
 
@@ -53,10 +53,10 @@ La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido s
 `request_draft_line`, `purchase_request`, `purchase_request_line`,
 `material_change_proposal`, `commercial_commitment`,
 `commercial_commitment_line`, `commitment_owner_transfer`,
-`sales_commitment_adjustment`, `sales_order` and `sales_order_line`.
-Inventory Reservation, Warehouse Backing, Physical Allocation and credit
-reservation remain referenced through explicit contracts/IDs, not direct table
-ownership.
+`sales_commitment_adjustment`, `sales_order` y `sales_order_line`. Inventory
+Reservation, Warehouse Backing, Physical Allocation y la reserva de crédito se
+referencian mediante contratos e ID explícitos, no mediante propiedad directa de
+tablas.
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 

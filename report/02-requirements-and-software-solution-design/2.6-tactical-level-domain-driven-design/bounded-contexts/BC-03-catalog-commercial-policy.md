@@ -76,9 +76,6 @@ La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dent
 
 *Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-03 Catalog & Commercial Policy, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente. El diagrama se presenta como modelo de diseño y no como prueba de una implementación en ejecución.
 
-El diagrama se presenta como modelo de diseño y no como prueba de una
-implementación en ejecución.
-
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 
 ##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams

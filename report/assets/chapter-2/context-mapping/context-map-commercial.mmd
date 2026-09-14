@@ -1,0 +1,16 @@
+flowchart LR
+  bc02["BC-02<br/>Customer & Buyer"]
+  bc03["BC-03<br/>Catalog & Policy"]
+  bc04["BC-04<br/>Sales Commitment"]
+  bc05["BC-05<br/>Inventory Availability"]
+  bc07["BC-07<br/>Credit & Receivables"]
+
+  bc02 -->|"Customer/Supplier<br/>eligible relationship"| bc04
+  bc03 -->|"Published Language<br/>Resolved Offer Snapshot"| bc04
+  bc04 -->|"Customer/Supplier<br/>commitment demand"| bc05
+  bc05 -->|"Customer/Supplier<br/>protection or shortage"| bc04
+  bc04 -->|"Customer/Supplier<br/>credit demand"| bc07
+  bc07 -->|"Customer/Supplier<br/>reservation or rejection"| bc04
+
+  classDef context fill:#EAF3FF,stroke:#2563EB,stroke-width:1.5px,color:#172554;
+  class bc02,bc03,bc04,bc05,bc07 context;

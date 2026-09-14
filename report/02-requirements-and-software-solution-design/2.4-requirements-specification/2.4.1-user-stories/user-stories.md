@@ -17,11 +17,11 @@ implementación ni aceptación.
 *Trazabilidad del escenario As-Is hacia los resultados To-Be de Nexa Mobile*
 | Segmento | Problema o hipótesis actual | Desired outcome | User Stories | Sprint | Domain boundary | Evidence status |
 | --- | --- | --- | --- | --- | --- | --- |
-| Contexto de trabajo autorizado | El retorno al trabajo puede exponer contexto vencido, ajeno o no autorizado. Hipótesis As-Is transversal; no se presenta como hallazgo de un segmento distinto. | Revalidar Tenant, Workspace y permiso antes de mostrar trabajo protegido. | `MOB-US-001..003` | Sprint 1 | BC-01 Tenant & Access Governance | **NOT EVIDENCED** — hipótesis transversal; no hay investigación directa válida de este comportamiento. |
-| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`, `MOB-US-011..022`, `MOB-US-050..056`, `MOB-US-073` | Sprint 1; Sprint 2; Sprint 4 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023..035`, `MOB-US-045..046`, `MOB-US-057..069` | Sprint 3; Sprint 4 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Consultar relación comercial, pedido, crédito, recepción y discrepancia con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-036..049`, `MOB-US-064`, `MOB-US-067..071` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
-| Representante de empresa prospectiva | La comprensión de la propuesta B2B, los límites del producto y el siguiente paso comercial no está validada mediante investigación directa en este corte. | Comprender Nexa, contrastar el ajuste operativo y solicitar contacto u onboarding sin crear un Tenant o Workspace por sí solo. | `LAND-US-001..006` | Sprint 2 | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships | **NOT EVIDENCED** — hipótesis de adquisición; no se presentan entrevistas inexistentes. |
+| Contexto de trabajo autorizado | El retorno al trabajo puede exponer contexto vencido, ajeno o no autorizado. Hipótesis As-Is transversal; no se presenta como hallazgo de un segmento distinto. | Revalidar Tenant, Workspace y permiso antes de mostrar trabajo protegido. | `MOB-US-001`, `MOB-US-002`, `MOB-US-003` | Sprint 1 | BC-01 Tenant & Access Governance | **NOT EVIDENCED** — hipótesis transversal; no hay investigación directa válida de este comportamiento. |
+| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`, `MOB-US-011–MOB-US-022`, `MOB-US-050`, `MOB-US-051`, `MOB-US-052`, `MOB-US-053`, `MOB-US-054`, `MOB-US-055`, `MOB-US-056`, `MOB-US-073` | Sprint 1; Sprint 2; Sprint 4 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023–MOB-US-035`, `MOB-US-045`, `MOB-US-046`, `MOB-US-057–MOB-US-069` | Sprint 2; Sprint 3; Sprint 4 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
+| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Consultar relación comercial, pedido, crédito, recepción y discrepancia con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-036–MOB-US-049`, `MOB-US-064`, `MOB-US-067`, `MOB-US-068`, `MOB-US-069`, `MOB-US-070`, `MOB-US-071` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
+| Representante de empresa prospectiva | La comprensión de la propuesta B2B, los límites del producto y el siguiente paso comercial no está validada mediante investigación directa en este corte. | Comprender Nexa, contrastar el ajuste operativo y solicitar contacto u onboarding sin crear un Tenant o Workspace por sí solo. | `LAND-US-001`, `LAND-US-002`, `LAND-US-003`, `LAND-US-004`, `LAND-US-005`, `LAND-US-006` | Sprint 2 | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships | **NOT EVIDENCED** — hipótesis de adquisición; no se presentan entrevistas inexistentes. |
 
 La trazabilidad operativa es: problema o hipótesis As-Is → resultado deseado
 To-Be → User Story → Sprint → estado de evidencia. El resultado deseado es una
@@ -33,12 +33,12 @@ dirección de diseño, no prueba de que Nexa Mobile ya exista.
 *Mapeo de escenarios objetivo To-Be y Functional User Stories relacionadas*
 | Escenario objetivo | Actor y proyección | Comportamiento objetivo | Historias relacionadas |
 | --- | --- | --- | --- |
-| Authorized Mobile Work Context | Mobile User; Operations Mobile y Buyer Mobile | Nexa confirma Tenant, Workspace y permisos antes de exponer trabajo protegido. | MOB-US-001..003 |
-| Warehouse Work Overview, Receiving, Identification and Preparation | Business Operations Manager; Warehouse Operator; Operations Mobile | La persona entra en un contexto autorizado, revisa el trabajo Warehouse y después identifica Product/SKU, registra hechos físicos y prepara trabajo con lote, condición y evidencia. | MOB-US-001..004, MOB-US-011..017, MOB-US-019 |
-| Dispatch Readiness and Handoff | Dispatch Coordinator; Operations Mobile | La persona verifica bienes, asigna responsabilidad y registra un Dispatch Handoff revisable. | MOB-US-020..025 |
-| Driver Delivery Execution | Driver / Delivery Operator; Operations Mobile | La persona trabaja sobre una Delivery asignada, abre navegación externa cuando corresponde y registra Delivery Attempt, Driver Outcome y Proof of Delivery. | MOB-US-026..034 |
-| Buyer Handoff, Receipt and Discrepancy | Customer Buyer; Buyer Mobile | La persona verifica el handoff, declara el Buyer Receipt y comunica discrepancias sin borrar hechos previos. | MOB-US-044, MOB-US-047..049 |
-| Acquisition, Contact and Onboarding Initiation | Prospective Company Representative; Landing pública | La Landing explica Nexa, habilita contacto y recibe una solicitud sin crear un Tenant o Workspace como hecho autoritativo. | LAND-US-001..006 |
+| Authorized Mobile Work Context | Mobile User; Operations Mobile y Buyer Mobile | Nexa confirma Tenant, Workspace y permisos antes de exponer trabajo protegido. | MOB-US-001, MOB-US-002, MOB-US-003 |
+| Warehouse Work Overview, Receiving, Identification and Preparation | Business Operations Manager; Warehouse Operator; Operations Mobile | La persona entra en un contexto autorizado, revisa el trabajo Warehouse y después identifica Product/SKU, registra hechos físicos y prepara trabajo con lote, condición y evidencia. | MOB-US-001, MOB-US-002, MOB-US-003, MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019 |
+| Dispatch Readiness and Handoff | Dispatch Coordinator; Operations Mobile | La persona verifica bienes, asigna responsabilidad y registra un Dispatch Handoff revisable. | MOB-US-020, MOB-US-021, MOB-US-022, MOB-US-023, MOB-US-024, MOB-US-025 |
+| Driver Delivery Execution | Driver / Delivery Operator; Operations Mobile | La persona trabaja sobre una Delivery asignada, abre navegación externa cuando corresponde y registra Delivery Attempt, Driver Outcome y Proof of Delivery. | MOB-US-026–MOB-US-034 |
+| Buyer Handoff, Receipt and Discrepancy | Customer Buyer; Buyer Mobile | La persona verifica el handoff, declara el Buyer Receipt y comunica discrepancias sin borrar hechos previos. | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
+| Acquisition, Contact and Onboarding Initiation | Prospective Company Representative; Landing pública | La Landing explica Nexa, habilita contacto y recibe una solicitud sin crear un Tenant o Workspace como hecho autoritativo. | LAND-US-001, LAND-US-002, LAND-US-003, LAND-US-004, LAND-US-005, LAND-US-006 |
 
 #### Reglas transversales
 
@@ -74,14 +74,20 @@ Nexa Operations Mobile y Nexa Buyer Mobile son las dos proyecciones Mobile.
 El único Product Backlog asigna todas las historias funcionales, las Technical
 Stories y los Spikes a los cuatro Sprints.
 
+La planificación de tracks concentra Android nativo con Kotlin en Sprint 1 y
+Sprint 2; Sprint 3 introduce Flutter/Dart para cross-platform y paridad de
+contratos; Sprint 4 consolida Flutter/Dart en target iOS. Estas asignaciones son
+planificación académica, no evidencia de implementación, build, instalación o
+aceptación.
+
 **Tabla**<br>
 *Distribución del único Product Backlog por Sprint*
 | Sprint | Landing | Mobile Functional | Technical | Spikes | Total | SP |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
 | Sprint 1 | 0 | 4 | 1 | 0 | 5 | 18 |
-| Sprint 2 | 6 | 18 | 6 | 4 | 34 | 135 |
-| Sprint 3 | 0 | 27 | 2 | 2 | 31 | 134 |
-| Sprint 4 | 0 | 24 | 3 | 0 | 27 | 139 |
+| Sprint 2 | 6 | 21 | 6 | 4 | 37 | 145 |
+| Sprint 3 | 0 | 24 | 3 | 2 | 29 | 129 |
+| Sprint 4 | 0 | 24 | 2 | 0 | 26 | 134 |
 | **Total** | **6** | **73** | **12** | **6** | **97** | **426** |
 
 #### Epic registry
@@ -93,17 +99,17 @@ pantalla, una aplicación ni una unidad de despliegue.
 *Registro de Epics y Functional User Stories del catálogo de Nexa Mobile*
 | Epic | Resultado agrupado | Sprints | Stories |
 | --- | --- | --- | --- |
-| MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Sprint 1 | MOB-US-001..003 |
-| MOBILE-EPIC-02 | Primera experiencia Warehouse, recepción, identificación y preparación | Sprint 1; Sprint 2 | MOB-US-004, MOB-US-011..017, MOB-US-019 |
-| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Sprint 2; Sprint 3 | MOB-US-020..025 |
-| MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Sprint 3 | MOB-US-026..028, MOB-US-031..034 |
-| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Sprint 3 | MOB-US-044, MOB-US-047..049 |
-| MOBILE-EPIC-06 | Conveniencia comercial y operativa | Sprint 2; Sprint 3 | MOB-US-005..010, MOB-US-036..043 |
+| MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Sprint 1 | MOB-US-001, MOB-US-002, MOB-US-003 |
+| MOBILE-EPIC-02 | Primera experiencia Warehouse, recepción, identificación y preparación | Sprint 1; Sprint 2 | MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019 |
+| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Sprint 2 | MOB-US-020, MOB-US-021, MOB-US-022, MOB-US-023, MOB-US-024, MOB-US-025 |
+| MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Sprint 3 | MOB-US-026, MOB-US-027, MOB-US-028, MOB-US-031, MOB-US-032, MOB-US-033, MOB-US-034 |
+| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Sprint 3 | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
+| MOBILE-EPIC-06 | Conveniencia comercial y operativa | Sprint 2; Sprint 3 | MOB-US-005, MOB-US-006, MOB-US-007, MOB-US-008, MOB-US-009, MOB-US-010, MOB-US-036, MOB-US-037, MOB-US-038, MOB-US-039, MOB-US-040, MOB-US-041, MOB-US-042, MOB-US-043 |
 | MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Sprint 2; Sprint 3 | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
-| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Sprint 4 | MOB-US-050..056 |
-| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Sprint 4 | MOB-US-057..066 |
-| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Sprint 4 | MOB-US-067..069 |
-| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Sprint 4 | MOB-US-070..072 |
+| MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Sprint 4 | MOB-US-050, MOB-US-051, MOB-US-052, MOB-US-053, MOB-US-054, MOB-US-055, MOB-US-056 |
+| MOBILE-EPIC-09 | Excepciones de despacho y coordinación de Delivery | Sprint 4 | MOB-US-057–MOB-US-066 |
+| MOBILE-EPIC-10 | Continuidad de Delivery para Customer Buyer | Sprint 4 | MOB-US-067, MOB-US-068, MOB-US-069 |
+| MOBILE-EPIC-11 | Seguimiento comercial y financiero | Sprint 4 | MOB-US-070, MOB-US-071, MOB-US-072 |
 | MOBILE-EPIC-12 | Automatización de almacén | Sprint 4 | MOB-US-073 |
 
 #### Segmentos y actores actuales
@@ -116,7 +122,7 @@ pantalla, una aplicación ni una unidad de despliegue.
 | Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | Por contrastar mediante investigación directa |
 | B2B Buyers | Customer Buyer | Nexa Buyer Mobile | Por contrastar mediante investigación directa |
 
-Mobile User es una abstracción transversal de MOB-US-001..003. Sirve a
+Mobile User es una abstracción transversal de MOB-US-001, MOB-US-002 y MOB-US-003. Sirve a
 Warehouse Operator, Dispatch Coordinator, Driver / Delivery Operator y
 Customer Buyer cuando retoman trabajo autorizado; no es una User Persona ni un
 segmento de investigación.
@@ -124,7 +130,7 @@ segmento de investigación.
 La trazabilidad del segmento B2B Buyers se limita a historias cuyo actor
 funcional es Customer Buyer o cuyo recorrido incluye explícitamente recepción,
 continuidad o discrepancia del Buyer. Las historias de conveniencia comercial y
-operativa `MOB-US-005..010` permanecen en el único catálogo porque sirven a
+operativa `MOB-US-005`, `MOB-US-006`, `MOB-US-007`, `MOB-US-008`, `MOB-US-009` y `MOB-US-010` permanecen en el único catálogo porque sirven a
 Business Operations Manager o Sales Representative; no se presentan como
 historias del segmento investigado B2B Buyers.
 
@@ -134,11 +140,11 @@ historias del segmento investigado B2B Buyers.
 *Trazabilidad entre Epics, segmentos, Needfinding y escenarios To-Be*
 | Epic / cluster | Current actor/segment | Lean UX relationship | Needfinding evidence | To-Be scenario | Stories |
 | --- | --- | --- | --- | --- | --- |
-| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Por contrastar mediante investigación directa; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001..003 |
-| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Business Operations Manager, Warehouse Operator y Dispatch Coordinator | La continuidad entre contexto, hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Por contrastar mediante investigación directa; se requiere investigación específica del segmento actual. | Warehouse Work Overview, Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-004, MOB-US-011..017, MOB-US-019..025 |
-| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Por contrastar mediante investigación directa; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026..028, MOB-US-031..034 |
-| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Por contrastar mediante investigación directa; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047..049 |
-| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | Por contrastar mediante investigación directa | Acquisition, Contact and Onboarding Initiation | LAND-US-001..006 |
+| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Por contrastar mediante investigación directa; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001, MOB-US-002, MOB-US-003 |
+| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Business Operations Manager, Warehouse Operator y Dispatch Coordinator | La continuidad entre contexto, hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Por contrastar mediante investigación directa; se requiere investigación específica del segmento actual. | Warehouse Work Overview, Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019–MOB-US-025 |
+| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Por contrastar mediante investigación directa; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026, MOB-US-027, MOB-US-028, MOB-US-031, MOB-US-032, MOB-US-033, MOB-US-034 |
+| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Por contrastar mediante investigación directa; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
+| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | Por contrastar mediante investigación directa | Acquisition, Contact and Onboarding Initiation | LAND-US-001, LAND-US-002, LAND-US-003, LAND-US-004, LAND-US-005, LAND-US-006 |
 
 #### Landing Page User Stories
 
@@ -320,7 +326,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-005</td><td>Business Operations Manager</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-005</td><td>Business Operations Manager</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Identificar excepciones operativas críticas</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Business Operations Manager</strong>, deseo identificar excepciones operativas críticas, para atender trabajo bloqueado antes de que retrase a un cliente o una entrega.</td></tr>
@@ -337,10 +343,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-006</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-006</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Encontrar un cliente y su relación con el comprador</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo encontrar una relación entre cliente y comprador, para trabajar con el cliente correcto en un flujo móvil futuro.</td></tr>
+<tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo encontrar una relación entre cliente y comprador, para trabajar con el cliente correcto en un flujo móvil autorizado.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Cliente autorizado</strong></p><p><strong>Given</strong> existe una relación autorizada</p><p><strong>When</strong> el representante busca</p><p><strong>Then</strong> solo se devuelven clientes permitidos.</p><p><strong>Scenario: Cliente no relacionado</strong></p><p><strong>Given</strong> el cliente no está relacionado o está suspendido</p><p><strong>When</strong> el representante lo abre</p><p><strong>Then</strong> el trabajo protegido no está disponible.</p><p><strong>Scenario: Resultado no confiable</strong></p><p><strong>Given</strong> la búsqueda está vacía o no disponible</p><p><strong>When</strong> termina</p><p><strong>Then</strong> no se adivina ni expone ningún cliente.</p></td></tr>
 </tbody>
@@ -354,10 +360,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-007</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-007</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Revisar productos, precios y disponibilidad</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo revisar productos, precios y disponibilidad, para preparar demanda futura de un cliente con información confiable.</td></tr>
+<tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo revisar productos, precios y disponibilidad, para preparar la demanda de un cliente con información confiable.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Producto autorizado</strong></p><p><strong>Given</strong> existe una relación autorizada con el cliente</p><p><strong>When</strong> se revisa un producto</p><p><strong>Then</strong> se muestran precio y disponibilidad permitidos con su frescura.</p><p><strong>Scenario: Producto no disponible</strong></p><p><strong>Given</strong> un producto está oculto o no disponible</p><p><strong>When</strong> se solicita</p><p><strong>Then</strong> no puede tratarse como un compromiso.</p><p><strong>Scenario: Información modificada</strong></p><p><strong>Given</strong> cambia el precio o disponibilidad</p><p><strong>When</strong> el representante continúa</p><p><strong>Then</strong> Nexa exige confirmación actual.</p></td></tr>
 </tbody>
@@ -371,7 +377,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-008</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-008</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Preparar una solicitud de cliente</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo preparar una solicitud de cliente, para organizar una intención antes de un envío autorizado.</td></tr>
@@ -388,7 +394,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-009</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-009</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Enviar una solicitud o Direct Order asistido desde el trabajo de campo</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Sales Representative</strong> autorizado, deseo enviar la intención comercial del cliente conforme a la política del Tenant, para convertir el trabajo de campo en una solicitud o compromiso válido sin suplantar al comprador.</td></tr>
@@ -405,7 +411,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-010</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-010</td><td>Sales Representative</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Seguir compromisos del cliente y crédito</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Sales Representative</strong>, deseo seguir los compromisos y el crédito del cliente, para comprender el progreso autorizado sin tomar localmente una decisión de crédito.</td></tr>
@@ -476,7 +482,7 @@ historias del segmento investigado B2B Buyers.
 <tr><td>MOB-US-014</td><td>Warehouse Operator</td><td>Critical</td><td>MOBILE-EPIC-02 — Recepción, identificación y preparación de almacén</td></tr>
 <tr><th>Title</th><td colspan="3">Registrar lote, vencimiento y cantidad reales</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo registrar el lote, vencimiento y cantidad reales, para que el picking futuro use lo que llegó físicamente.</td></tr>
+<tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo registrar el lote, vencimiento y cantidad reales, para que el picking posterior use lo que llegó físicamente.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Datos completos del lote</strong></p><p><strong>Given</strong> el operador proporciona lote válido, vencimiento y cantidad positiva</p><p><strong>When</strong> confirma la llegada</p><p><strong>Then</strong> Nexa conserva esos datos para el stock recibido.</p><p><strong>Scenario: Vencimiento inválido</strong></p><p><strong>Given</strong> falta el vencimiento, está malformado o no es aceptable</p><p><strong>When</strong> el operador lo registra</p><p><strong>Then</strong> Nexa rechaza la llegada y no crea stock vendible.</p><p><strong>Scenario: Llegada duplicada</strong></p><p><strong>Given</strong> se vuelve a enviar la misma llegada</p><p><strong>When</strong> Nexa la recibe</p><p><strong>Then</strong> permanece una sola llegada y la cantidad no se duplica.</p><p><strong>Scenario: Preparación local</strong></p><p><strong>Given</strong> el operador pierde conexión</p><p><strong>When</strong> prepara datos del lote</p><p><strong>Then</strong> permanecen no confirmados y no pueden convertir el stock en vendible.</p></td></tr>
 </tbody>
@@ -784,7 +790,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo registrar una entrega parcial o rechazada y lo que queda, para no perder ningún resultado físico ni obligación restante.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Entrega parcial</strong></p><p><strong>Given</strong> el conductor proporciona cantidades entregadas y restantes válidas</p><p><strong>When</strong> registra el resultado parcial</p><p><strong>Then</strong> Nexa conserva por separado las cantidades entregadas, rechazadas y restantes.</p><p><strong>Scenario: Entrega rechazada</strong></p><p><strong>Given</strong> los bienes son rechazados con un motivo</p><p><strong>When</strong> se registra el rechazo</p><p><strong>Then</strong> Nexa conserva el motivo y no declara completa la entrega.</p><p><strong>Scenario: Continuación</strong></p><p><strong>Given</strong> queda cantidad para una entrega futura</p><p><strong>When</strong> se confirma el resultado</p><p><strong>Then</strong> Nexa crea únicamente la continuación autorizada.</p><p><strong>Scenario: Resultado incierto</strong></p><p><strong>Given</strong> el resultado es desconocido</p><p><strong>When</strong> el conductor reintenta</p><p><strong>Then</strong> Nexa devuelve un único resultado y no sobrescribe hechos previos.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Entrega parcial</strong></p><p><strong>Given</strong> el conductor proporciona cantidades entregadas y restantes válidas</p><p><strong>When</strong> registra el resultado parcial</p><p><strong>Then</strong> Nexa conserva por separado las cantidades entregadas, rechazadas y restantes.</p><p><strong>Scenario: Entrega rechazada</strong></p><p><strong>Given</strong> los bienes son rechazados con un motivo</p><p><strong>When</strong> se registra el rechazo</p><p><strong>Then</strong> Nexa conserva el motivo y no declara completa la entrega.</p><p><strong>Scenario: Continuación</strong></p><p><strong>Given</strong> queda cantidad pendiente para una continuación autorizada</p><p><strong>When</strong> se confirma el resultado</p><p><strong>Then</strong> Nexa crea únicamente la continuación autorizada.</p><p><strong>Scenario: Resultado incierto</strong></p><p><strong>Given</strong> el resultado es desconocido</p><p><strong>When</strong> el conductor reintenta</p><p><strong>Then</strong> Nexa devuelve un único resultado y no sobrescribe hechos previos.</p></td></tr>
 </tbody>
 </table>
 
@@ -833,7 +839,7 @@ historias del segmento investigado B2B Buyers.
 <tr><td>MOB-US-035</td><td>Driver or Delivery Operator</td><td>High</td><td>MOBILE-EPIC-07 — Operación de campo avanzada y continuidad selectiva</td></tr>
 <tr><th>Title</th><td colspan="3">Continuar la evidencia de entrega después de perder conexión</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo continuar la evidencia de entrega después de perder conexión, para que un flujo futuro de recuperación proteja la evidencia sin afirmar éxito falso.</td></tr>
+<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo continuar la evidencia de entrega después de perder conexión, para que un flujo de recuperación definido proteja la evidencia sin afirmar éxito falso.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Recuperación de evidencia</strong></p><p><strong>Given</strong> se acepta una política de recuperación</p><p><strong>When</strong> se captura evidencia sin conexión</p><p><strong>Then</strong> su estado pendiente y contenido protegido mínimo quedan claros.</p><p><strong>Scenario: Confirmación posterior</strong></p><p><strong>Given</strong> la evidencia preparada se revisa posteriormente</p><p><strong>When</strong> Nexa la acepta</p><p><strong>Then</strong> solo el hecho exacto aceptado se vuelve autoritativo.</p><p><strong>Scenario: Rechazo</strong></p><p><strong>Given</strong> se rechaza la evidencia preparada</p><p><strong>When</strong> se revisa</p><p><strong>Then</strong> el motivo permanece claro y no se implica éxito de entrega.</p></td></tr>
 </tbody>
@@ -847,7 +853,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-036</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-036</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Explorar productos del proveedor</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo explorar productos del proveedor, para revisar productos ofrecidos mediante mi relación con el proveedor.</td></tr>
@@ -864,10 +870,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-037</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-037</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Revisar precio y disponibilidad del producto</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo revisar el precio y disponibilidad del producto, para preparar una solicitud futura con información actual del proveedor.</td></tr>
+<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo revisar el precio y disponibilidad del producto, para preparar una solicitud con información actual del proveedor.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Producto actual</strong></p><p><strong>Given</strong> existe una relación autorizada</p><p><strong>When</strong> se revisa un producto</p><p><strong>Then</strong> se muestran precio, términos y disponibilidad vendible con frescura.</p><p><strong>Scenario: Producto desactualizado</strong></p><p><strong>Given</strong> los hechos del producto están desactualizados</p><p><strong>When</strong> el comprador continúa</p><p><strong>Then</strong> se requiere confirmación actual.</p><p><strong>Scenario: Producto no disponible</strong></p><p><strong>Given</strong> el producto está oculto o no disponible</p><p><strong>When</strong> se solicita</p><p><strong>Then</strong> no puede tratarse como compromiso.</p></td></tr>
 </tbody>
@@ -881,10 +887,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-038</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-038</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Preparar una Purchase Request</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo preparar una Purchase Request, para organizar una compra futura sin confirmarla falsamente.</td></tr>
+<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo preparar una Purchase Request, para organizar una compra sin confirmarla falsamente.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Borrador</strong></p><p><strong>Given</strong> hay productos permitidos disponibles</p><p><strong>When</strong> el comprador prepara una solicitud</p><p><strong>Then</strong> permanece como borrador y no crea reserva.</p><p><strong>Scenario: Producto modificado</strong></p><p><strong>Given</strong> cambia el precio o disponibilidad</p><p><strong>When</strong> el comprador revisa el borrador</p><p><strong>Then</strong> el cambio es claro antes del envío.</p><p><strong>Scenario: Preparación local</strong></p><p><strong>Given</strong> el comprador pierde conexión</p><p><strong>When</strong> edita el borrador</p><p><strong>Then</strong> permanece no confirmado.</p></td></tr>
 </tbody>
@@ -898,10 +904,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-039</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-039</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Repetir una compra anterior</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo repetir una compra anterior, para preparar una nueva solicitud más rápidamente en un flujo futuro.</td></tr>
+<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo repetir una compra anterior, para preparar una nueva solicitud más rápidamente.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Historial reutilizado</strong></p><p><strong>Given</strong> el comprador puede acceder al historial anterior</p><p><strong>When</strong> lo reutiliza</p><p><strong>Then</strong> Nexa crea un nuevo borrador y vuelve a comprobar los datos actuales del producto.</p><p><strong>Scenario: Producto modificado</strong></p><p><strong>Given</strong> un producto anterior ya no está disponible</p><p><strong>When</strong> se reutiliza el historial</p><p><strong>Then</strong> Nexa lo marca y no crea un pedido silencioso.</p><p><strong>Scenario: Acción repetida</strong></p><p><strong>Given</strong> el comprador repite la acción</p><p><strong>When</strong> Nexa la procesa</p><p><strong>Then</strong> no crea un segundo compromiso.</p></td></tr>
 </tbody>
@@ -915,7 +921,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-040</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-040</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Enviar una solicitud o realizar un Direct Order</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo enviar una solicitud o realizar un Direct Order, para que mi vía de compromiso elegida sea explícita y autorizada.</td></tr>
@@ -932,10 +938,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-041</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-041</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Responder a un cambio material</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo responder a un cambio material, para que mi compromiso futuro refleje una decisión explícita.</td></tr>
+<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo responder a un cambio material, para que mi compromiso resultante refleje una decisión explícita.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Aceptar cambio</strong></p><p><strong>Given</strong> existe un cambio actual y autorizado</p><p><strong>When</strong> el comprador lo acepta</p><p><strong>Then</strong> Nexa registra el cambio versionado.</p><p><strong>Scenario: Rechazar cambio</strong></p><p><strong>Given</strong> el comprador lo rechaza</p><p><strong>When</strong> Nexa registra la decisión</p><p><strong>Then</strong> el compromiso original permanece intacto.</p><p><strong>Scenario: Cambio desactualizado</strong></p><p><strong>Given</strong> el cambio ya no es actual</p><p><strong>When</strong> el comprador responde</p><p><strong>Then</strong> Nexa solicita la decisión actual y no cambia nada silenciosamente.</p></td></tr>
 </tbody>
@@ -949,7 +955,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-042</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-042</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Seguir solicitudes y pedidos</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo seguir solicitudes y pedidos, para comprender el progreso comercial autorizado.</td></tr>
@@ -966,7 +972,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-043</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa futura</td></tr>
+<tr><td>MOB-US-043</td><td>Customer Buyer</td><td>Medium</td><td>MOBILE-EPIC-06 — Conveniencia comercial y operativa</td></tr>
 <tr><th>Title</th><td colspan="3">Revisar estado de crédito y pago</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo revisar el estado del crédito y del pago, para comprender lo adeudado sin tratar la evidencia reportada como confirmación.</td></tr>
@@ -1483,11 +1489,11 @@ total de 97 elementos.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-073</td><td>Warehouse Operator</td><td>Low</td><td>MOBILE-EPIC-12 — Automatización de almacén posterior</td></tr>
+<tr><td>MOB-US-073</td><td>Warehouse Operator</td><td>Low</td><td>MOBILE-EPIC-12 — Automatización de almacén controlada</td></tr>
 <tr><th>Title</th><td colspan="3">Usar evidencia de automatización de almacén en un trabajo controlado</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo consultar evidencia de automatización asociada al trabajo autorizado, para apoyar una decisión operativa sin convertir el mecanismo técnico ni el dispositivo en autoridad de stock.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Evidencia asociada</strong></p><p><strong>Given</strong> Nexa dispone de evidencia de automatización asociada al trabajo y contexto autorizados</p><p><strong>When</strong> el Warehouse Operator la consulta</p><p><strong>Then</strong> la evidencia permanece ligada al trabajo correcto y separada de los hechos de stock con autoridad.</p><p><strong>Scenario: Ausencia o ambigüedad</strong></p><p><strong>Given</strong> la evidencia falta, es ambigua o no está asociada al trabajo correcto</p><p><strong>When</strong> el operador intenta utilizarla</p><p><strong>Then</strong> Nexa no inventa un resultado y mantiene la acción pendiente o bloqueada.</p><p><strong>Scenario: Confirmación del servidor</strong></p><p><strong>Given</strong> la evidencia sugiere un resultado de almacén</p><p><strong>When</strong> el operador continúa</p><p><strong>Then</strong> Nexa API confirma cualquier hecho de negocio antes de cambiar inventario o fulfillment.</p><p><strong>Scenario: Corrección trazable</strong></p><p><strong>Given</strong> la evidencia o su vínculo requiere corrección</p><p><strong>When</strong> se corrige con autorización</p><p><strong>Then</strong> conserva la evidencia original, el motivo, el actor y la trazabilidad de la corrección.</p><p><strong>Scenario: Mecanismo abierto</strong></p><p><strong>Given</strong> RFID, sensores u otro mecanismo no está seleccionado</p><p><strong>When</strong> se describe el alcance futuro</p><p><strong>Then</strong> el mecanismo permanece OPEN/FUTURE y no se presenta como compromiso actual.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Evidencia asociada</strong></p><p><strong>Given</strong> Nexa dispone de evidencia de automatización asociada al trabajo y contexto autorizados</p><p><strong>When</strong> el Warehouse Operator la consulta</p><p><strong>Then</strong> la evidencia permanece ligada al trabajo correcto y separada de los hechos de stock con autoridad.</p><p><strong>Scenario: Ausencia o ambigüedad</strong></p><p><strong>Given</strong> la evidencia falta, es ambigua o no está asociada al trabajo correcto</p><p><strong>When</strong> el operador intenta utilizarla</p><p><strong>Then</strong> Nexa no inventa un resultado y mantiene la acción pendiente o bloqueada.</p><p><strong>Scenario: Confirmación del servidor</strong></p><p><strong>Given</strong> la evidencia sugiere un resultado de almacén</p><p><strong>When</strong> el operador continúa</p><p><strong>Then</strong> Nexa API confirma cualquier hecho de negocio antes de cambiar inventario o fulfillment.</p><p><strong>Scenario: Corrección trazable</strong></p><p><strong>Given</strong> la evidencia o su vínculo requiere corrección</p><p><strong>When</strong> se corrige con autorización</p><p><strong>Then</strong> conserva la evidencia original, el motivo, el actor y la trazabilidad de la corrección.</p><p><strong>Scenario: Mecanismo no seleccionado</strong></p><p><strong>Given</strong> RFID, sensores u otro mecanismo no está seleccionado</p><p><strong>When</strong> se describe el alcance de la historia</p><p><strong>Then</strong> el mecanismo queda fuera de la decisión vigente y no se presenta como compromiso.</p></td></tr>
 </tbody>
 </table>

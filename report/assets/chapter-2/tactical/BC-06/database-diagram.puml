@@ -1,5 +1,5 @@
 @startuml
-title BC-06 Target Database Diagram
+title BC-06 Fulfillment & Delivery — Logical Database Design
 left to right direction
 hide methods
 skinparam shadowing false
@@ -10,201 +10,172 @@ skinparam entity {
   FontColor #0F172A
 }
 
-entity "fulfillment" as t_fulfillment {
+entity "fulfillment" as fulfillment {
   * fulfillment_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * sales_order_id : uuid <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * sales_order_id : uuid <<required, BC-04 ID>>
   * status : varchar(32) <<required>>
-  * planned_at : timestamptz <<required>>
-    started_at : timestamptz
-    completed_at : timestamptz
   * version : integer <<required>>
 }
 
-entity "fulfillment_line" as t_fulfillment_line {
+entity "fulfillment_line" as fulfillment_line {
   * line_id : uuid <<PK>>
   * fulfillment_id : uuid <<FK, required>>
-  * sku_id : uuid <<required>>
-  * physical_allocation_id : uuid <<required>>
+  * sku_id : uuid <<required, BC-03 ID>>
+  * physical_allocation_id : uuid <<required, BC-05 ID>>
   * planned_quantity : numeric(19,6) <<required>>
   * picked_quantity : numeric(19,6) <<required>>
 }
 
-entity "picking_result" as t_picking_result {
+entity "picking_result" as picking_result {
   * picking_result_id : uuid <<PK>>
   * fulfillment_id : uuid <<FK, required>>
   * status : varchar(32) <<required>>
-  * picker_identity_id : uuid <<required>>
-  * started_at : timestamptz <<required>>
-    completed_at : timestamptz
+  * actor_human_identity_id : uuid <<required, BC-01 ID>>
+  * completed_at : timestamptz <<required>>
 }
 
-entity "picking_discrepancy" as t_picking_discrepancy {
+entity "picking_discrepancy" as picking_discrepancy {
   * discrepancy_id : uuid <<PK>>
   * picking_result_id : uuid <<FK, required>>
   * fulfillment_line_id : uuid <<FK, required>>
   * kind : varchar(32) <<required>>
   * quantity : numeric(19,6) <<required>>
-    resolution : varchar(500)
-    resolved_at : timestamptz
 }
 
-entity "delivery" as t_delivery {
+entity "delivery" as delivery {
   * delivery_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * fulfillment_id : uuid <<FK, required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * fulfillment_id : uuid <<required, BC-06 ID>>
+  * buyer_relationship_id : uuid <<required, BC-02 ID>>
   * status : varchar(32) <<required>>
   * destination_snapshot : jsonb <<required>>
-    scheduled_at : timestamptz
-    dispatched_at : timestamptz
-    delivered_at : timestamptz
   * version : integer <<required>>
 }
 
-entity "delivery_assignment" as t_delivery_assignment {
+entity "delivery_assignment" as delivery_assignment {
   * assignment_id : uuid <<PK>>
   * delivery_id : uuid <<FK, required>>
-  * operator_id : uuid <<required>>
+  * actor_human_identity_id : uuid <<required, BC-01 ID>>
     vehicle_reference : varchar(120)
   * assigned_at : timestamptz <<required>>
     unassigned_at : timestamptz
 }
 
-entity "delivery_attempt" as t_delivery_attempt {
+entity "delivery_attempt" as delivery_attempt {
   * attempt_id : uuid <<PK>>
   * delivery_id : uuid <<FK, required>>
   * attempt_number : integer <<required>>
-  * outcome : varchar(32) <<required>>
   * attempted_at : timestamptz <<required>>
-    notes : varchar(1000)
+  * outcome : varchar(32) <<required>>
 }
 
-entity "delivery_attempt_line" as t_delivery_attempt_line {
+entity "delivery_attempt_line" as delivery_attempt_line {
   * line_id : uuid <<PK>>
   * attempt_id : uuid <<FK, required>>
-  * fulfillment_line_id : uuid <<FK, required>>
-  * sku_id : uuid <<required>>
+  * sku_id : uuid <<required, BC-03 ID>>
   * attempted_quantity : numeric(19,6) <<required>>
-  * received_quantity : numeric(19,6) <<required>>
 }
 
-entity "delivery_quantity_outcome" as t_delivery_quantity_outcome {
+entity "delivery_quantity_outcome" as delivery_quantity_outcome {
   * outcome_id : uuid <<PK>>
   * attempt_id : uuid <<FK, required>>
-  * sku_id : uuid <<required>>
   * fulfilled_quantity : numeric(19,6) <<required>>
   * short_quantity : numeric(19,6) <<required>>
     reason : varchar(500)
 }
 
-entity "delivery_handoff_token" as t_delivery_handoff_token {
-  * delivery_handoff_token_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
+entity "continuation_delivery" as continuation_delivery {
+  * continuation_id : uuid <<PK>>
   * delivery_id : uuid <<FK, required>>
-  * delivery_attempt_id : uuid <<FK, required>>
-  * customer_account_id : uuid <<required>>
+  * remaining_snapshot : jsonb <<required>>
+  * status : varchar(32) <<required>>
+}
+
+entity "delivery_handoff_token" as delivery_handoff_token {
+  * token_id : uuid <<PK>>
+  * delivery_id : uuid <<FK, required>>
+  * buyer_relationship_id : uuid <<required, BC-02 ID>>
+  * issued_by_human_identity_id : uuid <<required, BC-01 ID>>
   * token_hash : char(64) <<required>>
-  * issued_at : timestamptz <<required>>
   * expires_at : timestamptz <<required>>
-  * issuer_operator_id : uuid <<required>>
-  * status : varchar(32) <<required>>
-  * idempotency_key : varchar(160) <<required>>
-  * created_at : timestamptz <<required>>
+    consumed_at : timestamptz
 }
 
-entity "buyer_receipt_fact" as t_buyer_receipt_fact {
-  * buyer_receipt_fact_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
+entity "buyer_receipt" as buyer_receipt {
+  * receipt_id : uuid <<PK>>
   * delivery_id : uuid <<FK, required>>
-  * delivery_attempt_id : uuid <<FK, required>>
-  * customer_account_id : uuid <<required>>
-  * buyer_membership_id : uuid <<required>>
-  * handoff_token_id : uuid <<FK, required>>
-  * decision : varchar(32) <<required>>
-  * driver_delivered_quantity : numeric(19,6) <<required>>
+  * attempt_id : uuid <<FK, required>>
+  * buyer_relationship_id : uuid <<required, BC-02 ID>>
+  * actor_human_identity_id : uuid <<required, BC-01 ID>>
   * accepted_quantity : numeric(19,6) <<required>>
-    reason : varchar(2000)
   * occurred_at : timestamptz <<required>>
-  * idempotency_key : varchar(160) <<required>>
 }
 
-entity "proof_of_delivery" as t_proof_of_delivery {
-  * pod_id : uuid <<PK>>
+entity "buyer_discrepancy" as buyer_discrepancy {
+  * discrepancy_id : uuid <<PK>>
   * delivery_id : uuid <<FK, required>>
-  * status : varchar(32) <<required>>
-    recipient_name : varchar(200)
-    signature_object_key : varchar(500)
-  * captured_at : timestamptz <<required>>
-    sealed_at : timestamptz
+  * actor_human_identity_id : uuid <<required, BC-01 ID>>
+  * reason : varchar(1000) <<required>>
+  * occurred_at : timestamptz <<required>>
 }
 
-entity "proof_of_delivery_addendum" as t_proof_of_delivery_addendum {
+entity "proof_of_delivery" as proof_of_delivery {
+  * pod_id : uuid <<PK>>
+  * delivery_id : uuid <<required, BC-06 ID>>
+  * captured_by_human_identity_id : uuid <<required, BC-01 ID>>
+  * evidence_reference : jsonb <<required>>
+  * captured_at : timestamptz <<required>>
+  * sealed_at : timestamptz <<required>>
+}
+
+entity "proof_of_delivery_addendum" as proof_of_delivery_addendum {
   * addendum_id : uuid <<PK>>
   * pod_id : uuid <<FK, required>>
   * reason : varchar(500) <<required>>
-    evidence_object_key : varchar(500)
-  * appended_by_identity_id : uuid <<required>>
+  * evidence_reference : jsonb <<required>>
   * appended_at : timestamptz <<required>>
 }
 
-entity "temperature_evidence" as t_temperature_evidence {
+entity "temperature_evidence" as temperature_evidence {
   * evidence_id : uuid <<PK>>
-  * delivery_id : uuid <<FK, required>>
-  * captured_at : timestamptz <<required>>
+  * delivery_id : uuid <<required, BC-06 ID>>
+  * actor_human_identity_id : uuid <<required, BC-01 ID>>
   * temperature_celsius : numeric(8,3) <<required>>
-  * source : varchar(80) <<required>>
-    evidence_metadata : jsonb
+  * captured_at : timestamptz <<required>>
 }
 
-entity "temperature_excursion" as t_temperature_excursion {
+entity "temperature_excursion" as temperature_excursion {
   * excursion_id : uuid <<PK>>
-  * delivery_id : uuid <<FK, required>>
-    evidence_id : uuid <<FK>>
-  * status : varchar(32) <<required>>
+  * evidence_id : uuid <<FK, required>>
   * reason : varchar(500) <<required>>
-  * opened_at : timestamptz <<required>>
-    closed_at : timestamptz
-}
-
-entity "continuation_delivery" as t_continuation_delivery {
-  * continuation_id : uuid <<PK>>
-  * parent_delivery_id : uuid <<FK, required>>
   * status : varchar(32) <<required>>
-  * remaining_snapshot : jsonb <<required>>
-  * opened_at : timestamptz <<required>>
-    closed_at : timestamptz
 }
 
-t_fulfillment_line }o--|| t_fulfillment : fulfillment_id
-t_picking_result }o--|| t_fulfillment : fulfillment_id
-t_picking_discrepancy }o--|| t_picking_result : picking_result_id
-t_picking_discrepancy }o--|| t_fulfillment_line : fulfillment_line_id
-t_delivery }o--|| t_fulfillment : fulfillment_id
-t_delivery_assignment }o--|| t_delivery : delivery_id
-t_delivery_attempt }o--|| t_delivery : delivery_id
-t_delivery_attempt_line }o--|| t_delivery_attempt : attempt_id
-t_delivery_attempt_line }o--|| t_fulfillment_line : fulfillment_line_id
-t_delivery_quantity_outcome }o--|| t_delivery_attempt : attempt_id
-t_delivery_handoff_token }o--|| t_delivery : delivery_id
-t_delivery_handoff_token }o--|| t_delivery_attempt : delivery_attempt_id
-t_buyer_receipt_fact }o--|| t_delivery : delivery_id
-t_buyer_receipt_fact }o--|| t_delivery_attempt : delivery_attempt_id
-t_buyer_receipt_fact }o--|| t_delivery_handoff_token : handoff_token_id
-t_proof_of_delivery }o--|| t_delivery : delivery_id
-t_proof_of_delivery_addendum }o--|| t_proof_of_delivery : pod_id
-t_temperature_evidence }o--|| t_delivery : delivery_id
-t_temperature_excursion }o--|| t_delivery : delivery_id
-t_temperature_excursion }o--|| t_temperature_evidence : evidence_id
-t_continuation_delivery }o--|| t_delivery : parent_delivery_id
+fulfillment_line }o--|| fulfillment : fulfillment_id
+picking_result }o--|| fulfillment : fulfillment_id
+picking_discrepancy }o--|| picking_result : picking_result_id
+picking_discrepancy }o--|| fulfillment_line : fulfillment_line_id
+delivery_assignment }o--|| delivery : delivery_id
+delivery_attempt }o--|| delivery : delivery_id
+delivery_attempt_line }o--|| delivery_attempt : attempt_id
+delivery_quantity_outcome }o--|| delivery_attempt : attempt_id
+continuation_delivery }o--|| delivery : delivery_id
+delivery_handoff_token }o--|| delivery : delivery_id
+buyer_receipt }o--|| delivery : delivery_id
+buyer_receipt }o--|| delivery_attempt : attempt_id
+buyer_discrepancy }o--|| delivery : delivery_id
+proof_of_delivery_addendum }o--|| proof_of_delivery : pod_id
+temperature_excursion }o--|| temperature_evidence : evidence_id
+
+note bottom of proof_of_delivery
+delivery_id is an identity reference between independent roots.
+No Delivery ownership relation is stored for POD or TemperatureEvidence.
+end note
 
 legend right
-TARGET / BC-06 logical relational ownership / SQL is the authority
-PK = primary key | FK = same-owner foreign key
-required = NOT NULL | cross-BC IDs are deliberately not FK
-This PlantUML file is a visual projection for review.
+PK = primary key | FK = local foreign key | required = NOT NULL.
+Buyer relationship and human identity are typed IDs; no buyer membership exists.
+Evidence bytes are external to this logical relational design.
 endlegend
 @enduml

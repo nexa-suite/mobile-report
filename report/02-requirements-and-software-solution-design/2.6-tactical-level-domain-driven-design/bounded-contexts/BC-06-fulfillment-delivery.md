@@ -1,107 +1,48 @@
 ### 2.6.6. Bounded Context: Fulfillment & Delivery
 
-Este contexto de Core Domain posee planes de ejecución, dispatch handoff,
-delivery attempts, resultados de cantidad, recepción y evidencia de entrega.
-Driver Outcome, Buyer Receipt, Proof of Delivery y Business Traceability
-permanecen como hechos separados.
+BC-06 conserva la ejecución de fulfillment, intentos de entrega, recepción y
+evidencia. Los resultados quedan registrados como hechos históricos.
 
-#### 2.6.6.1. Domain Layer
+#### 2.6.6.1. Canonical class dictionary
 
-*Agregados y límites invariantes de BC-06.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `Fulfillment` | Plan de ejecución de Sales Order y progresión de picking y packing |
-| `Delivery` | Obligación de Delivery, asignación, intentos y cantidad restante |
-| `ProofOfDelivery` | Evidencia inmutable de entrega; las correcciones son adendas |
-| `TemperatureEvidence` | Lectura o evidencia manual e insumo para decidir una excursión |
+*Clases y responsabilidades de BC-06 por capa.*
 
-`FulfillmentLine`, `PickingResult`, `PickingDiscrepancy`, `DeliveryAssignment`,
-`DeliveryAttempt`, `DeliveryQuantityOutcome`, `DeliveryHandoffToken`,
-`BuyerReceiptFact`, `ProofOfDeliveryAddendum`, `TemperatureExcursion` y
-`ContinuationDelivery` son Entity/hechos con ciclos de vida acotados. Los value
-objects incluyen `DeliveryId`, `HandoffId`, `AttemptId`, `EvidenceRef`,
-`GeoPoint` y `DeliveryQuantity`; las políticas incluyen
-`PartialDeliveryPolicy` y `DeliveryLocationPrivacyPolicy`.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | Fulfillment | Aggregate Root | Organiza ejecución de una SalesOrder. | Fulfillment ID, sales order ID, status. | Start, complete and cancel. | Uses BC-04 order ID and BC-05 allocation IDs. | Owns FulfillmentLine and PickingResult. |
+| Domain | Delivery | Aggregate Root | Mantiene obligación, asignación e intentos de entrega. | Delivery ID, fulfillment ID, buyer relationship ID, status. | Dispatch, record attempt and open continuation. | References Fulfillment and BuyerRelationship by ID. | Owns assignment, attempt, outcome, continuation, receipt and discrepancy facts. |
+| Domain | ProofOfDelivery | Aggregate Root | Conserva evidencia sellada de una entrega. | POD ID, delivery ID, actor identity ID, captured time. | Seal and append correction evidence. | References Delivery by identity. | Owns ProofOfDeliveryAddendum; never belongs to Delivery. |
+| Domain | TemperatureEvidence | Aggregate Root | Conserva una medición asociada a entrega. | Evidence ID, delivery ID, temperature, captured time. | Record evidence and excursion. | References Delivery by identity. | Owns TemperatureExcursion; never belongs to Delivery. |
+| Domain | DeliveryAttempt | Entity | Registra un intento con su resultado. | Attempt number, time, outcome. | Record outcome. | Is local to Delivery. | Delivery owns attempt lines and quantity outcomes. |
+| Domain | BuyerReceipt | Entity | Registra aceptación de cantidades por Buyer. | Buyer relationship ID, actor human identity ID, quantity. | Record receipt. | Uses BC-02 and BC-01 typed IDs. | Owned by Delivery. |
+| Domain | BuyerDiscrepancy | Entity | Registra una diferencia declarada por Buyer. | Actor human identity ID, reason, time. | Record discrepancy. | Uses typed identity reference. | Owned by Delivery. |
+| Domain | DeliveryExecutionPolicy | Domain Policy | Aplica reglas puras de continuidad y sellado. | Delivery outcome or POD. | Decide continuation and sealing conditions. | Receives loaded domain values. | No storage, provider or HTTP dependency. |
+| Interface | BC-06 Interface Boundary | Interface component | Traduce comandos de fulfillment y entrega autorizados. | Actor, scope, version and command. | Rejects invalid or stale input. | Calls application orchestration. | Does not own inventory or documents. |
+| Application | BC-06 Application Orchestration | Application component | Coordina picking, entrega, POD y evidencia. | Fulfillment or delivery command, typed references. | Preserves idempotency and historical facts. | Uses BC-05 allocation contract and publishes committed facts. | Performs storage access through ports, outside Domain. |
+| Infrastructure | BC-06 Persistence Adapter | Infrastructure component | Persiste raíces y hechos locales. | Fulfillment, delivery and evidence records. | Maps aggregates and local entities. | PostgreSQL, object-storage adapter and local outbox. | Does not expose private evidence bytes as public URLs. |
 
-Invariantes de diseño: la autoridad de Allocation permanece en BC-05; los
-intentos fallidos permanecen bajo una Delivery; una entrega parcial registra la
-verdad entregada o rechazada y crea una sola continuación para la obligación
-restante; POD es inmutable y se corrige mediante addendum; la evidencia de
-temperatura es manual en el alcance inicial y una excursión coloca la cantidad
-afectada en HOLD hasta una disposición explícita.
+Fulfillment consume la identidad de PhysicalAllocation sin adueñarse de
+inventario. Un intento fallido permanece en la misma Delivery; una entrega
+parcial crea una ContinuationDelivery para la cantidad restante. ProofOfDelivery
+es inmutable y se corrige por addendum. BuyerRelationshipId y
+ActorHumanIdentityId sustituyen cualquier referencia a buyer membership.
 
-#### 2.6.6.2. Interface Layer
+#### 2.6.6.2. Component and code-level diagrams
 
-La Interface Layer cubre planificación de fulfillment, resultado de picking,
-dispatch handoff, assignment, delivery attempt, outcome, Buyer Receipt, POD y
-evidencia de temperatura. No se inventan nombres URI/DTO exactos. El servidor
-autoriza toda transición crítica; Operations Mobile y Buyer Mobile son
-proyecciones planificadas.
+*Vista C4 L3 de BC-06 Fulfillment & Delivery.*
 
-#### 2.6.6.3. Application Layer
+![Vista C4 L3 de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-BC-06-FulfillmentDelivery.svg)
 
-La Application Layer coordina inicio, finalización o cancelación de fulfillment,
-emisión y resolución de handoff, asignación e intento de entrega, continuidad
-parcial, recepción y registro de evidencia. Idempotency, alcance Tenant,
-metadatos de evidencia inmutables y resultados de conflicto son explícitos. Un
-outbox/inbox durable apoya notificaciones y trazabilidad posteriores al commit.
-
-#### 2.6.6.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `fulfillment`, `fulfillment_line`,
-`picking_result`, `picking_discrepancy`, `delivery`, `delivery_assignment`,
-`delivery_attempt`, `delivery_attempt_line`, `delivery_quantity_outcome`,
-`delivery_handoff_token`, `buyer_receipt_fact`, `proof_of_delivery`,
-`proof_of_delivery_addendum`, `temperature_evidence`,
-`temperature_excursion` y `continuation_delivery`. `sales_order_id`,
-`physical_allocation_id` e IDs de SKU/operator son referencias inter-BC sin
-propiedad. Los bytes de Object usan ports de BC-09/Object Storage; no se
-infiere una URL pública.
-
-#### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
-
-Las siguientes clases son especificaciones **TARGET**. Mantienen separados
-Dispatch Handoff, Driver Outcome, Buyer Receipt y Proof of Delivery; cada hecho
-conserva su propio emisor e historia.
-
-*Clases TARGET por capa de BC-06*
-
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `FulfillmentController` | Controller | Traduce comandos de planificación, picking y empaquetado con autorización de servidor. |
-| Interface | `DeliveryController` | Controller | Recibe asignación, intentos y outcomes sin confundirlos con la recepción Buyer. |
-| Interface | `ProofOfDeliveryController` | Controller | Registra evidencia inmutable y sus addenda; no expone bytes privados directamente. |
-| Interface | `DeliveryTrackingConsumer` | Consumer | Proyecta una vista autorizada para Portal/Mobile, sin convertirla en autoridad de ciclo de vida. |
-| Application | `PlanFulfillmentHandler` | Command handler | Valida contrato de Physical Allocation de BC-05 antes de crear o avanzar Fulfillment. |
-| Application | `ConfirmPickingHandler` | Command handler | Aplica idempotencia de scan, versión y discrepancia sin mutar inventario fuera del contrato. |
-| Application | `FinalizeDeliveryAttemptHandler` | Command handler | Persiste outcome inmutable, conserva el mismo Delivery en falla y crea una sola Continuation Delivery si corresponde. |
-| Application | `FinalizeProofOfDeliveryHandler` | Command handler | Verifica campos de política y registra referencia de evidencia antes de publicar el hecho comprometido. |
-| Infrastructure | `FulfillmentRepositoryAdapter` | Repository implementation | Persiste fulfillment, líneas, picking y sus hechos bajo propiedad BC-06. |
-| Infrastructure | `DeliveryRepositoryAdapter` | Repository implementation | Persiste Delivery, Assignment, Attempt y Continuation sin crear un Delivery por intento fallido. |
-| Infrastructure | `ProofEvidenceObjectPort` | Storage adapter | Gestiona referencias autorizadas a Object Storage, no URLs públicas inferidas. |
-| Infrastructure | `MapRoutingPort` | External ACL | Aísla navegación/ruta externa del dominio y evita afirmar tracking continuo. |
-| Infrastructure | `FulfillmentOutboxAdapter` | Outbox adapter | Entrega hechos posteriores al commit a documentos, notificaciones y trazabilidad. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-06 Fulfillment & Delivery.*
-
-![BC-06 Fulfillment & Delivery — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-06-FulfillmentDelivery-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-06 Fulfillment & Delivery, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
-
-#### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-06 Fulfillment & Delivery.*
-![BC-06 tactical domain model](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
+![Modelo de dominio táctico de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.svg)
 
-##### 2.6.6.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-06.*
-![BC-06 database design projection](../../../assets/chapter-2/tactical/BC-06/database-diagram.png)
+*Diseño lógico de base de datos de BC-06 Fulfillment & Delivery.*
 
-*Nota.* La propiedad lógica está en PostgreSQL compartido; el SQL canónico define las restricciones, el alcance Tenant y las referencias de evidencia.
+![Diseño lógico de base de datos de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/tactical/BC-06/database-diagram.svg)
+
+*Nota. Elaboración propia.*

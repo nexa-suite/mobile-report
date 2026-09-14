@@ -1,106 +1,45 @@
 ### 2.6.4. Bounded Context: Sales Commitment
 
-Este contexto de Core Domain posee intención Buyer, Purchase Request,
-Commercial Commitment y Sales Order. Draft, commitment, Inventory Reservation,
-Warehouse Backing y Physical Allocation son hechos y autoridades distintos.
+BC-04 conserva la intención comercial, el compromiso y la orden. Sus raíces
+tienen ciclos de vida separados; una referencia entre ellas usa identidad.
 
-#### 2.6.4.1. Domain Layer
+#### 2.6.4.1. Canonical class dictionary
 
-*Agregados y límites invariantes de BC-04.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `RequestDraft` | Intención editable; no crea compromiso ni reserva |
-| `PurchaseRequest` | Intención enviada de todo o nada con vencimiento y snapshots inmutables |
-| `CommercialCommitment` | Demanda de SKU independiente de Warehouse con un origen explícito |
-| `SalesOrder` | Consolidación comercial y ciclo de vida confirmados; sin SO en borrador en el alcance inicial |
+*Clases y responsabilidades de BC-04 por capa.*
 
-`RequestDraftLine`, `PurchaseRequestLine`, `CommitmentLine`,
-`MaterialChangeProposal`, `CommercialSnapshot` y los hechos de ajuste
-preservan límites de línea e historial. Los value objects incluyen
-`CommitmentId`, `SkuQuantity`, `TermsSnapshot` y `OrderRevision`;
-`CommitmentAcceptancePolicy` y `MaterialChangePolicy` coordinan decisiones de
-dominio. Los Repository poseen los roots de Purchase Request y Sales Order.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | RequestDraft | Aggregate Root | Mantiene intención editable antes de una solicitud. | Draft ID, buyer relationship ID, status. | Add lines and submit. | Uses SKU IDs. | Owns RequestDraftLine; BuyerRelationship is a BC-02 ID. |
+| Domain | PurchaseRequest | Aggregate Root | Mantiene una solicitud enviada y su vencimiento. | Request ID, buyer relationship ID, expiry, status. | Submit, accept a material change or reject. | Supplies the optional origin of a commitment. | Owns PurchaseRequestLine and MaterialChangeProposal. |
+| Domain | CommercialCommitment | Aggregate Root | Registra demanda comercial confirmable. | Commitment ID, origin, optional request ID, status. | Establish from request or direct order; cancel. | Consumes typed reservation and credit decisions. | Owns CommercialCommitmentLine and CommitmentAdjustment. |
+| Domain | SalesOrder | Aggregate Root | Consolida el ciclo de vida de la orden. | Sales order ID, commitment ID, status. | Confirm or cancel. | References CommercialCommitment by ID. | Owns SalesOrderLine; no root composition. |
+| Domain | CommercialSnapshot | Value Object | Conserva precio y términos aceptados en una línea. | SKU ID, money, TermsSnapshot. | Preserves a decision input. | Passed through the commercial flow. | Local immutable value. |
+| Domain | CommitmentAcceptancePolicy | Domain Policy | Evalúa reglas puras para aceptar un compromiso. | InventoryReservationDecision, CreditReservationDecision. | Decide whether commitment is admissible. | Receives published values already loaded by application. | No repository, provider or cross-context object ownership. |
+| Interface | BC-04 Interface Boundary | Interface component | Traduce comandos y consultas comerciales autorizadas. | Actor, scope, version and idempotency key. | Rejects invalid or stale input. | Calls application orchestration. | Does not reserve stock directly. |
+| Application | BC-04 Application Orchestration | Application component | Coordina la transición comercial y los contratos requeridos. | Request or direct-order command; typed decisions. | Preserves idempotency and origin semantics. | Uses BC-05 and BC-07 contracts by typed IDs. | Does not load their aggregates. |
+| Infrastructure | BC-04 Persistence Adapter | Infrastructure component | Persiste raíces, líneas y snapshots propios. | Commercial records. | Maps local aggregates. | PostgreSQL and local outbox. | Does not own inventory or credit tables. |
 
-Invariantes de diseño: enviar una PR establece Inventory Reservation completa,
-Warehouse Backing determinista y la reserva de crédito aplicable antes del
-commit; Physical Allocation permanece como una selección posterior de lotes
-propiedad de Inventory para fulfillment. El origen `PURCHASE_REQUEST` requiere
-una referencia PR real, mientras que `DIRECT_ORDER` no la tiene; PR-to-SO
-transfiere propiedad de Commitment sin liberar ni reservar otra vez; la
-expiración se comprueba con `now >= expiresAt`; un cambio material requiere
-aceptación Buyer y revalidación. Completar una SO no confirma Payment.
+El origen PURCHASE_REQUEST exige PurchaseRequestId. DIRECT_ORDER no contiene
+Purchase Request. La aplicación coordina las decisiones de inventario y crédito
+por contratos explícitos; la transición a SalesOrder mantiene referencias de
+identidad y no libera ni crea una reserva duplicada.
 
-#### 2.6.4.2. Interface Layer
+#### 2.6.4.2. Component and code-level diagrams
 
-La Interface Layer expresa contratos para draft, submit, approve/convert,
-direct order, material change y consultas de pedido. Aquí no se inventan
-endpoint names exactos. Los Command sensibles a reintentos requieren
-idempotency y los recursos mutables obsoletos usan semántica version/If-Match
-cuando corresponda. La autorización API y el estado de decisión permanecen
-autoritativos; Mobile sólo es una proyección planificada.
+*Vista C4 L3 de BC-04 Sales Commitment.*
 
-#### 2.6.4.3. Application Layer
+![Vista C4 L3 de BC-04 Sales Commitment](../../../assets/chapter-2/c4/Nexa-API-BC-04-SalesCommitment.svg)
 
-La Application Layer coordina el snapshot de catálogo, la elegibilidad de Buyer,
-la Inventory Reservation, el Warehouse Backing y los contratos de decisión de
-crédito dentro del límite lógico de consistencia requerido. Preserva el origen
-direct-order frente a PR y usa idempotency durable. Los integration events se
-emiten sólo después del commit local; no se carga un Aggregate de otro contexto.
-
-#### 2.6.4.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `request_draft`,
-`request_draft_line`, `purchase_request`, `purchase_request_line`,
-`material_change_proposal`, `commercial_commitment`,
-`commercial_commitment_line`, `commitment_owner_transfer`,
-`sales_commitment_adjustment`, `sales_order` y `sales_order_line`. Inventory
-Reservation, Warehouse Backing, Physical Allocation y la reserva de crédito se
-referencian mediante contratos e ID explícitos, no mediante propiedad directa de
-tablas.
-
-#### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
-
-Las siguientes clases son especificaciones **TARGET**. Expresan una decisión
-comercial atómica por contratos explícitos: no cargan agregados ajenos ni
-convierten un Draft en Sales Order sin la transición aceptada.
-
-*Clases TARGET por capa de BC-04*
-
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `BuyerRequestController` | Controller | Recibe comandos de Draft y Purchase Request con `Idempotency-Key`; no confirma inventario localmente. |
-| Interface | `SalesOrderController` | Controller | Expone consultas y transiciones comerciales autorizadas con versión cuando corresponde. |
-| Interface | `SalesCommitmentConsumer` | Contract consumer | Recibe resultados explícitos de inventory/credit; no es un endpoint ni comparte agregados. |
-| Application | `SubmitPurchaseRequestHandler` | Command handler | Coordina en un límite lógico la validación, Commitment, Inventory Reservation, Warehouse Backing y crédito antes del commit. |
-| Application | `AcceptMaterialChangeHandler` | Command handler | Revalida precio, inventario y crédito tras aceptación Buyer; preserva el estado previo si falla. |
-| Application | `ConvertPurchaseRequestHandler` | Command handler | Aplica CAS y guardia `now >= expiresAt`, transfiriendo el Commitment sin liberar y re-reservar. |
-| Application | `ConfirmDirectOrderHandler` | Command handler | Confirma Direct Order con Commitment de origen explícito, sin fabricar Purchase Request. |
-| Infrastructure | `PurchaseRequestRepositoryAdapter` | Repository implementation | Persiste PR, líneas y snapshots inmutables de BC-04. |
-| Infrastructure | `CommercialCommitmentRepositoryAdapter` | Repository implementation | Conserva Commitment warehouse-neutral y su transferencia de titularidad. |
-| Infrastructure | `InventoryAvailabilityPort` | Synchronous contract adapter | Solicita Inventory Reservation y Warehouse Backing a BC-05 por ID y resultado, sin mutar tablas de inventario. |
-| Infrastructure | `CreditReservationPort` | Synchronous contract adapter | Solicita decisión de BC-07 sin apropiarse de Receivable o ledger. |
-| Infrastructure | `SalesOutboxAdapter` | Outbox adapter | Publica hechos sólo después del commit local, con entrega al menos una vez. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-04 Sales Commitment.*
-
-![BC-04 Sales Commitment — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-04-SalesCommitment-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-04 Sales Commitment, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
-
-#### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-04 Sales Commitment.*
-![BC-04 tactical domain model](../../../assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
+![Modelo de dominio táctico de BC-04 Sales Commitment](../../../assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.svg)
 
-##### 2.6.4.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-04.*
-![BC-04 database design projection](../../../assets/chapter-2/tactical/BC-04/database-diagram.png)
+*Diseño lógico de base de datos de BC-04 Sales Commitment.*
 
-*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las instantáneas inmutables, las restricciones PK/FK/unique/check y la propiedad están definidas por el SQL canónico.
+![Diseño lógico de base de datos de BC-04 Sales Commitment](../../../assets/chapter-2/tactical/BC-04/database-diagram.svg)
+
+*Nota. Elaboración propia.*

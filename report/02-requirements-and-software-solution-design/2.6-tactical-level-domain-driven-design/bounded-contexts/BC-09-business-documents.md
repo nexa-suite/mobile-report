@@ -1,98 +1,46 @@
 ### 2.6.9. Bounded Context: Business Documents
 
-Este contexto posee la identidad de documentos emitidos, la numeración,
-snapshots inmutables, la intención de generación y las referencias privadas de
-Object Storage. No posee la autoridad de Sales, Payment, Delivery ni fiscal.
+BC-09 conserva documentos de negocio, numeración, snapshots y metadatos de
+archivo. No posee Sales, Payment, Delivery ni bytes de Object Storage.
 
-#### 2.6.9.1. Domain Layer
+#### 2.6.9.1. Canonical class dictionary
 
-*Agregados y límites invariantes de BC-09.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `BusinessDocument` | Snapshot solicitado, emitido o reemplazado y metadatos de disponibilidad |
-| `DocumentNumberSeries` | Asignación de numeración con alcance definido |
-| `DocumentGenerationRequest` | Intención de generación reintentable con idempotencia y lease |
-| `ObjectStorageReference` | Metadatos para bytes privados fuera de PostgreSQL |
+*Clases y responsabilidades de BC-09 por capa.*
 
-`DocumentSnapshotLine`, `DocumentRevision` y `EvidenceReference` preservan el
-historial inmutable. Los Value Objects incluyen `DocumentId`, `DocumentNumber`,
-`DocumentType`, `IssuedSnapshot`, `StorageReference` y `ContentHash`.
-`DocumentNumberingPolicy` y `DocumentIssuePolicy` validan los snapshots de
-origen; `BusinessDocumentRepository` posee el estado del documento.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | BusinessDocument | Aggregate Root | Conserva un documento y su emisión. | Document ID, series ID, type, status, source reference. | Issue and supersede. | References source facts by typed IDs. | Owns snapshot lines, revisions and storage metadata. |
+| Domain | DocumentNumberSeries | Aggregate Root | Mantiene una serie de numeración. | Series ID, tenant ID, type, next number. | Reserve number. | Used by BusinessDocument through identity. | Independent lifecycle. |
+| Domain | DocumentSnapshotLine | Entity | Conserva una línea inmutable de snapshot. | SKU ID, description, quantity and price. | Preserves issued data. | Uses BC-03 SKU ID. | Owned by BusinessDocument. |
+| Domain | DocumentRevision | Entity | Conserva una revisión o reemplazo sellado. | Revision number and snapshot hash. | Seal revision. | Uses local document identity. | Owned by BusinessDocument. |
+| Domain | ObjectStorageReference | Entity | Conserva metadatos controlados del artefacto. | Object key, content type, length and hash. | Attach metadata. | Does not load bytes. | Owned by BusinessDocument; storage is external. |
+| Domain | DocumentIssuePolicy | Domain Policy | Evalúa si un snapshot puede emitirse. | Revision and number series values. | Decide issuance. | Pure values loaded by application. | No renderer or Object Storage dependency. |
+| Interface | BC-09 Interface Boundary | Interface component | Traduce solicitudes y consultas autorizadas. | Actor, scope, document command. | Rejects invalid input. | Calls application orchestration. | Does not reveal object bytes. |
+| Application | DocumentGenerationRequest | Application work item | Mantiene trabajo durable e idempotente de generación. | Document ID, idempotency key and work status. | Claim, render and complete with fencing. | Uses document ID and application storage port. | Not an Aggregate Root. |
+| Application | BC-09 Application Orchestration | Application component | Coordina emisión, reemplazo y generación. | Source snapshot and document command. | Persists intent before external render or storage work. | Uses typed facts from source contexts. | Does not own source aggregates. |
+| Infrastructure | BC-09 Persistence and Storage Adapters | Infrastructure component | Persiste metadatos y ejecuta I/O de archivos. | Document records and object bytes. | Maps records and calls authorized storage adapter. | PostgreSQL, renderer and Object Storage. | Domain does not invoke adapters. |
 
-Invariantes de diseño: los documentos emitidos nunca se mutan; las correcciones
-vinculan una revisión o reemplazo nuevo; Commercial Invoice no es
-automáticamente un documento fiscal SUNAT; PostgreSQL almacena metadatos y
-snapshots mientras Object Storage contiene bytes privados; la numeración y la
-generación son idempotentes y las brechas de secuencia son explícitas.
+Un documento emitido no se modifica. La corrección crea una revisión o un
+documento reemplazante vinculado. DocumentGenerationRequest es trabajo de
+aplicación; ObjectStorageReference contiene sólo metadatos. Commercial Invoice
+no se presenta como documento fiscal por defecto.
 
-#### 2.6.9.2. Interface Layer
+#### 2.6.9.2. Component and code-level diagrams
 
-La Interface Layer cubre la solicitud de documento, disponibilidad, metadatos y
-descarga autorizados, y la referencia de evidencia. No se inventan rutas
-exactas. La autorización se resuelve en la API; las superficies Portal y Mobile
-planificada reciben proyecciones seguras y nunca acceden a URL públicas de
-objetos por inferencia.
+*Vista C4 L3 de BC-09 Business Documents.*
 
-#### 2.6.9.3. Application Layer
+![Vista C4 L3 de BC-09 Business Documents](../../../assets/chapter-2/c4/Nexa-API-BC-09-BusinessDocuments.svg)
 
-La Application Layer solicita y emite documentos, reemplaza o corrige mediante
-revisiones vinculadas, registra metadatos de evidencia y reintenta la generación
-con leases/fencing. Los snapshots de origen se leen mediante contratos
-explícitos; la emisión confirma metadatos e intención durable antes del trabajo
-externo de renderizado o almacenamiento.
-
-#### 2.6.9.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
-sobre `document_number_series`, `business_document`, `document_snapshot_line`,
-`document_revision`, `object_storage_reference` y
-`document_generation_request`. Los bytes de Object Storage usan un puerto de
-Application. Los adaptadores externos de renderizador o escáner de documentos
-son ACL; no se infiere un blob de base de datos ni integración fiscal.
-
-*Clases TARGET por capa de BC-09.*
-
-Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, proveedores ni implementación ya disponible.
-
-| Capa | Clase / componente TARGET | Responsabilidad |
-|---|---|---|
-| Interface | `BusinessDocumentController` | Recibe comandos y consultas de documentos sin exponer entidades de persistencia. |
-| Interface | `DocumentGenerationConsumer` | Consume hechos publicados que justifican solicitar una generación documental. |
-| Interface | `DocumentAvailabilityConsumer` | Publica al borde de interfaz la disponibilidad de un artefacto ya emitido. |
-| Application | `RequestBusinessDocumentHandler` | Valida la solicitud idempotente y fija el snapshot de origen que será trazable. |
-| Application | `IssueBusinessDocumentHandler` | Coordina emisión, versionado y publicación del hecho de documento emitido. |
-| Application | `ReplaceBusinessDocumentHandler` | Gestiona una sustitución explícita sin reescribir la evidencia histórica. |
-| Application | `RegisterEvidenceReferenceHandler` | Registra referencias de evidencia bajo las reglas de retención del contexto. |
-| Application | `RetryDocumentGenerationHandler` | Reintenta una generación fallida con una clave de deduplicación estable. |
-| Infrastructure | `BusinessDocumentRepositoryAdapter` | Persiste metadatos, versiones y referencias del documento. |
-| Infrastructure | `DocumentRendererAdapter` | Adapta el renderizado técnico a un contrato de aplicación. |
-| Infrastructure | `ObjectStorageAdapter` | Guarda el binario fuera del agregado y devuelve una referencia controlada. |
-| Infrastructure | `DocumentGenerationWorker` | Ejecuta trabajo diferido después del commit, sin I/O externo en la transacción de solicitud. |
-| Infrastructure | `DocumentOutboxAdapter` | Publica hechos comprometidos mediante outbox durable. |
-
-#### 2.6.9.5. Bounded Context Software Architecture Component Level Diagrams
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-09 Business Documents.*
-
-![BC-09 Business Documents — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-09-BusinessDocuments-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-09 Business Documents, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
-
-#### 2.6.9.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.9.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-09 Business Documents.*
-![BC-09 tactical domain model](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
+![Modelo de dominio táctico de BC-09 Business Documents](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.svg)
 
-##### 2.6.9.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-09.*
-![BC-09 database design projection](../../../assets/chapter-2/tactical/BC-09/database-diagram.png)
+*Diseño lógico de base de datos de BC-09 Business Documents.*
 
-*Nota.* Es una proyección lógica de PostgreSQL compartido; los bytes permanecen en Object Storage bajo autorización y el SQL canónico define las restricciones.
+![Diseño lógico de base de datos de BC-09 Business Documents](../../../assets/chapter-2/tactical/BC-09/database-diagram.svg)
+
+*Nota. Elaboración propia.*

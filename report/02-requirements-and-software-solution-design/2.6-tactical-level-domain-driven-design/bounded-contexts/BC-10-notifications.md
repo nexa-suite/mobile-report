@@ -1,98 +1,47 @@
 ### 2.6.10. Bounded Context: Notifications
 
-Este contexto posee la intención de notificación, la política de destinatario y
-canal, la entrega in-app o por correo y los hechos de reintento. El fallo de una
-notificación nunca cambia el estado de negocio de origen. La entrega Mobile es
-una proyección, no un BC Mobile.
+BC-10 conserva intención, preferencias y estados de entrega. Un intento o fallo
+de notificación no modifica el hecho de negocio que lo originó.
 
-#### 2.6.10.1. Domain Layer
+#### 2.6.10.1. Canonical class dictionary
 
-*Agregados y límites invariantes de BC-10.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `Notification` | Intent, selección de destinatario y canal, y ciclo de vida |
-| `NotificationTemplate` | Política versionada de template y contenido por canal |
-| `NotificationPreference` | Preferencia y supresión por destinatario y canal |
-| `PushSubscription` | Registro de entrega por destinatario y dispositivo, no un Aggregate Mobile |
+*Clases y responsabilidades de BC-10 por capa.*
 
-`NotificationRecipient` y `NotificationAttempt` son hechos propiedad de
-Notifications. Los Value Objects incluyen `NotificationId`, `TemplateKey`,
-`Channel`, `DeliveryStatus` y `RecipientReference`; `ChannelSelectionPolicy` y
-`RetryPolicy` son servicios de dominio. Los canales del alcance inicial son
-in-app y correo; WhatsApp es externo o manual.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | Notification | Aggregate Root | Conserva una intención de entrega y su estado. | Notification ID, template ID, source fact, status. | Schedule or cancel. | Reacts to PublishedBusinessFact. | Owns NotificationRecipient and NotificationAttempt. |
+| Domain | NotificationTemplate | Aggregate Root | Conserva contenido versionado por canal. | Template ID, key, channel, version. | Publish and retire. | Referenced by Notification through ID. | Independent lifecycle. |
+| Domain | NotificationPreference | Aggregate Root | Conserva una preferencia por destinatario y canal. | Preference ID, recipient reference, channel, enabled. | Enable and disable. | Uses a typed recipient reference. | Independent lifecycle. |
+| Domain | PushSubscription | Aggregate Root | Conserva una suscripción técnica de entrega. | Subscription ID, recipient reference, token hash, status. | Rotate token and disable. | Uses recipient reference only. | Independent delivery root. |
+| Domain | NotificationRecipient | Entity | Conserva un destinatario resuelto. | Recipient reference, channel and destination snapshot. | Suppress delivery. | Local to Notification. | Owned by Notification. |
+| Domain | NotificationAttempt | Entity | Conserva cada intento de entrega. | Channel, status and attempted time. | Record result. | Local to Notification. | Owned by Notification. |
+| Domain | PublishedBusinessFact | Published Language | Expresa un hecho consumible de otro contexto. | Event ID, type and source context. | Carries committed fact data. | Wrapped by IntegrationEventEnvelope. | Never imports source aggregate ownership. |
+| Domain | ChannelSelectionPolicy | Domain Policy | Decide un canal permitido. | Preference and available channels. | Select channel. | Pure values supplied by application. | No email, push or provider dependency. |
+| Domain | RetryPolicy | Domain Policy | Calcula el siguiente intento. | Previous attempt and retry rule. | Schedule retry. | Pure values supplied by application. | No transport dependency. |
+| Interface | BC-10 Interface Boundary | Interface component | Traduce preferencias, lectura y hechos de entrega. | Actor, scope and published fact. | Rejects invalid or duplicate input. | Calls application orchestration. | Does not decide source business state. |
+| Application | BC-10 Application Orchestration | Application component | Coordina creación, entrega y reintento. | Published fact, preference and work state. | Deduplicates, dispatches and projects after commit. | Uses envelopes and local IDs. | Provider I/O stays outside Domain. |
+| Infrastructure | BC-10 Persistence and Delivery Adapters | Infrastructure component | Persiste hechos y entrega por canales. | Notification records, inbox and delivery messages. | Maps records and calls delivery adapters. | PostgreSQL, inbox, outbox, email and push adapters. | Does not own source context data. |
 
-Invariantes de diseño: la entrega es al menos una vez con intentos deduplicados
-visibles; el reintento o fallo terminal nunca muta PR, SO, Payment ni Delivery;
-los payloads excluyen secretos y PII innecesario; la rotación de suscripciones y
-el manejo de tokens inválidos se mantienen como comportamiento técnico de
-entrega.
+El estado del origen permanece autoritativo en su contexto. Las entregas se
+procesan al menos una vez con idempotencia; payloads y referencias minimizan PII
+y no incluyen secretos.
 
-#### 2.6.10.2. Interface Layer
+#### 2.6.10.2. Component and code-level diagrams
 
-La Interface Layer cubre la lectura y preferencias de Notifications, la intención
-de notificación, el estado de canal, el ciclo de vida de suscripciones y los
-callbacks de workers. No se inventan rutas exactas ni DTOs de proveedor ausentes
-en la evidencia de API. Los hechos de origen ingresan por outbox/inbox durable;
-la confirmación del cliente no es confirmación del hecho de origen.
+*Vista C4 L3 de BC-10 Notifications.*
 
-#### 2.6.10.3. Application Layer
+![Vista C4 L3 de BC-10 Notifications](../../../assets/chapter-2/c4/Nexa-API-BC-10-Notifications.svg)
 
-La Application Layer consume hechos de origen, persiste la intención de
-notificación, elige destinatario y canal, despacha, reintenta y proyecta una
-vista in-app. Lease/fencing, idempotencia y backoff acotado protegen contra la
-entrega duplicada. El estado de negocio de origen permanece bajo propiedad de su
-BC de origen.
-
-#### 2.6.10.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
-sobre `notification_template`, `notification`, `notification_recipient`,
-`notification_preference`, `notification_attempt` y `push_subscription`. Los
-adaptadores de proveedor se mantienen como ACL; no se asume un proveedor ni un
-tercer canal. La persistencia técnica de outbox/inbox es infraestructura
-compartida, no un BC nuevo.
-
-*Clases TARGET por capa de BC-10.*
-
-Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, canales ni proveedores ya implementados.
-
-| Capa | Clase / componente TARGET | Responsabilidad |
-|---|---|---|
-| Interface | `NotificationController` | Expone operaciones de consulta y preferencia sin decidir reglas de negocio. |
-| Interface | `NotificationDeliveryConsumer` | Recibe hechos comprometidos que habilitan una entrega al destinatario. |
-| Interface | `NotificationProjectionConsumer` | Materializa vistas de notificación sin convertirse en autoridad sobre el hecho origen. |
-| Application | `CreateNotificationCandidateHandler` | Convierte un hecho elegible en un candidato deduplicable y auditable. |
-| Application | `DispatchNotificationHandler` | Orquesta la entrega por canal usando preferencias resueltas por contrato. |
-| Application | `RetryNotificationDeliveryHandler` | Programa un reintento acotado sin duplicar una entrega aceptada. |
-| Application | `ManageNotificationPreferenceHandler` | Cambia preferencias explícitas del destinatario bajo su alcance autorizado. |
-| Application | `ProjectNotificationHandler` | Actualiza la proyección de lectura a partir de hechos ya comprometidos. |
-| Infrastructure | `NotificationRepositoryAdapter` | Persiste candidatos, intentos, preferencias y estados de entrega. |
-| Infrastructure | `EmailDeliveryAdapter` | Implementa el puerto de entrega por correo sin filtrar secretos o PII innecesaria. |
-| Infrastructure | `InAppNotificationAdapter` | Implementa el canal interno de notificaciones de la plataforma. |
-| Infrastructure | `NotificationOutboxWorker` | Publica y consume trabajo durable con semántica al-menos-una-vez. |
-
-#### 2.6.10.5. Bounded Context Software Architecture Component Level Diagrams
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-10 Notifications.*
-
-![BC-10 Notifications — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-10-Notifications-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-10 Notifications, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
-
-#### 2.6.10.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.10.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-10 Notifications.*
-![BC-10 tactical domain model](../../../assets/chapter-2/tactical/BC-10/BC10_Notifications.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
+![Modelo de dominio táctico de BC-10 Notifications](../../../assets/chapter-2/tactical/BC-10/BC10_Notifications.svg)
 
-##### 2.6.10.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-10.*
-![BC-10 database design projection](../../../assets/chapter-2/tactical/BC-10/database-diagram.png)
+*Diseño lógico de base de datos de BC-10 Notifications.*
 
-*Nota.* Es propiedad lógica en PostgreSQL compartido con restricciones de entrega; no implica una base de datos Mobile ni el despliegue de un proveedor push.
+![Diseño lógico de base de datos de BC-10 Notifications](../../../assets/chapter-2/tactical/BC-10/database-diagram.svg)
+
+*Nota. Elaboración propia.*

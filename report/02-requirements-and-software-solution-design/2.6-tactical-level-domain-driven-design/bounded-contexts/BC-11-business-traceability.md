@@ -1,97 +1,46 @@
 ### 2.6.11. Bounded Context: Business Traceability
 
-Este contexto de apoyo posee los hechos de negocio append-only y las referencias
-de evidencia; los BC de origen mantienen la autoridad de sus Aggregate. Business
-Traceability no es Security Audit, Notification ni una reconstrucción de los
-Aggregate de origen.
+BC-11 conserva una línea de hechos de negocio y referencias de evidencia. Los
+contextos emisores conservan la autoridad de sus propios agregados.
 
-#### 2.6.11.1. Domain Layer
+#### 2.6.11.1. Canonical class dictionary
 
-`BusinessTraceabilityRecord` es un Aggregate/root liviano y append-only.
-Almacena Tenant, Workspace opcional, tipo de evento, referencia de sujeto,
-actor, momento, motivo, correlación y metadatos seguros de evidencia.
-`TraceabilityEvidenceReference` es un hecho hijo; los bytes de Object Storage
-permanecen externos.
+*Clases y responsabilidades de BC-11 por capa.*
 
-Los Value Objects son `BusinessObjectReference`, `ActorReference`,
-`CorrelationId`, `Reason`, `FactId`, `SourceReference` y `TimelineEntry`. Los
-servicios de dominio son `TraceabilityProjectionPolicy` y
-`SensitivePayloadPolicy`. `BusinessFactRepository` sólo admite append/query.
-Las correcciones agregan hechos nuevos; no reescriben el historial.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | BusinessTraceabilityRecord | Aggregate Root | Conserva un hecho de trazabilidad. | Traceability ID, tenant ID, subject, actor, correlation and time. | Append only. | Receives published business facts as values. | Owns TraceabilityEvidenceReference. |
+| Domain | TraceabilityEvidenceReference | Entity | Conserva una referencia a evidencia. | Kind, external reference and content hash. | Attach reference. | Points to a typed external reference. | Owned by BusinessTraceabilityRecord; no byte ownership. |
+| Domain | BusinessObjectReference | Value Object | Identifica un sujeto de negocio entre contextos. | Source context, type and ID. | Preserves stable identity. | Used by record and PublishedBusinessFact. | Never loads the source object. |
+| Domain | ActorReference | Value Object | Identifica actor o sistema. | Actor type and ID. | Preserves attribution. | Typed identity reference. | Local immutable value. |
+| Domain | PublishedBusinessFact | Published Language | Representa un hecho comprometido de origen. | Event ID, source context and subject. | Carries fact metadata. | Travels in IntegrationEventEnvelope. | Does not transfer source ownership. |
+| Domain | TraceabilityAppendPolicy | Domain Policy | Valida un append en alcance Tenant. | Published fact and tenant ID. | Decide if append is admissible. | Pure values supplied by application. | No inbox, storage or transport dependency. |
+| Domain | SensitivePayloadPolicy | Domain Policy | Minimiza metadatos antes de persistirlos. | Safe metadata. | Sanitize metadata. | Pure values supplied by application. | No secret storage. |
+| Interface | BC-11 Interface Boundary | Interface component | Traduce consultas y hechos entrantes autorizados. | Actor, tenant scope and fact envelope. | Rejects invalid scope. | Calls application orchestration. | Does not mutate source contexts. |
+| Application | BC-11 Application Orchestration | Application component | Deduplica, agrega y proyecta trazabilidad. | Integration envelope, safe metadata and reference. | Appends fact and builds authorized projections. | Uses source context IDs and local append contract. | Does not reconstruct source aggregates. |
+| Infrastructure | BC-11 Inbox, Persistence and Transport Adapters | Infrastructure component | Persiste hechos y soporta entrega al menos una vez. | Inbox record, append record and transport message. | Deduplicate, append and project. | PostgreSQL, inbox, storage reference and outbox. | No foreign object ownership. |
 
-Invariantes de diseño: los registros tienen alcance Tenant y son append-only; las
-transiciones significativas conservan actor, momento, motivo, correlación y
-evidencia cuando corresponde; el fallo de una proyección es reproducible y no
-revierte el commit de origen; Security Audit mantiene su autoridad y retención
-separadas, y ningún almacén recibe secretos ni credenciales de pago sin tratar.
+BusinessTraceabilityRecord es append-only. Una corrección agrega otro hecho, no
+edita ni elimina el anterior. La deduplicación, el append y la proyección se
+coordinan en Application; Infrastructure proporciona inbox, almacenamiento y
+transporte.
 
-#### 2.6.11.2. Interface Layer
+#### 2.6.11.2. Component and code-level diagrams
 
-La Interface Layer cubre la línea de tiempo y consulta de negocio autorizadas,
-el append de hechos, la referencia de evidencia y la proyección de metadatos
-seguros. No se inventan nombres URI ni DTO exactos. Los consumidores reciben
-referencias a hechos de origen; no pueden mutar los Aggregate de origen ni
-inferir autoridad a partir de una proyección de línea de tiempo.
+*Vista C4 L3 de BC-11 Business Traceability.*
 
-#### 2.6.11.3. Application Layer
+![Vista C4 L3 de BC-11 Business Traceability](../../../assets/chapter-2/c4/Nexa-API-BC-11-BusinessTraceability.svg)
 
-La Application Layer valida el alcance, normaliza metadatos seguros, agrega hechos
-de origen, ingiere hechos de outbox/inbox y construye líneas de tiempo
-autorizadas. La deduplicación y reproducción mantienen visible la propagación al
-menos una vez. Los
-metadatos sensibles pueden redactarse o ponerse en cuarentena; Business
-Traceability no se convierte en un almacén general de eventos.
-
-#### 2.6.11.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
-sobre `business_traceability_record` y `traceability_evidence_reference`. Los
-ID de sujeto entre BC, los ID de evento y los ID de correlación son referencias
-sin propiedad. Los metadatos de evidencia pueden apuntar mediante puertos de
-BC-09 u Object Storage; SQL canónico define el alcance Tenant y las restricciones
-append-only. No se infiere una base de datos separada de Security Audit.
-
-*Clases TARGET por capa de BC-11.*
-
-Los nombres siguientes concretan responsabilidades previstas; no implican endpoints ni convierten este contexto en propietario de hechos ajenos.
-
-| Capa | Clase / componente TARGET | Responsabilidad |
-|---|---|---|
-| Interface | `TraceabilityViewerController` | Entrega consultas autorizadas de trazabilidad de negocio, manteniendo filtros de tenant y sensibilidad. |
-| Interface | `BusinessTimelineController` | Expone la línea de tiempo como proyección de lectura, no como mutación del hecho origen. |
-| Interface | `BusinessTraceabilityProjectionConsumer` | Consume hechos publicados para actualizar una timeline de negocio, sin convertirse en Security Audit. |
-| Application | `TraceBusinessFactHandler` | Acepta un hecho comprometido y conserva su correlación, causalidad y procedencia. |
-| Application | `ProjectBusinessTimelineHandler` | Construye una línea de tiempo ordenada sin alterar el estado del contexto emisor. |
-| Application | `AppendEvidenceReferenceHandler` | Vincula evidencia inmutable por referencia y bajo autorización explícita. |
-| Application | `ProtectSensitivePayloadHandler` | Minimiza y protege cargas sensibles antes de persistir la proyección de trazabilidad. |
-| Infrastructure | `BusinessFactRepositoryAdapter` | Persiste hechos, correlaciones y metadatos de consulta propios de BC-11. |
-| Infrastructure | `TraceabilityInboxAdapter` | Deduplica hechos recibidos con semántica al-menos-una-vez. |
-| Infrastructure | `TraceabilityOutboxAdapter` | Publica hechos propios ya comprometidos mediante outbox durable. |
-| Infrastructure | `EvidenceReferenceAdapter` | Resuelve referencias de evidencia sin copiar ni mutar el registro histórico de origen. |
-
-#### 2.6.11.5. Bounded Context Software Architecture Component Level Diagrams
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-11 Business Traceability.*
-
-![BC-11 Business Traceability — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-11-BusinessTraceability-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-11 Business Traceability, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
-
-#### 2.6.11.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.11.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-11 Business Traceability.*
-![BC-11 tactical domain model](../../../assets/chapter-2/tactical/BC-11/BC11_BusinessTraceability.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
+![Modelo de dominio táctico de BC-11 Business Traceability](../../../assets/chapter-2/tactical/BC-11/BC11_BusinessTraceability.svg)
 
-##### 2.6.11.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-11.*
+*Diseño lógico de base de datos de BC-11 Business Traceability.*
 
-![BC-11 database design projection](../../../assets/chapter-2/tactical/BC-11/database-diagram.png)
+![Diseño lógico de base de datos de BC-11 Business Traceability](../../../assets/chapter-2/tactical/BC-11/database-diagram.svg)
 
-*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las restricciones de solo adición y alcance Tenant permanecen definidas por el SQL canónico.
+*Nota. Elaboración propia.*

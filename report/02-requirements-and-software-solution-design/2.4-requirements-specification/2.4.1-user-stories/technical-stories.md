@@ -25,17 +25,17 @@ de producto.
 </table>
 
 **Tabla**<br>
-*TS-MOB-002 — Definir criterios de compatibilidad de plataforma*
+*TS-MOB-002 — Implementar baseline técnico de compatibilidad de plataforma*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
-<tr><th>Title</th><td colspan="3">Definir criterios de compatibilidad de plataforma</td></tr>
+<tr><th>Title</th><td colspan="3">Implementar baseline técnico de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para Android nativo con Kotlin y una alternativa multiplataforma permitida (Flutter/Dart o KMP/Kotlin), para evaluar límites técnicos sin convertir el experimento en una selección de producto.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo implementar el baseline técnico de compatibilidad autorizado para el track cuya decisión está documentada, para reproducir su build y validación sin convertir la tarea en una comparación ni selección de producto.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Baseline de experimento</strong></p><p><strong>Given</strong> existen Android nativo con Kotlin y una alternativa Flutter/Dart o KMP/Kotlin</p><p><strong>When</strong> se define un baseline mínimo</p><p><strong>Then</strong> documenta versiones, dispositivo/emulador, límites y criterios de comparación sin asignar un framework a una proyección de producto.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma o proveedor no evaluado</p><p><strong>When</strong> se propone incorporarlo</p><p><strong>Then</strong> queda fuera del experimento hasta una decisión explícita.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Baseline autorizado</strong></p><p><strong>Given</strong> SPIKE-002 tiene una decisión registrada para un track</p><p><strong>When</strong> el Developer aplica las versiones, SDK, dispositivo y restricciones de build autorizadas</p><p><strong>Then</strong> el baseline es reproducible y registra su configuración sin abrir una nueva selección de producto o framework.</p><p><strong>Scenario: Validación identificable</strong></p><p><strong>Given</strong> el baseline está configurado</p><p><strong>When</strong> se ejecutan build y pruebas</p><p><strong>Then</strong> el resultado identifica track, versión, commit y entorno, y las diferencias no alteran contratos ni autoridad compartidos.</p></td></tr>
 </tbody>
 </table>
 
@@ -95,7 +95,7 @@ de producto.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo gestionar reintentos, conflictos y resultados inciertos con identificadores durables, para que una interrupción no duplique ni sobrescriba un hecho de negocio.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Reintento de comando</strong></p><p><strong>Given</strong> un comando pudo completarse pero la respuesta no llegó</p><p><strong>When</strong> se reenvía con el mismo identificador de idempotencia</p><p><strong>Then</strong> el servidor devuelve un único resultado sin duplicar el hecho.</p><p><strong>Scenario: Conflicto de versión</strong></p><p><strong>Given</strong> el recurso cambió después de la lectura del cliente</p><p><strong>When</strong> se envía una mutación obsoleta</p><p><strong>Then</strong> se identifica el conflicto y no se aplica last-write-wins silencioso.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Reintento de comando</strong></p><p><strong>Given</strong> el servidor procesa un comando pero el cliente no recibe la respuesta</p><p><strong>When</strong> el cliente reenvía el comando con el mismo identificador de idempotencia</p><p><strong>Then</strong> el servidor devuelve un único resultado sin duplicar el hecho.</p><p><strong>Scenario: Conflicto de versión</strong></p><p><strong>Given</strong> el recurso tiene una versión más nueva</p><p><strong>When</strong> el cliente envía una mutación basada en una versión anterior</p><p><strong>Then</strong> Nexa identifica el conflicto y no aplica last-write-wins silencioso.</p></td></tr>
 </tbody>
 </table>
 
@@ -110,7 +110,7 @@ de producto.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar cámara, Barcode, QR y GS1 con una alternativa manual, para que la identificación sea útil sin convertir el dispositivo en autoridad de inventario.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Identificador único</strong></p><p><strong>Given</strong> la cámara obtiene un identificador permitido con coincidencia única</p><p><strong>When</strong> se envía al contrato autorizado</p><p><strong>Then</strong> identifica el producto sin registrar recepción o picking por sí sola.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> la cámara no está disponible o el identificador es ambiguo</p><p><strong>When</strong> la persona usa la alternativa manual</p><p><strong>Then</strong> el flujo continúa solo después de una identificación autorizada.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Identificador único</strong></p><p><strong>Given</strong> la cámara obtiene un identificador permitido con coincidencia única</p><p><strong>When</strong> se envía al contrato autorizado</p><p><strong>Then</strong> Nexa identifica el producto sin registrar recepción o picking por sí sola.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> la cámara no está disponible o el identificador es ambiguo</p><p><strong>When</strong> la persona usa la alternativa manual</p><p><strong>Then</strong> Nexa identifica el producto sólo después de una resolución autorizada.</p></td></tr>
 </tbody>
 </table>
 
@@ -130,17 +130,17 @@ de producto.
 </table>
 
 **Tabla**<br>
-*TS-MOB-009 — Evaluar notificaciones y deep links con autorización*
+*TS-MOB-009 — Preparar el manejo autorizado de notificaciones y deep links*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
 <tr><td>TS-MOB-009</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-05 — Quality and communication</td></tr>
-<tr><th>Title</th><td colspan="3">Evaluar notificaciones y deep links con autorización</td></tr>
+<tr><th>Title</th><td colspan="3">Preparar el manejo autorizado de notificaciones y deep links</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo evaluar notificaciones y deep links con autorización, para definir límites de contexto y seguridad sin asumir proveedor o integración resueltos.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo preparar el manejo técnico autorizado de notificaciones y deep links conforme a los límites aceptados, para revalidar el contexto antes de mostrar trabajo protegido sin asumir proveedor o integración productiva.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Contexto autorizado</strong></p><p><strong>Given</strong> un deep link refiere a trabajo protegido</p><p><strong>When</strong> la aplicación lo abre</p><p><strong>Then</strong> vuelve a comprobar Tenant, relación y permisos antes de mostrar información.</p><p><strong>Scenario: Destino vencido</strong></p><p><strong>Given</strong> el enlace venció o el contexto ya no es válido</p><p><strong>When</strong> se intenta abrir</p><p><strong>Then</strong> comunica el estado y no expone datos protegidos.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Contexto autorizado</strong></p><p><strong>Given</strong> SPIKE-005 tiene un límite registrado como adoptado, diferido o rechazado</p><p><strong>When</strong> el Developer prepara el caso autorizado</p><p><strong>Then</strong> la implementación consume sólo el contrato permitido y revalida Tenant, relación y permiso antes de mostrar información.</p><p><strong>Scenario: Enlace vencido</strong></p><p><strong>Given</strong> el enlace está vencido o el contexto ya no es válido</p><p><strong>When</strong> se intenta abrir</p><p><strong>Then</strong> comunica el estado, no expone datos protegidos y ofrece un estado recuperable cuando corresponda.</p></td></tr>
 </tbody>
 </table>
 

@@ -1,93 +1,45 @@
 ### 2.6.3. Bounded Context: Catalog & Commercial Policy
 
-Product, SKU, precio, términos y promociones permanecen diferenciados. Los
-contextos posteriores referencian identidad o snapshots de SKU, no un grafo de
-objetos Product.
+BC-03 conserva Product, SKU, precio, términos y promociones. Product y SKU
+tienen ciclos de vida independientes; los demás contextos reciben IDs o un
+Resolved Offer Snapshot, no un grafo de objetos de catálogo.
 
-#### 2.6.3.1. Domain Layer
+#### 2.6.3.1. Canonical class dictionary
 
-*Agregados y límites invariantes de BC-03.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `Product` | Identidad y ciclo de vida comercial; las referencias a media y SKU permanecen acotadas |
-| `SKU` | Identidad vendible direccionable de forma independiente, empaque y política de cadena de frío |
-| `PriceList` | Ítems de precio efectivo e intervalos de vigencia |
-| `CustomerTerms` | Elegibilidad de términos para un Customer Account referenciado |
-| `Promotion` | Una transformación elegible; las promociones no se acumulan |
+*Clases y responsabilidades de BC-03 por capa.*
 
-Los Value Objects de diseño incluyen `Money`, `Currency`, `SkuId`, `Visibility`,
-`CommercialSnapshot` y `ColdChainRequirement`. `PriceResolver`,
-`OfferResolutionPolicy` y `PromotionStackingPolicy` son límites de políticas de
-dominio; `ProductRepository` y `SkuRepository` poseen sólo los roots de este
-contexto. La resolución autoritativa de precio se revalida en la decisión PR/SO;
-los previews no reservan inventario ni crédito. Product != SKU.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | `Product` | Aggregate Root | Identidad y ciclo de vida comercial del producto. | `ProductId`, name, status. | Create, publish and retire. | Media reference records are local. | Owns `CatalogMediaReference`. |
+| Domain | `SKU` | Aggregate Root | Unidad vendible y requisito de cadena de frío. | `SkuId`, `ProductId`, code, temperature band. | Activate, change presentation and discontinue. | References Product by ID. | Product is not its aggregate owner. |
+| Domain | `PriceList` | Aggregate Root | Lista de precios con vigencia. | `PriceListId`, currency, validity. | Activate and maintain effective items. | Owns PriceListItem. | Owns `PriceListItem`. |
+| Domain | `CustomerTerms` | Aggregate Root | Términos aplicables a un Customer Account. | `CustomerTermsId`, `CustomerAccountId`, `PriceListId`, credit days. | Amend terms and effective period. | References BC-02 account by ID. | External customer reference. |
+| Domain | `Promotion` | Aggregate Root | Transformación comercial elegible. | `PromotionId`, scope, validity, status. | Schedule, activate and expire. | Owns PromotionSku scope. | Owns `PromotionSku`. |
+| Domain | `OfferResolutionPolicy` | Domain Policy | Resuelve una oferta comercial reproducible. | SKU, customer reference, effective policies. | Produce ResolvedOfferSnapshot; applies at most one promotion. | Pure policy with loaded values. | No inventory or credit authority. |
+| Domain | `ResolvedOfferSnapshot` | Value Object | Captura precio, términos y promoción aplicados. | SKU ID, money, terms, promotion outcome. | Preserve decision input. | Passed to BC-04 by Published Language. | External contract value. |
+| Interface | `BC-03 Interface Boundary` | Interface component | Traduce administración y consulta de catálogo. | Actor, scope, version, catalog input. | Rejects unauthorized or stale requests. | Calls application orchestration. | Does not decide a Sales Order. |
+| Application | `BC-03 Application Orchestration` | Application component | Coordina catálogo y resolución de oferta. | Catalog commands, customer reference, effective time. | Returns immutable resolved offer data. | Uses BC-02 eligibility contract when required. | Cross-context data stays typed. |
+| Infrastructure | `BC-03 Persistence Adapter` | Infrastructure component | Persiste catálogo y política comercial. | Product, SKU, price and policy records. | Maps roots and their local entities. | PostgreSQL and authorized object references. | Does not own BC-04 or BC-05 data. |
 
-#### 2.6.3.2. Interface Layer
+Una consulta de precio no crea compromiso, reserva de inventario ni reserva de
+crédito. La decisión comercial posterior vuelve a usar el snapshot autorizado.
 
-La Interface Layer cubre ciclo de vida de Product/SKU, consulta de catálogo y
-resolución efectiva de precio/términos. Las respuestas API son contratos, no
-entidades de persistencia; Mobile puede almacenar proyecciones seguras, pero no
-establecer autoridad de precio ni requisitos de cold chain. Los nombres de URI y
-DTO fuera de la evidencia API verificada permanecen abiertos.
+#### 2.6.3.2. Component and code-level diagrams
 
-#### 2.6.3.3. Application Layer
+*Vista C4 L3 de BC-03 Catalog & Commercial Policy.*
 
-La Application Layer gestiona Product, SKU, listas de precios, promociones y la
-resolución autoritativa de ofertas. Valida alcance Tenant, intervalos efectivos
-y precedencia de políticas. La semántica de idempotency/version protege cambios
-concurrentes de catálogo; los snapshots autoritativos pasan a Sales Commitment
-como datos inmutables.
+![Vista C4 L3 de BC-03 Catalog & Commercial Policy](../../../assets/chapter-2/c4/Nexa-API-BC-03-CatalogCommercialPolicy.svg)
 
-#### 2.6.3.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `product`, `sku`, `catalog_media`,
-`price_list`, `price_list_item`, `base_price`, `customer_terms`, `promotion`
-y `promotion_sku`. Los bytes de Object Storage permanecen detrás de un port de
-aplicación. Ninguna tabla Product/SKU pertenece directamente a Sales o
-Inventory; se usan IDs y snapshots inter-BC.
-
-#### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
-
-Las siguientes clases son especificaciones **TARGET**. Conservan `Product` y
-`SKU` como conceptos distintos, y separan una consulta de precio de la decisión
-comercial autoritativa posterior.
-
-*Clases TARGET por capa de BC-03*
-
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `CatalogManagementController` | Controller | Traduce altas y cambios de Product, SKU y política comercial autorizados. |
-| Interface | `CatalogPricingController` | Controller | Expone una consulta de precio/términos; una respuesta previa no crea compromiso. |
-| Interface | `CatalogProjectionConsumer` | Consumer | Proyecta catálogo seguro para Platform, Portal o Mobile sin conceder visibilidad por sí mismo. |
-| Application | `ManageProductHandler` | Command handler | Mantiene ciclo de vida de Product y metadatos de media dentro de su límite. |
-| Application | `ManageSkuHandler` | Command handler | Conserva la identidad independiente de SKU y su requisito de cadena de frío cuando corresponda. |
-| Application | `ResolveCatalogPriceHandler` | Query/application service | Aplica precedencia Base Price, Price List, Customer Terms y una Promotion; distingue preview de snapshot autoritativo. |
-| Application | `ManagePriceListHandler` | Command handler | Protege intervalos efectivos versionados para evitar precios activos solapados. |
-| Infrastructure | `CatalogProductRepositoryAdapter` | Repository implementation | Persiste Product y media referenciada en PostgreSQL compartido. |
-| Infrastructure | `CatalogPricingAdapter` | Query adapter | Ejecuta la consulta efectiva de precio sin trasladar la política al cliente. |
-| Infrastructure | `ObjectStorageMediaPort` | Storage adapter | Mantiene bytes de media fuera de PostgreSQL y bajo autorización de aplicación. |
-| Infrastructure | `CatalogAuthorizationPort` | Contract adapter | Revalida Tenant y capacidad con BC-01 antes de mutar catálogo. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-03 Catalog & Commercial Policy.*
-
-![BC-03 Catalog & Commercial Policy — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-03-CatalogCommercialPolicy-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-03 Catalog & Commercial Policy, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente. El diagrama se presenta como modelo de diseño y no como prueba de una implementación en ejecución.
-
-#### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.3.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-03 Catalog & Commercial Policy.*
-![BC-03 tactical domain model](../../../assets/chapter-2/tactical/BC-03/BC03_CatalogCommercialPolicy.png)
-*Nota.* El diagrama se presenta como modelo de diseño y no como prueba de una implementación en ejecución.
 
+![Modelo de dominio táctico de BC-03 Catalog & Commercial Policy](../../../assets/chapter-2/tactical/BC-03/BC03_CatalogCommercialPolicy.svg)
 
-##### 2.6.3.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-03.*
-![BC-03 database design projection](../../../assets/chapter-2/tactical/BC-03/database-diagram.png)
+*Diseño lógico de base de datos de BC-03 Catalog & Commercial Policy.*
 
-*Nota.* Es una proyección lógica de PostgreSQL compartido con restricciones; el SQL canónico mantiene la autoridad.
+![Diseño lógico de base de datos de BC-03 Catalog & Commercial Policy](../../../assets/chapter-2/tactical/BC-03/database-diagram.svg)
+
+*Nota. Elaboración propia.*

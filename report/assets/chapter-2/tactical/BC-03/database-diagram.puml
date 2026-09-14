@@ -1,5 +1,5 @@
 @startuml
-title BC-03 Target Database Diagram
+title BC-03 Catalog & Commercial Policy — Logical Database Design
 left to right direction
 hide methods
 skinparam shadowing false
@@ -10,105 +10,70 @@ skinparam entity {
   FontColor #0F172A
 }
 
-entity "product" as t_product {
+entity "product" as product {
   * product_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * code : varchar(80) <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * code : varchar(80) <<required, unique>>
   * name : varchar(200) <<required>>
-    description : text
   * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
   * version : integer <<required>>
 }
 
-entity "sku" as t_sku {
+entity "sku" as sku {
   * sku_id : uuid <<PK>>
   * product_id : uuid <<FK, required>>
-  * code : varchar(80) <<required>>
-  * name : varchar(200) <<required>>
-    gtin : varchar(14)
-  * unit_of_measure : varchar(32) <<required>>
+  * code : varchar(80) <<required, unique>>
   * temperature_band : varchar(64) <<required>>
   * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
   * version : integer <<required>>
 }
 
-entity "catalog_media" as t_catalog_media {
+entity "catalog_media_reference" as catalog_media {
   * media_id : uuid <<PK>>
   * product_id : uuid <<FK, required>>
-  * object_key : varchar(500) <<required>>
+  * object_reference : varchar(500) <<required>>
   * media_kind : varchar(32) <<required>>
-    content_hash : varchar(128)
-  * sort_order : integer <<required>>
-  * created_at : timestamptz <<required>>
 }
 
-entity "price_list" as t_price_list {
+entity "price_list" as price_list {
   * price_list_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * code : varchar(80) <<required>>
-  * name : varchar(160) <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
   * currency : char(3) <<required>>
   * status : varchar(32) <<required>>
-    valid_from : timestamptz
-    valid_to : timestamptz
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
+  * version : integer <<required>>
 }
 
-entity "price_list_item" as t_price_list_item {
+entity "price_list_item" as price_list_item {
   * item_id : uuid <<PK>>
   * price_list_id : uuid <<FK, required>>
   * sku_id : uuid <<FK, required>>
   * unit_price : numeric(19,4) <<required>>
   * currency : char(3) <<required>>
-    valid_from : timestamptz
-    valid_to : timestamptz
-}
-
-entity "base_price" as t_base_price {
-  * base_price_id : uuid <<PK>>
-  * sku_id : uuid <<FK, required>>
-  * amount : numeric(19,4) <<required>>
-  * currency : char(3) <<required>>
   * valid_from : timestamptz <<required>>
     valid_to : timestamptz
-  * created_at : timestamptz <<required>>
 }
 
-entity "customer_terms" as t_customer_terms {
+entity "customer_terms" as customer_terms {
   * terms_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * customer_account_id : uuid <<required>>
-    price_list_id : uuid <<FK>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * customer_account_id : uuid <<required, BC-02 ID>>
+    price_list_id : uuid <<FK, optional>>
   * credit_days : integer <<required>>
-  * currency : char(3) <<required>>
   * valid_from : timestamptz <<required>>
     valid_to : timestamptz
-  * created_at : timestamptz <<required>>
 }
 
-entity "promotion" as t_promotion {
+entity "promotion" as promotion {
   * promotion_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
   * code : varchar(80) <<required>>
-  * name : varchar(160) <<required>>
   * status : varchar(32) <<required>>
   * starts_at : timestamptz <<required>>
   * ends_at : timestamptz <<required>>
-  * max_stackable : boolean <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
+  * version : integer <<required>>
 }
 
-entity "promotion_sku" as t_promotion_sku {
+entity "promotion_sku" as promotion_sku {
   * promotion_sku_id : uuid <<PK>>
   * promotion_id : uuid <<FK, required>>
   * sku_id : uuid <<FK, required>>
@@ -116,19 +81,18 @@ entity "promotion_sku" as t_promotion_sku {
   * discount_value : numeric(19,4) <<required>>
 }
 
-t_sku }o--|| t_product : product_id
-t_catalog_media }o--|| t_product : product_id
-t_price_list_item }o--|| t_price_list : price_list_id
-t_price_list_item }o--|| t_sku : sku_id
-t_base_price }o--|| t_sku : sku_id
-t_customer_terms }o--|| t_price_list : price_list_id
-t_promotion_sku }o--|| t_promotion : promotion_id
-t_promotion_sku }o--|| t_sku : sku_id
+sku }o--|| product : product_id
+catalog_media }o--|| product : product_id
+price_list_item }o--|| price_list : price_list_id
+price_list_item }o--|| sku : sku_id
+customer_terms }o--o| price_list : price_list_id
+promotion_sku }o--|| promotion : promotion_id
+promotion_sku }o--|| sku : sku_id
 
 legend right
-TARGET / BC-03 logical relational ownership / SQL is the authority
-PK = primary key | FK = same-owner foreign key
-required = NOT NULL | cross-BC IDs are deliberately not FK
-This PlantUML file is a visual projection for review.
+Product and SKU are separate roots despite a local identity reference.
+CustomerAccount is a typed BC-02 reference; it is deliberately not an FK.
+Offer policy selects at most one eligible promotion for a snapshot.
+PK = primary key | FK = local reference | required = NOT NULL
 endlegend
 @enduml

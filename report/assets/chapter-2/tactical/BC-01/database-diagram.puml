@@ -1,5 +1,5 @@
 @startuml
-title BC-01 Target Database Diagram
+title BC-01 Tenant & Access Governance — Logical Database Design
 left to right direction
 hide methods
 skinparam shadowing false
@@ -10,125 +10,101 @@ skinparam entity {
   FontColor #0F172A
 }
 
-entity "tenant" as t_tenant {
+entity "tenant" as tenant {
   * tenant_id : uuid <<PK>>
   * legal_name : varchar(200) <<required>>
+  * slug : varchar(100) <<required, unique>>
+  * status : varchar(32) <<required>>
+  * version : integer <<required>>
+  * created_at : timestamptz <<required>>
+  * updated_at : timestamptz <<required>>
+}
+
+entity "workspace" as workspace {
+  * workspace_id : uuid <<PK>>
+  * tenant_id : uuid <<FK, required, unique>>
   * slug : varchar(100) <<required>>
   * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
   * version : integer <<required>>
 }
 
-entity "workspace" as t_workspace {
-  * workspace_id : uuid <<PK>>
-  * tenant_id : uuid <<FK, required>>
-  * name : varchar(160) <<required>>
-  * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
-  * version : integer <<required>>
-}
-
-entity "human_identity" as t_human_identity {
+entity "human_identity" as human_identity {
   * human_identity_id : uuid <<PK>>
-  * email : varchar(320) <<required>>
-  * normalized_email : varchar(320) <<required>>
+  * normalized_email : varchar(320) <<required, unique>>
     display_name : varchar(200)
   * status : varchar(32) <<required>>
     verified_at : timestamptz
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
 }
 
-entity "company_onboarding_request" as t_company_onboarding_request {
+entity "company_onboarding_request" as onboarding_request {
   * request_id : uuid <<PK>>
-  * tenant_id : uuid <<FK, required>>
-  * requested_by_identity_id : uuid <<FK, required>>
+  * applicant_email : varchar(320) <<required>>
   * legal_name : varchar(200) <<required>>
     registration_number : varchar(80)
   * status : varchar(32) <<required>>
+    provisioned_tenant_id : uuid <<FK, optional>>
     rejection_reason : varchar(500)
-    submitted_at : timestamptz
+  * submitted_at : timestamptz <<required>>
     decided_at : timestamptz
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
   * version : integer <<required>>
 }
 
-entity "workforce_membership" as t_workforce_membership {
+entity "workforce_membership" as workforce_membership {
   * membership_id : uuid <<PK>>
   * workspace_id : uuid <<FK, required>>
   * human_identity_id : uuid <<FK, required>>
   * status : varchar(32) <<required>>
-    invited_at : timestamptz
-    activated_at : timestamptz
-    revoked_at : timestamptz
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
   * version : integer <<required>>
 }
 
-entity "role_definition" as t_role_definition {
+entity "role_definition" as role_definition {
   * role_id : uuid <<PK>>
-  * workspace_id : uuid <<FK, required>>
+  * tenant_id : uuid <<FK, required>>
   * code : varchar(80) <<required>>
-  * name : varchar(160) <<required>>
   * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
+  * version : integer <<required>>
 }
 
-entity "capability_definition" as t_capability_definition {
+entity "capability_definition" as capability_definition {
   * capability_id : uuid <<PK>>
-  * code : varchar(120) <<required>>
+  * code : varchar(120) <<required, unique>>
   * name : varchar(200) <<required>>
-    description : varchar(500)
-  * created_at : timestamptz <<required>>
 }
 
-entity "membership_role" as t_membership_role {
-  * assignment_id : uuid <<PK>>
+entity "membership_role" as membership_role {
   * membership_id : uuid <<FK, required>>
   * role_id : uuid <<FK, required>>
   * assigned_at : timestamptz <<required>>
-    removed_at : timestamptz
 }
 
-entity "role_capability" as t_role_capability {
-  * role_capability_id : uuid <<PK>>
+entity "role_capability" as role_capability {
   * role_id : uuid <<FK, required>>
   * capability_id : uuid <<FK, required>>
-  * granted_at : timestamptz <<required>>
 }
 
-entity "membership_capability_override" as t_membership_capability_override {
+entity "membership_capability_override" as capability_override {
   * override_id : uuid <<PK>>
   * membership_id : uuid <<FK, required>>
   * capability_id : uuid <<FK, required>>
   * effect : varchar(16) <<required>>
   * reason : varchar(500) <<required>>
-    expires_at : timestamptz
-  * created_at : timestamptz <<required>>
 }
 
-t_workspace }o--|| t_tenant : tenant_id
-t_company_onboarding_request }o--|| t_tenant : tenant_id
-t_company_onboarding_request }o--|| t_human_identity : requested_by_identity_id
-t_workforce_membership }o--|| t_workspace : workspace_id
-t_workforce_membership }o--|| t_human_identity : human_identity_id
-t_role_definition }o--|| t_workspace : workspace_id
-t_membership_role }o--|| t_workforce_membership : membership_id
-t_membership_role }o--|| t_role_definition : role_id
-t_role_capability }o--|| t_role_definition : role_id
-t_role_capability }o--|| t_capability_definition : capability_id
-t_membership_capability_override }o--|| t_workforce_membership : membership_id
-t_membership_capability_override }o--|| t_capability_definition : capability_id
+workspace }o--|| tenant : tenant_id
+onboarding_request }o--o| tenant : provisioned_tenant_id
+workforce_membership }o--|| workspace : workspace_id
+workforce_membership }o--|| human_identity : human_identity_id
+role_definition }o--|| tenant : tenant_id
+membership_role }o--|| workforce_membership : membership_id
+membership_role }o--|| role_definition : role_id
+role_capability }o--|| role_definition : role_id
+role_capability }o--|| capability_definition : capability_id
+capability_override }o--|| workforce_membership : membership_id
+capability_override }o--|| capability_definition : capability_id
 
 legend right
-TARGET / BC-01 logical relational ownership / SQL is the authority
-PK = primary key | FK = same-owner foreign key
-required = NOT NULL | cross-BC IDs are deliberately not FK
-This PlantUML file is a visual projection for review.
+workspace.tenant_id is unique and enforces Tenant 1:1 Workspace.
+Company onboarding starts without a Tenant; provisioned_tenant_id is optional.
+PK = primary key | FK = local reference | required = NOT NULL
 endlegend
 @enduml

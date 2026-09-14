@@ -12,7 +12,7 @@ hito de Sprint que corresponda.
 
 | Campo | Definición |
 | :--- | :--- |
-| Objective | Investigar, seleccionar e integrar de forma acotada una feature obligatoria de aprendizaje autónomo que aporte valor a una actividad móvil de Nexa. |
+| Objective | Investigar y seleccionar una feature obligatoria de aprendizaje autónomo que pueda aportar valor a una actividad móvil de Nexa, y dejar documentada una propuesta de integración posterior. |
 | Question | ¿Qué feature, resultado observable, datos, límites de privacidad y mecanismo de revisión requiere la oportunidad? |
 | Expected artifact | Matriz de alternativas y fuentes, clasificación de datos, riesgos de privacidad, factibilidad, PoC reproducible y punto de integración documentado. |
 | Completion criteria | Selección justificada, límite de integración, contrato, fallos, observabilidad y reversión documentados, con separación entre observación, sugerencia y decisión de negocio. |
@@ -87,7 +87,7 @@ implementado o validado.
 | Recurso de dispositivo | `SPIKE-003`, `TS-MOB-007` y `MOB-US-011..012` delimitan cámara, identificadores y entrada manual. | Permiso, alternativa manual, prueba controlada y contrato autorizado. |
 | Servicio REST interno | `TS-MOB-001` conecta los clientes con Nexa API. | Contrato REST/OpenAPI, manejo de Problem Details, idempotencia y prueba de integración. |
 | Servicio de terceros | `SPIKE-006` y `TS-MOB-008` evalúan navegación y geolocalización para entrega. | Comparación de proveedores, revisión de privacidad/costo, aceptación técnica y prueba reproducible. |
-| Feature de aprendizaje autónomo | `SPIKE-001` se planifica en Sprint 2 e incluye investigación, selección e integración acotada de la feature obligatoria. | Alternativas, criterios, PoC reproducible, punto de integración, límites, reversión y evidencia disponible. |
+| Feature de aprendizaje autónomo | `SPIKE-001` se planifica en Sprint 2 e incluye investigación, selección y propuesta de integración posterior de la feature obligatoria; no afirma integración productiva. | Alternativas, criterios, PoC reproducible, punto de integración propuesto, límites, reversión y evidencia disponible. |
 | Dispositivo físico y distribución | `TS-MOB-012` prepara evidencia técnica de build, instalación y dispositivo. Firebase App Distribution sólo se evalúa como canal posible después de contar con cuenta, política y configuración aceptadas. | Build firmado o identificable, dispositivo físico, flujo observado, canal de distribución y resultado registrado. |
 | Landing Page estática | `LAND-US-001..006` forman el corte de entrada pública de Sprint 1. | Artefacto HTML5/CSS3/JavaScript identificable, revisión de enlaces legales y comportamiento responsive observado. |
 | Internacionalización y accesibilidad | `TS-MOB-010` cubre i18n y accesibilidad para clientes Mobile; la Landing aplica sus equivalentes web. | Recursos `en_US` y `es_419`, revisión de foco/contraste/tamaño táctil y, para web, semántica y ARIA. |

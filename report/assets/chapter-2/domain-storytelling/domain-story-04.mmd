@@ -1,11 +1,30 @@
 flowchart LR
-  dispatch((Dispatch Coordinator)) -->|1. hands over| handoff[Dispatch Handoff]
-  driver((Driver / Delivery Operator)) -->|2. starts| delivery[Delivery]
+  classDef actor fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111
+  classDef work fill:#F9A66C,stroke:#A84A00,stroke-width:1.4px,color:#111
+
+  dispatch((Dispatch Coordinator)):::actor
+  driver((Driver / Delivery Operator)):::actor
+  buyer((Customer Buyer)):::actor
+
+  subgraph bc06["BC-06 Fulfillment & Delivery"]
+    handoff["Dispatch Handoff"]:::work
+    delivery["Delivery"]:::work
+    attempt["Delivery Attempt"]:::work
+    outcome["Driver Outcome"]:::work
+    pod["Proof of Delivery"]:::work
+    receipt["Buyer Receipt"]:::work
+    discrepancy["Discrepancy"]:::work
+  end
+
+  dispatch -->|1. hands over| handoff
+  driver -->|2. starts| delivery
   handoff -->|authorized control| delivery
-  driver -->|3. attempts| attempt[Delivery Attempt]
-  attempt -->|4. reports| outcome[Driver Outcome]
-  driver -->|5. preserves| pod[Proof of Delivery]
-  buyer((Customer Buyer)) -->|6. verifies and receives| receipt[Buyer Receipt]
-  outcome -->|comparison| receipt
-  buyer -->|7. records if different| discrepancy[Discrepancy]
+  driver -->|3. attempts| attempt
+  attempt -->|4. records| outcome
+  driver -->|5. records| pod
+  buyer -->|6. verifies and receives| receipt
+  outcome -->|compares with| receipt
+  buyer -->|7. records when different| discrepancy
   receipt -->|preserves both facts| discrepancy
+
+  style bc06 fill:none,stroke:#6B7280,stroke-width:1px

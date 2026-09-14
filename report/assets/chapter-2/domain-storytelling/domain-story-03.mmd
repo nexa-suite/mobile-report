@@ -1,21 +1,43 @@
 flowchart LR
-  sales((Sales Commitment)) -->|1. presents demand| commitment[Commercial Commitment]
-  subgraph availability["BC-05 Inventory Availability"]
-    reservation[2. Inventory Reservation]
-    backing[3. Warehouse Backing]
-    lot[4. Inventory Lot]
-    allocation[5. Physical Allocation]
+  classDef actor fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111
+  classDef work fill:#F9A66C,stroke:#A84A00,stroke-width:1.4px,color:#111
+
+  salesApplication((Nexa Sales Application)):::actor
+  inventoryApplication((Nexa Inventory Application)):::actor
+  operator((Warehouse Operator)):::actor
+  coordinator((Fulfillment Coordinator)):::actor
+
+  subgraph bc04["BC-04 Sales Commitment"]
+    order["Confirmed Sales Order"]:::work
+    commitment["Commercial Commitment"]:::work
   end
-  operator((Warehouse Operator)) -->|4. verifies| lot
-  commitment -->|2. protects| reservation
-  reservation -->|3. distributes| backing
-  backing -->|5. enables lot selection| allocation
-  subgraph fulfillment["BC-06 Fulfillment & Delivery"]
-    picking[6. Picking Work]
-    packed[7. Packed Goods]
-    handoff[8. Dispatch Handoff]
+
+  subgraph bc05["BC-05 Inventory Availability"]
+    reservation["Existing Inventory Reservation"]:::work
+    backing["Existing Warehouse Backing"]:::work
+    lot["Inventory Lot"]:::work
+    allocation["Physical Allocation"]:::work
   end
-  coordinator((Fulfillment Coordinator)) -->|6. creates| picking
+
+  subgraph bc06["BC-06 Fulfillment & Delivery"]
+    picking["Picking Work"]:::work
+    packed["Packed Goods"]:::work
+    handoff["Dispatch Handoff"]:::work
+  end
+
+  salesApplication -->|1. makes available| order
+  order -->|confirmed demand| commitment
+  inventoryApplication -->|2. uses existing protection| reservation
+  reservation -->|existing backing| backing
+  operator -->|3. verifies| lot
+  inventoryApplication -->|4. selects eligible lots| allocation
+  backing -->|authorizes selection| allocation
+  lot -->|FEFO eligibility| allocation
+  coordinator -->|5. creates| picking
   allocation -->|stable allocation ID| picking
-  operator -->|7. prepares| packed
-  coordinator -->|8. transfers control| handoff
+  operator -->|6. prepares| packed
+  coordinator -->|7. hands over| handoff
+
+  style bc04 fill:none,stroke:#6B7280,stroke-width:1px
+  style bc05 fill:none,stroke:#6B7280,stroke-width:1px
+  style bc06 fill:none,stroke:#6B7280,stroke-width:1px

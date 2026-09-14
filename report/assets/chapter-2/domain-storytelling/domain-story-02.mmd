@@ -1,24 +1,50 @@
 flowchart LR
-  buyer((Customer Buyer)) -->|1. selects| offer[Offer Snapshot]
-  sales((Sales Representative)) -->|2. prepares| draft[Sales Draft]
-  buyer -->|3. submits| request[Purchase Request / Direct Order]
-  sales -->|3. submits| request
-  subgraph commitment["BC-04 Sales Commitment"]
-    commitmentObj[Commercial Commitment]
-    order[Sales Order]
+  classDef actor fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111
+  classDef work fill:#F9A66C,stroke:#A84A00,stroke-width:1.4px,color:#111
+
+  buyer((Customer Buyer)):::actor
+  salesRepresentative((Sales Representative)):::actor
+  salesApplication((Nexa Sales Application)):::actor
+  inventoryApplication((Nexa Inventory Application)):::actor
+  creditApplication((Nexa Credit Application)):::actor
+
+  subgraph bc03["BC-03 Catalog & Commercial Policy"]
+    offer["Resolved Offer Snapshot"]:::work
   end
-  subgraph catalog["BC-03 Catalog & Commercial Policy"]
-    offer
+
+  subgraph bc04["BC-04 Sales Commitment"]
+    draft["Sales Draft"]:::work
+    request["Purchase Request"]:::work
+    directOrder["Direct Order"]:::work
+    commitment["Commercial Commitment"]:::work
+    order["Sales Order"]:::work
   end
-  subgraph inventory["BC-05 Inventory Availability"]
-    reservation[Inventory Reservation]
-    backing[Warehouse Backing]
+
+  subgraph bc05["BC-05 Inventory Availability"]
+    reservation["Inventory Reservation"]:::work
+    backing["Warehouse Backing"]:::work
   end
-  subgraph credit["BC-07 Credit & Receivables"]
-    creditReservation[Credit Reservation]
+
+  subgraph bc07["BC-07 Credit & Receivables"]
+    creditReservation["Credit Reservation"]:::work
   end
-  request -->|4. establishes| commitmentObj
-  commitmentObj -->|5. protects demand| reservation
-  reservation -->|6. distributes| backing
-  commitmentObj -->|7. requests capacity| creditReservation
-  commitmentObj -->|8. confirms| order
+
+  buyer -->|1. selects| offer
+  salesRepresentative -->|2. prepares| draft
+  buyer -->|3. submits| request
+  salesRepresentative -->|4. confirms| directOrder
+  request -->|5. establishes| commitment
+  directOrder -->|5. establishes| commitment
+  inventoryApplication -->|6. protects demand| reservation
+  commitment -->|requires protection| reservation
+  inventoryApplication -->|7. distributes| backing
+  reservation -->|establishes backing| backing
+  creditApplication -->|8. reserves capacity| creditReservation
+  commitment -->|requires credit| creditReservation
+  salesApplication -->|9. confirms| order
+  commitment -->|confirmed obligation| order
+
+  style bc03 fill:none,stroke:#6B7280,stroke-width:1px
+  style bc04 fill:none,stroke:#6B7280,stroke-width:1px
+  style bc05 fill:none,stroke:#6B7280,stroke-width:1px
+  style bc07 fill:none,stroke:#6B7280,stroke-width:1px

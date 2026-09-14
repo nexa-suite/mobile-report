@@ -1,13 +1,12 @@
 #### Technical Stories
 
 Las Technical Stories habilitan resultados de las Functional User Stories; no
-crean reglas de negocio ni prueban una implementación. El alcance técnico
-contempla **Kotlin Android AND (Flutter/Dart OR KMP/Kotlin)**: una línea de
-Android nativo con Kotlin y una alternativa multiplataforma en Flutter/Dart o
-Kotlin Multiplatform (KMP). La selección de framework Mobile
-continúa **OPEN / NOT STARTED**: este plan no asigna framework a Operations
-Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o validación
-de producto.
+crean reglas de negocio ni prueban una implementación. El plan académico usa
+dos tracks definidos: Android nativo con Kotlin y cross-platform con
+Flutter/Dart. Sprint 1 y Sprint 2 concentran el baseline Android y el núcleo
+operativo; Sprint 3 desarrolla el track Flutter/Dart y la paridad de contratos;
+Sprint 4 consolida Flutter/Dart en target iOS. Esta asignación no declara
+runtime, proveedor, distribución, implementación ni validación de producto.
 
 **Tabla**<br>
 *TS-MOB-001 — Integrar contratos REST con autoridad del servidor*
@@ -33,7 +32,7 @@ de producto.
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
 <tr><th>Title</th><td colspan="3">Implementar baseline técnico de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo implementar el baseline técnico de compatibilidad autorizado para el track cuya decisión está documentada, para reproducir su build y validación sin convertir la tarea en una comparación ni selección de producto.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo implementar el baseline técnico de compatibilidad para Android nativo con Kotlin o para Flutter/Dart según el Sprint asignado, para reproducir su build y validación técnica sin convertir la tarea en una comparación ni selección de producto.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Baseline autorizado</strong></p><p><strong>Given</strong> SPIKE-002 tiene una decisión registrada para un track</p><p><strong>When</strong> el Developer aplica las versiones, SDK, dispositivo y restricciones de build autorizadas</p><p><strong>Then</strong> el baseline es reproducible y registra su configuración sin abrir una nueva selección de producto o framework.</p><p><strong>Scenario: Validación identificable</strong></p><p><strong>Given</strong> el baseline está configurado</p><p><strong>When</strong> se ejecutan build y pruebas</p><p><strong>Then</strong> el resultado identifica track, versión, commit y entorno, y las diferencias no alteran contratos ni autoridad compartidos.</p></td></tr>
 </tbody>

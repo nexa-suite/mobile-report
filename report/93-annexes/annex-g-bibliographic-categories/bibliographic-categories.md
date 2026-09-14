@@ -1,11 +1,9 @@
 # Anexo G: Categorías de recursos bibliográficos
 
-Este anexo agrupa las fuentes que sustentan la discusión académica. Las
-referencias completas en APA 7 se mantienen en Bibliografía; una fuente externa
-no sustituye evidencia propia de usuarios, ejecución técnica o decisión de
-producto.
-
-*Categorías de fuentes y su aporte al Nexa Mobile Report.*
+Este anexo agrupa y traza las fuentes que sustentan la discusión académica.
+Las referencias completas en APA 7 se mantienen en Bibliografía; una fuente
+externa no sustituye evidencia propia de usuarios, ejecución técnica o
+decisión de producto.
 
 | Categoría | Fuentes representativas | Aporte al informe |
 | --- | --- | --- |

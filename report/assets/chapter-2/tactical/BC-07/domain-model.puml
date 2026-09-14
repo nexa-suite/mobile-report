@@ -1,5 +1,5 @@
 @startuml BC07_CreditReceivables
-title BC-07 Credit & Receivables — Tactical Domain Model (TARGET / current scope)
+title BC-07 Credit & Receivables — Tactical Domain Model
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -8,17 +8,16 @@ skinparam linetype ortho
 class CreditAccount <<Aggregate Root>> {
   -creditAccountId: CreditAccountId
   -customerAccountId: CustomerAccountId
-  -limit: Money
+  -creditLimit: Money
   -status: CreditStatus
   +approveLimit(limit: Money): void
   +suspend(reason: SuspensionReason): void
-  +availableCredit(): Money
 }
 
 class CreditReservation <<Aggregate Root>> {
   -reservationId: CreditReservationId
   -creditAccountId: CreditAccountId
-  -commitmentId: CommitmentId
+  -commercialCommitmentId: CommitmentId
   -amount: Money
   -status: ReservationStatus
   +reserve(): void
@@ -29,44 +28,38 @@ class CreditReservation <<Aggregate Root>> {
 class Receivable <<Aggregate Root>> {
   -receivableId: ReceivableId
   -customerAccountId: CustomerAccountId
-  -documentId: BusinessDocumentId
-  -balance: Money
+  -salesOrderId: SalesOrderId
+  -originalAmount: Money
+  -outstandingAmount: Money
   -status: ReceivableStatus
   +issue(): void
-  +apply(amount: Money): void
+  +apply(application: ReceivableApplication): void
   +close(): void
 }
 
 class ReceivableApplication <<Entity>> {
   -applicationId: ReceivableApplicationId
-  -receivableId: ReceivableId
   -paymentId: PaymentId
   -amount: Money
   +apply(): void
   +reverse(): void
 }
 
-class FinancialAdjustment <<Entity>> {
+class FinancialLedgerEntry <<Entity>> {
+  -entryId: LedgerEntryId
+  -direction: LedgerDirection
+  -amount: Money
+  -postedAt: Instant
+}
+
+class FinancialAdjustment <<Aggregate Root>> {
   -adjustmentId: FinancialAdjustmentId
   -receivableId: ReceivableId
   -kind: AdjustmentKind
   -amount: Money
+  -reason: AdjustmentReason
   +approve(): void
   +post(): void
-}
-
-class FinancialLedgerEntry <<Entity>> {
-  -entryId: LedgerEntryId
-  -receivableId: ReceivableId
-  -direction: LedgerDirection
-  -amount: Money
-  -postedAt: Instant
-  +post(): void
-}
-
-class CreditDecisionPolicy <<Domain Service>> {
-  +canReserve(account: CreditAccount, amount: Money): boolean
-  +calculateAvailable(account: CreditAccount): Money
 }
 
 class Money <<Value Object>> {
@@ -74,41 +67,35 @@ class Money <<Value Object>> {
   -currency: CurrencyCode
 }
 
-interface CreditAccountRepository <<Repository>> {
-  +findByCustomer(id: CustomerAccountId): CreditAccount
-  +save(account: CreditAccount): void
+class CreditExposurePolicy <<Domain Policy>> {
+  +available(limit: Money, activeReservations: Money, outstandingReceivables: Money): Money
 }
 
-interface ReceivableRepository <<Repository>> {
-  +findById(id: ReceivableId): Receivable
-  +save(receivable: Receivable): void
+class ReceivableApplicationPolicy <<Domain Policy>> {
+  +canApply(balance: Money, application: Money): boolean
+  +canReverse(application: ReceivableApplication): boolean
 }
 
-enum CreditStatus <<Enum>>
-enum ReservationStatus <<Enum>>
-enum ReceivableStatus <<Enum>>
-enum AdjustmentKind <<Enum>>
-enum LedgerDirection <<Enum>>
-
-CreditAccount "1" *-- "0..*" CreditReservation : reserves
+CreditAccount --> CustomerAccountId : typed BC-02 ID
+CreditReservation --> CreditAccountId : typed root ID
+CreditReservation --> CommitmentId : typed BC-04 ID
+Receivable --> CustomerAccountId : typed BC-02 ID
+Receivable --> SalesOrderId : typed BC-04 ID
 Receivable "1" *-- "0..*" ReceivableApplication : applications
-Receivable "1" *-- "0..*" FinancialAdjustment : adjustments
-Receivable "1" *-- "0..*" FinancialLedgerEntry : ledger
-CreditReservation *-- Money : amount
-ReceivableApplication *-- Money : amount
-FinancialAdjustment *-- Money : amount
-CreditAccount --> CustomerAccount : stable customer id
-CreditReservation --> CommercialCommitment : stable commitment id
-ReceivableApplication --> Payment : stable payment id
-Receivable --> BusinessDocument : stable document id
-CreditDecisionPolicy ..> CreditAccountRepository : loads
-CreditDecisionPolicy --> Money : calculates
-ReceivableRepository ..> Receivable : persists
+Receivable "1" *-- "0..*" FinancialLedgerEntry : ledger entries
+FinancialAdjustment --> ReceivableId : typed root ID
+ReceivableApplication --> PaymentId : typed BC-08 ID
+CreditExposurePolicy --> Money : pure calculation
+ReceivableApplicationPolicy --> ReceivableApplication : pure rule
+CreditAccount -[hidden]down-> CreditReservation
+CreditReservation -[hidden]down-> Receivable
+Receivable -[hidden]down-> FinancialAdjustment
 
-legend right
-TARGET / current scope / tactical design aid
+note right of CreditExposurePolicy
 Available credit = limit - active reservations - outstanding receivables.
-Payment and BusinessDocument references are stable IDs; no cross-BC FK.
-*-- composition | --> domain dependency | ..> port/use
-endlegend
+end note
+
+note right of FinancialAdjustment
+Independent root. Corrections add evidence; they do not rewrite receivables.
+end note
 @enduml

@@ -1,100 +1,47 @@
 ### 2.6.8. Bounded Context: Payments
 
-Este contexto posee los hechos de Payment independientes del proveedor, los
-intentos, callbacks, reembolsos, correcciones y conciliación. Payment Reported
-no equivale a Payment Confirmed.
+BC-08 conserva hechos de pago independientes del proveedor, sus intentos y la
+conciliación. Payment Reported y Payment Confirmed son estados diferentes.
 
-#### 2.6.8.1. Domain Layer
+#### 2.6.8.1. Canonical class dictionary
 
-*Agregados y límites invariantes de BC-08.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `Payment` | Ciclo de vida de intent, reporte y confirmación, y hechos monetarios inmutables |
-| `PaymentProviderEvent` | Identidad verificada de callback y metadatos preservados del payload |
-| `PaymentReconciliationCase` | Éxito del proveedor con fallo local o resultado incierto |
+*Clases y responsabilidades de BC-08 por capa.*
 
-`PaymentAttempt`, `PaymentRefund` y `PaymentCorrection` son hechos propiedad de
-Payment. Los Value Objects incluyen `PaymentId`, `ProviderReference`, `Money` y
-`PaymentStatus`; las políticas incluyen la verificación de callbacks del
-proveedor y la conciliación de pagos. La aplicación de Payment a Receivable es
-un puerto explícito de BC-07.
+| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Domain | Payment | Aggregate Root | Mantiene el estado autoritativo de un pago. | Payment ID, customer account ID, optional commitment ID, money, status. | Report, confirm and fail. | References BC-02 account and optional BC-04 commitment IDs. | Owns attempt, provider event, refund and correction facts. |
+| Domain | PaymentReconciliationCase | Aggregate Root | Conserva una discrepancia entre estado local y proveedor. | Case ID, payment ID, reason, status. | Open and resolve. | References Payment by ID. | Independent lifecycle. |
+| Domain | PaymentAttempt | Entity | Conserva el resultado de un intento. | Provider reference, status and result. | Record result. | Local to Payment. | Owned by Payment. |
+| Domain | PaymentProviderEvent | Entity | Conserva un callback proveedor-neutral. | Provider, event ID, payload digest, time. | Record immutable fact. | Receives a translated event. | Owned by Payment; unique provider/event pair is enforced by infrastructure. |
+| Domain | PaymentRefund | Entity | Conserva una reversión explícita. | Refund ID, money, reason. | Record refund. | Local to Payment. | Owned by Payment. |
+| Domain | PaymentCorrection | Entity | Conserva una corrección explícita. | Correction ID, amount delta, reason. | Record correction. | Local to Payment. | Owned by Payment. |
+| Domain | PaymentStatePolicy | Domain Policy | Decide transiciones válidas de pago. | Payment and provider result values. | Evaluate confirmation and refund conditions. | Pure values supplied by application. | No provider port, HTTP or storage dependency. |
+| Domain | PaymentReconciliationPolicy | Domain Policy | Decide cuándo abrir un caso de conciliación. | Local status and provider result values. | Evaluate mismatch. | Pure values supplied by application. | No external I/O. |
+| Interface | BC-08 Interface Boundary | Interface component | Traduce comandos, consultas y callbacks verificados. | Actor, idempotency key or signed callback. | Rejects untrusted or duplicate input. | Calls application orchestration. | Client cannot declare confirmation. |
+| Application | BC-08 Application Orchestration | Application component | Coordina intentos, callback, conciliación y publicación de hechos. | Payment command or translated provider event. | Performs provider I/O outside long database transactions; fences finalization. | Uses BC-07 only through Payment ID facts. | Signature verification, inbox and provider adapter stay outside Domain. |
+| Infrastructure | BC-08 Persistence and Provider Adapters | Infrastructure component | Persiste hechos y traduce proveedor externo. | Payment records, inbox records and provider messages. | Deduplicates provider/event ID and maps provider contracts. | PostgreSQL, inbox, outbox and provider ACL. | Never stores PAN, CVV or secrets. |
 
-Invariantes de diseño: PREPAID requiere Payment Confirmed antes de la
-confirmación de la SO y del fulfillment físico; IMMEDIATE puede confirmar primero
-la SO y pasa a estar pendiente de pago. Los webhooks son al menos una vez y
-deduplican `(provider, eventId)`; el éxito del proveedor con fallo local de SO
-se convierte en `UNALLOCATED / RECONCILIATION_REQUIRED`; el historial de pagos
-es inmutable y el reembolso o la corrección son explícitos. PAN, CVV y secretos
-nunca se almacenan.
+PaymentReconciliationCase no es un hijo de Payment. El borde de interfaz y la
+aplicación verifican y deduplican callbacks; Domain recibe sólo valores y hechos
+ya traducidos. Un Payment Confirmed puede ser aplicado luego por BC-07, pero no
+se convierte en un Receivable.
 
-#### 2.6.8.2. Interface Layer
+#### 2.6.8.2. Component and code-level diagrams
 
-La Interface Layer cubre el intent, reporte y estado de Payment, el callback del
-proveedor, el reembolso o corrección y la conciliación. No se inventan rutas
-exactas no verificadas en la API. El borde del webhook verifica firmas y
-deduplicación del proveedor; los clientes consumen el estado del servidor y no
-pueden declarar una confirmación.
+*Vista C4 L3 de BC-08 Payments.*
 
-#### 2.6.8.3. Application Layer
+![Vista C4 L3 de BC-08 Payments](../../../assets/chapter-2/c4/Nexa-API-BC-08-Payments.svg)
 
-La Application Layer inicia el trabajo con el proveedor, acepta callbacks,
-confirma o concilia, solicita reembolsos y expone estado seguro. El I/O externo
-ocurre fuera de transacciones largas de base de datos; el estado local de intent
-e intento se protege con fencing e idempotencia. La coordinación de Application
-con BC-07 referencia Receivable por ID.
-
-#### 2.6.8.4. Infrastructure Layer
-
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
-sobre `payment`, `payment_attempt`, `payment_provider_event`, `payment_refund`,
-`payment_correction` y `payment_reconciliation_case`. Los metadatos del payload
-del proveedor son inmutables y no contienen secretos. Los adaptadores de Stripe
-o de otros proveedores son ACL; PostgreSQL físico continúa compartido y no se
-infiere un microservicio de pagos.
-
-#### 2.6.8.5. Bounded Context Software Architecture Component Level Diagrams
-
-Las siguientes clases son especificaciones **TARGET**. Separan el ingreso de
-proveedor de la decisión de negocio y modelan callbacks como mensajes al menos
-una vez, nunca como confirmación automática del cliente.
-
-*Clases TARGET por capa de BC-08*
-
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `PaymentController` | Controller | Recibe intent, reporte y consulta de estado con idempotencia; el cliente no declara Payment Confirmed. |
-| Interface | `PaymentWebhookController` | Webhook controller | Verifica firma y traduce callback del proveedor antes de llegar a aplicación. |
-| Interface | `PaymentProjectionConsumer` | Consumer | Proyecta estado seguro a Platform, Portal o Mobile sin exponer secretos. |
-| Application | `ReportPaymentHandler` | Command handler | Registra intención o reporte con alcance y referencia segura. |
-| Application | `InitiateProviderPaymentHandler` | Application service | Persiste/asegura intención, hace I/O fuera de transacción larga y finaliza de forma cercada. |
-| Application | `AcceptProviderWebhookHandler` | Event handler | Deduplica `(provider,eventId)`, procesa una transición de Payment y abre reconciliación si existe incertidumbre. |
-| Application | `RequestRefundHandler` | Command handler | Inicia reverso explícito sin borrar Payment ni su historial. |
-| Application | `ResolvePaymentReconciliationHandler` | Command handler | Cierra caso visible de resultado proveedor/local incongruente. |
-| Infrastructure | `PaymentRepositoryAdapter` | Repository implementation | Persiste Payment, attempts y casos de reconciliación en PostgreSQL compartido. |
-| Infrastructure | `StripePaymentProviderAdapter` | Provider ACL | Traduce proveedor concreto a contrato neutral y mantiene reemplazable la integración. |
-| Infrastructure | `ProviderWebhookInboxAdapter` | Inbox adapter | Conserva deduplicación, lease y reintento de callbacks al menos una vez. |
-| Infrastructure | `PaymentOutboxAdapter` | Outbox adapter | Publica `PaymentConfirmed` únicamente después del commit local. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-08 Payments.*
-
-![BC-08 Payments — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-08-Payments-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-08 Payments, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
-
-#### 2.6.8.6. Bounded Context Software Architecture Code Level Diagrams
-
-##### 2.6.8.6.1. Bounded Context Domain Layer Class Diagrams
+*Nota. Elaboración propia.*
 
 *Modelo de dominio táctico de BC-08 Payments.*
-![BC-08 tactical domain model](../../../assets/chapter-2/tactical/BC-08/BC08_Payments.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
 
+![Modelo de dominio táctico de BC-08 Payments](../../../assets/chapter-2/tactical/BC-08/BC08_Payments.svg)
 
-##### 2.6.8.6.2. Bounded Context Database Design Diagram
+*Nota. Elaboración propia.*
 
-*Proyección del diseño de base de datos de BC-08.*
-![BC-08 database design projection](../../../assets/chapter-2/tactical/BC-08/database-diagram.png)
+*Diseño lógico de base de datos de BC-08 Payments.*
 
-*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las claves y la deduplicación de eventos del proveedor están definidas por el SQL canónico.
+![Diseño lógico de base de datos de BC-08 Payments](../../../assets/chapter-2/tactical/BC-08/database-diagram.svg)
+
+*Nota. Elaboración propia.*

@@ -1,0 +1,155 @@
+flowchart LR
+
+%% ==========================================================
+%% NEXA — CANDIDATE BOUNDED CONTEXT DISCOVERY
+%% Reference artifact for recreation in Miro.
+%% Boundaries represent semantic/domain responsibility,
+%% never deployment units, applications, schemas or services.
+%% ==========================================================
+
+classDef event fill:#F9A66C,stroke:#A84A00,stroke-width:1.4px,color:#111;
+classDef object fill:#A9D6F5,stroke:#2B6F9F,stroke-width:1.3px,color:#111;
+classDef decision fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111;
+classDef evidence fill:#C7E9C0,stroke:#4B8144,stroke-width:1.3px,color:#111;
+classDef trace fill:#D8C9F2,stroke:#6B4EA1,stroke-width:1.3px,color:#111;
+
+subgraph BC01["BC-01 — Tenant & Access Governance\nSupporting-aligned"]
+direction TB
+  A01["Onboarding Request"]:::object
+  E01["Tenant Activated"]:::event
+  E02["Workforce Membership Granted"]:::event
+  A01 --> E01 --> E02
+end
+
+subgraph BC02["BC-02 — Customer & Buyer Relationships\nSupporting-aligned"]
+direction TB
+  A02["Customer Account"]:::object
+  E03["Buyer Relationship Approved"]:::event
+  A02 --> E03
+end
+
+subgraph BC03["BC-03 — Catalog & Commercial Policy\nSupporting-aligned"]
+direction TB
+  A03["Product / SKU"]:::object
+  E04["Authoritative Price Resolved"]:::event
+  A04["Offer Snapshot"]:::object
+  A03 --> E04 --> A04
+end
+
+subgraph BC04["BC-04 — Sales Commitment\nCORE-aligned"]
+direction TB
+  A05["Sales Draft"]:::object
+  E05["Purchase Request Submitted\nor Direct Order Confirmed"]:::event
+  E06["Commercial Commitment Established"]:::event
+  E07["Sales Order Confirmed"]:::event
+  A05 --> E05 --> E06 --> E07
+end
+
+subgraph BC05["BC-05 — Inventory Availability\nCORE-aligned"]
+direction TB
+  E08["Commitment Demand Observed"]:::event
+  A06["Inventory Reservation"]:::object
+  A07["Warehouse Backing"]:::object
+  E09["Physical Allocation Executed"]:::event
+  E08 --> A06 --> A07 --> E09
+end
+
+subgraph BC07["BC-07 — Credit & Receivables\nSupporting-aligned"]
+direction TB
+  A08["Credit Reservation"]:::object
+  A09["Receivable"]:::object
+  E10["Payment Applied"]:::event
+  A08 --> A09 --> E10
+end
+
+subgraph BC06["BC-06 — Fulfillment & Delivery\nCORE-aligned"]
+direction TB
+  A10["Picking / Packing Work"]:::object
+  E11["Ready for Dispatch"]:::event
+  E12["Dispatch Handoff"]:::event
+  E13["Delivery Attempted"]:::event
+  A11["Proof of Delivery"]:::evidence
+  E14["Buyer Receipt Recorded"]:::event
+  E15["Partial Delivery Recorded"]:::event
+  E16["Continuation Delivery Created"]:::event
+
+  A10 --> E11 --> E12 --> E13 --> A11
+  A11 --> E14
+  A11 --> E15 --> E16
+end
+
+subgraph BC08["BC-08 — Payments\nGeneric-aligned"]
+direction TB
+  E17["Payment Reported"]:::event
+  E18["Payment Confirmed"]:::event
+  E17 --> E18
+end
+
+subgraph BC09["BC-09 — Business Documents\nGeneric-aligned"]
+direction TB
+  E19["Business Document Issued"]:::event
+end
+
+subgraph BC10["BC-10 — Notifications\nGeneric-aligned"]
+direction TB
+  A12["Notification Intent"]:::object
+  E20["Notification Delivered / Failed"]:::event
+  A12 --> E20
+end
+
+subgraph BC11["BC-11 — Business Traceability\nSupporting-aligned"]
+direction TB
+  E21["Business Fact Traced"]:::trace
+end
+
+%% ==========================================================
+%% DECISIVE CROSS-CONTEXT BUSINESS HANDOFFS
+%% These arrows express business/domain continuity only.
+%% They DO NOT define transport or runtime integration.
+%% ==========================================================
+
+E02 -->|"authorized business scope"| A02
+E03 -->|"eligible buyer relationship"| A03
+A04 -->|"resolved commercial offer"| A05
+
+E06 -->|"commercial demand"| E08
+A06 -->|"demand protected"| E06
+
+E06 -->|"credit capacity required"| A08
+A08 -->|"credit protected"| E07
+
+E07 -->|"confirmed obligation"| A10
+E09 -->|"physical allocation"| A10
+
+A11 -->|"delivery evidence"| E19
+
+E18 -->|"confirmed payment"| E10
+E10 -->|"financial fact"| E19
+
+E14 -->|"confirmed business fact"| A12
+E18 -->|"confirmed business fact"| A12
+E19 -->|"issued-document fact"| A12
+
+E14 -->|"durable business fact"| E21
+E15 -->|"durable business fact"| E21
+E18 -->|"durable business fact"| E21
+E19 -->|"durable business fact"| E21
+E20 -->|"notification outcome"| E21
+
+%% ==========================================================
+%% STRATEGIC VISUAL EMPHASIS
+%% ==========================================================
+
+style BC04 fill:#FFF4EC,stroke:#D85B00,stroke-width:3px
+style BC05 fill:#FFF4EC,stroke:#D85B00,stroke-width:3px
+style BC06 fill:#FFF4EC,stroke:#D85B00,stroke-width:3px
+
+style BC01 fill:#EEF6FF,stroke:#3979A8,stroke-width:2px
+style BC02 fill:#EEF6FF,stroke:#3979A8,stroke-width:2px
+style BC03 fill:#EEF6FF,stroke:#3979A8,stroke-width:2px
+style BC07 fill:#EEF6FF,stroke:#3979A8,stroke-width:2px
+style BC11 fill:#EEF6FF,stroke:#3979A8,stroke-width:2px
+
+style BC08 fill:#F6F6F6,stroke:#777,stroke-width:2px
+style BC09 fill:#F6F6F6,stroke:#777,stroke-width:2px
+style BC10 fill:#F6F6F6,stroke:#777,stroke-width:2px

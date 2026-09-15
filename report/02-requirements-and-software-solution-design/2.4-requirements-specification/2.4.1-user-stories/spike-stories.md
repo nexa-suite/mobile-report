@@ -23,13 +23,12 @@ Un Spike se considera cerrado sólo cuando el equipo:
 Estos criterios definen el cierre esperado; no prueban que un PoC o una
 integración ya exista.
 
-**Tabla**<br>
 *SPIKE-001 — Investigar, evaluar e integrar una feature de aprendizaje autónomo*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-001</td><td>Developer</td><td>High</td><td>SPIKE-EPIC-01 — Autonomous learning feature</td></tr>
+<tr><td>SPIKE-001</td><td>Developer</td><td>High</td><td>No Epic — transversal research item</td></tr>
 <tr><th>Title</th><td colspan="3">Investigar, evaluar e integrar una feature de aprendizaje autónomo</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo investigar, evaluar e integrar técnicamente una feature de aprendizaje autónomo para un flujo Mobile representativo de Nexa, para tomar una decisión reproducible sin crear una autoridad de negocio local. La evaluación usa datos no sensibles, contratos explícitos y límites de seguridad; no declara una decisión de Producto aceptada ni preparación productiva.</td></tr>
@@ -38,13 +37,12 @@ integración ya exista.
 </tbody>
 </table>
 
-**Tabla**<br>
 *SPIKE-002 — Establecer tracks Mobile y límites de contratos*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-002</td><td>Developer</td><td>High</td><td>SPIKE-EPIC-02 — Mobile implementation tracks</td></tr>
+<tr><td>SPIKE-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
 <tr><th>Title</th><td colspan="3">Establecer tracks Mobile y límites de contratos</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo establecer el baseline y los límites de contrato para Android nativo con Kotlin y cross-platform con Flutter/Dart, para documentar paridad, adaptaciones, restricciones e interoperabilidad entre Operations Mobile y Buyer Mobile sin duplicar reglas de negocio. La dirección Flutter/Dart ya está definida para el track cross-platform; este Spike no vuelve a seleccionar framework.</td></tr>
@@ -53,14 +51,12 @@ integración ya exista.
 </tbody>
 </table>
 
-**Tabla**<br>
-
 *SPIKE-003 — Delimitar identificadores de producto*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-003</td><td>Developer</td><td>Medium</td><td>SPIKE-EPIC-03 — Device capabilities</td></tr>
+<tr><td>SPIKE-003</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-03 — Device boundaries</td></tr>
 <tr><th>Title</th><td colspan="3">Delimitar identificadores de producto</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo delimitar formatos Barcode, QR y GS1, ambigüedades y alternativa manual, para decidir qué identificación puede apoyar un flujo sin crear una decisión de inventario desde el dispositivo.</td></tr>
@@ -69,13 +65,12 @@ integración ya exista.
 </tbody>
 </table>
 
-**Tabla**<br>
 *SPIKE-004 — Delimitar persistencia y recuperación local*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-004</td><td>Developer</td><td>High</td><td>SPIKE-EPIC-04 — Controlled continuity</td></tr>
+<tr><td>SPIKE-004</td><td>Developer</td><td>High</td><td>TECH-EPIC-04 — Controlled continuity</td></tr>
 <tr><th>Title</th><td colspan="3">Delimitar persistencia y recuperación local</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo delimitar caché segura, borrador, evidencia temporal y metadatos de reintento, para decidir qué puede persistir, expirar y recuperarse sin declarar éxito de negocio ante una red interrumpida.</td></tr>
@@ -84,13 +79,12 @@ integración ya exista.
 </tbody>
 </table>
 
-**Tabla**<br>
 *SPIKE-005 — Delimitar notificaciones y deep links*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-005</td><td>Developer</td><td>Medium</td><td>SPIKE-EPIC-05 — Contextual communication</td></tr>
+<tr><td>SPIKE-005</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-05 — Quality and communication</td></tr>
 <tr><th>Title</th><td colspan="3">Delimitar notificaciones y deep links</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo delimitar eventos, permisos, expiración y revalidación de deep links, para decidir qué comunicación contextual puede abrir trabajo protegido sin exponer datos ni mutar hechos de negocio.</td></tr>
@@ -99,13 +93,12 @@ integración ya exista.
 </tbody>
 </table>
 
-**Tabla**<br>
 *SPIKE-006 — Delimitar mapas y ubicación*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-006</td><td>Developer</td><td>Medium</td><td>SPIKE-EPIC-06 — Responsible navigation</td></tr>
+<tr><td>SPIKE-006</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-03 — Device boundaries</td></tr>
 <tr><th>Title</th><td colspan="3">Delimitar mapas y ubicación</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo delimitar destino autorizado, permiso, retención y alternativa ante falla para navegación externa, para decidir si aporta valor sin introducir tracking continuo, ETA ni autoridad de ubicación.</td></tr>

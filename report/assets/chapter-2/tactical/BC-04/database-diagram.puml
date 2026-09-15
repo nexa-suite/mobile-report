@@ -1,7 +1,6 @@
 @startuml
 title BC-04 Sales Commitment — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -23,7 +22,7 @@ entity "request_draft_line" as request_draft_line {
   * line_id : uuid <<PK>>
   * draft_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
 }
 
 entity "purchase_request" as purchase_request {
@@ -40,7 +39,7 @@ entity "purchase_request_line" as purchase_request_line {
   * line_id : uuid <<PK>>
   * purchase_request_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * requested_quantity : numeric(19,6) <<required>>
+  * requested_quantity : numeric(19,6) <<required, > 0>>
   * terms_snapshot : jsonb <<required>>
 }
 
@@ -68,7 +67,7 @@ entity "commercial_commitment_line" as commercial_commitment_line {
   * line_id : uuid <<PK>>
   * commitment_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
   * offer_snapshot : jsonb <<required>>
 }
 
@@ -93,8 +92,8 @@ entity "sales_order_line" as sales_order_line {
   * line_id : uuid <<PK>>
   * sales_order_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * quantity : numeric(19,6) <<required>>
-  * unit_price : numeric(19,4) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
+  * unit_price : numeric(19,4) <<required, >= 0>>
   * currency : char(3) <<required>>
 }
 
@@ -109,6 +108,7 @@ sales_order_line }o--|| sales_order : sales_order_id
 note bottom of commercial_commitment
 CHECK: origin_type = PURCHASE_REQUEST iff purchase_request_id is present.
 DIRECT_ORDER carries no Purchase Request reference.
+Line quantities are positive; price cannot be negative.
 end note
 
 legend right

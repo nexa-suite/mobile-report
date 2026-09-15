@@ -1,7 +1,6 @@
 @startuml
 title BC-01 Tenant & Access Governance — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -55,6 +54,7 @@ entity "workforce_membership" as workforce_membership {
   * human_identity_id : uuid <<FK, required>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
+    unique(workspace_id, human_identity_id)
 }
 
 entity "role_definition" as role_definition {
@@ -63,6 +63,7 @@ entity "role_definition" as role_definition {
   * code : varchar(80) <<required>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
+    unique(tenant_id, code)
 }
 
 entity "capability_definition" as capability_definition {

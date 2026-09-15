@@ -1,7 +1,6 @@
 @startuml
 title BC-10 Notifications — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -18,6 +17,7 @@ entity "notification_template" as notification_template {
   * version : integer <<required>>
   * content_snapshot : jsonb <<required>>
   * status : varchar(32) <<required>>
+    unique(tenant_id, template_key, channel, version)
 }
 
 entity "notification" as notification {
@@ -29,6 +29,7 @@ entity "notification" as notification {
   * source_event_type : varchar(160) <<required>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
+    unique(tenant_id, source_context, source_event_id, template_id)
 }
 
 entity "notification_recipient" as notification_recipient {
@@ -67,9 +68,11 @@ entity "push_subscription" as push_subscription {
   * recipient_reference : varchar(240) <<required>>
   * installation_id : varchar(160) <<required>>
   * platform : varchar(16) <<required>>
+  * provider_endpoint_reference : varchar(500) <<required, protected technical reference>>
   * provider_token_hash : char(64) <<required>>
   * status : varchar(32) <<required>>
   * version : bigint <<required>>
+    unique(tenant_id, installation_id)
 }
 
 notification_recipient }o--|| notification : notification_id
@@ -78,7 +81,8 @@ notification_attempt }o--|| notification_recipient : recipient_id
 
 note bottom of push_subscription
 PushSubscription is an independent root.
-Provider tokens are stored only as controlled technical references.
+provider_endpoint_reference resolves through protected infrastructure storage;
+provider_token_hash supports deduplication and never enables delivery alone.
 end note
 
 legend right

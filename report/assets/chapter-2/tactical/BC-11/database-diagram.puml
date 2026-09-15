@@ -1,7 +1,6 @@
 @startuml
 title BC-11 Business Traceability — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -23,7 +22,9 @@ entity "business_traceability_record" as business_traceability_record {
   * occurred_at : timestamptz <<required>>
   * recorded_at : timestamptz <<required>>
   * safe_metadata : jsonb <<required>>
-  * deduplication_key : varchar(240) <<required, unique>>
+  * deduplication_key : varchar(240) <<required>>
+    unique(tenant_id, source_context, source_event_id)
+    unique(tenant_id, deduplication_key)
 }
 
 entity "traceability_evidence_reference" as traceability_evidence_reference {

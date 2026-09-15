@@ -1,7 +1,6 @@
 @startuml
 title BC-03 Catalog & Commercial Policy — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -13,19 +12,22 @@ skinparam entity {
 entity "product" as product {
   * product_id : uuid <<PK>>
   * tenant_id : uuid <<required, BC-01 ID>>
-  * code : varchar(80) <<required, unique>>
+  * code : varchar(80) <<required>>
   * name : varchar(200) <<required>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
+    unique(tenant_id, code)
 }
 
 entity "sku" as sku {
   * sku_id : uuid <<PK>>
+  * tenant_id : uuid <<required, BC-01 ID>>
   * product_id : uuid <<FK, required>>
-  * code : varchar(80) <<required, unique>>
+  * code : varchar(80) <<required>>
   * temperature_band : varchar(64) <<required>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
+    unique(tenant_id, code)
 }
 
 entity "catalog_media_reference" as catalog_media {
@@ -71,6 +73,7 @@ entity "promotion" as promotion {
   * starts_at : timestamptz <<required>>
   * ends_at : timestamptz <<required>>
   * version : integer <<required>>
+    unique(tenant_id, code)
 }
 
 entity "promotion_sku" as promotion_sku {

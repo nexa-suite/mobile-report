@@ -1,7 +1,6 @@
 @startuml
 title BC-09 Business Documents — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -15,8 +14,9 @@ entity "document_number_series" as document_number_series {
   * tenant_id : uuid <<required, BC-01 ID>>
   * document_type : varchar(32) <<required>>
   * series_code : varchar(32) <<required>>
-  * next_number : bigint <<required>>
+  * next_number : bigint <<required, >= 1>>
   * version : integer <<required>>
+    unique(tenant_id, document_type, series_code)
 }
 
 entity "business_document" as business_document {
@@ -30,6 +30,7 @@ entity "business_document" as business_document {
     receivable_id : uuid <<optional, BC-07 ID>>
   * status : varchar(32) <<required>>
   * issued_at : timestamptz <<required>>
+    unique(tenant_id, document_type, document_number)
 }
 
 entity "document_snapshot_line" as document_snapshot_line {
@@ -37,8 +38,8 @@ entity "document_snapshot_line" as document_snapshot_line {
   * document_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
   * description : varchar(500) <<required>>
-  * quantity : numeric(19,6) <<required>>
-  * unit_price : numeric(19,4) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
+  * unit_price : numeric(19,4) <<required, >= 0>>
   * currency : char(3) <<required>>
 }
 
@@ -62,10 +63,11 @@ entity "object_storage_reference" as object_storage_reference {
 entity "document_generation_request\n<<application work item>>" as document_generation_request {
   * generation_request_id : uuid <<PK>>
   * document_id : uuid <<FK, required>>
-  * idempotency_key : varchar(160) <<required, unique>>
+  * idempotency_key : varchar(160) <<required>>
   * status : varchar(32) <<required>>
   * requested_at : timestamptz <<required>>
     completed_at : timestamptz
+    unique(document_id, idempotency_key)
 }
 
 document_snapshot_line }o--|| business_document : document_id
@@ -76,6 +78,7 @@ document_generation_request }o--|| business_document : document_id
 note bottom of document_generation_request
 This table is durable application work, not an Aggregate Root.
 Object Storage bytes remain outside PostgreSQL.
+Number reservation locks or compares document_number_series.version before issue.
 end note
 
 legend right

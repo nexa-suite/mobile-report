@@ -1,7 +1,6 @@
 @startuml
 title BC-05 Inventory Availability — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -13,24 +12,25 @@ skinparam entity {
 entity "warehouse" as warehouse {
   * warehouse_id : uuid <<PK>>
   * tenant_id : uuid <<required, BC-01 ID>>
-  * code : varchar(80) <<required, unique>>
+  * code : varchar(80) <<required>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
+    unique(tenant_id, code)
 }
 
 entity "safety_stock_policy" as safety_stock_policy {
   * policy_id : uuid <<PK>>
   * warehouse_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * minimum_quantity : numeric(19,6) <<required>>
+  * minimum_quantity : numeric(19,6) <<required, >= 0>>
 }
 
 entity "inventory_position" as inventory_position {
   * position_id : uuid <<PK>>
   * warehouse_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * usable_on_hand_quantity : numeric(19,6) <<required>>
-  * active_reservation_quantity : numeric(19,6) <<required>>
+  * usable_on_hand_quantity : numeric(19,6) <<required, >= 0>>
+  * active_reservation_quantity : numeric(19,6) <<required, reconciled, >= 0>>
   * version : integer <<required>>
     unique(warehouse_id, sku_id)
 }
@@ -40,7 +40,7 @@ entity "inventory_movement" as inventory_movement {
   * position_id : uuid <<FK, required>>
     lot_id : uuid <<FK, optional>>
   * kind : varchar(32) <<required>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, <> 0>>
   * occurred_at : timestamptz <<required>>
   * reference_type : varchar(80) <<required>>
   * reference_id : uuid <<required>>
@@ -52,7 +52,7 @@ entity "inventory_lot" as inventory_lot {
   * sku_id : uuid <<required, BC-03 ID>>
   * lot_code : varchar(120) <<required>>
     expires_at : timestamptz
-  * on_hand_quantity : numeric(19,6) <<required>>
+  * on_hand_quantity : numeric(19,6) <<required, >= 0>>
   * status : varchar(32) <<required>>
   * version : integer <<required>>
 }
@@ -77,7 +77,7 @@ entity "inventory_reservation_line" as inventory_reservation_line {
   * line_id : uuid <<PK>>
   * reservation_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
 }
 
 entity "warehouse_backing" as warehouse_backing {
@@ -92,7 +92,7 @@ entity "warehouse_backing_line" as warehouse_backing_line {
   * backing_id : uuid <<FK, required>>
   * warehouse_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
 }
 
 entity "physical_allocation" as physical_allocation {
@@ -107,7 +107,7 @@ entity "physical_allocation_line" as physical_allocation_line {
   * line_id : uuid <<PK>>
   * allocation_id : uuid <<FK, required>>
   * lot_id : uuid <<required, BC-05 ID>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
 }
 
 entity "warehouse_transfer" as warehouse_transfer {
@@ -123,7 +123,7 @@ entity "warehouse_transfer_line" as warehouse_transfer_line {
   * line_id : uuid <<PK>>
   * transfer_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * quantity : numeric(19,6) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
 }
 
 safety_stock_policy }o--|| warehouse : warehouse_id
@@ -142,6 +142,7 @@ warehouse_transfer_line }o--|| warehouse_transfer : transfer_id
 
 note bottom of inventory_position
 usable_on_hand_quantity is reconciled from immutable movement records.
+active_reservation_quantity is reconciled from authoritative reservations.
 Reservation is the sole demand subtraction; backing only distributes it.
 end note
 

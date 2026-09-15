@@ -1,7 +1,6 @@
 @startuml
 title BC-06 Fulfillment & Delivery — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -23,8 +22,8 @@ entity "fulfillment_line" as fulfillment_line {
   * fulfillment_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
   * physical_allocation_id : uuid <<required, BC-05 ID>>
-  * planned_quantity : numeric(19,6) <<required>>
-  * picked_quantity : numeric(19,6) <<required>>
+  * planned_quantity : numeric(19,6) <<required, > 0>>
+  * picked_quantity : numeric(19,6) <<required, >= 0>>
 }
 
 entity "picking_result" as picking_result {
@@ -68,20 +67,21 @@ entity "delivery_attempt" as delivery_attempt {
   * attempt_number : integer <<required>>
   * attempted_at : timestamptz <<required>>
   * outcome : varchar(32) <<required>>
+    unique(delivery_id, attempt_number)
 }
 
 entity "delivery_attempt_line" as delivery_attempt_line {
   * line_id : uuid <<PK>>
   * attempt_id : uuid <<FK, required>>
   * sku_id : uuid <<required, BC-03 ID>>
-  * attempted_quantity : numeric(19,6) <<required>>
+  * attempted_quantity : numeric(19,6) <<required, >= 0>>
 }
 
 entity "delivery_quantity_outcome" as delivery_quantity_outcome {
   * outcome_id : uuid <<PK>>
   * attempt_id : uuid <<FK, required>>
-  * fulfilled_quantity : numeric(19,6) <<required>>
-  * short_quantity : numeric(19,6) <<required>>
+  * fulfilled_quantity : numeric(19,6) <<required, >= 0>>
+  * short_quantity : numeric(19,6) <<required, >= 0>>
     reason : varchar(500)
 }
 
@@ -108,7 +108,7 @@ entity "buyer_receipt" as buyer_receipt {
   * attempt_id : uuid <<FK, required>>
   * buyer_relationship_id : uuid <<required, BC-02 ID>>
   * actor_human_identity_id : uuid <<required, BC-01 ID>>
-  * accepted_quantity : numeric(19,6) <<required>>
+  * accepted_quantity : numeric(19,6) <<required, >= 0>>
   * occurred_at : timestamptz <<required>>
 }
 

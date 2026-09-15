@@ -1,7 +1,6 @@
 @startuml
 title BC-08 Payments — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -15,7 +14,7 @@ entity "payment" as payment {
   * tenant_id : uuid <<required, BC-01 ID>>
   * customer_account_id : uuid <<required, BC-02 ID>>
     commercial_commitment_id : uuid <<optional, BC-04 ID>>
-  * amount : numeric(19,4) <<required>>
+  * amount : numeric(19,4) <<required, > 0>>
   * currency : char(3) <<required>>
   * method_reference : varchar(200) <<required>>
   * status : varchar(32) <<required>>
@@ -46,7 +45,7 @@ entity "payment_provider_event" as payment_provider_event {
 entity "payment_refund" as payment_refund {
   * refund_id : uuid <<PK>>
   * payment_id : uuid <<FK, required>>
-  * amount : numeric(19,4) <<required>>
+  * amount : numeric(19,4) <<required, > 0>>
   * currency : char(3) <<required>>
   * reason : varchar(500) <<required>>
   * recorded_at : timestamptz <<required>>
@@ -55,7 +54,7 @@ entity "payment_refund" as payment_refund {
 entity "payment_correction" as payment_correction {
   * correction_id : uuid <<PK>>
   * payment_id : uuid <<FK, required>>
-  * amount_delta : numeric(19,4) <<required>>
+  * amount_delta : numeric(19,4) <<required, <> 0>>
   * reason : varchar(500) <<required>>
   * actor_human_identity_id : uuid <<required, BC-01 ID>>
   * recorded_at : timestamptz <<required>>

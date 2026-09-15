@@ -8,7 +8,7 @@ skinparam linetype ortho
 class Notification <<Aggregate Root>> {
   -notificationId: NotificationId
   -templateId: NotificationTemplateId
-  -sourceFact: PublishedBusinessFact
+  -sourceFact: BusinessFactReference
   -status: NotificationStatus
   +schedule(): void
   +cancel(): void
@@ -50,22 +50,23 @@ class NotificationPreference <<Aggregate Root>> {
 class PushSubscription <<Aggregate Root>> {
   -subscriptionId: PushSubscriptionId
   -recipientReference: RecipientReference
-  -tokenHash: ProviderTokenHash
+  -installationId: InstallationId
+  -secureEndpoint: SecureEndpointReference
+  -providerTokenHash: ProviderTokenHash
   -status: SubscriptionStatus
-  +rotateToken(): void
+  +register(endpoint: SecureEndpointReference, hash: ProviderTokenHash): void
+  +rotateEndpoint(endpoint: SecureEndpointReference, hash: ProviderTokenHash): void
   +disable(): void
 }
 
-class PublishedBusinessFact <<Published Language>> {
+class BusinessFactReference <<Value Object>> {
   -eventId: EventId
   -eventType: EventType
   -sourceContext: String
 }
 
-class IntegrationEventEnvelope <<Published Language>> {
-  -eventId: EventId
-  -correlationId: CorrelationId
-  -occurredAt: Instant
+class SecureEndpointReference <<Value Object>> {
+  -value: String
 }
 
 class ChannelSelectionPolicy <<Domain Policy>> {
@@ -76,15 +77,39 @@ class RetryPolicy <<Domain Policy>> {
   +nextAttempt(attempt: NotificationAttempt): Instant
 }
 
+interface NotificationRepository <<Repository>> {
+  +byId(id: NotificationId): Notification
+  +save(notification: Notification): void
+}
+
+interface NotificationTemplateRepository <<Repository>> {
+  +byId(id: NotificationTemplateId): NotificationTemplate
+  +save(template: NotificationTemplate): void
+}
+
+interface NotificationPreferenceRepository <<Repository>> {
+  +byId(id: NotificationPreferenceId): NotificationPreference
+  +save(preference: NotificationPreference): void
+}
+
+interface PushSubscriptionRepository <<Repository>> {
+  +byId(id: PushSubscriptionId): PushSubscription
+  +save(subscription: PushSubscription): void
+}
+
 Notification "1" *-- "1..*" NotificationRecipient : recipients
 Notification "1" *-- "0..*" NotificationAttempt : attempts
 Notification --> NotificationTemplateId : typed root ID
-Notification --> PublishedBusinessFact : reacts to
-PublishedBusinessFact --> IntegrationEventEnvelope : carried by
+Notification --> BusinessFactReference : source fact reference
 NotificationPreference --> RecipientReference : typed recipient reference
 PushSubscription --> RecipientReference : typed recipient reference
+PushSubscription --> SecureEndpointReference : protected endpoint reference
 ChannelSelectionPolicy --> NotificationPreference : pure rule
 RetryPolicy --> NotificationAttempt : pure rule
+NotificationRepository ..> Notification : persists
+NotificationTemplateRepository ..> NotificationTemplate : persists
+NotificationPreferenceRepository ..> NotificationPreference : persists
+PushSubscriptionRepository ..> PushSubscription : persists
 Notification -[hidden]down-> NotificationTemplate
 NotificationTemplate -[hidden]down-> NotificationPreference
 NotificationPreference -[hidden]down-> PushSubscription

@@ -54,6 +54,16 @@ class DocumentNumberingPolicy <<Domain Policy>> {
   +isValid(number: DocumentNumber, series: DocumentNumberSeries): boolean
 }
 
+interface BusinessDocumentRepository <<Repository>> {
+  +byId(id: BusinessDocumentId): BusinessDocument
+  +save(document: BusinessDocument): void
+}
+
+interface DocumentNumberSeriesRepository <<Repository>> {
+  +byId(id: DocumentNumberSeriesId): DocumentNumberSeries
+  +save(series: DocumentNumberSeries): void
+}
+
 BusinessDocument "1" *-- "1..*" DocumentSnapshotLine : snapshot lines
 BusinessDocument "1" *-- "1..*" DocumentRevision : revisions
 BusinessDocument "1" *-- "0..*" ObjectStorageReference : private metadata
@@ -62,6 +72,8 @@ BusinessDocument --> SourceDocumentReference : typed source reference
 DocumentIssuePolicy --> DocumentRevision : pure rule
 DocumentIssuePolicy --> DocumentNumberSeries : pure rule
 DocumentNumberingPolicy --> DocumentNumberSeries : pure rule
+BusinessDocumentRepository ..> BusinessDocument : persists
+DocumentNumberSeriesRepository ..> DocumentNumberSeries : persists
 BusinessDocument -[hidden]down-> DocumentNumberSeries
 
 note right of ObjectStorageReference

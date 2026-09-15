@@ -138,6 +138,26 @@ class DeliveryExecutionPolicy <<Domain Policy>> {
   +canSeal(pod: ProofOfDelivery): boolean
 }
 
+interface FulfillmentRepository <<Repository>> {
+  +byId(id: FulfillmentId): Fulfillment
+  +save(fulfillment: Fulfillment): void
+}
+
+interface DeliveryRepository <<Repository>> {
+  +byId(id: DeliveryId): Delivery
+  +save(delivery: Delivery): void
+}
+
+interface ProofOfDeliveryRepository <<Repository>> {
+  +byId(id: ProofOfDeliveryId): ProofOfDelivery
+  +save(pod: ProofOfDelivery): void
+}
+
+interface TemperatureEvidenceRepository <<Repository>> {
+  +byId(id: TemperatureEvidenceId): TemperatureEvidence
+  +save(evidence: TemperatureEvidence): void
+}
+
 Fulfillment "1" *-- "1..*" FulfillmentLine : lines
 Fulfillment "1" *-- "0..1" PickingResult : picking result
 PickingResult "1" *-- "0..*" PickingDiscrepancy : discrepancies
@@ -159,6 +179,10 @@ ProofOfDelivery --> DeliveryId : typed root ID
 TemperatureEvidence --> DeliveryId : typed root ID
 DeliveryExecutionPolicy --> DeliveryQuantityOutcome : pure rule
 DeliveryExecutionPolicy --> ProofOfDelivery : pure rule
+FulfillmentRepository ..> Fulfillment : persists
+DeliveryRepository ..> Delivery : persists
+ProofOfDeliveryRepository ..> ProofOfDelivery : persists
+TemperatureEvidenceRepository ..> TemperatureEvidence : persists
 Fulfillment -[hidden]down-> Delivery
 Delivery -[hidden]down-> ProofOfDelivery
 ProofOfDelivery -[hidden]down-> TemperatureEvidence

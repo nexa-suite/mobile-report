@@ -1,46 +1,96 @@
 ### 2.6.10. Bounded Context: Notifications
 
-BC-10 conserva intención, preferencias y estados de entrega. Un intento o fallo
-de notificación no modifica el hecho de negocio que lo originó.
+BC-10 conserva intención, preferencias, suscripciones y estados de entrega. Un
+intento o fallo nunca modifica el hecho de negocio fuente. La suscripción push
+mantiene una referencia técnica protegida y hash de deduplicación; Domain no
+conoce token crudo ni ejecuta I/O de email/push.
 
-#### 2.6.10.1. Canonical class dictionary
+#### 2.6.10.1. Domain Layer
 
-*Clases y responsabilidades de BC-10 por capa.*
+El dominio recibe una `BusinessFactReference` ya traducida desde Application.
+`PublishedBusinessFact` y sus envelopes son contratos de integración, no tipos
+del Domain Layer.
 
-| Layer | Class | Category | Purpose | Key Attributes / Inputs | Main Methods / Business Behavior | Relationships / Collaborators | Aggregate Owner / External References |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| Domain | Notification | Aggregate Root | Conserva una intención de entrega y su estado. | Notification ID, template ID, source fact, status. | Schedule or cancel. | Reacts to PublishedBusinessFact. | Owns NotificationRecipient and NotificationAttempt. |
-| Domain | NotificationTemplate | Aggregate Root | Conserva contenido versionado por canal. | Template ID, key, channel, version. | Publish and retire. | Referenced by Notification through ID. | Independent lifecycle. |
-| Domain | NotificationPreference | Aggregate Root | Conserva una preferencia por destinatario y canal. | Preference ID, recipient reference, channel, enabled. | Enable and disable. | Uses a typed recipient reference. | Independent lifecycle. |
-| Domain | PushSubscription | Aggregate Root | Conserva una suscripción técnica de entrega. | Subscription ID, recipient reference, token hash, status. | Rotate token and disable. | Uses recipient reference only. | Independent delivery root. |
-| Domain | NotificationRecipient | Entity | Conserva un destinatario resuelto. | Recipient reference, channel and destination snapshot. | Suppress delivery. | Local to Notification. | Owned by Notification. |
-| Domain | NotificationAttempt | Entity | Conserva cada intento de entrega. | Channel, status and attempted time. | Record result. | Local to Notification. | Owned by Notification. |
-| Domain | PublishedBusinessFact | Published Language | Expresa un hecho consumible de otro contexto. | Event ID, type and source context. | Carries committed fact data. | Wrapped by IntegrationEventEnvelope. | Never imports source aggregate ownership. |
-| Domain | ChannelSelectionPolicy | Domain Policy | Decide un canal permitido. | Preference and available channels. | Select channel. | Pure values supplied by application. | No email, push or provider dependency. |
-| Domain | RetryPolicy | Domain Policy | Calcula el siguiente intento. | Previous attempt and retry rule. | Schedule retry. | Pure values supplied by application. | No transport dependency. |
-| Interface | BC-10 Interface Boundary | Interface component | Traduce preferencias, lectura y hechos de entrega. | Actor, scope and published fact. | Rejects invalid or duplicate input. | Calls application orchestration. | Does not decide source business state. |
-| Application | BC-10 Application Orchestration | Application component | Coordina creación, entrega y reintento. | Published fact, preference and work state. | Deduplicates, dispatches and projects after commit. | Uses envelopes and local IDs. | Provider I/O stays outside Domain. |
-| Infrastructure | BC-10 Persistence and Delivery Adapters | Infrastructure component | Persiste hechos y entrega por canales. | Notification records, inbox and delivery messages. | Maps records and calls delivery adapters. | PostgreSQL, inbox, outbox, email and push adapters. | Does not own source context data. |
+| Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `Notification` | Aggregate Root | Mantener intención y estado de entrega. | `NotificationId`, `NotificationTemplateId`, `BusinessFactReference`, status. | `schedule`, `cancel`. | Compone recipients y attempts. |
+| `NotificationTemplate` | Aggregate Root | Mantener contenido versionado por canal. | `NotificationTemplateId`, template key, channel, version, status. | `publish`, `retire`. | Root independiente. |
+| `NotificationPreference` | Aggregate Root | Mantener preferencia recipient/event/channel. | `NotificationPreferenceId`, `RecipientReference`, channel, enabled. | `enable`, `disable`. | Root independiente. |
+| `PushSubscription` | Aggregate Root | Mantener suscripción de entrega provider-neutral. | `PushSubscriptionId`, `RecipientReference`, `InstallationId`, `SecureEndpointReference`, `ProviderTokenHash`, status. | `register`, `rotateEndpoint`, `disable`. | Root independiente; no token crudo. |
+| `BusinessFactReference` | Value Object | Identificar hecho fuente sin importar aggregate. | event ID, source context, type. | inmutable. | Usado por Notification. |
+| `NotificationRecipient`, `NotificationAttempt` | Entities | Conservar destino resuelto e intentos. | recipient, channel, destination snapshot, outcome. | `suppress`, `recordResult`. | Propiedad de Notification. |
+| `ChannelSelectionPolicy`, `RetryPolicy` | Domain Policies | Elegir canal permitido y próximo retry. | preference, channels, attempt. | `choose`, `nextAttempt`. | Puras; sin provider. |
+| `NotificationRepository`, `NotificationTemplateRepository` | Repository interfaces | Cargar notification/template independientemente. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
+| `NotificationPreferenceRepository`, `PushSubscriptionRepository` | Repository interfaces | Cargar preference/subscription independientemente. | IDs y roots. | `byId`, `save`. | Endpoint protegido en Infrastructure. |
 
-El estado del origen permanece autoritativo en su contexto. Las entregas se
-procesan al menos una vez con idempotencia; payloads y referencias minimizan PII
-y no incluyen secretos.
+#### 2.6.10.2. Interface Layer
 
-#### 2.6.10.2. Component and code-level diagrams
+La interfaz recibe preferencias y suscripciones, y consume hechos publicados en
+un borde separado. Ningún request de cliente decide estado de negocio fuente.
 
-*Vista C4 L3 de BC-10 Notifications.*
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `NotificationPreferenceController` | REST Controller | Gestionar preferencia por evento/canal. | actor, recipient, preference, versión. | `enable`, `disable`. | Preference handler. |
+| `PushSubscriptionController` | REST Controller | Registrar/retirar endpoint de push autorizado. | actor, installation, protected endpoint input. | `register`, `disable`. | Subscription handler y protected store. |
+| `BusinessFactConsumer` | Message Consumer | Recibir published business facts. | integration contract, event ID. | `consume`. | Inbox y event handler. |
+
+#### 2.6.10.3. Application Layer
+
+Application traduce fact publicado a referencia de dominio, deduplica, coordina
+intención, dispatch y retry. I/O de delivery permanece tras el puerto técnico.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CreateNotificationCommandHandler` | Command Handler | Crear intención desde fact y preferencias. | `PublishedBusinessFact`, recipient, template. | `handle`. | Notification/preference repositories. |
+| `DispatchNotificationCommandHandler` | Command Handler | Reclamar y despachar intento. | `NotificationId`, attempt, fencing token. | `handle`. | Delivery port, notification repository. |
+| `RecordNotificationDeliveryResultCommandHandler` | Command Handler | Registrar resultado de adapter. | attempt, provider outcome, versión. | `handle`. | Notification root. |
+| `RetryNotificationCommandHandler` | Command Handler | Programar próximo retry permitido. | notification, last attempt. | `handle`. | `RetryPolicy`. |
+| `SetNotificationPreferenceCommandHandler`, `RegisterPushSubscriptionCommandHandler` | Command Handlers | Mantener configuración del destinatario. | preference/subscription input, actor, scope. | `handle`. | Preference/subscription repositories. |
+| `PublishedBusinessFactEventHandler` | Event Handler | Coordinar deduplicación y creación. | fact publicado, event ID. | `handle`. | Inbox y create handler. |
+
+#### 2.6.10.4. Infrastructure Layer
+
+Infrastructure conserva endpoint protegido fuera del modelo de dominio, hash de
+deduplicación, inbox/outbox y adapters de email/push provider-neutral.
+
+| Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PostgresNotificationRepository`, `PostgresNotificationTemplateRepository` | Repository implementations | Mapear notification/template y children. | notification records. | `byId`, `save`. | Repositories Domain, PostgreSQL. |
+| `PostgresNotificationPreferenceRepository`, `PostgresPushSubscriptionRepository` | Repository implementations | Mapear preference/subscription sin token crudo. | preference/subscription records. | `byId`, `save`. | Repositories Domain. |
+| `ProtectedPushEndpointStore` | Protected technical store | Cifrar o referenciar endpoint de proveedor en reposo. | provider endpoint, access policy. | `store`, `resolveForDelivery`. | `SecureEndpointReference`, push adapter. |
+| `NotificationFactInbox` | Inbox adapter | Deduplicar published business facts. | event ID, consumer state. | `claim`, `complete`. | Event handler. |
+| `EmailDeliveryAdapter`, `PushProviderAdapter` | Delivery adapters | Ejecutar I/O por canal fuera de Domain. | resolved destination, rendered message. | `send`. | Dispatch handler. |
+| `NotificationOutboxPublisher` | Outbox adapter | Publicar outcomes comprometidos. | outcome fact, correlación. | `enqueue`. | BC-11. |
+
+#### 2.6.10.5. Bounded Context Software Architecture Component Level Diagrams
+
+La vista C4 L3 hace visible API/preference/fact intake, dispatch application,
+dominio, persistencia+inbox y adapters de email/push. Componentes no representan
+clases Java individuales.
 
 ![Vista C4 L3 de BC-10 Notifications](../../../assets/chapter-2/c4/Nexa-API-BC-10-Notifications.svg)
 
 *Nota. Elaboración propia.*
 
-*Modelo de dominio táctico de BC-10 Notifications.*
+#### 2.6.10.6. Bounded Context Software Architecture Code Level Diagrams
+
+Los diagramas evitan `IntegrationEventEnvelope` en Domain y muestran sólo
+referencia semántica segura al hecho fuente.
+
+##### 2.6.10.6.1. Bounded Context Domain Layer Class Diagrams
+
+El UML representa endpoint protegido mediante `SecureEndpointReference` y
+`ProviderTokenHash`; entrega real queda fuera de Domain.
 
 ![Modelo de dominio táctico de BC-10 Notifications](../../../assets/chapter-2/tactical/BC-10/BC10_Notifications.svg)
 
 *Nota. Elaboración propia.*
 
-*Diseño lógico de base de datos de BC-10 Notifications.*
+##### 2.6.10.6.2. Bounded Context Database Design Diagram
+
+El diagrama conserva `provider_endpoint_reference` protegido más
+`provider_token_hash`, y hace única la instalación por Tenant para impedir
+duplicación sin guardar token crudo.
 
 ![Diseño lógico de base de datos de BC-10 Notifications](../../../assets/chapter-2/tactical/BC-10/database-diagram.svg)
 

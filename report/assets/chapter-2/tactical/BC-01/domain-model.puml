@@ -106,6 +106,21 @@ interface TenantRepository <<Repository>> {
   +save(tenant: Tenant): void
 }
 
+interface HumanIdentityRepository <<Repository>> {
+  +byId(id: HumanIdentityId): HumanIdentity
+  +save(identity: HumanIdentity): void
+}
+
+interface WorkforceMembershipRepository <<Repository>> {
+  +byId(id: MembershipId): WorkforceMembership
+  +save(membership: WorkforceMembership): void
+}
+
+interface RoleDefinitionRepository <<Repository>> {
+  +byId(id: RoleId): RoleDefinition
+  +save(role: RoleDefinition): void
+}
+
 interface CompanyOnboardingRequestRepository <<Repository>> {
   +byId(id: OnboardingRequestId): CompanyOnboardingRequest
   +save(request: CompanyOnboardingRequest): void
@@ -134,6 +149,9 @@ WorkforceMembership --> HumanIdentity : humanIdentityId
 MembershipRole --> RoleDefinition : roleId
 CompanyOnboardingRequest --> Tenant : provisionedTenantId [0..1]
 TenantRepository ..> Tenant : persists
+HumanIdentityRepository ..> HumanIdentity : persists
+WorkforceMembershipRepository ..> WorkforceMembership : persists
+RoleDefinitionRepository ..> RoleDefinition : persists
 CompanyOnboardingRequestRepository ..> CompanyOnboardingRequest : persists
 AccessEligibilityPolicy --> AccessContext : evaluates
 AccessEligibilityPolicy --> CapabilityCode : checks

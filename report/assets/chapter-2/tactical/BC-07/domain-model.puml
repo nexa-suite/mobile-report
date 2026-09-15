@@ -76,6 +76,26 @@ class ReceivableApplicationPolicy <<Domain Policy>> {
   +canReverse(application: ReceivableApplication): boolean
 }
 
+interface CreditAccountRepository <<Repository>> {
+  +byId(id: CreditAccountId): CreditAccount
+  +save(account: CreditAccount): void
+}
+
+interface CreditReservationRepository <<Repository>> {
+  +byId(id: CreditReservationId): CreditReservation
+  +save(reservation: CreditReservation): void
+}
+
+interface ReceivableRepository <<Repository>> {
+  +byId(id: ReceivableId): Receivable
+  +save(receivable: Receivable): void
+}
+
+interface FinancialAdjustmentRepository <<Repository>> {
+  +byId(id: FinancialAdjustmentId): FinancialAdjustment
+  +save(adjustment: FinancialAdjustment): void
+}
+
 CreditAccount --> CustomerAccountId : typed BC-02 ID
 CreditReservation --> CreditAccountId : typed root ID
 CreditReservation --> CommitmentId : typed BC-04 ID
@@ -87,6 +107,10 @@ FinancialAdjustment --> ReceivableId : typed root ID
 ReceivableApplication --> PaymentId : typed BC-08 ID
 CreditExposurePolicy --> Money : pure calculation
 ReceivableApplicationPolicy --> ReceivableApplication : pure rule
+CreditAccountRepository ..> CreditAccount : persists
+CreditReservationRepository ..> CreditReservation : persists
+ReceivableRepository ..> Receivable : persists
+FinancialAdjustmentRepository ..> FinancialAdjustment : persists
 CreditAccount -[hidden]down-> CreditReservation
 CreditReservation -[hidden]down-> Receivable
 Receivable -[hidden]down-> FinancialAdjustment

@@ -43,33 +43,32 @@ class EvidenceReference <<Value Object>> {
   -referenceId: String
 }
 
-class PublishedBusinessFact <<Published Language>> {
+class TraceabilityFact <<Value Object>> {
   -eventId: EventId
   -sourceContext: String
   -subject: BusinessObjectReference
 }
 
-class IntegrationEventEnvelope <<Published Language>> {
-  -eventId: EventId
-  -correlationId: CorrelationId
-  -occurredAt: Instant
-}
-
 class TraceabilityAppendPolicy <<Domain Policy>> {
-  +canAppend(fact: PublishedBusinessFact, tenantId: TenantId): boolean
+  +canAppend(fact: TraceabilityFact, tenantId: TenantId): boolean
 }
 
 class SensitivePayloadPolicy <<Domain Policy>> {
   +sanitize(metadata: SafeMetadata): SafeMetadata
 }
 
+interface BusinessTraceabilityRecordRepository <<Repository>> {
+  +byId(id: TraceabilityId): BusinessTraceabilityRecord
+  +append(record: BusinessTraceabilityRecord): void
+}
+
 BusinessTraceabilityRecord "1" *-- "0..*" TraceabilityEvidenceReference : evidence facts
 BusinessTraceabilityRecord --> BusinessObjectReference : subject
 BusinessTraceabilityRecord --> ActorReference : actor
 TraceabilityEvidenceReference --> EvidenceReference : typed external reference
-PublishedBusinessFact --> IntegrationEventEnvelope : carried by
-TraceabilityAppendPolicy --> PublishedBusinessFact : pure rule
+TraceabilityAppendPolicy --> TraceabilityFact : pure rule
 SensitivePayloadPolicy --> BusinessTraceabilityRecord : pure rule
+BusinessTraceabilityRecordRepository ..> BusinessTraceabilityRecord : appends
 
 note right of BusinessTraceabilityRecord
 Append-only root. Correction creates another record; no edit or delete behavior exists.

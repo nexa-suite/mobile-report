@@ -101,9 +101,24 @@ interface PriceListRepository <<Repository>> {
   +save(priceList: PriceList): void
 }
 
+interface ProductRepository <<Repository>> {
+  +byId(id: ProductId): Product
+  +save(product: Product): void
+}
+
 interface SKURepository <<Repository>> {
   +byId(id: SkuId): SKU
   +save(sku: SKU): void
+}
+
+interface CustomerTermsRepository <<Repository>> {
+  +byId(id: CustomerTermsId): CustomerTerms
+  +save(terms: CustomerTerms): void
+}
+
+interface PromotionRepository <<Repository>> {
+  +byId(id: PromotionId): Promotion
+  +save(promotion: Promotion): void
 }
 
 enum ProductStatus <<Enum>>
@@ -121,8 +136,11 @@ CustomerTerms --> PriceList : priceListId
 CustomerTerms --> CustomerAccountId : typed BC-02 ID
 OfferResolutionPolicy --> ResolvedOfferSnapshot : produces
 OfferResolutionPolicy --> Promotion : selects at most one
+ProductRepository ..> Product : persists
 PriceListRepository ..> PriceList : persists
 SKURepository ..> SKU : persists
+CustomerTermsRepository ..> CustomerTerms : persists
+PromotionRepository ..> Promotion : persists
 
 legend right
 Product and SKU are independent Aggregate Roots linked by identity.

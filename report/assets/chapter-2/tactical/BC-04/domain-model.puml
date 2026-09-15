@@ -11,7 +11,7 @@ class RequestDraft <<Aggregate Root>> {
   -buyerRelationshipId: BuyerRelationshipId
   -status: DraftStatus
   +addLine(skuId: SkuId, quantity: Quantity): void
-  +submit(): PurchaseRequest
+  +prepareSubmission(): RequestSubmissionData
 }
 
 class RequestDraftLine <<Entity>> {
@@ -98,6 +98,24 @@ class CommercialSnapshot <<Value Object>> {
   -terms: TermsSnapshot
 }
 
+class ResolvedOfferSnapshot <<External Contract>> {
+  -skuId: SkuId
+  -unitPrice: Money
+  -termsId: CustomerTermsId [0..1]
+  -promotionId: PromotionId [0..1]
+}
+
+class RequestSubmissionData <<Value Object>> {
+  -buyerRelationshipId: BuyerRelationshipId
+  -lines: List<RequestDraftLine>
+  -resolvedOfferSnapshot: ResolvedOfferSnapshot
+  -preparedAt: Instant
+}
+
+class PurchaseRequestFactory <<Domain Factory>> {
+  +create(data: RequestSubmissionData, expiresAt: Instant): PurchaseRequest
+}
+
 class InventoryReservationDecision <<Value Object>> {
   -reservationId: InventoryReservationId
   -status: ReservationStatus
@@ -113,6 +131,26 @@ class CommitmentAcceptancePolicy <<Domain Policy>> {
   +requiresBuyerAcceptance(change: MaterialChangeProposal): boolean
 }
 
+interface RequestDraftRepository <<Repository>> {
+  +byId(id: RequestDraftId): RequestDraft
+  +save(draft: RequestDraft): void
+}
+
+interface PurchaseRequestRepository <<Repository>> {
+  +byId(id: PurchaseRequestId): PurchaseRequest
+  +save(request: PurchaseRequest): void
+}
+
+interface CommercialCommitmentRepository <<Repository>> {
+  +byId(id: CommitmentId): CommercialCommitment
+  +save(commitment: CommercialCommitment): void
+}
+
+interface SalesOrderRepository <<Repository>> {
+  +byId(id: SalesOrderId): SalesOrder
+  +save(order: SalesOrder): void
+}
+
 enum CommitmentOrigin <<Enum>> {
   PURCHASE_REQUEST
   DIRECT_ORDER
@@ -126,14 +164,21 @@ CommercialCommitment "1" *-- "0..*" CommitmentAdjustment : adjustments
 SalesOrder "1" *-- "1..*" SalesOrderLine : lines
 PurchaseRequestLine *-- TermsSnapshot : snapshot
 CommercialCommitmentLine *-- CommercialSnapshot : snapshot
-RequestDraft --> BuyerRelationshipId : typed BC-02 ID
-PurchaseRequest --> BuyerRelationshipId : typed BC-02 ID
+RequestDraft --> RequestSubmissionData : prepares
+RequestSubmissionData --> ResolvedOfferSnapshot : immutable BC-03 input
+CommercialSnapshot --> ResolvedOfferSnapshot : captures decision from
+PurchaseRequestFactory --> RequestSubmissionData : constructs from
+PurchaseRequestFactory ..> PurchaseRequest : creates
 CommercialCommitment --> PurchaseRequestId : optional identity reference
 SalesOrder --> CommitmentId : typed root ID
 CommercialCommitment --> InventoryReservationDecision : published contract
 CommercialCommitment --> CreditReservationDecision : published contract
 CommitmentAcceptancePolicy --> InventoryReservationDecision : pure rule
 CommitmentAcceptancePolicy --> CreditReservationDecision : pure rule
+RequestDraftRepository ..> RequestDraft : persists
+PurchaseRequestRepository ..> PurchaseRequest : persists
+CommercialCommitmentRepository ..> CommercialCommitment : persists
+SalesOrderRepository ..> SalesOrder : persists
 RequestDraft -[hidden]down-> PurchaseRequest
 PurchaseRequest -[hidden]down-> CommercialCommitment
 CommercialCommitment -[hidden]down-> SalesOrder
@@ -141,6 +186,12 @@ CommercialCommitment -[hidden]down-> SalesOrder
 note right of CommercialCommitment
 PURCHASE_REQUEST requires purchaseRequestId.
 DIRECT_ORDER requires no PurchaseRequest.
+end note
+
+note right of ResolvedOfferSnapshot
+Immutable BC-03 contract consumed as input.
+BC-04 captures the decision; it does not own
+or re-resolve the commercial offer.
 end note
 
 @enduml

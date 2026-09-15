@@ -63,6 +63,16 @@ class PaymentReconciliationPolicy <<Domain Policy>> {
   +requiresCase(localStatus: PaymentStatus, providerResult: ProviderResult): boolean
 }
 
+interface PaymentRepository <<Repository>> {
+  +byId(id: PaymentId): Payment
+  +save(payment: Payment): void
+}
+
+interface PaymentReconciliationCaseRepository <<Repository>> {
+  +byId(id: ReconciliationCaseId): PaymentReconciliationCase
+  +save(case: PaymentReconciliationCase): void
+}
+
 Payment "1" *-- "1..*" PaymentAttempt : attempts
 Payment "1" *-- "0..*" PaymentProviderEvent : provider facts
 Payment "1" *-- "0..*" PaymentRefund : refunds
@@ -70,6 +80,8 @@ Payment "1" *-- "0..*" PaymentCorrection : corrections
 Payment --> CustomerAccountId : typed BC-02 ID
 Payment --> CommitmentId : optional BC-04 ID
 PaymentReconciliationCase --> PaymentId : typed root ID
+PaymentRepository ..> Payment : persists
+PaymentReconciliationCaseRepository ..> PaymentReconciliationCase : persists
 Payment -[hidden]down-> PaymentReconciliationCase
 PaymentAttempt -[hidden]down-> PaymentProviderEvent
 PaymentProviderEvent -[hidden]down-> PaymentRefund

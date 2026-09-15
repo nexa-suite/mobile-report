@@ -46,8 +46,6 @@ FRONT_MATTER=(
 REPORT_ROOTS=(
   report/01-presentation
   report/02-requirements-and-software-solution-design
-  report/03-solution-ui-ux-design
-  report/04-product-implementation-and-validation
   report/90-conclusions
   report/91-glossary
   report/92-bibliography

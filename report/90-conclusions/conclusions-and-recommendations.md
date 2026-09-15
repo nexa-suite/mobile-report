@@ -12,9 +12,9 @@ producto.
 | --- | --- | --- | --- |
 | **Problem Statement** | Estadísticas de INEI, análisis competitivo y lenguaje de dominio describen una oportunidad de continuidad entre compromiso, preparación, despacho, entrega y recepción. | El problema es legítimo como objeto de investigación. Su magnitud en usuarios específicos de Nexa, su frecuencia y su impacto económico todavía no están cuantificados con investigación primaria. | **PARCIAL** |
 | **Supuestos de negocio** | El contexto sectorial y la propuesta de valor tienen respaldo secundario; los artefactos Lean UX hacen explícitas las decisiones que deben contrastarse. | Existe una base razonable para investigar, pero monetización, adopción, disposición a cambiar y tamaño de la oportunidad no están validados. | **PARCIAL / PENDIENTE** |
-| **H1 — Warehouse & Dispatch Operations** | El diseño de entrevistas define casos de preparación, readiness y handoff, pero no hay entrevistas directas registradas para `Warehouse Operator` o `Dispatch Coordinator`. | No es posible confirmar ni rechazar que la pérdida de continuidad sea material ni que FA1 sea la respuesta adecuada. | **PENDIENTE** |
-| **H2 — Driver Delivery Execution** | El diseño de entrevistas define el `Delivery Attempt`, sus incidencias y su evidencia, pero no hay entrevistas directas registradas de `Driver` o `Delivery Operator`. | No es posible confirmar ni rechazar la hipótesis sobre atribución, recuperación y utilidad del recorrido Mobile. | **PENDIENTE** |
-| **H3 — B2B Buyers** | El registro del capítulo II conserva dos entrevistas Buyer (`INT-S3-01` e `INT-S3-02`) sobre visibilidad de llegada, continuidad del abastecimiento, confianza y soporte humano. Ninguna describe de principio a fin la recepción y verificación de cantidades. | La muestra aporta una señal exploratoria para investigar llegada, continuidad y soporte, pero no valida la recepción ni las discrepancias. Permanece por debajo de la cobertura requerida de 3–5 casos. | **PARCIAL / PENDIENTE DE VALIDACIÓN** |
+| **H1 — Warehouse & Dispatch Operations** | Las entrevistas `INT-S1-01`, `INT-S1-02` e `INT-S1-03` cubren preparación, verificación, readiness y handoff en una muestra 3/3 del segmento. | La evidencia de investigación respalda y refina el problema de continuidad y la necesidad de FA1; no valida la solución y queda abierta a Solution Validation. | **EVIDENCE INFORMED / OPEN FOR SOLUTION VALIDATION** |
+| **H2 — Driver Delivery Execution** | Las entrevistas `INT-S2-01`, `INT-S2-02` e `INT-S2-03` cubren entrega, incidencias, comunicación y evidencia en una muestra 3/3 del segmento. | La evidencia de investigación respalda y refina la necesidad de continuidad y atribución durante la entrega; no valida la solución y queda abierta a Solution Validation. | **EVIDENCE INFORMED / OPEN FOR SOLUTION VALIDATION** |
+| **H3 — B2B Buyers** | Las entrevistas `INT-S3-01`, `INT-S3-02` e `INT-S3-03` cubren reabastecimiento, continuidad, puntualidad, coordinación con proveedores y disponibilidad para clientes propios; la recepción y discrepancia se describen con mayor detalle en `INT-S3-03`. | La evidencia de investigación amplía Buyer más allá del recibo y respalda continuidad comercial; receipt/discrepancy sigue siendo válido, pero la solución no está validada y queda abierta a Solution Validation. | **EVIDENCE INFORMED / OPEN FOR SOLUTION VALIDATION** |
 
 ## Conclusiones generales
 
@@ -23,11 +23,11 @@ producto.
    información puede perderse cuando cambian la responsabilidad, el estado o
    la evidencia del pedido. Aún no permite atribuir una magnitud concreta a
    usuarios de Nexa.
-2. La evidencia primaria no tiene la misma cobertura por segmento. Las dos
-   entrevistas Buyer sugieren que la visibilidad de llegada, la continuidad del
-   abastecimiento y el soporte humano merecen investigación adicional; H1 y H2
-   siguen sin una base directa para decidir mantener, ajustar o descartar sus
-   supuestos.
+2. La evidencia primaria cubre los tres segmentos con una muestra 3/3/3. H1 y
+   H2 quedan informadas por preparación, continuidad, entrega e incidencias;
+   Buyer incluye reabastecimiento, coordinación, puntualidad, disponibilidad
+   para clientes propios y, con mayor detalle en un caso, recepción y
+   discrepancia. Esta evidencia orienta la Solution Validation, no la sustituye.
 3. El resultado declarado por un Driver y la recepción declarada por un Buyer
    son hechos distintos. Mantener esa separación evita que una entrega marcada
    como realizada se convierta automáticamente en aceptación, y conserva la
@@ -47,15 +47,15 @@ producto.
    decisión tomada.
 7. Los Personas, Journey Maps y Empathy Maps del informe fueron elaborados en
    UXPressia y exportados para su incorporación; esa procedencia no acredita
-   resultados de validación. La evidencia visual del Board de Jira y los videos
-   de exposición no están disponibles y no se atribuyen resultados de esos
-   medios.
+   resultados de validación. El Product Backlog y la trazabilidad de Sprint se
+   referencian mediante Jira; los videos de exposición no están disponibles y
+   no se atribuyen resultados de esos medios.
 
 ## Recomendaciones
 
-- Completar entrevistas consentidas de Warehouse & Dispatch y Driver antes de
-  caracterizar H1 o H2, y ampliar Buyer con casos de recepción, verificación y
-  discrepancia.
+- Diseñar y ejecutar una ronda de Solution Validation para H1, H2 y H3, usando
+  la evidencia 3/3/3 como base y manteniendo separados Needfinding y aceptación
+  de solución.
 - Ejecutar primero el descubrimiento mínimo de Lean UX: reconstruir un caso
   As-Is reciente, registrar fuentes, aclaraciones, tiempo, omisiones,
   asistencia y ambigüedad del handoff; sólo si el problema es material pasar a

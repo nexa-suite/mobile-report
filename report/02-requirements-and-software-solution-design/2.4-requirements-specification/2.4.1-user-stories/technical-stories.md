@@ -17,9 +17,9 @@ runtime, proveedor, distribución, implementación ni validación de producto.
 <tr><td>TS-MOB-001</td><td>Developer</td><td>High</td><td>TECH-EPIC-01 — Contract and security foundations</td></tr>
 <tr><th>Title</th><td colspan="3">Integrar contratos REST con autoridad del servidor</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar contratos REST explícitos con Nexa API, para que las líneas técnicas evaluadas consuman datos y comandos sin crear una autoridad paralela ni seleccionar un framework fuera del experimento.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar el base URL y entorno de API con clientes nativos tipados, manejo de bearer/sesión, Tenant y Workspace confirmados por servidor y Problem Details básicos, para que Mobile consuma contratos REST sin crear una autoridad paralela.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Contrato autorizado</strong></p><p><strong>Given</strong> una proyección Mobile solicita trabajo protegido</p><p><strong>When</strong> consume un contrato REST aprobado</p><p><strong>Then</strong> conserva Tenant, Workspace, autorización y significado de respuesta definidos por el servidor.</p><p><strong>Scenario: Respuesta de error</strong></p><p><strong>Given</strong> el servidor rechaza, encuentra conflicto o no puede procesar una solicitud</p><p><strong>When</strong> el cliente recibe Problem Details</p><p><strong>Then</strong> comunica el estado sin inventar una confirmación local.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Cliente y entorno configurados</strong></p><p><strong>Given</strong> existe un entorno de API autorizado</p><p><strong>When</strong> Mobile inicia un flujo protegido</p><p><strong>Then</strong> usa su base URL configurada y clientes nativos tipados para el contrato correspondiente.</p><p><strong>Scenario: Sesión y contexto autorizados</strong></p><p><strong>Given</strong> el servidor devuelve una sesión válida</p><p><strong>When</strong> el cliente consume trabajo protegido</p><p><strong>Then</strong> envía el bearer o sesión requerido y conserva Tenant, Workspace y autorización con el significado confirmado por el servidor.</p><p><strong>Scenario: Problem Details y fallos básicos</strong></p><p><strong>Given</strong> el servidor responde 401, 403 o Problem Details, o la red no está disponible</p><p><strong>When</strong> el cliente procesa la respuesta</p><p><strong>Then</strong> la mapea de forma segura, comunica el estado y no inventa una confirmación local.</p></td></tr>
 </tbody>
 </table>
 
@@ -32,9 +32,9 @@ runtime, proveedor, distribución, implementación ni validación de producto.
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
 <tr><th>Title</th><td colspan="3">Implementar baseline técnico de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo implementar el baseline técnico de compatibilidad para Android nativo con Kotlin o para Flutter/Dart según el Sprint asignado, para reproducir su build y validación técnica sin convertir la tarea en una comparación ni selección de producto.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo implementar el baseline técnico de compatibilidad de Android nativo con Kotlin, para reproducir su build y validación técnica sin convertir la tarea en una selección de producto o framework.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Baseline autorizado</strong></p><p><strong>Given</strong> SPIKE-002 tiene una decisión registrada para un track</p><p><strong>When</strong> el Developer aplica las versiones, SDK, dispositivo y restricciones de build autorizadas</p><p><strong>Then</strong> el baseline es reproducible y registra su configuración sin abrir una nueva selección de producto o framework.</p><p><strong>Scenario: Validación identificable</strong></p><p><strong>Given</strong> el baseline está configurado</p><p><strong>When</strong> se ejecutan build y pruebas</p><p><strong>Then</strong> el resultado identifica track, versión, commit y entorno, y las diferencias no alteran contratos ni autoridad compartidos.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Baseline Android autorizado</strong></p><p><strong>Given</strong> el Sprint asigna el baseline Android nativo con Kotlin</p><p><strong>When</strong> el Developer aplica las versiones, SDK, dispositivo y restricciones de build autorizadas</p><p><strong>Then</strong> el baseline es reproducible y registra su configuración sin abrir una nueva selección de producto o framework.</p><p><strong>Scenario: Validación identificable</strong></p><p><strong>Given</strong> el baseline Android nativo con Kotlin está configurado</p><p><strong>When</strong> se ejecutan build y pruebas</p><p><strong>Then</strong> el resultado identifica versión, commit y entorno, y no altera contratos ni autoridad compartidos.</p></td></tr>
 </tbody>
 </table>
 
@@ -99,17 +99,17 @@ runtime, proveedor, distribución, implementación ni validación de producto.
 </table>
 
 **Tabla**<br>
-*TS-MOB-007 — Integrar cámara e identificadores con alternativa manual*
+*TS-MOB-007 — Integrar cámara e identificadores para escaneo directo*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
 <tr><td>TS-MOB-007</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-03 — Device boundaries</td></tr>
-<tr><th>Title</th><td colspan="3">Integrar cámara e identificadores con alternativa manual</td></tr>
+<tr><th>Title</th><td colspan="3">Integrar cámara e identificadores para escaneo directo</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar cámara, Barcode, QR y GS1 con una alternativa manual, para que la identificación sea útil sin convertir el dispositivo en autoridad de inventario.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar cámara y decodificación de identificadores para escaneo directo, para enviar el código capturado a la resolución autoritativa del servidor sin convertir el dispositivo en autoridad de inventario.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Identificador único</strong></p><p><strong>Given</strong> la cámara obtiene un identificador permitido con coincidencia única</p><p><strong>When</strong> se envía al contrato autorizado</p><p><strong>Then</strong> Nexa identifica el producto sin registrar recepción o picking por sí sola.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> la cámara no está disponible o el identificador es ambiguo</p><p><strong>When</strong> la persona usa la alternativa manual</p><p><strong>Then</strong> Nexa identifica el producto sólo después de una resolución autorizada.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Captura y decodificación directa</strong></p><p><strong>Given</strong> la cámara tiene permiso y obtiene un identificador Barcode, QR o GS1 permitido</p><p><strong>When</strong> el cliente lo decodifica</p><p><strong>Then</strong> envía el valor capturado al contrato de resolución autorizado.</p><p><strong>Scenario: Resolución autoritativa</strong></p><p><strong>Given</strong> el servidor procesa el identificador capturado</p><p><strong>When</strong> responde <code>RESOLVED</code>, <code>NOT_FOUND</code> o <code>AMBIGUOUS</code></p><p><strong>Then</strong> Mobile muestra ese resultado y no selecciona un SKU localmente.</p><p><strong>Scenario: Permiso o cámara no disponibles</strong></p><p><strong>Given</strong> falta permiso de cámara, la cámara no está disponible o la decodificación falla</p><p><strong>When</strong> la persona intenta escanear</p><p><strong>Then</strong> Mobile comunica el límite de forma segura y no inventa una identificación.</p></td></tr>
 </tbody>
 </table>
 

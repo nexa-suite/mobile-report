@@ -1,0 +1,18 @@
+flowchart LR
+  provider["External<br/>Payment Provider"]
+  acl["BC-08<br/>Anti-Corruption Layer"]
+  bc08["BC-08<br/>Payments"]
+  bc07["BC-07<br/>Credit & Receivables"]
+  bc09["BC-09<br/>Business Documents"]
+  bc11["BC-11<br/>Business Traceability"]
+
+  provider -->|"provider payload"| acl
+  acl -->|"translated payment language"| bc08
+  bc08 -->|"Published Language<br/>PaymentConfirmed or correction"| bc07
+  bc07 -->|"Published Language<br/>receivable fact"| bc09
+  bc08 -->|"Published Language<br/>significant fact"| bc11
+
+  classDef external fill:#FFF7ED,stroke:#C2410C,stroke-width:1.5px,color:#7C2D12;
+  classDef context fill:#EAF3FF,stroke:#2563EB,stroke-width:1.5px,color:#172554;
+  class provider external;
+  class acl,bc08,bc07,bc09,bc11 context;

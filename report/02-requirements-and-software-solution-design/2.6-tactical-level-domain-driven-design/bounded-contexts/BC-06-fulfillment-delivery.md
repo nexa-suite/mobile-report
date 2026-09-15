@@ -1,107 +1,96 @@
 ### 2.6.6. Bounded Context: Fulfillment & Delivery
 
-Este contexto de Core Domain posee planes de ejecución, dispatch handoff,
-delivery attempts, resultados de cantidad, recepción y evidencia de entrega.
-Driver Outcome, Buyer Receipt, Proof of Delivery y Business Traceability
-permanecen como hechos separados.
+BC-06 conserva ejecución de Fulfillment, Delivery, intentos, recepción y
+evidencia. Fulfillment consume la identidad de PhysicalAllocation sin poseer
+inventario. ProofOfDelivery y TemperatureEvidence son roots independientes
+referenciados por Delivery ID, no hijos compuestos de Delivery.
 
 #### 2.6.6.1. Domain Layer
 
-*Agregados y límites invariantes de BC-06.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `Fulfillment` | Plan de ejecución de Sales Order y progresión de picking y packing |
-| `Delivery` | Obligación de Delivery, asignación, intentos y cantidad restante |
-| `ProofOfDelivery` | Evidencia inmutable de entrega; las correcciones son adendas |
-| `TemperatureEvidence` | Lectura o evidencia manual e insumo para decidir una excursión |
+El dominio conserva hechos históricos: un intento fallido sigue en la misma
+Delivery y una entrega parcial crea ContinuationDelivery explícita. POD es
+inmutable; sus correcciones se agregan como addenda.
 
-`FulfillmentLine`, `PickingResult`, `PickingDiscrepancy`, `DeliveryAssignment`,
-`DeliveryAttempt`, `DeliveryQuantityOutcome`, `DeliveryHandoffToken`,
-`BuyerReceiptFact`, `ProofOfDeliveryAddendum`, `TemperatureExcursion` y
-`ContinuationDelivery` son Entity/hechos con ciclos de vida acotados. Los value
-objects incluyen `DeliveryId`, `HandoffId`, `AttemptId`, `EvidenceRef`,
-`GeoPoint` y `DeliveryQuantity`; las políticas incluyen
-`PartialDeliveryPolicy` y `DeliveryLocationPrivacyPolicy`.
-
-Invariantes de diseño: la autoridad de Allocation permanece en BC-05; los
-intentos fallidos permanecen bajo una Delivery; una entrega parcial registra la
-verdad entregada o rechazada y crea una sola continuación para la obligación
-restante; POD es inmutable y se corrige mediante addendum; la evidencia de
-temperatura es manual en el alcance inicial y una excursión coloca la cantidad
-afectada en HOLD hasta una disposición explícita.
+| Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `Fulfillment` | Aggregate Root | Organizar ejecución de SalesOrder. | `FulfillmentId`, `SalesOrderId`, líneas, status. | `start`, `complete`, `cancel`. | Compone líneas y picking result; cada línea referencia `PhysicalAllocationId` de BC-05. |
+| `Delivery` | Aggregate Root | Mantener obligación, intentos y handoff. | `DeliveryId`, `FulfillmentId`, `BuyerRelationshipId`, destino, status. | `dispatch`, `recordAttempt`, `openContinuation`. | Compone attempts, receipt/discrepancy y handoff facts. |
+| `ProofOfDelivery` | Aggregate Root | Conservar evidencia sellada de entrega. | `ProofOfDeliveryId`, `DeliveryId`, `ActorHumanIdentityId`, capture time. | `seal`, `appendAddendum`. | Compone addenda; Delivery sólo por ID. |
+| `TemperatureEvidence` | Aggregate Root | Conservar medición operativa de frío. | `TemperatureEvidenceId`, `DeliveryId`, temperatura, time. | `record`, `recordExcursion`. | Compone excursiones; Delivery sólo por ID. |
+| `DeliveryAttempt`, `BuyerReceipt`, `BuyerDiscrepancy` | Entities | Mantener hechos de ejecución y recepción. | outcome, cantidades, actor, momento. | `recordOutcome`, `record`. | Propiedad de `Delivery`. |
+| `DeliveryExecutionPolicy` | Domain Policy | Evaluar continuidad y sellado. | outcomes, POD cargado. | `requiresContinuation`, `canSeal`. | Pura; sin storage ni HTTP. |
+| `FulfillmentRepository`, `DeliveryRepository` | Repository interfaces | Cargar roots de ejecución. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
+| `ProofOfDeliveryRepository`, `TemperatureEvidenceRepository` | Repository interfaces | Cargar evidencia con lifecycle propio. | IDs y roots. | `byId`, `save`. | No cargan Delivery como object graph. |
 
 #### 2.6.6.2. Interface Layer
 
-La Interface Layer cubre planificación de fulfillment, resultado de picking,
-dispatch handoff, assignment, delivery attempt, outcome, Buyer Receipt, POD y
-evidencia de temperatura. No se inventan nombres URI/DTO exactos. El servidor
-autoriza toda transición crítica; Operations Mobile y Buyer Mobile son
-proyecciones planificadas.
+La interfaz recibe comandos de warehouse, delivery, POD y recepción. Valida
+actor, scope e idempotencia sin asumir que un cliente Mobile sea autoridad.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `FulfillmentController` | REST Controller | Gestionar inicio, preparación y picking. | actor, SalesOrder/Allocation IDs, versión. | `start`, `prepare`, `recordPicking`. | Handlers de Fulfillment. |
+| `DeliveryController` | REST Controller | Gestionar lifecycle e intentos. | actor, delivery, outcome, llave. | `dispatch`, `recordAttempt`, `recordReceipt`, `recordDiscrepancy`. | Delivery handlers. |
+| `ProofOfDeliveryController` | REST Controller | Capturar/sellar POD y temperatura. | actor, evidence metadata, versión. | `capturePod`, `sealPod`, `recordTemperature`. | Evidence handlers. |
 
 #### 2.6.6.3. Application Layer
 
-La Application Layer coordina inicio, finalización o cancelación de fulfillment,
-emisión y resolución de handoff, asignación e intento de entrega, continuidad
-parcial, recepción y registro de evidencia. Idempotency, alcance Tenant,
-metadatos de evidencia inmutables y resultados de conflicto son explícitos. Un
-outbox/inbox durable apoya notificaciones y trazabilidad posteriores al commit.
+Application coordina facts publicados de SalesOrder/PhysicalAllocation sólo
+cuando los contratos durables existen. Acceso a Object Storage queda detrás de
+puertos y fuera de Domain.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `StartFulfillmentCommandHandler` | Command Handler | Crear Fulfillment desde SalesOrder confirmado. | SalesOrder fact, allocation IDs, llave. | `handle`. | `FulfillmentRepository`. |
+| `PrepareFulfillmentCommandHandler` | Command Handler | Registrar picking, packing y staging. | fulfillment, líneas, versión. | `handle`. | Fulfillment root y allocation contract. |
+| `DispatchDeliveryCommandHandler` | Command Handler | Iniciar Delivery autorizada. | fulfillment, destino snapshot, assignment. | `handle`. | `DeliveryRepository`. |
+| `RecordDeliveryAttemptCommandHandler` | Command Handler | Persistir resultado de intento. | delivery, outcome, cantidades, llave. | `handle`. | Delivery root y policy. |
+| `CaptureProofOfDeliveryCommandHandler` | Command Handler | Capturar/sellar POD y evidencia de temperatura. | `DeliveryId`, metadata, actor. | `handle`. | POD/temperature repositories, storage port. |
+| `RecordBuyerReceiptCommandHandler`, `RecordBuyerDiscrepancyCommandHandler` | Command Handlers | Registrar hechos Buyer sin borrar driver outcome. | delivery, BuyerRelationship, actor, datos. | `handle`. | `DeliveryRepository`. |
+| `SalesOrderConfirmedEventHandler`, `PhysicalAllocationPublishedEventHandler` | Event Handlers | Consumir hechos durables requeridos para ejecución. | published fact, deduplication key. | `handle`. | Inbox y Application. |
 
 #### 2.6.6.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `fulfillment`, `fulfillment_line`,
-`picking_result`, `picking_discrepancy`, `delivery`, `delivery_assignment`,
-`delivery_attempt`, `delivery_attempt_line`, `delivery_quantity_outcome`,
-`delivery_handoff_token`, `buyer_receipt_fact`, `proof_of_delivery`,
-`proof_of_delivery_addendum`, `temperature_evidence`,
-`temperature_excursion` y `continuation_delivery`. `sales_order_id`,
-`physical_allocation_id` e IDs de SKU/operator son referencias inter-BC sin
-propiedad. Los bytes de Object usan ports de BC-09/Object Storage; no se
-infiere una URL pública.
+Infrastructure implementa repositories, inbox/outbox y almacenamiento de bytes
+fuera de PostgreSQL. Las URLs o bytes de evidencia no se vuelven públicos.
+
+| Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PostgresFulfillmentRepository`, `PostgresDeliveryRepository` | Repository implementations | Mapear roots de ejecución. | fulfillment/delivery records. | `byId`, `save`. | Repositories Domain, PostgreSQL. |
+| `PostgresProofOfDeliveryRepository`, `PostgresTemperatureEvidenceRepository` | Repository implementations | Mapear evidencia y addenda locales. | POD/temperature records. | `byId`, `save`. | Repositories Domain. |
+| `FulfillmentFactInbox` | Inbox adapter | Deduplicar SalesOrder y PhysicalAllocation publicados. | event ID, consumer state. | `claim`, `complete`. | Event handlers. |
+| `EvidenceObjectStorageAdapter` | Object-storage adapter | Guardar/leer bytes autorizados por referencia. | content stream, metadata. | `put`, `getAuthorizedReference`. | Application ports. |
+| `FulfillmentDeliveryOutboxPublisher` | Outbox adapter | Publicar Delivery/POD facts comprometidos. | fact, correlación. | `enqueue`. | BC-09, BC-10 y BC-11 consumers. |
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-Las siguientes clases son especificaciones **TARGET**. Mantienen separados
-Dispatch Handoff, Driver Outcome, Buyer Receipt y Proof of Delivery; cada hecho
-conserva su propio emisor e historia.
+La vista C4 L3 muestra API de fulfillment/delivery, casos de uso, modelo y
+persistencia. Objetos de evidencia se integran mediante adapter, no desde
+Domain.
 
-*Clases TARGET por capa de BC-06*
+![Vista C4 L3 de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-BC-06-FulfillmentDelivery.svg)
 
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `FulfillmentController` | Controller | Traduce comandos de planificación, picking y empaquetado con autorización de servidor. |
-| Interface | `DeliveryController` | Controller | Recibe asignación, intentos y outcomes sin confundirlos con la recepción Buyer. |
-| Interface | `ProofOfDeliveryController` | Controller | Registra evidencia inmutable y sus addenda; no expone bytes privados directamente. |
-| Interface | `DeliveryTrackingConsumer` | Consumer | Proyecta una vista autorizada para Portal/Mobile, sin convertirla en autoridad de ciclo de vida. |
-| Application | `PlanFulfillmentHandler` | Command handler | Valida contrato de Physical Allocation de BC-05 antes de crear o avanzar Fulfillment. |
-| Application | `ConfirmPickingHandler` | Command handler | Aplica idempotencia de scan, versión y discrepancia sin mutar inventario fuera del contrato. |
-| Application | `FinalizeDeliveryAttemptHandler` | Command handler | Persiste outcome inmutable, conserva el mismo Delivery en falla y crea una sola Continuation Delivery si corresponde. |
-| Application | `FinalizeProofOfDeliveryHandler` | Command handler | Verifica campos de política y registra referencia de evidencia antes de publicar el hecho comprometido. |
-| Infrastructure | `FulfillmentRepositoryAdapter` | Repository implementation | Persiste fulfillment, líneas, picking y sus hechos bajo propiedad BC-06. |
-| Infrastructure | `DeliveryRepositoryAdapter` | Repository implementation | Persiste Delivery, Assignment, Attempt y Continuation sin crear un Delivery por intento fallido. |
-| Infrastructure | `ProofEvidenceObjectPort` | Storage adapter | Gestiona referencias autorizadas a Object Storage, no URLs públicas inferidas. |
-| Infrastructure | `MapRoutingPort` | External ACL | Aísla navegación/ruta externa del dominio y evita afirmar tracking continuo. |
-| Infrastructure | `FulfillmentOutboxAdapter` | Outbox adapter | Entrega hechos posteriores al commit a documentos, notificaciones y trazabilidad. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-06 Fulfillment & Delivery.*
-
-![BC-06 Fulfillment & Delivery — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-06-FulfillmentDelivery-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-06 Fulfillment & Delivery, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
+*Nota. Elaboración propia.*
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 
+Los diagramas separan roots de ejecución y evidencia, con identidad tipada para
+SalesOrder, Allocation, BuyerRelationship y Delivery.
+
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
 
-*Modelo de dominio táctico de BC-06 Fulfillment & Delivery.*
-![BC-06 tactical domain model](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
+El UML evita composición de POD/TemperatureEvidence bajo Delivery y hace
+explícitas líneas, attempts, receipts, discrepancies y addenda.
 
+![Modelo de dominio táctico de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/tactical/BC-06/BC06_FulfillmentDelivery.svg)
+
+*Nota. Elaboración propia.*
 
 ##### 2.6.6.6.2. Bounded Context Database Design Diagram
 
-*Proyección del diseño de base de datos de BC-06.*
-![BC-06 database design projection](../../../assets/chapter-2/tactical/BC-06/database-diagram.png)
+El modelo relacional muestra FKs locales de child entities y mantiene `delivery_id`
+en POD/TemperatureEvidence como referencia de identidad entre roots.
 
-*Nota.* La propiedad lógica está en PostgreSQL compartido; el SQL canónico define las restricciones, el alcance Tenant y las referencias de evidencia.
+![Diseño lógico de base de datos de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/tactical/BC-06/database-diagram.svg)
+
+*Nota. Elaboración propia.*

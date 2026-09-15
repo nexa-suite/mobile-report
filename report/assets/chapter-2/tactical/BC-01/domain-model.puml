@@ -1,5 +1,5 @@
 @startuml BC01_TenantAccessGovernance
-title BC-01 Tenant & Access Governance — Tactical Domain Model (TARGET / current scope)
+title BC-01 Tenant & Access Governance — Tactical Domain Model
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -7,21 +7,19 @@ skinparam linetype ortho
 
 class Tenant <<Aggregate Root>> {
   -tenantId: TenantId
-  -legalName: LegalName
+  -name: TenantName
   -status: TenantStatus
-  +registerCompany(): void
+  -version: Version
+  +activate(): void
   +suspend(reason: SuspensionReason): void
-  +changeSettings(settings: TenantSettings): void
 }
 
-class Workspace <<Aggregate Root>> {
+class Workspace <<Entity>> {
   -workspaceId: WorkspaceId
-  -tenantId: TenantId
-  -name: WorkspaceName
+  -slug: WorkspaceSlug
   -status: WorkspaceStatus
-  +createForTenant(): void
+  +rename(slug: WorkspaceSlug): void
   +activate(): void
-  +deactivate(): void
 }
 
 class HumanIdentity <<Aggregate Root>> {
@@ -30,15 +28,6 @@ class HumanIdentity <<Aggregate Root>> {
   -status: IdentityStatus
   +verify(): void
   +disable(reason: DisableReason): void
-}
-
-class CompanyOnboardingRequest <<Aggregate Root>> {
-  -requestId: OnboardingRequestId
-  -tenantId: TenantId
-  -status: OnboardingStatus
-  +submit(): void
-  +approve(): void
-  +reject(reason: RejectionReason): void
 }
 
 class WorkforceMembership <<Aggregate Root>> {
@@ -52,79 +41,126 @@ class WorkforceMembership <<Aggregate Root>> {
   +can(capability: CapabilityCode): boolean
 }
 
-class RoleDefinition <<Entity>> {
+class RoleDefinition <<Aggregate Root>> {
   -roleId: RoleId
+  -tenantId: TenantId
   -code: RoleCode
-  -name: RoleName
-  +rename(name: RoleName): void
+  -status: RoleStatus
+  +assignCapability(capability: CapabilityCode): void
   +retire(): void
 }
 
-class CapabilityDefinition <<Entity>> {
-  -capabilityId: CapabilityId
-  -code: CapabilityCode
-  -name: CapabilityName
-  +describe(name: CapabilityName): void
+class CompanyOnboardingRequest <<Aggregate Root>> {
+  -requestId: OnboardingRequestId
+  -company: CompanyInformation
+  -applicantEmail: EmailAddress
+  -status: OnboardingStatus
+  -provisionedTenantId: TenantId [0..1]
+  +submit(): void
+  +approve(): void
+  +reject(reason: RejectionReason): void
 }
 
 class MembershipRole <<Entity>> {
-  -assignmentId: MembershipRoleId
-  -membershipId: MembershipId
   -roleId: RoleId
-  +assign(): void
+  -assignedAt: Instant
   +remove(): void
 }
 
 class RoleCapability <<Entity>> {
-  -roleCapabilityId: RoleCapabilityId
-  -roleId: RoleId
-  -capabilityId: CapabilityId
+  -capability: CapabilityCode
   +grant(): void
   +revoke(): void
 }
 
 class MembershipCapabilityOverride <<Entity>> {
-  -overrideId: OverrideId
-  -membershipId: MembershipId
-  -capabilityId: CapabilityId
+  -capability: CapabilityCode
   -effect: CapabilityEffect
   +allow(): void
   +deny(): void
 }
 
-interface MembershipRepository <<Repository>> {
-  +findById(id: MembershipId): WorkforceMembership
+class CompanyInformation <<Value Object>> {
+  -registeredName: String
+  -taxIdentity: String
+  -contact: ContactInformation
+}
+
+class AccessContext <<Value Object>> {
+  -tenantId: TenantId
+  -workspaceId: WorkspaceId
+  -membershipId: MembershipId
+  +requireCapability(code: CapabilityCode): void
+}
+
+class CapabilityCode <<Value Object>> {
+  -value: String
+}
+
+class AccessEligibilityPolicy <<Domain Policy>> {
+  +evaluate(context: AccessContext, capability: CapabilityCode): boolean
+}
+
+interface TenantRepository <<Repository>> {
+  +byId(id: TenantId): Tenant
+  +save(tenant: Tenant): void
+}
+
+interface HumanIdentityRepository <<Repository>> {
+  +byId(id: HumanIdentityId): HumanIdentity
+  +save(identity: HumanIdentity): void
+}
+
+interface WorkforceMembershipRepository <<Repository>> {
+  +byId(id: MembershipId): WorkforceMembership
   +save(membership: WorkforceMembership): void
 }
 
-class AccessPolicy <<Domain Service>> {
-  +authorize(membership: WorkforceMembership, capability: CapabilityCode): boolean
+interface RoleDefinitionRepository <<Repository>> {
+  +byId(id: RoleId): RoleDefinition
+  +save(role: RoleDefinition): void
+}
+
+interface CompanyOnboardingRequestRepository <<Repository>> {
+  +byId(id: OnboardingRequestId): CompanyOnboardingRequest
+  +save(request: CompanyOnboardingRequest): void
+}
+
+class TenantActivated <<Domain Event>> {
+  -tenantId: TenantId
+  -workspaceId: WorkspaceId
+  -occurredAt: Instant
 }
 
 enum TenantStatus <<Enum>>
 enum WorkspaceStatus <<Enum>>
 enum IdentityStatus <<Enum>>
 enum MembershipStatus <<Enum>>
+enum RoleStatus <<Enum>>
+enum OnboardingStatus <<Enum>>
 enum CapabilityEffect <<Enum>>
 
 Tenant "1" *-- "1" Workspace : owns
-Tenant "1" o-- "0..*" CompanyOnboardingRequest : receives
-Workspace "1" o-- "0..*" WorkforceMembership : scopes
-HumanIdentity "1" o-- "0..*" WorkforceMembership : participates
-WorkforceMembership "1" *-- "0..*" MembershipRole : has
+WorkforceMembership "1" *-- "0..*" MembershipRole : role assignments
 WorkforceMembership "1" *-- "0..*" MembershipCapabilityOverride : overrides
-RoleDefinition "1" o-- "0..*" MembershipRole : assigned
-RoleDefinition "1" *-- "0..*" RoleCapability : grants
-CapabilityDefinition "1" o-- "0..*" RoleCapability : target
-CapabilityDefinition "1" o-- "0..*" MembershipCapabilityOverride : target
-MembershipRepository ..> WorkforceMembership : persists
-AccessPolicy ..> MembershipRepository : loads
-AccessPolicy --> CapabilityDefinition : evaluates
+RoleDefinition "1" *-- "0..*" RoleCapability : capabilities
+WorkforceMembership --> Workspace : workspaceId
+WorkforceMembership --> HumanIdentity : humanIdentityId
+MembershipRole --> RoleDefinition : roleId
+CompanyOnboardingRequest --> Tenant : provisionedTenantId [0..1]
+TenantRepository ..> Tenant : persists
+HumanIdentityRepository ..> HumanIdentity : persists
+WorkforceMembershipRepository ..> WorkforceMembership : persists
+RoleDefinitionRepository ..> RoleDefinition : persists
+CompanyOnboardingRequestRepository ..> CompanyOnboardingRequest : persists
+AccessEligibilityPolicy --> AccessContext : evaluates
+AccessEligibilityPolicy --> CapabilityCode : checks
+Tenant ..> TenantActivated : emits
 
 legend right
-TARGET / current scope / tactical design aid
-Aggregate Roots own local consistency boundaries.
-Cross-BC IDs are values; no cross-BC composition.
-*-- composition | --> domain dependency | ..> port/use
+Aggregate Roots keep independent consistency boundaries.
+Workspace is a Tenant-owned Entity; CompanyOnboardingRequest precedes Tenant.
+Root-to-root and cross-context links use identity references.
+*-- composition | --> reference or dependency | ..> repository use
 endlegend
 @enduml

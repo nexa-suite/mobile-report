@@ -1,5 +1,5 @@
 @startuml BC08_Payments
-title BC-08 Payments — Tactical Domain Model (TARGET / current scope)
+title BC-08 Payments — Tactical Domain Model
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -8,48 +8,42 @@ skinparam linetype ortho
 class Payment <<Aggregate Root>> {
   -paymentId: PaymentId
   -customerAccountId: CustomerAccountId
+  -commercialCommitmentId: CommitmentId [0..1]
   -amount: Money
   -status: PaymentStatus
-  +initiate(): void
+  +report(): void
   +confirm(): void
   +fail(reason: FailureReason): void
-  +cancel(reason: CancellationReason): void
 }
 
 class PaymentAttempt <<Entity>> {
   -attemptId: PaymentAttemptId
-  -paymentId: PaymentId
-  -provider: ProviderCode
+  -providerReference: ProviderReference
   -status: AttemptStatus
-  +start(): void
   +recordResult(result: ProviderResult): void
 }
 
 class PaymentProviderEvent <<Entity>> {
   -eventId: ProviderEventId
-  -paymentId: PaymentId
+  -provider: ProviderCode
   -providerEventId: String
-  -payloadHash: Hash
-  -occurredAt: Instant
+  -payloadDigest: Hash
+  -receivedAt: Instant
   +record(): void
 }
 
 class PaymentRefund <<Entity>> {
   -refundId: PaymentRefundId
-  -paymentId: PaymentId
   -amount: Money
-  -status: RefundStatus
-  +request(): void
-  +complete(): void
+  -reason: String
+  +record(): void
 }
 
 class PaymentCorrection <<Entity>> {
   -correctionId: PaymentCorrectionId
-  -paymentId: PaymentId
-  -reason: String
   -amount: Money
-  +approve(): void
-  +post(): void
+  -reason: String
+  +record(): void
 }
 
 class PaymentReconciliationCase <<Aggregate Root>> {
@@ -60,53 +54,46 @@ class PaymentReconciliationCase <<Aggregate Root>> {
   +resolve(): void
 }
 
-class PaymentPolicy <<Domain Service>> {
-  +canConfirm(payment: Payment, provider: ProviderResult): boolean
+class PaymentStatePolicy <<Domain Policy>> {
+  +canConfirm(payment: Payment, result: ProviderResult): boolean
   +canRefund(payment: Payment, amount: Money): boolean
 }
 
-class Money <<Value Object>> {
-  -amount: Decimal
-  -currency: CurrencyCode
-}
-
-class ProviderResult <<Value Object>> {
-  -providerReference: String
-  -approved: Boolean
-  -receivedAt: Instant
+class PaymentReconciliationPolicy <<Domain Policy>> {
+  +requiresCase(localStatus: PaymentStatus, providerResult: ProviderResult): boolean
 }
 
 interface PaymentRepository <<Repository>> {
-  +findById(id: PaymentId): Payment
+  +byId(id: PaymentId): Payment
   +save(payment: Payment): void
 }
 
-interface PaymentProviderPort <<Port>> {
-  +authorize(payment: Payment): ProviderResult
-  +refund(payment: Payment, amount: Money): ProviderResult
+interface PaymentReconciliationCaseRepository <<Repository>> {
+  +byId(id: ReconciliationCaseId): PaymentReconciliationCase
+  +save(case: PaymentReconciliationCase): void
 }
-
-enum PaymentStatus <<Enum>>
-enum AttemptStatus <<Enum>>
-enum RefundStatus <<Enum>>
-enum ReconciliationStatus <<Enum>>
 
 Payment "1" *-- "1..*" PaymentAttempt : attempts
 Payment "1" *-- "0..*" PaymentProviderEvent : provider facts
 Payment "1" *-- "0..*" PaymentRefund : refunds
 Payment "1" *-- "0..*" PaymentCorrection : corrections
-Payment "1" o-- "0..*" PaymentReconciliationCase : cases
-Payment *-- Money : amount
-PaymentAttempt *-- ProviderResult : result
-Payment --> CommercialCommitment : stable commitment id
-Payment --> Receivable : stable receivable id
-PaymentPolicy ..> PaymentRepository : loads
-PaymentPolicy ..> PaymentProviderPort : requests provider action
+Payment --> CustomerAccountId : typed BC-02 ID
+Payment --> CommitmentId : optional BC-04 ID
+PaymentReconciliationCase --> PaymentId : typed root ID
+PaymentRepository ..> Payment : persists
+PaymentReconciliationCaseRepository ..> PaymentReconciliationCase : persists
+Payment -[hidden]down-> PaymentReconciliationCase
+PaymentAttempt -[hidden]down-> PaymentProviderEvent
+PaymentProviderEvent -[hidden]down-> PaymentRefund
+PaymentRefund -[hidden]down-> PaymentCorrection
+PaymentCorrection -[hidden]down-> PaymentReconciliationCase
 
-legend right
-TARGET / current scope / tactical design aid
-Provider events are immutable evidence; reconciliation handles mismatch.
-Payment success is server-authoritative; Mobile offline state is never proof.
-*-- composition | --> domain dependency | ..> port/use
-endlegend
+note right of PaymentProviderEvent
+Immutable provider fact.
+Application verifies signature and deduplicates provider plus event ID.
+end note
+
+note right of PaymentReconciliationCase
+Independent root for a provider/local mismatch.
+end note
 @enduml

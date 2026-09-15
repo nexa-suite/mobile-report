@@ -1,98 +1,94 @@
 ### 2.6.9. Bounded Context: Business Documents
 
-Este contexto posee la identidad de documentos emitidos, la numeración,
-snapshots inmutables, la intención de generación y las referencias privadas de
-Object Storage. No posee la autoridad de Sales, Payment, Delivery ni fiscal.
+BC-09 conserva documentos de negocio, numeración, snapshots y metadatos de
+archivo. No posee Sales, Payment, Delivery ni bytes de Object Storage.
+`DocumentGenerationRequest` es trabajo durable de Application, no Aggregate
+Root.
 
 #### 2.6.9.1. Domain Layer
 
-*Agregados y límites invariantes de BC-09.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `BusinessDocument` | Snapshot solicitado, emitido o reemplazado y metadatos de disponibilidad |
-| `DocumentNumberSeries` | Asignación de numeración con alcance definido |
-| `DocumentGenerationRequest` | Intención de generación reintentable con idempotencia y lease |
-| `ObjectStorageReference` | Metadatos para bytes privados fuera de PostgreSQL |
+El dominio preserva historia documental inmutable. Una corrección crea revisión
+o reemplazo vinculado; Commercial Invoice de Nexa no se presenta como documento
+fiscal SUNAT por defecto.
 
-`DocumentSnapshotLine`, `DocumentRevision` y `EvidenceReference` preservan el
-historial inmutable. Los Value Objects incluyen `DocumentId`, `DocumentNumber`,
-`DocumentType`, `IssuedSnapshot`, `StorageReference` y `ContentHash`.
-`DocumentNumberingPolicy` y `DocumentIssuePolicy` validan los snapshots de
-origen; `BusinessDocumentRepository` posee el estado del documento.
-
-Invariantes de diseño: los documentos emitidos nunca se mutan; las correcciones
-vinculan una revisión o reemplazo nuevo; Commercial Invoice no es
-automáticamente un documento fiscal SUNAT; PostgreSQL almacena metadatos y
-snapshots mientras Object Storage contiene bytes privados; la numeración y la
-generación son idempotentes y las brechas de secuencia son explícitas.
+| Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `BusinessDocument` | Aggregate Root | Mantener documento emitido y snapshot. | `BusinessDocumentId`, `DocumentNumberSeriesId`, tipo, status, `SourceDocumentReference`. | `issue`, `supersede`. | Compone líneas, revisiones y metadata storage. |
+| `DocumentNumberSeries` | Aggregate Root | Mantener serie y número siguiente. | `DocumentNumberSeriesId`, `TenantId`, type, code, next number, versión. | `reserveNumber`. | Root independiente con concurrencia persistente. |
+| `DocumentSnapshotLine` | Entity | Conservar línea inmutable de documento. | SKU code, descripción, cantidad, precio. | preservación. | Propiedad de BusinessDocument. |
+| `DocumentRevision` | Entity | Conservar revisión/reemplazo sellado. | número, hash, momento. | `seal`. | Propiedad de BusinessDocument. |
+| `ObjectStorageReference` | Entity | Conservar metadata de artefacto. | object key, media type, length, hash. | `attachMetadata`. | Propiedad de BusinessDocument; bytes externos. |
+| `DocumentIssuePolicy`, `DocumentNumberingPolicy` | Domain Policies | Validar emisión y número. | snapshot, serie, number. | `canIssue`, `isValid`. | Puras; no renderer/storage. |
+| `BusinessDocumentRepository`, `DocumentNumberSeriesRepository` | Repository interfaces | Cargar roots de documento y serie. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
 
 #### 2.6.9.2. Interface Layer
 
-La Interface Layer cubre la solicitud de documento, disponibilidad, metadatos y
-descarga autorizados, y la referencia de evidencia. No se inventan rutas
-exactas. La autorización se resuelve en la API; las superficies Portal y Mobile
-planificada reciben proyecciones seguras y nunca acceden a URL públicas de
-objetos por inferencia.
+La interfaz recibe comandos/query de documento autorizados y no expone bytes
+sin control de objeto.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `BusinessDocumentController` | REST Controller | Exponer issue, generate, replace y query. | actor, source fact, document, versión, llave. | `issue`, `generate`, `replace`, `get`. | Document handlers. |
 
 #### 2.6.9.3. Application Layer
 
-La Application Layer solicita y emite documentos, reemplaza o corrige mediante
-revisiones vinculadas, registra metadatos de evidencia y reintenta la generación
-con leases/fencing. Los snapshots de origen se leen mediante contratos
-explícitos; la emisión confirma metadatos e intención durable antes del trabajo
-externo de renderizado o almacenamiento.
+Application toma snapshots de source facts autorizados, reserva número en forma
+concurrente y persiste intención antes de renderer/storage I/O.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `IssueBusinessDocumentCommandHandler` | Command Handler | Emitir documento desde snapshot válido. | source fact, tipo, serie, llave. | `handle`. | Document/series repositories y policy. |
+| `GenerateBusinessDocumentCommandHandler` | Command Handler | Crear trabajo durable de generación. | `DocumentId`, idempotency key. | `handle`. | `DocumentGenerationWorkRepository`. |
+| `DocumentGenerationRequest` | Application work item | Mantener intención durable e idempotente de generación. | `DocumentId`, idempotency key, status, fencing token. | `claim`, `complete`. | No es Aggregate Root; persiste mediante el application port. |
+| `DocumentGenerationWorkRepository` | Application Port | Definir persistencia y claim del trabajo durable de generación. | work item, document, status. | `claim`, `complete`. | Implementado por `PostgresDocumentGenerationWorkRepository`. |
+| `ReplaceBusinessDocumentCommandHandler` | Command Handler | Crear revisión/reemplazo vinculado. | documento, snapshot, razón. | `handle`. | `BusinessDocumentRepository`. |
+| `DeliveryDocumentFactEventHandler` | Event Handler | Consumir Delivery/POD fact documental. | fact publicado, event ID. | `handle`. | Inbox y issue handler. |
+| `ReceivableDocumentFactEventHandler`, `PaymentDocumentFactEventHandler` | Event Handlers | Consumir source facts financieros reales. | fact publicado, event ID. | `handle`. | Inbox y issue handler. |
 
 #### 2.6.9.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
-sobre `document_number_series`, `business_document`, `document_snapshot_line`,
-`document_revision`, `object_storage_reference` y
-`document_generation_request`. Los bytes de Object Storage usan un puerto de
-Application. Los adaptadores externos de renderizador o escáner de documentos
-son ACL; no se infiere un blob de base de datos ni integración fiscal.
+Infrastructure implementa repositories, renderer, Object Storage y work queue
+durable. Bloqueo/CAS de serie evita que emisiones concurrentes tomen mismo
+número.
 
-*Clases TARGET por capa de BC-09.*
-
-Los nombres siguientes concretan responsabilidades previstas; no implican endpoints, proveedores ni implementación ya disponible.
-
-| Capa | Clase / componente TARGET | Responsabilidad |
-|---|---|---|
-| Interface | `BusinessDocumentController` | Recibe comandos y consultas de documentos sin exponer entidades de persistencia. |
-| Interface | `DocumentGenerationConsumer` | Consume hechos publicados que justifican solicitar una generación documental. |
-| Interface | `DocumentAvailabilityConsumer` | Publica al borde de interfaz la disponibilidad de un artefacto ya emitido. |
-| Application | `RequestBusinessDocumentHandler` | Valida la solicitud idempotente y fija el snapshot de origen que será trazable. |
-| Application | `IssueBusinessDocumentHandler` | Coordina emisión, versionado y publicación del hecho de documento emitido. |
-| Application | `ReplaceBusinessDocumentHandler` | Gestiona una sustitución explícita sin reescribir la evidencia histórica. |
-| Application | `RegisterEvidenceReferenceHandler` | Registra referencias de evidencia bajo las reglas de retención del contexto. |
-| Application | `RetryDocumentGenerationHandler` | Reintenta una generación fallida con una clave de deduplicación estable. |
-| Infrastructure | `BusinessDocumentRepositoryAdapter` | Persiste metadatos, versiones y referencias del documento. |
-| Infrastructure | `DocumentRendererAdapter` | Adapta el renderizado técnico a un contrato de aplicación. |
-| Infrastructure | `ObjectStorageAdapter` | Guarda el binario fuera del agregado y devuelve una referencia controlada. |
-| Infrastructure | `DocumentGenerationWorker` | Ejecuta trabajo diferido después del commit, sin I/O externo en la transacción de solicitud. |
-| Infrastructure | `DocumentOutboxAdapter` | Publica hechos comprometidos mediante outbox durable. |
+| Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PostgresBusinessDocumentRepository` | Repository implementation | Mapear documento, snapshots y revisiones. | document records. | `byId`, `save`. | `BusinessDocumentRepository`, PostgreSQL. |
+| `PostgresDocumentNumberSeriesRepository` | Repository implementation | Mapear serie con lock/CAS de número. | series record, versión. | `byId`, `save`, `reserveLocked`. | `DocumentNumberSeriesRepository`. |
+| `PostgresDocumentGenerationWorkRepository` | Repository implementation | Persistir/claim work idempotente y fenced. | work item, document, status. | `claim`, `complete`. | `DocumentGenerationWorkRepository`, PostgreSQL. |
+| `DocumentRendererAdapter` | Renderer adapter | Transformar snapshot en bytes de documento. | immutable snapshot. | `render`. | Application port. |
+| `DocumentObjectStorageAdapter` | Object-storage adapter | Guardar bytes y devolver metadata controlada. | content stream, metadata. | `put`, `getAuthorizedReference`. | `ObjectStorageReference`. |
 
 #### 2.6.9.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
+La vista C4 L3 separa API documental, aplicación de issue/generation, dominio,
+persistencia y adapter de renderer/storage. Los source facts no transfieren
+ownership de sus aggregates.
 
-*Vista C4 L3 TARGET de BC-09 Business Documents.*
+![Vista C4 L3 de BC-09 Business Documents](../../../assets/chapter-2/c4/Nexa-API-BC-09-BusinessDocuments.svg)
 
-![BC-09 Business Documents — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-09-BusinessDocuments-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-09 Business Documents, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
+*Nota. Elaboración propia.*
 
 #### 2.6.9.6. Bounded Context Software Architecture Code Level Diagrams
 
+Los diagramas representan modelo de dominio y diseño relacional, incluido el
+trabajo durable que Application administra.
+
 ##### 2.6.9.6.1. Bounded Context Domain Layer Class Diagrams
 
-*Modelo de dominio táctico de BC-09 Business Documents.*
-![BC-09 tactical domain model](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
+El UML muestra BusinessDocument y DocumentNumberSeries como roots separados,
+con metadata de storage local y repositories explícitos.
 
+![Modelo de dominio táctico de BC-09 Business Documents](../../../assets/chapter-2/tactical/BC-09/BC09_BusinessDocuments.svg)
+
+*Nota. Elaboración propia.*
 
 ##### 2.6.9.6.2. Bounded Context Database Design Diagram
 
-*Proyección del diseño de base de datos de BC-09.*
-![BC-09 database design projection](../../../assets/chapter-2/tactical/BC-09/database-diagram.png)
+El modelo relacional muestra `unique(tenant_id, document_type, series_code)` y
+`unique(tenant_id, document_type, document_number)`; `next_number` se reserva
+con control de versión/lock y no por un contador no protegido.
 
-*Nota.* Es una proyección lógica de PostgreSQL compartido; los bytes permanecen en Object Storage bajo autorización y el SQL canónico define las restricciones.
+![Diseño lógico de base de datos de BC-09 Business Documents](../../../assets/chapter-2/tactical/BC-09/database-diagram.svg)
+
+*Nota. Elaboración propia.*

@@ -1,5 +1,5 @@
 @startuml BC03_CatalogCommercialPolicy
-title BC-03 Catalog & Commercial Policy — Tactical Domain Model (TARGET / current scope)
+title BC-03 Catalog & Commercial Policy — Tactical Domain Model
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -11,57 +11,31 @@ class Product <<Aggregate Root>> {
   -name: ProductName
   -status: ProductStatus
   +create(): void
-  +rename(name: ProductName): void
   +publish(): void
   +retire(): void
 }
 
-class Sku <<Entity>> {
+class SKU <<Aggregate Root>> {
   -skuId: SkuId
   -productId: ProductId
   -code: SkuCode
   -temperatureBand: TemperatureBand
   -status: SkuStatus
   +activate(): void
-  +deactivate(): void
   +changePresentation(presentation: SkuPresentation): void
-}
-
-class CatalogMedia <<Entity>> {
-  -mediaId: CatalogMediaId
-  -productId: ProductId
-  -objectKey: ObjectKey
-  -kind: MediaKind
-  +attach(): void
-  +detach(): void
+  +discontinue(): void
 }
 
 class PriceList <<Aggregate Root>> {
   -priceListId: PriceListId
   -tenantId: TenantId
-  -name: PriceListName
+  -currency: CurrencyCode
   -status: PriceListStatus
   +activate(): void
-  +deactivate(): void
+  +replaceItem(item: PriceListItem): void
 }
 
-class PriceListItem <<Entity>> {
-  -itemId: PriceListItemId
-  -priceListId: PriceListId
-  -skuId: SkuId
-  -unitPrice: Money
-  +changePrice(price: Money): void
-}
-
-class BasePrice <<Entity>> {
-  -basePriceId: BasePriceId
-  -skuId: SkuId
-  -amount: Money
-  -validFrom: Instant
-  +replace(amount: Money): void
-}
-
-class CustomerTerms <<Entity>> {
+class CustomerTerms <<Aggregate Root>> {
   -termsId: CustomerTermsId
   -customerAccountId: CustomerAccountId
   -priceListId: PriceListId
@@ -72,7 +46,6 @@ class CustomerTerms <<Entity>> {
 class Promotion <<Aggregate Root>> {
   -promotionId: PromotionId
   -tenantId: TenantId
-  -name: String
   -validity: TimeWindow
   -status: PromotionStatus
   +schedule(): void
@@ -80,24 +53,33 @@ class Promotion <<Aggregate Root>> {
   +expire(): void
 }
 
+class CatalogMediaReference <<Entity>> {
+  -mediaId: CatalogMediaId
+  -objectReference: ObjectStorageReference
+  +attach(): void
+  +detach(): void
+}
+
+class PriceListItem <<Entity>> {
+  -itemId: PriceListItemId
+  -skuId: SkuId
+  -unitPrice: Money
+  -validity: TimeWindow
+  +changePrice(price: Money): void
+}
+
 class PromotionSku <<Entity>> {
-  -promotionSkuId: PromotionSkuId
-  -promotionId: PromotionId
   -skuId: SkuId
   -discount: Discount
   +include(): void
   +exclude(): void
 }
 
-class CommercialPolicy <<Domain Service>> {
-  +resolvePrice(skuId: SkuId, customerId: CustomerAccountId, at: Instant): ResolvedPrice
-  +validateSellable(sku: Sku): boolean
-}
-
-class ResolvedPrice <<Value Object>> {
+class ResolvedOfferSnapshot <<Value Object>> {
+  -skuId: SkuId
   -unitPrice: Money
-  -source: PriceSource
-  -promotionId: PromotionId
+  -termsId: CustomerTermsId [0..1]
+  -promotionId: PromotionId [0..1]
 }
 
 class Money <<Value Object>> {
@@ -110,38 +92,60 @@ class TimeWindow <<Value Object>> {
   -endsAt: Instant
 }
 
-interface SkuRepository <<Repository>> {
-  +findById(id: SkuId): Sku
+class OfferResolutionPolicy <<Domain Policy>> {
+  +resolve(sku: SKU, prices: PriceListItem, terms: CustomerTerms, promotion: Promotion [0..1]): ResolvedOfferSnapshot
 }
 
-interface PricePolicyRepository <<Repository>> {
-  +findActiveFor(skuId: SkuId, customerId: CustomerAccountId, at: Instant): ResolvedPrice
+interface PriceListRepository <<Repository>> {
+  +byId(id: PriceListId): PriceList
+  +save(priceList: PriceList): void
+}
+
+interface ProductRepository <<Repository>> {
+  +byId(id: ProductId): Product
+  +save(product: Product): void
+}
+
+interface SKURepository <<Repository>> {
+  +byId(id: SkuId): SKU
+  +save(sku: SKU): void
+}
+
+interface CustomerTermsRepository <<Repository>> {
+  +byId(id: CustomerTermsId): CustomerTerms
+  +save(terms: CustomerTerms): void
+}
+
+interface PromotionRepository <<Repository>> {
+  +byId(id: PromotionId): Promotion
+  +save(promotion: Promotion): void
 }
 
 enum ProductStatus <<Enum>>
 enum SkuStatus <<Enum>>
 enum PriceListStatus <<Enum>>
 enum PromotionStatus <<Enum>>
-enum PriceSource <<Enum>>
 
-Product "1" *-- "1..*" Sku : variants
-Product "1" *-- "0..*" CatalogMedia : media
-PriceList "1" *-- "0..*" PriceListItem : prices
+Product "1" *-- "0..*" CatalogMediaReference : media references
+PriceList "1" *-- "0..*" PriceListItem : effective items
 Promotion "1" *-- "0..*" PromotionSku : scope
-Sku "1" o-- "0..*" PriceListItem : listed
-Sku "1" o-- "0..*" BasePrice : base history
-Sku "1" o-- "0..*" PromotionSku : discounted
-CustomerTerms --> PriceList : applies list
-CommercialPolicy ..> PricePolicyRepository : resolves
-CommercialPolicy ..> SkuRepository : validates
-CommercialPolicy --> ResolvedPrice : returns
-ResolvedPrice *-- Money : amount
-Promotion *-- TimeWindow : validity
+SKU --> Product : productId
+PriceListItem --> SKU : skuId
+PromotionSku --> SKU : skuId
+CustomerTerms --> PriceList : priceListId
+CustomerTerms --> CustomerAccountId : typed BC-02 ID
+OfferResolutionPolicy --> ResolvedOfferSnapshot : produces
+OfferResolutionPolicy --> Promotion : selects at most one
+ProductRepository ..> Product : persists
+PriceListRepository ..> PriceList : persists
+SKURepository ..> SKU : persists
+CustomerTermsRepository ..> CustomerTerms : persists
+PromotionRepository ..> Promotion : persists
 
 legend right
-TARGET / current scope / tactical design aid
-Price precedence: Base Price -> Price List -> Customer Terms -> max one Promotion.
-CustomerAccountId is a non-owning BC-02 reference.
-*-- composition | --> domain dependency | ..> port/use
+Product and SKU are independent Aggregate Roots linked by identity.
+PriceList owns pricing items; Promotion policy selects at most one promotion.
+CustomerAccount is a typed BC-02 reference; no cross-context composition.
+*-- composition | --> reference or dependency | ..> repository use
 endlegend
 @enduml

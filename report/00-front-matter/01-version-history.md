@@ -2,7 +2,7 @@
 
 Este registro reúne las revisiones académicamente relevantes del Nexa Mobile
 Report. Las versiones publicadas conservan su referencia de Git como respaldo;
-la revisión publicada más reciente es `v0.4.0`.
+la revisión publicada más reciente es `v0.5.0`.
 
 | Versión | Fecha | Autor | Descripción de modificación |
 | :--- | :--- | :--- | :--- |
@@ -13,6 +13,7 @@ la revisión publicada más reciente es `v0.4.0`.
 | [0.3.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.3.0) | 11 de septiembre de 2026 | Equipo Nexa | Consolidó el mapa de escenarios As-Is, la trazabilidad de investigación y planificación, las evidencias visuales de dominio y las referencias bibliográficas de la entrega previa a AV1. |
 | [0.3.1](https://github.com/nexa-suite/mobile-report/releases/tag/v0.3.1) | 13 de septiembre de 2026 | Equipo Nexa | Reconcilió un único Product Backlog completo entre los cuatro Sprints académicos y alineó los totales de los capítulos II y IV. |
 | [0.4.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.4.0) | 13 de septiembre de 2026 | Equipo Nexa | Refinó la consistencia de Impact Mapping, trazabilidad de actores, lenguaje de dominio, Domain Stories y arquitectura de información sin modificar el Product Backlog ni la distribución de Sprints. |
+| [0.5.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.5.0) | 15 de septiembre de 2026 | Equipo Nexa | Cerró las 9/9 entrevistas formativas de Needfinding, reconcilió la evidencia de investigación con Needfinding y requisitos, preservó el Product Backlog de 97 PBIs / 426 SP y consolidó la trazabilidad de Sprint y Jira sin convertirla en validación de solución. |
 
 *Nota.* El detalle de procedencia por commit permanece disponible en Git y
 GitHub. Este registro no acredita implementación, pruebas con personas usuarias,

@@ -1,0 +1,13 @@
+flowchart LR
+  sources["Source Bounded Contexts<br/>BC-04, BC-06, BC-07, BC-08, BC-09"]
+  bc10["BC-10<br/>Notifications"]
+  bc11["BC-11<br/>Business Traceability"]
+
+  sources -->|"Published Language<br/>confirmed business facts"| bc10
+  sources -->|"Published Language<br/>significant business facts"| bc11
+  bc10 -->|"Published Language<br/>delivery outcome"| bc11
+
+  classDef source fill:#F5F3FF,stroke:#6D28D9,stroke-width:1.5px,color:#2E1065;
+  classDef context fill:#EAF3FF,stroke:#2563EB,stroke-width:1.5px,color:#172554;
+  class sources source;
+  class bc10,bc11 context;

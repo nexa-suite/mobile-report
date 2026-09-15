@@ -1,13 +1,12 @@
 #### Technical Stories
 
 Las Technical Stories habilitan resultados de las Functional User Stories; no
-crean reglas de negocio ni prueban una implementación. El alcance técnico
-contempla **Kotlin Android AND (Flutter/Dart OR KMP/Kotlin)**: una línea de
-Android nativo con Kotlin y una alternativa multiplataforma en Flutter/Dart o
-Kotlin Multiplatform (KMP). La selección de framework Mobile
-continúa **OPEN / NOT STARTED**: este plan no asigna framework a Operations
-Mobile o Buyer Mobile, ni declara runtime, proveedor, distribución o validación
-de producto.
+crean reglas de negocio ni prueban una implementación. El plan académico usa
+dos tracks definidos: Android nativo con Kotlin y cross-platform con
+Flutter/Dart. Sprint 1 y Sprint 2 concentran el baseline Android y el núcleo
+operativo; Sprint 3 desarrolla el track Flutter/Dart y la paridad de contratos;
+Sprint 4 consolida Flutter/Dart en target iOS. Esta asignación no declara
+runtime, proveedor, distribución, implementación ni validación de producto.
 
 **Tabla**<br>
 *TS-MOB-001 — Integrar contratos REST con autoridad del servidor*
@@ -18,24 +17,24 @@ de producto.
 <tr><td>TS-MOB-001</td><td>Developer</td><td>High</td><td>TECH-EPIC-01 — Contract and security foundations</td></tr>
 <tr><th>Title</th><td colspan="3">Integrar contratos REST con autoridad del servidor</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar contratos REST explícitos con Nexa API, para que las líneas técnicas evaluadas consuman datos y comandos sin crear una autoridad paralela ni seleccionar un framework fuera del experimento.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar el base URL y entorno de API con clientes nativos tipados, manejo de bearer/sesión, Tenant y Workspace confirmados por servidor y Problem Details básicos, para que Mobile consuma contratos REST sin crear una autoridad paralela.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Contrato autorizado</strong></p><p><strong>Given</strong> una proyección Mobile solicita trabajo protegido</p><p><strong>When</strong> consume un contrato REST aprobado</p><p><strong>Then</strong> conserva Tenant, Workspace, autorización y significado de respuesta definidos por el servidor.</p><p><strong>Scenario: Respuesta de error</strong></p><p><strong>Given</strong> el servidor rechaza, encuentra conflicto o no puede procesar una solicitud</p><p><strong>When</strong> el cliente recibe Problem Details</p><p><strong>Then</strong> comunica el estado sin inventar una confirmación local.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Cliente y entorno configurados</strong></p><p><strong>Given</strong> existe un entorno de API autorizado</p><p><strong>When</strong> Mobile inicia un flujo protegido</p><p><strong>Then</strong> usa su base URL configurada y clientes nativos tipados para el contrato correspondiente.</p><p><strong>Scenario: Sesión y contexto autorizados</strong></p><p><strong>Given</strong> el servidor devuelve una sesión válida</p><p><strong>When</strong> el cliente consume trabajo protegido</p><p><strong>Then</strong> envía el bearer o sesión requerido y conserva Tenant, Workspace y autorización con el significado confirmado por el servidor.</p><p><strong>Scenario: Problem Details y fallos básicos</strong></p><p><strong>Given</strong> el servidor responde 401, 403 o Problem Details, o la red no está disponible</p><p><strong>When</strong> el cliente procesa la respuesta</p><p><strong>Then</strong> la mapea de forma segura, comunica el estado y no inventa una confirmación local.</p></td></tr>
 </tbody>
 </table>
 
 **Tabla**<br>
-*TS-MOB-002 — Definir criterios de compatibilidad de plataforma*
+*TS-MOB-002 — Implementar baseline técnico de compatibilidad de plataforma*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
 <tr><td>TS-MOB-002</td><td>Developer</td><td>High</td><td>TECH-EPIC-02 — Platform baselines</td></tr>
-<tr><th>Title</th><td colspan="3">Definir criterios de compatibilidad de plataforma</td></tr>
+<tr><th>Title</th><td colspan="3">Implementar baseline técnico de compatibilidad de plataforma</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo documentar compatibilidad, seguridad, accesibilidad, build y prueba para Android nativo con Kotlin y una alternativa multiplataforma permitida (Flutter/Dart o KMP/Kotlin), para evaluar límites técnicos sin convertir el experimento en una selección de producto.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo implementar el baseline técnico de compatibilidad de Android nativo con Kotlin, para reproducir su build y validación técnica sin convertir la tarea en una selección de producto o framework.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Baseline de experimento</strong></p><p><strong>Given</strong> existen Android nativo con Kotlin y una alternativa Flutter/Dart o KMP/Kotlin</p><p><strong>When</strong> se define un baseline mínimo</p><p><strong>Then</strong> documenta versiones, dispositivo/emulador, límites y criterios de comparación sin asignar un framework a una proyección de producto.</p><p><strong>Scenario: Límite explícito</strong></p><p><strong>Given</strong> aparece una plataforma o proveedor no evaluado</p><p><strong>When</strong> se propone incorporarlo</p><p><strong>Then</strong> queda fuera del experimento hasta una decisión explícita.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Baseline Android autorizado</strong></p><p><strong>Given</strong> el Sprint asigna el baseline Android nativo con Kotlin</p><p><strong>When</strong> el Developer aplica las versiones, SDK, dispositivo y restricciones de build autorizadas</p><p><strong>Then</strong> el baseline es reproducible y registra su configuración sin abrir una nueva selección de producto o framework.</p><p><strong>Scenario: Validación identificable</strong></p><p><strong>Given</strong> el baseline Android nativo con Kotlin está configurado</p><p><strong>When</strong> se ejecutan build y pruebas</p><p><strong>Then</strong> el resultado identifica versión, commit y entorno, y no altera contratos ni autoridad compartidos.</p></td></tr>
 </tbody>
 </table>
 
@@ -95,24 +94,27 @@ de producto.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo gestionar reintentos, conflictos y resultados inciertos con identificadores durables, para que una interrupción no duplique ni sobrescriba un hecho de negocio.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Reintento de comando</strong></p><p><strong>Given</strong> un comando pudo completarse pero la respuesta no llegó</p><p><strong>When</strong> se reenvía con el mismo identificador de idempotencia</p><p><strong>Then</strong> el servidor devuelve un único resultado sin duplicar el hecho.</p><p><strong>Scenario: Conflicto de versión</strong></p><p><strong>Given</strong> el recurso cambió después de la lectura del cliente</p><p><strong>When</strong> se envía una mutación obsoleta</p><p><strong>Then</strong> se identifica el conflicto y no se aplica last-write-wins silencioso.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Reintento de comando</strong></p><p><strong>Given</strong> el servidor procesa un comando pero el cliente no recibe la respuesta</p><p><strong>When</strong> el cliente reenvía el comando con el mismo identificador de idempotencia</p><p><strong>Then</strong> el servidor devuelve un único resultado sin duplicar el hecho.</p><p><strong>Scenario: Conflicto de versión</strong></p><p><strong>Given</strong> el recurso tiene una versión más nueva</p><p><strong>When</strong> el cliente envía una mutación basada en una versión anterior</p><p><strong>Then</strong> Nexa identifica el conflicto y no aplica last-write-wins silencioso.</p></td></tr>
 </tbody>
 </table>
 
 **Tabla**<br>
-*TS-MOB-007 — Integrar cámara e identificadores con alternativa manual*
+*TS-MOB-007 — Integrar cámara e identificadores para escaneo directo*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
 <tr><td>TS-MOB-007</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-03 — Device boundaries</td></tr>
-<tr><th>Title</th><td colspan="3">Integrar cámara e identificadores con alternativa manual</td></tr>
+<tr><th>Title</th><td colspan="3">Integrar cámara e identificadores para escaneo directo</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar cámara, Barcode, QR y GS1 con una alternativa manual, para que la identificación sea útil sin convertir el dispositivo en autoridad de inventario.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo integrar cámara y decodificación de identificadores para escaneo directo, para enviar el código capturado a la resolución autoritativa del servidor sin convertir el dispositivo en autoridad de inventario.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Identificador único</strong></p><p><strong>Given</strong> la cámara obtiene un identificador permitido con coincidencia única</p><p><strong>When</strong> se envía al contrato autorizado</p><p><strong>Then</strong> identifica el producto sin registrar recepción o picking por sí sola.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> la cámara no está disponible o el identificador es ambiguo</p><p><strong>When</strong> la persona usa la alternativa manual</p><p><strong>Then</strong> el flujo continúa solo después de una identificación autorizada.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Captura y decodificación directa</strong></p><p><strong>Given</strong> la cámara tiene permiso y obtiene un identificador Barcode, QR o GS1 permitido</p><p><strong>When</strong> el cliente lo decodifica</p><p><strong>Then</strong> envía el valor capturado al contrato de resolución autorizado.</p><p><strong>Scenario: Resolución autoritativa</strong></p><p><strong>Given</strong> el servidor procesa el identificador capturado</p><p><strong>When</strong> responde <code>RESOLVED</code>, <code>NOT_FOUND</code> o <code>AMBIGUOUS</code></p><p><strong>Then</strong> Mobile muestra ese resultado y no selecciona un SKU localmente.</p><p><strong>Scenario: Permiso o cámara no disponibles</strong></p><p><strong>Given</strong> falta permiso de cámara, la cámara no está disponible o la decodificación falla</p><p><strong>When</strong> la persona intenta escanear</p><p><strong>Then</strong> Mobile comunica un error seguro y permite reintentar o salir, sin inventar una identificación.</p><p><strong>Scenario: Alternativa manual</strong></p><p><strong>Given</strong> la cámara no está disponible o el identificador es ambiguo</p><p><strong>When</strong> la persona usa la alternativa manual</p><p><strong>Then</strong> Nexa identifica el producto sólo después de una resolución autorizada, sin registrar recepción o picking por sí sola.</p></td></tr>
 </tbody>
 </table>
+
+**Asignación de Sprint:** Sprint 1. La búsqueda o fallback manual no está
+comprometida por esta Technical Story; `MOB-US-012` permanece en Sprint 2.
 
 **Tabla**<br>
 *TS-MOB-008 — Abrir navegación externa con un límite de ubicación*
@@ -130,17 +132,17 @@ de producto.
 </table>
 
 **Tabla**<br>
-*TS-MOB-009 — Evaluar notificaciones y deep links con autorización*
+*TS-MOB-009 — Preparar el manejo autorizado de notificaciones y deep links*
 
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
 <tr><td>TS-MOB-009</td><td>Developer</td><td>Medium</td><td>TECH-EPIC-05 — Quality and communication</td></tr>
-<tr><th>Title</th><td colspan="3">Evaluar notificaciones y deep links con autorización</td></tr>
+<tr><th>Title</th><td colspan="3">Preparar el manejo autorizado de notificaciones y deep links</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Developer</strong>, deseo evaluar notificaciones y deep links con autorización, para definir límites de contexto y seguridad sin asumir proveedor o integración resueltos.</td></tr>
+<tr><td colspan="4">Como <strong>Developer</strong>, deseo preparar el manejo técnico autorizado de notificaciones y deep links conforme a los límites aceptados, para revalidar el contexto antes de mostrar trabajo protegido sin asumir proveedor o integración productiva.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Contexto autorizado</strong></p><p><strong>Given</strong> un deep link refiere a trabajo protegido</p><p><strong>When</strong> la aplicación lo abre</p><p><strong>Then</strong> vuelve a comprobar Tenant, relación y permisos antes de mostrar información.</p><p><strong>Scenario: Destino vencido</strong></p><p><strong>Given</strong> el enlace venció o el contexto ya no es válido</p><p><strong>When</strong> se intenta abrir</p><p><strong>Then</strong> comunica el estado y no expone datos protegidos.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Contexto autorizado</strong></p><p><strong>Given</strong> SPIKE-005 tiene un límite registrado como adoptado, diferido o rechazado</p><p><strong>When</strong> el Developer prepara el caso autorizado</p><p><strong>Then</strong> la implementación consume sólo el contrato permitido y revalida Tenant, relación y permiso antes de mostrar información.</p><p><strong>Scenario: Enlace vencido</strong></p><p><strong>Given</strong> el enlace está vencido o el contexto ya no es válido</p><p><strong>When</strong> se intenta abrir</p><p><strong>Then</strong> comunica el estado, no expone datos protegidos y ofrece un estado recuperable cuando corresponda.</p></td></tr>
 </tbody>
 </table>
 

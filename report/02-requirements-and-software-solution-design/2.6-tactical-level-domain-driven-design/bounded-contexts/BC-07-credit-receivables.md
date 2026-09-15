@@ -1,102 +1,90 @@
 ### 2.6.7. Bounded Context: Credit & Receivables
 
-Este contexto posee la autoridad sobre la exposición crediticia, las reservas y
-los Receivable. Payment es un contexto separado; Payment Confirmed no constituye
-un Receivable.
+BC-07 conserva exposición crediticia, reservas y obligaciones por cobrar.
+Payment es una autoridad distinta: Payment Confirmed no crea por sí mismo un
+Receivable ni BC-07 importa un Payment Aggregate.
 
 #### 2.6.7.1. Domain Layer
 
-*Agregados y límites invariantes de BC-07.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `CreditAccount` | Límite, exposición y política de reserva para un Customer Account |
-| `CreditReservation` | Protección activa de una fuente comercial; se libera o convierte una sola vez |
-| `Receivable` | Obligación registrada, saldo y estado de vencimiento |
-| `FinancialAdjustment` | Corrección explícita con motivo y actor |
+El dominio protege `Available Credit = Credit Limit - Active Credit
+Reservations - Outstanding Receivable Balances`. Correcciones agregan evidencia
+financiera y nunca reescriben obligación, pago o historial.
 
-`ReceivableApplication` pertenece a la autoridad financiera y referencia
-Payment por ID. Los Value Objects incluyen `CreditAmount`, `AvailableCredit`,
-`Terms` y `AdjustmentReason`; las políticas incluyen `CreditDecisionPolicy` y
-`DoubleCountPreventionPolicy`. Los Repository poseen las raíces CreditAccount y
-Receivable.
-
-Invariante de diseño: Available Credit = Credit Limit − Active Credit Reservations
-− Outstanding Receivable Balances. La compra a crédito reserva al enviar la PR;
-el pedido directo reserva en la misma confirmación lógica; el Receivable de
-crédito o neto se registra al confirmar la SO. Las aplicaciones no pueden
-aplicar montos por encima del saldo ni duplicarlos; las correcciones preservan
-los hechos originales. Buyer recibe proyecciones seguras, no la política interna
-de riesgo.
+| Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CreditAccount` | Aggregate Root | Mantener límite y estado de crédito. | `CreditAccountId`, `CustomerAccountId`, límite, status. | `approveLimit`, `suspend`. | Customer ID tipado BC-02; no compone Reservation. |
+| `CreditReservation` | Aggregate Root | Proteger crédito de fuente comercial. | `CreditReservationId`, `CreditAccountId`, `CommitmentId`, monto, status. | `reserve`, `release`, `consume`. | Lifecycle independiente; Commitment ID BC-04. |
+| `Receivable` | Aggregate Root | Mantener obligación, saldo y vencimiento. | `ReceivableId`, `CustomerAccountId`, `SalesOrderId`, importes, status. | `issue`, `apply`, `close`. | Compone applications y ledger entries. |
+| `FinancialAdjustment` | Aggregate Root | Conservar corrección explícita. | `FinancialAdjustmentId`, `ReceivableId`, tipo, monto, razón. | `approve`, `post`. | Referencia Receivable por ID; root independiente. |
+| `ReceivableApplication` | Entity | Aplicar Payment confirmado a saldo. | application, `PaymentId`, monto. | `apply`, `reverse`. | Propiedad de Receivable; Payment ID BC-08. |
+| `CreditExposurePolicy`, `ReceivableApplicationPolicy` | Domain Policies | Calcular exposición y evitar sobreaplicación. | saldo, reservas, montos. | `available`, `canApply`, `canReverse`. | Puras; sin proveedor. |
+| `CreditAccountRepository`, `CreditReservationRepository` | Repository interfaces | Cargar roots de crédito. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
+| `ReceivableRepository`, `FinancialAdjustmentRepository` | Repository interfaces | Cargar obligación/ajuste independientes. | IDs y roots. | `byId`, `save`. | No persisten Payment. |
 
 #### 2.6.7.2. Interface Layer
 
-La Interface Layer cubre la exposición crediticia, la reserva, el registro de
-Receivable, la aplicación de Payment y el ajuste financiero explícito. No se
-declaran rutas ni DTOs exactos cuando no existe evidencia de API. La autorización
-por capacidad y el alcance Tenant se resuelven del lado del servidor; los datos
-del proveedor externo de pagos ingresan mediante contratos de BC-08.
+La interfaz recibe comandos de crédito y obligación con scope/versión; no
+confirma callbacks de proveedor ni expone Payment como aggregate local.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CreditController` | REST Controller | Exponer límite y reserva de crédito. | actor, customer, commitment, monto, llave. | `approveLimit`, `reserve`, `release`. | Credit handlers. |
+| `ReceivableController` | REST Controller | Exponer obligación y ajuste autorizado. | actor, SalesOrder/Receivable, versión. | `issue`, `applyPayment`, `postAdjustment`. | Receivable handlers. |
 
 #### 2.6.7.3. Application Layer
 
-La Application Layer evalúa y reserva crédito, registra Receivable, aplica o
-revierte referencias de Payment y registra ajustes. Los límites de Application
-coordinan BC-08 sin un Aggregate entre contextos. La idempotencia y la
-concurrencia protegen el último crédito; los hechos confirmados alimentan
-documentos, notificaciones y trazabilidad después del commit.
+Application coordina concurrencia de último crédito y consume Payment facts
+durables mediante inbox. Nunca carga un Payment Aggregate ni hace I/O proveedor.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ReserveCreditCommandHandler` | Command Handler | Resolver y persistir reserva de crédito. | commitment, amount, llave idempotente. | `handle`. | Account/reservation repositories. |
+| `ReleaseCreditReservationCommandHandler` | Command Handler | Liberar reserva por transición autorizada. | reservation, razón, versión. | `handle`. | `CreditReservationRepository`. |
+| `IssueReceivableCommandHandler` | Command Handler | Emitir obligación al confirmar SalesOrder. | SalesOrder fact, customer, importe. | `handle`. | `ReceivableRepository`. |
+| `ApplyConfirmedPaymentCommandHandler` | Command Handler | Aplicar Payment fact a saldo. | `PaymentId`, receivable, amount, llave. | `handle`. | Receivable root y policy. |
+| `PostFinancialAdjustmentCommandHandler` | Command Handler | Registrar corrección explícita. | receivable, tipo, razón, actor. | `handle`. | `FinancialAdjustmentRepository`. |
+| `PaymentConfirmedEventHandler` | Event Handler | Consumir Payment fact deduplicado. | fact publicado, event ID. | `handle`. | Inbox y apply handler. |
 
 #### 2.6.7.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido
-sobre `credit_account`, `credit_reservation`, `receivable`,
-`receivable_application`, `financial_adjustment` y `financial_ledger_entry`.
-Los identificadores de Payment y Sales Order son referencias sin propiedad. Los
-predicados Tenant, las validaciones monetarias y las reglas de historial se
-mantienen en SQL canónico; no se afirma una base de datos física por BC.
+Infrastructure implementa persistencia de roots, deduplicación de facts y
+publicación durable de consecuencias locales.
+
+| Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PostgresCreditAccountRepository`, `PostgresCreditReservationRepository` | Repository implementations | Mapear crédito y reservas. | credit records. | `byId`, `save`. | Repositories Domain, PostgreSQL. |
+| `PostgresReceivableRepository`, `PostgresFinancialAdjustmentRepository` | Repository implementations | Mapear obligación, applications y ajustes. | receivable records. | `byId`, `save`. | Repositories Domain. |
+| `PaymentFactInbox` | Inbox adapter | Deduplicar Payment facts entregados al menos una vez. | event ID, status. | `claim`, `complete`. | `PaymentConfirmedEventHandler`. |
+| `CreditReceivablesOutboxPublisher` | Outbox adapter | Guardar facts de receivable/adjustment comprometidos. | fact, correlación. | `enqueue`. | BC-09, BC-10, BC-11. |
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
-Las siguientes clases son especificaciones **TARGET**. Preservan que Payment y
-Receivable son autoridades distintas, y que la corrección financiera agrega un
-hecho en vez de reescribir la obligación original.
+La vista C4 L3 hace visible API crediticia, aplicación de exposición, dominio,
+persistencia e intake de Payment fact; BC-08 conserva la autoridad de pago.
 
-*Clases TARGET por capa de BC-07*
+![Vista C4 L3 de BC-07 Credit & Receivables](../../../assets/chapter-2/c4/Nexa-API-BC-07-CreditReceivables.svg)
 
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `CreditExposureController` | Controller | Presenta exposición y decisiones permitidas sin revelar política interna a un Buyer. |
-| Interface | `ReceivablesController` | Controller | Expone historial financiero autorizado, no la confirmación de un proveedor de pagos. |
-| Interface | `CreditReservationPort` | Contract interface | Recibe la solicitud síncrona de BC-04; no es una ruta REST inventada. |
-| Interface | `ReceivableProjectionConsumer` | Consumer | Proyecta información segura para Platform, Portal o Mobile. |
-| Application | `EvaluateCreditHandler` | Application service | Calcula crédito disponible bajo bloqueo/CAS sobre cuenta y reservas activas. |
-| Application | `EstablishCreditReservationHandler` | Command handler | Protege crédito en submit PR o confirmación Direct Order con idempotencia durable. |
-| Application | `PostReceivableHandler` | Command handler | Publica obligación crédito/net en confirmación de Sales Order, no universalmente en entrega o factura. |
-| Application | `ApplyPaymentToReceivableHandler` | Command handler | Consume un Payment confirmado por ID y evita sobreaplicar o duplicar la aplicación. |
-| Application | `RecordFinancialAdjustmentHandler` | Command handler | Añade ajuste explícito, actor y razón conservando ledger e importe original. |
-| Infrastructure | `CreditAccountRepositoryAdapter` | Repository implementation | Persiste cuenta y reserva con restricciones monetarias y alcance Tenant. |
-| Infrastructure | `ReceivableRepositoryAdapter` | Repository implementation | Persiste obligación, aplicaciones y ledger sin poseer Payment. |
-| Infrastructure | `PaymentFactPort` | Contract adapter | Consume el resultado proveedor-neutral de BC-08 por contrato explícito. |
-| Infrastructure | `CreditOutboxAdapter` | Outbox adapter | Emite hechos de reserva y obligación sólo al finalizar la transacción. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-07 Credit & Receivables.*
-
-![BC-07 Credit & Receivables — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-07-CreditReceivables-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-07 Credit & Receivables, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
+*Nota. Elaboración propia.*
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 
+Los diagramas conservan CreditReservation y FinancialAdjustment como roots
+independientes y Payment como ID externo.
+
 ##### 2.6.7.6.1. Bounded Context Domain Layer Class Diagrams
 
-*Modelo de dominio táctico de BC-07 Credit & Receivables.*
-![BC-07 tactical domain model](../../../assets/chapter-2/tactical/BC-07/BC07_CreditReceivables.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
+El UML presenta repositories de los cuatro roots y políticas puras de exposición
+y aplicación.
 
+![Modelo de dominio táctico de BC-07 Credit & Receivables](../../../assets/chapter-2/tactical/BC-07/BC07_CreditReceivables.svg)
+
+*Nota. Elaboración propia.*
 
 ##### 2.6.7.6.2. Bounded Context Database Design Diagram
 
-*Proyección del diseño de base de datos de BC-07.*
-![BC-07 database design projection](../../../assets/chapter-2/tactical/BC-07/database-diagram.png)
+El modelo relacional marca importes positivos/no negativos y conserva Payment,
+SalesOrder, BusinessDocument y Customer como referencias tipadas externas.
 
-*Nota.* Es una proyección lógica de PostgreSQL compartido con restricciones y alcance Tenant; el SQL canónico mantiene la autoridad.
+![Diseño lógico de base de datos de BC-07 Credit & Receivables](../../../assets/chapter-2/tactical/BC-07/database-diagram.svg)
+
+*Nota. Elaboración propia.*

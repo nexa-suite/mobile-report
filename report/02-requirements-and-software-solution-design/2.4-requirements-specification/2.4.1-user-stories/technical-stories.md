@@ -113,6 +113,9 @@ runtime, proveedor, distribución, implementación ni validación de producto.
 </tbody>
 </table>
 
+**Asignación de Sprint:** Sprint 1. La búsqueda o fallback manual no está
+comprometida por esta Technical Story; `MOB-US-012` permanece en Sprint 2.
+
 **Tabla**<br>
 *TS-MOB-008 — Abrir navegación externa con un límite de ubicación*
 

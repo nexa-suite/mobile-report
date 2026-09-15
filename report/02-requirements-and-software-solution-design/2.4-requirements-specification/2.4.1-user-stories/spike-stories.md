@@ -17,8 +17,9 @@ Un Spike se considera cerrado sólo cuando el equipo:
 - concluye si la opción se adopta, se difiere o se rechaza;
 - refina el backlog o deja explícito el trabajo diferido; y
 - cuando el alcance del Spike exige integración, registra la integración técnica
-  acotada, sus fallos, reversión o aislamiento y su evidencia, sin presentarla
-  como implementación productiva o aceptación de producto.
+  acotada como propuesta técnica, sus fallos, reversión o aislamiento y su
+  evidencia, sin presentarla como implementación productiva o aceptación de
+  producto.
 
 Estos criterios definen el cierre esperado; no prueban que un PoC o una
 integración ya exista.
@@ -28,7 +29,7 @@ integración ya exista.
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-001</td><td>Developer</td><td>High</td><td>No Epic — transversal research item</td></tr>
+<tr><td>SPIKE-001</td><td>Developer</td><td>High</td><td>SPIKE-EPIC-01 — Autonomous learning feature</td></tr>
 <tr><th>Title</th><td colspan="3">Investigar, evaluar e integrar una feature de aprendizaje autónomo</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Developer</strong>, deseo investigar, evaluar e integrar técnicamente una feature de aprendizaje autónomo para un flujo Mobile representativo de Nexa, para tomar una decisión reproducible sin crear una autoridad de negocio local. La evaluación usa datos no sensibles, contratos explícitos y límites de seguridad; no declara una decisión de Producto aceptada ni preparación productiva.</td></tr>

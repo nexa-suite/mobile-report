@@ -8,14 +8,15 @@
 
 [![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=for-the-badge&logo=markdown&logoColor=white)](./report)
 [![Git](https://img.shields.io/badge/Git-Academic%20history-F05032?style=for-the-badge&logo=git&logoColor=white)](./report/04-product-implementation-and-validation/4.1-software-configuration-management/4.1.2-source-code-management.md)
+[![Jira Software](https://img.shields.io/badge/JIRA-SOFTWARE-0052CC?style=for-the-badge&logo=jira&logoColor=white&labelColor=3C3C3C)](https://nexa-suite.atlassian.net/jira/software/projects/NX/boards/2/backlog)
 
 [![Course](https://img.shields.io/badge/Course-1ACC0238%20Aplicaciones%20para%20Dispositivos%20M%C3%B3viles-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Period](https://img.shields.io/badge/Period-202620-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![University](https://img.shields.io/badge/University-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Team](https://img.shields.io/badge/Team-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Status](https://img.shields.io/badge/Status-v0.3.1%20academic%20baseline-0F766E?style=flat-square)](./docs/releases/v0.3.1.md)
+[![Status](https://img.shields.io/badge/Status-v0.5.0%20academic%20baseline-0F766E?style=flat-square)](./docs/releases/v0.5.0.md)
 
-[Report chapters](./report) · [Release evidence](./docs/releases/v0.3.1.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
+[Report chapters](./report) · [Release evidence](./docs/releases/v0.5.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
 
 </div>
 
@@ -35,8 +36,8 @@ flow:
 4. **API** provides business and integration-contract context.
 5. **Platform**, **Buyer Portal**, and **Website** are current product
    surfaces referenced where their evidence is available.
-6. **Git and GitHub** preserve traceable changes. A public Product Board is
-   referenced only when the team provides the genuine source.
+6. **Git and GitHub** preserve traceable changes, and **Jira** provides the
+   referenced Product Backlog and Sprint traceability baseline.
 
 ## Overview
 
@@ -141,7 +142,7 @@ logistics.
 | Report validation | Relative-link and asset checks, shell syntax checks, and `git diff --check` |
 | Diagram and visual evidence | Versioned SVG and image assets |
 | PDF export | Pandoc and XeLaTeX through the repository export script |
-| Product Board | A genuine public Board is added only when the team makes its source available |
+| Product Board | Jira-backed Product Backlog and Sprint traceability are referenced in the report; access may require login |
 | Source control | Git, GitHub, Conventional Commits, and signed contributor history |
 | Collaboration | Git history and GitHub public contribution evidence |
 
@@ -195,19 +196,19 @@ README.md
 ## Documentation
 
 - [Report chapters](./report)
-- [v0.3.1 release notes](./docs/releases/v0.3.1.md)
+- [v0.5.0 release notes](./docs/releases/v0.5.0.md)
 - [Changelog](./CHANGELOG.md)
 - [Mobile repository](https://github.com/nexa-suite/mobile)
 - [API contracts](https://github.com/nexa-suite/api/tree/main/docs/openapi)
 
-## v0.3.1 Academic baseline
+## v0.5.0 Academic baseline
 
-`v0.3.1` is the current integrated academic baseline for the report. It
-preserves `v0.1.0` and `v0.1.1` as historical provenance while consolidating
-the approved front matter, four-chapter structure, evidence boundaries and
-four-sprint planning. The release notes retain the genuine human and external
-evidence that remains open; this baseline does not represent a Mobile client,
-device execution or product validation as completed.
+`v0.5.0` is the current integrated academic baseline for the report, with all
+9/9 formative Needfinding interviews completed and Needfinding/requirements
+reconciliation informed by that research. It preserves the Product Backlog at
+97 PBIs / 426 SP and the Sprint/Jira traceability baseline while keeping research
+evidence distinct from solution validation; it does not represent a Mobile
+client, device execution or product validation as completed.
 
 <div align="center">
 

@@ -2,6 +2,53 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.5.0] - 2026-09-15
+
+Phase A and Phase B closure release for the Nexa Mobile Report.
+
+### Added
+
+- Consolidated the completed 9/9 formative Needfinding interviews across the
+  three target segments (3/3/3), with research-informed Needfinding and
+  requirements reconciliation.
+- Consolidated Jira-backed Product Backlog and Sprint traceability evidence for
+  the academic planning baseline.
+
+### Changed
+
+- Preserved the single Product Backlog at 97 PBIs, 426 SP and four academic
+  Sprints, including Sprint 1 at 6 PBIs and 19 SP.
+- Reconciled Personas, User Task Matrix, Journeys, As-Is Scenario Mapping,
+  Empathy Mapping, Buyer continuity and Impact Mapping without changing the
+  accepted DDD boundaries.
+- Kept the default AV1 manuscript and PDF export scoped to Chapters I–II,
+  conclusions, glossary, bibliography and annexes; Chapter III and Chapter IV
+  sources remain available outside that composition.
+
+### Fixed
+
+- Removed stale conclusions that described Warehouse, Driver and Buyer
+  interviews as missing or limited to two cases, while preserving the boundary
+  between research evidence and solution validation.
+- Reconciled current release navigation, version history and collaboration
+  wording for the v0.5.0 baseline.
+
+### Validation
+
+- Verified interview coverage, segment counts, backlog totals, Sprint 1 scope,
+  relative links, Markdown whitespace, export-script syntax and signed release
+  history before publication.
+
+### Evidence boundaries
+
+- Needfinding evidence informs problem, user and task understanding; it does
+  not validate H1, H2 or H3 solutions.
+- UXPressia visual refinements, final video capture/title-card evidence and any
+  device, deployment or production validation remain separate manual evidence
+  actions.
+- The consolidated interview video is accepted as a long recording and is not
+  treated as a release defect.
+
 ## [0.4.0] - 2026-09-13
 
 Content consistency release for the Nexa Mobile Report.

@@ -1,107 +1,99 @@
 ### 2.6.5. Bounded Context: Inventory Availability
 
-Este contexto de Core Domain posee la verdad física de stock, disponibilidad
-vendible, lote/vencimiento/disposición, Inventory Reservation, Warehouse
-Backing y Physical Allocation. Safety Stock es una política, no una reserva.
+BC-05 conserva stock físico, disponibilidad vendible y protección de demanda.
+InventoryReservation, WarehouseBacking y PhysicalAllocation son decisiones
+distintas. Sólo InventoryReservation autoriza crear/liberar protección; Backing
+la distribuye y Allocation selecciona lotes sin descontar una segunda vez.
 
 #### 2.6.5.1. Domain Layer
 
-*Agregados y límites invariantes de BC-05.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `InventoryPosition` | Autoridad sobre cantidad por SKU y Warehouse, e insumos vendibles |
-| `InventoryLot` | Lote, vencimiento, disposición y cantidad física |
-| `InventoryReservation` | Protección de demanda de Commercial Commitment propiedad de Inventory; no selecciona un Lot |
-| `WarehouseBacking` | Distribución determinista de una Inventory Reservation entre Warehouse elegibles |
-| `PhysicalAllocation` | Selecciona cantidades de lote para un contrato de Fulfillment |
-| `WarehouseTransfer` | Movimiento explícito `REQUESTED -> IN_TRANSIT -> RECEIVED` |
+El dominio mantiene la fórmula `Sellable = usable physical stock - active
+authoritative reservations - safety stock`. InventoryPosition conserva un saldo
+reconciliado de reservas a partir de hechos de InventoryReservation, no una
+segunda decisión independiente de `protect` o `release`.
 
-`Warehouse`, `SafetyStockPolicy`, `InventoryMovement`, `LotDisposition` y
-`PhysicalAllocationLine`, junto con los hechos de ajuste y conteo, respaldan
-las raíces. Los Value Objects incluyen `SkuId`, `WarehouseId`, `LotId`,
-`Quantity`, `ExpiryDate` y `Disposition`; las políticas incluyen
-`SellableAvailabilityPolicy` y `FEFOAllocationPolicy`. Los hechos de movimiento
-y ajuste son append-only.
-
-Invariante de diseño: Sellable Availability = usable on-hand − active Inventory
-Reservations − Safety Stock, con cada reserva contada una sola vez. Warehouse
-Backing distribuye esa reserva sin seleccionar lotes físicos. HOLD, QUARANTINE,
-DAMAGED/WASTE, EXPIRED e IN_TRANSIT no son vendibles. Allocation no puede
-superar la cantidad reservada, respaldada o disponible del lote. El inventario
-escaso usa actualizaciones condicionales, locks y version/CAS; no last-write-wins.
+| Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `Warehouse` | Aggregate Root | Mantener ubicación operativa. | `WarehouseId`, `TenantId`, código, status. | `open`, `close`. | Compone `SafetyStockPolicy`. |
+| `InventoryPosition` | Aggregate Root | Mantener saldo de disponibilidad por SKU/Warehouse. | `InventoryPositionId`, `SkuId`, `WarehouseId`, on-hand usable, `activeReservationQuantity` reconciliada, versión. | `applyMovement`, `applyReservationResult`. | Movimiento local; SKU y Warehouse por ID. |
+| `InventoryLot` | Aggregate Root | Mantener cantidad y disposición física por lote. | `InventoryLotId`, `SkuId`, `WarehouseId`, expiración, on-hand, status. | `receive`, `hold`, `releaseHold`. | Compone `LotDisposition`. |
+| `InventoryReservation` | Aggregate Root | Autorizar lifecycle de protección de demanda comercial. | `InventoryReservationId`, `CommitmentId`, líneas, status. | `protect`, `release`. | Compone `ReservationLine`; Commitment ID BC-04. |
+| `WarehouseBacking` | Aggregate Root | Distribuir una Reservation entre Warehouse elegibles. | `WarehouseBackingId`, `InventoryReservationId`, líneas, status. | `distribute`, `release`. | No vuelve a descontar demanda. |
+| `PhysicalAllocation` | Aggregate Root | Seleccionar lotes para Fulfillment. | `PhysicalAllocationId`, `WarehouseBackingId`, `FulfillmentId`, status. | `allocateFefo`, `release`. | Compone líneas de lote; no reserva demanda. |
+| `WarehouseTransfer` | Aggregate Root | Mantener traslado físico explícito. | `WarehouseTransferId`, source/destination `WarehouseId`, líneas, status. | `request`, `dispatch`, `receive`. | IDs de Warehouse; in-transit no vendible. |
+| `SellableAvailabilityPolicy`, `FEFOAllocationPolicy` | Domain Policies | Calcular sellable y ordenar lotes elegibles. | cantidades, safety stock, lotes. | `calculate`, `selectEligibleLots`. | Puras; no controlan fulfillment. |
+| `WarehouseRepository`, `InventoryPositionRepository`, `InventoryLotRepository` | Repository interfaces | Cargar roots físicos independientes. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
+| `InventoryReservationRepository`, `WarehouseBackingRepository`, `PhysicalAllocationRepository`, `WarehouseTransferRepository` | Repository interfaces | Cargar decisiones de protección y ejecución. | IDs y roots. | `byId`, `save`. | Cada root conserva lifecycle propio. |
 
 #### 2.6.5.2. Interface Layer
 
-La Interface Layer cubre recepción de Warehouse/lote, disponibilidad, Inventory
-Reservation, Warehouse Backing, allocation, transfer, adjustment y entradas de
-picking. Los nombres URI/DTO ausentes de la evidencia API verificada permanecen
-abiertos. Todo Command Mobile se envía al servidor; los scans o evidencias
-locales no pueden autorizar Allocation ni mutar stock.
+La interfaz acepta operaciones de disponibilidad y ejecución física con scope,
+versiones e idempotencia. Un scan del cliente no es stock autoritativo.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `InventoryAvailabilityController` | REST Controller | Exponer disponibilidad y movimientos autorizados. | actor, `SkuId`, `WarehouseId`, versión. | `getSellable`, `recordMovement`. | Query/command handlers. |
+| `InventoryReservationController` | REST Controller | Recibir reserva y liberación desde contrato comercial. | `CommitmentId`, líneas, llave idempotente. | `reserve`, `release`. | Handlers de Reservation/Backing. |
+| `PhysicalAllocationController` | REST Controller | Recibir selección física autorizada. | `WarehouseBackingId`, `FulfillmentId`, lotes, versión. | `allocate`, `releaseAllocation`. | Allocation handler. |
+| `WarehouseTransferController` | REST Controller | Recibir lifecycle de traslado. | source/destination `WarehouseId`, líneas, versión. | `request`, `dispatch`, `receive`. | Transfer handler. |
 
 #### 2.6.5.3. Application Layer
 
-La Application Layer coordina decisiones de disponibilidad, Inventory
-Reservation, Warehouse Backing, asignación FEFO y transiciones de transferencia.
-Aplica alcance Tenant, selección determinista de Warehouse y Command de
-movimiento idempotentes. Fulfillment recibe IDs estables de Allocation; no
-escribe tablas de inventario directamente.
+Application usa locks, actualizaciones condicionales e idempotencia para
+escasez. Coordina contratos con BC-04 y BC-06 sin mutar sus tablas.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `ReserveInventoryCommandHandler` | Command Handler | Crear InventoryReservation autoritativa. | `CommitmentId`, líneas, llave idempotente. | `handle`. | Reservation/position repositories; concurrencia. |
+| `DistributeWarehouseBackingCommandHandler` | Command Handler | Distribuir reserva protegida. | `ReservationId`, Warehouse candidates. | `handle`. | Backing/position repositories. |
+| `AllocatePhysicalInventoryCommandHandler` | Command Handler | Seleccionar lotes FEFO para Fulfillment. | `WarehouseBackingId`, `FulfillmentId`, lotes. | `handle`. | `FEFOAllocationPolicy`, Allocation repository. |
+| `RecordInventoryMovementCommandHandler` | Command Handler | Registrar movimiento inmutable y reconciliar posición. | `InventoryLotId`, `InventoryPositionId`, cantidad, referencia. | `handle`. | Position/lot repositories. |
+| `TransferWarehouseInventoryCommandHandler` | Command Handler | Ejecutar transición de traslado. | source/destination `WarehouseId`, líneas, versión. | `handle`. | Transfer y position repositories. |
 
 #### 2.6.5.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `warehouse`, `safety_stock_policy`,
-`inventory_lot`, `inventory_position`, `inventory_movement`, `lot_disposition`,
-`inventory_reservation`, `inventory_reservation_line`, `warehouse_backing`,
-`warehouse_backing_line`, `physical_allocation`,
-`physical_allocation_line`, `warehouse_transfer`, `warehouse_transfer_line`
-y `inventory_adjustment`. Los predicados y restricciones Tenant permanecen en
-el SQL canónico. No se infiere una base de datos física por BC.
+Infrastructure implementa repositories y mecanismos de concurrencia
+persistente. El outbox publica hechos ya comprometidos; no transporta una
+decisión pendiente.
+
+| Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PostgresWarehouseRepository`, `PostgresInventoryPositionRepository`, `PostgresInventoryLotRepository` | Repository implementations | Mapear roots de ubicación, posición y lote. | warehouse/position/lot records. | `byId`, `save`. | Repositories Domain, PostgreSQL. |
+| `PostgresInventoryReservationRepository`, `PostgresWarehouseBackingRepository` | Repository implementations | Mapear protección y su distribución. | reservation/backing records. | `byId`, `save`. | Repositories Domain. |
+| `PostgresPhysicalAllocationRepository`, `PostgresWarehouseTransferRepository` | Repository implementations | Mapear allocation y traslados. | allocation/transfer records. | `byId`, `save`. | Repositories Domain. |
+| `InventoryConcurrencyPersistenceSupport` | Persistence support | Aplicar locks ordenados, CAS y resultado de conflicto. | posición, versión, cantidad. | `lockPositions`, `conditionalUpdate`. | Handlers y PostgreSQL. |
+| `InventoryOutboxPublisher` | Outbox adapter | Guardar facts de reserva/allocation/movement. | fact, correlación. | `enqueue`. | Aplicación y transporte posterior. |
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-Las siguientes clases son especificaciones **TARGET**. Protegen stock escaso
-mediante contratos y concurrencia explícitos; `SafetyStock`,
-`InventoryReservation`, `WarehouseBacking` y `PhysicalAllocation` no se tratan
-como sinónimos.
+La vista C4 L3 muestra API de inventario, aplicación de protección, modelo y
+persistencia con soporte de concurrencia. BC-04 solicita protección y BC-06
+consume facts/contratos sin propiedad física.
 
-*Clases TARGET por capa de BC-05*
+![Vista C4 L3 de BC-05 Inventory Availability](../../../assets/chapter-2/c4/Nexa-API-BC-05-InventoryAvailability.svg)
 
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `InventoryController` | Controller | Recibe comandos de disponibilidad, ajuste y disposición autorizados; no acepta una lectura Mobile como verdad final. |
-| Interface | `WarehouseController` | Controller | Mantiene configuración de Warehouse y políticas bajo alcance Tenant. |
-| Interface | `OperationsInventoryConsumer` | Consumer | Recibe trabajo o proyecciones de scan para Operations Mobile sin conceder asignación física. |
-| Application | `CreateInventoryReservationHandler` | Command handler | Protege la demanda de Commercial Commitment dentro del límite lógico requerido con BC-04/BC-07, sin seleccionar lotes. |
-| Application | `DistributeWarehouseBackingHandler` | Command handler | Distribuye la Inventory Reservation por Warehouse elegible de modo determinista y deja explícito cualquier shortage. |
-| Application | `AllocatePhysicalStockHandler` | Command handler | Bloquea SKU/Warehouse/Lot en orden determinista y aplica FEFO sin seleccionar stock no vendible. |
-| Application | `TransferInventoryHandler` | Command handler | Mantiene `REQUESTED`, `IN_TRANSIT` y `RECEIVED`, dejando el stock no vendible durante tránsito. |
-| Application | `RecordDispositionHandler` | Command handler | Registra HOLD, quarentena o disposición con motivo, preservando hechos de inventario. |
-| Infrastructure | `InventoryRepositoryAdapter` | Repository implementation | Persiste posición, lote y movimiento con CAS o actualización condicional. |
-| Infrastructure | `InventoryReservationAdapter` | Repository implementation | Persiste la protección de demanda sin duplicar el descuento de Reservation en disponibilidad. |
-| Infrastructure | `WarehouseBackingAdapter` | Repository implementation | Persiste la distribución por Warehouse sin convertirla en selección de Lot. |
-| Infrastructure | `FEFOQueryAdapter` | Query adapter | Ordena lotes elegibles para la política FEFO sin incluir vencidos o en cuarentena. |
-| Infrastructure | `TenantScopedTransactionPort` | Technical adapter | Fija alcance de RLS/worker y falla cerrado si éste es ambiguo. |
-| Infrastructure | `InventoryOutboxAdapter` | Outbox adapter | Publica el hecho comprometido, no una transición provisional. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-05 Inventory Availability.*
-
-![BC-05 Inventory Availability — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-05-InventoryAvailability-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-05 Inventory Availability, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
+*Nota. Elaboración propia.*
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
 
+Los diagramas distinguen stock, reserva, backing y allocation como roots con
+responsabilidades separadas.
+
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
 
-*Modelo de dominio táctico de BC-05 Inventory Availability.*
-![BC-05 tactical domain model](../../../assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
+El UML modela `InventoryReservation` como única autoridad de protection y hace
+que `InventoryPosition` aplique resultados reconciliados de Reservation.
 
+![Modelo de dominio táctico de BC-05 Inventory Availability](../../../assets/chapter-2/tactical/BC-05/BC05_InventoryAvailability.svg)
+
+*Nota. Elaboración propia.*
 
 ##### 2.6.5.6.2. Bounded Context Database Design Diagram
 
-*Proyección del diseño de base de datos de BC-05.*
-![BC-05 database design projection](../../../assets/chapter-2/tactical/BC-05/database-diagram.png)
+El modelo relacional hace tenant-scoped `warehouse.code`, marca la cantidad de
+reserva de posición como derivada/reconciliada y muestra constraints de cantidad
+sin convertir IDs externos en FKs u ownership.
 
-*Nota.* Es una proyección lógica de PostgreSQL compartido; el SQL canónico mantiene la autoridad sobre las restricciones PK/FK/unique/check y los detalles de RLS/alcance Tenant.
+![Diseño lógico de base de datos de BC-05 Inventory Availability](../../../assets/chapter-2/tactical/BC-05/database-diagram.svg)
+
+*Nota. Elaboración propia.*

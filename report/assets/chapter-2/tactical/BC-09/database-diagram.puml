@@ -1,7 +1,6 @@
 @startuml
-title BC-09 Target Database Diagram
+title BC-09 Business Documents — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -10,83 +9,81 @@ skinparam entity {
   FontColor #0F172A
 }
 
-entity "document_number_series" as t_document_number_series {
+entity "document_number_series" as document_number_series {
   * series_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
   * document_type : varchar(32) <<required>>
   * series_code : varchar(32) <<required>>
-  * next_number : bigint <<required>>
+  * next_number : bigint <<required, >= 1>>
   * version : integer <<required>>
+    unique(tenant_id, document_type, series_code)
 }
 
-entity "business_document" as t_business_document {
+entity "business_document" as business_document {
   * document_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * series_id : uuid <<FK, required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * series_id : uuid <<required, BC-09 ID>>
   * document_type : varchar(32) <<required>>
   * document_number : varchar(80) <<required>>
-    sales_order_id : uuid
-    payment_id : uuid
-    receivable_id : uuid
+    sales_order_id : uuid <<optional, BC-04 ID>>
+    payment_id : uuid <<optional, BC-08 ID>>
+    receivable_id : uuid <<optional, BC-07 ID>>
   * status : varchar(32) <<required>>
-    issued_at : timestamptz
-    voided_at : timestamptz
+  * issued_at : timestamptz <<required>>
+    unique(tenant_id, document_type, document_number)
 }
 
-entity "document_snapshot_line" as t_document_snapshot_line {
+entity "document_snapshot_line" as document_snapshot_line {
   * line_id : uuid <<PK>>
   * document_id : uuid <<FK, required>>
-    sku_id : uuid
-    sku_code : varchar(80)
+  * sku_id : uuid <<required, BC-03 ID>>
   * description : varchar(500) <<required>>
-  * quantity : numeric(19,6) <<required>>
-  * unit_price : numeric(19,4) <<required>>
+  * quantity : numeric(19,6) <<required, > 0>>
+  * unit_price : numeric(19,4) <<required, >= 0>>
   * currency : char(3) <<required>>
-  * line_total : numeric(19,4) <<required>>
 }
 
-entity "document_revision" as t_document_revision {
+entity "document_revision" as document_revision {
   * revision_id : uuid <<PK>>
   * document_id : uuid <<FK, required>>
   * revision_number : integer <<required>>
   * snapshot_hash : varchar(128) <<required>>
-  * created_by_identity_id : uuid <<required>>
   * created_at : timestamptz <<required>>
 }
 
-entity "object_storage_reference" as t_object_storage_reference {
-  * object_reference_id : uuid <<PK>>
+entity "object_storage_reference" as object_storage_reference {
+  * reference_id : uuid <<PK>>
   * document_id : uuid <<FK, required>>
   * object_key : varchar(500) <<required>>
   * content_type : varchar(160) <<required>>
   * content_length : bigint <<required>>
   * content_hash : varchar(128) <<required>>
-  * created_at : timestamptz <<required>>
 }
 
-entity "document_generation_request" as t_document_generation_request {
+entity "document_generation_request\n<<application work item>>" as document_generation_request {
   * generation_request_id : uuid <<PK>>
   * document_id : uuid <<FK, required>>
+  * idempotency_key : varchar(160) <<required>>
   * status : varchar(32) <<required>>
   * requested_at : timestamptz <<required>>
     completed_at : timestamptz
-    failure_reason : varchar(500)
-    object_reference_id : uuid <<FK>>
+    unique(document_id, idempotency_key)
 }
 
-t_business_document }o--|| t_document_number_series : series_id
-t_document_snapshot_line }o--|| t_business_document : document_id
-t_document_revision }o--|| t_business_document : document_id
-t_object_storage_reference }o--|| t_business_document : document_id
-t_document_generation_request }o--|| t_business_document : document_id
-t_document_generation_request }o--|| t_object_storage_reference : object_reference_id
+document_snapshot_line }o--|| business_document : document_id
+document_revision }o--|| business_document : document_id
+object_storage_reference }o--|| business_document : document_id
+document_generation_request }o--|| business_document : document_id
+
+note bottom of document_generation_request
+This table is durable application work, not an Aggregate Root.
+Object Storage bytes remain outside PostgreSQL.
+Number reservation locks or compares document_number_series.version before issue.
+end note
 
 legend right
-TARGET / BC-09 logical relational ownership / SQL is the authority
-PK = primary key | FK = same-owner foreign key
-required = NOT NULL | cross-BC IDs are deliberately not FK
-This PlantUML file is a visual projection for review.
+PK = primary key | FK = local foreign key | required = NOT NULL.
+Source sales, payment and receivable IDs are typed cross-context references.
+Object storage rows retain metadata only.
 endlegend
 @enduml

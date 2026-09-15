@@ -1,106 +1,99 @@
 ### 2.6.4. Bounded Context: Sales Commitment
 
-Este contexto de Core Domain posee intención Buyer, Purchase Request,
-Commercial Commitment y Sales Order. Draft, commitment, Inventory Reservation,
-Warehouse Backing y Physical Allocation son hechos y autoridades distintos.
+BC-04 conserva intención comercial, compromiso y orden. RequestDraft,
+PurchaseRequest, CommercialCommitment y SalesOrder son raíces independientes;
+sus referencias usan identidad. BC-04 coordina contratos síncronos de BC-05 y
+BC-07, sin cargar ni poseer sus aggregates. `ResolvedOfferSnapshot` llega de
+BC-03 como contrato inmutable: BC-04 captura su decisión comercial, pero no lo
+resuelve ni lo posee.
 
 #### 2.6.4.1. Domain Layer
 
-*Agregados y límites invariantes de BC-04.*
-| Aggregate/raíz | Límite e invariante |
-| :--- | :--- |
-| `RequestDraft` | Intención editable; no crea compromiso ni reserva |
-| `PurchaseRequest` | Intención enviada de todo o nada con vencimiento y snapshots inmutables |
-| `CommercialCommitment` | Demanda de SKU independiente de Warehouse con un origen explícito |
-| `SalesOrder` | Consolidación comercial y ciclo de vida confirmados; sin SO en borrador en el alcance inicial |
+El dominio mantiene snapshots comerciales y reglas de transición.
+`ResolvedOfferSnapshot` es input externo inmutable de BC-03; su representación
+capturada en BC-04 no comparte ownership. Un Draft no crea otro root: prepara
+datos de envío, y una Factory/Application Handler crea PurchaseRequest sin
+composición entre roots.
 
-`RequestDraftLine`, `PurchaseRequestLine`, `CommitmentLine`,
-`MaterialChangeProposal`, `CommercialSnapshot` y los hechos de ajuste
-preservan límites de línea e historial. Los value objects incluyen
-`CommitmentId`, `SkuQuantity`, `TermsSnapshot` y `OrderRevision`;
-`CommitmentAcceptancePolicy` y `MaterialChangePolicy` coordinan decisiones de
-dominio. Los Repository poseen los roots de Purchase Request y Sales Order.
-
-Invariantes de diseño: enviar una PR establece Inventory Reservation completa,
-Warehouse Backing determinista y la reserva de crédito aplicable antes del
-commit; Physical Allocation permanece como una selección posterior de lotes
-propiedad de Inventory para fulfillment. El origen `PURCHASE_REQUEST` requiere
-una referencia PR real, mientras que `DIRECT_ORDER` no la tiene; PR-to-SO
-transfiere propiedad de Commitment sin liberar ni reservar otra vez; la
-expiración se comprueba con `now >= expiresAt`; un cambio material requiere
-aceptación Buyer y revalidación. Completar una SO no confirma Payment.
+| Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `RequestDraft` | Aggregate Root | Mantener intención editable previa. | Draft, `BuyerRelationshipId`, líneas, status. | `addLine`, `prepareSubmission`. | Compone `RequestDraftLine`; produce datos, no PurchaseRequest. |
+| `PurchaseRequest` | Aggregate Root | Mantener solicitud enviada y vencimiento. | request, `BuyerRelationshipId`, `expiresAt`, status. | `submit`, `acceptMaterialChange`, `reject`. | Compone líneas y propuestas. |
+| `CommercialCommitment` | Aggregate Root | Mantener demanda comercial protegible. | commitment, origen, `PurchaseRequestId?`, status. | `establishFromPurchaseRequest`, `establishDirectOrder`, `cancel`. | Compone líneas/ajustes; decisiones externas tipadas. |
+| `SalesOrder` | Aggregate Root | Mantener obligación confirmada. | order, `CommitmentId`, status. | `confirm`, `cancel`. | Compone líneas; referencia commitment por ID. |
+| `RequestSubmissionData` | Value Object | Transportar datos válidos de Draft hacia construcción. | `BuyerRelationshipId`, líneas, `ResolvedOfferSnapshot`. | inmutable. | Consume contrato inmutable de BC-03; input de `PurchaseRequestFactory`. |
+| `PurchaseRequestFactory` | Domain Factory | Construir PurchaseRequest desde datos ya validados. | `RequestSubmissionData`, expiración. | `create`. | No es propiedad de Draft. |
+| `CommitmentAcceptancePolicy` | Domain Policy | Evaluar decisiones de stock y crédito ya traducidas. | `InventoryReservationDecision`, `CreditReservationDecision`. | `canCommit`, `requiresBuyerAcceptance`. | Pura; sin repositorio ni I/O. |
+| `RequestDraftRepository`, `PurchaseRequestRepository` | Repository interfaces | Acceder a roots de intención y solicitud. | IDs y roots. | `byId`, `save`. | Implementados por PostgreSQL. |
+| `CommercialCommitmentRepository`, `SalesOrderRepository` | Repository interfaces | Acceder a roots de compromiso y orden. | IDs y roots. | `byId`, `save`. | No persisten inventario ni crédito. |
 
 #### 2.6.4.2. Interface Layer
 
-La Interface Layer expresa contratos para draft, submit, approve/convert,
-direct order, material change y consultas de pedido. Aquí no se inventan
-endpoint names exactos. Los Command sensibles a reintentos requieren
-idempotency y los recursos mutables obsoletos usan semántica version/If-Match
-cuando corresponda. La autorización API y el estado de decisión permanecen
-autoritativos; Mobile sólo es una proyección planificada.
+La interfaz expresa acciones comerciales reales y conserva `Idempotency-Key`,
+scope y versiones en el borde.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `CommercialRequestController` | REST Controller | Gestionar Draft y PurchaseRequest. | actor, `BuyerRelationshipId`, líneas, versión, llave. | `submitPurchaseRequest`, `acceptMaterialChange`, `withdraw`. | Handlers de solicitud. |
+| `SalesOrderController` | REST Controller | Gestionar orden directa y confirmación. | actor, commitment/order, versión, llave. | `confirmDirectOrder`, `confirmSalesOrder`, `cancel`. | Handlers comerciales. |
 
 #### 2.6.4.3. Application Layer
 
-La Application Layer coordina el snapshot de catálogo, la elegibilidad de Buyer,
-la Inventory Reservation, el Warehouse Backing y los contratos de decisión de
-crédito dentro del límite lógico de consistencia requerido. Preserva el origen
-direct-order frente a PR y usa idempotency durable. Los integration events se
-emiten sólo después del commit local; no se carga un Aggregate de otro contexto.
+Application coordina `ResolvedOfferSnapshot` inmutable de BC-03, elegibilidad
+de BC-02 y decisiones síncronas de inventario/crédito. Cada root mantiene su
+invariante propio.
+
+| Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `SubmitPurchaseRequestCommandHandler` | Command Handler | Crear PurchaseRequest desde Draft preparado. | Draft, `ResolvedOfferSnapshot`, idempotencia, expiración. | `handle`. | `PurchaseRequestFactory`, BC-05/BC-07 contracts. |
+| `ConfirmDirectOrderCommandHandler` | Command Handler | Confirmar ruta DIRECT_ORDER sin PurchaseRequest. | intención, `ResolvedOfferSnapshot`, decisiones requeridas. | `handle`. | `CommercialCommitmentRepository`, BC-05/BC-07. |
+| `EstablishCommercialCommitmentCommandHandler` | Command Handler | Persistir demanda tras decisiones explícitas. | origen, líneas, inventory/credit decisions. | `handle`. | Commitment root y policy. |
+| `ConfirmSalesOrderCommandHandler` | Command Handler | Confirmar SalesOrder desde Commitment admisible. | `CommitmentId`, versión, llave. | `handle`. | `SalesOrderRepository`, outbox. |
+| `AcceptMaterialChangeCommandHandler` | Command Handler | Revalidar cambio material aceptado. | proposal, `ResolvedOfferSnapshot`, decisiones nuevas. | `handle`. | PurchaseRequest, BC-05 y BC-07. |
 
 #### 2.6.4.4. Infrastructure Layer
 
-La Infrastructure Layer organiza la propiedad lógica en PostgreSQL compartido sobre `request_draft`,
-`request_draft_line`, `purchase_request`, `purchase_request_line`,
-`material_change_proposal`, `commercial_commitment`,
-`commercial_commitment_line`, `commitment_owner_transfer`,
-`sales_commitment_adjustment`, `sales_order` y `sales_order_line`. Inventory
-Reservation, Warehouse Backing, Physical Allocation y la reserva de crédito se
-referencian mediante contratos e ID explícitos, no mediante propiedad directa de
-tablas.
+Infrastructure implementa repositorios de lifecycle comercial y publicación
+durable local; no escribe tablas de Inventory Availability ni Credit.
+
+| Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| `PostgresRequestDraftRepository` | Repository implementation | Mapear Draft y líneas. | draft records. | `byId`, `save`. | `RequestDraftRepository`. |
+| `PostgresPurchaseRequestRepository` | Repository implementation | Mapear solicitud, líneas y propuestas. | request records. | `byId`, `save`. | `PurchaseRequestRepository`. |
+| `PostgresCommercialCommitmentRepository` | Repository implementation | Mapear commitment y ajustes. | commitment records. | `byId`, `save`. | `CommercialCommitmentRepository`. |
+| `PostgresSalesOrderRepository` | Repository implementation | Mapear orden y líneas. | sales-order records. | `byId`, `save`. | `SalesOrderRepository`. |
+| `CommercialCommitmentOutboxPublisher` | Outbox adapter | Persistir hecho comprometido en misma transacción. | facts locales, correlación. | `enqueue`. | Application y transporte posterior. |
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-Las siguientes clases son especificaciones **TARGET**. Expresan una decisión
-comercial atómica por contratos explícitos: no cargan agregados ajenos ni
-convierten un Draft en Sales Order sin la transición aceptada.
+La vista C4 L3 muestra API comercial, aplicación de commitment, dominio y
+persistencia. Sus contratos con BC-05 y BC-07 son síncronos y explícitos.
 
-*Clases TARGET por capa de BC-04*
+![Vista C4 L3 de BC-04 Sales Commitment](../../../assets/chapter-2/c4/Nexa-API-BC-04-SalesCommitment.svg)
 
-| Capa | Clase | Tipo | Responsabilidad y límite de consistencia |
-| --- | --- | --- | --- |
-| Interface | `BuyerRequestController` | Controller | Recibe comandos de Draft y Purchase Request con `Idempotency-Key`; no confirma inventario localmente. |
-| Interface | `SalesOrderController` | Controller | Expone consultas y transiciones comerciales autorizadas con versión cuando corresponde. |
-| Interface | `SalesCommitmentConsumer` | Contract consumer | Recibe resultados explícitos de inventory/credit; no es un endpoint ni comparte agregados. |
-| Application | `SubmitPurchaseRequestHandler` | Command handler | Coordina en un límite lógico la validación, Commitment, Inventory Reservation, Warehouse Backing y crédito antes del commit. |
-| Application | `AcceptMaterialChangeHandler` | Command handler | Revalida precio, inventario y crédito tras aceptación Buyer; preserva el estado previo si falla. |
-| Application | `ConvertPurchaseRequestHandler` | Command handler | Aplica CAS y guardia `now >= expiresAt`, transfiriendo el Commitment sin liberar y re-reservar. |
-| Application | `ConfirmDirectOrderHandler` | Command handler | Confirma Direct Order con Commitment de origen explícito, sin fabricar Purchase Request. |
-| Infrastructure | `PurchaseRequestRepositoryAdapter` | Repository implementation | Persiste PR, líneas y snapshots inmutables de BC-04. |
-| Infrastructure | `CommercialCommitmentRepositoryAdapter` | Repository implementation | Conserva Commitment warehouse-neutral y su transferencia de titularidad. |
-| Infrastructure | `InventoryAvailabilityPort` | Synchronous contract adapter | Solicita Inventory Reservation y Warehouse Backing a BC-05 por ID y resultado, sin mutar tablas de inventario. |
-| Infrastructure | `CreditReservationPort` | Synchronous contract adapter | Solicita decisión de BC-07 sin apropiarse de Receivable o ledger. |
-| Infrastructure | `SalesOutboxAdapter` | Outbox adapter | Publica hechos sólo después del commit local, con entrega al menos una vez. |
-
-La vista C4 L3 **TARGET** muestra componentes conceptuales de este contexto dentro de Nexa API. No equivale a un Bounded Context adicional, una base de datos independiente ni una unidad de despliegue.
-
-*Vista C4 L3 TARGET de BC-04 Sales Commitment.*
-
-![BC-04 Sales Commitment — C4 L3 TARGET](../../../assets/chapter-2/c4/Nexa-API-BC-04-SalesCommitment-TARGET-dark.svg)
-
-*Nota.* Exportación vectorial desde una vista Structurizr DSL enfocada en BC-04 Sales Commitment, dentro del único contenedor Nexa API. Es evidencia de diseño TARGET; no acredita implementación, runtime ni una unidad de despliegue independiente.
+*Nota. Elaboración propia.*
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 
+Los diagramas separan roots comerciales y el modelo relacional de origen.
+
 ##### 2.6.4.6.1. Bounded Context Domain Layer Class Diagrams
 
-*Modelo de dominio táctico de BC-04 Sales Commitment.*
-![BC-04 tactical domain model](../../../assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.png)
-*Nota.* El diagrama se presenta como modelo de diseño, no como inventario de código.
+El UML evita una operación `RequestDraft.submit(): PurchaseRequest`, muestra
+datos de envío y Factory sin ownership entre raíces independientes, y representa
+`ResolvedOfferSnapshot` como contrato inmutable externo de BC-03.
 
+![Modelo de dominio táctico de BC-04 Sales Commitment](../../../assets/chapter-2/tactical/BC-04/BC04_SalesCommitment.svg)
+
+*Nota. Elaboración propia.*
 
 ##### 2.6.4.6.2. Bounded Context Database Design Diagram
 
-*Proyección del diseño de base de datos de BC-04.*
-![BC-04 database design projection](../../../assets/chapter-2/tactical/BC-04/database-diagram.png)
+El modelo relacional expresa el CHECK de origen: `PURCHASE_REQUEST` exige
+`purchase_request_id`; `DIRECT_ORDER` no lo contiene. El snapshot comercial se
+captura localmente sin FK de ownership hacia BC-03; las cantidades se mantienen
+positivas y las IDs de otros contexts no se convierten en ownership.
 
-*Nota.* El diagrama es una proyección lógica de PostgreSQL compartido; las instantáneas inmutables, las restricciones PK/FK/unique/check y la propiedad están definidas por el SQL canónico.
+![Diseño lógico de base de datos de BC-04 Sales Commitment](../../../assets/chapter-2/tactical/BC-04/database-diagram.svg)
+
+*Nota. Elaboración propia.*

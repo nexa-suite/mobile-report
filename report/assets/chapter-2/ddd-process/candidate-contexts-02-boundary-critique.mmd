@@ -1,0 +1,24 @@
+flowchart TB
+  classDef candidate fill:#EAF4FF,stroke:#3979A8,stroke-width:1.5px,color:#111
+  classDef decision fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111
+  classDef retained fill:#DDF3E4,stroke:#2F855A,stroke-width:1.5px,color:#111
+
+  catalogSales["Catalog and Sales Commitment"]:::candidate
+  inventoryFulfillment["Inventory Availability and Fulfillment & Delivery"]:::candidate
+  paymentCredit["Payments and Credit & Receivables"]:::candidate
+  notificationTrace["Notifications and Business Traceability"]:::candidate
+
+  catalogDecision{"Mutable price policy can rewrite a commercial obligation?"}:::decision
+  inventoryDecision{"Availability and execution protect different facts?"}:::decision
+  paymentDecision{"Provider result and receivable use different language?"}:::decision
+  notificationDecision{"Delivery outcome and business history have different retention?"}:::decision
+
+  bc03bc04["Keep BC-03 and BC-04 separate"]:::retained
+  bc05bc06["Keep BC-05 and BC-06 separate"]:::retained
+  bc07bc08["Keep BC-07 and BC-08 separate"]:::retained
+  bc10bc11["Keep BC-10 and BC-11 separate"]:::retained
+
+  catalogSales --> catalogDecision --> bc03bc04
+  inventoryFulfillment --> inventoryDecision --> bc05bc06
+  paymentCredit --> paymentDecision --> bc07bc08
+  notificationTrace --> notificationDecision --> bc10bc11

@@ -1,0 +1,15 @@
+flowchart LR
+  bc04["BC-04<br/>Sales Commitment"]
+  bc05["BC-05<br/>Inventory Availability"]
+  bc06["BC-06<br/>Fulfillment & Delivery"]
+  bc09["BC-09<br/>Business Documents"]
+  bc11["BC-11<br/>Business Traceability"]
+
+  bc04 -->|"Published Language<br/>confirmed Sales Order"| bc06
+  bc05 -->|"Published Language<br/>Physical Allocation reference"| bc06
+  bc06 -->|"Customer/Supplier<br/>physical mutation contract"| bc05
+  bc06 -->|"Published Language<br/>delivery and POD facts"| bc09
+  bc06 -->|"Published Language<br/>significant facts"| bc11
+
+  classDef context fill:#EAF3FF,stroke:#2563EB,stroke-width:1.5px,color:#172554;
+  class bc04,bc05,bc06,bc09,bc11 context;

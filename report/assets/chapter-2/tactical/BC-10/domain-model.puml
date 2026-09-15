@@ -1,103 +1,124 @@
 @startuml BC10_Notifications
-title BC-10 Notifications — Tactical Domain Model (TARGET / current scope)
+title BC-10 Notifications — Tactical Domain Model
 hide circle
 skinparam classAttributeIconSize 0
 skinparam shadowing false
 skinparam linetype ortho
 
+class Notification <<Aggregate Root>> {
+  -notificationId: NotificationId
+  -templateId: NotificationTemplateId
+  -sourceFact: BusinessFactReference
+  -status: NotificationStatus
+  +schedule(): void
+  +cancel(): void
+}
+
+class NotificationRecipient <<Entity>> {
+  -recipientId: NotificationRecipientId
+  -recipientReference: RecipientReference
+  -channel: NotificationChannel
+  +suppress(reason: SuppressionReason): void
+}
+
+class NotificationAttempt <<Entity>> {
+  -attemptId: NotificationAttemptId
+  -channel: NotificationChannel
+  -status: AttemptStatus
+  -attemptedAt: Instant
+  +recordResult(): void
+}
+
 class NotificationTemplate <<Aggregate Root>> {
   -templateId: NotificationTemplateId
-  -tenantId: TenantId
-  -eventType: EventType
+  -templateKey: TemplateKey
   -channel: NotificationChannel
   -version: Integer
   +publish(): void
   +retire(): void
 }
 
-class Notification <<Aggregate Root>> {
-  -notificationId: NotificationId
-  -tenantId: TenantId
-  -eventId: EventId
-  -status: NotificationStatus
-  +schedule(): void
-  +cancel(): void
-  +markDelivered(): void
-}
-
-class NotificationRecipient <<Entity>> {
-  -recipientId: NotificationRecipientId
-  -notificationId: NotificationId
-  -address: RecipientAddress
-  -status: RecipientStatus
-  +accept(): void
-  +suppress(reason: SuppressionReason): void
-}
-
-class NotificationPreference <<Entity>> {
+class NotificationPreference <<Aggregate Root>> {
   -preferenceId: NotificationPreferenceId
-  -tenantId: TenantId
-  -recipientKey: RecipientKey
+  -recipientReference: RecipientReference
   -channel: NotificationChannel
   -enabled: Boolean
   +enable(): void
   +disable(): void
 }
 
-class NotificationAttempt <<Entity>> {
-  -attemptId: NotificationAttemptId
-  -notificationId: NotificationId
-  -channel: NotificationChannel
-  -status: AttemptStatus
-  -attemptedAt: Instant
-  +recordSuccess(): void
-  +recordFailure(reason: FailureReason): void
+class PushSubscription <<Aggregate Root>> {
+  -subscriptionId: PushSubscriptionId
+  -recipientReference: RecipientReference
+  -installationId: InstallationId
+  -secureEndpoint: SecureEndpointReference
+  -providerTokenHash: ProviderTokenHash
+  -status: SubscriptionStatus
+  +register(endpoint: SecureEndpointReference, hash: ProviderTokenHash): void
+  +rotateEndpoint(endpoint: SecureEndpointReference, hash: ProviderTokenHash): void
+  +disable(): void
 }
 
-class NotificationPolicy <<Domain Service>> {
-  +selectRecipients(event: DomainEvent, preferences: List<NotificationPreference>): List<RecipientAddress>
-  +shouldDeliver(notification: Notification): boolean
-}
-
-class RecipientAddress <<Value Object>> {
-  -value: String
-  -kind: AddressKind
-}
-
-class DomainEvent <<Value Object>> {
+class BusinessFactReference <<Value Object>> {
   -eventId: EventId
   -eventType: EventType
-  -occurredAt: Instant
+  -sourceContext: String
+}
+
+class SecureEndpointReference <<Value Object>> {
+  -value: String
+}
+
+class ChannelSelectionPolicy <<Domain Policy>> {
+  +choose(preference: NotificationPreference, available: List<NotificationChannel>): NotificationChannel
+}
+
+class RetryPolicy <<Domain Policy>> {
+  +nextAttempt(attempt: NotificationAttempt): Instant
 }
 
 interface NotificationRepository <<Repository>> {
-  +findById(id: NotificationId): Notification
+  +byId(id: NotificationId): Notification
   +save(notification: Notification): void
 }
 
-interface DeliveryChannelPort <<Port>> {
-  +send(recipient: RecipientAddress, content: MessageContent): DeliveryResult
+interface NotificationTemplateRepository <<Repository>> {
+  +byId(id: NotificationTemplateId): NotificationTemplate
+  +save(template: NotificationTemplate): void
 }
 
-enum NotificationChannel <<Enum>>
-enum NotificationStatus <<Enum>>
-enum AttemptStatus <<Enum>>
-enum RecipientStatus <<Enum>>
+interface NotificationPreferenceRepository <<Repository>> {
+  +byId(id: NotificationPreferenceId): NotificationPreference
+  +save(preference: NotificationPreference): void
+}
 
-NotificationTemplate "1" o-- "0..*" Notification : renders
+interface PushSubscriptionRepository <<Repository>> {
+  +byId(id: PushSubscriptionId): PushSubscription
+  +save(subscription: PushSubscription): void
+}
+
 Notification "1" *-- "1..*" NotificationRecipient : recipients
 Notification "1" *-- "0..*" NotificationAttempt : attempts
-NotificationRecipient *-- RecipientAddress : destination
-Notification --> DomainEvent : reacts to
-NotificationPreference --> RecipientAddress : configures
-NotificationPolicy ..> NotificationRepository : loads
-NotificationPolicy ..> DeliveryChannelPort : dispatches
-NotificationPolicy --> NotificationPreference : applies
+Notification --> NotificationTemplateId : typed root ID
+Notification --> BusinessFactReference : source fact reference
+NotificationPreference --> RecipientReference : typed recipient reference
+PushSubscription --> RecipientReference : typed recipient reference
+PushSubscription --> SecureEndpointReference : protected endpoint reference
+ChannelSelectionPolicy --> NotificationPreference : pure rule
+RetryPolicy --> NotificationAttempt : pure rule
+NotificationRepository ..> Notification : persists
+NotificationTemplateRepository ..> NotificationTemplate : persists
+NotificationPreferenceRepository ..> NotificationPreference : persists
+PushSubscriptionRepository ..> PushSubscription : persists
+Notification -[hidden]down-> NotificationTemplate
+NotificationTemplate -[hidden]down-> NotificationPreference
+NotificationPreference -[hidden]down-> PushSubscription
 
-legend right
-TARGET / current scope / tactical design aid
-Notification is delivery state, not business truth; source event remains authoritative.
-Preferences and recipients are tenant-scoped; retries are explicit attempts.
-*-- composition | --> domain dependency | ..> port/use
-endlegend
+note right of Notification
+Delivery state never changes the source business fact.
+end note
+
+note right of PushSubscription
+Independent delivery root. Provider delivery is application and infrastructure work.
+end note
 @enduml

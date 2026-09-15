@@ -1,7 +1,6 @@
 @startuml
-title BC-10 Target Database Diagram
+title BC-10 Notifications — Logical Database Design
 left to right direction
-hide methods
 skinparam shadowing false
 skinparam linetype ortho
 skinparam entity {
@@ -10,68 +9,39 @@ skinparam entity {
   FontColor #0F172A
 }
 
-entity "notification_template" as t_notification_template {
+entity "notification_template" as notification_template {
   * template_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * event_type : varchar(160) <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * template_key : varchar(160) <<required>>
   * channel : varchar(32) <<required>>
   * version : integer <<required>>
   * content_snapshot : jsonb <<required>>
   * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
+    unique(tenant_id, template_key, channel, version)
 }
 
-entity "notification" as t_notification {
+entity "notification" as notification {
   * notification_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-    template_id : uuid <<FK>>
-  * event_id : uuid <<required>>
-  * event_type : varchar(160) <<required>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * template_id : uuid <<required, BC-10 ID>>
+  * source_event_id : uuid <<required>>
+  * source_context : varchar(80) <<required>>
+  * source_event_type : varchar(160) <<required>>
   * status : varchar(32) <<required>>
-  * scheduled_at : timestamptz <<required>>
-    delivered_at : timestamptz
   * version : integer <<required>>
+    unique(tenant_id, source_context, source_event_id, template_id)
 }
 
-entity "notification_recipient" as t_notification_recipient {
+entity "notification_recipient" as notification_recipient {
   * recipient_id : uuid <<PK>>
   * notification_id : uuid <<FK, required>>
-  * recipient_key : varchar(240) <<required>>
-  * channel_address : varchar(320) <<required>>
-  * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-}
-
-entity "notification_preference" as t_notification_preference {
-  * preference_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * recipient_key : varchar(240) <<required>>
-  * event_type : varchar(160) <<required>>
+  * recipient_reference : varchar(240) <<required>>
   * channel : varchar(32) <<required>>
-  * enabled : boolean <<required>>
-  * updated_at : timestamptz <<required>>
-}
-
-entity "push_subscription" as t_push_subscription {
-  * push_subscription_id : uuid <<PK>>
-  * tenant_id : uuid <<required>>
-  * workspace_id : uuid <<required>>
-  * recipient_key : varchar(240) <<required>>
-  * surface : varchar(32) <<required>>
-  * installation_id : varchar(160) <<required>>
-  * platform : varchar(16) <<required>>
-  * provider_token_hash : char(64) <<required>>
+  * destination_snapshot : varchar(320) <<required>>
   * status : varchar(32) <<required>>
-  * created_at : timestamptz <<required>>
-  * updated_at : timestamptz <<required>>
-  * last_seen_at : timestamptz <<required>>
-  * version : bigint <<required>>
 }
 
-entity "notification_attempt" as t_notification_attempt {
+entity "notification_attempt" as notification_attempt {
   * attempt_id : uuid <<PK>>
   * notification_id : uuid <<FK, required>>
   * recipient_id : uuid <<FK, required>>
@@ -82,15 +52,42 @@ entity "notification_attempt" as t_notification_attempt {
   * attempted_at : timestamptz <<required>>
 }
 
-t_notification }o--|| t_notification_template : template_id
-t_notification_recipient }o--|| t_notification : notification_id
-t_notification_attempt }o--|| t_notification : notification_id
-t_notification_attempt }o--|| t_notification_recipient : recipient_id
+entity "notification_preference" as notification_preference {
+  * preference_id : uuid <<PK>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * recipient_reference : varchar(240) <<required>>
+  * event_type : varchar(160) <<required>>
+  * channel : varchar(32) <<required>>
+  * enabled : boolean <<required>>
+    unique(tenant_id, recipient_reference, event_type, channel)
+}
+
+entity "push_subscription" as push_subscription {
+  * subscription_id : uuid <<PK>>
+  * tenant_id : uuid <<required, BC-01 ID>>
+  * recipient_reference : varchar(240) <<required>>
+  * installation_id : varchar(160) <<required>>
+  * platform : varchar(16) <<required>>
+  * provider_endpoint_reference : varchar(500) <<required, protected technical reference>>
+  * provider_token_hash : char(64) <<required>>
+  * status : varchar(32) <<required>>
+  * version : bigint <<required>>
+    unique(tenant_id, installation_id)
+}
+
+notification_recipient }o--|| notification : notification_id
+notification_attempt }o--|| notification : notification_id
+notification_attempt }o--|| notification_recipient : recipient_id
+
+note bottom of push_subscription
+PushSubscription is an independent root.
+provider_endpoint_reference resolves through protected infrastructure storage;
+provider_token_hash supports deduplication and never enables delivery alone.
+end note
 
 legend right
-TARGET / BC-10 logical relational ownership / SQL is the authority
-PK = primary key | FK = same-owner foreign key
-required = NOT NULL | cross-BC IDs are deliberately not FK
-This PlantUML file is a visual projection for review.
+PK = primary key | FK = local foreign key | required = NOT NULL.
+Source event columns are published-language references, not foreign keys.
+Delivery attempts cannot change the source context state.
 endlegend
 @enduml

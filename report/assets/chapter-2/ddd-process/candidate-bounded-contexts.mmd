@@ -1,0 +1,59 @@
+flowchart TB
+  classDef core fill:#FFF4EC,stroke:#D85B00,stroke-width:2px,color:#111
+  classDef supporting fill:#EEF6FF,stroke:#3979A8,stroke-width:1.5px,color:#111
+  classDef generic fill:#F6F6F6,stroke:#777,stroke-width:1.5px,color:#111
+  classDef external fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111
+
+  subgraph foundation["Governance and commercial inputs"]
+    direction LR
+    bc01["BC-01<br/>Tenant & Access<br/>Governance"]:::supporting
+    bc02["BC-02<br/>Customer & Buyer<br/>Relationships"]:::supporting
+    bc03["BC-03<br/>Catalog & Commercial<br/>Policy"]:::supporting
+    bc01 --> bc02 --> bc03
+  end
+
+  subgraph coreDomain["Core commercial and physical operation"]
+    direction LR
+    bc04["BC-04<br/>Sales<br/>Commitment"]:::core
+    bc05["BC-05<br/>Inventory<br/>Availability"]:::core
+    bc06["BC-06<br/>Fulfillment &<br/>Delivery"]:::core
+    bc04 -->|"protection decision"| bc05
+    bc04 -->|"confirmed order"| bc06
+    bc05 -->|"physical allocation"| bc06
+  end
+
+  subgraph financial["Financial authority"]
+    direction LR
+    bc07["BC-07<br/>Credit &<br/>Receivables"]:::supporting
+    paymentProvider["Payment Provider"]:::external
+    bc08["BC-08<br/>Payments"]:::generic
+    paymentProvider -->|"translated result"| bc08
+    bc08 -->|"confirmed payment"| bc07
+  end
+
+  subgraph downstream["Document, communication and history"]
+    direction LR
+    bc09["BC-09<br/>Business<br/>Documents"]:::generic
+    bc10["BC-10<br/>Notifications"]:::generic
+    bc11["BC-11<br/>Business<br/>Traceability"]:::supporting
+    bc09 -->|"document fact"| bc10
+    bc10 -->|"delivery outcome"| bc11
+  end
+
+  bc02 -->|"eligible relationship"| bc04
+  bc03 -->|"resolved offer"| bc04
+  bc04 -->|"credit demand"| bc07
+  bc06 -->|"delivery fact"| bc09
+  bc07 -->|"receivable fact"| bc09
+  bc08 -->|"payment fact"| bc09
+  bc06 -->|"confirmed fact"| bc10
+  bc08 -->|"confirmed fact"| bc10
+  bc06 -->|"significant fact"| bc11
+  bc07 -->|"significant fact"| bc11
+  bc08 -->|"significant fact"| bc11
+  bc09 -->|"significant fact"| bc11
+
+  style foundation fill:none,stroke:#6B7280,stroke-width:1px
+  style coreDomain fill:none,stroke:#6B7280,stroke-width:1px
+  style financial fill:none,stroke:#6B7280,stroke-width:1px
+  style downstream fill:none,stroke:#6B7280,stroke-width:1px

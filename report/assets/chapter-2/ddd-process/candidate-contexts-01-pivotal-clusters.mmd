@@ -1,0 +1,49 @@
+flowchart LR
+  classDef event fill:#F9A66C,stroke:#A84A00,stroke-width:1.4px,color:#111
+  classDef object fill:#F7E27D,stroke:#9A7B00,stroke-width:1.3px,color:#111
+  classDef candidate fill:#EAF4FF,stroke:#3979A8,stroke-width:1.5px,color:#111
+
+  eventstorm["EventStorming"]:::object
+  onboarding["Tenant Activated"]:::event
+  relationship["Buyer Relationship Approved"]:::event
+  commercial["Commercial Commitment Established"]:::event
+  inventory["Physical Allocation Executed"]:::event
+  delivery["Delivery Attempted"]:::event
+  payment["Payment Confirmed"]:::event
+  document["Business Document Issued"]:::event
+
+  subgraph governance["Initial cluster: governance and relationship"]
+    tenant["Tenant, Workspace and Membership"]:::candidate
+    buyer["Customer Account and Buyer Relationship"]:::candidate
+  end
+
+  subgraph commercialCluster["Initial cluster: commercial decision"]
+    catalog["Product, SKU and Offer"]:::candidate
+    commitment["Purchase Request, Commitment and Sales Order"]:::candidate
+  end
+
+  subgraph operations["Initial cluster: physical operation"]
+    availability["Reservation, Backing and Allocation"]:::candidate
+    fulfillment["Fulfillment, Delivery and POD"]:::candidate
+  end
+
+  subgraph financial["Initial cluster: financial and downstream facts"]
+    credit["Credit and Receivable"]:::candidate
+    payments["Payment translation"]:::candidate
+    records["Document, Notification and Traceability"]:::candidate
+  end
+
+  eventstorm --> onboarding --> tenant
+  eventstorm --> relationship --> buyer
+  eventstorm --> commercial --> commitment
+  commercial --> catalog
+  eventstorm --> inventory --> availability
+  eventstorm --> delivery --> fulfillment
+  eventstorm --> payment --> payments
+  eventstorm --> document --> records
+  payment --> credit
+
+  style governance fill:none,stroke:#6B7280,stroke-width:1px
+  style commercialCluster fill:none,stroke:#6B7280,stroke-width:1px
+  style operations fill:none,stroke:#6B7280,stroke-width:1px
+  style financial fill:none,stroke:#6B7280,stroke-width:1px

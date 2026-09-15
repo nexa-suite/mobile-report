@@ -41,7 +41,7 @@
       - [2.5.1.2. Domain Message Flows Modeling](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.1-eventstorming/2.5.1.2-domain-message-flows-modeling.md)
     - [2.5.2. Context Mapping](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.2-context-mapping.md)
     - [2.5.3. Software Architecture](../02-requirements-and-software-solution-design/2.5-strategic-level-domain-driven-design/2.5.3-software-architecture.md)
-  - [2.6. Tactical-Level Domain-Driven Design](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-01-tenant-access-governance.md)
+  - [2.6. Tactical-Level Domain-Driven Design](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/2.6-tactical-level-domain-driven-design.md)
     - [2.6.1. Bounded Context: Tenant & Access Governance](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-01-tenant-access-governance.md)
     - [2.6.2. Bounded Context: Customer & Buyer Relationships](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-02-customer-buyer-relationships.md)
     - [2.6.3. Bounded Context: Catalog & Commercial Policy](../02-requirements-and-software-solution-design/2.6-tactical-level-domain-driven-design/bounded-contexts/BC-03-catalog-commercial-policy.md)

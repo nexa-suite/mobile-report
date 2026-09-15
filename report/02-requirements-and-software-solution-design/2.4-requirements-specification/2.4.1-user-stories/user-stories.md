@@ -10,18 +10,17 @@ decisión. Ninguno crea una autoridad de negocio alternativa en Mobile.
 
 Los Journey Maps de la sección 2.3 permanecen como recorridos As-Is centrados en
 persona. Esta tabla es un suplemento de trazabilidad hacia el escenario To-Be;
-no crea Journey Maps To-Be, no convierte hipótesis en hallazgos y no declara
-implementación ni aceptación.
+no crea Journey Maps To-Be, no convierte evidencia de problema en validación de
+solución y no declara implementación ni aceptación.
 
-**Tabla**<br>
 *Trazabilidad del escenario As-Is hacia los resultados To-Be de Nexa Mobile*
 | Segmento | Problema o hipótesis actual | Desired outcome | User Stories | Sprint | Domain boundary | Evidence status |
 | --- | --- | --- | --- | --- | --- | --- |
-| Contexto de trabajo autorizado | El retorno al trabajo puede exponer contexto vencido, ajeno o no autorizado. Hipótesis As-Is transversal; no se presenta como hallazgo de un segmento distinto. | Revalidar Tenant, Workspace y permiso antes de mostrar trabajo protegido. | `MOB-US-001`, `MOB-US-002`, `MOB-US-003` | Sprint 1 | BC-01 Tenant & Access Governance | **NOT EVIDENCED** — hipótesis transversal; no hay investigación directa válida de este comportamiento. |
-| `MOB-SEG-01 — Warehouse & Dispatch Operations` | La preparación, readiness y handoff pueden exigir reconstrucción, aclaraciones u omisiones cuando cambia la responsabilidad. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Continuidad de contexto entre trabajo Warehouse, recepción, preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`, `MOB-US-011–MOB-US-022`, `MOB-US-050`, `MOB-US-051`, `MOB-US-052`, `MOB-US-053`, `MOB-US-054`, `MOB-US-055`, `MOB-US-056`, `MOB-US-073` | Sprint 1; Sprint 2; Sprint 4 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-02 — Driver Delivery Execution` | El resultado, la incidencia y la evidencia de un Delivery Attempt pueden quedar sin atribución o requerir reconstrucción. Hipótesis As-Is, sin entrevistas directas válidas en el corte. | Ejecutar una entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023–MOB-US-035`, `MOB-US-045`, `MOB-US-046`, `MOB-US-057–MOB-US-069` | Sprint 2; Sprint 3; Sprint 4 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **NOT EVIDENCED** — hipótesis As-Is; no hay entrevistas directas de este segmento. |
-| `MOB-SEG-03 — B2B Buyers` | La expectativa de llegada, la verificación y la comunicación de discrepancias pueden depender de coordinación manual. El registro disponible aporta dos entrevistas Buyer válidas, sin caracterizar el segmento. | Consultar relación comercial, pedido, crédito, recepción y discrepancia con contexto, preservando hechos previos y soporte humano cuando corresponda. | `MOB-US-036–MOB-US-049`, `MOB-US-064`, `MOB-US-067`, `MOB-US-068`, `MOB-US-069`, `MOB-US-070`, `MOB-US-071` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PARTIAL** — `n = 2` entrevistas Buyer documentadas; mínimo requerido: 3–5. |
-| Representante de empresa prospectiva | La comprensión de la propuesta B2B, los límites del producto y el siguiente paso comercial no está validada mediante investigación directa en este corte. | Comprender Nexa, contrastar el ajuste operativo y solicitar contacto u onboarding sin crear un Tenant o Workspace por sí solo. | `LAND-US-001`, `LAND-US-002`, `LAND-US-003`, `LAND-US-004`, `LAND-US-005`, `LAND-US-006` | Sprint 2 | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships | **NOT EVIDENCED** — hipótesis de adquisición; no se presentan entrevistas inexistentes. |
+| Contexto de trabajo autorizado | El retorno al trabajo puede exponer contexto vencido, ajeno o no autorizado. Es una hipótesis transversal de Product y Security, no un hallazgo de segmento. | Revalidar Tenant, Workspace y permiso antes de mostrar trabajo protegido. | `MOB-US-001`, `MOB-US-002`, `MOB-US-003` | Sprint 1 | BC-01 Tenant & Access Governance | **PRODUCT / SECURITY REQUIREMENT** — no se reclama evidencia primaria directa. |
+| `MOB-SEG-01 — Warehouse & Dispatch Operations` | En la muestra, la verificación antecede la continuidad del pedido; aparecen excepciones, canales complementarios e información fragmentada o duplicada en parte de los casos. | Ofrecer identificación autorizada y contexto de trabajo para preparación y handoff, con hechos confirmados por el servidor y trazabilidad revisable. | `MOB-US-004`, `MOB-US-011–MOB-US-022`, `MOB-US-050`, `MOB-US-051`, `MOB-US-052`, `MOB-US-053`, `MOB-US-054`, `MOB-US-055`, `MOB-US-056`, `MOB-US-073` | Sprint 1; Sprint 2; Sprint 4 | BC-05 Inventory Availability; BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **PRIMARY RESEARCH EVIDENCE — n=3.** Dos casos Warehouse y uno Dispatch; las conclusiones de Dispatch son acotadas. |
+| `MOB-SEG-02 — Driver Delivery Execution` | En la muestra, verificación, incidencia, comunicación o escalamiento y algún mecanismo de evidencia acompañan el Delivery Attempt bajo restricciones móviles diversas. | Presentar contexto de entrega asignada y conservar resultado, incidencia y evidencia atribuibles sin convertir el cliente en autoridad de Delivery. | `MOB-US-023–MOB-US-035`, `MOB-US-045`, `MOB-US-046`, `MOB-US-057–MOB-US-069` | Sprint 2; Sprint 3; Sprint 4 | BC-06 Fulfillment & Delivery; BC-11 Business Traceability | **PRIMARY RESEARCH EVIDENCE — n=3.** La evidencia varía entre fotografía y código; no se asume un formato único. |
+| `MOB-SEG-03 — B2B Buyers` | Reabastecimiento, continuidad de suministro, puntualidad y coordinación con proveedores dominan el aprendizaje; recepción y discrepancia permanecen como subescenario importante. | Dar visibilidad comercial o de reabastecimiento, continuidad de solicitud o pedido y, cuando aplica, recepción o discrepancia con contexto y soporte humano. | `MOB-US-036–MOB-US-049`, `MOB-US-064`, `MOB-US-067`, `MOB-US-068`, `MOB-US-069`, `MOB-US-070`, `MOB-US-071` | Sprint 2; Sprint 3; Sprint 4 | BC-02 Customer & Buyer Relationships; BC-04 Sales Commitment; BC-06 Fulfillment & Delivery; BC-07 Credit & Receivables; BC-11 Business Traceability | **PRIMARY RESEARCH EVIDENCE — n=3.** La recepción física detallada se concentra con mayor profundidad en un caso. |
+| Representante de empresa prospectiva | La comprensión de la propuesta B2B, los límites del producto y el siguiente paso comercial no fueron objeto de esta muestra. | Comprender Nexa, contrastar el ajuste operativo y solicitar contacto u onboarding sin crear un Tenant o Workspace por sí solo. | `LAND-US-001`, `LAND-US-002`, `LAND-US-003`, `LAND-US-004`, `LAND-US-005`, `LAND-US-006` | Sprint 2 | BC-01 Tenant & Access Governance; BC-02 Customer & Buyer Relationships | **NO PRIMARY RESEARCH** — adquisición no fue parte de la campaña de Needfinding. |
 
 La trazabilidad operativa es: problema o hipótesis As-Is → resultado deseado
 To-Be → User Story → Sprint → estado de evidencia. El resultado deseado es una
@@ -29,7 +28,6 @@ dirección de diseño, no prueba de que Nexa Mobile ya exista.
 
 ### To-Be Scenario Mapping
 
-**Tabla**<br>
 *Mapeo de escenarios objetivo To-Be y Functional User Stories relacionadas*
 | Escenario objetivo | Actor y proyección | Comportamiento objetivo | Historias relacionadas |
 | --- | --- | --- | --- |
@@ -37,12 +35,30 @@ dirección de diseño, no prueba de que Nexa Mobile ya exista.
 | Warehouse Work Overview, Receiving, Identification and Preparation | Business Operations Manager; Warehouse Operator; Operations Mobile | La persona entra en un contexto autorizado, revisa el trabajo Warehouse y después identifica Product/SKU, registra hechos físicos y prepara trabajo con lote, condición y evidencia. | MOB-US-001, MOB-US-002, MOB-US-003, MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019 |
 | Dispatch Readiness and Handoff | Dispatch Coordinator; Operations Mobile | La persona verifica bienes, asigna responsabilidad y registra un Dispatch Handoff revisable. | MOB-US-020, MOB-US-021, MOB-US-022, MOB-US-023, MOB-US-024, MOB-US-025 |
 | Driver Delivery Execution | Driver / Delivery Operator; Operations Mobile | La persona trabaja sobre una Delivery asignada, abre navegación externa cuando corresponde y registra Delivery Attempt, Driver Outcome y Proof of Delivery. | MOB-US-026–MOB-US-034 |
+| Buyer Replenishment & Commercial Continuity | Customer Buyer; Buyer Mobile | La persona identifica una necesidad de reabastecimiento, consulta contexto comercial relevante, prepara o repite una solicitud, sigue pedido o llegada y responde a un cambio antes de proteger continuidad de su negocio. | MOB-US-036, MOB-US-037, MOB-US-038, MOB-US-039, MOB-US-040, MOB-US-041, MOB-US-042, MOB-US-043 |
 | Buyer Handoff, Receipt and Discrepancy | Customer Buyer; Buyer Mobile | La persona verifica el handoff, declara el Buyer Receipt y comunica discrepancias sin borrar hechos previos. | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
 | Acquisition, Contact and Onboarding Initiation | Prospective Company Representative; Landing pública | La Landing explica Nexa, habilita contacto y recibe una solicitud sin crear un Tenant o Workspace como hecho autoritativo. | LAND-US-001, LAND-US-002, LAND-US-003, LAND-US-004, LAND-US-005, LAND-US-006 |
 
+#### Buyer Replenishment & Commercial Continuity
+
+Este escenario To-Be responde al aprendizaje de continuidad comercial sin
+reducir el segmento Buyer a la recepción. La secuencia prevista es identificar
+necesidad de reabastecimiento, consultar producto o disponibilidad comercial,
+preparar o repetir una solicitud, seguir pedido o llegada, responder a una
+demora o excepción y proteger la disponibilidad para clientes propios. La
+recepción y la verificación permanecen cuando aplican, sin reemplazar los hechos
+registrados por Driver.
+
+El escenario interpreta historias existentes: `MOB-US-036` y `MOB-US-037` para
+explorar producto, precio y disponibilidad; `MOB-US-038`, `MOB-US-039` y
+`MOB-US-040` para preparar, repetir o enviar una solicitud o Direct Order;
+`MOB-US-041` y `MOB-US-042` para responder a cambios y seguir solicitudes o
+pedidos. `MOB-US-043` aporta contexto de crédito y pago cuando resulta relevante;
+`MOB-US-070` y `MOB-US-071` continúan como seguimiento documental o financiero.
+Esta interpretación no crea historias, no cambia Story Points ni modifica Sprint.
+
 #### Reglas transversales
 
-**Tabla**<br>
 *Reglas transversales aplicables al escenario To-Be de Nexa Mobile*
 | Regla | Aplicación en el To-Be |
 | --- | --- |
@@ -80,7 +96,6 @@ contratos; Sprint 4 consolida Flutter/Dart en target iOS. Estas asignaciones son
 planificación académica, no evidencia de implementación, build, instalación o
 aceptación.
 
-**Tabla**<br>
 *Distribución del único Product Backlog por Sprint*
 | Sprint | Landing | Mobile Functional | Technical | Spikes | Total | SP |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -95,7 +110,6 @@ aceptación.
 Un Epic agrupa requisitos de producto. No representa un Bounded Context, una
 pantalla, una aplicación ni una unidad de despliegue.
 
-**Tabla**<br>
 *Registro de Epics y Functional User Stories del catálogo de Nexa Mobile*
 | Epic | Resultado agrupado | Sprints | Stories |
 | --- | --- | --- | --- |
@@ -114,13 +128,12 @@ pantalla, una aplicación ni una unidad de despliegue.
 
 #### Segmentos y actores actuales
 
-**Tabla**<br>
 *Segmentos de investigación, actores priorizados y estado de evidencia*
 | Segmento de investigación y producto | Actores priorizados | Proyección | Estado de evidencia |
 | --- | --- | --- | --- |
-| Warehouse & Dispatch Operations | Warehouse Operator; Dispatch Coordinator | Nexa Operations Mobile | Por contrastar mediante investigación directa |
-| Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | Por contrastar mediante investigación directa |
-| B2B Buyers | Customer Buyer | Nexa Buyer Mobile | Por contrastar mediante investigación directa |
+| Warehouse & Dispatch Operations | Warehouse Operator; Dispatch Coordinator | Nexa Operations Mobile | PRIMARY RESEARCH EVIDENCE — n=3; Warehouse y Dispatch permanecen diferenciados. |
+| Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | PRIMARY RESEARCH EVIDENCE — n=3; contexto y evidencia varían por operación. |
+| B2B Buyers | Customer Buyer | Nexa Buyer Mobile | PRIMARY RESEARCH EVIDENCE — n=3; reabastecimiento y continuidad comercial incluyen receipt cuando aplica. |
 
 Mobile User es una abstracción transversal de MOB-US-001, MOB-US-002 y MOB-US-003. Sirve a
 Warehouse Operator, Dispatch Coordinator, Driver / Delivery Operator y
@@ -136,15 +149,15 @@ historias del segmento investigado B2B Buyers.
 
 #### Trazabilidad a nivel de Epic y cluster
 
-**Tabla**<br>
 *Trazabilidad entre Epics, segmentos, Needfinding y escenarios To-Be*
 | Epic / cluster | Current actor/segment | Lean UX relationship | Needfinding evidence | To-Be scenario | Stories |
 | --- | --- | --- | --- | --- | --- |
-| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Por contrastar mediante investigación directa; no se reclasifica evidencia histórica. | Authorized Mobile Work Context | MOB-US-001, MOB-US-002, MOB-US-003 |
-| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Business Operations Manager, Warehouse Operator y Dispatch Coordinator | La continuidad entre contexto, hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Por contrastar mediante investigación directa; se requiere investigación específica del segmento actual. | Warehouse Work Overview, Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019–MOB-US-025 |
-| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Por contrastar mediante investigación directa; no se renombra evidencia operativa previa como investigación de Driver. | Driver Delivery Execution | MOB-US-026, MOB-US-027, MOB-US-028, MOB-US-031, MOB-US-032, MOB-US-033, MOB-US-034 |
-| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Por contrastar mediante investigación directa; no se fabrican entrevistas de Buyer. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
-| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | Por contrastar mediante investigación directa | Acquisition, Contact and Onboarding Initiation | LAND-US-001, LAND-US-002, LAND-US-003, LAND-US-004, LAND-US-005, LAND-US-006 |
+| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Product y Security requirement; no se reclama evidencia primaria directa. | Authorized Mobile Work Context | MOB-US-001, MOB-US-002, MOB-US-003 |
+| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Business Operations Manager, Warehouse Operator y Dispatch Coordinator | La continuidad entre contexto, hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Evidencia primaria del segmento: verificación, excepciones, coordinación y transferencia; Dispatch permanece acotado. | Warehouse Work Overview, Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019–MOB-US-025 |
+| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Evidencia primaria del segmento: verificación, incidencias, comunicación, mecanismos de evidencia y límites móviles. | Driver Delivery Execution | MOB-US-026, MOB-US-027, MOB-US-028, MOB-US-031, MOB-US-032, MOB-US-033, MOB-US-034 |
+| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Evidencia primaria Buyer: continuidad de suministro y puntualidad; receipt detallado se acota a un caso. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
+| MOBILE-EPIC-06 / 11 — continuidad comercial Buyer | B2B Buyers; Customer Buyer | La continuidad comercial complementa el baseline de recepción sin cambiar H3. | Evidencia primaria Buyer: reabastecimiento, coordinación con proveedor y protección de disponibilidad. | Buyer Replenishment & Commercial Continuity | MOB-US-036, MOB-US-037, MOB-US-038, MOB-US-039, MOB-US-040, MOB-US-041, MOB-US-042, MOB-US-043, MOB-US-070, MOB-US-071 |
+| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | No hubo investigación primaria de adquisición en esta campaña. | Acquisition, Contact and Onboarding Initiation | LAND-US-001, LAND-US-002, LAND-US-003, LAND-US-004, LAND-US-005, LAND-US-006 |
 
 #### Landing Page User Stories
 

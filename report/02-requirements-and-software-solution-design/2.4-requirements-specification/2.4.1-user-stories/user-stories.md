@@ -84,8 +84,8 @@ aceptación.
 *Distribución del único Product Backlog por Sprint*
 | Sprint | Landing | Mobile Functional | Technical | Spikes | Total | SP |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Sprint 1 | 0 | 4 | 1 | 0 | 5 | 18 |
-| Sprint 2 | 6 | 21 | 6 | 4 | 37 | 145 |
+| Sprint 1 | 0 | 4 | 2 | 0 | 6 | 19 |
+| Sprint 2 | 6 | 21 | 5 | 4 | 36 | 144 |
 | Sprint 3 | 0 | 24 | 3 | 2 | 29 | 129 |
 | Sprint 4 | 0 | 24 | 2 | 0 | 26 | 134 |
 | **Total** | **6** | **73** | **12** | **6** | **97** | **426** |
@@ -251,7 +251,7 @@ historias del segmento investigado B2B Buyers.
 </table>
 
 **Tabla**<br>
-*MOB-US-001 — Continuar el trabajo autorizado después de volver a Nexa*
+*MOB-US-001 — Acceder y continuar el trabajo autorizado en Nexa*
 
 <table>
 <thead>
@@ -259,11 +259,11 @@ historias del segmento investigado B2B Buyers.
 </thead>
 <tbody>
 <tr><td>MOB-US-001</td><td>Mobile User</td><td>High</td><td>MOBILE-EPIC-01 — Acceso seguro y contexto de trabajo</td></tr>
-<tr><th>Title</th><td colspan="3">Continuar el trabajo autorizado después de volver a Nexa</td></tr>
+<tr><th>Title</th><td colspan="3">Acceder y continuar el trabajo autorizado en Nexa</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Mobile User</strong>, deseo continuar de forma segura el trabajo autorizado al volver a Nexa, para reanudarlo sin exponer información protegida.</td></tr>
+<tr><td colspan="4">Como <strong>Mobile User</strong>, deseo acceder y continuar de forma segura el trabajo autorizado en Nexa, para iniciar o recuperar mi sesión sin exponer información protegida ni convertir el cliente en autoridad.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Retorno válido</strong></p><p><strong>Given</strong> una sesión válida y no revocada</p><p><strong>When</strong> la persona vuelve a Nexa</p><p><strong>Then</strong> Nexa confirma su identidad y expone solo el trabajo permitido.</p><p><strong>Scenario: Retorno expirado</strong></p><p><strong>Given</strong> una sesión expirada, revocada o malformada</p><p><strong>When</strong> la persona vuelve</p><p><strong>Then</strong> Nexa solicita nuevamente su identidad y no expone información protegida.</p><p><strong>Scenario: Confirmación no disponible</strong></p><p><strong>Given</strong> no se puede confirmar la identidad</p><p><strong>When</strong> la persona vuelve sin conexión</p><p><strong>Then</strong> Nexa indica que el trabajo no está disponible y no expone información protegida.</p><p><strong>Scenario: Reintento seguro</strong></p><p><strong>Given</strong> la persona repite el mismo retorno</p><p><strong>When</strong> Nexa lo procesa</p><p><strong>Then</strong> no duplica ninguna acción de negocio ni revela secretos.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Sin sesión válida</strong></p><p><strong>Given</strong> no existe una sesión válida</p><p><strong>When</strong> la persona abre Nexa</p><p><strong>Then</strong> Nexa solicita autenticación antes de exponer trabajo protegido.</p><p><strong>Scenario: Retorno o recuperación válidos</strong></p><p><strong>Given</strong> existe una sesión vigente y no revocada</p><p><strong>When</strong> la persona vuelve a Nexa o recupera el trabajo</p><p><strong>Then</strong> el servidor confirma la identidad y Nexa expone sólo el trabajo permitido.</p><p><strong>Scenario: Sesión expirada, revocada o inválida</strong></p><p><strong>Given</strong> la sesión está expirada, revocada, malformada o no puede validarse</p><p><strong>When</strong> Nexa procesa el acceso o retorno</p><p><strong>Then</strong> invalida el estado local correspondiente, solicita nuevamente la identidad y no expone información protegida.</p><p><strong>Scenario: Cierre de sesión</strong></p><p><strong>Given</strong> la persona decide cerrar sesión</p><p><strong>When</strong> Nexa confirma el cierre</p><p><strong>Then</strong> invalida la sesión local y el siguiente acceso requiere nueva confirmación autorizada.</p><p><strong>Scenario: Confirmación no disponible</strong></p><p><strong>Given</strong> no se puede confirmar la identidad con el servidor</p><p><strong>When</strong> la persona intenta acceder o volver</p><p><strong>Then</strong> Nexa indica que el trabajo no está disponible y no usa un estado local como autoridad.</p></td></tr>
 </tbody>
 </table>
 
@@ -421,7 +421,7 @@ historias del segmento investigado B2B Buyers.
 </table>
 
 **Tabla**<br>
-*MOB-US-011 — Identificar un producto mediante el código del paquete o etiqueta*
+*MOB-US-011 — Identificar un producto mediante escaneo directo del código del paquete o etiqueta*
 
 <table>
 <thead>
@@ -429,11 +429,11 @@ historias del segmento investigado B2B Buyers.
 </thead>
 <tbody>
 <tr><td>MOB-US-011</td><td>Warehouse Operator</td><td>Critical</td><td>MOBILE-EPIC-02 — Recepción, identificación y preparación de almacén</td></tr>
-<tr><th>Title</th><td colspan="3">Identificar un producto mediante el código del paquete o etiqueta</td></tr>
+<tr><th>Title</th><td colspan="3">Identificar un producto mediante escaneo directo del código del paquete o etiqueta</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo identificar un producto desde el código del paquete o etiqueta, para manipular el producto correcto durante el trabajo de almacén.</td></tr>
+<tr><td colspan="4">Como <strong>Warehouse Operator</strong>, deseo identificar un producto mediante el escaneo directo del código del paquete o etiqueta, para manipular el producto correcto durante el trabajo de almacén sin decidir localmente su identidad.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Una coincidencia</strong></p><p><strong>Given</strong> un código permitido tiene una única coincidencia</p><p><strong>When</strong> el operador lo proporciona</p><p><strong>Then</strong> Nexa identifica el producto antes de cualquier acción de stock.</p><p><strong>Scenario: Código desconocido</strong></p><p><strong>Given</strong> el código es desconocido, ambiguo o está fuera del alcance de la persona</p><p><strong>When</strong> el operador lo proporciona</p><p><strong>Then</strong> Nexa lo rechaza y no adivina.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> la cámara o el scanner no está disponible</p><p><strong>When</strong> el operador no puede proporcionar un código</p><p><strong>Then</strong> puede usar la búsqueda manual de producto.</p><p><strong>Scenario: Identificación repetida</strong></p><p><strong>Given</strong> el operador proporciona nuevamente el mismo código</p><p><strong>When</strong> Nexa lo resuelve</p><p><strong>Then</strong> la identificación por sí sola no crea un hecho de recepción ni de picking.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Escaneo directo con coincidencia única</strong></p><p><strong>Given</strong> la cámara obtiene un código permitido con una única coincidencia</p><p><strong>When</strong> el operador lo escanea</p><p><strong>Then</strong> Nexa envía el identificador al servidor y muestra sólo la resolución autorizada antes de cualquier acción de stock.</p><p><strong>Scenario: Código desconocido o ambiguo</strong></p><p><strong>Given</strong> el código es desconocido, ambiguo o está fuera del alcance de la persona</p><p><strong>When</strong> el operador lo escanea</p><p><strong>Then</strong> Nexa comunica la resolución no válida y no adivina ni selecciona un producto localmente.</p><p><strong>Scenario: Cámara no disponible</strong></p><p><strong>Given</strong> falta permiso de cámara o el scanner no está disponible</p><p><strong>When</strong> el operador intenta iniciar el escaneo</p><p><strong>Then</strong> Nexa comunica el límite de forma segura y no identifica un producto.</p><p><strong>Scenario: Identificación repetida</strong></p><p><strong>Given</strong> el operador escanea nuevamente el mismo código</p><p><strong>When</strong> Nexa lo resuelve</p><p><strong>Then</strong> la identificación por sí sola no crea un hecho de recepción ni de picking.</p></td></tr>
 </tbody>
 </table>
 

@@ -29,8 +29,9 @@ flow:
 
 1. **Accepted product, domain, architecture, and design decisions** define
    scope and semantics.
-2. **Mobile** provides planned B2B field experiences; it is not evidence of a
-   completed native client.
+2. **Mobile** has an initial native Android/Kotlin implementation track with
+   Sprint 1 implementation evidence; it does not claim the complete Mobile
+   product is finished.
 3. **Mobile Report** organizes academic chapters, source materials, evidence
    boundaries, and export assets.
 4. **API** provides business and integration-contract context.
@@ -59,13 +60,13 @@ study exists.
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Documentation for planned B2B buyer and operational field experiences, with
-cold-chain specialization. No mobile application framework is established by
-this report.
+Documentation for B2B buyer and operational field experiences, with cold-chain
+specialization. Native Android/Kotlin is the current initial implementation
+track; this report does not claim the complete Mobile product is finished.
 
 [Open Repository](https://github.com/nexa-suite/mobile)
 
-![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Status](https://img.shields.io/badge/status-planned-64748B?style=flat-square)
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Android](https://img.shields.io/badge/Android-SDK%2036-3DDC84?style=flat-square&logo=android&logoColor=white) ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-BOM%202026.06.01-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)
 
 </td>
 <td width="50%" valign="top">

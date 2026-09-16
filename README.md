@@ -66,7 +66,7 @@ track; this report does not claim the complete Mobile product is finished.
 
 [Open Repository](https://github.com/nexa-suite/mobile)
 
-![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Status](https://img.shields.io/badge/status-planned-64748B?style=flat-square)
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Android](https://img.shields.io/badge/Android-SDK%2036-3DDC84?style=flat-square&logo=android&logoColor=white) ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-BOM%202026.06.01-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)
 
 </td>
 <td width="50%" valign="top">

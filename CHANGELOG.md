@@ -2,6 +2,26 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.5.1] - 2026-09-15
+
+Patch release consolidating the latest AV1 report improvements and minor
+repository presentation and organization adjustments.
+
+### Included
+
+- Latest AV1 report integration improvements.
+- Final AV1 editorial and public-presentation corrections already completed.
+- Community Health file organization.
+- Current Nexa Mobile technology badges in README.
+- Release-level Version History update.
+
+### Invariants
+
+- Product Backlog remains 97 PBIs / 426 SP.
+- Sprint 1 remains 6 PBIs / 19 SP.
+- Needfinding remains 9/9, with `n = 3` per segment.
+- No Product/DDD/Sprint semantics changed.
+
 ## [0.5.0] - 2026-09-15
 
 Research, requirements and delivery-traceability consolidation for the Nexa

@@ -4,7 +4,8 @@ All notable changes to the public academic report are documented in this file.
 
 ## [0.5.0] - 2026-09-15
 
-Phase A and Phase B closure release for the Nexa Mobile Report.
+Research, requirements and delivery-traceability consolidation for the Nexa
+Mobile Report.
 
 ### Added
 
@@ -44,8 +45,7 @@ Phase A and Phase B closure release for the Nexa Mobile Report.
 - Needfinding evidence informs problem, user and task understanding; it does
   not validate H1, H2 or H3 solutions.
 - UXPressia visual refinements, final video capture/title-card evidence and any
-  device, deployment or production validation remain separate manual evidence
-  actions.
+  device, deployment or production validation remain separate evidence sources.
 - The consolidated interview video is accepted as a long recording and is not
   treated as a release defect.
 
@@ -127,7 +127,8 @@ Pre-AV1 academic hardening release for the Nexa Mobile Report.
 ### Evidence boundaries
 
 - Required interview coverage, final Impact Mapping, Jira/Product Board visual
-  evidence, and exposition-video evidence remain pending external inputs.
+  evidence and exposition-video evidence were outside the evidence set of this
+  release.
 
 ## [0.2.0] - 2026-09-10
 
@@ -151,8 +152,8 @@ on future implementation evidence.
 - Integrated the signed `feature/front-master`, `feature/chapter-01`,
   `feature/chapter-02`, `feature/chapter-03`, `feature/chapter-04`, and
   `feature/report-integration` histories into `develop`.
-- Strengthened AS-IS, TARGET, and `NOT YET DUE` evidence boundaries throughout
-  the report; no implementation, deployment, interview, or device result is
+- Strengthened AS-IS, TARGET and evidence-boundary wording throughout the
+  report; no implementation, deployment, interview or device result is
   represented without its source evidence.
 
 ### Validation
@@ -164,10 +165,11 @@ on future implementation evidence.
 
 ### Evidence boundaries
 
-- Jira Board creation/evidence and final UXPressia transfer/exports remain
-  explicitly open external actions.
+- Jira Board creation/evidence and final UXPressia transfer/exports were not
+  part of that release evidence set.
 - Mobile framework selection, prototypes, builds, device execution, interviews,
-  deployment, and exposition videos remain `NOT YET DUE`.
+  deployment and exposition videos were not represented as completed by that
+  release.
 
 ## [0.1.1] - 2026-09-09
 

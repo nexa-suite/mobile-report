@@ -30,7 +30,7 @@ Spike, no afirman que la PoC, la integración o el producto ya existan.
 <table>
 <thead><tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr></thead>
 <tbody>
-<tr><td>SPIKE-001</td><td>Developer</td><td>High</td><td>SPIKE-EPIC-01 — Autonomous learning feature</td></tr>
+<tr><td>SPIKE-001</td><td>Developer</td><td>High</td><td>— (Transversal)</td></tr>
 <tr><th>Title</th><td colspan="3">Investigar, evaluar e integrar una feature de aprendizaje autónomo</td></tr>
 <tr><th colspan="4">Context / uncertainty</th></tr>
 <tr><td colspan="4">No está definido qué alternativa de aprendizaje autónomo puede aportar apoyo a un flujo Mobile representativo sin delegar reglas de negocio, autorización ni hechos del dominio a un componente local.</td></tr>

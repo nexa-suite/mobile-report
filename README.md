@@ -48,9 +48,9 @@ framing, software solution design, UI/UX design, configuration management, and
 four-Sprint academic Mobile planning.
 
 It is documentation and academic evidence, not a mobile application. A report
-section may describe a planned workflow or a design artifact, but it does not
-prove that a native client, framework, build pipeline, deployment, or user
-study exists.
+section describing a planned workflow or design artifact is not implementation
+or deployment evidence; empirical claims are supported separately by their
+corresponding research evidence.
 
 ## Nexa Product Ecosystem
 

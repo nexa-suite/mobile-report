@@ -8,8 +8,7 @@ aceptada o validada.
 ### To-Be Scenario Mapping
 
 Las tres tablas siguientes mantienen las mismas Personas y fases generales del
-As-Is. Primero muestran cómo debería sentirse y desarrollarse el trabajo; la
-trazabilidad de requisitos aparece después, en un complemento separado.
+As-Is y muestran cómo debería sentirse y desarrollarse el trabajo.
 
 *Escenarios To-Be centrados en Persona*
 
@@ -46,35 +45,16 @@ haya validado su adopción.
 
 #### Requisitos transversales
 
-Las siguientes condiciones aplican a más de una Persona y, por ello, no se
-presentan como un segmento de investigación.
+Antes de mostrar trabajo protegido se confirma el contexto autorizado —empresa,
+espacio de trabajo y permiso—. El servidor confirma los hechos de negocio y cada
+Persona ve y comunica solo el trabajo, los datos y los canales que su
+responsabilidad permite. La continuidad, conectividad e integridad histórica se
+delimitan mediante las Technical Stories y el diseño técnico, sin sustituir esa
+autoridad.
 
-| Condición transversal | Aplicación en la experiencia To-Be |
-| --- | --- |
-| Contexto autorizado | Antes de mostrar trabajo protegido, se comprueban la empresa, el espacio de trabajo y el permiso que corresponden. |
-| Hechos autoritativos | El servidor confirma los hechos de negocio; Mobile no inventa identificación, inventario, crédito, pago, entrega o recepción. |
-| Límites de permiso y alcance | Cada Persona ve y comunica únicamente el trabajo, los datos y los canales que su responsabilidad permite. |
-| Continuidad y conectividad | Borradores o evidencia temporal pueden apoyar la continuidad, pero no sustituyen la confirmación de un hecho de negocio. |
-| Integridad histórica | Una corrección conserva el hecho original y añade evidencia correctiva o de reversión cuando corresponde. |
-
-#### Trazabilidad complementaria
-
-La tabla siguiente relaciona cada experiencia con capacidades y User Stories sin
-cargar la tabla principal con Sprint, Bounded Context o estado de evidencia.
-
-| Escenario | Capacidad o resultado relacionado | Historias relacionadas |
-| --- | --- | --- |
-| Alejandro Vargas | Contexto de trabajo, recepción e identificación, preparación, despacho y transferencia de responsabilidad. | `MOB-US-004`; `MOB-US-011` a `MOB-US-025`; `MOB-US-050` a `MOB-US-056` y `MOB-US-073` |
-| Diego Morales | Asignación, ejecución del intento, comunicación de incidencias, evidencia y resultado de la entrega. | `MOB-US-026` a `MOB-US-035`; `MOB-US-045` a `MOB-US-046`; `MOB-US-057` a `MOB-US-069` |
-| Carlos Mendoza | Reabastecimiento, coordinación comercial, seguimiento, recepción cuando aplica y discrepancias. | `MOB-US-036` a `MOB-US-044`; `MOB-US-047` a `MOB-US-049`; `MOB-US-067` a `MOB-US-071` |
-| Contexto autorizado — transversal | Revalidación de empresa, espacio de trabajo y permiso antes de mostrar trabajo protegido. | `MOB-US-001` a `MOB-US-003` |
-| Landing pública — fuera del Needfinding | Comprensión de la propuesta, contacto e inicio de onboarding sin crear por sí solos una empresa o espacio de trabajo autoritativos. | `LAND-US-001` a `LAND-US-006` |
-
-La relación con Sprint, Bounded Context y estado de evidencia permanece en el
-Product Backlog, DDD y los artefactos de investigación correspondientes. Las 73
-Functional User Stories, las 6 historias de Landing, las 12 Technical Stories y
-los 6 Spikes siguen planificados en el único Product Backlog; estar documentados
-o planificados no implica implementación, prueba, despliegue o aceptación.
+Los escenarios To-Be orientan los Epics y User Stories presentados a
+continuación, donde se formalizan los requisitos de producto asociados a cada
+actor y resultado esperado.
 
 ---
 
@@ -98,15 +78,6 @@ contratos; Sprint 4 consolida Flutter/Dart en target iOS. Estas asignaciones son
 planificación académica, no evidencia de implementación, build, instalación o
 aceptación.
 
-*Distribución del único Product Backlog por Sprint*
-| Sprint | Landing | Mobile Functional | Technical | Spikes | Total | SP |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Sprint 1 | 0 | 4 | 2 | 0 | 6 | 19 |
-| Sprint 2 | 6 | 21 | 5 | 4 | 36 | 144 |
-| Sprint 3 | 0 | 24 | 3 | 2 | 29 | 129 |
-| Sprint 4 | 0 | 24 | 2 | 0 | 26 | 134 |
-| **Total** | **6** | **73** | **12** | **6** | **97** | **426** |
-
 #### Epic registry
 
 Un Epic agrupa requisitos de producto. No representa un Bounded Context, una
@@ -128,15 +99,6 @@ pantalla, una aplicación ni una unidad de despliegue.
 | MOBILE-EPIC-11 | Seguimiento comercial y financiero | Sprint 4 | MOB-US-070, MOB-US-071, MOB-US-072 |
 | MOBILE-EPIC-12 | Automatización de almacén | Sprint 4 | MOB-US-073 |
 
-#### Segmentos y actores actuales
-
-*Segmentos de investigación, actores priorizados y estado de evidencia*
-| Segmento de investigación y producto | Actores priorizados | Proyección | Estado de evidencia |
-| --- | --- | --- | --- |
-| Warehouse & Dispatch Operations | Warehouse Operator; Dispatch Coordinator | Nexa Operations Mobile | PRIMARY RESEARCH EVIDENCE — n=3; Warehouse y Dispatch permanecen diferenciados. |
-| Driver Delivery Execution | Driver / Delivery Operator | Nexa Operations Mobile | PRIMARY RESEARCH EVIDENCE — n=3; contexto y evidencia varían por operación. |
-| B2B Buyers | Customer Buyer | Nexa Buyer Mobile | PRIMARY RESEARCH EVIDENCE — n=3; reabastecimiento y continuidad comercial incluyen receipt cuando aplica. |
-
 Mobile User es una abstracción transversal de MOB-US-001, MOB-US-002 y MOB-US-003. Sirve a
 Warehouse Operator, Dispatch Coordinator, Driver / Delivery Operator y
 Customer Buyer cuando retoman trabajo autorizado; no es una User Persona ni un
@@ -148,18 +110,6 @@ continuidad o discrepancia del Buyer. Las historias de conveniencia comercial y
 operativa `MOB-US-005`, `MOB-US-006`, `MOB-US-007`, `MOB-US-008`, `MOB-US-009` y `MOB-US-010` permanecen en el único catálogo porque sirven a
 Business Operations Manager o Sales Representative; no se presentan como
 historias del segmento investigado B2B Buyers.
-
-#### Trazabilidad a nivel de Epic y cluster
-
-*Trazabilidad entre Epics, segmentos, Needfinding y escenarios To-Be*
-| Epic / cluster | Current actor/segment | Lean UX relationship | Needfinding evidence | To-Be scenario | Stories |
-| --- | --- | --- | --- | --- | --- |
-| MOBILE-EPIC-01 — contexto de trabajo | Mobile User para los cuatro actores priorizados | La continuidad de contexto y la exposición de trabajo autorizado son hipótesis de valor. | Product y Security requirement; no se reclama evidencia primaria directa. | Authorized Mobile Work Context | MOB-US-001, MOB-US-002, MOB-US-003 |
-| MOBILE-EPIC-02/03 — almacén a despacho | Warehouse & Dispatch Operations; Business Operations Manager, Warehouse Operator y Dispatch Coordinator | La continuidad entre contexto, hechos físicos, preparación y responsabilidad orienta el aprendizaje. | Evidencia primaria del segmento: verificación, excepciones, coordinación y transferencia; Dispatch permanece acotado. | Warehouse Work Overview, Receiving, Identification and Preparation; Dispatch Readiness and Handoff | MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019–MOB-US-025 |
-| MOBILE-EPIC-04 — ejecución de Delivery | Driver Delivery Execution; Driver / Delivery Operator | El intento atribuible y la evidencia revisable son hipótesis de continuidad operativa. | Evidencia primaria del segmento: verificación, incidencias, comunicación, mecanismos de evidencia y límites móviles. | Driver Delivery Execution | MOB-US-026, MOB-US-027, MOB-US-028, MOB-US-031, MOB-US-032, MOB-US-033, MOB-US-034 |
-| MOBILE-EPIC-05 — recepción de Buyer | B2B Buyers; Customer Buyer | La claridad de handoff, receipt y discrepancia orienta el beneficio esperado. | Evidencia primaria Buyer: continuidad de suministro y puntualidad; receipt detallado se acota a un caso. | Buyer Handoff, Receipt and Discrepancy | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
-| MOBILE-EPIC-06 / 11 — continuidad comercial Buyer | B2B Buyers; Customer Buyer | La continuidad comercial complementa el baseline de recepción sin cambiar H3. | Evidencia primaria Buyer: reabastecimiento, coordinación con proveedor y protección de disponibilidad. | Buyer Replenishment & Commercial Continuity | MOB-US-036, MOB-US-037, MOB-US-038, MOB-US-039, MOB-US-040, MOB-US-041, MOB-US-042, MOB-US-043, MOB-US-070, MOB-US-071 |
-| LAND-EPIC-01 — adquisición pública | Prospective Company Representative | La comprensión de la propuesta y el siguiente paso comercial son hipótesis de adquisición. | No hubo investigación primaria de adquisición en esta campaña. | Acquisition, Contact and Onboarding Initiation | LAND-US-001, LAND-US-002, LAND-US-003, LAND-US-004, LAND-US-005, LAND-US-006 |
 
 #### Landing Page User Stories
 

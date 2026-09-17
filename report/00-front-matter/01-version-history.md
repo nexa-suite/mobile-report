@@ -2,7 +2,7 @@
 
 Este registro reúne las revisiones académicamente relevantes del Nexa Mobile
 Report. Las versiones publicadas conservan su referencia de Git como respaldo;
-la versión más reciente registrada es `v0.6.1`.
+la versión más reciente registrada es `v1.0.0`.
 
 | Versión | Fecha | Autor(es) | Descripción de modificación |
 | :--- | :--- | :--- | :--- |
@@ -16,6 +16,7 @@ la versión más reciente registrada es `v0.6.1`.
 | [0.5.1](https://github.com/nexa-suite/mobile-report/releases/tag/v0.5.1) | 15 de septiembre de 2026 | Equipo Nexa | Integró las mejoras editoriales y de trazabilidad de AV1, junto con ajustes menores de presentación pública y organización del repositorio. |
 | [0.6.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.6.0) | 16 de septiembre de 2026 | Equipo Nexa | Closeout académico AV1 que integra la línea base final de Lean UX, Needfinding, requisitos, Product Backlog, DDD, arquitectura, colaboración y trazabilidad de Sprints. |
 | [0.6.1](https://github.com/nexa-suite/mobile-report/releases/tag/v0.6.1) | 17 de septiembre de 2026 | nexa-team | Corrigió la asociación Epic residual de SPIKE-001, fortaleció la evidencia de 7.c1, actualizó el baseline SCM y organizó la bibliografía; reemplazó el visual final de Impact Mapping y eliminó referencias obsoletas al video de exposición AV1. |
+| [1.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v1.0.0) | 17 de septiembre de 2026 | nexa-team | Baseline estable AV1 del Nexa Mobile Report, con contenido académico, evidencia, trazabilidad y arquitectura consolidados. |
 
 *Nota.* El detalle de procedencia por commit permanece disponible en Git y
 GitHub. Este registro no acredita implementación, pruebas con personas usuarias,

@@ -2,6 +2,29 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.6.0] - 2026-09-16
+
+AV1 academic closeout baseline for the Nexa Mobile Report.
+
+### Added
+
+- Final integrated AV1 academic baseline.
+- Consolidated Needfinding and As-Is/To-Be traceability.
+- Finalized Impact Mapping and research-backed requirements presentation.
+
+### Changed
+
+- Reconciled Chapter I segmentation and Lean UX narrative.
+- Consolidated Needfinding structure and requirements readability.
+- Updated report navigation and public evidence boundaries.
+
+### Preserved
+
+- Product Backlog: 97 PBIs / 426 SP.
+- Sprint 1: 6 PBIs / 19 SP.
+- 9/9 formative interviews.
+- Canonical DDD and architecture semantics.
+
 ## [0.5.1] - 2026-09-15
 
 Patch release consolidating the latest AV1 report improvements and minor

@@ -3,6 +3,8 @@
 Este anexo registra los repositorios modernos utilizados como evidencia del
 proyecto y sus tags remotos comprobados.
 
+*Repositorios y tags remotos utilizados como evidencia del proyecto.*
+
 | Repositorio | Propósito | Tag registrado | Referencia | Estado |
 | --- | --- | --- | --- | --- |
 | `mobile-report` | Informe y documentación académica. | `v0.4.0` - `c0c4221` | `https://github.com/nexa-suite/mobile-report` | Tag remoto verificado; CI no registrado. |

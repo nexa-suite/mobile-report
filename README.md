@@ -14,9 +14,9 @@
 [![Period](https://img.shields.io/badge/Period-202620-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![University](https://img.shields.io/badge/University-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Team](https://img.shields.io/badge/Team-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Status](https://img.shields.io/badge/Status-v0.5.0%20academic%20baseline-0F766E?style=flat-square)](./docs/releases/v0.5.0.md)
+[![Status](https://img.shields.io/badge/Status-v0.6.0%20academic%20closeout-0F766E?style=flat-square)](./docs/releases/v0.6.0.md)
 
-[Report chapters](./report) · [Release evidence](./docs/releases/v0.5.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
+[Report chapters](./report) · [Release evidence](./docs/releases/v0.6.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
 
 </div>
 
@@ -48,9 +48,9 @@ framing, software solution design, UI/UX design, configuration management, and
 four-Sprint academic Mobile planning.
 
 It is documentation and academic evidence, not a mobile application. A report
-section may describe a planned workflow or a design artifact, but it does not
-prove that a native client, framework, build pipeline, deployment, or user
-study exists.
+section describing a planned workflow or design artifact is not implementation
+or deployment evidence; empirical claims are supported separately by their
+corresponding research evidence.
 
 ## Nexa Product Ecosystem
 
@@ -197,19 +197,19 @@ README.md
 ## Documentation
 
 - [Report chapters](./report)
-- [v0.5.0 release notes](./docs/releases/v0.5.0.md)
+- [v0.6.0 release notes](./docs/releases/v0.6.0.md)
 - [Changelog](./CHANGELOG.md)
 - [Mobile repository](https://github.com/nexa-suite/mobile)
 - [API contracts](https://github.com/nexa-suite/api/tree/main/docs/openapi)
 
-## v0.5.0 Academic baseline
+## v0.6.0 academic closeout
 
-`v0.5.0` is the current integrated academic baseline for the report, with all
-9/9 formative Needfinding interviews completed and Needfinding/requirements
-reconciliation informed by that research. It preserves the Product Backlog at
-97 PBIs / 426 SP and the Sprint/Jira traceability baseline while keeping research
-evidence distinct from solution validation; it does not represent a Mobile
-client, device execution or product validation as completed.
+`v0.6.0` is the integrated AV1 academic closeout baseline for Nexa Mobile. It
+consolidates completed formative research, Needfinding, requirements, Product
+Backlog, domain design, architecture, and traceable Sprint evidence. It preserves
+the Product Backlog at 97 PBIs / 426 SP while keeping research evidence distinct
+from solution validation; it does not represent a completed Mobile product,
+production deployment, or completed product validation.
 
 <div align="center">
 

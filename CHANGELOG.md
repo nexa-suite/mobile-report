@@ -2,6 +2,25 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [1.0.0] - 2026-09-17
+
+### Added
+
+- Established the first stable AV1 baseline of the Nexa Mobile Report.
+- Added final release documentation for the stable academic report baseline.
+
+### Changed
+
+- Updated report release identity and SCM evidence from the published v0.6.1 baseline.
+- Updated Version History and public repository metadata to v1.0.0.
+
+### Preserved
+
+- Product Backlog: 97 PBIs / 426 SP.
+- Research: 9/9 Needfinding interviews.
+- Eleven accepted Bounded Contexts.
+- Existing Lean UX, Needfinding, requirements, DDD, C4, UML and database semantics.
+
 ## [0.6.1] - 2026-09-17
 
 Patch-level AV1 academic reconciliation after the v0.6.0 closeout.

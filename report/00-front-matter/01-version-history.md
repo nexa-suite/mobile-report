@@ -2,7 +2,7 @@
 
 Este registro reúne las revisiones académicamente relevantes del Nexa Mobile
 Report. Las versiones publicadas conservan su referencia de Git como respaldo;
-la revisión publicada más reciente es `v0.5.1`.
+la revisión publicada más reciente es `v0.6.0`.
 
 | Versión | Fecha | Autor | Descripción de modificación |
 | :--- | :--- | :--- | :--- |
@@ -14,6 +14,7 @@ la revisión publicada más reciente es `v0.5.1`.
 | [0.4.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.4.0) | 13 de septiembre de 2026 | Equipo Nexa | Refinó la consistencia de Impact Mapping, trazabilidad de actores, lenguaje de dominio, Domain Stories y arquitectura de información sin modificar el Product Backlog ni la distribución de Sprints. |
 | [0.5.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.5.0) | 15 de septiembre de 2026 | Equipo Nexa | Incorporó y sintetizó los nueve registros de entrevistas de Needfinding, reconcilió la evidencia de investigación con Needfinding y requisitos, preservó el Product Backlog de 97 PBIs / 426 SP y consolidó la trazabilidad de Sprint y Jira sin convertirla en validación de solución. |
 | [0.5.1](https://github.com/nexa-suite/mobile-report/releases/tag/v0.5.1) | 15 de septiembre de 2026 | Equipo Nexa | Integró las mejoras editoriales y de trazabilidad de AV1, junto con ajustes menores de presentación pública y organización del repositorio. |
+| [0.6.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.6.0) | 16 de septiembre de 2026 | Equipo Nexa | Closeout académico AV1 que integra la línea base final de Lean UX, Needfinding, requisitos, Product Backlog, DDD, arquitectura, colaboración y trazabilidad de Sprints. |
 
 *Nota.* El detalle de procedencia por commit permanece disponible en Git y
 GitHub. Este registro no acredita implementación, pruebas con personas usuarias,

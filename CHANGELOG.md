@@ -12,13 +12,14 @@ Patch-level AV1 academic reconciliation after the v0.6.0 closeout.
 - Strengthened Student Outcome 7.c1 evidence against the official ABET criteria.
 - Updated the SCM evidence baseline and bibliography organization.
 - Removed obsolete AV1 exposition-video placeholder wording.
+- Replaced the final Impact Mapping visual.
 
 ### Preserved
 
 - Product Backlog: 97 PBIs / 426 SP.
 - Sprint 1: 6 PBIs / 19 SP.
 - Needfinding: 9/9 interviews.
-- Existing Lean UX, DDD, C4 and Tactical DDD semantics.
+- Existing Lean UX, requirements, DDD, C4 and Tactical DDD semantics.
 
 ## [0.6.0] - 2026-09-16
 

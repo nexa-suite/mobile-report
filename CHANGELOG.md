@@ -2,6 +2,24 @@
 
 All notable changes to the public academic report are documented in this file.
 
+## [0.6.1] - 2026-09-17
+
+Patch-level AV1 academic reconciliation after the v0.6.0 closeout.
+
+### Fixed
+
+- Removed the residual Spike-specific Epic assignment from SPIKE-001.
+- Strengthened Student Outcome 7.c1 evidence against the official ABET criteria.
+- Updated the SCM evidence baseline and bibliography organization.
+- Removed obsolete AV1 exposition-video placeholder wording.
+
+### Preserved
+
+- Product Backlog: 97 PBIs / 426 SP.
+- Sprint 1: 6 PBIs / 19 SP.
+- Needfinding: 9/9 interviews.
+- Existing Lean UX, DDD, C4 and Tactical DDD semantics.
+
 ## [0.6.0] - 2026-09-16
 
 AV1 academic closeout baseline for the Nexa Mobile Report.
@@ -149,8 +167,7 @@ Pre-AV1 academic hardening release for the Nexa Mobile Report.
 
 - Explicit As-Is Scenario Mapping for the three Mobile research segments, with
   current evidence status and links to the corresponding research artifacts.
-- Rendered Domain Storytelling visuals and a Videos de Exposiciones annex with
-  truthful pending fields where an authorized source is unavailable.
+- Rendered Domain Storytelling visuals.
 
 ### Changed
 
@@ -169,9 +186,8 @@ Pre-AV1 academic hardening release for the Nexa Mobile Report.
 
 ### Evidence boundaries
 
-- Required interview coverage, final Impact Mapping, Jira/Product Board visual
-  evidence and exposition-video evidence were outside the evidence set of this
-  release.
+- Required interview coverage, final Impact Mapping and Jira/Product Board visual
+  evidence were outside the evidence set of this release.
 
 ## [0.2.0] - 2026-09-10
 

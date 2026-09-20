@@ -1,9 +1,10 @@
 ### 2.6.10. Bounded Context: Notifications
 
-BC-10 conserva intención, preferencias, suscripciones y estados de entrega. Un
-intento o fallo nunca modifica el hecho de negocio fuente. La suscripción push
-mantiene una referencia técnica protegida y hash de deduplicación; Domain no
-conoce token crudo ni ejecuta I/O de email/push.
+BC-10 conserva intención, preferencias, registro técnico de suscripción y
+estados de entrega. Un intento o fallo nunca modifica el hecho de negocio
+fuente. La suscripción push mantiene una referencia técnica protegida y hash de
+deduplicación; Domain no conoce token crudo ni ejecuta I/O de email o de un
+provider push futuro.
 
 #### 2.6.10.1. Domain Layer
 
@@ -16,12 +17,12 @@ del Domain Layer.
 | `Notification` | Aggregate Root | Mantener intención y estado de entrega. | `NotificationId`, `NotificationTemplateId`, `BusinessFactReference`, status. | `schedule`, `cancel`. | Compone recipients y attempts. |
 | `NotificationTemplate` | Aggregate Root | Mantener contenido versionado por canal. | `NotificationTemplateId`, template key, channel, version, status. | `publish`, `retire`. | Root independiente. |
 | `NotificationPreference` | Aggregate Root | Mantener preferencia recipient/event/channel. | `NotificationPreferenceId`, `RecipientReference`, channel, enabled. | `enable`, `disable`. | Root independiente. |
-| `PushSubscription` | Aggregate Root | Mantener suscripción de entrega provider-neutral. | `PushSubscriptionId`, `RecipientReference`, `InstallationId`, `SecureEndpointReference`, `ProviderTokenHash`, status. | `register`, `rotateEndpoint`, `disable`. | Root independiente; no token crudo. |
+| `PushSubscription` | Entity / technical application record | Mantener registro provider-neutral de instalación y endpoint protegido. | `PushSubscriptionId`, `RecipientReference`, `InstallationId`, `SecureEndpointReference`, `ProviderTokenHash`, status. | `register`, `rotateEndpoint`, `disable`. | Registro técnico interno; no Aggregate Root ni decisión de canal de negocio. |
 | `BusinessFactReference` | Value Object | Identificar hecho fuente sin importar aggregate. | event ID, source context, type. | inmutable. | Usado por Notification. |
 | `NotificationRecipient`, `NotificationAttempt` | Entities | Conservar destino resuelto e intentos. | recipient, channel, destination snapshot, outcome. | `suppress`, `recordResult`. | Propiedad de Notification. |
 | `ChannelSelectionPolicy`, `RetryPolicy` | Domain Policies | Elegir canal permitido y próximo retry. | preference, channels, attempt. | `choose`, `nextAttempt`. | Puras; sin provider. |
 | `NotificationRepository`, `NotificationTemplateRepository` | Repository interfaces | Cargar notification/template independientemente. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
-| `NotificationPreferenceRepository`, `PushSubscriptionRepository` | Repository interfaces | Cargar preference/subscription independientemente. | IDs y roots. | `byId`, `save`. | Endpoint protegido en Infrastructure. |
+| `NotificationPreferenceRepository` | Repository interface | Cargar el root de preferencia independientemente. | IDs y root. | `byId`, `save`. | PushSubscription usa un store técnico protegido de Infrastructure. |
 
 #### 2.6.10.2. Interface Layer
 
@@ -45,28 +46,29 @@ intención, dispatch y retry. I/O de delivery permanece tras el puerto técnico.
 | `DispatchNotificationCommandHandler` | Command Handler | Reclamar y despachar intento. | `NotificationId`, attempt, fencing token. | `handle`. | Delivery port, notification repository. |
 | `RecordNotificationDeliveryResultCommandHandler` | Command Handler | Registrar resultado de adapter. | attempt, provider outcome, versión. | `handle`. | Notification root. |
 | `RetryNotificationCommandHandler` | Command Handler | Programar próximo retry permitido. | notification, last attempt. | `handle`. | `RetryPolicy`. |
-| `SetNotificationPreferenceCommandHandler`, `RegisterPushSubscriptionCommandHandler` | Command Handlers | Mantener configuración del destinatario. | preference/subscription input, actor, scope. | `handle`. | Preference/subscription repositories. |
+| `SetNotificationPreferenceCommandHandler`, `RegisterPushSubscriptionCommandHandler` | Command Handlers | Mantener preferencia y registro técnico del destinatario. | preference/subscription input, actor, scope. | `handle`. | Preference repository y protected subscription store. |
 | `PublishedBusinessFactEventHandler` | Event Handler | Coordinar deduplicación y creación. | fact publicado, event ID. | `handle`. | Inbox y create handler. |
 
 #### 2.6.10.4. Infrastructure Layer
 
 Infrastructure conserva endpoint protegido fuera del modelo de dominio, hash de
-deduplicación, inbox/outbox y adapters de email/push provider-neutral.
+deduplicación, inbox/outbox y el adapter de email V1; no acepta un provider
+push externo.
 
 | Clase | Categoría | Propósito | Inputs / datos | Operaciones principales | Colaboradores |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `PostgresNotificationRepository`, `PostgresNotificationTemplateRepository` | Repository implementations | Mapear notification/template y children. | notification records. | `byId`, `save`. | Repositories Domain, PostgreSQL. |
-| `PostgresNotificationPreferenceRepository`, `PostgresPushSubscriptionRepository` | Repository implementations | Mapear preference/subscription sin token crudo. | preference/subscription records. | `byId`, `save`. | Repositories Domain. |
-| `ProtectedPushEndpointStore` | Protected technical store | Cifrar o referenciar endpoint de proveedor en reposo. | provider endpoint, access policy. | `store`, `resolveForDelivery`. | `SecureEndpointReference`, push adapter. |
+| `PostgresNotificationPreferenceRepository`, `PostgresPushSubscriptionStore` | Repository implementation / technical store | Mapear preference root y registro técnico sin token crudo. | preference/subscription records. | `byId`, `save`. | Repository Domain y store protegido de Infrastructure. |
+| `ProtectedPushEndpointStore` | Protected technical store | Cifrar o referenciar el material de endpoint provider-neutral en reposo. | protected endpoint reference, access policy. | `store`, `resolveForDelivery`. | `SecureEndpointReference`, registro técnico de suscripción. |
 | `NotificationFactInbox` | Inbox adapter | Deduplicar published business facts. | event ID, consumer state. | `claim`, `complete`. | Event handler. |
-| `EmailDeliveryAdapter`, `PushProviderAdapter` | Delivery adapters | Ejecutar I/O por canal fuera de Domain. | resolved destination, rendered message. | `send`. | Dispatch handler. |
+| `EmailDeliveryAdapter` | Delivery adapter | Ejecutar I/O de email fuera de Domain. | resolved destination, rendered message. | `send`. | Dispatch handler; ningún provider push está aceptado en V1. |
 | `NotificationOutboxPublisher` | Outbox adapter | Publicar outcomes comprometidos. | outcome fact, correlación. | `enqueue`. | BC-11. |
 
 #### 2.6.10.5. Bounded Context Software Architecture Component Level Diagrams
 
 La lente C4 TARGET de Domain Ownership Mapping sitúa preferencias, facts y
-proyecciones de BC-10 sin convertirlo en un componente o Container C4. La
-selección de provider/canal push sigue separada de este modelo V1.
+proyecciones de BC-10 sin convertirlo en un componente o Container C4. Ningún
+provider push externo ni canal Product adicional está aceptado en V1.
 
 ![Mapeo C4 TARGET para BC-10 Notifications](../../../assets/chapter-2/c4/Nexa-API-DomainOwnershipMapping-TARGET.svg)
 
@@ -80,7 +82,8 @@ referencia semántica segura al hecho fuente.
 ##### 2.6.10.6.1. Bounded Context Domain Layer Class Diagrams
 
 El UML representa endpoint protegido mediante `SecureEndpointReference` y
-`ProviderTokenHash`; entrega real queda fuera de Domain.
+`ProviderTokenHash`; `PushSubscription` es un registro técnico y la entrega
+real queda fuera de Domain.
 
 ![Modelo de dominio táctico de BC-10 Notifications](../../../assets/chapter-2/tactical/BC-10/BC10_Notifications.svg)
 

@@ -2,14 +2,14 @@
 status: accepted
 scope: chapter-2
 source-repository: nexa-suite/blueprint
-source-commit: 89f41421a9aa132d5cf565ed6d22154d1bdca5e0
+source-commit: 08b3c938c57ac42ba2ddf31a047e5237490007eb
 last-reviewed: 2026-09-20
 ---
 
-# Wave 3 canonical architecture asset provenance
+# Wave 3.1 canonical architecture asset provenance
 
 This manifest records current Chapter 2 architecture assets copied from the
-canonical Blueprint Wave 3 output. The source repository owns Product, Domain,
+canonical Blueprint Wave 3.1 closure output. The source repository owns Product, Domain,
 Architecture, DSL, PlantUML and SQL semantics. This report owns only the
 academic narrative and copied generated artifacts.
 

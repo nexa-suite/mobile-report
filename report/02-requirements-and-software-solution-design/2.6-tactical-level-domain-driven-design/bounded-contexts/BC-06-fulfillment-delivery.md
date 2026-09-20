@@ -64,13 +64,13 @@ fuera de PostgreSQL. Las URLs o bytes de evidencia no se vuelven públicos.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 muestra API de fulfillment/delivery, casos de uso, modelo y
-persistencia. Objetos de evidencia se integran mediante adapter, no desde
-Domain.
+La lente C4 TARGET de Fulfillment & Delivery sitúa los contratos de ejecución,
+evidencia y persistencia sin convertir BC-06 en un componente o Container C4.
+Los objetos de evidencia se integran mediante adapter, no desde Domain.
 
-![Vista C4 L3 de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-BC-06-FulfillmentDelivery.svg)
+![Lente C4 TARGET para BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 

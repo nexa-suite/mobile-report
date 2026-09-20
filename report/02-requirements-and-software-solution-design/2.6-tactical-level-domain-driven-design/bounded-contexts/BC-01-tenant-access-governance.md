@@ -64,13 +64,13 @@ contexto de worker explícito; no concede permisos por un ID de cliente.
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa API de Tenant Access, casos de uso de onboarding y
-acceso, modelo de dominio y persistencia scoped. Son componentes
-arquitectónicos, no clases Java individuales.
+La lente C4 TARGET de Identity, Tenant & Customer sitúa los contratos de
+scope, identidad y acceso de BC-01 dentro de responsabilidades técnicas
+compartidas. No convierte BC-01 en un componente o Container C4.
 
-![Vista C4 L3 de BC-01 Tenant & Access Governance](../../../assets/chapter-2/c4/Nexa-API-BC-01-TenantAccessGovernance.svg)
+![Lente C4 TARGET para BC-01 Tenant & Access Governance](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 

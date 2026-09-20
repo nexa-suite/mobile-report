@@ -64,13 +64,13 @@ deduplicación, inbox/outbox y adapters de email/push provider-neutral.
 
 #### 2.6.10.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 hace visible API/preference/fact intake, dispatch application,
-dominio, persistencia+inbox y adapters de email/push. Componentes no representan
-clases Java individuales.
+La lente C4 TARGET de Domain Ownership Mapping sitúa preferencias, facts y
+proyecciones de BC-10 sin convertirlo en un componente o Container C4. La
+selección de provider/canal push sigue separada de este modelo V1.
 
-![Vista C4 L3 de BC-10 Notifications](../../../assets/chapter-2/c4/Nexa-API-BC-10-Notifications.svg)
+![Mapeo C4 TARGET para BC-10 Notifications](../../../assets/chapter-2/c4/Nexa-API-DomainOwnershipMapping-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.10.6. Bounded Context Software Architecture Code Level Diagrams
 

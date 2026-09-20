@@ -62,12 +62,14 @@ media autorizadas; no contiene decisión de compromiso ni inventario.
 
 #### 2.6.3.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa API de catálogo/oferta, casos de uso, políticas y
-persistencia. La relación con BC-02 es un contrato de elegibilidad.
+La lente C4 TARGET de Commercial & Inventory sitúa catálogo, oferta y políticas
+de BC-03 dentro de responsabilidades técnicas compartidas. La relación con
+BC-02 es un contrato de elegibilidad; BC-03 no se convierte en un componente o
+Container C4.
 
-![Vista C4 L3 de BC-03 Catalog & Commercial Policy](../../../assets/chapter-2/c4/Nexa-API-BC-03-CatalogCommercialPolicy.svg)
+![Lente C4 TARGET para BC-03 Catalog & Commercial Policy](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.3.6. Bounded Context Software Architecture Code Level Diagrams
 

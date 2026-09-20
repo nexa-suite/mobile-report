@@ -61,13 +61,13 @@ número.
 
 #### 2.6.9.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa API documental, aplicación de issue/generation, dominio,
+La lente C4 TARGET de Credit, Payment & Documents sitúa emisión documental,
 persistencia y adapter de renderer/storage. Los source facts no transfieren
-ownership de sus aggregates.
+ownership; BC-09 no se convierte en un componente o Container C4.
 
-![Vista C4 L3 de BC-09 Business Documents](../../../assets/chapter-2/c4/Nexa-API-BC-09-BusinessDocuments.svg)
+![Lente C4 TARGET para BC-09 Business Documents](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.9.6. Bounded Context Software Architecture Code Level Diagrams
 

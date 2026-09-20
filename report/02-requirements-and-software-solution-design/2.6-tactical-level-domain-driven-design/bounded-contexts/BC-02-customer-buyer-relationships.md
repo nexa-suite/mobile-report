@@ -59,13 +59,14 @@ tenant-scoped y no crea persistencia autoritativa de HumanIdentity.
 
 #### 2.6.2.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa API de relaciones, casos de uso de cuentas/elegibilidad,
-modelo y persistencia. BC-01 se consume como contrato de scope, no como tablas
-compartidas.
+La lente C4 TARGET de Identity, Tenant & Customer sitúa la cuenta y
+elegibilidad Buyer de BC-02 dentro de responsabilidades técnicas compartidas.
+BC-01 se consume como contrato de scope, no como tablas compartidas; BC-02 no
+se convierte en un componente o Container C4.
 
-![Vista C4 L3 de BC-02 Customer & Buyer Relationships](../../../assets/chapter-2/c4/Nexa-API-BC-02-CustomerBuyerRelationships.svg)
+![Lente C4 TARGET para BC-02 Customer & Buyer Relationships](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.2.6. Bounded Context Software Architecture Code Level Diagrams
 

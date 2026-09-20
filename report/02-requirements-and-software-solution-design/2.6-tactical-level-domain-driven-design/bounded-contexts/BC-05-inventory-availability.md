@@ -66,18 +66,20 @@ decisión pendiente.
 
 #### 2.6.5.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 muestra API de inventario, aplicación de protección, modelo y
-persistencia con soporte de concurrencia. BC-04 solicita protección y BC-06
-consume facts/contratos sin propiedad física.
+La lente C4 TARGET de Commercial & Inventory sitúa protección, concurrencia y
+contratos de inventario. BC-04 solicita protección y BC-06 consume
+facts/contratos sin propiedad física; BC-05 no se convierte en un componente o
+Container C4.
 
-![Vista C4 L3 de BC-05 Inventory Availability](../../../assets/chapter-2/c4/Nexa-API-BC-05-InventoryAvailability.svg)
+![Lente C4 TARGET para BC-05 Inventory Availability](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.svg)
 
 *Nota. Elaboración propia.*
 
 #### 2.6.5.6. Bounded Context Software Architecture Code Level Diagrams
 
-Los diagramas distinguen stock, reserva, backing y allocation como roots con
-responsabilidades separadas.
+Los diagramas distinguen stock, reserva, backing y allocation. Warehouse
+Backing distribuye protección y no es Aggregate Root ni segunda sustracción de
+disponibilidad.
 
 ##### 2.6.5.6.1. Bounded Context Domain Layer Class Diagrams
 

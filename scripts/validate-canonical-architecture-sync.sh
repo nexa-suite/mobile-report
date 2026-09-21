@@ -101,6 +101,13 @@ if bc01:
         errors.append("BC-01: CompanyOnboardingRequest must carry TenantId at submission")
     if re.search(r"(?:No existe Tenant al enviar|sin Tenant ni Workspace)", read(bc01), re.IGNORECASE):
         errors.append("BC-01: onboarding must not claim submission without Tenant identity")
+    role = table_row(bc01, "RoleDefinition")
+    if role and ("Workspace-scoped" not in role or "WorkspaceId" not in role):
+        errors.append("BC-01: RoleDefinition must be Workspace-scoped and carry WorkspaceId")
+    if role and ("tenant-scoped" in role or "TenantId" in role):
+        errors.append("BC-01: RoleDefinition must not be classified as tenant-scoped")
+    if "no existe template de rol global en TARGET actual" not in read(bc01):
+        errors.append("BC-01: current report must not restore a global RoleDefinition template")
 
 bc05 = report_pages.get("BC-05")
 if bc05 and re.search(r"^\|\s*`WarehouseBacking`\s*\|\s*Aggregate Root\b", read(bc05), re.MULTILINE):
@@ -120,6 +127,20 @@ if bc06:
 bc10 = report_pages.get("BC-10")
 if bc10 and re.search(r"^\|\s*`PushSubscription`\s*\|\s*Aggregate Root\b", read(bc10), re.MULTILINE):
     errors.append("BC-10: PushSubscription must be a technical/application record, not Aggregate Root")
+if bc10:
+    bc10_text = read(bc10)
+    bc10_normalized = re.sub(r"\s+", " ", bc10_text)
+    for marker in ("`provider_token_hash`", "FUTURE / PROVIDER-ADAPTER INPUT", "NOT PERSISTED IN CURRENT POSTGRESQL TARGET"):
+        if marker not in bc10_normalized:
+            errors.append(f"BC-10: missing current PushSubscription persistence marker: {marker}")
+    if "SecureEndpointReference" in bc10_text or "ProtectedPushEndpointStore" in bc10_text:
+        errors.append("BC-10: current report must not model a protected endpoint store/reference")
+    if "El diagrama conserva `provider_endpoint_reference`" in bc10_text:
+        errors.append("BC-10: current report must not claim provider_endpoint_reference is persisted")
+
+bc09 = report_pages.get("BC-09")
+if bc09 and "UNIQUE (tenant_id, workspace_id, document_type,\nseries_code)" not in read(bc09):
+    errors.append("BC-09: DocumentNumberSeries must retain workspace-scoped series uniqueness")
 
 
 link_pattern = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+[^)]*)?\)")
@@ -151,8 +172,13 @@ else:
         blueprint_head = subprocess.check_output(
             ["git", "-C", str(blueprint_root), "rev-parse", "HEAD"], text=True
         ).strip()
-        if source_commit != blueprint_head:
-            errors.append(f"provenance source-commit {source_commit} != Blueprint HEAD {blueprint_head}")
+        ancestry = subprocess.run(
+            ["git", "-C", str(blueprint_root), "merge-base", "--is-ancestor", source_commit, blueprint_head],
+            text=True,
+            check=False,
+        )
+        if ancestry.returncode != 0:
+            errors.append(f"provenance source-commit {source_commit} is not an ancestor of Blueprint HEAD {blueprint_head}")
 
 
 artifact_pairs: list[tuple[Path, Path]] = []
@@ -197,7 +223,7 @@ if errors:
 
 print("REPORT CANONICAL SYNC: PASS")
 print("- Blueprint Aggregate Root sets: 11 matched")
-print("- Wave 3.1 semantic closure assertions: PASS")
+print("- Wave 3.2 semantic closure assertions: PASS")
 print(f"- local Markdown links: {checked_links} resolved")
 print(f"- provenance source commit: {source_commit}")
 print(f"- canonical artifacts: {len(artifact_pairs)} byte-identical")

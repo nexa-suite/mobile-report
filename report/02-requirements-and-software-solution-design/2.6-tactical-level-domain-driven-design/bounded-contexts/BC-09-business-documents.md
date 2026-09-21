@@ -85,9 +85,10 @@ con metadata de storage local y repositories explícitos.
 
 ##### 2.6.9.6.2. Bounded Context Database Design Diagram
 
-El modelo relacional muestra `unique(tenant_id, document_type, series_code)` y
-`unique(tenant_id, document_type, document_number)`; `next_number` se reserva
-con control de versión/lock y no por un contador no protegido.
+El modelo relacional muestra `UNIQUE (tenant_id, workspace_id, document_type,
+series_code)` y `UNIQUE (tenant_id, document_type, document_number)`;
+`next_number` se reserva con control de versión/lock y no por un contador no
+protegido.
 
 ![Diseño lógico de base de datos de BC-09 Business Documents](../../../assets/chapter-2/tactical/BC-09/database-diagram.svg)
 

@@ -16,7 +16,7 @@ cargados. No realiza HTTP, criptografía de proveedor ni I/O de persistencia.
 | `Workspace` | Entity | Representar entorno operativo 1:1. | `WorkspaceId`, slug, status. | `rename`, `activate`. | Propiedad de `Tenant`; no es root. |
 | `HumanIdentity` | Aggregate Root | Mantener identidad humana independiente de Tenant. | `HumanIdentityId`, email normalizado, status. | `verify`, `disable`. | Referenciada por ID desde membership y BC-02. |
 | `WorkforceMembership` | Aggregate Root | Gobernar participación laboral en Workspace. | `MembershipId`, `WorkspaceId`, `HumanIdentityId`, roles, status. | `invite`, `activate`, `revoke`, `can`. | Referencias tipadas a Workspace, identidad y rol. |
-| `RoleDefinition` | Aggregate Root | Mantener capacidades de un rol tenant-scoped. | `RoleId`, `TenantId`, código, status. | `assignCapability`, `retire`. | Compone `RoleCapability`. |
+| `RoleDefinition` | Aggregate Root | Mantener capacidades de un rol Workspace-scoped. | `RoleId`, `WorkspaceId`, código, status. | `assignCapability`, `retire`. | Compone `RoleCapability`; `CapabilityDefinition` permanece global y no existe template de rol global en TARGET actual. |
 | `CompanyOnboardingRequest` | Aggregate Root | Mantener intake y handoff de activación. | `OnboardingRequestId`, `TenantId`, solicitud, contacto, status, versión. | `submit`, `approve`, `reject`. | `TenantId` es obligatorio al enviar; no hay Workspace ni acceso antes del gate de lifecycle del Tenant. |
 | `AccessEligibilityPolicy` | Domain Policy | Evaluar capacidad con contexto ya autorizado. | `AccessContext`, `CapabilityCode`. | `evaluate`, `requireCapability`. | Pura; no consulta repositorios. |
 | `TenantRepository`, `HumanIdentityRepository` | Repository interfaces | Cargar y persistir roots con lifecycle propio. | IDs tipados y roots. | `byId`, `save`. | Contratos Domain; infraestructura los implementa. |
@@ -58,7 +58,7 @@ contexto de worker explícito; no concede permisos por un ID de cliente.
 | `PostgresTenantRepository` | Repository implementation | Persistir `Tenant` y Workspace compuesto. | registros de tenant/workspace. | `byId`, `save`. | `TenantRepository`, PostgreSQL. |
 | `PostgresHumanIdentityRepository` | Repository implementation | Persistir identidad independiente. | identidad normalizada. | `byId`, `save`. | `HumanIdentityRepository`, PostgreSQL. |
 | `PostgresWorkforceMembershipRepository` | Repository implementation | Persistir membership y asignaciones locales. | membership, roles, overrides. | `byId`, `save`. | `WorkforceMembershipRepository`. |
-| `PostgresRoleDefinitionRepository` | Repository implementation | Persistir roles tenant-scoped. | rol y capacidades. | `byId`, `save`. | `RoleDefinitionRepository`. |
+| `PostgresRoleDefinitionRepository` | Repository implementation | Persistir roles Workspace-scoped. | rol, Workspace y capacidades. | `byId`, `save`. | `RoleDefinitionRepository`; FK compuesta evita asignar rol de otro Workspace. |
 | `PostgresCompanyOnboardingRequestRepository` | Repository implementation | Persistir solicitud tenant-scoped y handoff de activación. | onboarding record. | `byId`, `save`. | `CompanyOnboardingRequestRepository`. |
 | `TenantScopePersistenceSupport` | Persistence support | Establecer predicados y scope transaccional fail-closed. | Tenant/Workspace de servidor. | `requireScope`, `applyScope`. | PostgreSQL/RLS y Application. |
 
@@ -88,8 +88,10 @@ identidad, membership, rol y onboarding, incluyendo sus Repository interfaces.
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-El modelo relacional conserva `workspace.tenant_id` único, relaciones locales y
-referencias explícitas de onboarding; Tenant sigue siendo frontera de datos.
+El modelo relacional conserva `workspace.tenant_id` único, roles
+Workspace-scoped, la FK compuesta de `membership_role` hacia membership y rol
+del mismo Workspace, y referencias explícitas de onboarding; Tenant sigue
+siendo frontera de datos.
 
 ![Diseño lógico de base de datos de BC-01 Tenant & Access Governance](../../../assets/chapter-2/tactical/BC-01/database-diagram.svg)
 

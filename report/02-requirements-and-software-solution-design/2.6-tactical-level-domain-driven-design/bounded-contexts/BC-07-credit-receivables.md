@@ -59,12 +59,13 @@ publicación durable de consecuencias locales.
 
 #### 2.6.7.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 hace visible API crediticia, aplicación de exposición, dominio,
-persistencia e intake de Payment fact; BC-08 conserva la autoridad de pago.
+La lente C4 TARGET de Credit, Payment & Documents sitúa la exposición y los
+contratos con Payment. BC-08 conserva la autoridad de pago; BC-07 no se
+convierte en un componente o Container C4.
 
-![Vista C4 L3 de BC-07 Credit & Receivables](../../../assets/chapter-2/c4/Nexa-API-BC-07-CreditReceivables.svg)
+![Lente C4 TARGET para BC-07 Credit & Receivables](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.7.6. Bounded Context Software Architecture Code Level Diagrams
 

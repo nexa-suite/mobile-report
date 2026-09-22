@@ -6,7 +6,7 @@
 
 **Academic report and delivery evidence for Nexa Mobile.**
 
-![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Git](https://img.shields.io/badge/Git-Academic%20history-F05032?style=flat-square&logo=git&logoColor=white) ![Pandoc](https://img.shields.io/badge/Pandoc-PDF%20export-1A1A1A?style=flat-square) ![Status](https://img.shields.io/badge/Status-v1.0.1%20academic%20baseline-0F766E?style=flat-square)
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Git](https://img.shields.io/badge/Git-Academic%20history-F05032?style=flat-square&logo=git&logoColor=white) ![Pandoc](https://img.shields.io/badge/Pandoc-PDF%20export-1A1A1A?style=flat-square) ![Latest Git tag](https://img.shields.io/github/v/tag/nexa-suite/mobile-report?sort=semver&style=flat-square&label=latest%20Git%20tag)
 
 [Report chapters](./report) · [Release evidence](./docs/releases/v1.0.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
 
@@ -20,9 +20,8 @@ The report connects academic evidence to the current Nexa delivery boundary:
 
 1. Accepted Product, Domain, Architecture and Design decisions define the
    semantics used by the report.
-2. Mobile has partial, unmerged Operations Android/Kotlin/Jetpack Compose
-   implementation evidence; this repository does not claim the complete Mobile
-   Product is finished.
+2. Mobile currently integrates partial Operations Android/Kotlin/Jetpack Compose
+   implementation evidence; this report does not claim Mobile V1 is complete.
 3. Mobile Report organizes chapters, source material, evidence boundaries and
    reproducible export assets.
 4. API, Platform, Buyer Portal and Website provide implementation or product
@@ -56,7 +55,8 @@ This repository: academic report, source material and delivery evidence.
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Operations Android/Kotlin/Jetpack Compose is partial and unmerged; Buyer
+Operations Android/Kotlin/Jetpack Compose is partial implementation evidence
+integrated in the current Mobile baseline, not a completed Mobile V1. Buyer
 Mobile is an accepted Flutter/Dart target, not an implementation claim.
 
 ![Operations Android](https://img.shields.io/badge/Operations%20Mobile-partial%20evidence-3DDC84?style=flat-square&logo=android&logoColor=white) ![Buyer target](https://img.shields.io/badge/Buyer%20Mobile-TARGET%20Flutter%2FDart-64748B?style=flat-square)

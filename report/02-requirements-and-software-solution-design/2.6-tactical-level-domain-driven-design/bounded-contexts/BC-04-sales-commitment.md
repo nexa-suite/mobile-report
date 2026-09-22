@@ -66,12 +66,13 @@ durable local; no escribe tablas de Inventory Availability ni Credit.
 
 #### 2.6.4.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 muestra API comercial, aplicación de commitment, dominio y
-persistencia. Sus contratos con BC-05 y BC-07 son síncronos y explícitos.
+La lente C4 TARGET de Commercial & Inventory sitúa los contratos de Sales
+Commitment con BC-05 y BC-07 como síncronos y explícitos. BC-04 conserva su
+ownership de dominio; no se convierte en un componente o Container C4.
 
-![Vista C4 L3 de BC-04 Sales Commitment](../../../assets/chapter-2/c4/Nexa-API-BC-04-SalesCommitment.svg)
+![Lente C4 TARGET para BC-04 Sales Commitment](../../../assets/chapter-2/c4/Nexa-API-CommercialInventory-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.4.6. Bounded Context Software Architecture Code Level Diagrams
 

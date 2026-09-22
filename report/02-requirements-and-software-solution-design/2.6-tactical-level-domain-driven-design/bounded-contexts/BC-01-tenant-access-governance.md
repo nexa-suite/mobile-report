@@ -16,8 +16,8 @@ cargados. No realiza HTTP, criptografía de proveedor ni I/O de persistencia.
 | `Workspace` | Entity | Representar entorno operativo 1:1. | `WorkspaceId`, slug, status. | `rename`, `activate`. | Propiedad de `Tenant`; no es root. |
 | `HumanIdentity` | Aggregate Root | Mantener identidad humana independiente de Tenant. | `HumanIdentityId`, email normalizado, status. | `verify`, `disable`. | Referenciada por ID desde membership y BC-02. |
 | `WorkforceMembership` | Aggregate Root | Gobernar participación laboral en Workspace. | `MembershipId`, `WorkspaceId`, `HumanIdentityId`, roles, status. | `invite`, `activate`, `revoke`, `can`. | Referencias tipadas a Workspace, identidad y rol. |
-| `RoleDefinition` | Aggregate Root | Mantener capacidades de un rol tenant-scoped. | `RoleId`, `TenantId`, código, status. | `assignCapability`, `retire`. | Compone `RoleCapability`. |
-| `CompanyOnboardingRequest` | Aggregate Root | Mantener solicitud previa a provisión. | solicitud, contacto, status, `provisionedTenantId?`. | `submit`, `approve`, `reject`. | No existe Tenant al enviar; referencia sólo después de provisión. |
+| `RoleDefinition` | Aggregate Root | Mantener capacidades de un rol Workspace-scoped. | `RoleId`, `WorkspaceId`, código, status. | `assignCapability`, `retire`. | Compone `RoleCapability`; `CapabilityDefinition` permanece global y no existe template de rol global en TARGET actual. |
+| `CompanyOnboardingRequest` | Aggregate Root | Mantener intake y handoff de activación. | `OnboardingRequestId`, `TenantId`, solicitud, contacto, status, versión. | `submit`, `approve`, `reject`. | `TenantId` es obligatorio al enviar; no hay Workspace ni acceso antes del gate de lifecycle del Tenant. |
 | `AccessEligibilityPolicy` | Domain Policy | Evaluar capacidad con contexto ya autorizado. | `AccessContext`, `CapabilityCode`. | `evaluate`, `requireCapability`. | Pura; no consulta repositorios. |
 | `TenantRepository`, `HumanIdentityRepository` | Repository interfaces | Cargar y persistir roots con lifecycle propio. | IDs tipados y roots. | `byId`, `save`. | Contratos Domain; infraestructura los implementa. |
 | `WorkforceMembershipRepository`, `RoleDefinitionRepository`, `CompanyOnboardingRequestRepository` | Repository interfaces | Acceder independientemente a gobernanza y onboarding. | IDs tipados y roots. | `byId`, `save`. | Ningún repository administra BuyerRelationship. |
@@ -41,9 +41,9 @@ servidor explícito. No permite que un Tenant enviado por cliente otorgue acceso
 
 | Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `SubmitCompanyOnboardingCommandHandler` | Command Handler | Crear solicitud sin Tenant ni Workspace. | datos de empresa, actor, llave idempotente. | `handle`. | `CompanyOnboardingRequestRepository`. |
+| `SubmitCompanyOnboardingCommandHandler` | Command Handler | Crear solicitud con identidad Tenant; no crea Workspace ni acceso. | `TenantId`, datos de empresa, actor, llave idempotente. | `handle`. | `CompanyOnboardingRequestRepository`. |
 | `ApproveCompanyOnboardingCommandHandler` | Command Handler | Decidir solicitud aprobada o rechazada. | `OnboardingRequestId`, decisión, versión. | `handle`. | Onboarding root y repositorio. |
-| `ProvisionTenantCommandHandler` | Command Handler | Proveer Tenant y Workspace tras aprobación. | solicitud aprobada, contexto sistema. | `handle`. | `TenantRepository`, onboarding repository. |
+| `ProvisionTenantCommandHandler` | Command Handler | Completar la provisión y Workspace 1:1 del Tenant aprobado. | solicitud aprobada, contexto sistema. | `handle`. | `TenantRepository`, onboarding repository. |
 | `ActivateTenantCommandHandler` | Command Handler | Activar un Tenant ya provisionado con autorización y versión válidas. | `TenantId`, actor autorizado, versión. | `handle`. | `TenantRepository`, contexto servidor. |
 | `AssignMembershipRoleCommandHandler` | Command Handler | Asignar membership y roles con scope validado. | identidad, Workspace, roles, versión. | `handle`. | Membership y role repositories. |
 | `EvaluateAccessQueryHandler` | Query Handler | Devolver decisión de capability fail-closed. | `AccessContext`, capability. | `handle`. | `AccessEligibilityPolicy`, repositories cargados. |
@@ -58,19 +58,19 @@ contexto de worker explícito; no concede permisos por un ID de cliente.
 | `PostgresTenantRepository` | Repository implementation | Persistir `Tenant` y Workspace compuesto. | registros de tenant/workspace. | `byId`, `save`. | `TenantRepository`, PostgreSQL. |
 | `PostgresHumanIdentityRepository` | Repository implementation | Persistir identidad independiente. | identidad normalizada. | `byId`, `save`. | `HumanIdentityRepository`, PostgreSQL. |
 | `PostgresWorkforceMembershipRepository` | Repository implementation | Persistir membership y asignaciones locales. | membership, roles, overrides. | `byId`, `save`. | `WorkforceMembershipRepository`. |
-| `PostgresRoleDefinitionRepository` | Repository implementation | Persistir roles tenant-scoped. | rol y capacidades. | `byId`, `save`. | `RoleDefinitionRepository`. |
-| `PostgresCompanyOnboardingRequestRepository` | Repository implementation | Persistir solicitud y referencia posterior de provisión. | onboarding record. | `byId`, `save`. | `CompanyOnboardingRequestRepository`. |
+| `PostgresRoleDefinitionRepository` | Repository implementation | Persistir roles Workspace-scoped. | rol, Workspace y capacidades. | `byId`, `save`. | `RoleDefinitionRepository`; FK compuesta evita asignar rol de otro Workspace. |
+| `PostgresCompanyOnboardingRequestRepository` | Repository implementation | Persistir solicitud tenant-scoped y handoff de activación. | onboarding record. | `byId`, `save`. | `CompanyOnboardingRequestRepository`. |
 | `TenantScopePersistenceSupport` | Persistence support | Establecer predicados y scope transaccional fail-closed. | Tenant/Workspace de servidor. | `requireScope`, `applyScope`. | PostgreSQL/RLS y Application. |
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa API de Tenant Access, casos de uso de onboarding y
-acceso, modelo de dominio y persistencia scoped. Son componentes
-arquitectónicos, no clases Java individuales.
+La lente C4 TARGET de Identity, Tenant & Customer sitúa los contratos de
+scope, identidad y acceso de BC-01 dentro de responsabilidades técnicas
+compartidas. No convierte BC-01 en un componente o Container C4.
 
-![Vista C4 L3 de BC-01 Tenant & Access Governance](../../../assets/chapter-2/c4/Nexa-API-BC-01-TenantAccessGovernance.svg)
+![Lente C4 TARGET para BC-01 Tenant & Access Governance](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 
@@ -88,8 +88,10 @@ identidad, membership, rol y onboarding, incluyendo sus Repository interfaces.
 
 ##### 2.6.1.6.2. Bounded Context Database Design Diagram
 
-El modelo relacional conserva `workspace.tenant_id` único, relaciones locales y
-referencias explícitas de onboarding; Tenant sigue siendo frontera de datos.
+El modelo relacional conserva `workspace.tenant_id` único, roles
+Workspace-scoped, la FK compuesta de `membership_role` hacia membership y rol
+del mismo Workspace, y referencias explícitas de onboarding; Tenant sigue
+siendo frontera de datos.
 
 ![Diseño lógico de base de datos de BC-01 Tenant & Access Governance](../../../assets/chapter-2/tactical/BC-01/database-diagram.svg)
 

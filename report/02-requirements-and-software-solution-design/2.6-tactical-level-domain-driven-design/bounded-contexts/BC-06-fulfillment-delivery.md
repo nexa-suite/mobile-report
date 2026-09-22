@@ -14,10 +14,10 @@ inmutable; sus correcciones se agregan como addenda.
 | Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `Fulfillment` | Aggregate Root | Organizar ejecución de SalesOrder. | `FulfillmentId`, `SalesOrderId`, líneas, status. | `start`, `complete`, `cancel`. | Compone líneas y picking result; cada línea referencia `PhysicalAllocationId` de BC-05. |
-| `Delivery` | Aggregate Root | Mantener obligación, intentos y handoff. | `DeliveryId`, `FulfillmentId`, `BuyerRelationshipId`, destino, status. | `dispatch`, `recordAttempt`, `openContinuation`. | Compone attempts, receipt/discrepancy y handoff facts. |
+| `Delivery` | Aggregate Root | Mantener obligación, intentos y handoff. | `DeliveryId`, `FulfillmentId`, destino snapshot, status. | `dispatch`, `recordAttempt`, `openContinuation`. | Compone attempts, receipt/discrepancy y handoff facts; no posee BuyerRelationship. |
 | `ProofOfDelivery` | Aggregate Root | Conservar evidencia sellada de entrega. | `ProofOfDeliveryId`, `DeliveryId`, `ActorHumanIdentityId`, capture time. | `seal`, `appendAddendum`. | Compone addenda; Delivery sólo por ID. |
 | `TemperatureEvidence` | Aggregate Root | Conservar medición operativa de frío. | `TemperatureEvidenceId`, `DeliveryId`, temperatura, time. | `record`, `recordExcursion`. | Compone excursiones; Delivery sólo por ID. |
-| `DeliveryAttempt`, `BuyerReceipt`, `BuyerDiscrepancy` | Entities | Mantener hechos de ejecución y recepción. | outcome, cantidades, actor, momento. | `recordOutcome`, `record`. | Propiedad de `Delivery`. |
+| `DeliveryAttempt`, `BuyerReceiptFact`, `BuyerDiscrepancy` | Entities | Mantener hechos de ejecución y recepción. | outcome, cantidades, actor, momento; `BuyerReceiptFact` porta `BuyerRelationshipId`. | `recordOutcome`, `record`. | Propiedad de `Delivery`; Buyer Relationship se identifica sólo en el hecho de receipt. |
 | `DeliveryExecutionPolicy` | Domain Policy | Evaluar continuidad y sellado. | outcomes, POD cargado. | `requiresContinuation`, `canSeal`. | Pura; sin storage ni HTTP. |
 | `FulfillmentRepository`, `DeliveryRepository` | Repository interfaces | Cargar roots de ejecución. | IDs y roots. | `byId`, `save`. | Implementaciones PostgreSQL. |
 | `ProofOfDeliveryRepository`, `TemperatureEvidenceRepository` | Repository interfaces | Cargar evidencia con lifecycle propio. | IDs y roots. | `byId`, `save`. | No cargan Delivery como object graph. |
@@ -46,7 +46,7 @@ puertos y fuera de Domain.
 | `DispatchDeliveryCommandHandler` | Command Handler | Iniciar Delivery autorizada. | fulfillment, destino snapshot, assignment. | `handle`. | `DeliveryRepository`. |
 | `RecordDeliveryAttemptCommandHandler` | Command Handler | Persistir resultado de intento. | delivery, outcome, cantidades, llave. | `handle`. | Delivery root y policy. |
 | `CaptureProofOfDeliveryCommandHandler` | Command Handler | Capturar/sellar POD y evidencia de temperatura. | `DeliveryId`, metadata, actor. | `handle`. | POD/temperature repositories, storage port. |
-| `RecordBuyerReceiptCommandHandler`, `RecordBuyerDiscrepancyCommandHandler` | Command Handlers | Registrar hechos Buyer sin borrar driver outcome. | delivery, BuyerRelationship, actor, datos. | `handle`. | `DeliveryRepository`. |
+| `RecordBuyerReceiptCommandHandler`, `RecordBuyerDiscrepancyCommandHandler` | Command Handlers | Registrar hechos Buyer sin borrar driver outcome. | delivery, `BuyerReceiptFact` con BuyerRelationship, actor, datos. | `handle`. | `DeliveryRepository`. |
 | `SalesOrderConfirmedEventHandler`, `PhysicalAllocationPublishedEventHandler` | Event Handlers | Consumir hechos durables requeridos para ejecución. | published fact, deduplication key. | `handle`. | Inbox y Application. |
 
 #### 2.6.6.4. Infrastructure Layer
@@ -64,18 +64,19 @@ fuera de PostgreSQL. Las URLs o bytes de evidencia no se vuelven públicos.
 
 #### 2.6.6.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 muestra API de fulfillment/delivery, casos de uso, modelo y
-persistencia. Objetos de evidencia se integran mediante adapter, no desde
-Domain.
+La lente C4 TARGET de Fulfillment & Delivery sitúa los contratos de ejecución,
+evidencia y persistencia sin convertir BC-06 en un componente o Container C4.
+Los objetos de evidencia se integran mediante adapter, no desde Domain.
 
-![Vista C4 L3 de BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-BC-06-FulfillmentDelivery.svg)
+![Lente C4 TARGET para BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 
 Los diagramas separan roots de ejecución y evidencia, con identidad tipada para
-SalesOrder, Allocation, BuyerRelationship y Delivery.
+SalesOrder, Allocation y Delivery; BuyerRelationship aparece en
+`BuyerReceiptFact`, no como ownership directo de Delivery.
 
 ##### 2.6.6.6.1. Bounded Context Domain Layer Class Diagrams
 

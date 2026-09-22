@@ -53,12 +53,13 @@ datos guardados excluyen secretos y credenciales de pago.
 
 #### 2.6.11.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa query/fact consumer, intake, append application, dominio
-y persistencia append-only. No convierte C4 Components en clases Java.
+La lente C4 TARGET de Domain Ownership Mapping sitúa proyección de hechos y
+persistencia append-only de BC-11 sin convertirlo en un componente o Container
+C4.
 
-![Vista C4 L3 de BC-11 Business Traceability](../../../assets/chapter-2/c4/Nexa-API-BC-11-BusinessTraceability.svg)
+![Mapeo C4 TARGET para BC-11 Business Traceability](../../../assets/chapter-2/c4/Nexa-API-DomainOwnershipMapping-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.11.6. Bounded Context Software Architecture Code Level Diagrams
 

@@ -61,12 +61,13 @@ persiste roots. Nunca almacena PAN, CVV ni secretos en el modelo.
 
 #### 2.6.8.5. Bounded Context Software Architecture Component Level Diagrams
 
-La vista C4 L3 separa API/webhook, aplicación de pago, modelo, persistencia e
-ACL de proveedor. La label hacia BC-09 publica Payment facts, no document facts.
+La lente C4 TARGET de Credit, Payment & Documents sitúa la aplicación de pago,
+persistencia y ACL de proveedor. BC-08 conserva la autoridad de Payment y no
+se convierte en un componente o Container C4.
 
-![Vista C4 L3 de BC-08 Payments](../../../assets/chapter-2/c4/Nexa-API-BC-08-Payments.svg)
+![Lente C4 TARGET para BC-08 Payments](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.svg)
 
-*Nota. Elaboración propia.*
+*Nota. Export canónico generado desde Blueprint Wave 3.*
 
 #### 2.6.8.6. Bounded Context Software Architecture Code Level Diagrams
 

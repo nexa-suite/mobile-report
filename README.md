@@ -2,19 +2,11 @@
 
 <img src="https://raw.githubusercontent.com/nexa-suite/.github/develop/profile/assets/nexa-logo.svg" alt="Nexa logo" width="220" />
 
-# nexa-mobile-report
+# Nexa Mobile Report
 
 **Academic report and delivery evidence for Nexa Mobile.**
 
-[![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=for-the-badge&logo=markdown&logoColor=white)](./report)
-[![Git](https://img.shields.io/badge/Git-Academic%20history-F05032?style=for-the-badge&logo=git&logoColor=white)](./report/04-product-implementation-and-validation/4.1-software-configuration-management/4.1.2-source-code-management.md)
-[![Jira Software](https://img.shields.io/badge/JIRA-SOFTWARE-0052CC?style=for-the-badge&logo=jira&logoColor=white&labelColor=3C3C3C)](https://nexa-suite.atlassian.net/jira/software/projects/NX/boards/2/backlog)
-
-[![Course](https://img.shields.io/badge/Course-1ACC0238%20Aplicaciones%20para%20Dispositivos%20M%C3%B3viles-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Period](https://img.shields.io/badge/Period-202620-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![University](https://img.shields.io/badge/University-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Team](https://img.shields.io/badge/Team-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Status](https://img.shields.io/badge/Status-v1.0.0%20AV1%20Stable%20Baseline-0F766E?style=flat-square)](./docs/releases/v1.0.0.md)
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Git](https://img.shields.io/badge/Git-Academic%20history-F05032?style=flat-square&logo=git&logoColor=white) ![Pandoc](https://img.shields.io/badge/Pandoc-PDF%20export-1A1A1A?style=flat-square) ![Status](https://img.shields.io/badge/Status-v1.0.1%20academic%20baseline-0F766E?style=flat-square)
 
 [Report chapters](./report) · [Release evidence](./docs/releases/v1.0.0.md) · [PDF export](./scripts/export-report-pdf.sh) · [Report assets](./report/assets)
 
@@ -24,33 +16,28 @@
 
 ## Project Entry Flow
 
-The report repository connects academic evidence to the current Nexa delivery
-flow:
+The report connects academic evidence to the current Nexa delivery boundary:
 
-1. **Accepted product, domain, architecture, and design decisions** define
-   scope and semantics.
-2. **Mobile** has an initial native Android/Kotlin implementation track with
-   Sprint 1 implementation evidence; it does not claim the complete Mobile
-   product is finished.
-3. **Mobile Report** organizes academic chapters, source materials, evidence
-   boundaries, and export assets.
-4. **API** provides business and integration-contract context.
-5. **Platform**, **Buyer Portal**, and **Website** are current product
-   surfaces referenced where their evidence is available.
-6. **Git and GitHub** preserve traceable changes, and **Jira** provides the
-   referenced Product Backlog and Sprint traceability baseline.
+1. Accepted Product, Domain, Architecture and Design decisions define the
+   semantics used by the report.
+2. Mobile has partial, unmerged Operations Android/Kotlin/Jetpack Compose
+   implementation evidence; this repository does not claim the complete Mobile
+   Product is finished.
+3. Mobile Report organizes chapters, source material, evidence boundaries and
+   reproducible export assets.
+4. API, Platform, Buyer Portal and Website provide implementation or product
+   context only when a source is verifiable.
 
 ## Overview
 
-This repository contains the academic report for Nexa in course 1ACC0238,
-*Aplicaciones para Dispositivos Móviles*. It documents product scope, research
-framing, software solution design, UI/UX design, configuration management, and
-four-Sprint academic Mobile planning.
+This repository contains the academic report for course `1ACC0238 Aplicaciones
+para Dispositivos Móviles`. It documents product scope, research framing,
+requirements, software solution design, UI/UX design, configuration
+management, and four-Sprint academic Mobile planning.
 
-It is documentation and academic evidence, not a mobile application. A report
-section describing a planned workflow or design artifact is not implementation
-or deployment evidence; empirical claims are supported separately by their
-corresponding research evidence.
+It is documentation and academic evidence, not a Mobile runtime. A report
+section describing a planned workflow or design artifact is not implementation,
+deployment or production-readiness evidence.
 
 ## Nexa Product Ecosystem
 
@@ -58,27 +45,21 @@ corresponding research evidence.
 <tr>
 <td width="50%" valign="top">
 
-### [Nexa Mobile](https://github.com/nexa-suite/mobile)
+### [Nexa Mobile Report](https://github.com/nexa-suite/mobile-report)
 
-Documentation for B2B buyer and operational field experiences, with cold-chain
-specialization. Native Android/Kotlin is the current initial implementation
-track; this report does not claim the complete Mobile product is finished.
+This repository: academic report, source material and delivery evidence.
 
-[Open Repository](https://github.com/nexa-suite/mobile)
-
-![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-2.2.10-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Android](https://img.shields.io/badge/Android-SDK%2036-3DDC84?style=flat-square&logo=android&logoColor=white) ![Jetpack Compose](https://img.shields.io/badge/Jetpack%20Compose-BOM%202026.06.01-4285F4?style=flat-square&logo=jetpackcompose&logoColor=white)
+![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white)
 
 </td>
 <td width="50%" valign="top">
 
-### [Nexa Mobile Report](https://github.com/nexa-suite/mobile-report)
+### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Academic report, evidence boundaries, source materials, and reproducible PDF
-export for Mobile planning.
+Operations Android/Kotlin/Jetpack Compose is partial and unmerged; Buyer
+Mobile is an accepted Flutter/Dart target, not an implementation claim.
 
-[Open Repository](https://github.com/nexa-suite/mobile-report)
-
-![Markdown](https://img.shields.io/badge/Markdown-Documentation-000000?style=flat-square&logo=markdown&logoColor=white) ![Pandoc](https://img.shields.io/badge/Pandoc-PDF%20export-1A1A1A?style=flat-square)
+![Operations Android](https://img.shields.io/badge/Operations%20Mobile-partial%20evidence-3DDC84?style=flat-square&logo=android&logoColor=white) ![Buyer target](https://img.shields.io/badge/Buyer%20Mobile-TARGET%20Flutter%2FDart-64748B?style=flat-square)
 
 </td>
 </tr>
@@ -87,21 +68,16 @@ export for Mobile planning.
 
 ### [Nexa API](https://github.com/nexa-suite/api)
 
-Business and integration backbone for identity, tenant scope, and operational
-workflows.
+Authoritative business and integration backbone for Nexa Suite.
 
-[Open Repository](https://github.com/nexa-suite/api)
-
-![Java](https://img.shields.io/badge/Java-25-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1-6DB33F?style=flat-square&logo=springboot&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-4169E1?style=flat-square&logo=postgresql&logoColor=white)
+![Java](https://img.shields.io/badge/Java-25-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.1-6DB33F?style=flat-square&logo=springboot&logoColor=white)
 
 </td>
 <td width="50%" valign="top">
 
 ### [Nexa Website](https://github.com/nexa-suite/website)
 
-Public product experience and entry point.
-
-[Open Repository](https://github.com/nexa-suite/website)
+Public product experience and acquisition entry point.
 
 ![HTML5](https://img.shields.io/badge/HTML5-static-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-responsive-1572B6?style=flat-square&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-vanilla-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
@@ -112,10 +88,7 @@ Public product experience and entry point.
 
 ### [Nexa Buyer Portal](https://github.com/nexa-suite/portal)
 
-Buyer-facing experience for catalog discovery, purchasing, and delivery
-visibility.
-
-[Open Repository](https://github.com/nexa-suite/portal)
+Buyer-facing Web experience for B2B purchasing and delivery visibility.
 
 ![Angular](https://img.shields.io/badge/Angular-22-DD0031?style=flat-square&logo=angular&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
@@ -124,10 +97,7 @@ visibility.
 
 ### [Nexa Platform](https://github.com/nexa-suite/platform)
 
-Internal operational workspace for tenant teams, sales, warehouse, and
-logistics.
-
-[Open Repository](https://github.com/nexa-suite/platform)
+Internal operational Web workspace for tenant teams.
 
 ![Angular](https://img.shields.io/badge/Angular-22-DD0031?style=flat-square&logo=angular&logoColor=white) ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178C6?style=flat-square&logo=typescript&logoColor=white)
 
@@ -135,17 +105,23 @@ logistics.
 </tr>
 </table>
 
+## Report Baseline
+
+The `v1.0.0` release notes record the AV1 academic baseline: 97 Product
+Backlog items, 426 story points, 9/9 formative Needfinding interviews, eleven
+accepted Bounded Contexts and four academic Sprints. These are report and
+research baseline facts, not claims that all backlog items or the Mobile
+Product are implemented, accepted or production-ready.
+
 ## Tools Stack
 
 | Concern | Current repository use |
 | --- | --- |
-| Source format | GitHub Flavored Markdown |
-| Report validation | Relative-link and asset checks, shell syntax checks, and `git diff --check` |
-| Diagram and visual evidence | Versioned SVG and image assets |
-| PDF export | Pandoc and XeLaTeX through the repository export script |
-| Product Board | Jira-backed Product Backlog and Sprint traceability are referenced in the report; access may require login |
-| Source control | Git, GitHub, Conventional Commits, and signed contributor history |
-| Collaboration | Git history and GitHub public contribution evidence |
+| Source format | GitHub-Flavored Markdown |
+| Academic traceability | Versioned chapters, release notes and report sources |
+| Export | Pandoc and XeLaTeX through `scripts/export-report-pdf.sh` |
+| Evidence | Relative report assets, diagrams and linked source material |
+| Source control | Git, GitHub, Conventional Commits and signed history |
 
 ## Getting Started
 
@@ -156,9 +132,20 @@ git diff --check
 NEXA_REPORT_EXPORT_MODE=native bash scripts/export-report-pdf.sh
 ```
 
-Review the current report, release notes, and accepted product, domain,
-architecture, and design decisions before changing semantic wording. A generated
-PDF requires visual review before it is used as a submission artifact.
+Native export requires Pandoc and XeLaTeX. The script can use its documented
+Docker mode when the native toolchain is unavailable. A generated PDF requires
+visual review before it is used as a submission artifact.
+
+## Validation
+
+```bash
+git diff --check
+bash -n scripts/export-report-pdf.sh
+```
+
+The release evidence documents additional report, link, asset and export
+checks. This README does not claim that a documentation-only change reruns the
+full academic export or Product Acceptance gates.
 
 ## Project Structure
 
@@ -183,36 +170,80 @@ README.md
 
 ## Ownership & Evidence Boundaries
 
-- Mobile Report owns academic narrative, report structure, export, and delivery
+- Mobile Report owns academic narrative, report structure, export and delivery
   evidence.
-- Accepted product, domain, architecture, and design decisions own Nexa
+- Accepted Product, Domain, Architecture and Design decisions own Nexa
   semantics; the report does not redefine them.
-- Mobile maintains the client planning context.
+- Mobile maintains client planning and implementation context.
 - API owns business and integration contracts referenced by the report.
-- Product surfaces provide visual or technical evidence only when the report
-  cites a verifiable source.
-- Report content is academic evidence; it is not implementation, deployment,
-  or production authorization.
+- Report evidence is distinct from implementation, deployment, Product
+  Acceptance and production authorization.
 
 ## Documentation
 
 - [Report chapters](./report)
 - [v1.0.0 release notes](./docs/releases/v1.0.0.md)
+- [v1.0.1 version history](./report/00-front-matter/01-version-history.md)
 - [Changelog](./CHANGELOG.md)
 - [Mobile repository](https://github.com/nexa-suite/mobile)
 - [API contracts](https://github.com/nexa-suite/api/tree/main/docs/openapi)
 
-## v1.0.0 — AV1 Stable Baseline
+## Nexa Engineering & Documentation
 
-`v1.0.0` establishes the first stable AV1 academic baseline of the Nexa Mobile
-Report. It preserves the Product Backlog at 97 PBIs / 426 SP, research at 9/9
-interviews, and accepted Lean UX, requirements, DDD, C4, UML and database
-semantics. It does not represent a completed Mobile product, production
-readiness, deployment, implementation of all backlog items or validation of
-future hypotheses.
+<table>
+<tr>
+<td width="50%" valign="top">
 
-<div align="center">
+### [Nexa Blueprint](https://github.com/nexa-suite/blueprint)
 
-Maintained by the Nexa team · [github.com/nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report)
+Canonical Product, Domain, Architecture, data, security and accepted
+engineering decision source.
 
-</div>
+![C4](https://img.shields.io/badge/C4-canonical%20model-64748B?style=flat-square) ![Markdown](https://img.shields.io/badge/Markdown-documentation-000000?style=flat-square&logo=markdown&logoColor=white)
+
+</td>
+<td width="50%" valign="top">
+
+### [Nexa Web Report](https://github.com/nexa-suite/web-report)
+
+Academic report and evidence repository for the Nexa Web course.
+
+![Docs as Code](https://img.shields.io/badge/Docs%20as%20Code-academic%20evidence-64748B?style=flat-square)
+
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+
+### [Nexa Complementary](https://github.com/nexa-suite/complementary)
+
+Supporting references, reproducible engineering resources and shared tooling.
+
+![Support tooling](https://img.shields.io/badge/Support%20tooling-reference-64748B?style=flat-square)
+
+</td>
+<td width="50%" valign="top">
+
+### [Nexa Design Lab](https://github.com/nexa-suite/design-lab)
+
+UX/UI, interaction, design-system, prototype and current design-evidence
+workspace.
+
+![Angular](https://img.shields.io/badge/Angular-22-DD0031?style=flat-square&logo=angular&logoColor=white)
+
+</td>
+</tr>
+</table>
+
+## Security
+
+Follow the repository [Security Policy](./.github/SECURITY.md) for reporting
+vulnerabilities. Private interview data, credentials and local evidence remain
+outside the public report.
+
+## Legal
+
+Copyright © 2026 Nexa. All rights reserved. No open-source license is claimed
+by this README.
+
+<div align="center"><br />Nexa · Academic evidence, explicit boundaries</div>

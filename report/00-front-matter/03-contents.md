@@ -58,6 +58,7 @@
     - [4.2.5.3. Services Documentation Evidence](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.5-operations-mobile-wave-4/4.2.5.3-services-documentation-evidence.md)
     - [4.2.5.4. Software Deployment Evidence](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.5-operations-mobile-wave-4/4.2.5.4-software-deployment-evidence.md)
     - [4.2.5.5. Domain-Driven Design and Rubric Traceability](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.5-operations-mobile-wave-4/4.2.5.5-ddd-and-rubric-traceability.md)
+    - [4.2.5.6. Product Decisions and Implementation Limits](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.5-operations-mobile-wave-4/4.2.5.6-product-decisions-and-implementation-limits.md)
 - [Conclusiones](../90-conclusions/conclusions-and-recommendations.md)
 - [Glosario](../91-glossary/glossary.md)
 - [Bibliografía](../92-bibliography/bibliography.md)

@@ -136,6 +136,19 @@ Native export requires Pandoc and XeLaTeX. The script can use its documented
 Docker mode when the native toolchain is unavailable. A generated PDF requires
 visual review before it is used as a submission artifact.
 
+For AV2, include Chapters I–IV and Sprint 2; Sprint 3 remains outside this export:
+
+```bash
+npm install -g @mermaid-js/mermaid-cli@12.0.0
+NEXA_REPORT_MILESTONE=AV2 NEXA_REPORT_EXPORT_MODE=native bash scripts/export-report-pdf.sh
+```
+
+Mermaid diagrams render into temporary PNG files for PDF export. Canonical
+Markdown and committed screenshots remain unchanged. `NEXA_MERMAID_CLI` can
+select an existing installation; `NEXA_MERMAID_BROWSER` can select Chrome.
+
+The default AV1 export continues to include Chapters I–II.
+
 ## Validation
 
 ```bash

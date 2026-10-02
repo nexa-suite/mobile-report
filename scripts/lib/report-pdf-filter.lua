@@ -7,6 +7,8 @@ local function replace_export_symbols(text)
     :gsub("├", "|")
     :gsub("└", "|")
     :gsub("─", "-")
+    :gsub("↔", "<->")
+    :gsub("↳", "|")
 end
 
 local function latex_escape(text)
@@ -111,6 +113,28 @@ end
 -- Keep exported evidence figures inside the A4 text area. The source Markdown
 -- remains unmodified; explicit image widths, when present, retain precedence.
 function Image(element)
+  if element.src:match("mermaid%-rendered%-") then
+    local source = element.src
+    for _, directory in ipairs(PANDOC_STATE.resource_path) do
+      local candidate = directory .. "/" .. element.src
+      local file = io.open(candidate, "rb")
+      if file then
+        file:close()
+        source = candidate
+        break
+      end
+    end
+    return pandoc.RawInline("tex", "\\includegraphics[width=0.9\\linewidth,height=6.5in,keepaspectratio]{"
+      .. latex_escape(source) .. "}")
+  end
+  if element.src:match("operations%-wave4/") then
+    element.attributes.height = "6.5in"
+    element.attributes.width = nil
+    return element
+  end
+  if not element.attributes.height then
+    element.attributes.height = "6.5in"
+  end
   if element.src:match("github%-contributors%-2026%-09%-09%.png$") then
     element.attributes.width = "75%"
   elseif not element.attributes.width then

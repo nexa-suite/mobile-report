@@ -2,7 +2,13 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-DEFAULT_OUTPUT="$REPO_ROOT/output/upc-pre-202620-1acc0238-4949-nexa-team-report-av1.pdf"
+MILESTONE="${NEXA_REPORT_MILESTONE:-AV1}"
+case "$MILESTONE" in
+  AV1) MILESTONE_SUFFIX=av1 ;;
+  AV2) MILESTONE_SUFFIX=av2 ;;
+  *) printf 'Report milestone must be AV1 or AV2.\n' >&2; exit 2 ;;
+esac
+DEFAULT_OUTPUT="$REPO_ROOT/output/upc-pre-202620-1acc0238-4949-nexa-team-report-${MILESTONE_SUFFIX}.pdf"
 OUTPUT_PATH="${1:-${NEXA_REPORT_PDF_OUTPUT:-$DEFAULT_OUTPUT}}"
 REQUESTED_MODE="${NEXA_REPORT_EXPORT_MODE:-auto}"
 PANDOC_IMAGE="${NEXA_PANDOC_IMAGE:-pandoc/latex@sha256:6e71008186280e8908e3816481165c0103d04c64162bc9c3f3fe7bc27c681fc5}"
@@ -52,6 +58,13 @@ REPORT_ROOTS=(
   report/93-annexes
 )
 
+if [[ "$MILESTONE" == "AV2" ]]; then
+  REPORT_ROOTS+=(
+    report/03-solution-ui-ux-design
+    report/04-product-implementation-and-validation
+  )
+fi
+
 for source in "${FRONT_MATTER[@]}"; do
   [[ -f "$REPO_ROOT/$source" ]] || {
     printf 'Missing required report source: %s\n' "$source" >&2
@@ -67,6 +80,7 @@ for root in "${REPORT_ROOTS[@]}"; do
 done
 
 find "${REPORT_ROOTS[@]/#/$REPO_ROOT/}" -type f -name '*.md' -print \
+  | grep -v '/4\.2\.3-sprint-3/' \
   | LC_ALL=C sort > "$CANONICAL_SOURCES"
 
 if grep -Eq '/(chapter-overview|section-overview|sprint-overview)\.md$' \
@@ -94,6 +108,11 @@ append_source() {
     append_source "$source"
   done < "$CANONICAL_SOURCES"
 } > "$COMBINED_SOURCE"
+
+if [[ "$MILESTONE" == "AV2" ]]; then
+  python3 "$REPO_ROOT/scripts/render-mermaid-for-export.py" "$COMBINED_SOURCE" "$BUILD_DIR"
+  COMBINED_SOURCE="$BUILD_DIR/mermaid-rendered.md"
+fi
 
 {
   printf '%s\n' '\usepackage{pdflscape}'
@@ -145,7 +164,7 @@ case "$EXPORT_MODE" in
       --variable=papersize:a4 \
       --variable=geometry:margin=1in \
       --variable=fontsize:11pt \
-      /build/report.md \
+      "/build/$(basename "$COMBINED_SOURCE")" \
       -o "/out/$OUTPUT_NAME"
     ;;
   *)

@@ -80,7 +80,7 @@ for root in "${REPORT_ROOTS[@]}"; do
 done
 
 find "${REPORT_ROOTS[@]/#/$REPO_ROOT/}" -type f -name '*.md' -print \
-  | grep -v '/4\.2\.3-sprint-3/' \
+  | grep -Ev '/4\.2\.(3-sprint-3|4-sprint-4|5-operations-mobile-wave-4)/' \
   | LC_ALL=C sort > "$CANONICAL_SOURCES"
 
 if grep -Eq '/(chapter-overview|section-overview|sprint-overview)\.md$' \

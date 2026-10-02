@@ -136,7 +136,7 @@ Native export requires Pandoc and XeLaTeX. The script can use its documented
 Docker mode when the native toolchain is unavailable. A generated PDF requires
 visual review before it is used as a submission artifact.
 
-For AV2, include Chapters I–IV and Sprint 2; Sprint 3 remains outside this export:
+For AV2, include Chapters I–IV through Sprint 2; later Sprint evidence stays outside this export:
 
 ```bash
 npm install -g @mermaid-js/mermaid-cli@12.0.0

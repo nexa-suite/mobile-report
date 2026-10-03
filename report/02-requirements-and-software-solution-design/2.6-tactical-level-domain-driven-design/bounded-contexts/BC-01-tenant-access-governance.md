@@ -5,6 +5,8 @@ identidad humana, membership laboral, roles y capacidades. Tenant no es
 Workspace; HumanIdentity no es WorkforceMembership ni BuyerRelationship. Todo
 comando tenant-scoped falla cerrado si alcance o autorización son ambiguos.
 
+Las tablas y diagramas de esta sección describen el diseño target aceptado. En el código API revisado se observan nombres históricos como `UserAccount`, `Membership` y `OrganizationRegistration`; su comparación con `HumanIdentity`, `WorkforceMembership` y `CompanyOnboardingRequest` requiere contrastar atributos, responsabilidades y ciclos de vida. La similitud de nombres o propósito no demuestra equivalencia completa ni convierte todos los tipos de diseño en clases implementadas.
+
 #### 2.6.1.1. Domain Layer
 
 El dominio protege ciclos de vida y decisiones de acceso con valores ya

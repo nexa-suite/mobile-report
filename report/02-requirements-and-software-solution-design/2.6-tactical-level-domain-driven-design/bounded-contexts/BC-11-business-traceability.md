@@ -59,7 +59,7 @@ C4.
 
 ![Mapeo C4 TARGET para BC-11 Business Traceability](../../../assets/chapter-2/c4/Nexa-API-DomainOwnershipMapping-TARGET.svg)
 
-*Nota. Export canónico generado desde Blueprint Wave 3.*
+*Nota. Exportación canónica de arquitectura y dominio de Nexa.*
 
 #### 2.6.11.6. Bounded Context Software Architecture Code Level Diagrams
 

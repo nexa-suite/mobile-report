@@ -1,71 +1,10 @@
 # Project Report Collaboration Insights
 
-Esta sección documenta la colaboración verificable del **Project Report de
-Nexa**. El repositorio público conserva la trazabilidad de los cambios mediante
-historial Git, perfiles de autoría y estados de firma visibles cuando GitHub los
-publica. Esta evidencia describe el trabajo documental del equipo; no sustituye
-evidencia de implementación, validación de producto o despliegue.
+Los cinco integrantes participaron en la elaboración del informe mediante investigación, análisis, modelado, planificación y revisión. El trabajo se organizó por áreas y se contrastó con las fuentes disponibles antes de integrar los cambios.
 
-## Repositorio y fuentes públicas
+La actividad de GitHub permite relacionar cambios documentales con sus autores. Los conteos de actividad se interpretan junto con el contenido de cada aporte y no como una medida directa de calidad o aprendizaje.
 
-*Fuentes públicas consultables del Project Report.*
-
-| Recurso | Enlace |
-| --- | --- |
-| Project Report | [nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report) |
-| Contributors | [GitHub Contributors](https://github.com/nexa-suite/mobile-report/graphs/contributors?all=1) |
-| Pulse | [GitHub Pulse](https://github.com/nexa-suite/mobile-report/pulse) |
-| Commits | [Historial de commits](https://github.com/nexa-suite/mobile-report/commits/main/) |
-| Releases | [Releases del Project Report](https://github.com/nexa-suite/mobile-report/releases) |
-
-## Forma de colaboración
-
-El equipo trabajó con documentación versionada, ramas de trabajo e integración
-del informe. El enfoque **Docs-as-Code** permitió revisar los cambios mediante
-diffs, conservar enlaces relativos y aplicar validaciones del repositorio antes
-de integrar modificaciones. Los mensajes Conventional Commits hacen legible la
-intención de cada cambio, mientras que el historial público conserva la
-atribución individual y el registro de integración.
-
-*Prácticas de colaboración verificables en el Project Report.*
-
-| Práctica | Aplicación en el Project Report |
-| --- | --- |
-| Repositorio público | Historial, ramas, releases y cambios enlazables por commit. |
-| Docs-as-Code | Fuentes Markdown modulares, revisión por diff y enlaces relativos. |
-| Responsabilidad por área | Cambios académicos preparados en ramas de trabajo e integrados con trazabilidad. |
-| Integridad de autoría | La contribución se atribuye al perfil Git del integrante y a los estados de firma visibles en el historial. |
-| Revisión de evidencia | Los cambios se contrastan con fuentes del informe y con los límites de evidencia declarados. |
-
-## Analítica pública y trazabilidad de cambios
-
-*Analíticos de contribución del Project Report durante AV1*
-
-![Contributors detallados del Project Report en GitHub](../assets/front-matter/collaboration/github-contributors-av1-2026-09-15.png)
-
-*Nota.* La vista reúne contribuciones Git acumuladas de los cinco integrantes.
-Sus conteos describen actividad registrada; no son una medida directa del valor
-académico de cada aporte.
-
-*Actividad del Project Report durante el periodo de AV1*
-
-![Pulse público del Project Report en GitHub](../assets/front-matter/collaboration/github-pulse-av1-2026-09-15.png)
-
-*Nota.* Pulse presenta la actividad pública del repositorio, incluidos autores,
-commits y releases del periodo mostrado; se interpreta junto con los commits
-específicos y no como evidencia de resultados de producto.
-
-*Historial de commits verificados durante el cierre de AV1*
-
-![Historial reciente de commits del Project Report en GitHub](../assets/front-matter/collaboration/github-commit-history-av1-2026-09-15.png)
-
-*Nota.* El historial aporta trazabilidad pública de cambios e integración, con
-los estados de verificación visibles en GitHub. No acredita por sí solo
-implementación ni aceptación de producto.
-
-## Aportes verificables por integrante
-
-*Cambios representativos del Project Report por integrante.*
+*Aportes documentales representativos por integrante.*
 
 | Integrante | Perfil GitHub | Aportes documentales representativos | Commits enlazados |
 | --- | --- | --- | --- |
@@ -75,31 +14,12 @@ implementación ni aceptación de producto.
 | Verde Bueno, Joaquín Francisco | [JoaquinBV511](https://github.com/JoaquinBV511) | Matriz de liderazgo de Sprint, claridad de evidencia visual y saneamiento de lenguaje público del informe. | [liderazgo](https://github.com/nexa-suite/mobile-report/commit/22cfc4411d645c62868d2a5bfccec39151bac271), [evidencia visual](https://github.com/nexa-suite/mobile-report/commit/db718c6c26889fd66e17e40dde918ea8f905ad29), [lenguaje público](https://github.com/nexa-suite/mobile-report/commit/ed791d93de223aa04aaec93e3d1291a35adac26d) |
 | Yucra Sandoval, Diego Sebastián | [DiegoS284](https://github.com/DiegoS284) | Evidencia de Student Outcome, integración de la identidad de release y reconciliación de modelos de dominio y datos. | [Student Outcome](https://github.com/nexa-suite/mobile-report/commit/dcb0040e067cab263304c4f072ad5612388a13ac), [release](https://github.com/nexa-suite/mobile-report/commit/1cc7efcc9d8f01cad78cab6674d5293d9e8f275e), [DDD y datos](https://github.com/nexa-suite/mobile-report/commit/e9fde9a52ec460859cf90ff6672a1d6bb81203c2) |
 
-La tabla selecciona cambios sustantivos de distintas áreas del informe. No
-establece un ranking: la contribución se interpreta por responsabilidad,
-contenido y evidencia específica de cada commit.
+*Actividad registrada durante la primera entrega.*
 
-## Presencia pública y consistencia del repositorio
+![Contributors detallados del Project Report en GitHub](../assets/front-matter/collaboration/github-contributors-av1-2026-09-15.png)
 
-La colaboración también produjo una superficie pública coherente para el
-ecosistema Nexa y para este Project Report. Las siguientes capturas son evidencia
-complementaria de presentación y navegabilidad pública; no se presentan como
-analítica de colaboración.
+![Pulse público del Project Report en GitHub](../assets/front-matter/collaboration/github-pulse-av1-2026-09-15.png)
 
-*Presencia pública del ecosistema Nexa en GitHub*
+![Historial reciente de commits del Project Report en GitHub](../assets/front-matter/collaboration/github-commit-history-av1-2026-09-15.png)
 
-![Organización pública Nexa en GitHub](../assets/front-matter/collaboration/github-organization-public-presence-av1-2026-09-15.png)
-
-*Nota.* La organización reúne repositorios y perfiles del equipo en una
-presentación pública consistente.
-
-*Presentación pública del Nexa Mobile Report*
-
-![README público del Nexa Mobile Report en GitHub](../assets/front-matter/collaboration/github-mobile-report-readme-av1-2026-09-15.png)
-
-*Nota.* El README muestra una entrada pública navegable al informe, sus fuentes
-y su trazabilidad de entrega.
-
-En conjunto, el repositorio, la actividad pública, los commits enlazados y la
-presentación del informe permiten revisar la participación de los cinco
-integrantes de forma trazable y coherente con el Registro de Versiones.
+Las figuras muestran contribuciones acumuladas, actividad del periodo e historial de cambios. Sustentan la participación documental; los resultados de implementación y validación se presentan en las secciones del Sprint correspondiente.

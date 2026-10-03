@@ -67,7 +67,7 @@ ownership; BC-09 no se convierte en un componente o Container C4.
 
 ![Lente C4 TARGET para BC-09 Business Documents](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.svg)
 
-*Nota. Export canónico generado desde Blueprint Wave 3.*
+*Nota. Exportación canónica de arquitectura y dominio de Nexa.*
 
 #### 2.6.9.6. Bounded Context Software Architecture Code Level Diagrams
 

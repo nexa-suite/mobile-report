@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 — 2026-10-03
+
+- Consolidate reviewed chapters and front matter.
+- Align Sprint 2 with the academic structure and observed Jira backlog.
+- Preserve figures, role diagrams and Lean UX.
+- Keep evidence preparation guides outside the report.
+
+
 All notable changes to the public academic report are documented in this file.
 
 ## [1.0.0] - 2026-09-17

@@ -37,7 +37,7 @@ requiere contexto y responsabilidad propios.
 
 | Hypothesis | Qué aportó AV1 | Alcance de la conclusión |
 | --- | --- | --- |
-| **H1 — Warehouse & Dispatch Operations** | Aportó comprensión de verificación, continuidad entre preparación, readiness y handoff, y de las responsabilidades distintas de Warehouse y Dispatch. | El problema que da origen a FA1 recibe soporte y refinamiento; el efecto de FA1 no fue medido. |
+| **H1 — Warehouse & Dispatch Operations** | Aportó comprensión de verificación, continuidad entre preparación, alistamiento y transferencia operativa, y de las responsabilidades distintas de Warehouse y Dispatch. | El problema que da origen a FA1 recibe soporte y refinamiento; el efecto de FA1 no fue medido. |
 | **H2 — Driver Delivery Execution** | Aportó evidencia sobre incidencias, comunicación, evidencia de entrega y restricciones móviles durante Delivery Attempts. | El problema de continuidad y atribución durante la entrega recibe soporte; el efecto de FA2 no fue medido. |
 | **H3 — B2B Buyers** | Amplió la comprensión de Buyer hacia reabastecimiento, continuidad comercial, puntualidad y coordinación con proveedores. Receipt y Discrepancy conservan relevancia, pero representan un subescenario más acotado. | El problema que orienta FA3 se vuelve más preciso; el efecto de FA3 no fue medido. |
 

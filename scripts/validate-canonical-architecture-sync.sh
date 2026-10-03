@@ -40,7 +40,7 @@ blueprint_root = Path(sys.argv[2]).resolve()
 report_dir = report_root / "report"
 report_bc_dir = report_dir / "02-requirements-and-software-solution-design" / "2.6-tactical-level-domain-driven-design" / "bounded-contexts"
 blueprint_bc_dir = blueprint_root / "01-shared" / "domain" / "bounded-contexts"
-manifest = report_dir / "assets" / "chapter-2" / "provenance" / "wave3-construction-blueprint.md"
+manifest = report_root / "docs" / "architecture-source.md"
 errors: list[str] = []
 
 
@@ -160,7 +160,7 @@ for markdown in sorted(report_dir.rglob("*.md")):
 
 
 if not manifest.is_file():
-    errors.append("missing Wave 3 architecture provenance manifest")
+    errors.append("missing architecture provenance manifest")
     source_commit = ""
 else:
     source_match = re.search(r"^source-commit:\s*([0-9a-f]{40})\s*$", read(manifest), re.MULTILINE)
@@ -223,7 +223,7 @@ if errors:
 
 print("REPORT CANONICAL SYNC: PASS")
 print("- Blueprint Aggregate Root sets: 11 matched")
-print("- Wave 3.2 semantic closure assertions: PASS")
+print("- canonical semantic closure assertions: PASS")
 print(f"- local Markdown links: {checked_links} resolved")
 print(f"- provenance source commit: {source_commit}")
 print(f"- canonical artifacts: {len(artifact_pairs)} byte-identical")

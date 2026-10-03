@@ -32,7 +32,7 @@ tablas, endpoints ni decisiones de implementación.
 | Inventory Lot | Unidad de stock físico trazable en un Warehouse a la vez. | Manufacturer Batch o SKU. |
 | Physical Allocation | Selección y autoridad de Inventory Lot(s) frente a un compromiso. | Commercial Commitment o escaneo de fulfillment. |
 | Fulfillment | Trabajo operativo para preparar bienes comprometidos. | Delivery o Dispatch. |
-| Dispatch | Coordinación y handoff de trabajo operativo. | Delivery o Route. |
+| Dispatch | Coordinación de la salida de mercadería y entrega de responsabilidad operativa. | Delivery o Route. |
 | Delivery | Obligación programada o en intento de entregar bienes. | Delivery Attempt o Dispatch. |
 | Delivery Attempt | Un intento dentro de la misma Delivery. | Nueva Delivery o finalización automática. |
 | Continuation Delivery | Nueva Delivery para la cantidad restante después de una entrega parcial. | Reintento del intento original o backorder automático. |

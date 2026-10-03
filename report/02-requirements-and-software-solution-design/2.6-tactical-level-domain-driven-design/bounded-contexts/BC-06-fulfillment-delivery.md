@@ -14,7 +14,7 @@ inmutable; sus correcciones se agregan como addenda.
 | Clase | Categoría | Propósito | Atributos / inputs clave | Operaciones principales | Relaciones / ownership |
 | :--- | :--- | :--- | :--- | :--- | :--- |
 | `Fulfillment` | Aggregate Root | Organizar ejecución de SalesOrder. | `FulfillmentId`, `SalesOrderId`, líneas, status. | `start`, `complete`, `cancel`. | Compone líneas y picking result; cada línea referencia `PhysicalAllocationId` de BC-05. |
-| `Delivery` | Aggregate Root | Mantener obligación, intentos y handoff. | `DeliveryId`, `FulfillmentId`, destino snapshot, status. | `dispatch`, `recordAttempt`, `openContinuation`. | Compone attempts, receipt/discrepancy y handoff facts; no posee BuyerRelationship. |
+| `Delivery` | Aggregate Root | Mantener obligación, intentos y transferencia operativa. | `DeliveryId`, `FulfillmentId`, destino snapshot, status. | `dispatch`, `recordAttempt`, `openContinuation`. | Compone attempts, receipt/discrepancy y hechos de transferencia; no posee BuyerRelationship. |
 | `ProofOfDelivery` | Aggregate Root | Conservar evidencia sellada de entrega. | `ProofOfDeliveryId`, `DeliveryId`, `ActorHumanIdentityId`, capture time. | `seal`, `appendAddendum`. | Compone addenda; Delivery sólo por ID. |
 | `TemperatureEvidence` | Aggregate Root | Conservar medición operativa de frío. | `TemperatureEvidenceId`, `DeliveryId`, temperatura, time. | `record`, `recordExcursion`. | Compone excursiones; Delivery sólo por ID. |
 | `DeliveryAttempt`, `BuyerReceiptFact`, `BuyerDiscrepancy` | Entities | Mantener hechos de ejecución y recepción. | outcome, cantidades, actor, momento; `BuyerReceiptFact` porta `BuyerRelationshipId`. | `recordOutcome`, `record`. | Propiedad de `Delivery`; Buyer Relationship se identifica sólo en el hecho de receipt. |
@@ -70,7 +70,7 @@ Los objetos de evidencia se integran mediante adapter, no desde Domain.
 
 ![Lente C4 TARGET para BC-06 Fulfillment & Delivery](../../../assets/chapter-2/c4/Nexa-API-FulfillmentDelivery-TARGET.svg)
 
-*Nota. Export canónico generado desde Blueprint Wave 3.*
+*Nota. Exportación canónica de arquitectura y dominio de Nexa.*
 
 #### 2.6.6.6. Bounded Context Software Architecture Code Level Diagrams
 

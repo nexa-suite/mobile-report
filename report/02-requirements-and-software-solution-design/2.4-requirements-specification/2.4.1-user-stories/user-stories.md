@@ -88,9 +88,9 @@ pantalla, una aplicación ni una unidad de despliegue.
 | --- | --- | --- | --- |
 | MOBILE-EPIC-01 | Acceso seguro y contexto de trabajo | Sprint 1 | MOB-US-001, MOB-US-002, MOB-US-003 |
 | MOBILE-EPIC-02 | Primera experiencia Warehouse, recepción, identificación y preparación | Sprint 1; Sprint 2 | MOB-US-004, MOB-US-011, MOB-US-012, MOB-US-013, MOB-US-014, MOB-US-015, MOB-US-016, MOB-US-017, MOB-US-019 |
-| MOBILE-EPIC-03 | Preparación de despacho y Dispatch Handoff | Sprint 2 | MOB-US-020, MOB-US-021, MOB-US-022, MOB-US-023, MOB-US-024, MOB-US-025 |
+| MOBILE-EPIC-03 | Preparación de despacho y transferencia de despacho | Sprint 2 | MOB-US-020, MOB-US-021, MOB-US-022, MOB-US-023, MOB-US-024, MOB-US-025 |
 | MOBILE-EPIC-04 | Ejecución de Delivery y Proof of Delivery | Sprint 3 | MOB-US-026, MOB-US-027, MOB-US-028, MOB-US-031, MOB-US-032, MOB-US-033, MOB-US-034 |
-| MOBILE-EPIC-05 | Handoff, Buyer Receipt y actualizaciones críticas | Sprint 3 | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
+| MOBILE-EPIC-05 | Transferencia de entrega, Buyer Receipt y actualizaciones críticas | Sprint 3 | MOB-US-044, MOB-US-047, MOB-US-048, MOB-US-049 |
 | MOBILE-EPIC-06 | Conveniencia comercial y operativa | Sprint 2; Sprint 3 | MOB-US-005, MOB-US-006, MOB-US-007, MOB-US-008, MOB-US-009, MOB-US-010, MOB-US-036, MOB-US-037, MOB-US-038, MOB-US-039, MOB-US-040, MOB-US-041, MOB-US-042, MOB-US-043 |
 | MOBILE-EPIC-07 | Operación de campo avanzada y continuidad selectiva | Sprint 2; Sprint 3 | MOB-US-018, MOB-US-029, MOB-US-030, MOB-US-035, MOB-US-045, MOB-US-046 |
 | MOBILE-EPIC-08 | Transferencias y exactitud de inventario | Sprint 4 | MOB-US-050, MOB-US-051, MOB-US-052, MOB-US-053, MOB-US-054, MOB-US-055, MOB-US-056 |
@@ -546,7 +546,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-020</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y Dispatch Handoff</td></tr>
+<tr><td>MOB-US-020</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y transferencia de despacho</td></tr>
 <tr><th>Title</th><td colspan="3">Ver entregas listas para preparar el despacho</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo ver las entregas listas para preparación del despacho, para preparar únicamente entregas listas para salir del almacén.</td></tr>
@@ -563,10 +563,10 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-021</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y Dispatch Handoff</td></tr>
+<tr><td>MOB-US-021</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y transferencia de despacho</td></tr>
 <tr><th>Title</th><td colspan="3">Asignar un conductor a una entrega lista</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo asignar un conductor a una entrega lista, para que la responsabilidad quede clara antes del handoff.</td></tr>
+<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo asignar un conductor a una entrega lista, para que la responsabilidad quede clara antes de la transferencia operativa.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Conductor elegible</strong></p><p><strong>Given</strong> una entrega está lista y un conductor es elegible</p><p><strong>When</strong> el coordinador lo asigna</p><p><strong>Then</strong> Nexa registra una única asignación.</p><p><strong>Scenario: Asignación no elegible</strong></p><p><strong>Given</strong> la entrega o el conductor no son elegibles</p><p><strong>When</strong> el coordinador realiza la asignación</p><p><strong>Then</strong> Nexa la rechaza y no cambia la responsabilidad de la entrega.</p><p><strong>Scenario: Asignación desactualizada</strong></p><p><strong>Given</strong> la entrega cambió después de ser leída</p><p><strong>When</strong> el coordinador asigna el conductor</p><p><strong>Then</strong> Nexa solicita información actual en lugar de sobrescribir el cambio.</p><p><strong>Scenario: Asignación repetida</strong></p><p><strong>Given</strong> el coordinador repite la misma asignación</p><p><strong>When</strong> Nexa la recibe</p><p><strong>Then</strong> la entrega conserva un único resultado de asignación.</p></td></tr>
 </tbody>
@@ -580,46 +580,46 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-022</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y Dispatch Handoff</td></tr>
+<tr><td>MOB-US-022</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y transferencia de despacho</td></tr>
 <tr><th>Title</th><td colspan="3">Comprobar bienes salientes contra la entrega preparada</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo comprobar los bienes salientes contra la entrega preparada, para que el conductor reciba lo que la entrega realmente requiere.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Bienes coincidentes</strong></p><p><strong>Given</strong> los bienes salientes coinciden con la asignación actual</p><p><strong>When</strong> el coordinador los comprueba</p><p><strong>Then</strong> Nexa registra que la preparación del handoff coincide.</p><p><strong>Scenario: Diferencia</strong></p><p><strong>Given</strong> el lote o cantidad difiere de la asignación</p><p><strong>When</strong> el coordinador lo comprueba</p><p><strong>Then</strong> Nexa detiene el handoff y conserva la discrepancia.</p><p><strong>Scenario: Asignación modificada</strong></p><p><strong>Given</strong> la asignación cambió después de la preparación</p><p><strong>When</strong> el coordinador comprueba los bienes</p><p><strong>Then</strong> Nexa exige una decisión de preparación nueva.</p><p><strong>Scenario: Comprobación repetida</strong></p><p><strong>Given</strong> se comprueban nuevamente los mismos bienes</p><p><strong>When</strong> el coordinador repite la comprobación</p><p><strong>Then</strong> la comprobación no crea un segundo movimiento de stock.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Bienes coincidentes</strong></p><p><strong>Given</strong> los bienes salientes coinciden con la asignación actual</p><p><strong>When</strong> el coordinador los comprueba</p><p><strong>Then</strong> Nexa registra que la preparación de la transferencia operativa coincide.</p><p><strong>Scenario: Diferencia</strong></p><p><strong>Given</strong> el lote o cantidad difiere de la asignación</p><p><strong>When</strong> el coordinador lo comprueba</p><p><strong>Then</strong> Nexa detiene la transferencia operativa y conserva la discrepancia.</p><p><strong>Scenario: Asignación modificada</strong></p><p><strong>Given</strong> la asignación cambió después de la preparación</p><p><strong>When</strong> el coordinador comprueba los bienes</p><p><strong>Then</strong> Nexa exige una decisión de preparación nueva.</p><p><strong>Scenario: Comprobación repetida</strong></p><p><strong>Given</strong> se comprueban nuevamente los mismos bienes</p><p><strong>When</strong> el coordinador repite la comprobación</p><p><strong>Then</strong> la comprobación no crea un segundo movimiento de stock.</p></td></tr>
 </tbody>
 </table>
 
 **Tabla**<br>
-*MOB-US-023 — Conservar evidencia del handoff entre almacén y conductor*
+*MOB-US-023 — Conservar evidencia de la transferencia operativa entre almacén y conductor*
 
 <table>
 <thead>
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-023</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y Dispatch Handoff</td></tr>
-<tr><th>Title</th><td colspan="3">Conservar evidencia del handoff entre almacén y conductor</td></tr>
+<tr><td>MOB-US-023</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y transferencia de despacho</td></tr>
+<tr><th>Title</th><td colspan="3">Conservar evidencia de la transferencia operativa entre almacén y conductor</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo conservar la evidencia del handoff entre almacén y conductor, para que el movimiento de bienes preparados pueda revisarse.</td></tr>
+<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo conservar la evidencia de la transferencia operativa entre almacén y conductor, para que el movimiento de bienes preparados pueda revisarse.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Evidencia completa</strong></p><p><strong>Given</strong> se conocen la entrega, los bienes y las personas responsables</p><p><strong>When</strong> se registra el handoff</p><p><strong>Then</strong> Nexa conserva la evidencia con momento e identidad de entrega.</p><p><strong>Scenario: Evidencia faltante</strong></p><p><strong>Given</strong> falta evidencia requerida</p><p><strong>When</strong> el coordinador registra el handoff</p><p><strong>Then</strong> Nexa lo deja no confirmado.</p><p><strong>Scenario: Fallo de evidencia</strong></p><p><strong>Given</strong> no se puede confirmar la evidencia</p><p><strong>When</strong> el coordinador reintenta</p><p><strong>Then</strong> Nexa muestra el estado no resuelto y no afirma un handoff completado.</p><p><strong>Scenario: Handoff repetido</strong></p><p><strong>Given</strong> se vuelve a enviar el mismo handoff</p><p><strong>When</strong> Nexa lo recibe</p><p><strong>Then</strong> permanece un único hecho de handoff y no se borra evidencia anterior.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Evidencia completa</strong></p><p><strong>Given</strong> se conocen la entrega, los bienes y las personas responsables</p><p><strong>When</strong> se registra la transferencia operativa</p><p><strong>Then</strong> Nexa conserva la evidencia con momento e identidad de entrega.</p><p><strong>Scenario: Evidencia faltante</strong></p><p><strong>Given</strong> falta evidencia requerida</p><p><strong>When</strong> el coordinador registra la transferencia operativa</p><p><strong>Then</strong> Nexa lo deja no confirmado.</p><p><strong>Scenario: Fallo de evidencia</strong></p><p><strong>Given</strong> no se puede confirmar la evidencia</p><p><strong>When</strong> el coordinador reintenta</p><p><strong>Then</strong> Nexa muestra el estado no resuelto y no afirma una transferencia operativa completada.</p><p><strong>Scenario: Transferencia repetida</strong></p><p><strong>Given</strong> se vuelve a enviar la misma transferencia operativa</p><p><strong>When</strong> Nexa lo recibe</p><p><strong>Then</strong> permanece un único hecho de transferencia operativa y no se borra evidencia anterior.</p></td></tr>
 </tbody>
 </table>
 
 **Tabla**<br>
-*MOB-US-024 — Identificar de forma confiable un handoff de despacho*
+*MOB-US-024 — Identificar de forma confiable una transferencia operativa de despacho*
 
 <table>
 <thead>
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-024</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y Dispatch Handoff</td></tr>
-<tr><th>Title</th><td colspan="3">Identificar de forma confiable un handoff de despacho</td></tr>
+<tr><td>MOB-US-024</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y transferencia de despacho</td></tr>
+<tr><th>Title</th><td colspan="3">Identificar de forma confiable una transferencia operativa de despacho</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo identificar de forma confiable un handoff de despacho, para mantener vinculados la entrega correcta y el conductor durante todo el handoff.</td></tr>
+<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo identificar de forma confiable una transferencia operativa de despacho, para mantener vinculados la entrega correcta y el conductor durante toda la transferencia operativa.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Handoff conocido</strong></p><p><strong>Given</strong> existe una entrega preparada y un conductor asignado</p><p><strong>When</strong> el coordinador identifica el handoff</p><p><strong>Then</strong> Nexa lo vincula con esa entrega y asignación.</p><p><strong>Scenario: Handoff incorrecto</strong></p><p><strong>Given</strong> un identificador pertenece a otra entrega</p><p><strong>When</strong> se utiliza</p><p><strong>Then</strong> Nexa lo rechaza y no cambia ningún hecho de entrega.</p><p><strong>Scenario: Identidad expirada</strong></p><p><strong>Given</strong> la identidad del handoff ya no es válida</p><p><strong>When</strong> se utiliza</p><p><strong>Then</strong> Nexa exige un nuevo handoff autorizado.</p><p><strong>Scenario: Significados separados</strong></p><p><strong>Given</strong> el handoff está identificado</p><p><strong>When</strong> se resuelve su identidad</p><p><strong>Then</strong> Nexa no lo trata como Driver outcome ni como Buyer Receipt.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Transferencia conocida</strong></p><p><strong>Given</strong> existe una entrega preparada y un conductor asignado</p><p><strong>When</strong> el coordinador identifica la transferencia operativa</p><p><strong>Then</strong> Nexa la vincula con esa entrega y asignación.</p><p><strong>Scenario: Transferencia incorrecta</strong></p><p><strong>Given</strong> un identificador pertenece a otra entrega</p><p><strong>When</strong> se utiliza</p><p><strong>Then</strong> Nexa lo rechaza y no cambia ningún hecho de entrega.</p><p><strong>Scenario: Identidad expirada</strong></p><p><strong>Given</strong> la identidad de la transferencia operativa ya no es válida</p><p><strong>When</strong> se utiliza</p><p><strong>Then</strong> Nexa exige una nueva transferencia operativa autorizada.</p><p><strong>Scenario: Significados separados</strong></p><p><strong>Given</strong> la transferencia operativa está identificada</p><p><strong>When</strong> se resuelve su identidad</p><p><strong>Then</strong> Nexa no la trata como Driver outcome ni como Buyer Receipt.</p></td></tr>
 </tbody>
 </table>
 
@@ -631,12 +631,12 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-025</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y Dispatch Handoff</td></tr>
+<tr><td>MOB-US-025</td><td>Dispatch Coordinator</td><td>Critical</td><td>MOBILE-EPIC-03 — Preparación de despacho y transferencia de despacho</td></tr>
 <tr><th>Title</th><td colspan="3">Confirmar que los bienes dejaron el control del almacén</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo confirmar que los bienes dejaron el control del almacén, para que todos puedan confiar en el estado del despacho de la entrega.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Handoff completo</strong></p><p><strong>Given</strong> asignación, comprobaciones salientes, asignación del conductor y evidencia de handoff están completas</p><p><strong>When</strong> el coordinador confirma el despacho</p><p><strong>Then</strong> Nexa registra la entrega como dispatched.</p><p><strong>Scenario: Handoff incompleto</strong></p><p><strong>Given</strong> cualquier comprobación requerida está incompleta</p><p><strong>When</strong> el coordinador confirma el despacho</p><p><strong>Then</strong> Nexa deja la entrega como undispatched.</p><p><strong>Scenario: Entrega modificada</strong></p><p><strong>Given</strong> la entrega cambió después de la preparación</p><p><strong>When</strong> el coordinador confirma el despacho</p><p><strong>Then</strong> Nexa exige comprobaciones actuales en lugar de sobrescribir el cambio.</p><p><strong>Scenario: Resultado incierto</strong></p><p><strong>Given</strong> la confirmación pudo tener éxito</p><p><strong>When</strong> el coordinador reintenta</p><p><strong>Then</strong> Nexa resuelve un único resultado de despacho sin duplicar la transición.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Transferencia completa</strong></p><p><strong>Given</strong> asignación, comprobaciones salientes, asignación del conductor y evidencia de transferencia operativa están completas</p><p><strong>When</strong> el coordinador confirma el despacho</p><p><strong>Then</strong> Nexa registra la entrega como dispatched.</p><p><strong>Scenario: Transferencia incompleta</strong></p><p><strong>Given</strong> cualquier comprobación requerida está incompleta</p><p><strong>When</strong> el coordinador confirma el despacho</p><p><strong>Then</strong> Nexa deja la entrega como undispatched.</p><p><strong>Scenario: Entrega modificada</strong></p><p><strong>Given</strong> la entrega cambió después de la preparación</p><p><strong>When</strong> el coordinador confirma el despacho</p><p><strong>Then</strong> Nexa exige comprobaciones actuales en lugar de sobrescribir el cambio.</p><p><strong>Scenario: Resultado incierto</strong></p><p><strong>Given</strong> la confirmación pudo tener éxito</p><p><strong>When</strong> el coordinador reintenta</p><p><strong>Then</strong> Nexa resuelve un único resultado de despacho sin duplicar la transición.</p></td></tr>
 </tbody>
 </table>
 
@@ -687,7 +687,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo abrir indicaciones hacia el destino autorizado de la entrega, para viajar al destino correcto sin cambiar el registro de entrega.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Destino autorizado</strong></p><p><strong>Given</strong> una entrega activa y autorizada tiene destino</p><p><strong>When</strong> el conductor solicita indicaciones</p><p><strong>Then</strong> Nexa entrega ese destino al servicio de navegación elegido.</p><p><strong>Scenario: Destino faltante</strong></p><p><strong>Given</strong> falta el destino o no está autorizado</p><p><strong>When</strong> se solicitan indicaciones</p><p><strong>Then</strong> Nexa no revela una ubicación no verificada.</p><p><strong>Scenario: Navegación no disponible</strong></p><p><strong>Given</strong> el servicio de navegación no está disponible</p><p><strong>When</strong> se solicitan indicaciones</p><p><strong>Then</strong> el Delivery Attempt no cambia y el fallo queda claro.</p><p><strong>Scenario: Sin seguimiento almacenado</strong></p><p><strong>Given</strong> se abren las indicaciones</p><p><strong>When</strong> termina el handoff</p><p><strong>Then</strong> Nexa no almacena ubicación continua ni background del conductor por esta acción.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Destino autorizado</strong></p><p><strong>Given</strong> una entrega activa y autorizada tiene destino</p><p><strong>When</strong> el conductor solicita indicaciones</p><p><strong>Then</strong> Nexa entrega ese destino al servicio de navegación elegido.</p><p><strong>Scenario: Destino faltante</strong></p><p><strong>Given</strong> falta el destino o no está autorizado</p><p><strong>When</strong> se solicitan indicaciones</p><p><strong>Then</strong> Nexa no revela una ubicación no verificada.</p><p><strong>Scenario: Navegación no disponible</strong></p><p><strong>Given</strong> el servicio de navegación no está disponible</p><p><strong>When</strong> se solicitan indicaciones</p><p><strong>Then</strong> el Delivery Attempt no cambia y el fallo queda claro.</p><p><strong>Scenario: Sin seguimiento almacenado</strong></p><p><strong>Given</strong> se abren las indicaciones</p><p><strong>When</strong> termina la transferencia operativa</p><p><strong>Then</strong> Nexa no almacena ubicación continua ni background del conductor por esta acción.</p></td></tr>
 </tbody>
 </table>
 
@@ -777,7 +777,7 @@ historias del segmento investigado B2B Buyers.
 </table>
 
 **Tabla**<br>
-*MOB-US-034 — Presentar un código acotado de handoff de entrega*
+*MOB-US-034 — Presentar un código acotado de transferencia operativa de entrega*
 
 <table>
 <thead>
@@ -785,11 +785,11 @@ historias del segmento investigado B2B Buyers.
 </thead>
 <tbody>
 <tr><td>MOB-US-034</td><td>Driver or Delivery Operator</td><td>Critical</td><td>MOBILE-EPIC-04 — Ejecución de Delivery y Proof of Delivery</td></tr>
-<tr><th>Title</th><td colspan="3">Presentar un código acotado de handoff de entrega</td></tr>
+<tr><th>Title</th><td colspan="3">Presentar un código acotado de transferencia operativa de entrega</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo presentar un código acotado de handoff de entrega, para que el comprador identifique correctamente la entrega de forma segura.</td></tr>
+<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo presentar un código acotado de transferencia operativa de entrega, para que el comprador identifique correctamente la entrega de forma segura.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Código válido</strong></p><p><strong>Given</strong> existe una entrega activa y autorizada</p><p><strong>When</strong> el conductor presenta su código</p><p><strong>Then</strong> Nexa vincula el código con esa entrega y Delivery Attempt.</p><p><strong>Scenario: Código expirado o incorrecto</strong></p><p><strong>Given</strong> el código está expirado, reutilizado o pertenece a otra entrega</p><p><strong>When</strong> se comprueba</p><p><strong>Then</strong> Nexa lo rechaza sin cambiar el estado de entrega.</p><p><strong>Scenario: Código no disponible</strong></p><p><strong>Given</strong> no se puede presentar el código</p><p><strong>When</strong> el conductor usa la alternativa aprobada</p><p><strong>Then</strong> el handoff permanece explícito y no se registra aceptación falsa.</p><p><strong>Scenario: Hechos separados</strong></p><p><strong>Given</strong> el comprador verifica el código</p><p><strong>When</strong> la verificación tiene éxito</p><p><strong>Then</strong> por sí sola no crea recepción, POD, pago ni finalización de entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Código válido</strong></p><p><strong>Given</strong> existe una entrega activa y autorizada</p><p><strong>When</strong> el conductor presenta su código</p><p><strong>Then</strong> Nexa vincula el código con esa entrega y Delivery Attempt.</p><p><strong>Scenario: Código expirado o incorrecto</strong></p><p><strong>Given</strong> el código está expirado, reutilizado o pertenece a otra entrega</p><p><strong>When</strong> se comprueba</p><p><strong>Then</strong> Nexa lo rechaza sin cambiar el estado de entrega.</p><p><strong>Scenario: Código no disponible</strong></p><p><strong>Given</strong> no se puede presentar el código</p><p><strong>When</strong> el conductor usa la alternativa aprobada</p><p><strong>Then</strong> la transferencia operativa permanece explícita y no se registra aceptación falsa.</p><p><strong>Scenario: Hechos separados</strong></p><p><strong>Given</strong> el comprador verifica el código</p><p><strong>When</strong> la verificación tiene éxito</p><p><strong>Then</strong> por sí sola no crea recepción, POD, pago ni finalización de entrega.</p></td></tr>
 </tbody>
 </table>
 
@@ -954,7 +954,7 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-044</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Handoff de Delivery, Buyer Receipt y actualizaciones críticas</td></tr>
+<tr><td>MOB-US-044</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Transferencia de entrega, Buyer Receipt y actualizaciones críticas</td></tr>
 <tr><th>Title</th><td colspan="3">Saber cuándo una entrega requiere atención</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo saber cuándo una entrega requiere atención, para responder oportunamente a un cambio relevante.</td></tr>
@@ -998,17 +998,17 @@ historias del segmento investigado B2B Buyers.
 </table>
 
 **Tabla**<br>
-*MOB-US-047 — Verificar una entrega mediante el código de handoff*
+*MOB-US-047 — Verificar una entrega mediante el código de transferencia*
 
 <table>
 <thead>
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-047</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Handoff de Delivery, Buyer Receipt y actualizaciones críticas</td></tr>
-<tr><th>Title</th><td colspan="3">Verificar una entrega mediante el código de handoff</td></tr>
+<tr><td>MOB-US-047</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Transferencia de entrega, Buyer Receipt y actualizaciones críticas</td></tr>
+<tr><th>Title</th><td colspan="3">Verificar una entrega mediante el código de transferencia</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo verificar una entrega mediante el código de handoff, para confirmar que reviso la entrega correcta.</td></tr>
+<tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo verificar una entrega mediante el código de transferencia, para confirmar que reviso la entrega correcta.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Código coincidente</strong></p><p><strong>Given</strong> existe un código válido, no expirado y una relación autorizada</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa identifica la entrega y Delivery Attempt coincidentes.</p><p><strong>Scenario: Código inválido</strong></p><p><strong>Given</strong> el código está expirado, reutilizado, malformado o no relacionado</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa lo rechaza y no cambia ningún hecho de recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede confirmar el código</p><p><strong>When</strong> el comprador lo verifica</p><p><strong>Then</strong> Nexa muestra un estado no confirmado y ninguna recepción tiene éxito.</p><p><strong>Scenario: Límite de verificación</strong></p><p><strong>Given</strong> el código está verificado</p><p><strong>When</strong> el comprador continúa</p><p><strong>Then</strong> la verificación por sí sola no confirma cantidades, POD, pago ni finalización de entrega.</p></td></tr>
 </tbody>
@@ -1022,12 +1022,12 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-048</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Handoff de Delivery, Buyer Receipt y actualizaciones críticas</td></tr>
+<tr><td>MOB-US-048</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Transferencia de entrega, Buyer Receipt y actualizaciones críticas</td></tr>
 <tr><th>Title</th><td colspan="3">Confirmar las cantidades realmente recibidas</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo confirmar las cantidades realmente recibidas, para que el proveedor tenga un registro veraz de mi Buyer Receipt.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Recepción coincidente</strong></p><p><strong>Given</strong> existe un handoff verificado y autorizado</p><p><strong>When</strong> el comprador confirma las cantidades recibidas</p><p><strong>Then</strong> Nexa registra un único hecho de Buyer Receipt con persona, momento y entrega.</p><p><strong>Scenario: Cantidades diferentes</strong></p><p><strong>Given</strong> las cantidades recibidas difieren del resultado del conductor</p><p><strong>When</strong> el comprador las confirma</p><p><strong>Then</strong> ambos hechos permanecen separados y la diferencia queda visible.</p><p><strong>Scenario: Handoff desactualizado o reutilizado</strong></p><p><strong>Given</strong> el handoff está desactualizado, expirado o ya utilizado</p><p><strong>When</strong> el comprador confirma cantidades</p><p><strong>Then</strong> Nexa rechaza la confirmación o devuelve el resultado original sin una segunda recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede comprobar la confirmación de la recepción</p><p><strong>When</strong> el comprador lo intenta</p><p><strong>Then</strong> Nexa no muestra éxito de recepción hasta recibir confirmación.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Recepción coincidente</strong></p><p><strong>Given</strong> existe una transferencia operativa verificada y autorizada</p><p><strong>When</strong> el comprador confirma las cantidades recibidas</p><p><strong>Then</strong> Nexa registra un único hecho de Buyer Receipt con persona, momento y entrega.</p><p><strong>Scenario: Cantidades diferentes</strong></p><p><strong>Given</strong> las cantidades recibidas difieren del resultado del conductor</p><p><strong>When</strong> el comprador las confirma</p><p><strong>Then</strong> ambos hechos permanecen separados y la diferencia queda visible.</p><p><strong>Scenario: Transferencia desactualizada o reutilizada</strong></p><p><strong>Given</strong> la transferencia operativa está desactualizada, expirada o ya utilizada</p><p><strong>When</strong> el comprador confirma cantidades</p><p><strong>Then</strong> Nexa rechaza la confirmación o devuelve el resultado original sin una segunda recepción.</p><p><strong>Scenario: Sin conexión</strong></p><p><strong>Given</strong> no se puede comprobar la confirmación de la recepción</p><p><strong>When</strong> el comprador lo intenta</p><p><strong>Then</strong> Nexa no muestra éxito de recepción hasta recibir confirmación.</p></td></tr>
 </tbody>
 </table>
 
@@ -1039,12 +1039,12 @@ historias del segmento investigado B2B Buyers.
 <tr><th>Story ID</th><th>User</th><th>Priority</th><th>Epic ID</th></tr>
 </thead>
 <tbody>
-<tr><td>MOB-US-049</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Handoff de Delivery, Buyer Receipt y actualizaciones críticas</td></tr>
+<tr><td>MOB-US-049</td><td>Customer Buyer</td><td>Critical</td><td>MOBILE-EPIC-05 — Transferencia de entrega, Buyer Receipt y actualizaciones críticas</td></tr>
 <tr><th>Title</th><td colspan="3">Reportar una discrepancia sin borrar los hechos</td></tr>
 <tr><th colspan="4">Description</th></tr>
 <tr><td colspan="4">Como <strong>Customer Buyer</strong>, deseo reportar una discrepancia sin borrar los hechos, para que el proveedor resuelva la diferencia manteniendo un historial confiable.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Discrepancia registrada</strong></p><p><strong>Given</strong> existe un contexto de handoff o recepción verificado</p><p><strong>When</strong> el comprador reporta una discrepancia</p><p><strong>Then</strong> Nexa conserva motivo, cantidad afectada, persona, momento y evidencia.</p><p><strong>Scenario: Historiales separados</strong></p><p><strong>Given</strong> el resultado del Driver outcome difiere del Buyer Receipt</p><p><strong>When</strong> se registra la discrepancia</p><p><strong>Then</strong> ambos hechos originales permanecen sin cambios y la diferencia queda visible.</p><p><strong>Scenario: Reporte inválido</strong></p><p><strong>Given</strong> falta motivo, permiso o evidencia requerida</p><p><strong>When</strong> el comprador lo reporta</p><p><strong>Then</strong> Nexa no registra una corrección no autorizada.</p><p><strong>Scenario: Fallo temporal</strong></p><p><strong>Given</strong> no se puede confirmar el reporte</p><p><strong>When</strong> el comprador reintenta</p><p><strong>Then</strong> Nexa conserva un único resultado pendiente o aceptado y no implica reembolso, cambio de pago ni finalización de entrega.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Discrepancia registrada</strong></p><p><strong>Given</strong> existe un contexto de transferencia operativa o recepción verificado</p><p><strong>When</strong> el comprador reporta una discrepancia</p><p><strong>Then</strong> Nexa conserva motivo, cantidad afectada, persona, momento y evidencia.</p><p><strong>Scenario: Historiales separados</strong></p><p><strong>Given</strong> el resultado del Driver outcome difiere del Buyer Receipt</p><p><strong>When</strong> se registra la discrepancia</p><p><strong>Then</strong> ambos hechos originales permanecen sin cambios y la diferencia queda visible.</p><p><strong>Scenario: Reporte inválido</strong></p><p><strong>Given</strong> falta motivo, permiso o evidencia requerida</p><p><strong>When</strong> el comprador lo reporta</p><p><strong>Then</strong> Nexa no registra una corrección no autorizada.</p><p><strong>Scenario: Fallo temporal</strong></p><p><strong>Given</strong> no se puede confirmar el reporte</p><p><strong>When</strong> el comprador reintenta</p><p><strong>Then</strong> Nexa conserva un único resultado pendiente o aceptado y no implica reembolso, cambio de pago ni finalización de entrega.</p></td></tr>
 </tbody>
 </table>
 
@@ -1168,7 +1168,7 @@ historias del segmento investigado B2B Buyers.
 </table>
 
 **Tabla**<br>
-*MOB-US-057 — Resolver una discrepancia de despacho antes del handoff*
+*MOB-US-057 — Resolver una discrepancia de despacho antes de la transferencia operativa*
 
 <table>
 <thead>
@@ -1176,11 +1176,11 @@ historias del segmento investigado B2B Buyers.
 </thead>
 <tbody>
 <tr><td>MOB-US-057</td><td>Dispatch Coordinator</td><td>High</td><td>MOBILE-EPIC-09 — Excepciones de despacho y coordinación de Delivery</td></tr>
-<tr><th>Title</th><td colspan="3">Resolver una discrepancia de despacho antes del handoff</td></tr>
+<tr><th>Title</th><td colspan="3">Resolver una discrepancia de despacho antes de la transferencia operativa</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo resolver una discrepancia de despacho antes del handoff, para que solo una entrega revisada abandone el control del almacén.</td></tr>
+<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo resolver una discrepancia de despacho antes de la transferencia operativa, para que solo una entrega revisada abandone el control del almacén.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Diferencia identificada</strong></p><p><strong>Given</strong> los bienes salientes no coinciden con la entrega preparada</p><p><strong>When</strong> el coordinador registra la diferencia</p><p><strong>Then</strong> Nexa identifica la entrega, lote o cantidad afectados y bloquea el handoff inseguro.</p><p><strong>Scenario: Resolución autorizada</strong></p><p><strong>Given</strong> la diferencia tiene una resolución aceptada</p><p><strong>When</strong> el coordinador confirma la siguiente acción</p><p><strong>Then</strong> Nexa actualiza la disponibilidad de despacho con evidencia trazable.</p><p><strong>Scenario: Preparación desactualizada</strong></p><p><strong>Given</strong> la entrega cambió después de la preparación</p><p><strong>When</strong> el coordinador resuelve la discrepancia</p><p><strong>Then</strong> Nexa solicita una decisión nueva en lugar de sobrescribir los hechos actuales.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Diferencia identificada</strong></p><p><strong>Given</strong> los bienes salientes no coinciden con la entrega preparada</p><p><strong>When</strong> el coordinador registra la diferencia</p><p><strong>Then</strong> Nexa identifica la entrega, lote o cantidad afectados y bloquea la transferencia operativa insegura.</p><p><strong>Scenario: Resolución autorizada</strong></p><p><strong>Given</strong> la diferencia tiene una resolución aceptada</p><p><strong>When</strong> el coordinador confirma la siguiente acción</p><p><strong>Then</strong> Nexa actualiza la disponibilidad de despacho con evidencia trazable.</p><p><strong>Scenario: Preparación desactualizada</strong></p><p><strong>Given</strong> la entrega cambió después de la preparación</p><p><strong>When</strong> el coordinador resuelve la discrepancia</p><p><strong>Then</strong> Nexa solicita una decisión nueva en lugar de sobrescribir los hechos actuales.</p></td></tr>
 </tbody>
 </table>
 
@@ -1219,7 +1219,7 @@ historias del segmento investigado B2B Buyers.
 </table>
 
 **Tabla**<br>
-*MOB-US-060 — Completar un handoff al transportista con responsabilidad trazable*
+*MOB-US-060 — Completar una transferencia operativa al transportista con responsabilidad trazable*
 
 <table>
 <thead>
@@ -1227,11 +1227,11 @@ historias del segmento investigado B2B Buyers.
 </thead>
 <tbody>
 <tr><td>MOB-US-060</td><td>Dispatch Coordinator</td><td>Low</td><td>MOBILE-EPIC-09 — Excepciones de despacho y coordinación de Delivery</td></tr>
-<tr><th>Title</th><td colspan="3">Completar un handoff al transportista con responsabilidad trazable</td></tr>
+<tr><th>Title</th><td colspan="3">Completar una transferencia operativa al transportista con responsabilidad trazable</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo completar un handoff al transportista con responsabilidad clara, para que todos sepan quién controla la carga después de que abandona el almacén.</td></tr>
+<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo completar una transferencia operativa al transportista con responsabilidad clara, para que todos sepan quién controla la carga después de que abandona el almacén.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Handoff aceptado</strong></p><p><strong>Given</strong> existe una carga preparada y un carrier autorizado</p><p><strong>When</strong> el coordinador registra el handoff</p><p><strong>Then</strong> Nexa conserva carrier, persona, momento y responsabilidad de entrega.</p><p><strong>Scenario: Evidencia incompleta</strong></p><p><strong>Given</strong> falta evidencia requerida del handoff</p><p><strong>When</strong> el coordinador intenta finalizarlo</p><p><strong>Then</strong> Nexa deja la responsabilidad en el responsable actual e indica qué se requiere.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Transferencia aceptada</strong></p><p><strong>Given</strong> existe una carga preparada y un carrier autorizado</p><p><strong>When</strong> el coordinador registra la transferencia operativa</p><p><strong>Then</strong> Nexa conserva carrier, persona, momento y responsabilidad de entrega.</p><p><strong>Scenario: Evidencia incompleta</strong></p><p><strong>Given</strong> falta evidencia requerida de la transferencia operativa</p><p><strong>When</strong> el coordinador intenta finalizarla</p><p><strong>Then</strong> Nexa deja la responsabilidad en el responsable actual e indica qué se requiere.</p></td></tr>
 </tbody>
 </table>
 
@@ -1246,7 +1246,7 @@ historias del segmento investigado B2B Buyers.
 <tr><td>MOB-US-061</td><td>Dispatch Coordinator</td><td>High</td><td>MOBILE-EPIC-09 — Excepciones de despacho y coordinación de Delivery</td></tr>
 <tr><th>Title</th><td colspan="3">Registrar evidencia de temperatura en el despacho</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo registrar evidencia de temperatura en el despacho, para que la decisión de entrega refleje la condición observada antes del handoff.</td></tr>
+<tr><td colspan="4">Como <strong>Dispatch Coordinator</strong>, deseo registrar evidencia de temperatura en el despacho, para que la decisión de entrega refleje la condición observada antes de la transferencia operativa.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Evidencia registrada</strong></p><p><strong>Given</strong> una entrega requiere una comprobación de temperatura</p><p><strong>When</strong> el coordinador registra la observación</p><p><strong>Then</strong> Nexa conserva valor, unidad, persona, momento y contexto de entrega.</p><p><strong>Scenario: Fuera de política</strong></p><p><strong>Given</strong> la observación está fuera del rango aceptado</p><p><strong>When</strong> el coordinador la envía</p><p><strong>Then</strong> Nexa impide un despacho no revisado y muestra la decisión requerida.</p><p><strong>Scenario: Confirmación faltante</strong></p><p><strong>Given</strong> no se puede confirmar la observación</p><p><strong>When</strong> el coordinador reintenta</p><p><strong>Then</strong> Nexa no implica aprobación de cadena de frío.</p></td></tr>
 </tbody>
@@ -1263,9 +1263,9 @@ historias del segmento investigado B2B Buyers.
 <tr><td>MOB-US-062</td><td>Driver or Delivery Operator</td><td>High</td><td>MOBILE-EPIC-09 — Excepciones de despacho y coordinación de Delivery</td></tr>
 <tr><th>Title</th><td colspan="3">Señalar la llegada de una entrega activa</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo señalar la llegada de una entrega activa, para que el comprador y el equipo de entrega sepan que puede comenzar el handoff.</td></tr>
+<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo señalar la llegada de una entrega activa, para que el comprador y el equipo de entrega sepan que puede comenzar la transferencia operativa.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
-<tr><td colspan="4"><p><strong>Scenario: Llegada registrada</strong></p><p><strong>Given</strong> el conductor tiene una entrega activa y autorizada</p><p><strong>When</strong> señala su llegada</p><p><strong>Then</strong> Nexa registra el evento y lo hace visible a destinatarios permitidos.</p><p><strong>Scenario: Sin entrega activa</strong></p><p><strong>Given</strong> el conductor no está asignado a una entrega activa</p><p><strong>When</strong> señala llegada</p><p><strong>Then</strong> Nexa rechaza la señal sin revelar otra entrega.</p><p><strong>Scenario: Entrega permanece abierta</strong></p><p><strong>Given</strong> se registró la llegada</p><p><strong>When</strong> el comprador o conductor consulta la entrega</p><p><strong>Then</strong> permanece abierta hasta registrar por separado handoff y recepción.</p></td></tr>
+<tr><td colspan="4"><p><strong>Scenario: Llegada registrada</strong></p><p><strong>Given</strong> el conductor tiene una entrega activa y autorizada</p><p><strong>When</strong> señala su llegada</p><p><strong>Then</strong> Nexa registra el evento y lo hace visible a destinatarios permitidos.</p><p><strong>Scenario: Sin entrega activa</strong></p><p><strong>Given</strong> el conductor no está asignado a una entrega activa</p><p><strong>When</strong> señala llegada</p><p><strong>Then</strong> Nexa rechaza la señal sin revelar otra entrega.</p><p><strong>Scenario: Entrega permanece abierta</strong></p><p><strong>Given</strong> se registró la llegada</p><p><strong>When</strong> el comprador o conductor consulta la entrega</p><p><strong>Then</strong> permanece abierta hasta registrar por separado transferencia operativa y recepción.</p></td></tr>
 </tbody>
 </table>
 
@@ -1280,7 +1280,7 @@ historias del segmento investigado B2B Buyers.
 <tr><td>MOB-US-063</td><td>Driver or Delivery Operator</td><td>High</td><td>MOBILE-EPIC-09 — Excepciones de despacho y coordinación de Delivery</td></tr>
 <tr><th>Title</th><td colspan="3">Seguir instrucciones de entrega y datos de contacto autorizados</td></tr>
 <tr><th colspan="4">Description</th></tr>
-<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo seguir las instrucciones y datos de contacto permitidos de la entrega, para coordinar el handoff con la persona prevista.</td></tr>
+<tr><td colspan="4">Como <strong>Driver / Delivery Operator</strong>, deseo seguir las instrucciones y datos de contacto permitidos de la entrega, para coordinar la transferencia operativa con la persona prevista.</td></tr>
 <tr><th colspan="4">Acceptance Criteria</th></tr>
 <tr><td colspan="4"><p><strong>Scenario: Contexto autorizado</strong></p><p><strong>Given</strong> una entrega activa incluye instrucciones permitidas</p><p><strong>When</strong> el conductor las abre</p><p><strong>Then</strong> Nexa muestra solo la información necesaria para esa entrega.</p><p><strong>Scenario: Instrucciones modificadas</strong></p><p><strong>Given</strong> las instrucciones ya no son actuales</p><p><strong>When</strong> el conductor las consulta</p><p><strong>Then</strong> Nexa las marca como desactualizadas y exige confirmación nueva antes de usarlas.</p><p><strong>Scenario: Información restringida</strong></p><p><strong>Given</strong> un contacto o instrucción no está permitido para el conductor</p><p><strong>When</strong> solicita acceso</p><p><strong>Then</strong> Nexa lo oculta y explica la ruta permitida.</p></td></tr>
 </tbody>

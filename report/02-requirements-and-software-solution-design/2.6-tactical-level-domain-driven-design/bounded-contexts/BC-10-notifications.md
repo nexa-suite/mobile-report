@@ -52,7 +52,7 @@ intención, dispatch y retry. I/O de delivery permanece tras el puerto técnico.
 #### 2.6.10.4. Infrastructure Layer
 
 Infrastructure conserva el hash de deduplicación/lifecycle, inbox/outbox y el
-adapter de email V1; no acepta un provider push externo. El material de
+adaptador de email del alcance actual; no acepta un provider push externo. El material de
 endpoint es **FUTURE / PROVIDER-ADAPTER INPUT** y **NOT PERSISTED IN CURRENT
 POSTGRESQL TARGET**.
 
@@ -61,18 +61,18 @@ POSTGRESQL TARGET**.
 | `PostgresNotificationRepository`, `PostgresNotificationTemplateRepository` | Repository implementations | Mapear notification/template y children. | notification records. | `byId`, `save`. | Repositories Domain, PostgreSQL. |
 | `PostgresNotificationPreferenceRepository`, `PostgresPushSubscriptionStore` | Repository implementation / technical store | Mapear preference root y registro técnico sin token crudo. | preference/subscription records con `provider_token_hash`. | `byId`, `save`. | Repository Domain y store técnico de hash/lifecycle. |
 | `NotificationFactInbox` | Inbox adapter | Deduplicar published business facts. | event ID, consumer state. | `claim`, `complete`. | Event handler. |
-| `EmailDeliveryAdapter` | Delivery adapter | Ejecutar I/O de email fuera de Domain. | resolved destination, rendered message. | `send`. | Dispatch handler; ningún provider push está aceptado en V1. |
+| `EmailDeliveryAdapter` | Delivery adapter | Ejecutar I/O de email fuera de Domain. | resolved destination, rendered message. | `send`. | Dispatch handler; ningún provider push está aceptado en el alcance actual. |
 | `NotificationOutboxPublisher` | Outbox adapter | Publicar outcomes comprometidos. | outcome fact, correlación. | `enqueue`. | BC-11. |
 
 #### 2.6.10.5. Bounded Context Software Architecture Component Level Diagrams
 
 La lente C4 TARGET de Domain Ownership Mapping sitúa preferencias, facts y
 proyecciones de BC-10 sin convertirlo en un componente o Container C4. Ningún
-provider push externo ni canal Product adicional está aceptado en V1.
+provider push externo ni canal Product adicional está aceptado en el alcance actual.
 
 ![Mapeo C4 TARGET para BC-10 Notifications](../../../assets/chapter-2/c4/Nexa-API-DomainOwnershipMapping-TARGET.svg)
 
-*Nota. Export canónico generado desde Blueprint Wave 3.*
+*Nota. Exportación canónica de arquitectura y dominio de Nexa.*
 
 #### 2.6.10.6. Bounded Context Software Architecture Code Level Diagrams
 

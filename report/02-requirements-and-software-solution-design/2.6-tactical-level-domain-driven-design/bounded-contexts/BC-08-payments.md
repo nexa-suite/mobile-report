@@ -67,7 +67,7 @@ se convierte en un componente o Container C4.
 
 ![Lente C4 TARGET para BC-08 Payments](../../../assets/chapter-2/c4/Nexa-API-CreditPaymentDocuments-TARGET.svg)
 
-*Nota. Export canónico generado desde Blueprint Wave 3.*
+*Nota. Exportación canónica de arquitectura y dominio de Nexa.*
 
 #### 2.6.8.6. Bounded Context Software Architecture Code Level Diagrams
 

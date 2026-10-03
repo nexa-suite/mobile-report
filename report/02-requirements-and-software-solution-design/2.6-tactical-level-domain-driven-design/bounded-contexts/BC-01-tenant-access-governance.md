@@ -19,7 +19,7 @@ cargados. No realiza HTTP, criptografía de proveedor ni I/O de persistencia.
 | `HumanIdentity` | Aggregate Root | Mantener identidad humana independiente de Tenant. | `HumanIdentityId`, email normalizado, status. | `verify`, `disable`. | Referenciada por ID desde membership y BC-02. |
 | `WorkforceMembership` | Aggregate Root | Gobernar participación laboral en Workspace. | `MembershipId`, `WorkspaceId`, `HumanIdentityId`, roles, status. | `invite`, `activate`, `revoke`, `can`. | Referencias tipadas a Workspace, identidad y rol. |
 | `RoleDefinition` | Aggregate Root | Mantener capacidades de un rol Workspace-scoped. | `RoleId`, `WorkspaceId`, código, status. | `assignCapability`, `retire`. | Compone `RoleCapability`; `CapabilityDefinition` permanece global y no existe template de rol global en TARGET actual. |
-| `CompanyOnboardingRequest` | Aggregate Root | Mantener intake y handoff de activación. | `OnboardingRequestId`, `TenantId`, solicitud, contacto, status, versión. | `submit`, `approve`, `reject`. | `TenantId` es obligatorio al enviar; no hay Workspace ni acceso antes del gate de lifecycle del Tenant. |
+| `CompanyOnboardingRequest` | Aggregate Root | Mantener intake y transferencia de activación. | `OnboardingRequestId`, `TenantId`, solicitud, contacto, status, versión. | `submit`, `approve`, `reject`. | `TenantId` es obligatorio al enviar; no hay Workspace ni acceso antes del gate de lifecycle del Tenant. |
 | `AccessEligibilityPolicy` | Domain Policy | Evaluar capacidad con contexto ya autorizado. | `AccessContext`, `CapabilityCode`. | `evaluate`, `requireCapability`. | Pura; no consulta repositorios. |
 | `TenantRepository`, `HumanIdentityRepository` | Repository interfaces | Cargar y persistir roots con lifecycle propio. | IDs tipados y roots. | `byId`, `save`. | Contratos Domain; infraestructura los implementa. |
 | `WorkforceMembershipRepository`, `RoleDefinitionRepository`, `CompanyOnboardingRequestRepository` | Repository interfaces | Acceder independientemente a gobernanza y onboarding. | IDs tipados y roots. | `byId`, `save`. | Ningún repository administra BuyerRelationship. |
@@ -61,7 +61,7 @@ contexto de worker explícito; no concede permisos por un ID de cliente.
 | `PostgresHumanIdentityRepository` | Repository implementation | Persistir identidad independiente. | identidad normalizada. | `byId`, `save`. | `HumanIdentityRepository`, PostgreSQL. |
 | `PostgresWorkforceMembershipRepository` | Repository implementation | Persistir membership y asignaciones locales. | membership, roles, overrides. | `byId`, `save`. | `WorkforceMembershipRepository`. |
 | `PostgresRoleDefinitionRepository` | Repository implementation | Persistir roles Workspace-scoped. | rol, Workspace y capacidades. | `byId`, `save`. | `RoleDefinitionRepository`; FK compuesta evita asignar rol de otro Workspace. |
-| `PostgresCompanyOnboardingRequestRepository` | Repository implementation | Persistir solicitud tenant-scoped y handoff de activación. | onboarding record. | `byId`, `save`. | `CompanyOnboardingRequestRepository`. |
+| `PostgresCompanyOnboardingRequestRepository` | Repository implementation | Persistir solicitud tenant-scoped y transferencia de activación. | onboarding record. | `byId`, `save`. | `CompanyOnboardingRequestRepository`. |
 | `TenantScopePersistenceSupport` | Persistence support | Establecer predicados y scope transaccional fail-closed. | Tenant/Workspace de servidor. | `requireScope`, `applyScope`. | PostgreSQL/RLS y Application. |
 
 #### 2.6.1.5. Bounded Context Software Architecture Component Level Diagrams
@@ -72,7 +72,7 @@ compartidas. No convierte BC-01 en un componente o Container C4.
 
 ![Lente C4 TARGET para BC-01 Tenant & Access Governance](../../../assets/chapter-2/c4/Nexa-API-IdentityTenantCustomer-TARGET.svg)
 
-*Nota. Export canónico generado desde Blueprint Wave 3.*
+*Nota. Exportación canónica de arquitectura y dominio de Nexa.*
 
 #### 2.6.1.6. Bounded Context Software Architecture Code Level Diagrams
 

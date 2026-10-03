@@ -16,3 +16,5 @@ aceptación Product/System ni cierre de sprint.
 | Sprint 3 y Sprint 4 | Planificación y matrices de trabajo; no se atribuye implementación completada. | Planificado / no evidenciado | Review, pruebas, servicios, despliegue y colaboración del sprint correspondiente. |
 | Investigación, entrevistas y heurísticas | No se dispone de entrevistas ejecutadas, fuentes académicas completas, PoC reproducible ni evaluación primaria registrada. | Ausente | Participantes, instrumentos, fuentes APA 7, decisión técnica, PoC y resultados observables. |
 
+
+La captura del backlog del Sprint 2 en Jira está incorporada en 4.2.2.3. Muestra 71 actividades y 317 puntos, con el sprint aún por iniciar en la herramienta. Falta reconciliar esa composición con la planificación documentada de 36 elementos y 144 puntos; las tareas y subtareas no aparecen desplegadas en la imagen.

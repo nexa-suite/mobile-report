@@ -80,7 +80,7 @@ for root in "${REPORT_ROOTS[@]}"; do
 done
 
 find "${REPORT_ROOTS[@]/#/$REPO_ROOT/}" -type f -name '*.md' -print \
-  | grep -Ev '/4\.2\.(3-sprint-3|4-sprint-4|5-operations-mobile-wave-4)/' \
+  | grep -Ev '/4\.2\.(3-sprint-3|4-sprint-4)/' \
   | LC_ALL=C sort > "$CANONICAL_SOURCES"
 
 if grep -Eq '/(chapter-overview|section-overview|sprint-overview)\.md$' \
@@ -91,7 +91,18 @@ fi
 
 append_source() {
   local source="$1"
-  sed -E 's|(\.\./)+assets/|report/assets/|g' "$REPO_ROOT/$source"
+  if [[ "$source" == "report/00-front-matter/03-contents.md" ]]; then
+    awk -v mode="$MILESTONE" '
+      /^## Capítulo III:/ && mode == "AV1" { skip = 1 }
+      /^## Capítulo IV:/ && mode == "AV1" { skip = 1 }
+      /^## Secciones finales/ { skip = 0; sprint_skip = 0 }
+      /^  - 4\.2\.[34]\. Sprint/ && mode == "AV2" { sprint_skip = 1; next }
+      /^- 4\.3\./ { sprint_skip = 0 }
+      !skip && !sprint_skip { print }
+    ' "$REPO_ROOT/$source"
+  else
+    sed -E 's|(\.\./)+assets/|report/assets/|g' "$REPO_ROOT/$source"
+  fi
   printf '\n\n'
 }
 

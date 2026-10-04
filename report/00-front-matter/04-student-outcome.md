@@ -17,7 +17,7 @@ necesario, utilizando estrategias de aprendizaje apropiadas.*
 *Nota.* El registro de Student Outcome es acumulativo por entrega del curso y se
 sustenta en evidencia verificable disponible en cada una de ellas.
 
-## Actualización AV2 — Sprint 2
+## Actualización TB1 — Sprint 2
 
 Durante Sprint 2, el proyecto pasó de representar procesos a comprobar
 comportamientos de una aplicación Android conectada con sus servicios. Esta

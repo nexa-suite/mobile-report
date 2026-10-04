@@ -66,8 +66,6 @@ Weichbroth, P. (2024). Usability of mobile applications: A consolidated model. *
 
 CommonMark. (2024). *CommonMark specification* (Version 0.31.2). https://spec.commonmark.org/spec
 
-Pandoc. (s. f.). *Pandoc user’s guide*. https://pandoc.org/MANUAL.pdf
-
 Structurizr. (s. f.). *Structurizr DSL*. https://docs.structurizr.com/dsl
 
 Universidad Peruana de Ciencias Aplicadas. (s. f.). *Guía maestra de Docs-as-Code y gobernanza de repositorios* (V1.0) [Guía académica interna].

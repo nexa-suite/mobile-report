@@ -1,9 +1,9 @@
 # Conclusiones
 
-La evidencia reunida en AV1 permite sintetizar el problema, los supuestos y las
-hipótesis de Nexa Mobile sin confundir investigación, planificación, diseño e
-implementación. La investigación delimita problemas y contextos de trabajo; el
-efecto de una solución requiere un experimento de solución independiente.
+El informe reúne la investigación del problema y los avances de implementación
+de Nexa Mobile. AV1 permitió delimitar usuarios, tareas, supuestos e hipótesis;
+TB1 aporta componentes publicados y comprobaciones técnicas. El efecto de la
+solución sobre el trabajo de los usuarios requiere una evaluación propia.
 
 ## Problem Statement
 
@@ -75,34 +75,36 @@ Driver Outcome, Buyer Receipt, Proof of Delivery y Discrepancy. Las decisiones
 de diseño, contratos y futuras pruebas deben preservar esa separación para no
 convertir un hecho operativo en una aceptación comercial o de recepción.
 
-## Corte de implementación y validación de AV2
+## Implementación y validación de TB1
 
-El corte actual permite sostener tres resultados diferentes. Primero, el
-Website está publicado mediante GitHub Pages desde `main`; la URL pública y
-las páginas representativas respondieron correctamente. Segundo, Operations
-Mobile cuenta con una implementación Android integrada, una comprobación de
-456 pruebas JVM, 53 pruebas instrumentadas por cada API 29 y API 37, y un
-smoke de instalación e inicio en un Samsung SM-S908E con API 36. Tercero, el
-API conserva una línea principal identificable y una propuesta de corrección
-con comprobaciones técnicas, un smoke del adaptador S3 contra Neon y una
-aplicación de migraciones en Neon que alcanzó la versión 144 sin pendientes ni
-fallos, con las restricciones de permisos confirmadas por el verificador de
-ejecución.
+El Sprint 2 aporta una aplicación Android publicada, servicios disponibles en
+Render y una base de datos administrada en Neon. La aplicación Operations
+Mobile puede instalarse desde su publicación y consultar el servicio mediante
+HTTPS. La comprobación en Samsung S22 cubrió instalación e inicio de sesión;
+las pruebas automatizadas complementan esa evidencia sin sustituir la
+observación de los recorridos completos por cada perfil.
 
-Estos resultados no deben confundirse con una aceptación final. El backlog de
-Jira observado contiene 71 elementos y 317 Story Points, mientras que el
-compromiso documentado del Sprint 2 contiene 36 elementos y 144 Story Points;
-la diferencia requiere una decisión de alcance. Los siete checks de la fuente
-integrada del API terminaron correctamente, y el resultado público de Render
-todavía no ha sido verificado. En Mobile aún falta un recorrido autenticado completo
-por rol y una validación de producto en dispositivo. En el Website faltan
-evidencias de presentación y destinos verificables de contacto y redes sociales
-para satisfacer todos los criterios de la rúbrica.
+El catálogo de ICISA contiene 102 productos con imágenes y precios. Las
+consultas autorizadas distinguen el catálogo interno de la selección comercial
+visible para compradores. Esa diferencia conserva los permisos y evita
+exponer información por el solo hecho de disponer de una cuenta.
 
-Por lo tanto, la evidencia disponible acredita avance técnico y publicación
-web observable, pero mantiene abiertos el alcance formal del Sprint, la
-aceptación funcional, la validación con usuarios, la comprobación pública del
-servicio y la preparación de distribución móvil.
+El Website está publicado en GitHub Pages. Su diseño comunica el ámbito de
+Nexa y organiza la información del producto. La disponibilidad de la página
+permite revisar el contenido publicado; su evaluación adaptable y los
+resultados con usuarios requieren evidencia específica.
+
+El Sprint Backlog presenta 71 elementos y 317 puntos registrados en Jira,
+separados de los 36 elementos y 144 puntos de la planificación inicial. El
+estado de las incidencias documenta seguimiento del trabajo; los resultados
+funcionales se sustentan con las comprobaciones de implementación y las
+validaciones correspondientes.
+
+La evidencia reunida acredita publicación y comprobación técnica de los
+componentes disponibles. Permanecen por completar la evaluación de cámara y
+lectura de códigos en los recorridos de trabajo, la validación de los flujos
+por perfil y las sesiones con usuarios. Buyer Mobile mantiene su alcance de
+diseño y no se presenta como una aplicación publicada.
 
 ## Recomendaciones
 
@@ -113,14 +115,15 @@ servicio y la preparación de distribución móvil.
 - Mantener separados Driver Outcome, Buyer Receipt, Proof of Delivery y
   Discrepancy en requisitos, diseño, evidencia y cualquier incremento técnico.
 - Refinar el Product Backlog cuando nueva evidencia cambie una prioridad, sin
-  reescribir retrospectivamente el historial de Sprint completado.
+  reescribir retrospectivamente los registros históricos de cada Sprint.
 - Recopilar evidencia de implementación y usabilidad de forma independiente de
   la planificación, los modelos y el reporte.
 - Contrastar las assumptions de adopción y monetización con evidencia adecuada
   antes de convertirlas en decisiones de producto o alcance.
 - Resolver la diferencia entre la planificación de Sprint 2 y el tablero
   observado antes de presentar un compromiso actualizado.
-- Comprobar el servicio público de Render antes de declarar disponibilidad.
+- Comprobar la disponibilidad del servicio antes de cada sesión y registrar
+  los resultados de conexión y recuperación ante interrupciones.
 - Ejecutar recorridos autenticados por rol en Android y registrar la evaluación
   de producto por separado de las pruebas automatizadas.
 - Completar en el Website los destinos de contacto y redes sociales, además de

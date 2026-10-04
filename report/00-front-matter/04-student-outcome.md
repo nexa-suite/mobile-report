@@ -39,8 +39,10 @@ autoría de un cambio.
 | Verde Bueno, Joaquín Francisco | Protección de comandos de evidencia de temperatura, relacionada con `MOB-US-019`. | Mantener el contexto de la evidencia facilita su trazabilidad. Una lectura fuera de rango requiere evaluación y una decisión autorizada; registrar la lectura no autoriza liberación automática. |
 | Yucra Sandoval, Diego Sebastián | Navegación desde el resumen de trabajo y sus bloqueadores autorizados, relacionada con `MOB-US-004`. | Presentar trabajo y restricciones en un mismo punto ayuda a orientar la siguiente acción. La cobertura del resumen se limita a los procesos efectivamente integrados y autorizados. |
 
-La [matriz de contribuciones de Sprint 2](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2/4.2.2.2-aspect-leaders-and-collaborators.md)
-identifica los cambios que sustentan esta tabla. Las contribuciones relacionan
+La matriz de líderes y colaboradores de Sprint 2 describe una responsabilidad
+planificada; las atribuciones de esta tabla se contrastan con las fuentes de
+autoría y cambio concreto registradas en la [sección de colaboración](02-project-report-collaboration-insights.md).
+Las contribuciones relacionan
 dos dominios de aplicación: la continuidad comercial B2B y la ejecución
 logística de mercancía refrigerada. En ambos, el dispositivo facilita la tarea
 del usuario y conserva su contexto; las decisiones de negocio permanecen en

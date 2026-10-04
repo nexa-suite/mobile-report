@@ -23,3 +23,37 @@ La actividad de GitHub permite relacionar cambios documentales con sus autores. 
 ![Historial reciente de commits del Project Report en GitHub](../assets/front-matter/collaboration/github-commit-history-av1-2026-09-15.png)
 
 Las figuras muestran contribuciones acumuladas, actividad del periodo e historial de cambios. Sustentan la participación documental; los resultados de implementación y validación se presentan en las secciones del Sprint correspondiente.
+
+## Estado de fuentes consultadas para AV2
+
+La revisión de AV2 relaciona cada producto con su fuente vigente y conserva la
+separación entre contribución documental, verificación técnica y aceptación del
+producto. Los repositorios y sus ramas identifican el material consultado; la
+existencia de una fuente no demuestra por sí sola que un recorrido haya sido
+aceptado.
+
+| Producto | Fuente consultada | Evidencia que puede sostenerse en este corte | Límite de la evidencia |
+| --- | --- | --- | --- |
+| Website | `main` de [nexa-suite/website](https://github.com/nexa-suite/website) | GitHub Pages figura publicado y las páginas representativas respondieron HTTP 200. | La rúbrica todavía requiere evidencia de presentación, contacto y enlaces sociales; la comprobación HTTP no reemplaza esa revisión. |
+| Web Services | `main` de [nexa-suite/api](https://github.com/nexa-suite/api) y la propuesta abierta de corrección de despliegue | La línea principal conserva la versión de servicios; la aplicación de migraciones en Neon alcanzó la versión 144 sin pendientes ni fallos, el verificador de ejecución confirmó las restricciones de permisos y los siete checks visibles del PR terminaron correctamente. | La propuesta permanece abierta y requiere revisión e integración; no se declara despliegue público exitoso. |
+| Operations Mobile | `develop` de [nexa-suite/mobile](https://github.com/nexa-suite/mobile) | La fuente integrada conserva la aplicación Android, las pruebas automatizadas registradas y el smoke de instalación e inicio en un Samsung SM-S908E. | No se acredita todavía un recorrido autenticado completo, aceptación funcional por rol ni distribución pública. |
+| Academic Report | [nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report) | Este corte actualiza la reconciliación del Sprint 2 y la lectura de las fuentes públicas y técnicas. | El contenido requiere revisión editorial antes de integrarse al informe publicado. |
+
+La actividad histórica de GitHub se conserva únicamente para cumplir la
+trazabilidad de colaboración exigida por la rúbrica. La tabla de fuentes
+anterior describe el estado de los productos y no constituye evidencia de
+aporte individual, calidad, avance o aceptación del sistema.
+
+*Contribuciones técnicas verificables del corte AV2.*
+
+| Integrante | Cambio contrastado | Fuente de autoría |
+| --- | --- | --- |
+| Pinedo Sanchez, Sebastián Martín | Coordinación de excepciones operativas y consulta de excepciones asignadas. | [cambio de coordinación](https://github.com/nexa-suite/mobile/commit/141ad0909903741481df5e35617a85598148fae8) |
+| Rojas Mancilla, Gerard Gianpier | Identificación protegida de una transferencia preparada. | [cambio de identificación](https://github.com/nexa-suite/mobile/commit/93f23dbfbaf626bb37a3d72ef9e9b5c407a356c6) |
+| Torrejón De Los Santos, Gino Rodrigo | Conservación del producto seleccionado en la preparación de una solicitud. | [cambio de solicitud](https://github.com/nexa-suite/mobile/commit/1bf13eed13472ba2267d7f924a4850c1e03a038b) |
+| Verde Bueno, Joaquín Francisco | Registro durable de evidencia de temperatura acotada. | [cambio de temperatura](https://github.com/nexa-suite/mobile/commit/acf20a1eceddbfd5c443e482a4d09a8981a24516) |
+| Yucra Sandoval, Diego Sebastián | Integración del resumen de trabajo y navegación de bloqueadores autorizados. | [cambio de resumen](https://github.com/nexa-suite/mobile/commit/782b42ce78319c2595e5ad0cf65e96722c64da77) |
+
+Estas fuentes relacionan autoría y cambio concreto; no demuestran por sí solas
+aprendizaje personal, participación igualitaria, aceptación ni cierre de una
+historia.

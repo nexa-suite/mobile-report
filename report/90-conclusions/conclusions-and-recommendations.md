@@ -75,6 +75,36 @@ Driver Outcome, Buyer Receipt, Proof of Delivery y Discrepancy. Las decisiones
 de diseño, contratos y futuras pruebas deben preservar esa separación para no
 convertir un hecho operativo en una aceptación comercial o de recepción.
 
+## Corte de implementación y validación de AV2
+
+El corte actual permite sostener tres resultados diferentes. Primero, el
+Website está publicado mediante GitHub Pages desde `main`; la URL pública y
+las páginas representativas respondieron correctamente. Segundo, Operations
+Mobile cuenta con una implementación Android integrada, una comprobación de
+456 pruebas JVM, 53 pruebas instrumentadas por cada API 29 y API 37, y un
+smoke de instalación e inicio en un Samsung SM-S908E con API 36. Tercero, el
+API conserva una línea principal identificable y una propuesta de corrección
+con comprobaciones técnicas, un smoke del adaptador S3 contra Neon y una
+aplicación de migraciones en Neon que alcanzó la versión 144 sin pendientes ni
+fallos, con las restricciones de permisos confirmadas por el verificador de
+ejecución.
+
+Estos resultados no deben confundirse con una aceptación final. El backlog de
+Jira observado contiene 71 elementos y 317 Story Points, mientras que el
+compromiso documentado del Sprint 2 contiene 36 elementos y 144 Story Points;
+la diferencia requiere una decisión de alcance. Los siete checks visibles de la
+propuesta del API terminaron correctamente, pero la propuesta sigue abierta
+para revisión e integración y el resultado público de Render todavía no ha
+sido verificado. En Mobile aún falta un recorrido autenticado completo
+por rol y una validación de producto en dispositivo. En el Website faltan
+evidencias de presentación y destinos verificables de contacto y redes sociales
+para satisfacer todos los criterios de la rúbrica.
+
+Por lo tanto, la evidencia disponible acredita avance técnico y publicación
+web observable, pero mantiene abiertos el alcance formal del Sprint, la
+aceptación funcional, la validación con usuarios, la comprobación pública del
+servicio y la preparación de distribución móvil.
+
 ## Recomendaciones
 
 - Usar el As-Is documentado como línea base de comparación para experimentos de
@@ -89,3 +119,11 @@ convertir un hecho operativo en una aceptación comercial o de recepción.
   la planificación, los modelos y el reporte.
 - Contrastar las assumptions de adopción y monetización con evidencia adecuada
   antes de convertirlas en decisiones de producto o alcance.
+- Resolver la diferencia entre la planificación de Sprint 2 y el tablero
+  observado antes de presentar un compromiso actualizado.
+- Completar la revisión e integración de la propuesta del API, y comprobar el
+  servicio público de Render antes de declarar disponibilidad.
+- Ejecutar recorridos autenticados por rol en Android y registrar la evaluación
+  de producto por separado de las pruebas automatizadas.
+- Completar en el Website los destinos de contacto y redes sociales, además de
+  la evidencia audiovisual exigida por la rúbrica.

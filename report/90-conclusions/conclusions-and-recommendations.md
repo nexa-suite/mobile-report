@@ -92,10 +92,9 @@ ejecución.
 Estos resultados no deben confundirse con una aceptación final. El backlog de
 Jira observado contiene 71 elementos y 317 Story Points, mientras que el
 compromiso documentado del Sprint 2 contiene 36 elementos y 144 Story Points;
-la diferencia requiere una decisión de alcance. Los siete checks visibles de la
-propuesta del API terminaron correctamente, pero la propuesta sigue abierta
-para revisión e integración y el resultado público de Render todavía no ha
-sido verificado. En Mobile aún falta un recorrido autenticado completo
+la diferencia requiere una decisión de alcance. Los siete checks de la fuente
+integrada del API terminaron correctamente, y el resultado público de Render
+todavía no ha sido verificado. En Mobile aún falta un recorrido autenticado completo
 por rol y una validación de producto en dispositivo. En el Website faltan
 evidencias de presentación y destinos verificables de contacto y redes sociales
 para satisfacer todos los criterios de la rúbrica.
@@ -121,8 +120,7 @@ servicio y la preparación de distribución móvil.
   antes de convertirlas en decisiones de producto o alcance.
 - Resolver la diferencia entre la planificación de Sprint 2 y el tablero
   observado antes de presentar un compromiso actualizado.
-- Completar la revisión e integración de la propuesta del API, y comprobar el
-  servicio público de Render antes de declarar disponibilidad.
+- Comprobar el servicio público de Render antes de declarar disponibilidad.
 - Ejecutar recorridos autenticados por rol en Android y registrar la evaluación
   de producto por separado de las pruebas automatizadas.
 - Completar en el Website los destinos de contacto y redes sociales, además de

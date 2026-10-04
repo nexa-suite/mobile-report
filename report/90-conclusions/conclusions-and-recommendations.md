@@ -75,42 +75,36 @@ Driver Outcome, Buyer Receipt, Proof of Delivery y Discrepancy. Las decisiones
 de diseño, contratos y futuras pruebas deben preservar esa separación para no
 convertir un hecho operativo en una aceptación comercial o de recepción.
 
-## Corte de implementación y validación de AV2
+## Implementación y validación de AV2
 
-El corte actual permite sostener tres resultados diferentes. Primero, el
-Website está publicado mediante GitHub Pages desde `main`; la URL pública y
-las páginas representativas respondieron correctamente. Segundo, Operations
-Mobile cuenta con una implementación Android integrada, una comprobación de
-456 pruebas JVM, 53 pruebas instrumentadas por cada API 29 y API 37, y un
-smoke de instalación e inicio en un Samsung SM-S908E con API 36. Tercero, el
-API conserva una línea principal integrada en `main` y un servicio público
-activo en Render con el commit `4e03b16a7a2d1a9365499fb96956ebffe6a38ef4`.
-Readiness y liveness respondieron HTTP 200. El smoke del adaptador S3 contra
-Neon pasó y la aplicación de migraciones alcanzó la versión 144 sin pendientes
-ni fallos, con las restricciones de permisos confirmadas por el verificador de
-ejecución.
+El Sprint 2 aporta una aplicación Android publicada, servicios disponibles en
+Render y una base de datos administrada en Neon. La aplicación Operations
+Mobile puede instalarse desde su publicación y consultar el servicio mediante
+HTTPS. La comprobación en Samsung S22 cubrió instalación e inicio de sesión;
+las pruebas automatizadas complementan esa evidencia sin sustituir la
+observación de los recorridos completos por cada perfil.
 
-Estos resultados no deben confundirse con una aceptación final. El backlog de
-Jira observado contiene 71 elementos y 317 Story Points, mientras que el
-compromiso documentado del Sprint 2 contiene 36 elementos y 144 Story Points;
-la diferencia requiere una decisión de alcance. Los siete checks de la fuente
-integrada del API terminaron correctamente. Las comprobaciones públicas de
-catálogo sin credenciales y con token inválido devolvieron HTTP 401, CORS no
-confiable devolvió HTTP 403 y las cabeceras de seguridad estuvieron presentes.
-El health agregado de Render respondió HTTP 503; readiness y liveness
-permanecen en HTTP 200. Los logs registraron un timeout de Angus Mail, pero no
-se confirma que sea la causa del estado agregado. Las solicitudes anónimas a
-OpenAPI/Swagger respondieron HTTP 401; no se acredita documentación pública
-disponible ni un flujo autenticado completo. En Mobile aún falta un recorrido autenticado completo
-por rol y una validación de producto en dispositivo. En el Website faltan
-evidencias de presentación y destinos verificables de contacto y redes sociales
-para satisfacer todos los criterios de la rúbrica.
+El catálogo de ICISA contiene 102 productos con imágenes y precios. Las
+consultas autorizadas distinguen el catálogo interno de la selección comercial
+visible para compradores. Esa diferencia conserva los permisos y evita
+exponer información por el solo hecho de disponer de una cuenta.
 
-Por lo tanto, la evidencia disponible acredita avance técnico, publicación web
-observable y disponibilidad pública del servicio para comprobaciones técnicas,
-pero mantiene abiertos el alcance formal del Sprint, la aceptación funcional,
-la validación con usuarios, la causa del health agregado y la preparación de
-distribución móvil.
+El Website está publicado en GitHub Pages. Su diseño comunica el ámbito de
+Nexa y organiza la información del producto. La disponibilidad de la página
+permite revisar el contenido publicado; su evaluación adaptable y los
+resultados con usuarios requieren evidencia específica.
+
+El Sprint Backlog presenta 71 elementos y 317 puntos registrados en Jira,
+separados de los 36 elementos y 144 puntos de la planificación inicial. El
+estado de las incidencias documenta seguimiento del trabajo; los resultados
+funcionales se sustentan con las comprobaciones de implementación y las
+validaciones correspondientes.
+
+La evidencia reunida acredita publicación y comprobación técnica de los
+componentes disponibles. Permanecen por completar la evaluación de cámara y
+lectura de códigos en los recorridos de trabajo, la validación de los flujos
+por perfil y las sesiones con usuarios. Buyer Mobile mantiene su alcance de
+diseño y no se presenta como una aplicación publicada.
 
 ## Recomendaciones
 
@@ -128,9 +122,8 @@ distribución móvil.
   antes de convertirlas en decisiones de producto o alcance.
 - Resolver la diferencia entre la planificación de Sprint 2 y el tablero
   observado antes de presentar un compromiso actualizado.
-- Investigar el health agregado de Render y el timeout de Angus Mail observado,
-  sin atribuirles causalidad no comprobada ni debilitar la política de salud;
-  conservar readiness y liveness como evidencia separada.
+- Comprobar la disponibilidad del servicio antes de cada sesión y registrar
+  los resultados de conexión y recuperación ante interrupciones.
 - Ejecutar recorridos autenticados por rol en Android y registrar la evaluación
   de producto por separado de las pruebas automatizadas.
 - Completar en el Website los destinos de contacto y redes sociales, además de

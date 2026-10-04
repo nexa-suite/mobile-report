@@ -2,7 +2,7 @@
 
 El informe reúne la investigación del problema y los avances de implementación
 de Nexa Mobile. AV1 permitió delimitar usuarios, tareas, supuestos e hipótesis;
-AV2 aporta componentes publicados y comprobaciones técnicas. El efecto de la
+TB1 aporta componentes publicados y comprobaciones técnicas. El efecto de la
 solución sobre el trabajo de los usuarios requiere una evaluación propia.
 
 ## Problem Statement
@@ -75,7 +75,7 @@ Driver Outcome, Buyer Receipt, Proof of Delivery y Discrepancy. Las decisiones
 de diseño, contratos y futuras pruebas deben preservar esa separación para no
 convertir un hecho operativo en una aceptación comercial o de recepción.
 
-## Implementación y validación de AV2
+## Implementación y validación de TB1
 
 El Sprint 2 aporta una aplicación Android publicada, servicios disponibles en
 Render y una base de datos administrada en Neon. La aplicación Operations

@@ -24,9 +24,9 @@ La actividad de GitHub permite relacionar cambios documentales con sus autores. 
 
 Las figuras muestran contribuciones acumuladas, actividad del periodo e historial de cambios. Sustentan la participación documental; los resultados de implementación y validación se presentan en las secciones del Sprint correspondiente.
 
-## Estado de fuentes consultadas para AV2
+## Estado de fuentes consultadas para TB1
 
-La revisión de AV2 relaciona cada producto con su fuente vigente y conserva la
+La revisión de TB1 relaciona cada producto con su fuente vigente y conserva la
 separación entre contribución documental, verificación técnica y aceptación del
 producto. Los repositorios y sus ramas identifican el material consultado; la
 existencia de una fuente no demuestra por sí sola que un recorrido haya sido
@@ -35,16 +35,16 @@ aceptado.
 | Producto | Fuente consultada | Evidencia que puede sostenerse en este corte | Límite de la evidencia |
 | --- | --- | --- | --- |
 | Website | `main` de [nexa-suite/website](https://github.com/nexa-suite/website) | GitHub Pages figura publicado y las páginas representativas respondieron HTTP 200. | La rúbrica todavía requiere evidencia de presentación, contacto y enlaces sociales; la comprobación HTTP no reemplaza esa revisión. |
-| Web Services | `main` de [nexa-suite/api](https://github.com/nexa-suite/api) | La línea principal integra la corrección de despliegue; el servicio existente de Render está activo en el commit `4e03b16a7a2d1a9365499fb96956ebffe6a38ef4`. Sus endpoints de readiness y liveness respondieron HTTP 200; la aplicación de migraciones en Neon alcanzó la versión 144 sin pendientes ni fallos, el verificador de ejecución confirmó las restricciones de permisos y los siete checks terminaron correctamente. Las comprobaciones públicas de catálogo, CORS y cabeceras conservaron los límites de seguridad esperados. | El health agregado respondió HTTP 503. Los logs también registraron un timeout de Angus Mail, pero no se confirma que sea la causa del estado agregado. Las solicitudes anónimas a OpenAPI/Swagger devolvieron HTTP 401; no se acredita documentación pública disponible, un flujo autenticado ni aceptación del producto. |
-| Operations Mobile | `develop` de [nexa-suite/mobile](https://github.com/nexa-suite/mobile) | La fuente integrada conserva la aplicación Android, las pruebas automatizadas registradas y el smoke de instalación e inicio en un Samsung SM-S908E. | No se acredita todavía un recorrido autenticado completo, aceptación funcional por rol ni distribución pública. |
-| Academic Report | [nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report) | Este corte actualiza la reconciliación del Sprint 2 y la lectura de las fuentes públicas y técnicas. | El contenido requiere revisión editorial antes de integrarse al informe publicado. |
+| Web Services | `main` de [nexa-suite/api](https://github.com/nexa-suite/api) | El API cuenta con una publicación y servicios disponibles en Render, conectados con Neon. Las comprobaciones técnicas de acceso y catálogo se documentan en Sprint 2. | La documentación del servicio no quedó accesible sin autenticación; los resultados técnicos no sustituyen validación de los recorridos. |
+| Operations Mobile | `main` de [nexa-suite/mobile](https://github.com/nexa-suite/mobile) | La aplicación Android está publicada con APK para el entorno de servicios HTTPS. Se comprobó instalación e inicio de sesión en Samsung S22. | Cámara, escaneo físico y recorridos completos por perfil requieren evidencia adicional. |
+| Academic Report | [nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report) | La segunda entrega, TB1, reúne diseño, implementación y evidencia de seguimiento del trabajo. | El informe distingue resultados comprobados y evidencia pendiente. |
 
 La actividad histórica de GitHub se conserva únicamente para cumplir la
 trazabilidad de colaboración exigida por la rúbrica. La tabla de fuentes
 anterior describe el estado de los productos y no constituye evidencia de
 aporte individual, calidad, avance o aceptación del sistema.
 
-*Contribuciones técnicas verificables del corte AV2.*
+*Contribuciones técnicas verificables del corte TB1.*
 
 | Integrante | Cambio contrastado | Fuente de autoría |
 | --- | --- | --- |

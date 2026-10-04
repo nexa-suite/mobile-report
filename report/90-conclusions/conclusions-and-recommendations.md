@@ -1,9 +1,9 @@
 # Conclusiones
 
-La evidencia reunida en AV1 permite sintetizar el problema, los supuestos y las
-hipótesis de Nexa Mobile sin confundir investigación, planificación, diseño e
-implementación. La investigación delimita problemas y contextos de trabajo; el
-efecto de una solución requiere un experimento de solución independiente.
+El informe reúne la investigación del problema y los avances de implementación
+de Nexa Mobile. AV1 permitió delimitar usuarios, tareas, supuestos e hipótesis;
+AV2 aporta componentes publicados y comprobaciones técnicas. El efecto de la
+solución sobre el trabajo de los usuarios requiere una evaluación propia.
 
 ## Problem Statement
 
@@ -115,7 +115,7 @@ diseño y no se presenta como una aplicación publicada.
 - Mantener separados Driver Outcome, Buyer Receipt, Proof of Delivery y
   Discrepancy en requisitos, diseño, evidencia y cualquier incremento técnico.
 - Refinar el Product Backlog cuando nueva evidencia cambie una prioridad, sin
-  reescribir retrospectivamente el historial de Sprint completado.
+  reescribir retrospectivamente los registros históricos de cada Sprint.
 - Recopilar evidencia de implementación y usabilidad de forma independiente de
   la planificación, los modelos y el reporte.
 - Contrastar las assumptions de adopción y monetización con evidencia adecuada

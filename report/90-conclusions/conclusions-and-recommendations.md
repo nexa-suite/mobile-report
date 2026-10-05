@@ -109,7 +109,7 @@ La comparación con el checkpoint AV1 v1.0.1 permite identificar tres mejoras do
 
 | Mejora | Situación anterior y observación | Cambio aplicado | Resultado y evidencia |
 | --- | --- | --- | --- |
-| Trazabilidad de Sprint 2 | AV1 presentaba 36 elementos y 144 puntos planificados sin tablero o tickets evidenciados. Jira mostró posteriormente 71 elementos y 317 puntos. | Se incorporaron claves NX, responsables, estados, jerarquía y comparación con la planificación. | La variación es visible y trazable en 4.2.2.3; no se declara aprobado un compromiso ampliado. |
+| Trazabilidad de Sprint 2 | AV1 presentaba 36 elementos y 144 puntos planificados sin tablero o tickets evidenciados. Jira mostró posteriormente 71 elementos y 317 puntos. | Se incorporaron claves NX, responsables, estados, jerarquía y comparación con la planificación. | La variación de +35 elementos y +173 puntos se conserva en 4.2.2.3 y en NX-296, registrada el 5 de octubre, sin alterar la planificación histórica. |
 | Claridad visual del diseño | AV1 no incluía las imágenes actuales del capítulo III; las descripciones no permitían inspeccionar las composiciones y recorridos. | Se incorporaron wireframes y mock-ups de Landing, referencias de estilo y recorridos móviles. | Los apartados 3.1.3 y 3.1.4 permiten examinar los artefactos visuales, distinguiendo diseño de validación con usuarios. |
 | Evidencia de ejecución | AV1 no contenía las capturas actuales del capítulo IV; las descripciones de configuración no mostraban por sí solas los estados ejecutados. | Se añadieron evidencias de publicación, documentación de servicios, instalación y recorridos Android con leyendas sobre lo observado. | Las secciones 4.2.2.6–4.2.2.8 relacionan las afirmaciones con capturas y resultados concretos, conservando las fechas y límites de cada comprobación. |
 
@@ -127,8 +127,7 @@ La comparación con el checkpoint AV1 v1.0.1 permite identificar tres mejoras do
   la planificación, los modelos y el reporte.
 - Contrastar las assumptions de adopción y monetización con evidencia adecuada
   antes de convertirlas en decisiones de producto o alcance.
-- Resolver la diferencia entre la planificación de Sprint 2 y el tablero
-  observado antes de presentar un compromiso actualizado.
+- Mantener el registro de variaciones de alcance con su fecha, impacto y relación con la planificación original.
 - Comprobar la disponibilidad del servicio antes de cada sesión y registrar
   los resultados de conexión y recuperación ante interrupciones.
 - Ejecutar recorridos autenticados por rol en Android y registrar la evaluación

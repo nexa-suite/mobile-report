@@ -37,7 +37,7 @@ requiere contexto y responsabilidad propios.
 
 | Hypothesis | Qué aportó AV1 | Evidencia de TB1 | Alcance de la conclusión |
 | --- | --- | --- | --- |
-| **H1 — Warehouse & Dispatch Operations** | Aportó comprensión de verificación, continuidad entre preparación, alistamiento y transferencia operativa, y de las responsabilidades distintas de Warehouse y Dispatch. | Los recorridos de Warehouse documentan acceso, consulta e identificación y sus alternativas; la ejecución física disponible acredita instalación e inicio de sesión. | El problema que da origen a FA1 recibe soporte y refinamiento; el efecto de FA1 sigue sin medición comparativa. |
+| **H1 — Warehouse & Dispatch Operations** | Aportó comprensión de verificación, continuidad entre preparación, alistamiento y transferencia operativa, y de las responsabilidades distintas de Warehouse y Dispatch. | Los recorridos de Warehouse documentan acceso, consulta e identificación y sus alternativas; la secuencia HP-03 muestra permiso de cámara, cámara abierta e identificación confirmada de producto. | El problema que da origen a FA1 recibe soporte y refinamiento; el efecto de FA1 sigue sin medición comparativa. |
 | **H2 — Driver Delivery Execution** | Aportó evidencia sobre incidencias, comunicación, evidencia de entrega y restricciones móviles durante Delivery Attempts. | El diseño conserva rutas normales y excepciones de entrega. Este corte no aporta mediciones comparativas del desempeño de Driver. | El problema de continuidad y atribución durante la entrega recibe soporte; el efecto de FA2 sigue sin medición comparativa. |
 | **H3 — B2B Buyers** | Amplió la comprensión de Buyer hacia reabastecimiento, continuidad comercial, puntualidad y coordinación con proveedores. Receipt y Discrepancy conservan relevancia, pero representan un subescenario más acotado. | Los recorridos de Buyer describen recepción y discrepancias como diseño; Buyer Mobile no se presenta como una aplicación publicada. | El problema que orienta FA3 se vuelve más preciso; el efecto de FA3 sigue sin medición comparativa. |
 
@@ -101,9 +101,7 @@ funcionales se sustentan con las comprobaciones de implementación y las
 validaciones correspondientes.
 
 La evidencia reunida acredita publicación y comprobación técnica de los
-componentes disponibles. Permanecen por completar la evaluación de cámara y
-lectura de códigos en los recorridos de trabajo, la validación de los flujos
-por perfil y las sesiones con usuarios. Buyer Mobile mantiene su alcance de
+componentes disponibles. Las secuencias HP-01, HP-02 y HP-03 complementan esta evidencia con sesión, búsqueda manual y permiso/cámara/identificación de producto. La evaluación comparativa de los flujos por perfil y las sesiones con usuarios se conserva como una etapa distinta. Buyer Mobile mantiene su alcance de
 diseño y no se presenta como una aplicación publicada.
 
 ## Recomendaciones

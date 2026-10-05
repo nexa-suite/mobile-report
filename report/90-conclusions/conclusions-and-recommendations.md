@@ -77,7 +77,7 @@ convertir un hecho operativo en una aceptación comercial o de recepción.
 
 ## Implementación y validación de TB1
 
-El Sprint 2 aporta una aplicación Android publicada, servicios disponibles en
+TB1 corresponde a la segunda entrega académica; los registros de Sprint conservan sus propios periodos de ejecución. Este corte aporta una aplicación Android publicada, servicios desplegados en
 Render, una base de datos administrada en Neon y la configuración SMTP de Brevo. La aplicación Operations
 Mobile puede instalarse desde su publicación y consultar el servicio mediante
 HTTPS. La comprobación en Samsung S22 cubrió instalación e inicio de sesión;
@@ -91,8 +91,7 @@ exponer información por el solo hecho de disponer de una cuenta.
 
 El Website está publicado en GitHub Pages. Su diseño comunica el ámbito de
 Nexa y organiza la información del producto. La disponibilidad de la página
-permite revisar el contenido publicado; su evaluación adaptable y los
-resultados con usuarios requieren evidencia específica.
+permite revisar el contenido publicado. Las capturas del 5 de octubre muestran adaptación en escritorio y móvil, sin desbordamiento horizontal en la vista de 390 píxeles. Los resultados con usuarios requieren una evaluación propia.
 
 El Sprint Backlog presenta 71 elementos y 317 puntos registrados en Jira,
 separados de los 36 elementos y 144 puntos de la planificación inicial. El
@@ -103,6 +102,16 @@ validaciones correspondientes.
 La evidencia reunida acredita publicación y comprobación técnica de los
 componentes disponibles. Las secuencias HP-01, HP-02 y HP-03 complementan esta evidencia con sesión, búsqueda manual y permiso/cámara/identificación de producto. La evaluación comparativa de los flujos por perfil y las sesiones con usuarios se conserva como una etapa distinta. Buyer Mobile mantiene su alcance de
 diseño y no se presenta como una aplicación publicada.
+
+**Mejora continua de AV1 a TB1**
+
+La comparación con el checkpoint AV1 v1.0.1 permite identificar tres mejoras documentadas. Las observaciones corresponden a la revisión de los artefactos, sin atribuir retroalimentación a participantes o al docente.
+
+| Mejora | Situación anterior y observación | Cambio aplicado | Resultado y evidencia |
+| --- | --- | --- | --- |
+| Trazabilidad de Sprint 2 | AV1 presentaba 36 elementos y 144 puntos planificados sin tablero o tickets evidenciados. Jira mostró posteriormente 71 elementos y 317 puntos. | Se incorporaron claves NX, responsables, estados, jerarquía y comparación con la planificación. | La variación de +35 elementos y +173 puntos se conserva en 4.2.2.3 y en NX-296, registrada el 5 de octubre, sin alterar la planificación histórica. |
+| Claridad visual del diseño | AV1 no incluía las imágenes actuales del capítulo III; las descripciones no permitían inspeccionar las composiciones y recorridos. | Se incorporaron wireframes y mock-ups de Landing, referencias de estilo y recorridos móviles. | Los apartados 3.1.3 y 3.1.4 permiten examinar los artefactos visuales, distinguiendo diseño de validación con usuarios. |
+| Evidencia de ejecución | AV1 no contenía las capturas actuales del capítulo IV; las descripciones de configuración no mostraban por sí solas los estados ejecutados. | Se añadieron evidencias de publicación, documentación de servicios, instalación y recorridos Android con leyendas sobre lo observado. | Las secciones 4.2.2.6–4.2.2.8 relacionan las afirmaciones con capturas y resultados concretos, conservando las fechas y límites de cada comprobación. |
 
 ## Recomendaciones
 
@@ -118,11 +127,9 @@ diseño y no se presenta como una aplicación publicada.
   la planificación, los modelos y el reporte.
 - Contrastar las assumptions de adopción y monetización con evidencia adecuada
   antes de convertirlas en decisiones de producto o alcance.
-- Resolver la diferencia entre la planificación de Sprint 2 y el tablero
-  observado antes de presentar un compromiso actualizado.
+- Mantener el registro de variaciones de alcance con su fecha, impacto y relación con la planificación original.
 - Comprobar la disponibilidad del servicio antes de cada sesión y registrar
   los resultados de conexión y recuperación ante interrupciones.
 - Ejecutar recorridos autenticados por rol en Android y registrar la evaluación
   de producto por separado de las pruebas automatizadas.
-- Completar en el Website los destinos de contacto y redes sociales, además de
-  la evidencia audiovisual exigida por la rúbrica.
+- Completar en el Website los destinos de contacto y redes sociales.

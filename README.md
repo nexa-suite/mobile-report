@@ -31,4 +31,4 @@ El script de exportación conserva la selección de apartados por entrega acadé
 
 ## Publicación actual
 
-[Checkpoint v0.7.0](docs/releases/v0.7.0.md). El historial de publicaciones anteriores se conserva.
+[Checkpoint v1.1.0](https://github.com/nexa-suite/mobile-report/releases/tag/v1.1.0). El historial de publicaciones anteriores se conserva.

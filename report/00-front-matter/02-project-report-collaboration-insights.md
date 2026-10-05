@@ -7,9 +7,9 @@ Los cinco integrantes participaron en investigación, análisis, modelado, plani
 | Integrante | AV1 | TB1 |
 | --- | --- | --- |
 | Pinedo Sanchez, Sebastián Martín | Escenarios As-Is orientados por investigación, caracterización de segmentos y estructura de evidencia de Sprint 1. | Incorporó referencias de distribución y alcance táctil, documentó el backlog observado de Sprint 2 y alineó su evidencia con la estructura del informe. |
-| Rojas Mancilla, Gerard Gianpier | Reconciliación de artefactos de Needfinding, evidencia C4 en Structurizr y trazabilidad Jira del Product Backlog. | Documentó wireframes de la Landing Page, la instalación Android y la síntesis de desarrollo y flujos verificados de Sprint 2. |
-| Torrejón De Los Santos, Gino Rodrigo | Cierre documental de registros y análisis de entrevistas, planificación del Product Backlog y verificación técnica de Sprint 1. | Explicó las composiciones de la Landing Page, documentó flujos de navegación verificados y registró los contratos de servicio de Sprint 2. |
-| Verde Bueno, Joaquín Francisco | Matriz de liderazgo de Sprint, claridad de evidencia visual y saneamiento de lenguaje público del informe. | Añadió una referencia de tipografía móvil y documentó las comprobaciones finales de API y promoción Android. |
+| Rojas Mancilla, Gerard Gianpier | Reconciliación de artefactos de Needfinding, evidencia C4 en Structurizr y trazabilidad Jira del Product Backlog. | Documentó wireframes de la Landing Page, la instalación Android y la síntesis de desarrollo y recorridos registrados de Sprint 2. |
+| Torrejón De Los Santos, Gino Rodrigo | Cierre documental de registros y análisis de entrevistas, planificación del Product Backlog y verificación técnica de Sprint 1. | Explicó las composiciones de la Landing Page, documentó comprobaciones de navegación y registró los contratos de servicio de Sprint 2. |
+| Verde Bueno, Joaquín Francisco | Matriz de liderazgo de Sprint, claridad de evidencia visual y saneamiento de lenguaje público del informe. | Añadió una referencia de tipografía móvil y documentó las comprobaciones finales de API y publicación Android. |
 | Yucra Sandoval, Diego Sebastián | Evidencia de Student Outcome, integración de la identidad de release y reconciliación de modelos de dominio y datos. | Integró evidencia de los capítulos III y IV y del front matter, actualizó el registro de versiones y revisó la consistencia entre apartados. |
 
 *Actividad documental registrada en AV1.*

@@ -18,7 +18,7 @@ Report. La revisión final registrada para AV1 es 1.0.1; las publicaciones poste
 | 1.0.0 | 17 de septiembre de 2026 | nexa-team | Revisión estable AV1 del Nexa Mobile Report, con contenido académico, evidencia, trazabilidad y arquitectura consolidados. |
 | 1.0.1 | 17 de septiembre de 2026 | nexa-team | Versión oficial final de la entrega AV1 del Nexa Mobile Report. Corrige el patrón de redacción de las Spike Stories conforme al ejemplo académico establecido, sin modificar alcance, planificación, evidencia ni arquitectura. |
 | 1.0.2 | 22 de septiembre de 2026 | nexa-team | Actualizó la documentación del informe y las reglas de contribución. |
-| 0.7.0 | 3 de octubre de 2026 | Yucra Sandoval, Diego Sebastián | Consolidó la revisión de capítulos y la estructura oficial del Sprint 2; incorporó el estado observado del backlog de Jira. |
+| [0.7.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.7.0) | 3 de octubre de 2026 | Yucra Sandoval, Diego Sebastián | Publicó un checkpoint de la línea v0.x como prerelease, después de la revisión estable 1.0.2. Reunió la revisión de capítulos, la estructura de Sprint 2 y el estado observado del backlog de Jira. |
 | [1.1.0](https://github.com/nexa-suite/mobile-report/releases/tag/v1.1.0) | 5 de octubre de 2026 | Equipo Nexa | Publicó el punto de partida documental para la segunda entrega TB1. |
 
 *Nota de entrega integrada.* `nexa-team` identifica el trabajo integrado de

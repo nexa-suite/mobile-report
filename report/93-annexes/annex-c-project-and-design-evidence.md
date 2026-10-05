@@ -10,9 +10,9 @@ Este registro identifica los artefactos incluidos en el informe y sus apartados 
 | Impact Mapping | Relacionar objetivos, actores, cambios esperados y entregables. | 2.4.2. Impact Mapping |
 | Vistas C4 | Representar contexto, contenedores, componentes y despliegue propuesto. | 2.5.3. Software Architecture |
 | Style Guidelines | Explicar color, tipografía, espaciado, superficies y ergonomía. | 3.1.1. Style Guidelines |
-| Landing Page | Presentar wireframes y mockups de escritorio y móvil. | 3.1.3. Landing Page UI Design |
+| Landing Page | Presentar wireframes y mockups, junto con vistas del sitio publicado en escritorio y móvil. | 3.1.3. Landing Page UI Design y 4.2.2.8 |
 | Happy y unhappy paths | Mostrar recorridos y alternativas de las tareas móviles. | 3.1.4.4. Mobile Application User Flows |
 | Jira | Mostrar backlog, responsables y estados de actividades. | 4.2.2.3. Sprint Backlog 2 |
-| GitHub | Documentar contribuciones y actividad del equipo. | Project Report Collaboration Insights y 4.2.2.9 |
-| Instalación Android | Mostrar Nexa Operations instalada en el dispositivo. | 4.2.2.6. Execution Evidence for Sprint Review |
+| GitHub | Documentar el flujo de ramas, publicaciones y actividad del equipo. | 4.1.2, Project Report Collaboration Insights y 4.2.2.9 |
+| Ejecución Android | Mostrar instalación, solicitud y denegación de cámara, cámara activa e identificación de producto. | 4.2.2.6. Execution Evidence for Sprint Review |
 | Render, Neon y Brevo | Describir el entorno de servicios y la configuración de correo. | 4.1.4 y 4.2.2.8. Software Deployment Evidence for Sprint Review |

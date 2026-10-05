@@ -1,9 +1,11 @@
 # Conclusiones
 
 El informe reúne la investigación del problema y los avances de implementación
-de Nexa Mobile. AV1 permitió delimitar usuarios, tareas, supuestos e hipótesis;
-TB1 aporta componentes publicados y comprobaciones técnicas. El efecto de la
-solución sobre el trabajo de los usuarios requiere una evaluación propia.
+de Nexa Mobile. Sprint 1, documentado en AV1, permitió delimitar usuarios,
+tareas, supuestos e hipótesis. Sprint 2 incorpora en TB1 componentes publicados,
+recorridos observados y comprobaciones técnicas. Estos resultados permiten
+examinar la solución disponible; el efecto sobre el trabajo de los usuarios
+requiere una evaluación comparativa con los criterios de Lean UX.
 
 ## Problem Statement
 
@@ -21,7 +23,7 @@ requiere contexto y responsabilidad propios.
 
 ## Contraste de las Lean UX Assumptions
 
-*Contraste por familia de assumptions y evidencia disponible en AV1*
+*Contraste por familia de assumptions y evidencia disponible en AV1.*
 
 | Familia de assumptions | Evidencia de AV1 | Conclusión |
 | --- | --- | --- |
@@ -33,7 +35,7 @@ requiere contexto y responsabilidad propios.
 
 ## Contraste de H1, H2 y H3
 
-*Contraste acumulativo de las hypotheses en AV1 y TB1*
+*Contraste acumulativo de las hypotheses en AV1 y TB1.*
 
 | Hypothesis | Qué aportó AV1 | Evidencia de TB1 | Alcance de la conclusión |
 | --- | --- | --- | --- |
@@ -47,7 +49,7 @@ Impact Mapping establece criterios de éxito para contrastar la solución con un
 línea base comparable. AV1 estableció comprensión de problema y usuarios, pero
 no ejecutó las mediciones controladas necesarias para comparar esos criterios.
 
-*Criterios definidos para la evaluación de solución*
+*Criterios definidos para la evaluación de solución.*
 
 | Business Goal | Criterios definidos | Interpretación en AV1 |
 | --- | --- | --- |
@@ -77,7 +79,7 @@ convertir un hecho operativo en una aceptación comercial o de recepción.
 
 ## Implementación y validación de TB1
 
-TB1 corresponde a la segunda entrega académica; los registros de Sprint conservan sus propios periodos de ejecución. Este corte aporta una aplicación Android publicada, servicios desplegados en
+Sprint 2 aporta una aplicación Android publicada, servicios desplegados en
 Render, una base de datos administrada en Neon y la configuración SMTP de Brevo. La aplicación Operations
 Mobile puede instalarse desde su publicación y consultar el servicio mediante
 HTTPS. La comprobación en Samsung S22 cubrió instalación e inicio de sesión;
@@ -99,11 +101,15 @@ estado de las incidencias documenta seguimiento del trabajo; los resultados
 funcionales se sustentan con las comprobaciones de implementación y las
 validaciones correspondientes.
 
-La evidencia reunida acredita publicación y comprobación técnica de los
-componentes disponibles. Las secuencias HP-01, HP-02 y HP-03 complementan esta evidencia con sesión, búsqueda manual y permiso/cámara/identificación de producto. La evaluación comparativa de los flujos por perfil y las sesiones con usuarios se conserva como una etapa distinta. Buyer Mobile mantiene su alcance de
-diseño y no se presenta como una aplicación publicada.
+La evidencia reunida documenta publicación y comprobación técnica de los
+componentes disponibles. Las secuencias HP-01, HP-02 y HP-03 muestran estados de
+sesión, búsqueda manual y permiso/cámara/identificación de producto. Estos
+registros complementan las pruebas automatizadas, pero no establecen por sí
+solos mejoras de tiempo, reducción de errores ni aceptación de todos los
+recorridos. La evaluación comparativa por perfil y las sesiones con usuarios
+conservan sus propios objetivos. Buyer Mobile mantiene su alcance de diseño.
 
-**Mejora continua de AV1 a TB1**
+## Mejora continua de AV1 a TB1
 
 La comparación con el checkpoint AV1 v1.0.1 permite identificar tres mejoras documentadas. Las observaciones corresponden a la revisión de los artefactos, sin atribuir retroalimentación a participantes o al docente.
 
@@ -132,4 +138,3 @@ La comparación con el checkpoint AV1 v1.0.1 permite identificar tres mejoras do
   los resultados de conexión y recuperación ante interrupciones.
 - Ejecutar recorridos autenticados por rol en Android y registrar la evaluación
   de producto por separado de las pruebas automatizadas.
-- Completar en el Website los destinos de contacto y redes sociales.

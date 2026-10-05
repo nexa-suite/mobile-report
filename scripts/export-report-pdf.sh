@@ -5,9 +5,8 @@ REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 MILESTONE="${NEXA_REPORT_MILESTONE:-AV1}"
 case "$MILESTONE" in
   AV1) MILESTONE_SUFFIX=av1 ;;
-  TB1) MILESTONE_SUFFIX=tb1 ;;
   AV2) MILESTONE_SUFFIX=av2 ;;
-  *) printf 'Report milestone must be AV1, TB1 or AV2.\n' >&2; exit 2 ;;
+  *) printf 'Report milestone must be AV1 or AV2.\n' >&2; exit 2 ;;
 esac
 DEFAULT_OUTPUT="$REPO_ROOT/output/upc-pre-202620-1acc0238-4949-nexa-team-report-${MILESTONE_SUFFIX}.pdf"
 OUTPUT_PATH="${1:-${NEXA_REPORT_PDF_OUTPUT:-$DEFAULT_OUTPUT}}"
@@ -64,13 +63,6 @@ if [[ "$MILESTONE" == "AV2" ]]; then
     report/03-solution-ui-ux-design
     report/04-product-implementation-and-validation
   )
-elif [[ "$MILESTONE" == "TB1" ]]; then
-  REPORT_ROOTS+=(
-    report/03-solution-ui-ux-design
-    report/04-product-implementation-and-validation/4.1-software-configuration-management
-    report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.1-sprint-1
-    report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2
-  )
 fi
 
 for source in "${FRONT_MATTER[@]}"; do
@@ -104,9 +96,8 @@ append_source() {
       /^## Capítulo III:/ && mode == "AV1" { skip = 1 }
       /^## Capítulo IV:/ && mode == "AV1" { skip = 1 }
       /^## Secciones finales/ { skip = 0; sprint_skip = 0 }
-      /^  - 4\.2\.[34]\. Sprint/ && mode != "AV1" { sprint_skip = 1; next }
-      /^- 4\.[34]\./ && mode == "TB1" { sprint_skip = 1; next }
-      /^- 4\.3\./ && mode != "TB1" { sprint_skip = 0 }
+      /^  - 4\.2\.[34]\. Sprint/ && mode == "AV2" { sprint_skip = 1; next }
+      /^- 4\.3\./ { sprint_skip = 0 }
       !skip && !sprint_skip { print }
     ' "$REPO_ROOT/$source"
   else
@@ -129,7 +120,7 @@ append_source() {
   done < "$CANONICAL_SOURCES"
 } > "$COMBINED_SOURCE"
 
-if [[ "$MILESTONE" == "AV2" || "$MILESTONE" == "TB1" ]]; then
+if [[ "$MILESTONE" == "AV2" ]]; then
   python3 "$REPO_ROOT/scripts/render-mermaid-for-export.py" "$COMBINED_SOURCE" "$BUILD_DIR"
   COMBINED_SOURCE="$BUILD_DIR/mermaid-rendered.md"
 fi

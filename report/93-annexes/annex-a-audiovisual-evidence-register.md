@@ -35,19 +35,3 @@ de entrevistas y de producto permanece en los capítulos correspondientes.
 
 Sólo se incorporan videos, fechas, participantes, URLs y capturas que estén
 registrados.
-
-*Registro audiovisual de navegación y prototipo para TB1.*
-
-| Entrega | Video | Duración | Referencia | Apartado relacionado |
-| --- | --- | --- | --- | --- |
-| TB1 | Website navigation — desktop | 2:03 | [Grabación desktop](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202323040_upc_edu_pe/IQB3V3-kjOLFTKyjwHYRmSHYAbwyQ_QriEIgStDJDEOcvaY?e=sAnogm) | 4.2.2.8. Software Deployment Evidence for Sprint Review |
-| TB1 | Website navigation — mobile | 2:03 | [Grabación mobile](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202323040_upc_edu_pe/IQCuv9bkLBMeSLpqQVJMLH9vAXtshWb7EpDHY-Yb4vY9oS4?e=6OlkLx) | 4.2.2.8. Software Deployment Evidence for Sprint Review |
-| TB1 | Mobile Applications Prototyping | 1:41 | [Grabación del prototipo](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202323040_upc_edu_pe/IQDZehdOpGE0TahaQPj0HA3WARS1Q_dJsDD9oO3iDeH-ygA?e=vO7Upw) | 3.1.4.5. Mobile Applications Prototyping |
-
-![Registro de publicación del video Website desktop](../assets/chapter-4/website/website-desktop-video-publication-2026-10-05.png)
-
-*Registro del video Website desktop: título y fecha de publicación visibles, 5 de octubre de 2026.*
-
-![Publicación del video Website mobile](../assets/chapter-4/website/website-mobile-video-publication-2026-10-05.jpeg)
-
-*Publicación del video Website mobile: vista vertical del sitio, título y fecha del 5 de octubre de 2026.*

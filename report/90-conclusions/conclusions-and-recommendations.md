@@ -33,13 +33,13 @@ requiere contexto y responsabilidad propios.
 
 ## Contraste de H1, H2 y H3
 
-*Alcance de las hypotheses a partir de AV1*
+*Contraste acumulativo de las hypotheses en AV1 y TB1*
 
-| Hypothesis | Qué aportó AV1 | Alcance de la conclusión |
-| --- | --- | --- |
-| **H1 — Warehouse & Dispatch Operations** | Aportó comprensión de verificación, continuidad entre preparación, alistamiento y transferencia operativa, y de las responsabilidades distintas de Warehouse y Dispatch. | El problema que da origen a FA1 recibe soporte y refinamiento; el efecto de FA1 no fue medido. |
-| **H2 — Driver Delivery Execution** | Aportó evidencia sobre incidencias, comunicación, evidencia de entrega y restricciones móviles durante Delivery Attempts. | El problema de continuidad y atribución durante la entrega recibe soporte; el efecto de FA2 no fue medido. |
-| **H3 — B2B Buyers** | Amplió la comprensión de Buyer hacia reabastecimiento, continuidad comercial, puntualidad y coordinación con proveedores. Receipt y Discrepancy conservan relevancia, pero representan un subescenario más acotado. | El problema que orienta FA3 se vuelve más preciso; el efecto de FA3 no fue medido. |
+| Hypothesis | Qué aportó AV1 | Evidencia de TB1 | Alcance de la conclusión |
+| --- | --- | --- | --- |
+| **H1 — Warehouse & Dispatch Operations** | Aportó comprensión de verificación, continuidad entre preparación, alistamiento y transferencia operativa, y de las responsabilidades distintas de Warehouse y Dispatch. | Los recorridos de Warehouse documentan acceso, consulta e identificación y sus alternativas; la ejecución física disponible acredita instalación e inicio de sesión. | El problema que da origen a FA1 recibe soporte y refinamiento; el efecto de FA1 sigue sin medición comparativa. |
+| **H2 — Driver Delivery Execution** | Aportó evidencia sobre incidencias, comunicación, evidencia de entrega y restricciones móviles durante Delivery Attempts. | El diseño conserva rutas normales y excepciones de entrega. Este corte no aporta mediciones comparativas del desempeño de Driver. | El problema de continuidad y atribución durante la entrega recibe soporte; el efecto de FA2 sigue sin medición comparativa. |
+| **H3 — B2B Buyers** | Amplió la comprensión de Buyer hacia reabastecimiento, continuidad comercial, puntualidad y coordinación con proveedores. Receipt y Discrepancy conservan relevancia, pero representan un subescenario más acotado. | Los recorridos de Buyer describen recepción y discrepancias como diseño; Buyer Mobile no se presenta como una aplicación publicada. | El problema que orienta FA3 se vuelve más preciso; el efecto de FA3 sigue sin medición comparativa. |
 
 ## Criterios de éxito definidos
 
@@ -78,7 +78,7 @@ convertir un hecho operativo en una aceptación comercial o de recepción.
 ## Implementación y validación de TB1
 
 El Sprint 2 aporta una aplicación Android publicada, servicios disponibles en
-Render y una base de datos administrada en Neon. La aplicación Operations
+Render, una base de datos administrada en Neon y la configuración SMTP de Brevo. La aplicación Operations
 Mobile puede instalarse desde su publicación y consultar el servicio mediante
 HTTPS. La comprobación en Samsung S22 cubrió instalación e inicio de sesión;
 las pruebas automatizadas complementan esa evidencia sin sustituir la

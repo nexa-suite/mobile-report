@@ -15,9 +15,9 @@
 [![Universidad](https://img.shields.io/badge/Universidad-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Equipo](https://img.shields.io/badge/Equipo-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Entrega](https://img.shields.io/badge/Entrega-TB1%20%7C%20Sprint%202-0F766E?style=flat-square)](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2)
-[![Release v2.0.0](https://img.shields.io/badge/Release-v2.0.0-0F766E?style=flat-square)](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.0)
+[![Release v2.0.1](https://img.shields.io/badge/Release-v2.0.1-0F766E?style=flat-square)](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1)
 
-[Informe](./report) · [Evidencia de Sprint 2](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2) · [Publicación v2.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.0) · [Exportar PDF](./scripts/export-report-pdf.sh) · [Recursos](./report/assets)
+[Informe](./report) · [Evidencia de Sprint 2](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2) · [Publicación v2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1) · [Exportar PDF](./scripts/export-report-pdf.sh) · [Recursos](./report/assets)
 
 </div>
 
@@ -65,7 +65,7 @@ Informe académico TB1, capítulos, fuentes de evidencia y exportación del docu
 
 ### [Nexa API](https://github.com/nexa-suite/api)
 
-Servicios de negocio y contratos de integración para identidad, Tenant y flujos operativos.
+Servicios de negocio y contratos de integración para identidad, Tenant y flujos operativos. Publicación fuente [v1.0.0](https://github.com/nexa-suite/api/releases/tag/v1.0.0), desplegada mediante Docker en Render, con PostgreSQL en Neon y correo transaccional mediante Brevo. [Swagger UI](https://nexa-api-69bj.onrender.com/swagger-ui/index.html) presenta los contratos del servicio.
 
 ![Java](https://img.shields.io/badge/Java-Servicios-ED8B00?style=flat-square&logo=openjdk&logoColor=white) ![Spring Boot](https://img.shields.io/badge/Spring_Boot-API-6DB33F?style=flat-square&logo=springboot&logoColor=white) ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Datos-4169E1?style=flat-square&logo=postgresql&logoColor=white)
 
@@ -74,7 +74,7 @@ Servicios de negocio y contratos de integración para identidad, Tenant y flujos
 
 ### [Nexa Website](https://github.com/nexa-suite/website)
 
-Sitio público y punto de entrada para conocer Nexa.
+Sitio público y punto de entrada para conocer Nexa. Publicación [v1.0.0](https://github.com/nexa-suite/website/releases/tag/v1.0.0), disponible en [GitHub Pages](https://nexa-suite.github.io/website/).
 
 ![HTML5](https://img.shields.io/badge/HTML5-Web-E34F26?style=flat-square&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-Responsive-1572B6?style=flat-square&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-Web-F7DF1E?style=flat-square&logo=javascript&logoColor=black)
 
@@ -143,7 +143,7 @@ README.md
 - [Implementación y evidencia de Sprint 2](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2)
 - [Git, revisiones y releases](./report/04-product-implementation-and-validation/4.1-software-configuration-management/4.1.2-source-code-management.md)
 - [Changelog](./CHANGELOG.md)
-- [Release v2.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.0)
+- [Release v2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1)
 
 <div align="center">
 

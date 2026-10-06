@@ -20,8 +20,8 @@ Report. La revisión final registrada para AV1 es 1.0.1; las publicaciones poste
 | 1.0.2 | 22 de septiembre de 2026 | nexa-team | Actualizó la documentación del informe y las reglas de contribución. |
 | [0.7.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.7.0) | 3 de octubre de 2026 | Yucra Sandoval, Diego Sebastián | Publicó un checkpoint de la línea v0.x como prerelease, después de la revisión estable 1.0.2. Reunió la revisión de capítulos, la estructura de Sprint 2 y el estado observado del backlog de Jira. |
 | [1.1.0](https://github.com/nexa-suite/mobile-report/releases/tag/v1.1.0) | 5 de octubre de 2026 | Equipo Nexa | Publicó el punto de partida documental para la segunda entrega TB1. |
-
 | [2.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.0) | 6 de octubre de 2026 | Yucra Sandoval, Diego Sebastián | Consolidó la entrega TB1 del informe con Style Guidelines, prototypes, wireframes, mockups, wireflows y User Flows; actualizó la documentación de Operations Mobile v1.0.1 y recuperó la presentación del repositorio. |
+| [2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1) | 6 de octubre de 2026 | Yucra Sandoval, Diego Sebastián | Corrigió el registro de versiones y amplió colaboración, Student Outcome, Style Guidelines y arquitectura de información; recuperó documentación visual, actualizó releases y despliegue Render/Neon/Brevo, y aclaró la relación entre planificación canónica y el corte de Jira. |
 
 *Nota de entrega integrada.* `nexa-team` identifica el trabajo integrado de
 Pinedo Sanchez, Sebastián Martín; Rojas Mancilla, Gerard Gianpier; Torrejón De

@@ -1,5 +1,18 @@
 # Changelog
 
+## [2.0.1] - 2026-10-06
+
+- Repair Version History and distinguish report release contributions.
+- Refine Student Outcome using the official criterion titles and existing AV1/TB1 format.
+- Restore detailed Style Guidelines and illustrated information architecture.
+- Preserve prototype, wireframe, mockup, wireflow and User Flow evidence.
+- Update source conventions, GitFlow, deployment and Sprint 2 responsibilities.
+- Include current Render configuration captures and document Neon and Brevo configuration.
+- Remove 17 numbered caption prefixes from Sprint 2 development, execution and service evidence.
+- Distinguish observed Jira membership from the canonical Sprint plan.
+- Update README to report v2.0.1, Operations v1.0.1, API v1.0.0 and Website v1.0.0.
+
+
 ## 0.7.0 — 2026-10-03
 
 - Consolidate reviewed chapters and front matter.

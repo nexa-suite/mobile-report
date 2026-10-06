@@ -10,5 +10,15 @@ Los repositorios reúnen el informe, la aplicación y los servicios que componen
 | Aplicaciones móviles | Código y documentación de las aplicaciones. | [Nexa Mobile](https://github.com/nexa-suite/mobile) |
 | Servicios | Reglas de negocio e integración. | [Nexa API](https://github.com/nexa-suite/api) |
 | Aplicaciones web | Código Angular de las experiencias web y sus bibliotecas compartidas. | [Nexa Web Clients](https://github.com/nexa-suite/web-clients) |
-| Sitio público | Presentación de la propuesta y contacto. | [Nexa Website](https://github.com/nexa-suite/website) |
+| Sitio público | Presentación pública de la propuesta de Nexa. | [Nexa Website](https://github.com/nexa-suite/website) |
 | Diseño | Recursos de diseño de interfaces. | [Nexa Design Lab](https://github.com/nexa-suite/design-lab) |
+
+*Versiones y referencias de publicación consultadas para TB1.*
+
+| Repositorio | Rama o versión | PR / tag / referencia | Fecha | Propósito |
+| --- | --- | --- | --- | --- |
+| Mobile Report | v1.1.0 | [Release del informe](https://github.com/nexa-suite/mobile-report/releases/tag/v1.1.0) | 5 de octubre de 2026 | Punto de partida publicado de TB1. Los cambios posteriores se integran mediante las ramas de capítulos y front matter hacia develop. |
+| Mobile Report | v0.7.0, prerelease | [Checkpoint v0.x](https://github.com/nexa-suite/mobile-report/releases/tag/v0.7.0) | 3 de octubre de 2026 | Revisión previa de Sprint 2, conservada junto con las versiones estables del informe. |
+| Mobile | main / v0.6.0 | [Release Android de evaluación](https://github.com/nexa-suite/mobile/releases/tag/v0.6.0) | 4 de octubre de 2026 | APK de Operations Mobile para el entorno cloud; evidencia de instalación y ejecución en 4.2.2.6 y 4.2.2.8. |
+| API | main / revisión 92dcdf7 | [Revisión integrada](https://github.com/nexa-suite/api/commit/92dcdf71d6c40ba31c15e170315e6cf3f7f1856a), [PR 104](https://github.com/nexa-suite/api/pull/104) | 5 de octubre de 2026 | Integración que habilita Swagger UI configurable en ejecución; contrato y comprobaciones en 4.2.2.7. |
+| Website | main / v1.0.0 | [Release del sitio](https://github.com/nexa-suite/website/releases/tag/v1.0.0), [PR 1](https://github.com/nexa-suite/website/pull/1) | 5 de octubre de 2026 | Publicación del sitio estático después de las comprobaciones de Markdown, JavaScript y commits; despliegue GitHub Pages correcto. Procedencia y flujo de integración en 4.1.2. |

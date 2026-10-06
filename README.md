@@ -45,7 +45,7 @@ Este repositorio contiene el informe del curso **1ACC0238 Aplicaciones para Disp
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Operations Mobile es nativa Android/Kotlin. La publicación oficial es [v1.0.0](https://github.com/nexa-suite/mobile/releases/tag/v1.0.0); el incremento v1.0.1 se integró mediante [PR #34](https://github.com/nexa-suite/mobile/pull/34). Buyer Mobile se documenta como objetivo de diseño `TARGET` en Flutter.
+Operations Mobile es nativa Android/Kotlin. La publicación oficial es [v1.0.1](https://github.com/nexa-suite/mobile/releases/tag/v1.0.1), con [APK firmado](https://github.com/nexa-suite/mobile/releases/download/v1.0.1/nexa-operations-v1.0.1.apk), corrección de cámara, cierre de sesión y menú operativo en tarjetas. Buyer Mobile se documenta como objetivo de diseño `TARGET` en Flutter.
 
 ![Android](https://img.shields.io/badge/Android-Operations-3DDC84?style=flat-square&logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-Mobile-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Flutter](https://img.shields.io/badge/Flutter-Buyer%20Mobile%20TARGET-02569B?style=flat-square&logo=flutter&logoColor=white)
 

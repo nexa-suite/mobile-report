@@ -34,17 +34,20 @@ confirma callbacks de proveedor ni expone Payment como aggregate local.
 
 | Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| `CreditController` | REST Controller | Exponer límite y reserva de crédito. | actor, customer, commitment, monto, llave. | `approveLimit`, `reserve`, `release`. | Credit handlers. |
+| `CreditController` | REST Controller | Exponer consultas de crédito, configuración restringida de cuentas y operaciones autorizadas de reservas. | Actor, Workforce Membership verificada, Tenant/Workspace, Customer Account, importe, estado solicitado, versión y autorización específica según el comando. | Consultar exposición; solicitar configuración de límite o estado; reservar o liberar crédito según las reglas correspondientes. | Credit handlers y controles de autorización del servidor. |
 | `ReceivableController` | REST Controller | Exponer obligación y ajuste autorizado. | actor, SalesOrder/Receivable, versión. | `issue`, `applyPayment`, `postAdjustment`. | Receivable handlers. |
 
-La protección de crédito se establece durante el envío de una Purchase Request cuando corresponde al flujo sujeto a aprobación, o dentro de la misma confirmación lógica del Sales Order cuando se trata de un Direct Order. La transición de una Credit Reservation hacia la obligación correspondiente debe mantener una única exposición económica, evitando liberaciones, reservas o contabilizaciones duplicadas.
+La capa de interfaz expone consultas y comandos financieros bajo autorización del servidor, preservando el alcance de Tenant y Workspace. La configuración del límite y del estado activo de un Credit Account constituye una operación restringida y distinta de la consulta de exposición o de la gestión ordinaria de reservas.
 
-En operaciones de crédito o pago neto, el Receivable se reconoce al confirmar el Sales Order. La finalización de Delivery o la emisión de un Business Document no constituyen desencadenantes universales para registrar dicha obligación. La posterior aplicación de pagos utiliza hechos autoritativos de BC-08 mediante contratos explícitos y conserva los controles contra sobreaplicación y procesamiento duplicado.
+El **Business Operations Manager** constituye el operador principal autorizado para esta configuración, mientras que **Company Owner** dispone de autorización secundaria. Ambos requieren una Workforce Membership activa y verificada en la superficie `PLATFORM`, el contexto vigente de Tenant/Workspace y la capacidad específica `client.credit.configuration.manage`. La capacidad general `client.credit.manage` no concede por sí sola esta autorización; tampoco basta la denominación del rol.
+
+La decisión corresponde al servidor y debe rechazar solicitudes con contexto ambiguo, capacidades insuficientes o estados incompatibles. Estas reglas representan la dirección de construcción aceptada y no acreditan que los comandos estén implementados o validados.
 
 #### 2.6.7.3. Application Layer
 
-Application coordina concurrencia de último crédito y consume Payment facts
-durables mediante inbox. Nunca carga un Payment Aggregate ni hace I/O proveedor.
+Application coordina los comandos financieros, las transiciones autorizadas y los controles de concurrencia e idempotencia. La configuración de Credit Account debe verificar la elegibilidad del actor y comprobar que el nuevo límite no sea inferior al uso corriente del crédito, calculado a partir de la exposición financiada, los saldos pendientes de Receivables y las reservas activas, sin doble contabilización.
+
+La desactivación de la cuenta impide nuevos usos del crédito, pero no elimina obligaciones, reservas o historial financiero existente. Los hechos confirmados de Payment se consumen mediante los contratos de integración correspondientes, sin importar un Payment Aggregate ni ejecutar operaciones directas con el proveedor desde el dominio.
 
 | Clase | Categoría | Propósito | Inputs clave | Operaciones principales | Colaboradores |
 | :--- | :--- | :--- | :--- | :--- | :--- |

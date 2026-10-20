@@ -2,64 +2,97 @@
 
 Repositorio del informe: [nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report).
 
-Los aportes de los cinco integrantes se organizan por entrega y por versión del informe. AV1 reúne investigación, análisis, modelado y planificación; TB1 incorpora el diseño de interfaces y la documentación de implementación, pruebas, servicios y despliegue de Sprint 2. La siguiente síntesis distingue ambos periodos y conserva las capturas de actividad correspondientes a cada corte.
+Esta sección presenta la evolución documental del informe entre el primer avance (AV1) y el trabajo parcial 1 (TB1), los aportes representativos de los cinco integrantes y las evidencias de actividad conservadas para cada corte. Las publicaciones del informe y las estadísticas de GitHub cumplen funciones distintas: las primeras permiten identificar cambios documentales; las segundas muestran actividad de cuentas y del repositorio en periodos determinados.
 
 **Evolución entre AV1 y TB1**
 
-*Aportes documentales incorporados por versión del informe.*
+La Tabla 1 reúne los hitos de publicación directamente relacionados con ambas entregas. AV1 consolidó la investigación, los requisitos, el diseño de dominio y arquitectura y la planificación académica; TB1 amplió la documentación de diseño UX/UI y las evidencias de ingeniería del Sprint 2.
 
-| Entrega y corte | Versión del informe | Contenido y diferencia respecto del corte anterior |
+**Tabla 1**
+
+*Aportes documentales incorporados por versión del informe*
+
+| Entrega y alcance | Versión del informe | Aporte documental distintivo |
 | --- | --- | --- |
-| Cierre de AV1 | [1.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v1.0.1) | Consolidó la investigación de necesidades, los requisitos, el diseño de dominio y arquitectura y la planificación académica. La revisión 1.0.1 ajustó la redacción de Spike Stories sobre la línea base AV1. |
-| Checkpoint previo de TB1 | [0.7.0](https://github.com/nexa-suite/mobile-report/releases/tag/v0.7.0) | Registró el corte del 3 de octubre como prerelease de la línea v0.x, con documentación de Sprint 2 y backlog Jira. La numeración pertenece a esa línea histórica y su fecha es posterior al cierre AV1. |
-| Inicio documental de TB1 | [1.1.0](https://github.com/nexa-suite/mobile-report/releases/tag/v1.1.0) | Estableció el punto de partida de la segunda entrega y la documentación de Sprint 2, conservando los resultados de investigación y diseño de AV1. |
-| Consolidación de TB1 | [2.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.0) | Integró la guía visual de marca, color, tipografía, composición y controles; los prototypes con sus videos; wireframes, mockups, wireflows y User Flows; y la documentación de versiones, pruebas y despliegue de las aplicaciones. Recuperó la presentación del repositorio y mantuvo los 13 user goals. |
-| Revisión documental de TB1 | [2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1) | Amplió Style Guidelines y arquitectura de información, diferenció los cortes de colaboración, refinó Student Outcome y actualizó SCM, despliegue y responsabilidades de Sprint 2, conservando sus evidencias visuales. |
+| AV1 — cierre oficial | [1.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v1.0.1) | Publicó la revisión final de AV1, con Needfinding, requisitos, Product Backlog, DDD, arquitectura y evidencia académica consolidados. Ajustó la redacción de las Spike Stories sin alterar el alcance del proyecto. |
+| TB1 — línea base | [1.1.0](https://github.com/nexa-suite/mobile-report/releases/tag/v1.1.0) | Estableció el punto de partida de TB1 y conservó el estado del informe anterior a la incorporación de las nuevas evidencias visuales y las revisiones de diseño. |
+| TB1 — consolidación | [2.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.0) | Consolidó Style Guidelines, prototipos y videos, wireframes, mockups, wireflows y User Flows; actualizó la documentación del incremento Operations Mobile v1.0.1 y recuperó la presentación del repositorio. |
+| TB1 — revisión documental | [2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1) | Refinó el registro de versiones, la colaboración y Student Outcome; amplió las guías de estilo y la arquitectura de información, y actualizó la documentación de SCM, servicios, despliegue y responsabilidades del Sprint 2. |
 
-En AV1, la colaboración documental relacionó los hallazgos de Needfinding con requisitos y modelos de solución. En TB1, esa base se amplió con referencias visuales, recorridos y registros técnicos de Sprint 2. La diferencia se observa en los capítulos III y IV: el diseño explica la experiencia propuesta y los registros de ejecución, pruebas y despliegue describen las comprobaciones realizadas.
+*Nota.* Elaboración propia a partir de las publicaciones oficiales del repositorio Nexa Mobile Report. Se incluyen los hitos vinculados directamente con AV1 y TB1, no el historial exhaustivo de versiones o prereleases. Las versiones de Operations Mobile, API y Website corresponden a repositorios independientes; mencionarlas en este cuadro no implica que el informe sea una release de dichas aplicaciones.
 
-Las versiones de esta tabla pertenecen a Mobile Report. Las versiones de Operations Mobile y API se registran en los apartados de implementación y despliegue, para distinguir la evolución del documento de la evolución de las aplicaciones.
+La evolución entre AV1 y TB1 se aprecia en el paso de los artefactos de investigación y planificación a los recursos visuales del capítulo III y a los registros técnicos del capítulo IV. La presencia de documentación de implementación, pruebas o despliegue no equivale, por sí sola, a la aceptación de todos los recorridos de usuario ni al cierre del producto móvil.
 
-*Aportes representativos por integrante y entrega.*
+La Tabla 2 sintetiza los aportes documentales por integrante y entrega, de acuerdo con la evidencia de colaboración y aprendizaje registrada en el informe.
+
+**Tabla 2**
+
+*Aportes representativos de los integrantes en AV1 y TB1*
 
 | Integrante | AV1 | TB1 |
 | --- | --- | --- |
-| Pinedo Sanchez, Sebastián Martín | Escenarios As-Is orientados por investigación, caracterización de segmentos y estructura de evidencia de Sprint 1. | Incorporó referencias de distribución y alcance táctil, documentó el backlog observado de Sprint 2 y alineó su evidencia con la estructura del informe. |
-| Rojas Mancilla, Gerard Gianpier | Reconciliación de artefactos de Needfinding, evidencia C4 en Structurizr y trazabilidad Jira del Product Backlog. | Documentó wireframes de la Landing Page, la instalación Android y la síntesis de desarrollo y recorridos registrados de Sprint 2. |
-| Torrejón De Los Santos, Gino Rodrigo | Cierre documental de registros y análisis de entrevistas, planificación del Product Backlog y verificación técnica de Sprint 1. | Explicó las composiciones de la Landing Page, documentó comprobaciones de navegación y registró los contratos de servicio de Sprint 2. |
-| Verde Bueno, Joaquín Francisco | Matriz de liderazgo de Sprint, claridad de evidencia visual y saneamiento de lenguaje público del informe. | Añadió una referencia de tipografía móvil y documentó las comprobaciones finales de API y publicación Android. |
-| Yucra Sandoval, Diego Sebastián | Evidencia de Student Outcome, integración de la identidad de release y reconciliación de modelos de dominio y datos. | Integró evidencia de los capítulos III y IV y del front matter, actualizó el registro de versiones y revisó la consistencia entre apartados. |
+| Pinedo Sanchez, Sebastián Martín | Sistematizó escenarios As-Is, caracterización de segmentos y evidencia de planificación del Sprint 1. | Relacionó criterios de distribución y alcance táctil con los diseños, revisó el backlog observado del Sprint 2 y organizó su trazabilidad documental. |
+| Rojas Mancilla, Gerard Gianpier | Vinculó Needfinding con los modelos DDD y C4 en Structurizr y con la trazabilidad del Product Backlog en Jira. | Documentó wireframes de la Landing Page, evidencia de instalación Android y recorridos técnicos registrados durante Sprint 2. |
+| Torrejón De Los Santos, Gino Rodrigo | Sistematizó registros de entrevistas, planificación del Product Backlog y verificación técnica documentada del Sprint 1. | Relacionó composiciones de la Landing Page con registros de navegación y contratos de servicio documentados para Sprint 2. |
+| Verde Bueno, Joaquín Francisco | Contribuyó a la organización de responsabilidades de Sprint y a la revisión de coherencia de la evidencia visual y del lenguaje público del informe. | Incorporó referencias de tipografía móvil y documentó comprobaciones técnicas de API y publicación Android. |
+| Yucra Sandoval, Diego Sebastián | Integró la evidencia de Student Outcome y la trazabilidad de versiones, dominio, arquitectura y datos. | Revisó la integración documental de los capítulos III y IV y del front matter, el registro de versiones y la consistencia de la evidencia de servicios y despliegue. |
+
+*Nota.* Síntesis cualitativa de los aportes expuestos en el informe, especialmente en Student Outcome y las secciones de diseño, SCM y Sprint. No constituye una clasificación por cantidad de commits ni atribuye automáticamente a una persona toda la actividad registrada desde su cuenta de GitHub.
 
 **Evidencia de colaboración en AV1**
 
-Las capturas del 15 de septiembre muestran el corte documental de AV1 previo a su revisión final 1.0.1 del 17 de septiembre. Contributors, Pulse e historial permiten relacionar participantes, actividad del periodo y cambios registrados.
+Las Figuras 1 a 3 corresponden a capturas del 15 de septiembre de 2026. Documentan la actividad visible antes de la publicación final de AV1, versión 1.0.1, del 17 de septiembre. Los indicadores de Contributors, Pulse e historial de commits tienen alcances diferentes y deben interpretarse dentro de la fecha y el periodo de cada captura.
 
-![Contributors del informe en AV1](../assets/front-matter/collaboration/github-contributors-av1-2026-09-15.png)
+**Figura 1**
 
-*Participación documental en el corte AV1 del informe.*
+*Participación de las cuentas colaboradoras en Nexa Mobile Report durante el corte de AV1*
 
-![Pulse del informe en AV1](../assets/front-matter/collaboration/github-pulse-av1-2026-09-15.png)
+![Vista de GitHub Contributors de Nexa Mobile Report capturada el 15 de septiembre de 2026](../assets/front-matter/collaboration/github-contributors-av1-2026-09-15.png)
 
-*Actividad del repositorio durante el periodo mostrado para AV1.*
+*Nota.* Captura de la vista Contributors de GitHub del 15 de septiembre de 2026. La actividad acumulada que muestra esta vista no equivale exclusivamente al trabajo de AV1 ni determina la calidad de los aportes individuales.
 
-![Historial del informe en AV1](../assets/front-matter/collaboration/github-commit-history-av1-2026-09-15.png)
+**Figura 2**
 
-*Historial de cambios documentales del corte AV1.*
+*Actividad del repositorio Nexa Mobile Report registrada por GitHub Pulse en AV1*
+
+![Vista de GitHub Pulse de Nexa Mobile Report capturada el 15 de septiembre de 2026](../assets/front-matter/collaboration/github-pulse-av1-2026-09-15.png)
+
+*Nota.* Captura de la vista Pulse de GitHub del 15 de septiembre de 2026. Los indicadores describen la ventana temporal presentada por GitHub y no representan todo el historial de la entrega.
+
+**Figura 3**
+
+*Historial de commits de Nexa Mobile Report en el corte documental de AV1*
+
+![Historial de commits de Nexa Mobile Report capturado el 15 de septiembre de 2026](../assets/front-matter/collaboration/github-commit-history-av1-2026-09-15.png)
+
+*Nota.* Captura del historial del repositorio en GitHub del 15 de septiembre de 2026. Es anterior a la publicación final de AV1 del 17 de septiembre; por tanto, no acredita los cambios incorporados después del momento capturado.
 
 **Evidencia de colaboración en TB1**
 
-El historial del 3 de octubre y los analíticos del 4 de octubre muestran la actividad inicial de TB1; el registro de versiones identifica las publicaciones posteriores 1.1.0, 2.0.0 y 2.0.1. La síntesis de aportes describe el incremento acumulado, mientras cada captura conserva el periodo que muestra.
+Las Figuras 4 y 5 corresponden a capturas de actividad del 4 de octubre de 2026; la Figura 6 registra el historial observado el 3 de octubre. Estas evidencias muestran un corte inicial de TB1, anterior a las publicaciones 1.1.0, 2.0.0 y 2.0.1 de los días 5 y 6 de octubre. Los cambios de esas publicaciones se identifican mediante sus respectivas releases, no mediante capturas tomadas con anterioridad.
 
-![Contributors del informe en TB1](../assets/chapter-4/collaboration/mobile-report-contributors-2026-10-04.png)
+**Figura 4**
 
-*Participación documental registrada en el corte inicial de TB1.*
+*Participación de las cuentas colaboradoras en Nexa Mobile Report durante el corte inicial de TB1*
 
-![Pulse del informe en TB1](../assets/chapter-4/collaboration/mobile-report-pulse-2026-10-04.png)
+![Vista de GitHub Contributors de Nexa Mobile Report capturada el 4 de octubre de 2026](../assets/chapter-4/collaboration/mobile-report-contributors-2026-10-04.png)
 
-*Actividad del repositorio durante el periodo mostrado para TB1.*
+*Nota.* Captura de la vista Contributors de GitHub del 4 de octubre de 2026. Los totales corresponden al intervalo acumulado que muestra la gráfica y no exclusivamente a las actividades de TB1.
 
-![Historial del informe en el checkpoint inicial de TB1](../assets/chapter-4/scm/report-commit-history-2026-10-03.png)
+**Figura 5**
 
-*Historial de cambios del 3 de octubre: publicación del checkpoint 0.7.0 y documentación de Sprint 2.*
+*Actividad de Nexa Mobile Report registrada por GitHub Pulse durante el corte inicial de TB1*
 
-Las capturas relacionan autores y actividad del periodo. Los registros de desarrollo, pruebas y documentación de servicios se presentan en los apartados correspondientes del capítulo IV.
+![Vista de GitHub Pulse de Nexa Mobile Report capturada el 4 de octubre de 2026](../assets/chapter-4/collaboration/mobile-report-pulse-2026-10-04.png)
+
+*Nota.* Captura de la vista Pulse de GitHub del 4 de octubre de 2026, correspondiente a la ventana semanal mostrada para el corte inicial de TB1. No incluye las publicaciones documentales posteriores.
+
+**Figura 6**
+
+*Historial de commits de Nexa Mobile Report registrado el 3 de octubre de 2026*
+
+![Historial de commits de Nexa Mobile Report capturado el 3 de octubre de 2026](../assets/chapter-4/scm/report-commit-history-2026-10-03.png)
+
+*Nota.* Captura del historial del repositorio en GitHub del 3 de octubre de 2026. Corresponde a un checkpoint documental anterior a la línea base y a la consolidación oficial de TB1.
+
+En conjunto, las capturas permiten observar participación y actividad registrada, mientras que las releases y los apartados de los capítulos III y IV documentan el contenido incorporado y sus evidencias técnicas. Estas fuentes son complementarias, pero no sustituyen una verificación de implementación, pruebas integradas, aceptación de producto o finalización de los cuatro Sprints.

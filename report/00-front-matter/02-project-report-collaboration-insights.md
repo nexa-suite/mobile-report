@@ -6,9 +6,7 @@ Esta sección presenta la evolución documental del informe entre el primer avan
 
 **Evolución entre AV1 y TB1**
 
-La Tabla 1 reúne los hitos de publicación directamente relacionados con ambas entregas. AV1 consolidó la investigación, los requisitos, el diseño de dominio y arquitectura y la planificación académica; TB1 amplió la documentación de diseño UX/UI y las evidencias de ingeniería del Sprint 2.
-
-**Tabla 1**
+La primera tabla reúne los hitos de publicación directamente relacionados con ambas entregas. AV1 consolidó la investigación, los requisitos, el diseño de dominio y arquitectura y la planificación académica; TB1 amplió la documentación de diseño UX/UI y las evidencias de ingeniería del Sprint 2.
 
 *Aportes documentales incorporados por versión del informe*
 
@@ -23,9 +21,7 @@ La Tabla 1 reúne los hitos de publicación directamente relacionados con ambas 
 
 La evolución entre AV1 y TB1 se aprecia en el paso de los artefactos de investigación y planificación a los recursos visuales del capítulo III y a los registros técnicos del capítulo IV. La presencia de documentación de implementación, pruebas o despliegue no equivale, por sí sola, a la aceptación de todos los recorridos de usuario ni al cierre del producto móvil.
 
-La Tabla 2 sintetiza los aportes documentales por integrante y entrega, de acuerdo con la evidencia de colaboración y aprendizaje registrada en el informe.
-
-**Tabla 2**
+La segunda tabla sintetiza los aportes documentales por integrante y entrega, de acuerdo con la evidencia de colaboración y aprendizaje registrada en el informe.
 
 *Aportes representativos de los integrantes en AV1 y TB1*
 

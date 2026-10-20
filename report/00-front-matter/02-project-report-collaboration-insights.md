@@ -6,7 +6,9 @@ Esta sección presenta la evolución documental del informe entre el primer avan
 
 **Evolución entre AV1 y TB1**
 
-La primera tabla reúne los hitos de publicación directamente relacionados con ambas entregas. AV1 consolidó la investigación, los requisitos, el diseño de dominio y arquitectura y la planificación académica; TB1 amplió la documentación de diseño UX/UI y las evidencias de ingeniería del Sprint 2.
+La tabla de versiones reúne los hitos de publicación directamente relacionados con ambas entregas. AV1 consolidó la investigación, los requisitos, el diseño de dominio y arquitectura y la planificación académica; TB1 amplió la documentación de diseño UX/UI y las evidencias de ingeniería del Sprint 2.
+
+**Tabla**
 
 *Aportes documentales incorporados por versión del informe*
 
@@ -21,7 +23,9 @@ La primera tabla reúne los hitos de publicación directamente relacionados con 
 
 La evolución entre AV1 y TB1 se aprecia en el paso de los artefactos de investigación y planificación a los recursos visuales del capítulo III y a los registros técnicos del capítulo IV. La presencia de documentación de implementación, pruebas o despliegue no equivale, por sí sola, a la aceptación de todos los recorridos de usuario ni al cierre del producto móvil.
 
-La segunda tabla sintetiza los aportes documentales por integrante y entrega, de acuerdo con la evidencia de colaboración y aprendizaje registrada en el informe.
+La tabla de aportes sintetiza los aportes documentales por integrante y entrega, de acuerdo con la evidencia de colaboración y aprendizaje registrada en el informe.
+
+**Tabla**
 
 *Aportes representativos de los integrantes en AV1 y TB1*
 
@@ -37,9 +41,9 @@ La segunda tabla sintetiza los aportes documentales por integrante y entrega, de
 
 **Evidencia de colaboración en AV1**
 
-Las Figuras 1 a 3 corresponden a capturas del 15 de septiembre de 2026. Documentan la actividad visible antes de la publicación final de AV1, versión 1.0.1, del 17 de septiembre. Los indicadores de Contributors, Pulse e historial de commits tienen alcances diferentes y deben interpretarse dentro de la fecha y el periodo de cada captura.
+Las tres figuras de AV1 corresponden a capturas del 15 de septiembre de 2026. Documentan la actividad visible antes de la publicación final de AV1, versión 1.0.1, del 17 de septiembre. Los indicadores de Contributors, Pulse e historial de commits tienen alcances diferentes y deben interpretarse dentro de la fecha y el periodo de cada captura.
 
-**Figura 1**
+**Figura**
 
 *Participación de las cuentas colaboradoras en Nexa Mobile Report durante el corte de AV1*
 
@@ -47,7 +51,7 @@ Las Figuras 1 a 3 corresponden a capturas del 15 de septiembre de 2026. Document
 
 *Nota.* Captura de la vista Contributors de GitHub del 15 de septiembre de 2026. La actividad acumulada que muestra esta vista no equivale exclusivamente al trabajo de AV1 ni determina la calidad de los aportes individuales.
 
-**Figura 2**
+**Figura**
 
 *Actividad del repositorio Nexa Mobile Report registrada por GitHub Pulse en AV1*
 
@@ -55,7 +59,7 @@ Las Figuras 1 a 3 corresponden a capturas del 15 de septiembre de 2026. Document
 
 *Nota.* Captura de la vista Pulse de GitHub del 15 de septiembre de 2026. Los indicadores describen la ventana temporal presentada por GitHub y no representan todo el historial de la entrega.
 
-**Figura 3**
+**Figura**
 
 *Historial de commits de Nexa Mobile Report en el corte documental de AV1*
 
@@ -65,9 +69,9 @@ Las Figuras 1 a 3 corresponden a capturas del 15 de septiembre de 2026. Document
 
 **Evidencia de colaboración en TB1**
 
-Las Figuras 4 y 5 corresponden a capturas de actividad del 4 de octubre de 2026; la Figura 6 registra el historial observado el 3 de octubre. Estas evidencias muestran un corte inicial de TB1, anterior a las publicaciones 1.1.0, 2.0.0 y 2.0.1 de los días 5 y 6 de octubre. Los cambios de esas publicaciones se identifican mediante sus respectivas releases, no mediante capturas tomadas con anterioridad.
+Las figuras de Contributors y Pulse incluidas en TB1 corresponden a capturas de actividad del 4 de octubre de 2026; la figura del historial registra el corte observado el 3 de octubre. Estas evidencias muestran un corte inicial de TB1, anterior a las publicaciones 1.1.0, 2.0.0 y 2.0.1 de los días 5 y 6 de octubre. Los cambios de esas publicaciones se identifican mediante sus respectivas releases, no mediante capturas tomadas con anterioridad.
 
-**Figura 4**
+**Figura**
 
 *Participación de las cuentas colaboradoras en Nexa Mobile Report durante el corte inicial de TB1*
 
@@ -75,7 +79,7 @@ Las Figuras 4 y 5 corresponden a capturas de actividad del 4 de octubre de 2026;
 
 *Nota.* Captura de la vista Contributors de GitHub del 4 de octubre de 2026. Los totales corresponden al intervalo acumulado que muestra la gráfica y no exclusivamente a las actividades de TB1.
 
-**Figura 5**
+**Figura**
 
 *Actividad de Nexa Mobile Report registrada por GitHub Pulse durante el corte inicial de TB1*
 
@@ -83,7 +87,7 @@ Las Figuras 4 y 5 corresponden a capturas de actividad del 4 de octubre de 2026;
 
 *Nota.* Captura de la vista Pulse de GitHub del 4 de octubre de 2026, correspondiente a la ventana semanal mostrada para el corte inicial de TB1. No incluye las publicaciones documentales posteriores.
 
-**Figura 6**
+**Figura**
 
 *Historial de commits de Nexa Mobile Report registrado el 3 de octubre de 2026*
 

@@ -1,9 +1,9 @@
 
 # Project Report Collaboration Insights
 
-Repositorio del informe: [nexa-suite/mobile-report](https://github.com/nexa-suite/mobile-report).
+Repositorio del informe: nexa-suite/mobile-report.
 
-Esta sección presenta los principales avances del informe desde AV1 hasta AV2, considerando los aportes de los integrantes de nexa-team y las evidencias de colaboración registradas durante cada entrega. Se incluyen las actualizaciones de los capítulos III y IV, el trabajo relacionado con los Sprints y la participación del equipo en la organización, revisión e integración de la documentación.
+Aquí se muestran los principales avances del informe desde AV1 hasta AV2, considerando los aportes de los integrantes de nexa-team y las evidencias de colaboración registradas durante cada entrega. Se incluyen las actualizaciones de los capítulos III y IV, el trabajo relacionado con los Sprints y la participación del equipo en la organización, revisión e integración de la documentación.
 
 Las versiones del informe permiten identificar los cambios realizados en cada entrega, mientras que las estadísticas de GitHub ofrecen una referencia de la actividad registrada en el repositorio. Ambas fuentes se utilizan de manera complementaria, ya que el número de commits no refleja necesariamente la cantidad o calidad del trabajo de cada integrante.
 

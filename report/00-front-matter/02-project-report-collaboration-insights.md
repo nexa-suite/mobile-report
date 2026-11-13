@@ -151,25 +151,25 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 *Participación de los integrantes en Nexa Mobile Report durante el corte de AV2*
 
-![Vista de GitHub Contributors de Nexa Mobile Report para AV2](../assets/front-matter/collaboration/github-contributors-av2-2026-11-11.png)
+[Contributors de Nexa Mobile Report](https://github.com/nexa-suite/mobile-report/graphs/contributors).
 
-*Nota.* Espacio reservado para la captura de Contributors del 11 de noviembre de 2026. La imagen permitirá presentar la participación acumulada de las cuentas colaboradoras y deberá interpretarse de acuerdo con el periodo mostrado por GitHub.
+*Nota.* GitHub muestra la participación acumulada según el período seleccionado.
 
 **Figura**
 
 *Actividad del repositorio Nexa Mobile Report registrada mediante GitHub Pulse durante AV2*
 
-![Vista de GitHub Pulse de Nexa Mobile Report para AV2](../assets/front-matter/collaboration/github-pulse-av2-2026-11-11.png)
+[Pulse de Nexa Mobile Report](https://github.com/nexa-suite/mobile-report/pulse).
 
-*Nota.* Espacio reservado para la captura de Pulse del 11 de noviembre de 2026. La imagen permitirá observar la actividad del repositorio durante el intervalo seleccionado, sin asumir que todos los eventos corresponden exclusivamente a AV2.
+*Nota.* GitHub muestra la actividad correspondiente al intervalo elegido.
 
 **Figura**
 
 *Historial de commits de Nexa Mobile Report durante el corte de AV2*
 
-![Historial de commits de Nexa Mobile Report para AV2](../assets/front-matter/collaboration/github-commit-history-av2-2026-11-11.png)
+[Historial de commits de Nexa Mobile Report](https://github.com/nexa-suite/mobile-report/commits/main).
 
-*Nota.* Espacio reservado para la captura del historial de commits del 11 de noviembre de 2026. Esta evidencia permitirá identificar las modificaciones registradas hasta la fecha del corte documental.
+*Nota.* El historial permite revisar cada cambio por fecha y autor.
 
 ## Reflexión sobre el trabajo colaborativo
 

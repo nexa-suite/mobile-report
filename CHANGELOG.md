@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.0.0] - 2026-11-13
+
+- Consolidar los capítulos y los apartados iniciales de AV2.
+- Integrar diseño móvil, planificación y evidencias del Sprint 3, y el plan del Sprint 4.
+- Incorporar las referencias audiovisuales de About the Product, App Validation y About the Team.
+
 ## [2.0.1] - 2026-10-06
 
 - Repair Version History and distinguish report release contributions.

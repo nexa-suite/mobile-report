@@ -74,4 +74,3 @@ El video App Validation registra la primera entrevista de validación, realizada
 La evidencia de validación corresponde a una sola entrevista y presenta resultados cualitativos preliminares. Su desarrollo y los aspectos identificados se encuentran documentados en la sección 4.3 del Capítulo IV.
 
 El video About the Team registra una sesión virtual con la participación de los cinco integrantes de nexa-team. Esta primera versión audiovisual complementa la documentación de colaboración, responsabilidades y aprendizajes presentada en el Front Matter del informe.
-

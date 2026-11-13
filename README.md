@@ -14,10 +14,10 @@
 [![Período](https://img.shields.io/badge/Per%C3%ADodo-202620-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Universidad](https://img.shields.io/badge/Universidad-UPC-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
 [![Equipo](https://img.shields.io/badge/Equipo-nexa--team-0F172A?style=flat-square)](./report/00-front-matter/00-cover.md)
-[![Entrega](https://img.shields.io/badge/Entrega-TB1%20%7C%20Sprint%202-0F766E?style=flat-square)](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2)
-[![Release v2.0.1](https://img.shields.io/badge/Release-v2.0.1-0F766E?style=flat-square)](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1)
+[![Entrega](https://img.shields.io/badge/Entrega-AV2%20%7C%20Sprint%203-0F766E?style=flat-square)](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.3-sprint-3)
+[![Release v3.0.0](https://img.shields.io/badge/Release-v3.0.0-0F766E?style=flat-square)](https://github.com/nexa-suite/mobile-report/releases/tag/v3.0.0)
 
-[Informe](./report) · [Evidencia de Sprint 2](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2) · [Publicación v2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1) · [Exportar PDF](./scripts/export-report-pdf.sh) · [Recursos](./report/assets)
+[Informe](./report) · [Evidencia de Sprint 3](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.3-sprint-3) · [Publicación v3.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v3.0.0) · [Exportar PDF](./scripts/export-report-pdf.sh) · [Recursos](./report/assets)
 
 </div>
 
@@ -31,11 +31,11 @@ El informe conecta las decisiones de producto y las superficies de Nexa con sus 
 2. El API aporta contratos de integración y decisiones de negocio para los flujos operativos.
 3. Mobile, Web Clients y Website presentan superficies que consultan los servicios según su contexto.
 4. Jira organiza el Product Backlog y el seguimiento de Sprint; GitHub conserva el historial de código, documentación y releases.
-5. Mobile Report reúne la entrega académica TB1 y relaciona planificación, diseño, implementación, comprobación técnica y validación con su evidencia.
+5. Mobile Report reúne la entrega académica AV2 y relaciona planificación, diseño, implementación, comprobación técnica y validación con su evidencia.
 
 ## Descripción
 
-Este repositorio contiene el informe del curso **1ACC0238 Aplicaciones para Dispositivos Móviles**, período **202620**. La entrega TB1 documenta requisitos, diseño de experiencia e interfaces, y reúne evidencia sobre la implementación de Sprint 2. El informe distingue planificación, diseño, implementación, comprobación técnica y validación según las fuentes citadas.
+Este repositorio contiene el informe del curso **1ACC0238 Aplicaciones para Dispositivos Móviles**, período **202620**. La entrega AV2 actualiza requisitos y diseño de experiencia, documenta la planificación de Sprint 3 y reúne evidencias de desarrollo, pruebas y ejecución. El informe distingue planificación, diseño, implementación, comprobación técnica y validación según las fuentes citadas.
 
 ## Ecosistema Nexa
 
@@ -45,16 +45,16 @@ Este repositorio contiene el informe del curso **1ACC0238 Aplicaciones para Disp
 
 ### [Nexa Mobile](https://github.com/nexa-suite/mobile)
 
-Operations Mobile es nativa Android/Kotlin. La publicación oficial es [v1.0.1](https://github.com/nexa-suite/mobile/releases/tag/v1.0.1), con [APK firmado](https://github.com/nexa-suite/mobile/releases/download/v1.0.1/nexa-operations-v1.0.1.apk), corrección de cámara, cierre de sesión y menú operativo en tarjetas. Buyer Mobile se documenta como objetivo de diseño `TARGET` en Flutter.
+Operations Mobile usa Android/Kotlin y Buyer Mobile usa Flutter. La [publicación académica Mobile v2.0.1](https://github.com/nexa-suite/mobile/releases/tag/v2.0.1) contiene los APK de ambos clientes.
 
-![Android](https://img.shields.io/badge/Android-Operations-3DDC84?style=flat-square&logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-Mobile-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Flutter](https://img.shields.io/badge/Flutter-Buyer%20Mobile%20TARGET-02569B?style=flat-square&logo=flutter&logoColor=white)
+![Android](https://img.shields.io/badge/Android-Operations-3DDC84?style=flat-square&logo=android&logoColor=white) ![Kotlin](https://img.shields.io/badge/Kotlin-Mobile-7F52FF?style=flat-square&logo=kotlin&logoColor=white) ![Flutter](https://img.shields.io/badge/Flutter-Buyer%20Mobile-02569B?style=flat-square&logo=flutter&logoColor=white)
 
 </td>
 <td width="50%" valign="top">
 
 ### [Nexa Mobile Report](https://github.com/nexa-suite/mobile-report)
 
-Informe académico TB1, capítulos, fuentes de evidencia y exportación del documento.
+Informe académico AV2, capítulos, fuentes de evidencia y exportación del documento.
 
 ![Markdown](https://img.shields.io/badge/Markdown-Informe-000000?style=flat-square&logo=markdown&logoColor=white) ![Pandoc](https://img.shields.io/badge/Pandoc-Exportaci%C3%B3n_PDF-1A1A1A?style=flat-square)
 
@@ -140,10 +140,10 @@ README.md
 ## Documentación y publicación
 
 - [Índice del informe](./report/00-front-matter/03-contents.md)
-- [Implementación y evidencia de Sprint 2](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.2-sprint-2)
+- [Implementación y evidencia de Sprint 3](./report/04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.3-sprint-3)
 - [Git, revisiones y releases](./report/04-product-implementation-and-validation/4.1-software-configuration-management/4.1.2-source-code-management.md)
 - [Changelog](./CHANGELOG.md)
-- [Release v2.0.1](https://github.com/nexa-suite/mobile-report/releases/tag/v2.0.1)
+- [Release v3.0.0](https://github.com/nexa-suite/mobile-report/releases/tag/v3.0.0)
 
 <div align="center">
 

@@ -153,7 +153,7 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 ![GitHub Contributors de Nexa Mobile Report durante AV2](../assets/front-matter/collaboration/github-contributors-av2-2026-11-11.png)
 
-*Nota.* Vista reservada para incorporar evidencia de colaboración en una actualización posterior.
+*Nota.* Captura de contribuidores hasta 12 de noviembre de 2026, los totales representan la actividad acumulada que muestra GitHub.
 
 **Figura**
 
@@ -161,7 +161,7 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 ![GitHub Pulse de Nexa Mobile Report durante AV2](../assets/front-matter/collaboration/github-pulse-av2-2026-11-11.png)
 
-*Nota.* Vista reservada para incorporar evidencia de colaboración en una actualización posterior.
+*Nota.* Captura de GitHub Pulse hasta 12 de noviembre de 2026. La información corresponde al intervalo seleccionado y no representa todo el avance del AV2.
 
 **Figura**
 
@@ -169,7 +169,7 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 ![Historial de commits de Nexa Mobile Report durante AV2](../assets/front-matter/collaboration/github-commit-history-av2-2026-11-11.png)
 
-*Nota.* Vista reservada para incorporar evidencia de colaboración en una actualización posterior.
+*Nota.* Captura de commits realizados hasta 12 de noviembre de 2026.
 
 ## Reflexión sobre el trabajo colaborativo
 

@@ -151,17 +151,23 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 *Participación de los integrantes en Nexa Mobile Report durante el corte de AV2*
 
+![GitHub Contributors de Nexa Mobile Report durante AV2](../assets/front-matter/collaboration/github-contributors-av2-2026-11-11.png)
+
 *Nota.* Vista reservada para incorporar evidencia de colaboración en una actualización posterior.
 
 **Figura**
 
 *Actividad del repositorio Nexa Mobile Report registrada mediante GitHub Pulse durante AV2*
 
+![GitHub Pulse de Nexa Mobile Report durante AV2](../assets/front-matter/collaboration/github-pulse-av2-2026-11-11.png)
+
 *Nota.* Vista reservada para incorporar evidencia de colaboración en una actualización posterior.
 
 **Figura**
 
 *Historial de commits de Nexa Mobile Report durante el corte de AV2*
+
+![Historial de commits de Nexa Mobile Report durante AV2](../assets/front-matter/collaboration/github-commit-history-av2-2026-11-11.png)
 
 *Nota.* Vista reservada para incorporar evidencia de colaboración en una actualización posterior.
 

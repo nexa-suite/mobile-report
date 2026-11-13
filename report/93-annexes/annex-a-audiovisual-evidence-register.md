@@ -1,3 +1,4 @@
+
 # Anexo A: Registro de evidencia audiovisual
 
 Este anexo registra la evidencia audiovisual propia del proyecto. El análisis
@@ -26,7 +27,7 @@ de entrevistas y de producto permanece en los capítulos correspondientes.
 | `INT-S1-03` | Rodrigo Mendoza | `MOB-SEG-01 — Warehouse & Dispatch Operations` | `2026-09-14` | `00:13:25` | `00:21:35` | `08:10` | Video consolidado; [captura](../assets/chapter-2/interviews/rodrigo-mendoza.png) |
 | `INT-S2-01` | Nicolás Castro | `MOB-SEG-02 — Driver Delivery Execution` | `2026-09-12` | `00:21:40` | `00:29:42` | `08:02` | Video consolidado; [captura](../assets/chapter-2/interviews/entrevista-nicolas-castro.png) |
 | `INT-S2-02` | Michelle Rodríguez | `MOB-SEG-02 — Driver Delivery Execution` | `2026-09-12` | `00:29:43` | `00:37:50` | `08:07` | Video consolidado; [captura](../assets/chapter-2/interviews/entrevista-michelle-rodriguez.png) |
-| `INT-S2-03` | Renzo Valentino Bueno Montilla | `MOB-SEG-02 — Driver Delivery Execution` | `2026-09-10` | `00:37:51` | `00:44:29` | `07:22` | Video consolidado; [captura](../assets/chapter-2/interviews/entrevista-renzo-bueno.png) |
+| `INT-S2-03` | Renzo Valentino Bueno Montilla | `MOB-SEG-02 — Driver Delivery Execution` | `2026-09-10` | `00:37:51` | `00:44:29` | `08:07` | Video consolidado; [captura](../assets/chapter-2/interviews/entrevista-renzo-bueno.png) |
 | `INT-S3-01` | Pedro Puente Arnao | `MOB-SEG-03 — B2B Buyers` | `2026-04-09` | `00:44:43` | `00:56:59` | `12:16` | Video consolidado; [captura](../assets/chapter-2/interviews/pedro-puente.jpeg) |
 | `INT-S3-02` | Henrry García | `MOB-SEG-03 — B2B Buyers` | `2026-04-10` | `00:57:00` | `01:37:39` | `40:39` | Video consolidado; [captura](../assets/chapter-2/interviews/henrry-garcia.jpeg) |
 | `INT-S3-03` | Gloria Marilú Ángulo Vega | `MOB-SEG-03 — B2B Buyers` | `2026-09-14` | `01:37:40` | `01:52:24` | `14:44` | Video consolidado; [captura](../assets/chapter-2/interviews/gloria-angulo.png) |
@@ -51,3 +52,25 @@ registrados.
 ![Publicación del video Website mobile](../assets/chapter-4/website/website-mobile-video-publication-2026-10-05.jpeg)
 
 *Publicación del video Website mobile: vista vertical del sitio, título y fecha del 5 de octubre de 2026.*
+
+
+## Evidencia audiovisual de AV2
+
+Durante AV2 se incorporaron las primeras evidencias audiovisuales de presentación del producto y validación de la experiencia móvil.
+
+*Registro de los videos correspondientes a AV2.*
+
+| Entrega | Video | Duración | Publicación | Evidencia visual | Apartado relacionado |
+| --- | --- | --- | --- | --- | --- |
+| AV2 | About the Product | 02:12 | [Video publicado en YouTube](https://www.youtube.com/shorts/G2eSdN8vkjY) | [Captura del catálogo de Buyer Mobile](../assets/chapter-4/sprint-3/buyer-catalog-screen.jpeg) | Video About the Product |
+| AV2 | App Validation | 11:14 | [Entrevista de validación en YouTube](https://youtu.be/eLa5VMzP484) | [Captura de la entrevista](../assets/chapter-4/validation/nexa-av2-validation-interview-capture.png) | Video App Validation y sección 4.3 |
+| AV2 | About the Team | 04:40 | [Video publicado en YouTube](https://youtu.be/ixMt-g-OH6Q) | [Captura de la reunión](../assets/chapter-4/collaboration/nexa-av2-about-the-team-capture.png) | Video About the Team |
+
+
+*Nota.* El video About the Product presenta las interfaces y funcionalidades de Nexa Operations Mobile y Nexa Buyer Mobile. La captura utilizada corresponde a una evidencia existente de Sprint 3.
+
+El video App Validation registra la primera entrevista de validación, realizada el 12 de noviembre de 2026 con Nicolás Castro-Solorza. La sesión consistió en una demostración guiada de Operations Mobile mediante una cuenta Sales, enfocada en la consulta de clientes y la búsqueda de productos.
+
+La evidencia de validación corresponde a una sola entrevista y presenta resultados cualitativos preliminares. Su desarrollo y los aspectos identificados se encuentran documentados en la sección 4.3 del Capítulo IV.
+
+El video About the Team registra una sesión virtual con la participación de los cinco integrantes de nexa-team. Esta primera versión audiovisual complementa la documentación de colaboración, responsabilidades y aprendizajes presentada en el Front Matter del informe.

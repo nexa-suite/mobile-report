@@ -1,53 +1,38 @@
+
 # Video About the Team
 
-El video *About the Team* presenta la experiencia de trabajo colaborativo de los integrantes de Nexa durante la investigación, diseño y construcción de la solución. Su propósito es mostrar la evolución del proyecto, las actividades desarrolladas y los principales aprendizajes obtenidos a lo largo del curso.
+El video *About the Team* presenta a los cinco integrantes de nexa-team mediante una grabación grupal realizada en modalidad virtual. Esta primera versión audiovisual forma parte de las evidencias preparadas para el Avance 2 (AV2) del proyecto Nexa.
 
-Mediante escenas reales de reuniones, desarrollo y revisión de resultados, el material audiovisual busca reflejar la participación de los integrantes y la aplicación de conocimientos técnicos y habilidades de colaboración.
+El registro permite visualizar la participación conjunta del equipo y complementa la documentación del trabajo colaborativo presentada en el Front Matter del Project Report.
 
-## Proceso de trabajo y retrospectiva
+## Participación del equipo
 
-La presentación comienza con una introducción del equipo y del propósito del proyecto. Posteriormente, resume las principales etapas desarrolladas, desde la identificación de necesidades y definición de requisitos hasta el diseño de interfaces, la implementación de componentes y su integración.
+La grabación muestra una videollamada con la participación de los cinco integrantes del proyecto:
 
-También se presenta la organización del trabajo mediante sprints, el seguimiento de actividades en Jira y la colaboración a través de los repositorios de GitHub.
+- Pinedo Sanchez, Sebastián Martín.
+- Rojas Mancilla, Gerard Gianpier.
+- Torrejón De Los Santos, Gino Rodrigo.
+- Verde Bueno, Joaquín Francisco.
+- Yucra Sandoval, Diego Sebastián.
 
-La retrospectiva grupal aborda los desafíos encontrados, las decisiones adoptadas y las oportunidades de mejora identificadas durante el desarrollo. Esta reflexión permite explicar cómo el equipo enfrentó dificultades técnicas y organizativas y qué aprendizajes obtuvo de la experiencia.
+Las responsabilidades, contribuciones y aprendizajes correspondientes a AV2 se encuentran documentados en las secciones *Student Outcome* y *Project Report Collaboration Insights*.
 
-## Testimonios individuales
-
-El video incorpora la participación de los cinco integrantes de Nexa: Sebastián Pinedo, Gerard Rojas, Gino Torrejón, Joaquín Verde y Diego Yucra Sandoval.
-
-Cada integrante presenta brevemente las actividades en las que participó, sus principales contribuciones, los desafíos que enfrentó y las competencias desarrolladas. Estas intervenciones se relacionan con el *Student Outcome* del informe y deben sustentarse en experiencias reales del proyecto.
-
-La organización del video contempla aproximadamente cinco minutos de retrospectiva grupal y un minuto de testimonio por integrante, conforme al enfoque establecido en el enunciado.
-
-## Secuencias del video
-
-La siguiente tabla identifica la estructura audiovisual y permite localizar cada intervención mediante su tiempo de inicio.
-
-| Secuencia | Inicio (hh:mm:ss) |
-|---|---|
-| Presentación del equipo y proyecto | [INSERTAR] |
-| Investigación, diseño y desarrollo | [INSERTAR] |
-| Retrospectiva grupal | [INSERTAR] |
-| Testimonio de Sebastián Pinedo | [INSERTAR] |
-| Testimonio de Gerard Rojas | [INSERTAR] |
-| Testimonio de Gino Torrejón | [INSERTAR] |
-| Testimonio de Joaquín Verde | [INSERTAR] |
-| Testimonio de Diego Yucra Sandoval | [INSERTAR] |
-| Cierre del video | [INSERTAR] |
-
-Los tiempos de inicio se registrarán según la edición final, de modo que cada intervención pueda localizarse dentro de la grabación.
+Esta primera versión constituye evidencia audiovisual de la participación grupal. Las responsabilidades individuales y los resultados técnicos del proyecto se sustentan en los registros documentales de sus respectivas secciones.
 
 ## Evidencia audiovisual y publicación
 
-**[INSERTAR CAPTURA REPRESENTATIVA DEL VIDEO DEL EQUIPO]**
+*Participación de los integrantes de nexa-team en la grabación de About the Team.*
 
-*Figura. Presentación del equipo Nexa y su experiencia de trabajo colaborativo.*
+![Grabación grupal de About the Team durante AV2](../assets/chapter-4/collaboration/nexa-av2-about-the-team-capture.png)
+
+*Figura. Captura de la videollamada correspondiente a la primera versión del video About the Team.*
 
 **Información del video:**
 
-- **Duración total:** [INSERTAR DURACIÓN REAL]
-- **Microsoft Stream:** [INSERTAR ENLACE]
-- **YouTube:** [INSERTAR ENLACE]
+- **Entrega:** AV2 — Primera versión de About the Team.
+- **Duración:** 04:40.
+- **Formato:** MP4, orientación horizontal.
+- **Participantes:** 5 integrantes de nexa-team.
+- **Publicación:** [Ver About the Team en YouTube](https://youtu.be/ixMt-g-OH6Q).
 
-La versión publicada permitirá consultar las escenas de trabajo, la retrospectiva grupal y los testimonios individuales. Asimismo, el video de YouTube se integrará en la Landing Page como presentación del equipo responsable del proyecto.
+El video complementa las evidencias de colaboración del equipo presentadas en el informe y constituye el registro audiovisual de About the Team correspondiente a AV2.

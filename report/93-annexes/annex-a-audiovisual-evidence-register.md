@@ -53,12 +53,21 @@ registrados.
 
 *Publicación del video Website mobile: vista vertical del sitio, título y fecha del 5 de octubre de 2026.*
 
+
 ## Evidencia audiovisual de AV2
 
-*Primera versión del video About the Product para AV2.*
+Durante AV2 se incorporaron las primeras evidencias audiovisuales de presentación del producto y validación de la experiencia móvil.
+
+*Registro de los videos correspondientes a AV2.*
 
 | Entrega | Video | Duración | Publicación | Evidencia visual | Apartado relacionado |
 | --- | --- | --- | --- | --- | --- |
 | AV2 | About the Product | 02:12 | [Video publicado en YouTube](https://www.youtube.com/shorts/G2eSdN8vkjY) | [Captura del catálogo de Buyer Mobile](../assets/chapter-4/sprint-3/buyer-catalog-screen.jpeg) | Video About the Product |
+| AV2 | App Validation | 11:14 | [Entrevista de validación en YouTube](https://youtu.be/eLa5VMzP484) | [Captura de la entrevista](../assets/chapter-4/validation/nexa-av2-validation-interview-capture.png) | Video App Validation y sección 4.3 |
 
-*Nota.* La primera versión de About the Product presenta las aplicaciones Nexa Operations Mobile y Nexa Buyer Mobile. Incluye pantallas de acceso, navegación operativa, consulta de inventario, catálogo y acceso a pedidos. La captura referenciada pertenece a las evidencias de Sprint 3 y se reutiliza como ilustración de una de las interfaces mostradas en el video.
+*Nota.* El video About the Product presenta las interfaces y funcionalidades de Nexa Operations Mobile y Nexa Buyer Mobile. La captura utilizada corresponde a una evidencia existente de Sprint 3.
+
+El video App Validation registra la primera entrevista de validación, realizada el 12 de noviembre de 2026 con Nicolás Castro-Solorza. La sesión consistió en una demostración guiada de Operations Mobile mediante una cuenta Sales, enfocada en la consulta de clientes y la búsqueda de productos.
+
+La evidencia de validación corresponde a una sola entrevista y presenta resultados cualitativos preliminares. Su desarrollo y los aspectos identificados se encuentran documentados en la sección 4.3 del Capítulo IV.
+

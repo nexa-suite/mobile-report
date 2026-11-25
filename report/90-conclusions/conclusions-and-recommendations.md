@@ -1,6 +1,6 @@
 # Conclusiones
 
-El desarrollo de Nexa Mobile ha evolucionado desde la investigación de necesidades y la definición de requisitos hasta la implementación progresiva de sus aplicaciones y la recopilación de evidencias técnicas y de validación. Durante AV1 se establecieron las bases del problema, los segmentos objetivo y las hipótesis de solución. En TB1 se documentaron los avances de Sprint 2, las interfaces y los primeros recorridos de ejecución. Finalmente, AV2 amplió la documentación de diseño, incorporó las evidencias de Sprint 3 y registró una primera entrevista de validación.
+El desarrollo de Nexa Mobile ha evolucionado desde la investigación de necesidades y la definición de requisitos hasta la implementación progresiva de sus aplicaciones y la recopilación de evidencias técnicas y de validación. Durante AV1 se establecieron las bases del problema, los segmentos objetivo y las hipótesis de solución. En TB1 se documentaron los avances de Sprint 2, las interfaces y los primeros recorridos de ejecución. En AV2 se amplió el diseño y se registró la primera entrevista de validación. Para TB2, el informe reúne las pruebas y los resultados de Sprint 4.
 
 Los resultados muestran avances en la construcción de Nexa Operations Mobile y Nexa Buyer Mobile, así como en la integración de componentes y la documentación de servicios. Sin embargo, la implementación y las comprobaciones técnicas deben distinguirse de la aceptación funcional y de los resultados obtenidos con usuarios. El proyecto mantiene pendientes las verificaciones necesarias para demostrar el cumplimiento integral de los recorridos y de los objetivos definidos en Lean UX.
 
@@ -138,7 +138,15 @@ Los enlaces, duraciones y referencias visuales se encuentran documentados en los
 
 Estas evidencias permiten comunicar el estado del proyecto durante AV2, pero no sustituyen las verificaciones técnicas ni la aceptación funcional del producto.
 
-## Mejora continua entre AV1, TB1 y AV2
+## Resultados de TB2
+
+[Sprint 4](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.4-sprint-4) reúne las pruebas de las dos aplicaciones y su despliegue. [Mobile v3.0.2](https://github.com/nexa-suite/mobile/releases/tag/v3.0.2) publicó los APK de Buyer 2.0.1 (build 6) y Operations 3.0.2 (build 16). Las pruebas en emulador mostraron que Buyer puede volver a consultar resúmenes de entregas sin conexión y que Operations conserva la lista de preparación para almacén.
+
+El ensayo local documentó un pedido completo, desde la solicitud hasta la recepción del comprador. En Render se comprobó la creación y edición de un borrador Buyer y se confirmó en Neon qué línea quedó guardada. El alta autónoma de una cuenta comercial devolvió HTTP 503 en ese entorno. Queda pendiente repetir el pedido completo con los dos APK conectados a Render.
+
+La sesión guiada de Sales sigue siendo la evidencia de validación con usuarios registrada en el informe. Sus observaciones orientan el diseño. La evaluación de las hipótesis de Lean UX requiere sesiones en los tres segmentos y tareas que cada participante pueda resolver por cuenta propia.
+
+## Mejora continua entre AV1 y TB2
 
 La evolución del informe y del producto permite identificar mejoras documentadas en planificación, diseño, implementación y organización de evidencias.
 
@@ -152,12 +160,13 @@ La evolución del informe y del producto permite identificar mejoras documentada
 | **TB1 a AV2** | Incorporación documental de Sprint 3 y evidencias de ambas aplicaciones móviles. | El informe registra avances de desarrollo, integración, verificaciones técnicas y ejecución de Operations Mobile y Buyer Mobile. |
 | **TB1 a AV2** | Inicio de la validación de solución mediante una entrevista guiada. | Se recopilaron apreciaciones reales sobre búsqueda de productos, presentación visual e información comercial. |
 | **TB1 a AV2** | Actualización de la documentación audiovisual y de colaboración. | Se incorporaron las primeras versiones de About the Product, App Validation y About the Team, vinculadas con sus registros correspondientes. |
+| **AV2 a TB2** | Comprobación de las vistas disponibles sin conexión y de la edición de un borrador Buyer contra Render. | Las pruebas en emulador documentan la lectura local. La consulta en Neon registra el resultado de la edición del borrador. |
 
 Estas mejoras muestran una evolución desde la planificación y el diseño hacia la construcción y revisión del software. También permiten identificar con mayor claridad las actividades que todavía requieren comprobación.
 
 ## Limitaciones identificadas
 
-A pesar de los avances alcanzados, la evidencia de AV2 presenta limitaciones relevantes.
+Las pruebas de TB2 cubren los escenarios y versiones indicados en Sprint 4.
 
 La implementación de componentes y su integración en los repositorios no demuestra que todos los recorridos comerciales y operativos puedan completarse en un entorno conectado. Las respuestas del servidor y los cambios de estado de negocio deben comprobarse mediante pruebas funcionales específicas.
 

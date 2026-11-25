@@ -171,6 +171,10 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 *Nota.* Captura de commits realizados hasta 12 de noviembre de 2026.
 
+## Aportes al informe para TB2
+
+El [registro de Sprint 4](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.4-sprint-4/4.2.4.9-team-collaboration-insights-during-sprint.md) lista los cambios y revisiones vinculados con los repositorios de la solución. En el informe, los aportes de Joaquín Verde Bueno y Sebastián Pinedo quedaron en 39 commits de [Chapter 4](https://github.com/nexa-suite/mobile-report/commit/dae5705a938720a00c6257235efed3a6d0961031). Allí se reúne la planificación, el backlog y la evidencia de desarrollo, pruebas, ejecución, servicios y distribución.
+
 ## Reflexión sobre el trabajo colaborativo
 
 A lo largo de las tres entregas, el equipo ha organizado el desarrollo del informe mediante una distribución de responsabilidades por capítulos, actividades y Sprints. Esta forma de trabajo permitió avanzar en distintos apartados del proyecto y posteriormente revisar su consistencia antes de integrarlos.

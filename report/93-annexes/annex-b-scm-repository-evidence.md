@@ -22,3 +22,11 @@ Los repositorios reúnen el informe, la aplicación y los servicios que componen
 | Mobile | main / v0.6.0 | [Release Android de evaluación](https://github.com/nexa-suite/mobile/releases/tag/v0.6.0) | 4 de octubre de 2026 | APK de Operations Mobile para el entorno cloud; evidencia de instalación y ejecución en 4.2.2.6 y 4.2.2.8. |
 | API | main / revisión 92dcdf7 | [Revisión integrada](https://github.com/nexa-suite/api/commit/92dcdf71d6c40ba31c15e170315e6cf3f7f1856a), [PR 104](https://github.com/nexa-suite/api/pull/104) | 5 de octubre de 2026 | Integración que habilita Swagger UI configurable en ejecución; contrato y comprobaciones en 4.2.2.7. |
 | Website | main / v1.0.0 | [Release del sitio](https://github.com/nexa-suite/website/releases/tag/v1.0.0), [PR 1](https://github.com/nexa-suite/website/pull/1) | 5 de octubre de 2026 | Publicación del sitio estático después de las comprobaciones de Markdown, JavaScript y commits; despliegue GitHub Pages correcto. Procedencia y flujo de integración en 4.1.2. |
+
+*Referencias consultadas para TB2.*
+
+| Repositorio | Referencia | Uso |
+| --- | --- | --- |
+| Mobile | [v3.0.2](https://github.com/nexa-suite/mobile/releases/tag/v3.0.2) | APK de Buyer 2.0.1 y Operations 3.0.2. |
+| API | [v3.0.3](https://github.com/nexa-suite/api/releases/tag/v3.0.3) | Contrato del servicio público usado para el ensayo. |
+| Website | [Revisión del sitio](https://github.com/nexa-suite/website/tree/2fcd3eb8c64544bebceccb6da149a8520057b12b) | Referencia del landing y de los estilos web. |

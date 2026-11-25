@@ -7,7 +7,8 @@ case "$MILESTONE" in
   AV1) MILESTONE_SUFFIX=av1 ;;
   TB1) MILESTONE_SUFFIX=tb1 ;;
   AV2) MILESTONE_SUFFIX=av2 ;;
-  *) printf 'Report milestone must be AV1, TB1 or AV2.\n' >&2; exit 2 ;;
+  TB2) MILESTONE_SUFFIX=tb2 ;;
+  *) printf 'Report milestone must be AV1, TB1, AV2 or TB2.\n' >&2; exit 2 ;;
 esac
 DEFAULT_OUTPUT="$REPO_ROOT/output/upc-pre-202620-1acc0238-4949-nexa-team-report-${MILESTONE_SUFFIX}.pdf"
 OUTPUT_PATH="${1:-${NEXA_REPORT_PDF_OUTPUT:-$DEFAULT_OUTPUT}}"
@@ -59,7 +60,7 @@ REPORT_ROOTS=(
   report/93-annexes
 )
 
-if [[ "$MILESTONE" == "AV2" ]]; then
+if [[ "$MILESTONE" == "AV2" || "$MILESTONE" == "TB2" ]]; then
   REPORT_ROOTS+=(
     report/03-solution-ui-ux-design
     report/04-product-implementation-and-validation
@@ -87,8 +88,12 @@ for root in "${REPORT_ROOTS[@]}"; do
   }
 done
 
-find "${REPORT_ROOTS[@]/#/$REPO_ROOT/}" -type f -name '*.md' -print \
-  | grep -Ev '/4\.2\.(3-sprint-3|4-sprint-4)/' \
+REPORT_SOURCE_FILTER=( -type f -name '*.md' )
+if [[ "$MILESTONE" != "TB2" ]]; then
+  REPORT_SOURCE_FILTER+=( ! -path '*/4.2.3-sprint-3/*' ! -path '*/4.2.4-sprint-4/*' )
+fi
+
+find "${REPORT_ROOTS[@]/#/$REPO_ROOT/}" "${REPORT_SOURCE_FILTER[@]}" -print \
   | LC_ALL=C sort > "$CANONICAL_SOURCES"
 
 if grep -Eq '/(chapter-overview|section-overview|sprint-overview)\.md$' \
@@ -104,10 +109,18 @@ append_source() {
       /^## Capítulo III:/ && mode == "AV1" { skip = 1 }
       /^## Capítulo IV:/ && mode == "AV1" { skip = 1 }
       /^## Secciones finales/ { skip = 0; sprint_skip = 0 }
-      /^  - 4\.2\.[34]\. Sprint/ && mode != "AV1" { sprint_skip = 1; next }
-      /^- 4\.[34]\./ && mode == "TB1" { sprint_skip = 1; next }
-      /^- 4\.3\./ && mode != "TB1" { sprint_skip = 0 }
-      !skip && !sprint_skip { print }
+      /^  - \[?4\.2\.[34]\. Sprint/ && (mode == "TB1" || mode == "AV2") { sprint_skip = 1; next }
+      /^- \[?4\.[34]\./ && mode == "TB1" { sprint_skip = 1; next }
+      /^- \[?4\.3\./ && mode != "TB1" { sprint_skip = 0 }
+      !skip && !sprint_skip {
+        if (match($0, /\[[^]]+\]\([^)]+\)$/)) {
+          line = substr($0, RSTART + 1)
+          sub(/\]\(.*/, "", line)
+          print substr($0, 1, RSTART - 1) line
+        } else {
+          print
+        }
+      }
     ' "$REPO_ROOT/$source"
   else
     sed -E 's|(\.\./)+assets/|report/assets/|g' "$REPO_ROOT/$source"
@@ -129,7 +142,7 @@ append_source() {
   done < "$CANONICAL_SOURCES"
 } > "$COMBINED_SOURCE"
 
-if [[ "$MILESTONE" == "AV2" || "$MILESTONE" == "TB1" ]]; then
+if [[ "$MILESTONE" != "AV1" ]]; then
   python3 "$REPO_ROOT/scripts/render-mermaid-for-export.py" "$COMBINED_SOURCE" "$BUILD_DIR"
   COMBINED_SOURCE="$BUILD_DIR/mermaid-rendered.md"
 fi

@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.0.0] - 2026-11-13
+
+- Consolidar los capítulos y los apartados iniciales de AV2.
+- Integrar diseño móvil, planificación y evidencias del Sprint 3, y el plan del Sprint 4.
+- Incorporar las referencias audiovisuales de About the Product, App Validation y About the Team.
+
 ## [2.0.1] - 2026-10-06
 
 - Repair Version History and distinguish report release contributions.
@@ -298,7 +304,7 @@ Academic-structure correction for Nexa Mobile Report.
 
 - Report structure, internal links, bibliography citation coverage, whitespace,
   and PDF rendering were checked against the candidate; detailed results and
-  external-evidence limits are recorded in `docs/releases/v0.1.1.md`.
+  external-evidence limits are recorded in [v0.1.1](https://github.com/nexa-suite/mobile-report/blob/v0.1.1/docs/releases/v0.1.1.md).
 
 ## [0.1.0] - 2026-09-09
 

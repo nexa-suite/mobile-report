@@ -1,15 +1,14 @@
-
 # Project Report Collaboration Insights
 
 Repositorio del informe: nexa-suite/mobile-report.
 
-Aquí se muestran los principales avances del informe desde AV1 hasta AV2, considerando los aportes de los integrantes de nexa-team y las evidencias de colaboración registradas durante cada entrega. Se incluyen las actualizaciones de los capítulos III y IV, el trabajo relacionado con los Sprints y la participación del equipo en la organización, revisión e integración de la documentación.
+Aquí se presentan los principales avances del informe desde AV1 hasta TB2, considerando los aportes de los integrantes de nexa-team y las evidencias de colaboración registradas durante cada entrega. Se incluyen las actividades de investigación, diseño, implementación, pruebas, documentación técnica y despliegue, así como la participación del equipo en la elaboración, revisión e integración de los capítulos del informe.
 
-Las versiones del informe permiten identificar los cambios realizados en cada entrega, mientras que las estadísticas de GitHub ofrecen una referencia de la actividad registrada en el repositorio. Ambas fuentes se utilizan de manera complementaria, ya que el número de commits no refleja necesariamente la cantidad o calidad del trabajo de cada integrante.
+Las versiones del informe permiten identificar los cambios realizados durante el ciclo de vida del proyecto, mientras que las estadísticas y el historial de GitHub proporcionan evidencias de las contribuciones registradas. Ambas fuentes se utilizan de manera complementaria, considerando que el número de commits no representa necesariamente la cantidad, complejidad o calidad del trabajo realizado por cada integrante.
 
-## Evolución del informe entre AV1, TB1 y AV2
+## Evolución del informe entre AV1, TB1, AV2 y TB2
 
-El informe ha pasado por tres etapas principales. En AV1 se establecieron las bases de investigación, requisitos y arquitectura. Durante TB1 se amplió el diseño de la solución y la documentación de implementación. Finalmente, para AV2 se desarrolló con mayor detalle el capítulo III, se revisó el capítulo IV y se incorporaron los avances del Sprint 3.
+El informe ha evolucionado a través de cuatro entregas académicas. En AV1 se establecieron las bases de investigación, requisitos y arquitectura. Durante TB1 se amplió el diseño de la solución y la documentación de implementación. En AV2 se desarrolló con mayor detalle el capítulo III, se revisó el capítulo IV y se incorporaron los avances del Sprint 3. Finalmente, en TB2 se integró la documentación del Sprint 4, las evidencias de implementación y despliegue de las aplicaciones móviles y los resultados obtenidos durante las comprobaciones finales del proyecto.
 
 **Tabla**
 
@@ -45,43 +44,35 @@ Los aportes se organizaron considerando el trabajo documentado en cada entrega y
 
 *Nota.* Los aportes se presentan como una síntesis cualitativa de las actividades y responsabilidades documentadas. No constituyen una distribución basada exclusivamente en commits ni implican que cada integrante haya desarrollado de manera individual todas las funcionalidades asociadas con su área.
 
-## Avances realizados para AV2
+## Avances realizados para TB2
 
 ### Actualización del capítulo III: Solution UI/UX Design
 
-Durante AV2 se completó el desarrollo documental de los apartados del capítulo III. Se revisaron las guías generales de estilo y se organizó la información relacionada con la identidad visual de Nexa, el uso de colores, tipografía, componentes, espaciado y criterios de accesibilidad.
+Durante TB2 se realizaron ajustes en la documentación de diseño de las aplicaciones móviles, incluyendo la revisión de los prototipos, las referencias de Figma, los User Flows y los recursos visuales correspondientes a Buyer Mobile y Operations Mobile.
 
-También se amplió la arquitectura de información, considerando los sistemas de organización, etiquetado, búsqueda y navegación. Estas decisiones se adaptaron a las distintas experiencias del producto: el sitio web público, Operations Mobile y Buyer Mobile.
+Estas actualizaciones permitieron mantener una mayor consistencia entre las propuestas de diseño, los recorridos de usuario y las funcionalidades incorporadas durante el desarrollo de las aplicaciones.
 
-En el diseño de la Landing Page se consolidaron wireframes y mockups que permiten visualizar la distribución del contenido, la jerarquía de las secciones y la adaptación de las páginas a diferentes tamaños de pantalla.
+### Incorporación del Sprint 4
 
-Para las aplicaciones móviles se desarrolló la documentación de wireframes, wireflows, mockups, User Flows y prototipado. Estos recursos ayudan a explicar los recorridos de autenticación, consulta de productos, identificación mediante cámara o búsqueda manual, operaciones de almacén y las actividades previstas para repartidores y compradores.
+El Sprint 4 estuvo orientado a ampliar las funcionalidades comerciales y operativas de Nexa Mobile, incluyendo la gestión de cargas de despacho, la recepción de mercadería, el tratamiento de comprobantes de pago, las notificaciones y la continuidad de consulta ante interrupciones de conectividad.
 
-Uno de los principales avances fue relacionar los diseños con las necesidades identificadas durante Needfinding y con las historias de usuario del proyecto. De esta manera, las pantallas y sus recorridos mantienen una conexión con los requisitos y con las acciones que cada usuario necesita realizar.
+La documentación del sprint incorpora la planificación, la matriz de líderes y colaboradores, el Sprint Backlog y las evidencias asociadas con el desarrollo, las pruebas automatizadas, la ejecución de las aplicaciones y la documentación de los servicios REST.
 
-### Mejoras del capítulo IV: Product Implementation & Validation
+Asimismo, se registraron los cambios relacionados con las publicaciones Nexa Mobile v3.0.0, v3.0.1 y v3.0.2, diferenciando las funcionalidades incorporadas de los resultados obtenidos durante las comprobaciones técnicas.
 
-El capítulo IV fue revisado para presentar con mayor claridad la configuración del proyecto, las herramientas utilizadas y las evidencias de los avances técnicos.
+### Actualización de las evidencias de despliegue
 
-Se actualizaron los apartados de Software Configuration Management, manteniendo la documentación de los repositorios, las convenciones de desarrollo y los entornos utilizados por el equipo. Asimismo, se organizaron los registros de implementación para facilitar la identificación de versiones, componentes y resultados técnicos.
+Como parte de las actividades de TB2, se ampliaron las evidencias relacionadas con la distribución de Buyer Mobile y Operations Android mediante Firebase App Distribution y GitHub Releases.
 
-La revisión permitió relacionar mejor los artefactos de diseño del capítulo III con las actividades de desarrollo y verificación del capítulo IV. Esto resulta importante porque las decisiones presentadas en wireframes y User Flows deben poder contrastarse con el comportamiento de las aplicaciones y los servicios.
+También se documentaron las comprobaciones de disponibilidad de Nexa API en Render, la consulta de su definición OpenAPI, la persistencia de información en PostgreSQL mediante Neon y la visualización de Nexa Website publicado en GitHub Pages.
 
-También se reforzó la separación entre evidencias de código, pruebas automatizadas, ejecución y despliegue. Cada una documenta una parte diferente del desarrollo y permite identificar con mayor precisión qué resultados se han comprobado y cuáles todavía requieren validación funcional.
+Estas evidencias permiten identificar los componentes desplegados, sus versiones y los resultados de las operaciones evaluadas, manteniendo la trazabilidad entre la implementación, los servicios y la infraestructura utilizada.
 
-### Incorporación del Sprint 3
+### Integración de la documentación final
 
-Uno de los avances principales de AV2 fue la documentación completa de las secciones correspondientes al Sprint 3.
+La integración de los avances del informe se realizó mediante Pull Requests, conservando el historial de modificaciones y las contribuciones registradas en las ramas de trabajo.
 
-El Sprint 3 se organizó alrededor de las funcionalidades de entrega y recepción de mercadería. Su alcance incluye la consulta de entregas asignadas, el inicio de intentos de entrega, el registro de resultados y evidencias, las entregas parciales y el seguimiento de pedidos por parte de los compradores.
-
-La planificación contempla 29 elementos del Product Backlog y 129 Story Points, distribuidos entre funcionalidades móviles, tareas técnicas e investigaciones. También se documentó la matriz de líderes y colaboradores, junto con el desglose de actividades y responsabilidades.
-
-Se incorporaron evidencias de desarrollo de Operations Android y Buyer Flutter relacionadas con la navegación, el seguimiento de entregas y la recepción del comprador. Entre los registros de integración destacan los Pull Requests #72, #73 y #74 del repositorio Nexa Mobile, correspondientes a la integración de funcionalidades y a correcciones específicas de acceso.
-
-En cuanto a las verificaciones técnicas, se documentaron ejecuciones satisfactorias de GitHub Actions para las aplicaciones móviles y Nexa API. También se registraron comprobaciones de instalación de las aplicaciones, documentación de servicios mediante Swagger UI y evidencias de infraestructura en Render y Neon.
-
-El Sprint 3 permitió reunir en un mismo apartado la planificación, las responsabilidades, el código integrado y las evidencias de prueba y despliegue. Aunque se documentaron avances importantes, las comprobaciones disponibles todavía no acreditan la aceptación funcional completa de todos los recorridos de entrega y recepción. Esta diferencia se mantiene indicada en el capítulo IV.
+El [Pull Request #17](https://github.com/nexa-suite/mobile-report/pull/17) integró la documentación del Sprint 4 y las actualizaciones correspondientes a TB2, incluyendo modificaciones en el diseño, la implementación, las evidencias técnicas y la configuración de exportación del informe.
 
 ## Evidencia de colaboración en AV1
 
@@ -173,14 +164,32 @@ Las siguientes figuras están reservadas para registrar la actividad de Nexa Mob
 
 ## Aportes al informe para TB2
 
-El [registro de Sprint 4](../04-product-implementation-and-validation/4.2-landing-page-and-mobile-application-implementation/4.2.4-sprint-4/4.2.4.9-team-collaboration-insights-during-sprint.md) lista los cambios y revisiones vinculados con los repositorios de la solución. En el informe, los aportes de Joaquín Verde Bueno y Sebastián Pinedo quedaron en 39 commits de [Chapter 4](https://github.com/nexa-suite/mobile-report/commit/dae5705a938720a00c6257235efed3a6d0961031). Allí se reúne la planificación, el backlog y la evidencia de desarrollo, pruebas, ejecución, servicios y distribución.
+Durante TB2, el trabajo del equipo se concentró en completar la documentación del Sprint 4, actualizar las evidencias de implementación de las aplicaciones móviles y preparar los materiales correspondientes a la entrega final.
+
+A diferencia de las entregas anteriores, en esta etapa fue necesario relacionar la información presentada en los capítulos de diseño e implementación con las versiones más recientes de las aplicaciones. Para ello, se revisaron los recursos visuales, la documentación de los servicios y los resultados de las comprobaciones realizadas.
+
+**Tabla**
+
+*Aportes representativos de los integrantes durante TB2.*
+
+| Integrante | Aportes durante TB2 |
+| --- | --- |
+| Pinedo Sanchez, Sebastián Martín | Desarrolló la documentación de planificación, distribución de responsabilidades, Sprint Backlog y evidencias de desarrollo y pruebas del Sprint 4. |
+| Rojas Mancilla, Gerard Gianpier | Contribuyó al desarrollo de Operations Mobile, particularmente en los escenarios de consulta de información de almacén sin conexión y navegación, cuyos avances se presentan en el capítulo IV. |
+| Torrejón De Los Santos, Gino Rodrigo | Actualizó la documentación de diseño de las aplicaciones móviles, incluyendo los prototipos, User Flows, recursos visuales y referencias de Figma del capítulo III. |
+| Verde Bueno, Joaquín Francisco | Desarrolló las secciones de ejecución, documentación de servicios, despliegue y colaboración del Sprint 4. Incorporó las capturas correspondientes a las aplicaciones móviles, los servicios desplegados y las herramientas utilizadas en el proyecto. |
+| Yucra Sandoval, Diego Sebastián | Integró los avances de los capítulos III y IV, actualizó las conclusiones y organizó las referencias técnicas y la configuración de exportación del informe para TB2. |
+
+La distribución del trabajo permitió avanzar de manera paralela en las diferentes secciones del informe, relacionando los recursos de diseño con las evidencias técnicas y los resultados obtenidos durante el desarrollo de Nexa.
 
 ## Reflexión sobre el trabajo colaborativo
 
-A lo largo de las tres entregas, el equipo ha organizado el desarrollo del informe mediante una distribución de responsabilidades por capítulos, actividades y Sprints. Esta forma de trabajo permitió avanzar en distintos apartados del proyecto y posteriormente revisar su consistencia antes de integrarlos.
+A lo largo de las cuatro entregas académicas, el equipo organizó el desarrollo del proyecto mediante la distribución de responsabilidades por capítulos, funcionalidades y sprints. Esta forma de trabajo permitió avanzar de manera colaborativa en las actividades de investigación, diseño, implementación y documentación.
 
-Durante AV2, uno de los principales retos fue mantener la relación entre los diseños del capítulo III y las evidencias técnicas del capítulo IV. La documentación de las aplicaciones móviles, los servicios y los recorridos de usuario debía utilizar conceptos y estados coherentes para evitar contradicciones entre las secciones.
+Durante las primeras entregas, el trabajo estuvo orientado a comprender el dominio del problema, identificar las necesidades de los segmentos objetivo y establecer los requisitos y la arquitectura de la solución. Posteriormente, las actividades se concentraron en el diseño de las interfaces, la implementación de las aplicaciones móviles y su integración con los servicios de Nexa API.
 
-El trabajo con ramas de GitHub y Pull Requests facilitó la revisión de cambios y la integración de aportes. Asimismo, la organización de las evidencias por Sprint permitió conservar un registro más claro de las actividades realizadas y de los aspectos que todavía necesitan comprobaciones adicionales.
+En TB2, el principal reto consistió en integrar los avances del Sprint 4 y mantener la consistencia entre las funcionalidades desarrolladas, las pruebas técnicas, las evidencias de ejecución y los componentes desplegados. El uso de ramas, Pull Requests y herramientas de integración continua facilitó la organización de las modificaciones y la conservación del historial de contribuciones.
 
-En conjunto, el avance de AV2 permitió mejorar la presentación del informe, completar las secciones de diseño previstas y documentar con mayor detalle el trabajo relacionado con Sprint 3. La experiencia también ayudó al equipo a reconocer la importancia de revisar los cambios antes de integrarlos, mantener una comunicación constante y registrar tanto los resultados obtenidos como las limitaciones identificadas.
+La preparación de las evidencias finales también permitió reconocer la importancia de documentar los resultados obtenidos de manera objetiva, diferenciando las funcionalidades implementadas, las comprobaciones realizadas y las actividades que requieren verificaciones adicionales.
+
+En conjunto, el desarrollo de Nexa permitió fortalecer las competencias técnicas y colaborativas de los integrantes, promoviendo el aprendizaje autónomo, la comunicación efectiva, la revisión de resultados y la aplicación de buenas prácticas de ingeniería de software.
